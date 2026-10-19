@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "interphase"
+version = "0.0.1"
+description = "LLM-orchestrated construction of solid-solid battery interfaces and interphases (OSI Hackathon 2026)"
+requires-python = ">=3.11"
+dependencies = [
+    "pymatgen>=2025.1.1",
+    "ase>=3.23",
+    "numpy",
+    "pydantic>=2",
+    "python-dotenv",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+llm = ["litellm"]
+mlip = ["torch", "mace-torch"]
+petmad = ["pet-mad"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["interphase*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

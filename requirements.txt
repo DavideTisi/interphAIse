@@ -1,0 +1,19 @@
+# Core (deterministic stages run with these alone)
+pymatgen>=2025.1.1
+ase>=3.23
+numpy
+pydantic>=2
+python-dotenv
+pyyaml
+
+# LLM routing (same stack as HELLMM)
+litellm
+
+# MLIPs — install whichever backends you use
+torch
+mace-torch          # mace-mp-* (MPtrj, PBE+U: safer for TM-oxide cathodes)
+# pet-mad           # pet-mad (PBEsol, non-spin-polarised)
+# metatomic-torch   # metatomic:/path/to/finetuned_model.pt
+# fairchem-core     # uma-* / esen-* (reused from HELLMM)
+
+pytest

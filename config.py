@@ -1,0 +1,23 @@
+"""Central configuration (same pattern as HELLMM's config.py)."""
+
+from interphase.context import InterfaceContext
+
+# LLM: a HELLMM alias if hellmm is installed, otherwise a litellm model string.
+LLM_MODEL = "deepseek-v3.2"            # or "openrouter/deepseek/deepseek-v3.2"
+
+# MLIP: "pet-mad", "metatomic:/path/to/lpscl_finetune.pt", "mace-mp-medium-0b3", ...
+# Cathode cases with magnetic TM oxides: prefer an MPtrj (PBE+U) model.
+MLIP_ANODE = "pet-mad"
+MLIP_CATHODE = "mace-mp-medium-0b3"
+
+N_RUNS = 3          # consensus samples per LLM decision
+MAX_RETRIES = 2     # per branch point
+
+CASES: list[InterfaceContext] = [
+    # Validation case: stable (kinetically) interface with literature W_adh values.
+    InterfaceContext(electrode="Li", electrolyte="Li7La3Zr2O12", role="anode", voltage=0.0, max_atoms=800),
+    # Reactive case: thermodynamics says Li2S + Li3P + LiCl; the demo of the interphase branch.
+    InterfaceContext(electrode="Li", electrolyte="Li6PS5Cl", role="anode", voltage=0.0),
+    # Cathode case: voltage-dependent stability window.
+    InterfaceContext(electrode="LiCoO2", electrolyte="Li6PS5Cl", role="cathode", voltage=4.0),
+]

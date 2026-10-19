@@ -1,0 +1,92 @@
+# Expert modelling decisions to compare the agent against.
+#
+# Fill on day 1 (two people, ~3 h). For each system record what the published
+# modelling/experimental study concluded and WHY, with a DOI. Entries marked
+# verified: false are starting points from general knowledge of the field —
+# check them against a paper before using them in the scoring.
+#
+# Fields
+#   interface_type: sharp | interphase       (decision 2)
+#   interphase_phases: phases between the end members, electrode side first (decision 3)
+#   electrode_facets / electrolyte_facets: facets used or observed (decision 1), [h,k,l]
+#   source: DOI(s); notes: the reasoning the authors gave
+#
+# Never put any of this into a prompt (information barrier).
+
+cases:
+  - electrode: Li
+    electrolyte: Li6PS5Cl
+    voltage: 0.0
+    interface_type: interphase
+    interphase_phases: [Li2S, Li3P, LiCl]
+    electrode_facets: []
+    electrolyte_facets: []
+    source: TODO  # XPS of Li | argyrodite (Janek group) and DFT reactivity studies
+    notes: electronically insulating products → passivating SEI
+    verified: false
+
+  - electrode: Li
+    electrolyte: Li3PS4
+    voltage: 0.0
+    interface_type: interphase
+    interphase_phases: [Li2S, Li3P]
+    electrode_facets: []
+    electrolyte_facets: []
+    source: TODO
+    notes: ""
+    verified: false
+
+  - electrode: Li
+    electrolyte: Li10GeP2S12
+    voltage: 0.0
+    interface_type: interphase
+    interphase_phases: [Li2S, Li3P]   # plus a Li–Ge alloy: check which phase the hull gives
+    electrode_facets: []
+    electrolyte_facets: []
+    source: TODO
+    notes: mixed-conducting interphase (Li–Ge alloy) → continuous growth
+    verified: false
+
+  - electrode: Li
+    electrolyte: Li7La3Zr2O12
+    voltage: 0.0
+    interface_type: sharp
+    interphase_phases: []
+    electrode_facets: []
+    electrolyte_facets: []
+    source: TODO
+    notes: small thermodynamic driving force, kinetically stable in practice
+    verified: false
+
+  - electrode: Li
+    electrolyte: Li3InCl6
+    voltage: 0.0
+    interface_type: interphase
+    interphase_phases: [LiCl]   # plus In / Li–In alloy: check hull products
+    electrode_facets: []
+    electrolyte_facets: []
+    source: TODO
+    notes: reduced In conducts electrons → unstable against Li metal
+    verified: false
+
+  - electrode: LiCoO2
+    electrolyte: Li3InCl6
+    voltage: 4.0
+    interface_type: sharp
+    interphase_phases: []
+    electrode_facets: [[1, 0, 4]]
+    electrolyte_facets: []
+    source: TODO
+    notes: chlorides have high oxidation stability
+    verified: false
+
+  - electrode: LiCoO2
+    electrolyte: Li6PS5Cl
+    voltage: 4.0
+    interface_type: interphase
+    interphase_phases: []   # TODO from literature
+    electrode_facets: [[1, 0, 4]]
+    electrolyte_facets: []
+    source: TODO
+    notes: sulfide oxidised at cathode potentials
+    verified: false
