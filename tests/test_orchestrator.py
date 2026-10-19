@@ -9,8 +9,9 @@ from interphase.tools.matcher import MatchSettings
 from interphase.tools.mlip import load_mlip
 
 INTERPHASE = {"chain_of_thought": "...", "interface_type": "interphase", "stack": ["Li", "Li2S", "LiS2"],
-              "kinetic_argument": "insulating product", "rationale": "toy", "confidence": 0.8}
-BAD_STACK = {"interface_type": "interphase", "stack": ["Li", "LiS2", "Li2S", "LiS2"], "rationale": "wrong"}
+              "character": "passivating", "kinetic_argument": "insulating product", "rationale": "toy", "confidence": 0.8}
+BAD_STACK = {"interface_type": "interphase", "stack": ["Li", "LiS2", "Li2S", "LiS2"], "character": "passivating",
+             "rationale": "wrong"}
 
 
 def facets(system, user):

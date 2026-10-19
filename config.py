@@ -1,6 +1,7 @@
 """Central configuration (same pattern as HELLMM's config.py)."""
 
 from interphase.context import InterfaceContext
+from interphase.screen import ScreenConfig
 
 # LLM: a HELLMM alias if hellmm is installed, otherwise a litellm model string.
 LLM_MODEL = "deepseek-v3.2"            # or "openrouter/deepseek/deepseek-v3.2"
@@ -21,3 +22,17 @@ CASES: list[InterfaceContext] = [
     # Cathode case: voltage-dependent stability window.
     InterfaceContext(electrode="LiCoO2", electrolyte="Li6PS5Cl", role="cathode", voltage=4.0),
 ]
+
+# ---------------------------------------------------------------------------
+# Flagship: which buffer coating stabilises LiCoO2 | Li6PS5Cl at 4 V?
+# Oxide coatings used in sulfide all-solid-state cells, plus a halide.
+# Check the MP polymorph picked for each (or pin it in coating_mp_ids).
+# ---------------------------------------------------------------------------
+COATING_SCREEN = ScreenConfig(
+    electrode="LiCoO2",
+    electrolyte="Li6PS5Cl",
+    voltage=4.0,
+    role="cathode",
+    coatings=["LiNbO3", "Li3PO4", "Li2ZrO3", "LiTaO3", "Li3BO3", "Li3InCl6"],
+    include_uncoated=True,
+)

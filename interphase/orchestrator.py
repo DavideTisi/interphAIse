@@ -44,6 +44,7 @@ class OrchestratorSettings:
     registry_n_xy: int = 3
     registry_gaps: tuple[float, ...] = (1.8, 2.2, 2.6)
     relax: bool = True
+    build_structures: bool = True    # False → stop after the interface-type decision (fast LLM-only screen)
     fmax: float = 0.05
     steps: int = 300
     match: MatchSettings = field(default_factory=MatchSettings)
@@ -98,6 +99,7 @@ class Orchestrator:
         decision = None
         for attempt in range(self.s.max_retries + 1):
             decision, agree, samples = decide_interface_type(self.ctx, rep, self.llm, self.s.n_runs, feedback)
+            self.agreement = agree
             self.log.record("interface_type", "llm_decision", decision, agreement=agree,
                             samples=samples, feedback=feedback, attempt=attempt)
             if decision.interface_type == "sharp":
@@ -111,7 +113,8 @@ class Orchestrator:
             feedback = "adjacent layers are not mutually stable: " + "; ".join(bad)
             self._transition("STACK_CHECK", "INTERFACE_TYPE", feedback)
         self._transition("STACK_CHECK", "SHARP_FALLBACK", "retries exhausted; modelling the sharp interface")
-        return InterfaceTypeDecision("sharp", [self.ctx.electrode, self.ctx.electrolyte],
+        self.agreement = 0.0
+        return InterfaceTypeDecision("sharp", [self.ctx.electrode, self.ctx.electrolyte], character="none",
                                      rationale="fallback after failed stack checks")
 
     def stage_pair(self, substrate: str, film: str) -> dict:
@@ -199,11 +202,15 @@ class Orchestrator:
     def run(self) -> dict:
         rep = self.stage_reactivity()
         decision = self.stage_interface_type(rep)
-        pairs = [self.stage_pair(a, b) for a, b in zip(decision.stack[:-1], decision.stack[1:])]
+        pairs = []
+        if self.s.build_structures:
+            pairs = [self.stage_pair(a, b) for a, b in zip(decision.stack[:-1], decision.stack[1:])]
         summary = {
             "case": self.ctx.name,
-            "reactivity": {"reactive": rep.reactive, "min_reaction_energy": rep.min_reaction_energy},
+            "reactivity": {"reactive": rep.reactive, "min_reaction_energy": rep.min_reaction_energy,
+                           "products": rep.most_favourable.products if rep.most_favourable else []},
             "decision": decision,
+            "decision_agreement": getattr(self, "agreement", None),
             "pairs": pairs,
             "counters": {"single_points": energetics.Counter.single_points,
                          "relaxations": energetics.Counter.relaxations},

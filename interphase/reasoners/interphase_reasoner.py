@@ -26,6 +26,7 @@ def _render(ctx: InterfaceContext, rep: ReactivityReport, feedback: str) -> str:
     )
     best = rep.most_favourable
     return INTERPHASE_USER.format(
+        setting=f"Setting: {ctx.setting}\n" if ctx.setting else "",
         electrode=ctx.electrode,
         role=ctx.role,
         voltage=ctx.voltage,
@@ -61,10 +62,16 @@ def parse(raw: dict, ctx: InterfaceContext, rep: ReactivityReport) -> InterfaceT
         raise ValueError(f"phases not in the reactivity products: {sorted(illegal)}")
     if len(stack) > 5:
         raise ValueError("at most 3 intermediate phases")
+    character = str(raw.get("character", "none" if itype == "sharp" else "")).strip().lower()
+    if itype == "sharp":
+        character = "none"
+    elif character not in {"passivating", "growing"}:
+        raise ValueError(f"interphase needs character passivating|growing, got {character!r}")
     conf = raw.get("confidence")
     return InterfaceTypeDecision(
         interface_type=itype,  # type: ignore[arg-type]
         stack=stack,
+        character=character,  # type: ignore[arg-type]
         rationale=f"{raw.get('rationale', '')} | kinetics: {raw.get('kinetic_argument', '')}",
         confidence=float(conf) if conf is not None else None,
     )
@@ -80,5 +87,5 @@ def decide_interface_type(
     """Consensus decision. Returns (decision, agreement fraction, all samples)."""
     user = _render(ctx, rep, feedback)
     samples = sample(lambda: parse(llm(INTERPHASE_SYSTEM, user), ctx, rep), n_runs)
-    best, agree = majority(samples, key=lambda d: (d.interface_type, tuple(d.stack)))
+    best, agree = majority(samples, key=lambda d: (d.interface_type, tuple(d.stack), d.character))
     return best, agree, samples

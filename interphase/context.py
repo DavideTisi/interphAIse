@@ -39,6 +39,10 @@ class InterfaceContext:
     max_strain: float = 0.04
     electrode_mp_id: str | None = None
     electrolyte_mp_id: str | None = None
+    # Free-text description shown to the LLM, e.g. "LiNbO3 coating on a LiCoO2
+    # cathode, contact with the Li6PS5Cl electrolyte". Lets the same machinery
+    # handle coating | electrolyte contacts where "electrode" is the coating.
+    setting: str = ""
 
     @property
     def name(self) -> str:
@@ -82,6 +86,11 @@ class InterfaceTypeDecision:
     # e.g. ["Li", "Li2S", "Li3P", "LiCl", "Li6PS5Cl"]. For "sharp" this is
     # just [electrode, electrolyte].
     stack: list[str]
+    # Expert call on what the layer does over cycling:
+    #   none        sharp interface, nothing forms
+    #   passivating electronically insulating, self-limiting layer
+    #   growing     electronically conducting (or otherwise non-self-limiting) layer
+    character: Literal["none", "passivating", "growing"] = "none"
     rationale: str = ""
     confidence: float | None = None
 

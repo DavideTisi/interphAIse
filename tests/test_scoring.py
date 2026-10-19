@@ -18,3 +18,13 @@ def test_score_log_matches_expected():
     }
     r = score_log(log, expected)
     assert r["type_ok"] and r["order_ok"] and r["phases_j"] == 1.0
+
+
+def test_score_ranking():
+    from benchmark.score_agreement import score_ranking
+
+    ranking = {"config": {"electrode": "LiCoO2", "electrolyte": "Li6PS5Cl"},
+               "ranking": [{"coating": "LiNbO3", "rank": 1}, {"coating": "none", "rank": 2}],
+               "ranking_thermo_only": [{"coating": "none", "rank": 1}, {"coating": "LiNbO3", "rank": 2}]}
+    r = score_ranking(ranking, YAML)
+    assert r["ranking"].startswith("1/1") and r["ranking_thermo_only"].startswith("0/1")

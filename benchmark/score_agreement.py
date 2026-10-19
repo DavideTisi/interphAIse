@@ -71,12 +71,40 @@ def score_log(log: dict, expected: dict) -> dict | None:
     }
 
 
+def score_ranking(ranking: dict, cases_yaml: Path, only_verified: bool = False) -> dict | None:
+    """Pairwise check of a coating ranking against coating_screens in the yaml.
+
+    Counts the expected coatings ranked above the uncoated baseline, for the
+    LLM ranking and for the thermodynamics-only ablation.
+    """
+    cfg = ranking["config"]
+    for exp in yaml.safe_load(cases_yaml.read_text()).get("coating_screens", []):
+        if only_verified and not exp.get("verified"):
+            continue
+        if (_f(exp["electrode"]), _f(exp["electrolyte"])) != (_f(cfg["electrode"]), _f(cfg["electrolyte"])):
+            continue
+        out = {}
+        for key in ("ranking", "ranking_thermo_only"):
+            pos = {r["coating"]: r["rank"] for r in ranking[key]}
+            base = pos.get("none")
+            hits = [c for c in exp["expected_above_uncoated"] if c in pos and base and pos[c] < base]
+            tested = [c for c in exp["expected_above_uncoated"] if c in pos]
+            out[key] = f"{len(hits)}/{len(tested)} expected coatings ranked above uncoated"
+        return out
+    return None
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("runs", type=Path)
     ap.add_argument("--cases", type=Path, default=Path(__file__).with_name("literature_cases.yaml"))
     ap.add_argument("--only-verified", action="store_true")
     args = ap.parse_args()
+
+    for p in sorted(args.runs.rglob("ranking.json")):
+        r = score_ranking(json.loads(p.read_text()), args.cases, args.only_verified)
+        if r:
+            print(f"{p.parent.name}: {json.dumps(r)}")
 
     expected = load_expected(args.cases, args.only_verified)
     rows = []

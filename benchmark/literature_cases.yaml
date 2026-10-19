@@ -90,3 +90,15 @@ cases:
     source: TODO
     notes: sulfide oxidised at cathode potentials
     verified: false
+
+# Coating screens: what experiment says the ranking should show.
+# expected_above_uncoated: coatings reported to improve LiCoO2 | sulfide cells
+# over the bare cathode. Verify each with a DOI before counting it.
+coating_screens:
+  - electrode: LiCoO2
+    electrolyte: Li6PS5Cl
+    voltage: 4.0
+    uncoated: {interface_type: interphase}
+    expected_above_uncoated: [LiNbO3, Li3PO4, Li2ZrO3, LiTaO3, Li3BO3]
+    source: TODO
+    verified: false

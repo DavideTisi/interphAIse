@@ -1,8 +1,30 @@
 # interphase
 
-**LLM-orchestrated construction of solid-state battery interfaces — and of the interphases that actually form there.**
+**Which buffer coating makes a solid-state cathode interface stable — and what atomistic model of each contact should be simulated?**
 
 OSI Hackathon 2026 (21–22 October). Built on the design principles of [HELLMM](../hellmm).
+
+**Flagship:** LiCoO₂ | coating | Li₆PS₅Cl at 4 V, six candidate coatings plus the uncoated baseline.
+For each coating the output is a rank and tier, a verdict per contact (sharp / passivating / growing
+interphase, with the reasoning), simulation-ready structures with their work of adhesion, and a decision
+log. A thermodynamics-only ranking is produced next to it as the ablation.
+
+```bash
+python scripts/run_screen.py --decision-only   # reactivity + LLM calls: minutes, no MLIP
+python scripts/run_screen.py                   # full pipeline, writes ranking.md / ranking.json
+```
+
+### How the ranker orders coatings (worst contact decides)
+
+1. **Tier** from the LLM's call on each contact: 1 = both contacts stay sharp, 2 = a passivating
+   (insulating, self-limiting) layer forms, 3 = a growing (electronically conducting) layer forms.
+2. **Worst thermodynamic driving force** (min reaction energy over both contacts, closer to 0 is better).
+3. **Weakest work of adhesion** (higher is better).
+4. **Consensus agreement** of the LLM decisions.
+
+`mode="thermo"` replaces the tier with "reactive → growing", i.e. no expert call. The gap between the two
+rankings, scored against experiment (`coating_screens` in `benchmark/literature_cases.yaml`), is the
+measured value of the LLM's judgement.
 
 ---
 
@@ -65,7 +87,9 @@ MP structures and entries are cached under `data/`. Fetch everything once with n
 config.py                      cases, LLM, MLIP, consensus settings
 interphase/
   context.py                   dataclasses passed between stages (all JSON-loggable)
-  orchestrator.py              state machine
+  orchestrator.py              state machine (one contact)
+  screen.py                    coating screen: runs both contacts per coating + uncoated baseline
+  ranker.py                    tiered ranking, LLM vs thermodynamics-only
   llm.py                       make_llm (litellm / HELLMM router), HumanLLM, ScriptedLLM
   log.py                       run dir + decision log
   reasoners/                   the LLM decisions (prompts.py holds all prompts)
@@ -74,12 +98,14 @@ interphase/
 benchmark/
   literature_cases.yaml        expert decisions to score against (fill + verify on day 1)
   score_agreement.py
-scripts/run_cases.py, scripts/run_bruteforce.py
+scripts/run_screen.py, scripts/run_cases.py, scripts/run_bruteforce.py
 tests/                         offline end-to-end tests
 ```
 
 ## Evaluation plan (what goes on the slides)
 
+0. **Coating ranking vs experiment.** Known-good coatings must outrank the uncoated cathode; report the
+   LLM ranking and the thermodynamics-only ablation side by side (`score_agreement.py` prints both).
 1. **Agent vs published expert decisions.** Run on the ~7–15 systems in `literature_cases.yaml` and score decisions 1–3. Only `verified: true` entries count. Each needs a DOI.
 2. **Agent vs team members, blind.** Same prompts, same information: run with `llm=HumanLLM()` on 5 systems.
 3. **Efficiency vs brute force.** Same or better best-W_adh interface with far fewer relaxations (`counters` in both summaries).

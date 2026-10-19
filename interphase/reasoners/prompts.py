@@ -41,18 +41,23 @@ each neighbour (Li-rich, most reduced phases next to a Li-metal anode; most \
 oxidised next to a high-voltage cathode). Use ONLY the two end members and \
 phases that appear in the reactivity analysis products; at most 3 \
 intermediate phases. For "sharp", stack = [electrode, electrolyte].
+3. character: "none" for a sharp interface; otherwise "passivating" if the \
+layer is electronically insulating and self-limiting, or "growing" if any \
+layer phase conducts electrons or the reaction is otherwise not \
+self-limiting. This is the property that decides whether the contact \
+survives cycling.
 
 You are NOT computing energies or lattice matching — those are done \
 downstream. Do not reject a model because it would be large or expensive.
 
 Return JSON with keys in this order:
 {"chain_of_thought": str, "interface_type": "sharp" | "interphase", \
-"stack": [str, ...], "kinetic_argument": str, "rationale": str, \
-"confidence": float between 0 and 1}
+"stack": [str, ...], "character": "none" | "passivating" | "growing", \
+"kinetic_argument": str, "rationale": str, "confidence": float between 0 and 1}
 """
 
-INTERPHASE_USER = """Electrode: {electrode} ({role}), potential {voltage} V vs Li/Li+
-Solid electrolyte: {electrolyte}
+INTERPHASE_USER = """{setting}Electrode side: {electrode} ({role}), potential {voltage} V vs Li/Li+
+Electrolyte side: {electrolyte}
 Temperature: {temperature} K
 
 Thermodynamic reactivity analysis ({note}):
