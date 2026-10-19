@@ -1,7 +1,7 @@
 """Central configuration (same pattern as HELLMM's config.py)."""
 
-from interphase.context import InterfaceContext
-from interphase.screen import ScreenConfig
+from interphaise.context import InterfaceContext
+from interphaise.screen import ScreenConfig
 
 # LLM: a HELLMM alias if hellmm is installed, otherwise a litellm model string.
 LLM_MODEL = "deepseek-v3.2"            # or "openrouter/deepseek/deepseek-v3.2"

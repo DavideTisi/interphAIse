@@ -20,12 +20,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import config  # noqa: E402
-from interphase.log import RunLog, _default  # noqa: E402
-from interphase.tools import energetics  # noqa: E402
-from interphase.tools.materials import get_bulk  # noqa: E402
-from interphase.tools.matcher import MatchSettings, enumerate_interfaces, low_index_millers  # noqa: E402
-from interphase.tools.mlip import load_mlip  # noqa: E402
-from interphase.tools.validation import oxidation_map, validate  # noqa: E402
+from interphaise.log import RunLog, _default  # noqa: E402
+from interphaise.tools import energetics  # noqa: E402
+from interphaise.tools.materials import get_bulk  # noqa: E402
+from interphaise.tools.matcher import MatchSettings, enumerate_interfaces, low_index_millers  # noqa: E402
+from interphaise.tools.mlip import load_mlip  # noqa: E402
+from interphaise.tools.validation import oxidation_map, validate  # noqa: E402
 
 
 def main() -> None:

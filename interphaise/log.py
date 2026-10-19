@@ -30,7 +30,7 @@ def _default(o):
 
 class RunLog:
     def __init__(self, case_name: str, root: str | os.PathLike | None = None):
-        root = Path(root or os.environ.get("INTERPHASE_RUN_DIR", "runs"))
+        root = Path(root or os.environ.get("INTERPHAISE_RUN_DIR", "runs"))
         stamp = _dt.datetime.now().strftime("%Y%m%d_%H%M%S")
         safe = case_name.replace("|", "__").replace("@", "_at_").replace("/", "-")
         self.dir = root / f"{stamp}_{safe}"

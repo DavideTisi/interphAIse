@@ -15,7 +15,7 @@ from pymatgen.core import Composition, Structure
 from pymatgen.entries.computed_entries import ComputedStructureEntry
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
-DATA_DIR = Path(os.environ.get("INTERPHASE_DATA_DIR", Path(__file__).resolve().parents[2] / "data"))
+DATA_DIR = Path(os.environ.get("INTERPHAISE_DATA_DIR", Path(__file__).resolve().parents[2] / "data"))
 
 
 def _mp():

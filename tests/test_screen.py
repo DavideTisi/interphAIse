@@ -6,11 +6,11 @@ both sides, so it must outrank the uncoated baseline.
 
 import json
 
-from interphase.llm import ScriptedLLM
-from interphase.orchestrator import OrchestratorSettings
-from interphase.ranker import CoatingRow, ContactResult, rank, to_markdown
-from interphase.screen import ScreenConfig, run_screen
-from interphase.tools.matcher import MatchSettings
+from interphaise.llm import ScriptedLLM
+from interphaise.orchestrator import OrchestratorSettings
+from interphaise.ranker import CoatingRow, ContactResult, rank, to_markdown
+from interphaise.screen import ScreenConfig, run_screen
+from interphaise.tools.matcher import MatchSettings
 
 from test_orchestrator import facets
 

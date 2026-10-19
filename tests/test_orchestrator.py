@@ -2,11 +2,11 @@
 
 import json
 
-from interphase.context import InterfaceContext
-from interphase.llm import ScriptedLLM
-from interphase.orchestrator import Orchestrator, OrchestratorSettings
-from interphase.tools.matcher import MatchSettings
-from interphase.tools.mlip import load_mlip
+from interphaise.context import InterfaceContext
+from interphaise.llm import ScriptedLLM
+from interphaise.orchestrator import Orchestrator, OrchestratorSettings
+from interphaise.tools.matcher import MatchSettings
+from interphaise.tools.mlip import load_mlip
 
 INTERPHASE = {"chain_of_thought": "...", "interface_type": "interphase", "stack": ["Li", "Li2S", "LiS2"],
               "character": "passivating", "kinetic_argument": "insulating product", "rationale": "toy", "confidence": 0.8}

@@ -1,6 +1,6 @@
-from interphase.tools.matcher import MatchSettings, enumerate_interfaces, low_index_millers
-from interphase.tools.reactivity import check_stack, interfacial_reactivity
-from interphase.tools.validation import oxidation_map, validate
+from interphaise.tools.matcher import MatchSettings, enumerate_interfaces, low_index_millers
+from interphaise.tools.reactivity import check_stack, interfacial_reactivity
+from interphaise.tools.validation import oxidation_map, validate
 
 
 def test_reactivity_closed_and_grand(toy_entries):

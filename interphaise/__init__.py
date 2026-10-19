@@ -1,4 +1,4 @@
-"""interphase — LLM-orchestrated construction of battery interfaces and interphases."""
+"""interphAIse — LLM-orchestrated construction of battery interfaces and interphases."""
 
 from .context import InterfaceContext
 

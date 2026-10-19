@@ -15,10 +15,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import config  # noqa: E402
-from interphase.llm import make_llm  # noqa: E402
-from interphase.log import _default  # noqa: E402
-from interphase.orchestrator import Orchestrator, OrchestratorSettings  # noqa: E402
-from interphase.tools.mlip import load_mlip  # noqa: E402
+from interphaise.llm import make_llm  # noqa: E402
+from interphaise.log import _default  # noqa: E402
+from interphaise.orchestrator import Orchestrator, OrchestratorSettings  # noqa: E402
+from interphaise.tools.mlip import load_mlip  # noqa: E402
 
 
 def main() -> None:

@@ -1,8 +1,9 @@
-# interphase
+# interphAIse
 
 **Which buffer coating makes a solid-state cathode interface stable — and what atomistic model of each contact should be simulated?**
 
 OSI Hackathon 2026 (21–22 October). Built on the design principles of [HELLMM](../hellmm).
+The Python package is `interphaise` (`pip install -e .`, `import interphaise`).
 
 **Flagship:** LiCoO₂ | coating | Li₆PS₅Cl at 4 V, six candidate coatings plus the uncoated baseline.
 For each coating the output is a rank and tier, a verdict per contact (sharp / passivating / growing
@@ -85,7 +86,7 @@ MP structures and entries are cached under `data/`. Fetch everything once with n
 
 ```
 config.py                      cases, LLM, MLIP, consensus settings
-interphase/
+interphaise/
   context.py                   dataclasses passed between stages (all JSON-loggable)
   orchestrator.py              state machine (one contact)
   screen.py                    coating screen: runs both contacts per coating + uncoated baseline

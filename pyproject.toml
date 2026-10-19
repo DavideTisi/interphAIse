@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "interphase"
+name = "interphaise"
 version = "0.0.1"
 description = "LLM-orchestrated construction of solid-solid battery interfaces and interphases (OSI Hackathon 2026)"
 requires-python = ">=3.11"
@@ -24,7 +24,7 @@ dev = ["pytest"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["interphase*"]
+include = ["interphaise*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
