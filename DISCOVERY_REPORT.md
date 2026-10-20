@@ -1,5 +1,7 @@
 # interphAIse: iterative coating discovery
 
+**Updated experimental plan:** [DISCOVERY_IMPLEMENTATION_PLAN.md](DISCOVERY_IMPLEMENTATION_PLAN.md) supersedes the design below where they differ. It specifies design A, the LLM’s role in replacing human candidate-selection intuition, evaluator fixes, controls and implementation milestones.
+
 Agreement and implementation brief — 20 October 2026.
 
 ## Scientific objective
