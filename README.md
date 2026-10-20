@@ -4,6 +4,7 @@
 
 OSI Hackathon 2026 (21–22 October). Built on the design principles of [HELLMM](../hellmm).
 The Python package is `interphaise` (`pip install -e .`, `import interphaise`).
+**Full project report and handoff brief: [REPORT.md](REPORT.md)** — read it first.
 
 **Flagship:** LiCoO₂ | coating | Li₆PS₅Cl at 4 V, six candidate coatings plus the uncoated baseline.
 For each coating the output is a rank and tier, a verdict per contact (sharp / passivating / growing
