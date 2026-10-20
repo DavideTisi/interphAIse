@@ -162,3 +162,24 @@ Headline we are aiming for: *"the LLM makes the expert modelling decisions as pu
 - Energy counters are process-global; run one case per process when comparing with brute force.
 - **Hybrid mode** (rule outputs given to the LLM as inputs, override rate as metric) is not built yet.
 - **Rule thresholds** (`RuleSettings`) are judgement calls themselves; report a sweep of `sharp_threshold`.
+
+## Iterative discovery (new branch)
+
+See [DISCOVERY_REPORT.md](DISCOVERY_REPORT.md) for the agreed scientific scope.
+This outer loop selects coatings under a fixed evaluation budget. Candidate
+quality uses calculated reactivity and optionally adhesion, never the proposing
+LLM's stability labels. The existing screen/arm comparison remains separate.
+
+```bash
+python scripts/run_discovery.py --strategy random --budget 3 --seed 42
+python scripts/run_discovery.py --strategy fixed --budget 3
+python scripts/run_discovery.py --strategy upfront --budget 3 --model openrouter/deepseek/deepseek-v3.2
+python scripts/run_discovery.py --strategy iterative --budget 3 --model openrouter/deepseek/deepseek-v3.2
+# Add --full for fixed-RulesPolicy interface construction and MLIP adhesion.
+```
+
+Default mode requires Materials Project access but no MLIP. LLM strategies also
+need the configured provider credentials. Each run writes `discovery.json` with
+proposal attempts, evaluation failures, timings and best-so-far history. Failed
+calculations consume budget. `fixed` follows configuration order; it is not an
+expert baseline unless that order was independently specified by an expert.
