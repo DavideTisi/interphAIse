@@ -12,21 +12,46 @@ interphase, with the reasoning), simulation-ready structures with their work of 
 log. A thermodynamics-only ranking is produced next to it as the ablation.
 
 ```bash
-python scripts/run_screen.py --decision-only   # reactivity + LLM calls: minutes, no MLIP
-python scripts/run_screen.py                   # full pipeline, writes ranking.md / ranking.json
+python scripts/run_screen.py --decision-only                  # reactivity + LLM calls: minutes, no MLIP
+python scripts/run_screen.py                                  # full pipeline, writes ranking.md / ranking.json
+python scripts/run_screen.py --decision-only --policy rules   # same, deterministic rules instead of the LLM
+python scripts/compare_arms.py runs/                          # arms side by side + where the LLM overrides the rules
 ```
+
+### Three decision arms, one pipeline
+
+The expert decisions are made by a **policy** (`interphaise/policies.py`); everything else is identical.
+
+| Arm | `--policy` | Who decides |
+|---|---|---|
+| LLM | `llm` (default) | LLM reasoners, consensus over `N_RUNS` samples |
+| Rules | `rules` | Deterministic expert rules (`RulesPolicy`), no LLM — the baseline the LLM must beat |
+| Human | `human` | A person answers the same prompts (`HumanLLM`), blind baseline |
+
+Rules (thresholds in `RuleSettings`, logged with every screen):
+- **Sharp or interphase:** sharp if the min reaction energy > `sharp_threshold` (−0.05 eV/atom).
+- **Layer stack:** the dominant products of the most favourable reaction (≤ 3), in the first order whose
+  neighbours are all mutually stable; ties broken by Li fraction (Li-rich phases on the Li-richer side).
+- **Passivating or growing:** growing if any layer phase has a Materials Project band gap < 0.1 eV
+  (metal-only composition when the gap is unknown).
+- **Facets:** BFDH — rank facets by effective interplanar spacing (systematic absences handled through
+  the structure factor), pair the top ones; retries skip tried pairs.
+- **Physicality:** overlapping atoms (< 1.0 Å) or separated slabs (gap +1.5 Å, W_adh ≤ 0) → next termination;
+  > 5 % of atoms crossed the interface → different facets; mean interface displacement > 1.0 Å or
+  coordination change > 30 % → thicker slabs; validation warnings → accept with caveat.
 
 ### How the ranker orders coatings (worst contact decides)
 
-1. **Tier** from the LLM's call on each contact: 1 = both contacts stay sharp, 2 = a passivating
+1. **Tier** from the arm's call on each contact: 1 = both contacts stay sharp, 2 = a passivating
    (insulating, self-limiting) layer forms, 3 = a growing (electronically conducting) layer forms.
 2. **Worst thermodynamic driving force** (min reaction energy over both contacts, closer to 0 is better).
 3. **Weakest work of adhesion** (higher is better).
-4. **Consensus agreement** of the LLM decisions.
+4. **Consensus agreement** of the decisions (always 1 for the rules).
 
-`mode="thermo"` replaces the tier with "reactive → growing", i.e. no expert call. The gap between the two
-rankings, scored against experiment (`coating_screens` in `benchmark/literature_cases.yaml`), is the
-measured value of the LLM's judgement.
+`mode="thermo"` replaces the tier with "reactive → growing" (a crude ablation). The fair comparison is
+LLM vs rules: their rankings, scored against experiment (`coating_screens` in
+`benchmark/literature_cases.yaml`), and the list of contacts where the LLM overrides the rules
+(`compare_arms.py`) measure the value of the LLM's judgement.
 
 ---
 
@@ -77,6 +102,7 @@ cp .env.example .env                  # MP key + LLM keys (same names as HELLMM)
 pytest                                # offline: toy Li–S chemistry, scripted LLM, LJ calculator
 python scripts/run_cases.py --dry-run --case 1     # reactivity + LLM decisions + matching, no MLIP
 python scripts/run_cases.py --case 1               # full run with the MLIP from config.py
+python scripts/run_cases.py --case 1 --policy rules  # same contact, rules arm
 python scripts/run_bruteforce.py --case 1          # exhaustive baseline (no LLM)
 python benchmark/score_agreement.py runs/          # agent vs literature decisions
 ```
@@ -89,9 +115,10 @@ MP structures and entries are cached under `data/`. Fetch everything once with n
 config.py                      cases, LLM, MLIP, consensus settings
 interphaise/
   context.py                   dataclasses passed between stages (all JSON-loggable)
-  orchestrator.py              state machine (one contact)
+  orchestrator.py              state machine (one contact); asks a policy for every decision
+  policies.py                  LLMPolicy (LLM / human), RulesPolicy (deterministic rules), make_policy
   screen.py                    coating screen: runs both contacts per coating + uncoated baseline
-  ranker.py                    tiered ranking, LLM vs thermodynamics-only
+  ranker.py                    tiered ranking: the arm's decisions vs thermodynamics-only
   llm.py                       make_llm (litellm / HELLMM router), HumanLLM, ScriptedLLM
   log.py                       run dir + decision log
   reasoners/                   the LLM decisions (prompts.py holds all prompts)
@@ -100,16 +127,17 @@ interphaise/
 benchmark/
   literature_cases.yaml        expert decisions to score against (fill + verify on day 1)
   score_agreement.py
-scripts/run_screen.py, scripts/run_cases.py, scripts/run_bruteforce.py
+scripts/run_screen.py, scripts/run_cases.py, scripts/run_bruteforce.py, scripts/compare_arms.py
 tests/                         offline end-to-end tests
 ```
 
 ## Evaluation plan (what goes on the slides)
 
-0. **Coating ranking vs experiment.** Known-good coatings must outrank the uncoated cathode; report the
-   LLM ranking and the thermodynamics-only ablation side by side (`score_agreement.py` prints both).
+0. **Coating ranking vs experiment, three arms.** Known-good coatings must outrank the uncoated cathode;
+   report the LLM, rules and human rankings and the thermodynamics-only ablation (`compare_arms.py`).
+   The LLM's overrides of the rules, checked against the literature, give the override accuracy.
 1. **Agent vs published expert decisions.** Run on the ~7–15 systems in `literature_cases.yaml` and score decisions 1–3. Only `verified: true` entries count. Each needs a DOI.
-2. **Agent vs team members, blind.** Same prompts, same information: run with `llm=HumanLLM()` on 5 systems.
+2. **Agent vs team members, blind.** Same prompts, same information: `--policy human` on 5 systems.
 3. **Efficiency vs brute force.** Same or better best-W_adh interface with far fewer relaxations (`counters` in both summaries).
 4. **Reproducibility.** Repeat runs, and use two LLM vendors if time allows (HELLMM's protocol). Report the per-decision agreement fractions.
 
@@ -120,7 +148,7 @@ Headline we are aiming for: *"the LLM makes the expert modelling decisions as pu
 | WP | Who | Day 1 | Day 2 |
 |---|---|---|---|
 | A. Literature benchmark | 2 people | fill + verify `literature_cases.yaml` with DOIs | human blind baseline, scoring |
-| B. Reasoners & prompts | 1–2 | real-LLM runs on the 3 config cases, prompt iteration | reproducibility runs, second LLM vendor |
+| B. Reasoners, rules & prompts | 1–2 | LLM and rules arms on the decision-only screen, prompt iteration, rule thresholds | hybrid mode (rules as LLM input), override metric, repeat runs |
 | C. MLIP & energetics | 1–2 | PET-MAD / fine-tuned LPSCl model in `tools/mlip.py`, sanity check on Li\|LLZO W_adh vs literature | brute-force baseline, counters |
 | D. Demo & slides | 1 | structure viewer for `*_best.extxyz`, decision-log viewer | slides, video |
 
@@ -132,3 +160,5 @@ Headline we are aiming for: *"the LLM makes the expert modelling decisions as pu
 - **MLIP domain.** PET-MAD is PBEsol without +U or spin. Use an MPtrj model for magnetic TM-oxide cathodes (`MLIP_CATHODE` in config).
 - **Disorder.** Argyrodites and garnets are partially disordered; MP's ordered approximant is used. Record the MP id actually used.
 - Energy counters are process-global; run one case per process when comparing with brute force.
+- **Hybrid mode** (rule outputs given to the LLM as inputs, override rate as metric) is not built yet.
+- **Rule thresholds** (`RuleSettings`) are judgement calls themselves; report a sweep of `sharp_threshold`.

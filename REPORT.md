@@ -2,7 +2,8 @@
 
 > **Purpose of this file.** A self-contained brief for people and for LLM sessions that pick this
 > project up later. It records what the project is, every design decision taken so far and why, what
-> is built, what is verified and what is not. Read this before the code. Last updated 2026-10-20.
+> is built, what is verified and what is not. Read this before the code. Last updated 2026-10-20
+> (rules arm added).
 
 **Event:** OSI Hackathon (formerly LLM Hackathon for Materials & Chemistry), 21–22 October 2026.
 Judging: impact, innovativeness, scalability, relevance to materials science and chemistry.
@@ -34,7 +35,9 @@ coating | electrolyte. For each coating the tool returns:
 - **simulation-ready structures** (`*_best.extxyz`) and the **work of adhesion** W_adh of each contact;
 - **decision log** (`decision_log.json`): every LLM decision, its consensus agreement, every gate result
   and rejected candidate;
-- `ranking.md` / `ranking.json` with the LLM ranking and a comparison ranking side by side.
+- `ranking.md` / `ranking.json` with the arm's ranking and a thermodynamics-only ranking side by side.
+
+The same screen runs with three **decision arms** (§5): the LLM, deterministic rules, and a person.
 
 Flagship candidate list (`config.py`): LiNbO₃, Li₃PO₄, Li₂ZrO₃, LiTaO₃, Li₃BO₃ (oxides used as
 coatings in sulfide cells) and Li₃InCl₆ (halide). "Used in practice" is not yet backed by DOIs — see §10.
@@ -122,11 +125,11 @@ Generation separated from verification; gates not critics (hard, logged rejectio
 barrier (prompts never contain downstream-computed quantities or benchmark answers); never ask the LLM
 what is computed; self-consistency by repeated sampling.
 
-## 5. Can the decisions be made deterministically?
+## 5. Can the decisions be made deterministically? — the rules arm
 
-Largely yes. This is the most important open point for the pitch: the rules below are the baseline the
-LLM must beat. The current "thermodynamics-only" ablation (every reactive contact = growing) is too
-weak and a judge would call it a strawman.
+Largely yes, and since 2026-10-20 the rules are **implemented as a third arm** (`RulesPolicy` in
+`interphaise/policies.py`). They are the baseline the LLM must beat; the older "thermodynamics-only"
+ablation (every reactive contact = growing) is too weak to be the comparison.
 
 | Decision | Deterministic rule | What the rule misses | LLM likely adds value? |
 |---|---|---|---|
@@ -137,19 +140,60 @@ weak and a judge would call it a strawman.
 | Physicality | Thresholds on descriptors + fixed mapping to actions | Multi-signal trade-offs, explanation | **Weakest case** — rules probably as good and more reproducible |
 | Orchestration | Already a fixed state machine; with rule answers the pipeline is fully deterministic | — | No |
 
-### Recommended changes (not yet implemented)
+### What is implemented (2026-10-20)
 
-1. **`RulesPolicy` as a third arm.** Reasoners already accept any `llm(system, user)` callable, so a
-   policy answering the three prompts from the rules above is a drop-in. Evaluate rules vs LLM vs
-   human through the same pipeline. The claim becomes "where does expert judgement beat expert rules?"
-2. **Hybrid mode (likely strongest).** Give the LLM the rule outputs as inputs (μ_Li-ordered products,
-   their band gaps, BFDH/Wulff facet ranking). It decides where they conflict with known chemistry.
+**Policy layer.** The orchestrator never calls an LLM directly; it asks a *policy* for each decision
+(`decide_interface_type`, `propose_facets`, `judge`). Same pipeline, gates and numbers for every arm.
+
+| Arm | `--policy` | Class | Decisions by |
+|---|---|---|---|
+| LLM | `llm` (default) | `LLMPolicy(make_llm(model))` | LLM reasoners, majority over `N_RUNS` samples |
+| Rules | `rules` | `RulesPolicy(RuleSettings())` | Deterministic rules below; agreement always 1 |
+| Human | `human` | `LLMPolicy(HumanLLM())` | A person answering the same prompts |
+
+A bare `llm(system, user)` callable passed to `Orchestrator` or `run_screen` is still accepted and
+wrapped in `LLMPolicy` (backwards compatible). Every decision event in `decision_log.json` now has
+kind `"decision"` and `inputs.policy`; `ranking.json` carries `policy` and `policy_settings`
+(all rule thresholds).
+
+**The rules as implemented** (`RuleSettings` defaults):
+
+| Decision | Rule | Default |
+|---|---|---|
+| Sharp or interphase | Sharp if the min reaction energy (hull) > threshold | `sharp_threshold = -0.05` eV/atom |
+| Layer phases | Dominant products of the most favourable reaction, by atoms in the balanced equation | `max_intermediate = 3` |
+| Layer order | First permutation whose adjacent pairs all pass `check_stack`; ties by Li fraction (Li-rich phases on the Li-richer side) | — |
+| Passivating or growing | Growing if any layer phase has MP band gap < threshold; metal-only composition when the gap is unknown | `metallic_gap = 0.1` eV |
+| Facets | BFDH: rank symmetry-distinct facets by effective d_hkl (d / smallest n with non-zero Z-weighted structure factor of n·hkl, so extinctions are handled); pair the top ones by rank sum; retries skip tried pairs | `facet_max_index = 2`, `facets_per_phase = 3` |
+| Physicality | min distance < 1.0 Å or gap opened > 1.5 Å or W_adh ≤ 0 → reject, next termination; > 5 % of atoms crossed the interface → reject, different facets; mean interface displacement > 1.0 Å or coordination change > 30 % → reject, thicker slabs; validation warnings → accept with caveat; else accept | see `RuleSettings` |
+
+Band gaps come from Materials Project (`tools/materials.get_band_gap`, needs `mp-api`; cached in
+`data/band_gaps.json`).
+
+**Layer-order caveat found while building the rule:** when all products are mutually stable (e.g.
+Li₂S, Li₃P, LiCl against Li), thermodynamics does not fix their order; the rule falls back to Li
+fraction. The order is therefore weakly determined by either arm, and scoring of decision 1-order
+should be given less weight than sharp/interphase and passivating/growing.
+
+**Comparison.** `scripts/compare_arms.py runs/` takes the latest screen of each arm and prints (and
+with `--out` writes) the rankings side by side with the thermodynamics-only ablation, every contact
+where the arms disagree, the number of contacts where the LLM overrides the rules, and each arm's
+score against `benchmark/literature_cases.yaml`.
+
+**Tests:** 21 offline tests pass, 9 of them for the rules arm (each rule, BFDH extinctions, retry
+skipping, judge thresholds, full pipeline with `RulesPolicy`, screen + `compare_arms`).
+
+### Still to do
+
+1. **Hybrid mode (likely strongest).** Give the LLM the rule outputs as inputs (ordered products,
+   their band gaps, the BFDH facet ranking). It decides where they conflict with known chemistry.
    Report the **override rate** and **override accuracy** against the literature.
-3. Frame decisions 1-order and 3 as explanation + exception handling, decision 1-type and 2 as where
-   the LLM is expected to win.
-
-Estimated effort: rules for layer order, band gaps and judge thresholds ≈ 1 h; BFDH facets quick;
-Wulff facets need MLIP surface energies.
+2. **Threshold sensitivity.** The rule thresholds are judgement calls themselves; sweep
+   `sharp_threshold` (e.g. −0.01 to −0.2 eV/atom) and report how the rules ranking changes.
+3. **Better rules if time allows:** layer order from the chemical-potential profile (electrolyte
+   decomposition as μ_Li sweeps from electrode to electrolyte); Wulff facets from MLIP surface energies.
+4. Framing: decision 1 sharp/interphase and decision 2 are where the LLM is expected to win; layer
+   order and the physicality check are explanation and exception handling.
 
 ## 6. Architecture and code map
 
@@ -169,11 +213,12 @@ screen.py: all contacts × coatings → ranker.py → ranking.md / ranking.json
 | Path | Role |
 |---|---|
 | `interphaise/context.py` | Dataclasses passed between stages (all JSON-loggable) |
-| `interphaise/orchestrator.py` | State machine for one contact; `build_structures=False` stops after decision 1 |
+| `interphaise/orchestrator.py` | State machine for one contact; asks a policy for every decision; `build_structures=False` stops after decision 1 |
+| `interphaise/policies.py` | `LLMPolicy` (LLM, human), `RulesPolicy` + `RuleSettings` + `bfdh_ranking`, `make_policy` |
 | `interphaise/screen.py` | Coating screen: contacts per coating + uncoated baseline |
-| `interphaise/ranker.py` | Tiered ranking; `mode="llm"` and `mode="thermo"` |
+| `interphaise/ranker.py` | Tiered ranking; `mode="decisions"` (the arm's calls) and `mode="thermo"` |
 | `interphaise/reasoners/` | `interphase_reasoner`, `facet_reasoner`, `judge`, `consensus`, all prompts in `prompts.py` |
-| `interphaise/tools/materials.py` | MP bulk structures and entries, cached under `data/` |
+| `interphaise/tools/materials.py` | MP bulk structures, entries and band gaps, cached under `data/` |
 | `interphaise/tools/reactivity.py` | Interfacial reactivity (closed system for Li metal, grand potential with Li open otherwise); `check_stack` |
 | `interphaise/tools/matcher.py` | ZSL matching over all terminations, symmetry-duplicate removal |
 | `interphaise/tools/validation.py` | Gates: atom budget, strain, overlapping atoms, charged slabs (reject); polar, non-stoichiometric (warn) |
@@ -185,6 +230,7 @@ screen.py: all contacts × coatings → ranker.py → ranking.md / ranking.json
 | `benchmark/score_agreement.py` | Scores decision logs and rankings against the yaml |
 | `scripts/run_screen.py` | Flagship: `--decision-only`, `--dry-run`, full |
 | `scripts/run_cases.py`, `scripts/run_bruteforce.py` | Single contacts; exhaustive no-LLM baseline |
+| `scripts/compare_arms.py` | Arms side by side, disagreements, LLM overrides of the rules, scores |
 | `config.py` | LLM model, MLIPs, cases, `COATING_SCREEN` |
 
 **Ranking rule** (worst contact decides): tier → worst reaction energy (closer to 0 better) → weakest
@@ -204,8 +250,11 @@ pip install -e ".[dev,llm]"           # + pet-mad / mace-torch for energetics
 pip install -e ../hellmm              # optional: reuse HELLMM's LLM router and MLIP loader
 cp .env.example .env                  # MY_MP_API_KEY, MY_OPENROUTER_API_KEY, MY_ANTHROPIC_KEY
 pytest                                # offline: toy Li–S chemistry, scripted LLM, LJ calculator
-python scripts/run_screen.py --decision-only
-python scripts/run_screen.py
+python scripts/run_screen.py --decision-only                  # LLM arm
+python scripts/run_screen.py --decision-only --policy rules   # rules arm
+python scripts/run_screen.py --decision-only --policy human   # human arm (interactive)
+python scripts/compare_arms.py runs/ --out runs/compare.md
+python scripts/run_screen.py --policy rules                   # full pipeline, any arm
 python benchmark/score_agreement.py runs/
 ```
 
@@ -230,26 +279,29 @@ brings the full screen under an hour. First pass: `registry_n_xy=2`, two gaps, `
 ## 9. Evaluation plan
 
 Target headline: *known-good coatings outrank the bare cathode, and the LLM's calls beat the
-deterministic rules in the cases where kinetics or experiment matter.*
+deterministic rules in the cases where kinetics or experiment matter.* All arms run through the same
+pipeline; `compare_arms.py` produces items 1, 3 and 4.
 
 1. **Ranking vs experiment**: known-good coatings above the uncoated cathode, for LLM, rules and
    thermodynamics-only rankings.
 2. **Decisions vs published studies**: 7–15 systems in `literature_cases.yaml`; sharp/interphase,
    phases and order, facets. Only DOI-verified entries count.
-3. **Rules vs LLM vs human, blind**: same prompts, same pipeline (`RulesPolicy`, LLM, `HumanLLM`).
-4. **Hybrid override metric**: how often the LLM overrides the rules, and how often it is right.
+3. **Rules vs LLM vs human, blind**: `--policy rules | llm | human`, same pipeline.
+4. **Override metric**: how often the LLM overrides the rules (`compare_arms.py`, available now), and how
+   often it is right (check each override against the literature). Hybrid mode will sharpen this.
 5. **Efficiency**: relaxations to the best interface, LLM-guided vs `run_bruteforce.py`.
 6. **Reproducibility**: repeat runs, second LLM vendor; per-decision agreement.
 
 ## 10. Status (2026-10-20)
 
-**Built and committed:** scaffold, coating screen, ranker, benchmark scorer, renaming to interphAIse.
-**Tested:** 12 offline tests pass (toy Li–S chemistry, scripted LLM, Lennard-Jones calculator).
+**Built and committed:** scaffold, coating screen, ranker, benchmark scorer, renaming to interphAIse,
+**rules arm** (policy layer, `RulesPolicy`, `--policy` flag, `compare_arms.py`).
+**Tested:** 21 offline tests pass (toy Li–S chemistry, scripted LLM, Lennard-Jones calculator).
 **Not yet run:** anything against Materials Project, a real LLM or a real MLIP.
 **Unverified:** every entry in `benchmark/literature_cases.yaml`, including which coatings work in
 practice — all `verified: false`, need DOIs.
-**Not implemented:** `RulesPolicy` and hybrid mode (§5); merged multilayer interphase cells (stacks are
-built as pairwise interfaces); interface energy γ_int (only W_adh); MD anneal and Li transport.
+**Not implemented:** hybrid mode and the threshold sweep (§5); merged multilayer interphase cells (stacks
+are built as pairwise interfaces); interface energy γ_int (only W_adh); MD anneal and Li transport.
 
 ## 11. Risks
 
@@ -269,7 +321,7 @@ LLM (no MLIP needed). Pre-fetch all MP data Wednesday morning and commit `data/`
 | Work package | People | Wed 21 Oct | Thu 22 Oct |
 |---|---|---|---|
 | A. Benchmark | 2 | Verify `literature_cases.yaml` and `coating_screens` with DOIs | Human blind baseline; scoring |
-| B. Reasoners, rules, prompts | 1–2 | Decision-only screen; `RulesPolicy`; prompt iteration | Hybrid mode, override metric, repeat runs |
+| B. Reasoners, rules, prompts | 1–2 | Decision-only screen with the LLM and rules arms; prompt iteration; rule thresholds | Hybrid mode, override accuracy, threshold sweep, repeat runs |
 | C. MLIP and energetics | 1–2 | PET-MAD / MACE-MP; Li \| LLZO adhesion sanity check | Full screen; brute-force baseline counts |
 | D. Demo | 1 | Structure and decision-log viewer | Slides and video |
 
@@ -286,6 +338,9 @@ LLM (no MLIP needed). Pre-fetch all MP data Wednesday morning and commit `data/`
 - Hackathon requirement adopted: a clear component where human reasoning is replaced by an LLM, in
   addition to LLM orchestration (§4).
 - Name: **interphAIse**; Python package `interphaise`.
+- Asked whether the decisions could be deterministic: largely yes. Found Xiao et al. 2019 (deterministic
+  coating screen). Decided to make deterministic rules a full third arm (built 2026-10-20) so the LLM is
+  measured against expert rules, not against the crude thermodynamics-only ablation.
 
 ## Sources
 

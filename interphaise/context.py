@@ -60,6 +60,9 @@ class ReactionChannel:
     reaction_energy: float        # eV/atom (negative = favourable)
     products: list[str]
     equation: str = ""
+    # atoms of each product per formula of reaction (from the balanced equation);
+    # used by the rules arm to keep the dominant products
+    product_atoms: dict[str, float] = field(default_factory=dict)
 
 
 @dataclass

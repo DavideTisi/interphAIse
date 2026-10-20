@@ -39,7 +39,7 @@ def score_log(log: dict, expected: dict) -> dict | None:
     exp = expected.get(key)
     if exp is None:
         return None
-    dec = [e for e in ev if e["stage"] == "interface_type" and e["kind"] == "llm_decision"]
+    dec = [e for e in ev if e["stage"] == "interface_type" and e["kind"] in ("decision", "llm_decision")]
     if not dec:
         return None
     first = dec[0]  # the decision before any stack-check feedback
@@ -51,7 +51,7 @@ def score_log(log: dict, expected: dict) -> dict | None:
 
     proposed = set()
     for e in ev:
-        if e["stage"] == "facets" and e["kind"] == "llm_decision":
+        if e["stage"] == "facets" and e["kind"] in ("decision", "llm_decision"):
             for item in e["output"]:
                 c = item["choice"]
                 if _f(c["substrate"]) == key[0]:
@@ -63,6 +63,7 @@ def score_log(log: dict, expected: dict) -> dict | None:
 
     return {
         "case": log["case"],
+        "policy": first["inputs"].get("policy", "llm"),
         "type_ok": out["interface_type"] == exp["interface_type"],
         "phases_j": round(phases_j, 2),
         "order_ok": inner == exp_inner,
@@ -75,7 +76,7 @@ def score_ranking(ranking: dict, cases_yaml: Path, only_verified: bool = False) 
     """Pairwise check of a coating ranking against coating_screens in the yaml.
 
     Counts the expected coatings ranked above the uncoated baseline, for the
-    LLM ranking and for the thermodynamics-only ablation.
+    arm's ranking (llm, rules or human) and for the thermodynamics-only ablation.
     """
     cfg = ranking["config"]
     for exp in yaml.safe_load(cases_yaml.read_text()).get("coating_screens", []):
@@ -90,6 +91,7 @@ def score_ranking(ranking: dict, cases_yaml: Path, only_verified: bool = False) 
             hits = [c for c in exp["expected_above_uncoated"] if c in pos and base and pos[c] < base]
             tested = [c for c in exp["expected_above_uncoated"] if c in pos]
             out[key] = f"{len(hits)}/{len(tested)} expected coatings ranked above uncoated"
+        out["policy"] = ranking.get("policy", "llm")
         return out
     return None
 

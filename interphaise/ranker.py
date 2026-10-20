@@ -12,10 +12,12 @@ lexicographic, worst contact decides:
   3. weakest work of adhesion (higher is better; missing = ranked last)
   4. consensus agreement of the decisions (higher is better)
 
-mode="llm"    tiers come from the LLM's character decisions (the expert call).
-mode="thermo" tiers come from thermodynamics alone: reactive → treated as a
-              growing layer. This is the ablation baseline: does the expert
-              call change the ranking, and does it move it towards experiment?
+mode="decisions" tiers come from the policy's passivating/growing calls —
+                the LLM, a person, or the deterministic rules (policies.py),
+                whichever arm produced the decisions. ("llm" is an alias.)
+mode="thermo"    tiers from thermodynamics alone: reactive → treated as a
+                 growing layer. Crude ablation; the rules arm is the fair
+                 deterministic baseline.
 """
 
 from __future__ import annotations
@@ -54,12 +56,14 @@ class CoatingRow:
 
 
 def _character(c: ContactResult, mode: str) -> str:
+    if mode not in ("decisions", "llm", "thermo"):
+        raise ValueError(f"unknown ranking mode {mode!r}")
     if mode == "thermo":
         return "growing" if c.reactive else "none"
     return c.character
 
 
-def score(row: CoatingRow, mode: str = "llm") -> CoatingRow:
+def score(row: CoatingRow, mode: str = "decisions") -> CoatingRow:
     worst = max(row.contacts, key=lambda c: CHARACTER_RANK[_character(c, mode)])
     row.tier = 1 + CHARACTER_RANK[_character(worst, mode)]
     weakest_rxn = min(row.contacts, key=lambda c: c.min_reaction_energy)
@@ -76,7 +80,7 @@ def score(row: CoatingRow, mode: str = "llm") -> CoatingRow:
     return row
 
 
-def rank(rows: list[CoatingRow], mode: str = "llm") -> list[CoatingRow]:
+def rank(rows: list[CoatingRow], mode: str = "decisions") -> list[CoatingRow]:
     for r in rows:
         score(r, mode)
     rows = sorted(

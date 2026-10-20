@@ -1,4 +1,4 @@
-"""LLM-orchestrated state machine.
+"""Decision-orchestrated state machine.
 
     REACTIVITY ─▶ INTERFACE_TYPE ─▶ STACK_CHECK ─┐
         [det]        [LLM]             [det]     │ reactive neighbours → feedback → INTERFACE_TYPE
@@ -10,10 +10,12 @@
           └────────────┴─────── feedback ◀───────────┘
               thicker_slabs / next_termination / different_facets / larger_cell
 
-The LLM chooses the transitions at the branch points (interface type, facet
-re-planning, the judge's action); every number is computed deterministically
-and every gate is hard. Every decision and transition goes into the run's
-decision_log.json.
+The decision policy chooses the transitions at the branch points (interface
+type, facet re-planning, the judge's action); every number is computed
+deterministically and every gate is hard. The policy is the LLM (default), a
+person through the same prompts, or deterministic rules (policies.py) — the
+three arms of the evaluation. Every decision and transition goes into the
+run's decision_log.json, tagged with the policy that made it.
 """
 
 from __future__ import annotations
@@ -22,11 +24,8 @@ import dataclasses
 from dataclasses import dataclass, field
 
 from .context import Candidate, InterfaceContext, InterfaceTypeDecision
-from .llm import LLM
 from .log import RunLog
-from .reasoners.facet_reasoner import propose_facets
-from .reasoners.interphase_reasoner import decide_interface_type
-from .reasoners.judge import judge
+from .policies import Policy, as_policy
 from .tools import energetics
 from .tools.descriptors import interface_descriptors
 from .tools.materials import get_bulk, get_entries
@@ -54,7 +53,7 @@ class Orchestrator:
     def __init__(
         self,
         ctx: InterfaceContext,
-        llm: LLM,
+        policy,
         calc=None,
         settings: OrchestratorSettings | None = None,
         bulk_fn=get_bulk,
@@ -62,9 +61,10 @@ class Orchestrator:
         run_root: str | None = None,
     ):
         self.ctx = ctx
-        self.llm = llm
-        self.calc = calc                     # None → dry run: stop after MATCH+VALIDATE
         self.s = settings or OrchestratorSettings()
+        # a Policy, or a bare llm(system, user) callable (wrapped in LLMPolicy)
+        self.policy: Policy = as_policy(policy, n_runs=self.s.n_runs)
+        self.calc = calc                     # None → dry run: stop after MATCH+VALIDATE
         self.bulk_fn = bulk_fn
         self.entries_fn = entries_fn
         self.log = RunLog(ctx.name, run_root)
@@ -98,9 +98,9 @@ class Orchestrator:
         feedback = ""
         decision = None
         for attempt in range(self.s.max_retries + 1):
-            decision, agree, samples = decide_interface_type(self.ctx, rep, self.llm, self.s.n_runs, feedback)
+            decision, agree, samples = self.policy.decide_interface_type(self.ctx, rep, self.entries, feedback)
             self.agreement = agree
-            self.log.record("interface_type", "llm_decision", decision, agreement=agree,
+            self.log.record("interface_type", "decision", decision, policy=self.policy.name, agreement=agree,
                             samples=samples, feedback=feedback, attempt=attempt)
             if decision.interface_type == "sharp":
                 return decision
@@ -123,16 +123,20 @@ class Orchestrator:
         s_oxi, f_oxi = oxidation_map(s_struct), oxidation_map(f_struct)
         match = dataclasses.replace(self.s.match)
         feedback, tried, skip = "", [], 0
+        tried_pairs: set = set()
         context = (f"{self.ctx.role} side of a {self.ctx.electrode} | {self.ctx.electrolyte} cell at "
                    f"{self.ctx.voltage} V vs Li/Li+; this pair is {substrate} | {film}")
 
         facets = None
         for attempt in range(self.s.max_retries + 1):
             if facets is None:
-                facets = propose_facets(substrate, film, s_struct, f_struct, self.llm, context,
-                                        self.s.max_facet_pairs, self.s.n_runs, feedback)
-                self.log.record("facets", "llm_decision", [{"choice": c, "votes": v} for c, v in facets],
-                                pair=(substrate, film), feedback=feedback, attempt=attempt)
+                facets = self.policy.propose_facets(substrate, film, s_struct, f_struct, context,
+                                                    self.s.max_facet_pairs, feedback, tried_pairs)
+                self.log.record("facets", "decision", [{"choice": c, "votes": v} for c, v in facets],
+                                policy=self.policy.name, pair=(substrate, film), feedback=feedback, attempt=attempt)
+                if not facets:
+                    break
+                tried_pairs |= {(c.substrate_miller, c.film_miller) for c, _ in facets}
 
             # ---- MATCH + VALIDATE (deterministic)
             pool: list[tuple[Candidate, object, list[str]]] = []
@@ -168,8 +172,9 @@ class Orchestrator:
                     fmax=self.s.fmax, steps=self.s.steps, do_relax=self.s.relax)
                 desc = interface_descriptors(start, relaxed, iface.film_indices, iface.substrate_indices)
                 self.log.record("energetics", "compute", {"result": res, "descriptors": desc}, warnings=warn)
-                verdict, agree = judge(res, desc, warn, self.llm, self.s.n_runs)
-                self.log.record("judge", "llm_decision", verdict, agreement=agree, candidate=cand)
+                verdict, agree = self.policy.judge(res, desc, warn)
+                self.log.record("judge", "decision", verdict, policy=self.policy.name, agreement=agree,
+                                candidate=cand)
                 verdicts.append(verdict)
                 if verdict.verdict != "reject":
                     accepted.append((res, relaxed, verdict))
@@ -207,6 +212,7 @@ class Orchestrator:
             pairs = [self.stage_pair(a, b) for a, b in zip(decision.stack[:-1], decision.stack[1:])]
         summary = {
             "case": self.ctx.name,
+            "policy": self.policy.name,
             "reactivity": {"reactive": rep.reactive, "min_reaction_energy": rep.min_reaction_energy,
                            "products": rep.most_favourable.products if rep.most_favourable else []},
             "decision": decision,

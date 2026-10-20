@@ -18,6 +18,7 @@ dependencies = [
 
 [project.optional-dependencies]
 llm = ["litellm"]
+mp = ["mp-api"]
 mlip = ["torch", "mace-torch"]
 petmad = ["pet-mad"]
 dev = ["pytest"]

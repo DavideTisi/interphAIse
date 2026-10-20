@@ -39,7 +39,10 @@ class RunLog:
         self.events: list[dict] = []
 
     def record(self, stage: str, kind: str, payload, **inputs) -> None:
-        """kind: 'llm_decision' | 'gate' | 'compute' | 'transition' | 'error'."""
+        """kind: 'decision' | 'gate' | 'compute' | 'transition' | 'error'.
+
+        'decision' events carry inputs.policy = 'llm' | 'rules' | 'human'.
+        """
         self.events.append(
             {
                 "t": _dt.datetime.now().isoformat(timespec="seconds"),
@@ -52,7 +55,8 @@ class RunLog:
         self.save()
 
     def decisions(self, stage: str | None = None) -> list[dict]:
-        return [e for e in self.events if e["kind"] == "llm_decision" and (stage is None or e["stage"] == stage)]
+        return [e for e in self.events if e["kind"] in ("decision", "llm_decision")
+                and (stage is None or e["stage"] == stage)]
 
     def save(self) -> Path:
         path = self.dir / "decision_log.json"

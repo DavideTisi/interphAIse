@@ -67,3 +67,31 @@ def get_entries(elements: list[str]) -> list[ComputedStructureEntry]:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps([e.as_dict() for e in entries]))
     return entries
+
+
+def get_band_gap(formula: str) -> float | None:
+    """PBE band gap (eV) of the lowest-energy MP polymorph of ``formula`` (cached).
+
+    Used by the rules arm to call an interphase passivating (insulating) or
+    growing (metallic). Returns None when unknown and not fetchable.
+    """
+    red = Composition(formula).reduced_formula
+    path = DATA_DIR / "band_gaps.json"
+    cache = json.loads(path.read_text()) if path.exists() else {}
+    if red in cache:
+        return cache[red]
+    gap = None
+    try:
+        from mp_api.client import MPRester
+
+        key = os.environ.get("MY_MP_API_KEY")
+        with MPRester(key) as mpr:
+            docs = mpr.materials.summary.search(formula=red, fields=["band_gap", "energy_above_hull"])
+        if docs:
+            gap = float(min(docs, key=lambda d: d.energy_above_hull or 0.0).band_gap)
+    except Exception:
+        return None
+    cache[red] = gap
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(cache, indent=1, sort_keys=True))
+    return gap

@@ -21,9 +21,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .context import InterfaceContext
-from .llm import LLM
 from .log import RunLog, _default
 from .orchestrator import Orchestrator, OrchestratorSettings
+from .policies import as_policy
 from .ranker import CoatingRow, ContactResult, rank, to_dict, to_markdown
 from .tools.materials import get_bulk, get_entries
 
@@ -99,16 +99,21 @@ def _contact_result(summary: dict) -> ContactResult:
 
 def run_screen(
     cfg: ScreenConfig,
-    llm: LLM,
+    policy,
     calc=None,
     settings: OrchestratorSettings | None = None,
     bulk_fn=get_bulk,
     entries_fn=get_entries,
     run_root: str | None = None,
 ) -> dict:
-    """Run every contact, rank, and write ranking.{md,json} to the screen's run dir."""
+    """Run every contact, rank, and write ranking.{md,json} to the screen's run dir.
+
+    ``policy``: an LLM callable, LLMPolicy, LLMPolicy(HumanLLM()) or RulesPolicy —
+    run once per arm and compare with scripts/compare_arms.py.
+    """
     settings = settings or OrchestratorSettings()
-    screen_log = RunLog(f"screen_{cfg.electrode}|{cfg.electrolyte}@{cfg.voltage:g}V", run_root)
+    policy = as_policy(policy, n_runs=settings.n_runs)
+    screen_log = RunLog(f"screen_{policy.name}_{cfg.electrode}|{cfg.electrolyte}@{cfg.voltage:g}V", run_root)
     contact_root = str(screen_log.dir / "contacts")
 
     candidates: list[str | None] = ([None] if cfg.include_uncoated else []) + list(cfg.coatings)
@@ -117,7 +122,7 @@ def run_screen(
         row = CoatingRow(coating=coating or "none")
         for ctx in contacts_for(cfg, coating):
             try:
-                summary = Orchestrator(ctx, llm, calc=calc, settings=dataclasses.replace(settings),
+                summary = Orchestrator(ctx, policy, calc=calc, settings=dataclasses.replace(settings),
                                        bulk_fn=bulk_fn, entries_fn=entries_fn, run_root=contact_root).run()
                 row.contacts.append(_contact_result(summary))
             except Exception as e:  # one failed contact must not kill the screen
@@ -128,14 +133,17 @@ def run_screen(
             rows.append(row)
             screen_log.record("screen", "compute", row, coating=row.coating)
 
-    ranked_llm = rank([dataclasses.replace(r) for r in rows], mode="llm")
+    ranked = rank([dataclasses.replace(r) for r in rows], mode="decisions")
     ranked_thermo = rank([dataclasses.replace(r) for r in rows], mode="thermo")
     title = f"{cfg.electrode} | coating | {cfg.electrolyte} at {cfg.voltage:g} V"
-    md = (to_markdown(ranked_llm, f"Ranking with expert (LLM) interphase calls — {title}") + "\n"
+    md = (to_markdown(ranked, f"Ranking with {policy.name} decisions — {title}") + "\n"
           + to_markdown(ranked_thermo, f"Ablation: thermodynamics only — {title}"))
     (screen_log.dir / "ranking.md").write_text(md)
-    out = {"config": dataclasses.asdict(cfg), "ranking": to_dict(ranked_llm),
-           "ranking_thermo_only": to_dict(ranked_thermo), "run_dir": str(screen_log.dir)}
+    out = {"config": dataclasses.asdict(cfg), "policy": policy.name,
+           "policy_settings": policy.describe() if hasattr(policy, "describe") else {"policy": policy.name},
+           "ranking": to_dict(ranked), "ranking_thermo_only": to_dict(ranked_thermo),
+           "run_dir": str(screen_log.dir)}
     (screen_log.dir / "ranking.json").write_text(json.dumps(out, indent=1, default=_default))
-    screen_log.record("summary", "compute", {"ranking": [(r.rank, r.coating, r.tier) for r in ranked_llm]})
+    screen_log.record("summary", "compute", {"policy": policy.name,
+                                             "ranking": [(r.rank, r.coating, r.tier) for r in ranked]})
     return {**out, "markdown": md}

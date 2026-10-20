@@ -36,12 +36,20 @@ def li_chemical_potential(pd: PhaseDiagram, voltage: float, element: str = "Li")
 def _channels(ir: InterfacialReactivity) -> list[ReactionChannel]:
     out = []
     for _idx, x, e, rxn, _kj in ir.get_kinks():
+        atoms: dict[str, float] = {}
+        for p in rxn.products:
+            try:
+                n = abs(float(rxn.get_coeff(p))) * p.num_atoms
+            except Exception:
+                n = 0.0
+            atoms[p.reduced_formula] = atoms.get(p.reduced_formula, 0.0) + n
         out.append(
             ReactionChannel(
                 mixing_ratio=float(x),
                 reaction_energy=float(e),
                 products=sorted({p.reduced_formula for p in rxn.products}),
                 equation=str(rxn),
+                product_atoms=atoms,
             )
         )
     return out
