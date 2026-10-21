@@ -50,3 +50,13 @@ LLM arm in LLZO. LLZO iterative versus shuffled is not significant after Holm.
 Do not describe the experiment as universal superiority to random search or
 as measured MLIP compute savings. The new figure was visually checked; no
 PowerPoint content was edited in this review.
+
+For the LLZO interpretation, also use [the chemistry audit](../SYNC_ADEM_10.md).
+Keep the frozen 24/30 random versus 12/30 iterative result. Five acceptable
+structure IDs belong to the explicitly defined oxyhalogen review set, with
+different evidence levels; six random successes found only flagged compounds,
+while 18 also found unflagged acceptable candidates. This partition is post-hoc
+and descriptive. Do not claim that the evaluator excludes oxygen products or
+that Haiku demonstrably avoided these compounds for safety. Iterative's late,
+concentrated selection and the proxy's practical limitations belong in the
+interpretation. No deck file was changed by this annotation.

@@ -1,5 +1,20 @@
 # interphAIse — project report
 
+**LLZO practical-chemistry caveat audited — 2026-10-21:** Five of the 17
+acceptable IDs (three LiIO3 polymorphs, LiClO4 and Li5IO6) form an oxyhalogen
+review set. Four have supplier oxidiser classifications; Li5IO6 is a periodate
+family flag with compound-specific GHS status unverified. Six of random's
+24 successful runs found only flagged compounds; 18 also found an unflagged
+acceptable candidate, against iterative's 12. This is a descriptive post-hoc
+partition, not a changed endpoint. The original 24/30 versus 12/30 result
+stands. Iterative adapts late and concentrates on LiAlSiO4 polymorphs; the
+traces do not establish deliberate hazard avoidance. The evaluator already
+includes self-decomposition and O2 products, so “fully oxidised anions cannot
+react” is not the explanation. Benchmark acceptance does not qualify practical
+thermal, processing, safety or transport performance. See
+[chemistry audit and slide wording](SYNC_ADEM_10.md). Frozen inputs, primary
+analysis and slides are unchanged; no new live calculation was run.
+
 **Environment production complete and reviewed — 2026-10-21:** Adem's
 `06a4271` archives 450 completed runs executed at `710d346`. Independent
 review reproduces all 4,500 charged query outcomes, 2,800 archived prompts,
