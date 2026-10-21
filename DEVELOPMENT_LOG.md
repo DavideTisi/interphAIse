@@ -2554,3 +2554,16 @@ The unrelated local README edit remains separate. Check document links,
 whitespace, schedule/date consistency and staged credentials, then publish the
 updated handoffs under Davide's existing sharing authorization and verify the
 remote commit. Full code tests are unnecessary for this planning revision.
+
+## 2026-10-21 (late) — Agent side (Adem): F3/F4, pilot runner, contract, cost estimate
+
+Merged `davide` at `3cb606b` (joint review F1–F4, SYNC_ADEM_11/12, pilot plan). F3/F4 committed `352e6f6`:
+- the production analysis validates settings and per-call metadata against a versioned `environment_v1`
+  spec, replays all charged queries and recomputes traces (the real archive passes with identical results);
+- `llm.py` records per-attempt HTTP status, request IDs and final errors;
+- `usage_report.py` separates proposal, format, HTTP and transport counts (historical HTTP: unknown).
+
+Pilot: `interphaise/pilot.py`, `scripts/run_llm_petmad_pilot.py`, `tests/test_pilot.py` (9 passed); draft contract
+`data/experiments/llm_petmad_pilot_v1/CONTRACT.md`; mocked trace `MOCK_state.json` (synthetic fixture, not a
+result). Capped cost estimate ≈ USD 0.005 expected, 0.03 ceiling (list price). No paid calls, no PET-MAD
+runs. Next: the MLIP comparison reader and figure; Claude to confirm the contract; Davide to approve the cap.

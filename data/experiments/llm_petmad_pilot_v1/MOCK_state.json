@@ -1,0 +1,222 @@
+{
+  "pilot_version": "llm_petmad_pilot_v1",
+  "created_at": "2026-10-21T21:41:56+00:00",
+  "reference_id": "mp-aaacjjwh",
+  "feasible": [
+    "mp-aaacjjwh",
+    "mp-aaaaajby",
+    "mp-aaabevhd",
+    "mp-aaaaabru",
+    "mp-aaacjmqp"
+  ],
+  "menu_sha256": "13dda4b8e842726a6ad19ed3bbf6ce162eb9f9b2edcb44a80c956b472022a6d1",
+  "table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+  "http_cap": 10,
+  "max_http_per_call": 3,
+  "http_attempts_used": 4,
+  "stages": [
+    {
+      "stage": "prior",
+      "attempt": 0,
+      "prompt": "{\"brief\": \"Choose by the fixed brief; give falsifiable predictions before any energy exists.\", \"candidates\": [{\"candidate_id\": \"mp-aaacjjwh\", \"descriptors\": {}, \"formula\": \"LiNbF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaaaajby\", \"descriptors\": {}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaabevhd\", \"descriptors\": {}, \"formula\": \"LiZr2(PO4)3\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 4.1295, \"insulating\": true, \"penalty\": 0.05632133261569905, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaaaabru\", \"descriptors\": {}, \"formula\": \"LiF\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 8.7161, \"insulating\": true, \"penalty\": 0.3104396521073731, \"penalty_bin\": 15}}, {\"candidate_id\": \"mp-aaacjmqp\", \"descriptors\": {}, \"formula\": \"LiTaF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}}], \"evaluated\": [\"mp-aaacjjwh\"], \"feedback\": [], \"output_schema\": \"{\\\"ordered_shortlist\\\": [ids], \\\"hypothesis\\\": str}\", \"stage\": \"prior\", \"unevaluated\": [\"mp-aaaaajby\", \"mp-aaabevhd\", \"mp-aaaaabru\", \"mp-aaacjmqp\"], \"validation_feedback\": \"\"}",
+      "feedback_sha256": [],
+      "started_at": "2026-10-21T21:41:56+00:00",
+      "parsed": {
+        "ordered_shortlist": [
+          "mp-aaaaajby",
+          "mp-aaabevhd",
+          "mp-aaaaabru",
+          "mp-aaacjmqp"
+        ],
+        "hypothesis": "mock hypothesis"
+      },
+      "response": {
+        "ordered_shortlist": [
+          "mp-aaaaajby",
+          "mp-aaabevhd",
+          "mp-aaaaabru",
+          "mp-aaacjmqp"
+        ],
+        "hypothesis": "mock hypothesis"
+      },
+      "llm_metadata": {
+        "http_attempts": 1,
+        "returned_model": "mock",
+        "usage": null
+      },
+      "frozen_at": "2026-10-21T21:41:56+00:00",
+      "record_sha256": "7cbc578af7e34954c097b2b20c315dc2f4c3e6d35fbb5f2f5ada68b9c92e1c65"
+    },
+    {
+      "stage": "choose_2",
+      "attempt": 0,
+      "prompt": "{\"brief\": \"Choose by the fixed brief; give falsifiable predictions before any energy exists.\", \"candidates\": [{\"candidate_id\": \"mp-aaacjjwh\", \"descriptors\": {}, \"formula\": \"LiNbF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaaaajby\", \"descriptors\": {}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaabevhd\", \"descriptors\": {}, \"formula\": \"LiZr2(PO4)3\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 4.1295, \"insulating\": true, \"penalty\": 0.05632133261569905, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaaaabru\", \"descriptors\": {}, \"formula\": \"LiF\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 8.7161, \"insulating\": true, \"penalty\": 0.3104396521073731, \"penalty_bin\": 15}}, {\"candidate_id\": \"mp-aaacjmqp\", \"descriptors\": {}, \"formula\": \"LiTaF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}}], \"evaluated\": [\"mp-aaacjjwh\"], \"feedback\": [{\"candidate_id\": \"mp-aaacjjwh\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 3.5, \"W_sep_J_m2\": 4.5, \"registries\": [{\"W_adh_J_m2\": 3.6, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaacjjwh-cathode-primary-0\", \"status\": \"valid\"}, {\"W_adh_J_m2\": 3.5, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.0], \"run_id\": \"mp-aaacjjwh-cathode-primary-1\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaacjjwh-cathode-primary-1\", \"status\": \"valid\", \"warnings\": []}, \"electrolyte\": {\"W_adh_J_m2\": 1.6, \"W_sep_J_m2\": 2.6, \"registries\": [{\"W_adh_J_m2\": 1.6, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaacjjwh-electrolyte-primary-0\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaacjjwh-electrolyte-primary-0\", \"status\": \"valid\", \"warnings\": []}}, \"cost\": {\"calculator_calls\": 40, \"wall_seconds\": 20.0}, \"formula\": \"LiNbF6\", \"limitations\": [\"fixture\"], \"min_W_adh_J_m2\": 1.6, \"sensitivity\": [{\"contact\": \"electrolyte\", \"kind\": \"thickness\", \"run_id\": \"mp-aaacjjwh-electrolyte-sensitivity-1\", \"status\": \"pending\"}], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}, \"weaker_contact\": \"electrolyte\"}], \"output_schema\": \"{\\\"ordered_shortlist\\\": [ids], \\\"selected_id\\\": first id, \\\"hypothesis\\\": str, \\\"predicted_weaker_contact\\\": \\\"cathode\\\"|\\\"electrolyte\\\"|\\\"unresolved\\\", \\\"predicted_W_adh_J_m2\\\": {\\\"cathode\\\": [low, high], \\\"electrolyte\\\": [low, high]}, \\\"change_trigger\\\": str}\", \"stage\": \"choose_2\", \"unevaluated\": [\"mp-aaaaajby\", \"mp-aaabevhd\", \"mp-aaaaabru\", \"mp-aaacjmqp\"], \"validation_feedback\": \"\"}",
+      "feedback_sha256": [
+        "783a1cb4d7c367e6e022890d9c95e8954fdbc80c174302cc236b9003ec476352"
+      ],
+      "started_at": "2026-10-21T21:41:56+00:00",
+      "parsed": {
+        "ordered_shortlist": [
+          "mp-aaaaajby",
+          "mp-aaabevhd",
+          "mp-aaaaabru",
+          "mp-aaacjmqp"
+        ],
+        "hypothesis": "mock hypothesis",
+        "selected_id": "mp-aaaaajby",
+        "predicted_weaker_contact": "electrolyte",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            2.0,
+            4.0
+          ],
+          "electrolyte": [
+            1.0,
+            2.0
+          ]
+        },
+        "change_trigger": "mock trigger",
+        "supporting_observations": [
+          "mock observation"
+        ]
+      },
+      "response": {
+        "ordered_shortlist": [
+          "mp-aaaaajby",
+          "mp-aaabevhd",
+          "mp-aaaaabru",
+          "mp-aaacjmqp"
+        ],
+        "hypothesis": "mock hypothesis",
+        "selected_id": "mp-aaaaajby",
+        "predicted_weaker_contact": "electrolyte",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            2.0,
+            4.0
+          ],
+          "electrolyte": [
+            1.0,
+            2.0
+          ]
+        },
+        "change_trigger": "mock trigger",
+        "supporting_observations": [
+          "mock observation"
+        ]
+      },
+      "llm_metadata": {
+        "http_attempts": 1,
+        "returned_model": "mock",
+        "usage": null
+      },
+      "frozen_at": "2026-10-21T21:41:56+00:00",
+      "record_sha256": "c2d6629e1d3af7b6f589ddb38946660ef81fd6dcc3b4545d989e7bd287e8c305"
+    },
+    {
+      "stage": "choose_3",
+      "attempt": 0,
+      "prompt": "{\"brief\": \"Choose by the fixed brief; give falsifiable predictions before any energy exists.\", \"candidates\": [{\"candidate_id\": \"mp-aaacjjwh\", \"descriptors\": {}, \"formula\": \"LiNbF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaaaajby\", \"descriptors\": {}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaabevhd\", \"descriptors\": {}, \"formula\": \"LiZr2(PO4)3\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 4.1295, \"insulating\": true, \"penalty\": 0.05632133261569905, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaaaabru\", \"descriptors\": {}, \"formula\": \"LiF\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 8.7161, \"insulating\": true, \"penalty\": 0.3104396521073731, \"penalty_bin\": 15}}, {\"candidate_id\": \"mp-aaacjmqp\", \"descriptors\": {}, \"formula\": \"LiTaF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}}], \"evaluated\": [\"mp-aaacjjwh\", \"mp-aaaaajby\"], \"feedback\": [{\"candidate_id\": \"mp-aaacjjwh\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 3.5, \"W_sep_J_m2\": 4.5, \"registries\": [{\"W_adh_J_m2\": 3.6, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaacjjwh-cathode-primary-0\", \"status\": \"valid\"}, {\"W_adh_J_m2\": 3.5, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.0], \"run_id\": \"mp-aaacjjwh-cathode-primary-1\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaacjjwh-cathode-primary-1\", \"status\": \"valid\", \"warnings\": []}, \"electrolyte\": {\"W_adh_J_m2\": 1.6, \"W_sep_J_m2\": 2.6, \"registries\": [{\"W_adh_J_m2\": 1.6, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaacjjwh-electrolyte-primary-0\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaacjjwh-electrolyte-primary-0\", \"status\": \"valid\", \"warnings\": []}}, \"cost\": {\"calculator_calls\": 40, \"wall_seconds\": 20.0}, \"formula\": \"LiNbF6\", \"limitations\": [\"fixture\"], \"min_W_adh_J_m2\": 1.6, \"sensitivity\": [{\"contact\": \"electrolyte\", \"kind\": \"thickness\", \"run_id\": \"mp-aaacjjwh-electrolyte-sensitivity-1\", \"status\": \"pending\"}], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}, \"weaker_contact\": \"electrolyte\"}, {\"candidate_id\": \"mp-aaaaajby\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 2.3, \"W_sep_J_m2\": 3.3, \"registries\": [{\"W_adh_J_m2\": 2.5, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaaaajby-cathode-primary-0\", \"status\": \"valid\"}, {\"W_adh_J_m2\": 2.3, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.0], \"run_id\": \"mp-aaaaajby-cathode-primary-1\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaaaajby-cathode-primary-1\", \"status\": \"valid\", \"warnings\": []}, \"electrolyte\": {\"W_adh_J_m2\": 0.9, \"W_sep_J_m2\": 1.9, \"registries\": [{\"W_adh_J_m2\": 0.9, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaaaajby-electrolyte-primary-0\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaaaajby-electrolyte-primary-0\", \"status\": \"valid\", \"warnings\": []}}, \"cost\": {\"calculator_calls\": 30, \"wall_seconds\": 15.0}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"fixture\"], \"min_W_adh_J_m2\": 0.9, \"sensitivity\": [], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}, \"weaker_contact\": \"electrolyte\"}], \"output_schema\": \"{\\\"ordered_shortlist\\\": [ids], \\\"selected_id\\\": first id, \\\"hypothesis\\\": str, \\\"predicted_weaker_contact\\\": \\\"cathode\\\"|\\\"electrolyte\\\"|\\\"unresolved\\\", \\\"predicted_W_adh_J_m2\\\": {\\\"cathode\\\": [low, high], \\\"electrolyte\\\": [low, high]}, \\\"change_trigger\\\": str, \\\"supporting_observations\\\": [str]}\", \"stage\": \"choose_3\", \"unevaluated\": [\"mp-aaabevhd\", \"mp-aaaaabru\", \"mp-aaacjmqp\"], \"validation_feedback\": \"\"}",
+      "feedback_sha256": [
+        "783a1cb4d7c367e6e022890d9c95e8954fdbc80c174302cc236b9003ec476352",
+        "02f9d2e3fa2dece0003154ca41fdd0bb9bc97afcd5526ccb873b7ef29f91a5b3"
+      ],
+      "started_at": "2026-10-21T21:41:56+00:00",
+      "parsed": {
+        "ordered_shortlist": [
+          "mp-aaabevhd",
+          "mp-aaaaabru",
+          "mp-aaacjmqp"
+        ],
+        "hypothesis": "mock hypothesis",
+        "selected_id": "mp-aaabevhd",
+        "predicted_weaker_contact": "electrolyte",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            2.0,
+            4.0
+          ],
+          "electrolyte": [
+            1.0,
+            2.0
+          ]
+        },
+        "change_trigger": "mock trigger",
+        "supporting_observations": [
+          "mock observation"
+        ]
+      },
+      "response": {
+        "ordered_shortlist": [
+          "mp-aaabevhd",
+          "mp-aaaaabru",
+          "mp-aaacjmqp"
+        ],
+        "hypothesis": "mock hypothesis",
+        "selected_id": "mp-aaabevhd",
+        "predicted_weaker_contact": "electrolyte",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            2.0,
+            4.0
+          ],
+          "electrolyte": [
+            1.0,
+            2.0
+          ]
+        },
+        "change_trigger": "mock trigger",
+        "supporting_observations": [
+          "mock observation"
+        ]
+      },
+      "llm_metadata": {
+        "http_attempts": 1,
+        "returned_model": "mock",
+        "usage": null
+      },
+      "frozen_at": "2026-10-21T21:41:56+00:00",
+      "record_sha256": "c3d8315313ee29a0b5125d5d9eb875f49be826656979b2b3564b2f849ac2d125"
+    },
+    {
+      "stage": "summary",
+      "attempt": 0,
+      "prompt": "{\"brief\": \"Choose by the fixed brief; give falsifiable predictions before any energy exists.\", \"candidates\": [{\"candidate_id\": \"mp-aaacjjwh\", \"descriptors\": {}, \"formula\": \"LiNbF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaaaajby\", \"descriptors\": {}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaabevhd\", \"descriptors\": {}, \"formula\": \"LiZr2(PO4)3\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 4.1295, \"insulating\": true, \"penalty\": 0.05632133261569905, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaaaabru\", \"descriptors\": {}, \"formula\": \"LiF\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 8.7161, \"insulating\": true, \"penalty\": 0.3104396521073731, \"penalty_bin\": 15}}, {\"candidate_id\": \"mp-aaacjmqp\", \"descriptors\": {}, \"formula\": \"LiTaF6\", \"limitations\": [\"fixture\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}}], \"evaluated\": [\"mp-aaacjjwh\", \"mp-aaaaajby\", \"mp-aaabevhd\"], \"feedback\": [{\"candidate_id\": \"mp-aaacjjwh\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 3.5, \"W_sep_J_m2\": 4.5, \"registries\": [{\"W_adh_J_m2\": 3.6, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaacjjwh-cathode-primary-0\", \"status\": \"valid\"}, {\"W_adh_J_m2\": 3.5, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.0], \"run_id\": \"mp-aaacjjwh-cathode-primary-1\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaacjjwh-cathode-primary-1\", \"status\": \"valid\", \"warnings\": []}, \"electrolyte\": {\"W_adh_J_m2\": 1.6, \"W_sep_J_m2\": 2.6, \"registries\": [{\"W_adh_J_m2\": 1.6, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaacjjwh-electrolyte-primary-0\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaacjjwh-electrolyte-primary-0\", \"status\": \"valid\", \"warnings\": []}}, \"cost\": {\"calculator_calls\": 40, \"wall_seconds\": 20.0}, \"formula\": \"LiNbF6\", \"limitations\": [\"fixture\"], \"min_W_adh_J_m2\": 1.6, \"sensitivity\": [{\"contact\": \"electrolyte\", \"kind\": \"thickness\", \"run_id\": \"mp-aaacjjwh-electrolyte-sensitivity-1\", \"status\": \"pending\"}], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}, \"weaker_contact\": \"electrolyte\"}, {\"candidate_id\": \"mp-aaaaajby\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 2.3, \"W_sep_J_m2\": 3.3, \"registries\": [{\"W_adh_J_m2\": 2.5, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaaaajby-cathode-primary-0\", \"status\": \"valid\"}, {\"W_adh_J_m2\": 2.3, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.0], \"run_id\": \"mp-aaaaajby-cathode-primary-1\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaaaajby-cathode-primary-1\", \"status\": \"valid\", \"warnings\": []}, \"electrolyte\": {\"W_adh_J_m2\": 0.9, \"W_sep_J_m2\": 1.9, \"registries\": [{\"W_adh_J_m2\": 0.9, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaaaajby-electrolyte-primary-0\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaaaajby-electrolyte-primary-0\", \"status\": \"valid\", \"warnings\": []}}, \"cost\": {\"calculator_calls\": 30, \"wall_seconds\": 15.0}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"fixture\"], \"min_W_adh_J_m2\": 0.9, \"sensitivity\": [], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}, \"weaker_contact\": \"electrolyte\"}, {\"candidate_id\": \"mp-aaabevhd\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 3.0, \"W_sep_J_m2\": 4.0, \"registries\": [{\"W_adh_J_m2\": 3.0, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaabevhd-cathode-primary-0\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaabevhd-cathode-primary-0\", \"status\": \"valid\", \"warnings\": []}, \"electrolyte\": {\"W_adh_J_m2\": 1.2, \"W_sep_J_m2\": 2.2, \"registries\": [{\"W_adh_J_m2\": 1.5, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"run_id\": \"mp-aaabevhd-electrolyte-primary-0\", \"status\": \"valid\"}, {\"W_adh_J_m2\": 1.2, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.0], \"run_id\": \"mp-aaabevhd-electrolyte-primary-1\", \"status\": \"valid\"}], \"selected_run_id\": \"mp-aaabevhd-electrolyte-primary-1\", \"status\": \"valid\", \"warnings\": []}}, \"cost\": {\"calculator_calls\": 30, \"wall_seconds\": 15.0}, \"formula\": \"LiZr2(PO4)3\", \"limitations\": [\"fixture\"], \"min_W_adh_J_m2\": 1.2, \"sensitivity\": [], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 4.1295, \"insulating\": true, \"penalty\": 0.05632133261569905, \"penalty_bin\": 2}, \"weaker_contact\": \"electrolyte\"}], \"output_schema\": \"{\\\"summary\\\": str}\", \"stage\": \"summary\", \"unevaluated\": [\"mp-aaaaabru\", \"mp-aaacjmqp\"], \"validation_feedback\": \"\"}",
+      "feedback_sha256": [
+        "783a1cb4d7c367e6e022890d9c95e8954fdbc80c174302cc236b9003ec476352",
+        "02f9d2e3fa2dece0003154ca41fdd0bb9bc97afcd5526ccb873b7ef29f91a5b3",
+        "0bec397bface1f7d3bce5bec9d364df0d5f7e6f671f9ed943ae1f22ea0be21bd"
+      ],
+      "started_at": "2026-10-21T21:41:56+00:00",
+      "parsed": {
+        "summary": "mock summary"
+      },
+      "response": {
+        "summary": "mock summary"
+      },
+      "llm_metadata": {
+        "http_attempts": 1,
+        "returned_model": "mock",
+        "usage": null
+      },
+      "frozen_at": "2026-10-21T21:41:56+00:00",
+      "record_sha256": "2d0dab0eec3d17654d364a981760e6c49942798d87a69d869ccb938b40403021"
+    }
+  ],
+  "evaluated": [
+    "mp-aaacjjwh",
+    "mp-aaaaajby",
+    "mp-aaabevhd"
+  ],
+  "selected": [
+    "mp-aaaaajby",
+    "mp-aaabevhd"
+  ],
+  "plan": [
+    "prior",
+    "choose_2",
+    "choose_3",
+    "summary"
+  ],
+  "status": "complete"
+}
