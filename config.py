@@ -3,8 +3,10 @@
 from interphaise.context import InterfaceContext
 from interphaise.screen import ScreenConfig
 
-# Collaborator credential: direct Anthropic, Haiku 5.5 only.
-LLM_MODEL = "anthropic/claude-haiku-5-5"
+# LLM: a HELLMM alias if hellmm is installed, otherwise a litellm model string.
+# Default: direct Anthropic Claude Haiku 5.5, billed on MY_ANTHROPIC_KEY (see
+# interphaise/llm.py / scripts/check_anthropic_key.py).
+LLM_MODEL = "anthropic/claude-haiku-5-5"   # or "deepseek-v3.2" / "openrouter/deepseek/deepseek-v3.2"
 
 # Explicit checkpoint for reproducible MLIP evaluations: PET-MAD S 1.6.0 (r2SCAN).
 # Keep MLIP energy differences separate from Materials Project thermodynamics.
