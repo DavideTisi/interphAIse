@@ -289,3 +289,89 @@ seed 4 at the selected electrolyte protocol with the equivalent Cl cut. The cath
 thickness has not been varied.
 
 Evidence: `data/petmad/cathode_thickness_v1/` (builds and runs).
+
+### Review and next-step qualification
+
+The independent review at `84f1c76` confirms the archived coating-thickness
+energies, nine converged relaxations, accounting and physical fixed-mask
+correspondence. See [SYNC_CLAUDE_4.md](SYNC_CLAUDE_4.md) for the bounded vacuum
+check and remaining thickness gaps: LiCoO2 substrate thickness and the coating
+thickness at the electrolyte contact have not been varied independently.
+The cathode constraint bracket belongs to the original two-coating-layer
+geometry. Four coating layers is the selected working setting, not a claim
+that the whole contact is thickness-converged or its polarity resolved.
+
+## Vacuum (SYNC_CLAUDE_4.md)
+
+Working geometries: cathode with 2 substrate + 4 coating layers (`cathode_thickness_v1/run_F4`);
+electrolyte seed 0 with 4 substrate + 2 coating layers (`thickness_v1/run_L4`). For vacuum
+15 / 20 / 25 Å, the normal cell vector was lengthened by (vacuum − 15 Å) without scaling
+coordinates. Single points were evaluated on the saved relaxed interface, both relaxed
+references (same fixed masks) and both rigid fragments of the relaxed interface
+(`scripts/vacuum_check.py`; 30 single points). The 15 Å recomputation reproduces the stored
+energies (≤ 2.4×10⁻⁴ eV).
+
+| Contact | Vacuum Å | Actual empty gap (interface) Å | W_adh | W_sep | Max free force interface / film / sub (eV/Å) |
+|---|---:|---:|---:|---:|---|
+| Cathode | 15 / 20 / 25 | 15.51 / 20.51 / 25.51 | 3.600092 / 3.600136 / 3.600136 | 5.127540 / 5.127496 / 5.127540 | 0.0448 / 0.0371 / 0.0455 (unchanged) |
+| Electrolyte | 15 / 20 / 25 | 15.74 / 20.74 / 25.74 | 1.531726 (all) | 2.857898 / 2.857875 / 2.857898 | 0.0499 / 0.0300 / 0.0496 (unchanged) |
+
+Energies are in J/m². Changes are at most 4.4×10⁻⁵ J/m² (float noise), and free forces are
+identical and within the 0.05 eV/Å target, so no further relaxation was needed. This outcome
+is expected by construction: PET-MAD S 1.6.0 builds its graph from an 8.0 Å neighbour list
+(model interaction range 24 Å through message passing). With every empty gap above 15 Å, no
+edge crosses the vacuum. **This is a numerical periodic-image isolation check for a
+finite-range model. It does not describe or resolve real polar-surface electrostatics, which
+this model does not contain.** 15 Å is kept.
+
+Evidence: `data/petmad/vacuum_v1/`.
+
+## Remaining thickness directions (SYNC_CLAUDE_4.md)
+
+**Cathode substrate thickness** (coating 4 layers held; 2 / 3 / 4 LiCoO2 layers). Frozen
+**depth** 9.10044154 Å, which reproduces the baseline's 104 physical bottom-plane atoms in
+every build (checked by species and height above the substrate bottom). Registry held at
+(0,0,2 Å). Cap 1,200 atoms for this study, above the earlier 800, stated explicitly.
+Formal LiCoO2 |p|/A grows 2.058 / 3.088 / 4.117 e/Å.
+
+| LiCoO2 layers | Atoms | W_adh | W_sep | Film / sub relaxation | Max force on fixed atoms | Calls | Wall |
+|---|---:|---:|---:|---|---:|---:|---:|
+| 2 (`cathode_thickness_v1/run_F4`) | 696 | 3.6001 | 5.1275 | 1.441 / 0.086 | 2.446 | 136 | 166 s |
+| 3 | 852 | 3.6011 | 5.1278 | 1.441 / 0.086 | 2.445 | 136 | 356 s |
+| 4 | 1,008 | 3.6009 | 5.1275 | 1.441 / 0.086 | 2.445 | 136 | 401 s |
+
+Changes are ≤ 0.001 J/m². **Two LiCoO2 layers is kept.** The fixed-atom forces and the large
+LiNbF6 relaxation on separation do not depend on substrate thickness.
+
+**Electrolyte coating thickness** (4 argyrodite layers held, seed-0 Cl cut, frozen depth
+3.257602 Å = 38 atoms with the same physical planes; 2 / 3 / 4 LiNbF6 layers; registry held).
+Coating formal |p|/A 0.558 / 0.837 / 1.116 e/Å.
+
+| LiNbF6 layers | Atoms | W_adh | Δ | W_sep | Δ | Film / sub relaxation | Calls | Wall |
+|---|---:|---:|---:|---:|---:|---|---:|---:|
+| 2 (`thickness_v1/run_L4`) | 544 | 1.5317 | — | 2.8579 | — | 0.636 / 0.690 | 411 | 449 s |
+| 3 | 712 | 1.6198 | +0.088 | 2.9525 | +0.095 | 0.619 / 0.714 | 366 | 621 s |
+| 4 | 880 | 1.6329 | **+0.013** | 2.9669 | **+0.014** | 0.617 / 0.718 | 416 | 753 s |
+
+Energies are in J/m², forces in eV/Å. Between the final two settings both observables
+change by about 0.01 J/m², so **four coating layers is chosen** (same rule as the cathode
+side). All 12 relaxations converged on free atoms, with no overlaps; the accounting
+reconciles and the scan optimum was (0,0,2 Å) in each run. The separated-argyrodite Li
+rearrangement persists (substrate RMS 0.41 Å vs joined). Cost: 1,054 calls plus 8
+single points; 3 threads × 4 concurrent.
+
+**Working protocols and provisional values:**
+- Cathode: 2 LiCoO2 + 4 LiNbF6 layers (696 atoms), 0.34 fraction = 104 atoms (= depth
+  9.10 Å), registry (0,0,2 Å), 15 Å vacuum. **W_adh 3.60, W_sep 5.13 J/m².**
+- Electrolyte (seed 0, Cl cut): 4 Li6PS5Cl + 4 LiNbF6 layers (880 atoms), depth 3.2576 Å =
+  38 atoms, registry (0,0,2 Å), 15 Å vacuum. **W_adh 1.63, W_sep 2.97 J/m².**
+
+Scope: these are model results for two separate strained contact cells, not one
+continuous film and not experimental adhesion. Each constraint bracket was measured at
+two coating layers: cathode at 2 + 2, electrolyte at 4 + 2. Neither was repeated at the
+working geometry. Both contacts are formally polar, with polarity growing with slab
+thickness. That is unresolved by any of these numerical checks. **Next (not run):**
+relaxed checks of a small declared set of competing registries, then seed 4 at the
+working electrolyte protocol with the equivalent Cl cut.
+
+Evidence: `data/petmad/thickness_gaps_v1/`.

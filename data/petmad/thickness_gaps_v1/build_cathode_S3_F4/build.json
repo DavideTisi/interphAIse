@@ -1,0 +1,169 @@
+{
+  "label": "cathode_S3_F4",
+  "contact": "LiCoO2(0, 0, 1) | LiNbF6(0, 0, 1)",
+  "inputs": {
+    "substrate": "data/petmad/bulk_relaxation_v1/LiCoO2/stability_check/final.extxyz",
+    "substrate_sha256": "fbc74ea9f3a0d0e8cffce48c842fa93ef9b206b10973f77737f7571598706cb2",
+    "film": "data/petmad/bulk_relaxation_v1/LiNbF6/stability_check/final.extxyz",
+    "film_sha256": "beaee7192431dd84b292d95935fc8c45151bc63162f64530ec18d739700508b8",
+    "parent": null,
+    "parent_sha256": null
+  },
+  "settings": {
+    "max_area_A2": 300,
+    "max_atoms": 1200,
+    "max_length_tol": 0.05,
+    "max_angle_tol": 0.03,
+    "film_layers": 4,
+    "substrate_layers": 3,
+    "max_strain": 0.06,
+    "candidate_cap": 60
+  },
+  "enumeration": {
+    "terminations_available": [
+      [
+        "Nb_P6/mmm_1",
+        "Li_P6/mmm_1"
+      ],
+      [
+        "Nb_P6/mmm_1",
+        "O2_P6/mmm_1"
+      ],
+      [
+        "F2_P-6_3",
+        "Li_P6/mmm_1"
+      ],
+      [
+        "F2_P-6_3",
+        "O2_P6/mmm_1"
+      ]
+    ],
+    "zsl_matches": 113,
+    "truncated": false,
+    "termination_requested": [
+      "F2_P-6_3",
+      "Li_P6/mmm_1"
+    ],
+    "valid_for_termination": 1
+  },
+  "termination": [
+    "F2_P-6_3",
+    "Li_P6/mmm_1"
+  ],
+  "n_atoms": 852,
+  "area_A2": 88.8000146079959,
+  "von_mises_strain": 0.019520477463318392,
+  "strain_tensor": [
+    [
+      -0.029114915808373942,
+      -2.801164519902205e-05,
+      5.930132756950634e-06
+    ],
+    [
+      -2.801164519902205e-05,
+      -0.02944366645430957,
+      -2.2942798047797847e-06
+    ],
+    [
+      5.930132756950634e-06,
+      -2.2942798047797847e-06,
+      -1.3875136595231652e-09
+    ]
+  ],
+  "film_transformation": [
+    [
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0
+    ]
+  ],
+  "substrate_transformation": [
+    [
+      1.0,
+      4.0
+    ],
+    [
+      0.0,
+      13.0
+    ]
+  ],
+  "cut_shifts": {
+    "film": 0.12336991772201547,
+    "substrate": 0.046861718442432476
+  },
+  "warnings": [
+    "film slab is polar: |p_z|/A = 1.226 e/\u00c5",
+    "substrate slab is polar: |p_z|/A = 3.088 e/\u00c5"
+  ],
+  "sides": {
+    "film": {
+      "formula": "Li48 Nb48 F288",
+      "n_atoms": 384,
+      "formal_charge": 0.0,
+      "formal_dipole_per_area_e_per_A": 1.2260161151712992,
+      "cut_polyhedra": {
+        "NbF6": 0
+      },
+      "contact_side_layers": [
+        {
+          "F": 12
+        },
+        {
+          "Nb": 4
+        },
+        {
+          "F": 12
+        }
+      ],
+      "far_side_layers": [
+        {
+          "Li": 4
+        },
+        {
+          "F": 12
+        },
+        {
+          "Nb": 4
+        }
+      ]
+    },
+    "substrate": {
+      "formula": "Li117 Co117 O234",
+      "n_atoms": 468,
+      "formal_charge": 0.0,
+      "formal_dipole_per_area_e_per_A": 3.0876203322449345,
+      "cut_polyhedra": {
+        "CoO6": 0
+      },
+      "contact_side_layers": [
+        {
+          "Li": 13
+        },
+        {
+          "O": 13
+        },
+        {
+          "Co": 13
+        }
+      ],
+      "far_side_layers": [
+        {
+          "O": 13
+        },
+        {
+          "Co": 13
+        },
+        {
+          "O": 13
+        }
+      ]
+    }
+  },
+  "fixed_atoms": {
+    "rule": "bottom 34% of the substrate z span (energetics.bottom_fixed_indices)",
+    "count": 156
+  }
+}

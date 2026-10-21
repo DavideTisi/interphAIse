@@ -1310,3 +1310,33 @@ constraint bracket at 0.1 J/m²"; the unrelaxed registry scan does not establish
 equivalence; the persistent surface rearrangement does not rule out other finite-thickness
 effects. No code changes; no LLM, MP or cluster calls. **Next:** vacuum and relaxed registry
 checks for both contacts, then seed 4. The cathode substrate thickness is still untested.
+
+## 2026-10-21 — Vacuum check and remaining thickness directions
+
+**Branch:** `davide`; `84f1c76` was pushed first. Follows SYNC_CLAUDE_4.md. Details:
+[CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+
+**Vacuum** (`scripts/vacuum_check.py`, new). Working geometries: cathode 2 + 4 layers,
+electrolyte 4 + 2 layers. Cell z lengthened to 15 / 20 / 25 Å vacuum without scaling
+coordinates; single points on the relaxed interface, the relaxed references and the rigid
+fragments (30 total). W_adh and W_sep change by ≤ 4.4×10⁻⁵ J/m², and the free forces are
+unchanged and within target, so no relaxation was needed. Empty gaps are 15.5–25.7 Å. This is
+expected: PET-MAD's 8.0 Å neighbour list means no edge crosses the vacuum (interaction range
+24 Å via message passing). It is an image-isolation check only, not a treatment of polar
+electrostatics.
+
+**Cathode substrate thickness** (coating 4 layers; LiCoO2 2 / 3 / 4 layers = 696 / 852 /
+1,008 atoms; frozen depth 9.10044154 Å = the same 104 physical atoms; cap 1,200): W_adh
+3.6001 / 3.6011 / 3.6009, W_sep 5.1275 / 5.1278 / 5.1275 J/m². Flat; two LiCoO2 layers kept.
+
+**Electrolyte coating thickness** (argyrodite 4 layers; LiNbF6 2 / 3 / 4 = 544 / 712 / 880
+atoms; depth 3.257602 Å = 38 atoms): W_adh 1.5317 / 1.6198 / 1.6329, W_sep 2.8579 / 2.9525 /
+2.9669 J/m². Final changes +0.013 / +0.014, so **four coating layers is chosen**.
+
+Working values: cathode 3.60 / 5.13 J/m² (696 atoms); electrolyte 1.63 / 2.97 J/m² (880
+atoms). The constraint brackets were measured at two coating layers only. Both contacts are
+formally polar and provisional. All 12 new relaxations converged, with no overlaps; 1,054
+calls plus 8 single points (PET-MAD S 1.6.0, checkpoint `3f52e97c…`, CPU). Evidence:
+`data/petmad/vacuum_v1/`, `data/petmad/thickness_gaps_v1/`; inspections replay identically.
+No LLM, MP or cluster calls. **Next:** relaxed checks of a declared set of competing
+registries, then the seed-4 electrolyte comparison.

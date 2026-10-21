@@ -1,0 +1,90 @@
+{
+  "run": "data/petmad/thickness_v1/run_L4",
+  "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+  "area_A2": 170.70827540491757,
+  "base_vacuum_A": 15,
+  "fmax_target_eV_A": 0.05,
+  "settings": {
+    "15": {
+      "energies_eV": {
+        "interface": -3129.005859375,
+        "film": -2181.937255859375,
+        "substrate": -930.7484130859375,
+        "film_rigid": -2175.159912109375,
+        "substrate_rigid": -923.3956909179688
+      },
+      "max_free_force_eV_A": {
+        "interface": 0.04987560182200867,
+        "film": 0.030040872674087525,
+        "substrate": 0.049626951050541754,
+        "film_rigid": 4.133305458964459,
+        "substrate_rigid": 1.8296670582640748
+      },
+      "empty_gap_A": {
+        "interface": 15.741153954891068,
+        "film": 38.97260051489106,
+        "substrate": 43.30045358489107,
+        "film_rigid": 38.69511730489108,
+        "substrate_rigid": 42.51076080489107
+      },
+      "W_adh_J_m2": 1.5317258429078906,
+      "W_sep_J_m2": 2.8578983052814912
+    },
+    "20": {
+      "energies_eV": {
+        "interface": -3129.005859375,
+        "film": -2181.937255859375,
+        "substrate": -930.7484130859375,
+        "film_rigid": -2175.16015625,
+        "substrate_rigid": -923.3956909179688
+      },
+      "max_free_force_eV_A": {
+        "interface": 0.04987581202074405,
+        "film": 0.030041127414336993,
+        "substrate": 0.04962695758287201,
+        "film_rigid": 4.13330665272105,
+        "substrate_rigid": 1.8296670585025372
+      },
+      "empty_gap_A": {
+        "interface": 20.741153954891068,
+        "film": 43.97260051489106,
+        "substrate": 48.30045358489107,
+        "film_rigid": 43.69511730489106,
+        "substrate_rigid": 47.51076080489107
+      },
+      "W_adh_J_m2": 1.5317258429078906,
+      "W_sep_J_m2": 2.8578753915473514
+    },
+    "25": {
+      "energies_eV": {
+        "interface": -3129.005859375,
+        "film": -2181.937255859375,
+        "substrate": -930.7484130859375,
+        "film_rigid": -2175.159912109375,
+        "substrate_rigid": -923.3956909179688
+      },
+      "max_free_force_eV_A": {
+        "interface": 0.04987578968956682,
+        "film": 0.030041313490918292,
+        "substrate": 0.04962694630536473,
+        "film_rigid": 4.133305521210213,
+        "substrate_rigid": 1.829667899768317
+      },
+      "empty_gap_A": {
+        "interface": 25.741153954891068,
+        "film": 48.97260051489106,
+        "substrate": 53.30045358489107,
+        "film_rigid": 48.69511730489108,
+        "substrate_rigid": 52.51076080489107
+      },
+      "W_adh_J_m2": 1.5317258429078906,
+      "W_sep_J_m2": 2.8578983052814912
+    }
+  },
+  "stored_vs_recomputed_base_eV": {
+    "interface": 0.0,
+    "film": 0.0,
+    "substrate": 0.0
+  },
+  "note": "single points on the archived relaxed structures; cell z lengthened without scaling coordinates"
+}
