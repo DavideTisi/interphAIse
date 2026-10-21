@@ -131,3 +131,21 @@ def test_synthetic_benchmark_runs_through_real_query_boundary(tmp_path):
     state = run_discovery(BenchmarkQueries(pool, bench, budget=5, allow_draft=True), strategy="random", seed=1)
     assert len(state["history"]) == 5
     assert write_synthetic_benchmark(tmp_path / "again", seed=3)[1].read_text() == bench.read_text()
+
+
+def test_shuffled_shows_permutation_of_queried_outcomes_only():
+    calls = []
+    state = run_discovery(queries(6), strategy="shuffled", seed=4, llm=first_available(calls))
+    true = {h["proposal"]["candidate_id"]: h["result"] for h in state["history"]}
+    assert all(TABLE[c]["status"] == r["status"] for c, r in true.items())  # true outcomes kept
+    for turn, user in enumerate(calls):
+        shown = json.loads(user)["evaluated"]
+        sources = state["displayed_sources"][turn - 1] if turn else []
+        assert sorted(sources) == sorted(list(true)[:turn])  # only already-queried bundles
+        for h, src in zip(shown, sources):
+            assert h["result"]["candidate_id"] == h["proposal"]["candidate_id"]  # relabelled
+            assert h["result"].get("penalty") == true[src].get("penalty")
+    assert any(src != h["proposal"]["candidate_id"]
+               for src, h in zip(state["displayed_sources"][-1], state["history"]))
+    again = run_discovery(queries(6), strategy="shuffled", seed=4, llm=first_available([]))
+    assert again["displayed_sources"] == state["displayed_sources"]

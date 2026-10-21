@@ -1,7 +1,8 @@
 """Budgeted candidate search against the frozen query boundary (``BenchmarkQueries``).
 
 Arms: random; upfront (one shortlist, no feedback); sequential (one choice per turn,
-sees its own earlier choices, no outcomes); iterative (sees queried outcomes).
+sees its own earlier choices, no outcomes); iterative (sees queried outcomes); shuffled
+(as iterative, but outcomes are permuted among already-queried candidates).
 The proposer never sees unqueried outcomes, the answer table, provenance or timing.
 """
 from __future__ import annotations
@@ -15,7 +16,7 @@ from .discovery_evaluator import ranking_key
 from .tools.thermo_dataset import digest
 
 PROMPT_VERSION = "v3-2026-10-21b"
-LLM_STRATEGIES = {"iterative", "sequential", "upfront"}
+LLM_STRATEGIES = {"iterative", "sequential", "shuffled", "upfront"}
 STRATEGIES = LLM_STRATEGIES | {"random"}
 PROMPT = """You are a battery coating discovery scientist choosing which candidate coatings to evaluate.
 Select only from the available candidates, by candidate_id. Formulas are not unique: polymorphs are separate candidates.
@@ -48,9 +49,13 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
     public_task = {k: task[k] for k in PUBLIC_TASK_FIELDS}
     pool = queries.available()
     random.Random(seed).shuffle(pool)  # displayed order; same seed => same order across arms
+    formula = {c["candidate_id"]: c["formula"] for c in pool}
+    shuffle_rng = random.Random(f"shuffle-{seed}")
+    shown_bundles = []  # shuffled arm: displayed outcome per history slot, permuted among queried ones
     state = dict(strategy=strategy, seed=seed, budget=budget, prompt_version=PROMPT_VERSION,
                  hashes={k: task[k] for k in HASH_FIELDS}, objective=task["objective"],
-                 metadata=metadata or {}, proposal_attempts=[], history=[], trace=[], status="running")
+                 metadata=metadata or {}, proposal_attempts=[], history=[], trace=[],
+                 displayed_sources=[], status="running")
 
     def save():
         if output is not None:
@@ -59,10 +64,18 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
             temp.write_text(json.dumps(state, indent=2, allow_nan=False))
             temp.replace(output)
 
+    def feedback(result):
+        return {k: result[k] for k in FEEDBACK_FIELDS if k in result}
+
     def shown_history():
         if strategy == "iterative":
-            return [dict(proposal=h["proposal"], result={k: h["result"][k] for k in FEEDBACK_FIELDS
-                                                         if k in h["result"]}) for h in state["history"]]
+            return [dict(proposal=h["proposal"], result=feedback(h["result"])) for h in state["history"]]
+        if strategy == "shuffled":
+            # Relabel each displayed bundle with the candidate it is shown next to.
+            return [dict(proposal=h["proposal"],
+                         result=dict(b, candidate_id=h["proposal"]["candidate_id"],
+                                     formula=formula.get(h["proposal"]["candidate_id"])))
+                    for h, b in zip(state["history"], shown_bundles)]
         return [dict(proposal=h["proposal"]) for h in state["history"]]
 
     def propose(count):
@@ -112,9 +125,15 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
             planned = [{"candidate_id": c["candidate_id"], "hypothesis": "random baseline"} for c in pool[:budget]]
         best = None
         for step in range(budget):
-            proposal = propose(1)[0] if strategy in {"iterative", "sequential"} else planned[step]
+            proposal = propose(1)[0] if strategy in {"iterative", "sequential", "shuffled"} else planned[step]
             result = queries.query(proposal["candidate_id"])
             state["history"].append(dict(proposal=proposal, result=result))
+            if strategy == "shuffled":
+                # Inside-out Fisher-Yates: uniform permutation, at most one earlier display changes per turn.
+                shown_bundles.append(feedback(result))
+                j = shuffle_rng.randint(0, len(shown_bundles) - 1)
+                shown_bundles[-1], shown_bundles[j] = shown_bundles[j], shown_bundles[-1]
+                state["displayed_sources"].append([b.get("candidate_id") for b in shown_bundles])
             if ranking_key(result)[0] and (best is None or ranking_key(result) > ranking_key(best)):
                 best = result
             state["trace"].append(dict(evaluations=step + 1,

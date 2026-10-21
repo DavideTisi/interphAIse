@@ -11,6 +11,10 @@ Two targets (EVALUATOR_HANDOFF.md / SYNC_ADEM.md section 6):
   best bin   : some queried candidate reaches the best ranking_key in the pool (ties count)
 Successes M are counted over the whole pool, failures included in N. Failed or short
 runs are kept and count as no success at steps they did not reach. Error bars: 95% Wilson.
+
+Third panel: median best penalty bin found so far (lower is better), band = quartiles over runs.
+A run with no valid candidate yet counts as worse than every bin, never as an invented value.
+The exact random median uses P(best bin <= b within k) = 1 - C(N - M_b, k)/C(N, k).
 """
 import argparse
 import json
@@ -31,6 +35,11 @@ def wilson(p, n, z=1.96):
     centre = (p + z * z / (2 * n)) / (1 + z * z / n)
     half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
     return p - (centre - half), centre + half - p
+
+
+def best_bin(results):
+    keys = [ranking_key(r) for r in results]
+    return min((-k[1] for k in keys if k[0]), default=math.inf)
 
 
 def main():
@@ -72,11 +81,24 @@ def main():
         for arm, (p, _, n, failed) in rows.items():
             print(f"{arm:<16}{str(n):>12}{failed:>8}  " + " ".join(f"{x:.2f}" for x in p))
 
+    bins = {}
+    for arm, arm_runs in runs.items():
+        per_k = [sorted(best_bin([h["result"] for h in r["history"][:k]]) for r in arm_runs) for k in steps]
+        n = len(arm_runs)
+        bins[arm] = [(v[(n - 1) // 4], v[(n - 1) // 2], v[math.ceil(3 * (n - 1) / 4)]) for v in per_k]
+    valid = sorted(-ranking_key(r)[1] for r in table if ranking_key(r)[0])
+    exact_median = [next(b for b in valid if random_success_curve(len(table), sum(v <= b for v in valid), k)[-1] >= 0.5)
+                    for k in steps]
+    print(f"\nmedian best bin so far at k = 1..{budget} (inf = no valid candidate yet)")
+    for arm, rows in bins.items():
+        print(f"{arm:<16}" + " ".join(f"{m:>4}" for _, m, _ in rows))
+    print(f"{'random (exact)':<16}" + " ".join(f"{m:>4}" for m in exact_median))
+
     if args.plot:
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        fig, axes = plt.subplots(1, 2, figsize=(11, 4), sharey=True)
+        fig, axes = plt.subplots(1, 3, figsize=(16, 4))
         for ax, (target, rows) in zip(axes, curves.items()):
             for arm, (p, se, n, _) in rows.items():
                 if se is None:
@@ -86,6 +108,18 @@ def main():
             ax.set(xlabel="evaluations", title=f"P({target} found)", ylim=(0, 1.05))
             ax.legend(fontsize=8)
         axes[0].set_ylabel("probability")
+        ax = axes[2]
+        top = max([x for rows in bins.values() for row in rows for x in row if x != math.inf] + exact_median) + 3
+        for arm, rows in bins.items():
+            lo, med, hi = ([min(x, top) for x in col] for col in zip(*rows))
+            line, = ax.plot(steps, med, marker="o", label=arm)
+            ax.fill_between(steps, lo, hi, color=line.get_color(), alpha=0.15)
+        ax.plot(steps, exact_median, "k--", label="random (exact median)")
+        ax.axhline(top, color="grey", lw=0.5)
+        ax.text(1, top, " no valid candidate yet", va="bottom", fontsize=8, color="grey")
+        ax.set(xlabel="evaluations", ylabel="best penalty bin (lower is better)",
+               title="median best bin so far", ylim=(0, top + 2))
+        ax.legend(fontsize=8)
         fig.suptitle(f"{'synthetic' if exp['synthetic'] else 'frozen v3'} benchmark, budget {budget}; error bars: 95% Wilson")
         fig.tight_layout()
         fig.savefig(args.plot, dpi=150)
