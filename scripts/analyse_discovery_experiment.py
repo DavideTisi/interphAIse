@@ -30,6 +30,10 @@ from interphaise.discovery import random_success_curve
 from interphaise.discovery_evaluator import ranking_key
 from interphaise.tools.thermo_dataset import verify_hash
 
+# Fixed colour per arm (validated categorical order), so an arm keeps its colour in every figure.
+ARM_COLORS = {"iterative": "#2a78d6", "random": "#eb6834", "sequential": "#1baf7a", "upfront": "#eda100",
+              "shuffled": "#e87ba4", "sequential_ids": "#008300"}
+
 TARGETS = {"acceptable": lambda r, best: bool(r.get("acceptable")),
            "best bin": lambda r, best: ranking_key(r) == best}
 
@@ -183,16 +187,27 @@ def main():
                     style = dict(color="k", ls="--") if arm.startswith("random") else dict(color="grey", ls=":")
                     ax.plot(steps, p, **style, label=f"{arm} {n}")
                 else:
-                    ax.errorbar(steps, p, yerr=se, marker="o", capsize=3, label=f"{arm} (n={n})")
+                    ax.errorbar(steps, p, yerr=se, marker="o", capsize=3, lw=2, color=ARM_COLORS.get(arm),
+                                label=f"{arm} (n={n})")
             ax.set(xlabel="evaluations", title=f"P({target} found)", ylim=(0, 1.05))
         axes[0].set_ylabel("probability")
+        # Direct end labels (identity is not colour-alone), nudged apart to avoid collisions.
+        ends = sorted((rows[0][-1], arm) for arm, rows in curves["acceptable"].items() if rows[1] is not None)
+        placed = []
+        for y, arm in ends:
+            y_text = max(y, placed[-1] + 0.045) if placed else y
+            placed.append(y_text)
+            axes[0].annotate(f"{arm} {y:.0%}", (budget, y), xytext=(budget + 0.25, y_text), fontsize=8,
+                             color="#52514e", va="center", annotation_clip=False)
+        axes[0].set_xlim(0.5, budget + 2.2)
+        axes[0].set_xticks(range(2, budget + 1, 2))
         axes[1].sharey(axes[0])
         ax = axes[2]
         finite_values = [x for rows in bins.values() for row in rows for x in row if x != math.inf]
         top = max(finite_values + exact_median) + 3
         for arm, rows in bins.items():
             lo, med, hi = ([min(x, top) for x in col] for col in zip(*rows))
-            line, = ax.plot(steps, med, marker="o", label=arm)
+            line, = ax.plot(steps, med, marker="o", lw=2, color=ARM_COLORS.get(arm), label=arm)
             ax.fill_between(steps, lo, hi, color=line.get_color(), alpha=0.15)
         ax.plot(steps, exact_median, "k--")
         if heuristic_bins:
