@@ -3,6 +3,9 @@
 **Completed:** pinned structures → lattice match → registry scan → three constrained
 fixed-cell relaxations → adhesion estimate → structural inspection.
 
+**Electrolyte side:** a second, feasibility-only pilot for Li6PS5Cl(111) | LiNbF6(101)
+is described in [Electrolyte-contact feasibility pilot](#electrolyte-contact-feasibility-pilot).
+
 For **LiCoO2(001) | LiNbF6(101)**, PET-MAD S 1.6.0 gives a provisional relaxed
 work of adhesion of **2.1003 J/m²**. All movable atoms meet the 0.05 eV/Å force target
 in the interface and both separated slab references. This is a single-contact,
@@ -147,3 +150,58 @@ sampling. Then calculate the coating–electrolyte contact and the same two-cont
 protocol for the remaining shortlist. A single cathode contact cannot supply the
 weakest-contact adhesion used in the planned full-mode ranking. Frozen v3 benchmark
 results are unchanged by this pilot.
+
+## Electrolyte-contact feasibility pilot
+
+**Status:** construction and execution check, run before the protocol validation in
+[EXPERIMENT_AMENDMENT.md](EXPERIMENT_AMENDMENT.md). Not a comparative adhesion value
+and not a two-contact coating score together with the cathode pilot above.
+
+**Matching finding.** With the cathode pilot's settings (max area 160 Å², ZSL length
+tolerance 5 %, angle 3 %, at most 256 atoms, strain gate 6 %), LiNbF6 has **no lattice
+match** with Li6PS5Cl on any of its three substrate facets × five film facets. A 6 %
+length tolerance gives only 6.2 % strain, which fails the gate. Raising only the area
+cap to 300 Å² gives 8 valid of 38 enumerated interfaces. A shared two-contact protocol
+therefore needs a cap of at least ~185 Å².
+
+**Selected structure.** The pilot rule (fewest atoms, then strain, then formal
+polarity) selects Li6PS5Cl(111) | LiNbF6(101) with terminations `F2_C2/m_1` (film)
+and `Li3Cl_R3m_4` (substrate). That is the same film facet and termination as the
+cathode contact. 216 atoms: 104 Li6PS5Cl (36 fixed) and 112 LiNbF6. Area 183.022 Å²,
+von Mises strain 0.01898. Formal |p_z|/A: film 0.170, substrate 0.130 e/Å. Pinned IDs:
+film `mp-aaacjjwh`, substrate `mp-aaacebzk` (ordered F-43m approximant of a disordered
+argyrodite; MP lattice, no PET-MAD bulk relaxation).
+
+**Calculation.** Same runner and settings as the cathode pilot: 12-point registry
+scan (best offset (0,0), gap 2.0 Å), FIRE to 0.05 eV/Å on free atoms, fixed cell,
+PET-MAD S 1.6.0 on CPU with two threads, offline checkpoint with the hash above.
+
+| Calculation | Final energy (eV) | FIRE steps | Max free force (eV/Å) | Max force incl. fixed (eV/Å) |
+|---|---:|---:|---:|---:|
+| Joined interface | −1190.939941 | 133 | 0.04613 | 0.805 |
+| Separated LiNbF6 | −723.228577 | 70 | 0.04874 | (none fixed) |
+| Separated Li6PS5Cl | −462.828217 | 103 | 0.04747 | 1.188 |
+
+Provisional constrained **W_adh = 0.4275 J/m²**. 324 calculator executions (12
+registry + 312 relaxation), reconciled; 120.6 s wall time. No overlap violations; max
+displacement 1.725 Å, RMS 0.524 Å; minimum cross-contact distance 2.173 → 1.976 Å.
+Li and Cl in the top argyrodite layers rearrange visibly; the film stays intact.
+Fixed-atom forces are lower than on the cathode side but not negligible.
+
+All the cathode pilot's limits apply. In addition, the two contacts used different
+area caps and different substrate facet searches. Do not read 0.43 vs 2.10 J/m² as
+"the electrolyte side is weaker" until both are rebuilt under one validated protocol.
+
+Evidence: `data/petmad/linbf6_electrolyte_pilot_v1/` (same layout as the cathode
+pilot; its inspection replays identically from the tracked files). Trajectories stay
+in ignored `runs/petmad_electrolyte_pilot/`. Reproduce:
+
+```sh
+MPLCONFIGDIR=/private/tmp/interphaise-mpl .venv/bin/python scripts/prepare_interface_pilot.py \
+  --contact electrolyte --all-substrate-facets --max-area 300 --output runs/petmad_electrolyte_repeat
+MPLCONFIGDIR=/private/tmp/interphaise-mpl HF_HUB_OFFLINE=1 .venv/bin/python scripts/run_petmad_interface.py \
+  --input runs/petmad_electrolyte_repeat --output runs/petmad_electrolyte_repeat/calculation \
+  --checkpoint /path/to/pet-mad-s-v1.6.0.ckpt
+MPLCONFIGDIR=/private/tmp/interphaise-mpl .venv/bin/python scripts/inspect_interface_pilot.py \
+  runs/petmad_electrolyte_repeat/calculation
+```

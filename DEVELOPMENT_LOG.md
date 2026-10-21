@@ -568,3 +568,50 @@ At the user's request, committing SYNC_ADEM_3.md and the corresponding review lo
 on davide for publication to origin/davide. Scope is documentation only; existing
 preparation/inspection script edits remain local. Staged file and whitespace checks
 performed; no tests or paid calls needed. Push outcome is reported in chat.
+
+## 2026-10-21 — Electrolyte-contact feasibility pilot (provenance for 05757ee data)
+
+**Branch:** `davide`. This records the origin of `data/petmad/linbf6_electrolyte_pilot_v1/`.
+That data was produced in a separate session running in parallel with the amendment,
+viewer and integration work above. The parallel session then committed it in `05757ee`
+for the viewer. The scripts that generated it were left uncommitted until this checkpoint.
+
+**Order relative to the amendment.** EXPERIMENT_AMENDMENT.md puts the electrolyte contact
+after bulk relaxation and slab-protocol validation. This run happened before that order
+was visible to the session. It is a construction/execution feasibility check, not a
+comparative adhesion value. The amendment's step 5 now notes this.
+
+**Protocol finding.** With the cathode pilot's matching settings (160 Å², ZSL 5 %/3 %,
+≤256 atoms, 6 % strain gate), LiNbF6 has no lattice match with Li6PS5Cl on any of the
+3 × 5 facet pairs. A 6 % length tolerance gives only 6.2 % strain. Raising only the area
+cap to 300 Å² yields 8 valid of 38 enumerated interfaces. A common two-contact protocol
+needs a cap of at least ~185 Å².
+
+**Result.** Li6PS5Cl(111) | LiNbF6(101), `F2_C2/m_1` / `Li3Cl_R3m_4`, 216 atoms (36 fixed),
+183.022 Å², strain 0.01898. Same runner and settings as the cathode pilot; checkpoint
+SHA-256 verified. Free-atom convergence in all three relaxations: interface 133 steps
+(0.0461 eV/Å), LiNbF6 70 (0.0487), Li6PS5Cl 103 (0.0475). Maximum force on fixed atoms
+was 0.805 (interface) and 1.188 eV/Å (substrate). Provisional constrained
+**W_adh = 0.4275 J/m²**. 324 calculator executions, reconciled; 120.6 s wall time.
+No overlap violations. Full table, limits and reproduction commands are in
+PETMAD_INTERFACE_PILOT.md. Do not rank on 0.43 vs 2.10 J/m²: the two contacts used
+different area caps and facet searches, and neither is protocol-validated.
+
+**Code (this commit).**
+- `scripts/prepare_interface_pilot.py`: `--contact {cathode,electrolyte}`, `--film-id`,
+  `--substrate-miller`, `--all-substrate-facets`, `--max-area`. `contact` is recorded in
+  outputs. Defaults reproduce the tracked cathode `selected.json` and `interface.json`
+  exactly (checked).
+- `scripts/inspect_interface_pilot.py`: the title comes from the selected pair and facets
+  (it was hardcoded to LiCoO2). Plotting uses wrapped copies so non-orthogonal cells are
+  not cropped. Numerical output is unchanged: the cathode `inspection.json` replays
+  identically. The committed electrolyte `inspection.png` already used this version.
+
+**Other.** The PET-MAD checkpoint was copied out of volatile `/private/tmp/interphaise-hf/…`
+to `~/.cache/interphaise/pet-mad-s-v1.6.0.ckpt`, and its SHA-256 re-verified. Docs updated:
+PETMAD_INTERFACE_PILOT.md (new section), REPORT.md (status line), EXPERIMENT_AMENDMENT.md
+(step 5 note). No LLM, MP API or cluster calls were made in this work.
+
+**Next.** Follow the amendment: PET-MAD bulk relaxation of LiCoO2, Li6PS5Cl and the
+shortlist coatings, then rebuild both contacts under one matching setting with a cap
+of at least ~185 Å². Then do the constraint, thickness, vacuum and registry checks.

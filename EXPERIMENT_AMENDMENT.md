@@ -105,6 +105,9 @@ physics as well as bulk-model mismatch; they do not uniquely diagnose bulk strai
    That tolerance is a numerical check, not an accuracy guarantee for PET-MAD.
 5. Only after a usable protocol is established, compute the electrolyte contact
    and the shortlist consistently. Li transport remains outside this criterion.
+   (A LiNbF6 electrolyte-contact feasibility pilot was already run in parallel with
+   this amendment; see PETMAD_INTERFACE_PILOT.md. It shows that step 2's matching
+   cap must exceed ~185 Å² for that contact. Recompute it under the final protocol.)
 
 Use local CPU for initial small tests. The 99-second pilot excludes preparation
 and does not guarantee similar timing for thicker cells or bulk optimization.
