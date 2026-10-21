@@ -5,13 +5,26 @@
 <title>interphAIse · Structure explorer</title>
 <style>
 :root{color-scheme:dark;font:15px system-ui,sans-serif;color:#e7eef6;background:#0c1420}*{box-sizing:border-box}body{margin:0}header{padding:24px 28px 14px;border-bottom:1px solid #2c3b50}h1{margin:0;font-size:25px;font-weight:650}header p{color:#aebed0;margin:8px 0;max-width:1000px;line-height:1.5}.tag{color:#6ee7c3;font:12px monospace;letter-spacing:2px;margin-bottom:8px}.toolbar{padding:14px 28px;display:flex;gap:15px;flex-wrap:wrap;align-items:center;background:#121e2d}label{display:flex;gap:7px;align-items:center;font-size:13px}button,select,input{font:inherit;color:inherit;background:#1a2a3e;border:1px solid #40516b;border-radius:6px;padding:7px}button{cursor:pointer}button:hover{border-color:#6ee7c3}input[type=checkbox]{accent-color:#6ee7c3}input[type=range]{width:95px}select{max-width:100%}main{padding:18px 28px;display:grid;grid-template-columns:1fr 1fr;gap:18px}article{min-width:0;background:#121e2d;border:1px solid #304158;border-radius:12px;overflow:hidden}.panel-head{padding:14px;display:flex;gap:10px;flex-wrap:wrap}.panel-head select{flex:1;min-width:200px}.scene{position:relative;height:510px}canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab;background:#0d1725}.caption{padding:12px 16px;font-size:13px;line-height:1.6;color:#b9c7d8;min-height:95px}.hover{position:absolute;bottom:12px;left:12px;right:12px;pointer-events:none;font:12px monospace;white-space:pre-wrap;color:#fff;background:#101c2dd9;padding:8px;border-radius:5px}.legend{display:flex;gap:13px;flex-wrap:wrap;padding:0 28px 15px}.swatch{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;border:1px solid #aab}footer{padding:0 28px 28px;color:#aebed0;line-height:1.6;font-size:13px}.hide{display:none}body.single main{grid-template-columns:1fr}body.single article:nth-child(2){display:none}body.single .scene{height:600px}@media(max-width:850px){main{grid-template-columns:1fr;padding:12px}.scene{height:420px}header,.toolbar{padding:16px}.legend,footer{padding-left:16px}}
+
+header{padding:18px 28px 10px}header p{margin:6px 0}h1{font-size:24px}.catalog{margin:14px 28px 0;padding:16px 18px;background:#142235;border:1px solid #35475f;border-radius:10px}.catalog-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.catalog-top p{margin:0;color:#b8c9dc}.filters{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:12px;margin-top:14px}.filters label{display:flex;align-items:stretch;flex-direction:column;gap:5px}.filters select,.filters input{width:100%;min-width:0}.catalog-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.small{font-size:12px;color:#a9bdd3}.notice{margin:12px 0 0;font-size:13px;line-height:1.55;color:#c5d2df}.warning{color:#ffc891}.panel-title{font-size:16px;font-weight:650;margin-bottom:9px;color:#e7eef6}.caption{white-space:normal;min-height:160px;overflow-wrap:anywhere}.caption p{margin:6px 0}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.badge{padding:2px 7px;background:#20344b;border:1px solid #3b5572;border-radius:4px;font-size:11px}.badge.current{background:#17453e;color:#92f1d7}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.metric{border:1px solid #365169;border-radius:8px;padding:9px 12px;background:#152b3b}.metric strong{display:block;font-size:23px;color:#a3f1dc}.metric span{font-size:12px}.caption details{margin-top:10px;font-size:12px}.caption summary,.catalog summary{cursor:pointer}.caption ul{padding-left:18px}.empty{padding:18px;color:#ffc891}.toolbar{margin-top:16px;border-top:1px solid #2c3b50}.scene{height:440px}.panel-head select{font-size:12px}.panel-head{padding-bottom:8px}.panel-tools{display:flex;gap:8px;padding:0 14px 12px}.panel-tools button{font-size:12px}.footer-note{max-width:1250px}button:disabled{opacity:.4;cursor:not-allowed}#count{margin-left:auto}.hidden{display:none}@media(max-width:1050px){.filters{grid-template-columns:1fr 1fr 1fr}.filters label:first-child{grid-column:span 3}}@media(max-width:650px){.catalog{margin:12px}.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:span 2}.scene{height:360px}}
 </style>
 </head>
 <body>
-<header><div class="tag">interphAIse / ATOMISTIC MODELS</div><h1>Structure explorer</h1><p>Explore bulk candidates and both coating contacts: cathode | coating and electrolyte | coating. Drag to rotate, scroll to zoom, and hover over an atom to inspect its coordinates. Side-by-side views share the same camera and scale.</p></header>
+<header><div class="tag">interphAIse / SAVED ATOMISTIC EVIDENCE</div><h1>Structure explorer</h1><p>Browse coating candidates, battery materials and the saved PET-MAD interface studies. Compare geometries with a shared camera and scale. Drag to rotate, scroll to zoom, and hover to inspect an atom.</p></header>
+<section class="catalog" aria-label="Structure catalogue">
+<div class="catalog-top"><strong id="coverage">Loading catalogue…</strong><p>Offline · no new calculations · share this HTML file</p></div>
+<div class="filters">
+<label>Search material, ID or contact<input id="search" type="search" placeholder="LiNbF6, LLZO, mp-…, seed 4" aria-label="Search structures"></label>
+<label>Environment<select id="environment"><option value="">All environments</option></select></label>
+<label>Collection<select id="collection"><option value="">All collections</option><option value="interface">Interfaces</option><option value="candidate">Coating candidates</option><option value="endpoint">Battery endpoints</option><option value="reference">Bulk references</option><option value="custom">Custom</option></select></label>
+<label>Study<select id="study"><option value="">All studies</option></select></label>
+<label>State<select id="state"><option value="">All states</option><option value="mp">Original MP</option><option value="initial">Initial</option><option value="relaxed">Relaxed</option><option value="film">Separated coating</option><option value="substrate">Separated substrate</option></select></label>
+</div>
+<div class="catalog-actions"><button id="current">Current contacts</button><button id="clear">Clear filters</button><label>Contact<select id="contact"><option value="">All contacts</option></select></label><span id="count" class="small"></span></div>
+<p class="notice" id="environment-note"></p>
+<details><summary class="small">Coverage, provenance and scientific limits</summary><div id="catalog-details" class="notice"></div></details>
+</section>
 <div class="toolbar">
-<label>Contact <select id="contact"><option value="">Choose a contact…</option></select></label>
-<button id="contacts">Compare contacts</button>
 <label><input type="checkbox" id="compare" checked>Compare</label>
 <label>Colour <select id="color"><option value="element">Elements</option><option value="group">Coating / substrate</option><option value="fixed">Fixed atoms</option></select></label>
 <label>Show <select id="group"><option value="all">All atoms</option><option value="film">Coating only</option><option value="substrate">Substrate only</option></select></label>
@@ -22,7 +35,8 @@
 <button id="side">Side x–z</button><button id="top">Top x–y</button><button id="oblique">Oblique</button><button id="reset">Fit</button>
 </div>
 <main id="panels"></main><div class="legend" id="legend"></div>
-<footer><strong>Geometry inspection, not a validated adhesion result.</strong> The pilots have polar surfaces and unrelaxed bulk reference lattices; surface and cell convergence checks remain open. Atomic radii are scaled for visibility; bonds are not inferred. Cell edges represent the saved simulation cell, including vacuum. Replication shows translated copies along a and b; it does not relax atoms. Wrap a/b brings atoms into the periodic in-plane cell for display only. Downloads contain the original selected geometry, not displayed copies. Fixed-atom colouring shows stored FixAtoms constraints; the initial file does not store the later relaxation constraints. Bulk structures come from the frozen Materials Project pool. This viewer contains no benchmark outcome table.</footer>
+<footer><p class="footer-note"><strong>Archived model results, not experimental adhesion.</strong> W<sub>adh</sub> uses independently relaxed separated slabs; W<sub>sep</sub> uses fixed geometries split from the relaxed contact. Neither validates coating transport or polar electrostatics. Energies appear only on their own relaxed contact. Original MP, PET-MAD references and historical pilots retain separate provenance. Both contacts are formally polar; remaining sensitivity checks are listed above.</p><p class="footer-note">Atomic radii are scaled for visibility; bonds are not inferred. Cell edges include vacuum. Repeat and wrap change the display only. XYZ downloads preserve the saved coordinates and verified state-local labels/constraints. A fixed mask on an initial interface is the planned mask recorded by that run. Candidate structures shared across environments are listed once per MP ID and geometry; polymorphs keep separate IDs. This catalogue contains no thermodynamic benchmark outcomes.</p></footer>
+<script id="catalog" type="application/json">__CATALOG_JSON__</script>
 <script id="structures" type="application/json">__STRUCTURES_JSON__</script>
 <script>
 'use strict';
@@ -30,37 +44,68 @@ const structures=JSON.parse(document.getElementById('structures').textContent);
 const $=id=>document.getElementById(id);
 let yaw=0,pitch=-Math.PI/2,zoom=1;
 const panels=[];
-const pilotIds=[...new Set(structures.filter(s=>s.kind==='pilot').map(s=>s.pilot))];
-for(const id of pilotIds){const o=document.createElement('option');o.value=id;o.textContent=structures.find(s=>s.pilot===id).contact;$('contact').append(o);}
+const catalog=JSON.parse($('catalog').textContent);
+const summary=catalog.summary;
+const environmentNames=catalog.environments;
+let filtered=structures.map((s,i)=>i);
+const filterIds=['search','environment','collection','study','state','contact'];
+const text=(tag,value,className)=>{const el=document.createElement(tag);el.textContent=value;if(className)el.className=className;return el;};
+for(const [id,label] of Object.entries(environmentNames))$('environment').append(new Option(label,id));
+for(const name of [...new Set(structures.map(s=>s.study))].filter(Boolean).sort())$('study').append(new Option(name,name));
+for(const name of [...new Set(structures.map(s=>s.contact))].filter(Boolean).sort())$('contact').append(new Option(name,name));
+$('coverage').textContent=`${summary.total} saved geometries · ${summary.candidate_ids} coating IDs · ${summary.calculated_runs} calculated interface runs`;
+for(const line of [...summary.limitations,...summary.warnings])$('catalog-details').append(text('p',line,summary.warnings.includes(line)?'warning':''));
+function matches(s){
+ const q=$('search').value.toLowerCase().replace(/\s+/g,' ').trim();
+ const hay=[s.title,s.formula,s.formula_label,s.material_id,s.run,s.study,...(s.materials||[]),...(s.environments||[]).map(e=>environmentNames[e])].join(' ').toLowerCase();
+ return (!q||q.split(' ').every(part=>hay.includes(part)))&&(!$('environment').value||(s.environments||[]).includes($('environment').value))&&(!$('collection').value||s.kind===$('collection').value)&&(!$('study').value||s.study===$('study').value)&&(!$('state').value||s.state===$('state').value)&&(!$('contact').value||s.contact===$('contact').value);
+}
+function fillSelect(select,indices,preferred){
+ select.replaceChildren();
+ const groups=new Map();
+ for(const i of indices){const s=structures[i],name=s.study||'Custom';if(!groups.has(name)){const g=document.createElement('optgroup');g.label=name;groups.set(name,g);select.append(g);}groups.get(name).append(new Option(`${s.title} · ${s.atoms.length} atoms`,i));}
+ if(indices.length)select.value=preferred!==''&&preferred!==undefined&&indices.includes(Number(preferred))?String(preferred):String(indices[0]);
+ select.disabled=!indices.length;
+}
+function applyFilters(){
+ filtered=structures.map((s,i)=>({s,i})).filter(x=>matches(x.s)).map(x=>x.i);
+ panels.forEach((p,n)=>fillSelect(p.select,filtered,filtered.includes(Number(p.select.value))?p.select.value:filtered[Math.min(n,filtered.length-1)]));
+ $('count').textContent=`${filtered.length} of ${structures.length} geometries`;
+ const env=$('environment').value;
+ $('environment-note').textContent=env&&env!=='lco_lpscl_4v'?'This environment has saved bulk structures only; no chloride or LLZO interface geometry or adhesion result has been calculated.':'Current working contacts use PET-MAD-relaxed references. Both are formally polar and provisional; historical pilots use a different protocol.';
+ zoom=1;draw();
+}
+function clearFilters(){for(const id of filterIds)$(id).value='';}
 function compareIndices(left,right){
- panels[0].select.value=left;panels[1].select.value=right;
+ clearFilters();applyFilters();panels[0].select.value=left;panels[1].select.value=right;
  $('compare').checked=true;document.body.classList.remove('single');zoom=1;draw();
 }
-$('contact').onchange=()=>{
- const indices=structures.map((s,i)=>({s,i})).filter(x=>x.s.pilot===$('contact').value&&['initial','relaxed'].includes(x.s.state));
- if(indices.length)compareIndices(indices[0].i,indices[1]?.i??indices[0].i);
-};
-$('contacts').disabled=pilotIds.length<2;
-$('contacts').onclick=()=>{
- const preferred=pilotIds.slice(0,2).map(id=>{
-  let i=structures.findIndex(s=>s.pilot===id&&s.state==='relaxed');
-  return i<0?structures.findIndex(s=>s.pilot===id):i;
- });
- if(preferred.length===2){$('contact').value='';compareIndices(...preferred);}
-};
+function currentContacts(){const indices=structures.map((s,i)=>({s,i})).filter(x=>x.s.featured).map(x=>x.i);if(indices.length)compareIndices(indices[0],indices[1]??indices[0]);}
+function compareStates(index){const s=structures[index],first=structures.findIndex(x=>x.run===s.run&&x.state==='initial'),last=structures.findIndex(x=>x.run===s.run&&x.state==='relaxed');if(first>=0&&last>=0)compareIndices(first,last);}
+function compareThickness(index){
+ const s=structures[index];
+ const options=structures.map((x,i)=>({s:x,i})).filter(x=>x.s.contact===s.contact&&x.s.study===s.study&&x.s.state==='relaxed'&&x.s.layers&&Object.keys(x.s.layers).length&&x.s.seed===s.seed&&x.s.variant.split('frozen depth')[1]===s.variant.split('frozen depth')[1]);
+ options.sort((a,b)=>(a.s.layers.film_layers+a.s.layers.substrate_layers)-(b.s.layers.film_layers+b.s.layers.substrate_layers));
+ if(options.length>1)compareIndices(options[0].i,options.at(-1).i);
+}
+for(const id of filterIds)$(id).addEventListener('input',applyFilters);
+$('clear').onclick=()=>{clearFilters();applyFilters();};
+$('current').onclick=currentContacts;
 const add=(a,b)=>a.map((x,i)=>x+b[i]);
 const mul=(v,s)=>v.map(x=>x*s);
 function rotate(p){const [x,y,z]=p,c=Math.cos(yaw),s=Math.sin(yaw),u=c*x+s*y,v=-s*x+c*y;return [u,Math.cos(pitch)*v-Math.sin(pitch)*z,Math.sin(pitch)*v+Math.cos(pitch)*z];}
 function download(blob,name){const a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
 for(let n=0;n<2;n++){
- const article=document.createElement('article');article.innerHTML='<div class="panel-head"><select aria-label="Structure '+(n+1)+'"></select><button class="xyz">Save XYZ</button><button class="png">Save PNG</button></div><div class="scene"><canvas aria-label="Interactive atomic structure"></canvas><div class="hover">Hover over an atom for details</div></div><div class="caption"></div>';
+ const article=document.createElement('article');article.innerHTML='<div class="panel-head"><select aria-label="Structure '+(n+1)+'"></select><button class="xyz">Save XYZ</button><button class="png">Save PNG</button></div><div class="panel-tools"><button class="states">Initial ↔ relaxed</button><button class="thickness">Compare thickness</button></div><div class="scene"><canvas aria-label="Interactive atomic structure"></canvas><div class="hover">Hover over an atom for details</div></div><div class="caption"></div>';
  $('panels').append(article);
  const select=article.querySelector('select');
- for(const [i,s] of structures.entries()){const o=document.createElement('option');o.value=i;o.textContent=s.title;select.append(o);}
+ fillSelect(select,filtered,n);
  select.value=Math.min(n,structures.length-1);
  const p={article,select,canvas:article.querySelector('canvas'),hover:article.querySelector('.hover'),caption:article.querySelector('.caption'),hits:[]};panels.push(p);
  select.addEventListener('change',()=>{zoom=1;draw();});
- article.querySelector('.xyz').onclick=()=>{const s=structures[select.value];download(new Blob([s.xyz],{type:'text/plain'}),'structure-'+select.value+'.extxyz');};
+ article.querySelector('.states').onclick=()=>compareStates(Number(select.value));
+ article.querySelector('.thickness').onclick=()=>compareThickness(Number(select.value));
+ article.querySelector('.xyz').onclick=()=>{const s=structures[select.value];download(new Blob([s.xyz],{type:'text/plain'}),(s.id||'structure-'+select.value).replace(/[^a-z0-9_-]/gi,'_')+'.extxyz');};
  article.querySelector('.png').onclick=()=>p.canvas.toBlob(b=>{if(b)download(b,'structure-'+select.value+'.png');});
  let drag=null;
  p.canvas.onpointerdown=e=>{drag=[e.clientX,e.clientY];p.canvas.setPointerCapture(e.pointerId);};
@@ -85,6 +130,8 @@ function geometry(s){
  return {atoms,corners,center:lo.map((x,i)=>(x+hi[i])/2),span:Math.max(1,Math.hypot(...hi.map((x,i)=>x-lo[i])))};
 }
 function draw(){
+ if(!filtered.length){for(const p of panels){p.canvas.width=p.canvas.clientWidth;p.canvas.height=p.canvas.clientHeight;const ctx=p.canvas.getContext('2d');ctx.fillStyle='#0d1725';ctx.fillRect(0,0,p.canvas.width,p.canvas.height);ctx.fillStyle='#b8c9dc';ctx.font='16px system-ui';ctx.fillText('No saved geometry matches these filters.',20,50);p.caption.replaceChildren(text('p','Clear a filter or search for a different material.','empty'));p.hits=[];p.article.querySelectorAll('button').forEach(b=>b.disabled=true);}$('legend').replaceChildren();return;}
+ panels.forEach(p=>p.article.querySelectorAll('button').forEach(b=>b.disabled=false));
  const active=$('compare').checked?panels:panels.slice(0,1),geos=active.map(p=>geometry(structures[p.select.value]));
  const maxSpan=Math.max(...geos.map(g=>g.span));
  const scale= Math.min(...active.map(p=>Math.min(p.canvas.clientWidth,p.canvas.clientHeight)))*.84/maxSpan*zoom;
@@ -99,18 +146,45 @@ function draw(){
   for(const a of p.hits){
    let color=a.atom.color,key=a.atom.element;
    if($('color').value==='group'){key=a.atom.group;color=key==='film'?'#67e8c5':key==='substrate'?'#9bafff':'#aebed0';}
-   if($('color').value==='fixed'){key=a.atom.fixed?'Fixed (stored constraint)':'No stored fixed constraint';color=a.atom.fixed?'#ffb454':'#769bb9';}
+   if($('color').value==='fixed'){key=a.atom.fixed?'Fixed (verified mask)':'No fixed-atom mask';color=a.atom.fixed?'#ffb454':'#769bb9';}
    legends.set(key,color);
    const gradient=ctx.createRadialGradient(a.x-a.r*.3,a.y-a.r*.3,a.r*.04,a.x,a.y,a.r);gradient.addColorStop(0,'#fff');gradient.addColorStop(.35,color);gradient.addColorStop(1,color);
    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle=gradient;ctx.fill();ctx.strokeStyle='#0a1220';ctx.lineWidth=.6;ctx.stroke();
   }
   // Cartesian orientation triad, independent of the (possibly nonorthogonal) cell.
   for(const [i,label,color] of [[0,'x','#ff9292'],[1,'y','#80e7b4'],[2,'z','#91baff']]){const v=[0,0,0];v[i]=27;const q=rotate(v);ctx.strokeStyle=color;ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(43,h-55);ctx.lineTo(43+q[0],h-55-q[1]);ctx.stroke();ctx.fillText(label,45+q[0],h-58-q[1]);}
-  ctx.fillStyle='#c4d2e1';ctx.font='12px system-ui';ctx.fillText(s.title,14,23);
-  p.caption.textContent=`${s.atoms.length} atoms in saved cell · ${g.atoms.length} displayed · PBC ${s.pbc.map(v=>v?'yes':'no').join('/')}\nCell lengths: ${s.cell.map(v=>Math.hypot(...v).toFixed(2)).join(' × ')} Å. Source: ${s.source}`;
+  ctx.fillStyle='#c4d2e1';ctx.font='12px system-ui';ctx.fillText(`${s.contact||s.formula_label||s.formula} · ${s.state_label||s.state} · ${s.atoms.length} atoms`,14,23);
+  renderCaption(p,s,g);
+
  });
  $('legend').replaceChildren();
  for(const [key,color] of legends){const label=document.createElement('span'),swatch=document.createElement('span');swatch.className='swatch';swatch.style.background=color;label.append(swatch,document.createTextNode(key));$('legend').append(label);}
+}
+function renderCaption(p,s,g){
+ p.caption.replaceChildren();
+ const badges=text('div','','badges');
+ for(const label of [s.featured?'Current working setting':null,s.historical?'Historical pilot':null,s.study,s.status,s.reference_role].filter(Boolean))badges.append(text('span',label,'badge'+(label==='Current working setting'?' current':'')));
+ p.caption.append(badges,text('div',s.title,'panel-title'));
+ p.caption.append(text('p',`${s.atoms.length} atoms in saved cell · ${g.atoms.length} displayed · ${s.n_fixed||0} fixed · PBC ${s.pbc.map(v=>v?'yes':'no').join('/')}`));
+ if(s.material_id)p.caption.append(text('p',`Material ID: ${s.material_id}`));
+ if(s.layers&&Object.keys(s.layers).length)p.caption.append(text('p',`Layers: ${s.layers.substrate_layers} substrate + ${s.layers.film_layers} coating${s.seed!==null?' · seed '+s.seed:''}`));
+ if(s.candidate){const c=s.candidate,fmt=m=>'('+m.join(' ')+')';p.caption.append(text('p',`Facets: substrate ${fmt(c.substrate_miller)} | coating ${fmt(c.film_miller)} · strain ${(100*c.von_mises_strain).toFixed(2)}%`));}
+ if(s.results){const metrics=text('div','','metrics');for(const [key,label,description] of [['W_adh_J_m2','W_adh','Relaxed separated slabs'],['W_sep_J_m2','W_sep','Fixed-geometry separation']]){const box=text('div','','metric'),value=s.results[key];box.append(text('span',label),text('strong',value===null?'Not archived':value.toFixed(3)+' J/m²'),text('span',description));metrics.append(box);}p.caption.append(metrics);p.caption.append(text('p','Provisional model result for this exact contact and protocol. Not a coating ranking.','warning'));}
+ else if(s.kind==='interface')p.caption.append(text('p',s.state==='initial'?'Initial geometry: no relaxed energy is assigned.':'Separated reference slab: contact energies are shown on the matching relaxed interface.','small'));
+ if(s.relaxation)p.caption.append(text('p',`This relaxation: ${s.relaxation.converged?'converged':'unconverged'} · ${s.relaxation.steps} steps · maximum free force ${s.relaxation.max_free_force_eV_A.toFixed(4)} eV/Å`));
+ if(s.warnings?.length)p.caption.append(text('p',s.warnings.join(' · '),'warning'));
+ const details=text('details','');details.append(text('summary','Geometry, constraints and source files'));
+ details.append(text('p',`Cell lengths: ${s.cell.map(v=>Math.hypot(...v).toFixed(3)).join(' × ')} Å`));
+ if(s.fixed_origin)details.append(text('p',s.fixed_origin));
+ if(s.metadata_note)details.append(text('p',s.metadata_note));
+ if(s.model)details.append(text('p',`Model: ${s.model}`));
+ if(s.checkpoint_sha256)details.append(text('p',`Checkpoint SHA-256: ${s.checkpoint_sha256}`));
+ const list=text('ul','');for(const entry of s.provenance||[{path:s.source}])list.append(text('li',`${entry.path}${entry.sha256?' · SHA-256 '+entry.sha256:''}`));details.append(list);
+ if(s.pool_sources?.length>1)details.append(text('p',`Also in: ${s.pool_sources.slice(1).join(', ')}`));
+ if(s.environments?.length)details.append(text('p',`Environment membership: ${s.environments.map(e=>environmentNames[e]).join('; ')}`));
+ p.caption.append(details);
+ p.article.querySelector('.states').disabled=!structures.some(x=>x.run===s.run&&x.state==='initial')||!structures.some(x=>x.run===s.run&&x.state==='relaxed');
+ p.article.querySelector('.thickness').disabled=!s.layers||!Object.keys(s.layers).length||!['Cathode coating thickness','Electrolyte thickness / constraints','Additional thickness checks'].includes(s.study)||s.state!=='relaxed';
 }
 for(const id of ['color','group','cell','wrap','repeat','size'])$(id).addEventListener('input',draw);
 $('compare').onchange=()=>{document.body.classList.toggle('single',!$('compare').checked);draw();};
@@ -118,7 +192,7 @@ $('side').onclick=()=>{yaw=0;pitch=-Math.PI/2;draw();};
 $('top').onclick=()=>{yaw=0;pitch=0;draw();};
 $('oblique').onclick=()=>{yaw=.5;pitch=-1.1;draw();};
 $('reset').onclick=()=>{zoom=1;draw();};
-new ResizeObserver(draw).observe($('panels'));draw();
+new ResizeObserver(draw).observe($('panels'));applyFilters();currentContacts();
 </script>
 </body>
 </html>

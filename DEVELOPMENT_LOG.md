@@ -1361,3 +1361,509 @@ messages. Davide-side entries above are unchanged.
 **Next:** on approval, run the three commands at the end of `SYNC_DAVIDE_4.md`. Then
 `analyse_environment_study.py`, the per-environment curves and `usage_report.py`; archive like
 v3; update this log and `REPORT.md`.
+
+## 2026-10-21 — Scientific overview presentation
+
+**Branch:** `davide`. Prepared a scientific/hackathon presentation at the user's
+request, covering the folder's main ideas and results. The source review began
+at `b51c14e` with the reviewed environment-freeze work present locally; concurrent
+publication advanced HEAD to `40b80fa` while the deck was being prepared. This
+session did not commit, push, change scientific code, or launch project runs.
+
+**Deliverable:** [23-slide PowerPoint](../presentations/output/interphAIse_main_ideas_and_results_2026-10-21_v2.pptx),
+with 17 main slides for an approximately 15-minute talk and six technical backup
+slides. It includes HELLMM background, the original modelling workflow, the v2/v3
+objective correction, five-arm discovery evidence including the reviewed shuffled
+follow-up, the 141-by-three environment landscape, PET-MAD bulk/contact validation,
+the four-layer electrolyte result, limitations and next work. Every slide has
+source notes. Three native charts retain embedded editable workbook data, and ten
+tables are editable. The generated cover is conceptual and is not a computed
+structure; prompt and provenance are saved under `../presentations/.build/assets/`.
+
+**Verification performed:** Recounted success directly from all 120 original
+run histories (1,200 queries): iterative 19/30, upfront 4/30, sequential 4/30,
+random 10/30. The shuffled 6/30 result cites the independently reviewed archive
+and local review JSON; no new shuffled experiment or evaluator replay ran here.
+Checked original and expanded candidate/pass counts, the fluorine split, exact
+random probabilities and thickness energies against saved JSON. Rendered and
+visually inspected all slides. Re-imported and rendered the final exported PPTX,
+checked images with small import-resampling differences, and verified the other
+21 slides are pixel-identical to their authoring renders. Package, layout, font,
+native-chart and workbook checks pass with no layout findings or warnings.
+Native PowerPoint execution was not tested. No full project test suite was needed
+for this artifact/documentation task.
+
+**Reproducibility:** builder, source map, render images and validation receipts
+are in `../presentations/.build/`. Use the bundled Node runtime with
+`RUNTIME_NODE_MODULES` set to its bundled package directory and run
+`build_deck.mjs`; set `DECK_FILENAME` to a fresh output name. Chart data use ten
+significant digits for Excel portability, preserving displayed scientific values.
+Final PPTX SHA-256:
+`2c1cbc240e618c09dd29ec8dacf38285c6f6414f1e5239474d86b9600de58ca7`.
+
+**Limits and next steps:** expanded live LLM production remains pending cost
+review in this snapshot; adhesion remains provisional because of polarity and
+remaining convergence checks. Update the deck after new approved experiments
+and physical-validation results. No live project LLM, MP, MLIP or cluster runs
+occurred; the only generated visual used the built-in image-generation tool.
+Earlier log entries and concurrent project changes were preserved.
+
+
+## 2026-10-21 — Freeze publication confirmed and presentation work coordinated
+
+**Branch:** `davide`. Pushed `40b80fa` to `origin/davide`, including Claude’s
+previously committed `b51c14e` thickness work. Verified the local and remote-tracking
+branch tips both resolve to `40b80fa3f1f65b330a372878c2589ea17c80e7f2`.
+Adem can now retrieve the three frozen copies and the checked smoke-only sign-off
+in `ENVIRONMENT_PROTOCOL.md`. Scientific rows remain unchanged. The current
+local suite had passed 127 tests before publication. No production approval,
+live LLM, MP or MLIP calls occurred in this publication session.
+
+**Presentation coordination:** discovered the user’s concurrent “Create project
+presentation” chat has already authored a deck and is refining its scope to
+interphAIse. Preserved its source, outputs and report edits rather than making
+a competing deck. This session independently read all 150 archived original and
+shuffled histories and confirmed acceptance counts 19/4/4/10/6 for
+iterative/upfront/sequential/random/shuffled. Review inputs, exact random curves,
+the r111/r114 best-so-far trajectories and the saved thickness evidence are in
+`../presentations/.build/independent-data-review/deck_data.json`. These are
+read-only derivations, not new experiments or an evaluator replay.
+
+**Next:** Adem verifies the frozen runner, records its execution commit, then
+executes the approved approximately 30-call smoke batch and returns usage plus
+expected/conservative production costs. Account-owner billing and contract
+pricing remain unverified. Production waits for explicit approval. Presentation
+output and its final visual checks remain owned by the concurrent presentation
+chat. This checkpoint itself is not included in the earlier push.
+
+
+## 2026-10-21 — Presentation scope corrected to interphAIse only
+
+**Branch:** `davide`, source checkpoint `40b80fa`. The user clarified that the
+scientific/hackathon presentation should focus on interphAIse. Removed the two
+HELLMM background/results slides and their remaining source reference, renumbered
+all retained slides, updated the main/backup division and clarified the source
+checkpoint in the notes. Scientific evidence and caveats are unchanged.
+
+**Deliverable:** [21-slide PowerPoint](../presentations/output/interphAIse_main_ideas_and_results_2026-10-21_v3.pptx),
+with 16 main slides and five technical backup slides. It retains three native
+editable charts, their original embedded workbooks, nine editable tables and
+source notes on all 21 slides. REPORT.md links this revised deck. The earlier
+v2 file and historical log entry remain available.
+
+**Verification:** Package, layout, font, native-table/chart, embedded-workbook
+and import checks pass with zero findings or warnings. Re-imported and rendered
+all 21 final slides. Every retained slide is pixel-identical to its corresponding
+previous final render outside the renumbered footer. Visually reviewed the new
+workflow position, result chart, convergence chart, conclusion and last backup.
+Confirmed no HELLMM references remain in slides or notes. The import/export step
+dropped workbook relationships, so the unchanged original chart XML, relationships
+and XLSX parts were restored byte-for-byte before finalization. All nine restored
+parts match the source exactly. Native PowerPoint execution was not tested.
+
+**Reproduction:** In `../presentations/.build/`, run `refocus_interphaise.mjs`
+with the bundled Node runtime, `preserve_chart_packages.py` with bundled Python,
+then `finalize_refocused.mjs` with Node. Set `RUNTIME_NODE_MODULES` as in the prior
+checkpoint. The scripts preserve the original v2 source; use a fresh final path
+for later revisions. The validation receipt and final renders are stored there.
+Final SHA-256: `68f2850e68b2f4eac36657b96318546b4e0223b06834d792a947f018390e246c`.
+
+No scientific code or results changed, and no live LLM/API/MLIP or cluster runs
+occurred. A documentation diff check is sufficient for this scope correction.
+No commit or push was made. The next deck update can incorporate new approved
+experiments; existing limits on expanded production and adhesion interpretation
+remain as stated in the slides.
+
+
+## 2026-10-21 — Electrolyte thickness audit and cathode handoff
+
+**Branch:** `davide`, HEAD `40b80fa`. Reviewed Claude’s `b51c14e` update and
+confirmed with `git ls-remote` that GitHub already contains it through
+`40b80fa`. No new push is required for that commit.
+
+**Checks:** Read five unique saved thickness/constraint runs and verified all
+15 stored relaxations against their finite/force/overlap checks. Recomputed
+adhesion from saved energies and area. Confirmed 1,827 calculator calls plus
+ten separation single points, without double-counting the shared four-layer
+reference. Rebuilt the cathode geometry at two/three/four coating layers into
+a temporary directory: 504/600/696 atoms, unchanged area, strain, transformations,
+termination cuts and substrate coordinates, with no cut CoO6/NbF6 polyhedra.
+The same physical 104 substrate atoms remain fixed. Global joined-system atom
+indices change with film size, so mask verification uses substrate-relative
+ordering. Formal dipole roundoff at about 1e-14 and global index changes were
+resolved in the audit rather than treated as physical differences. No new
+MLIP, LLM, MP or cluster calls ran, and no full test suite was rerun for this
+review/documentation task. The prior 127-test result remains the last suite run.
+
+**Files:** new `SYNC_CLAUDE_3.md` and
+`data/reviews/electrolyte_thickness_review_20261021.json`; aligned current status
+in REPORT.md and marked CONTACT_PROTOCOL.md’s older next-step list historical.
+Preserved concurrent presentation documentation. A whitespace check passes.
+
+**Recommendation:** proceed with only the bounded cathode coating-thickness
+test at the fixed geometry, 800-atom cap and existing numerical tolerance,
+then the planned vacuum/relaxed-registry and seed checks. Four electrolyte
+layers meets the declared tolerance, not an established plateau. Constraint
+insensitivity is bounded by the tested range, and the reported small registry
+difference was unrelaxed. Both contacts retain formal-polarity limitations.
+The handoff is saved for Davide to relay; no external message was sent. These
+new review files and documentation changes remain uncommitted. Adem’s separate
+smoke approval and production cost gate are unchanged.
+
+## 2026-10-21 — Cathode coating thickness
+
+**Branch:** `davide`. Follows SYNC_CLAUDE_3.md. Details: [CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+LiCoO2(001) | LiNbF6(001) with 2, 3 and 4 coating layers (504 / 600 / 696 atoms, cap 800).
+Everything else is unchanged: termination, substrate (2 layers, 312 atoms), transformations,
+strain, area, vacuum, PET-MAD S 1.6.0 (checkpoint `3f52e97c…`), FIRE 0.05 eV/Å. Registry held
+at (0,0,2 Å), scan saved. The 0.34-fraction constraint was verified to select the same
+104 substrate sites by substrate-relative correspondence, because global indices change with
+coating thickness. The substrate is identical up to a rigid z shift (0.75 / 1.29 Å).
+
+Results: W_adh 3.4794 / 3.5855 / 3.6001 J/m²; W_sep 5.0551 / 5.1090 / 5.1275 J/m². From 3 to
+4 layers the changes are +0.015 / +0.019 (< 0.1), so **four coating layers is chosen**. The
+2-layer run reproduces the archived run (≤ 2.4×10⁻⁴ eV). The separated LiNbF6 relaxes by
+1.44–1.49 J/m² at every thickness. Fixed-atom forces stay at 2.446 eV/Å. The coating's formal
+polarity grows 0.613 / 0.920 / 1.226 e/Å. All 9 relaxations converged, with no overlaps.
+426 calls plus 6 single points. Evidence: `data/petmad/cathode_thickness_v1/`; the inspection
+replays identically.
+
+Also reworded the electrolyte conclusions per the review: "insensitive within the tested
+constraint bracket at 0.1 J/m²"; the unrelaxed registry scan does not establish relaxed
+equivalence; the persistent surface rearrangement does not rule out other finite-thickness
+effects. No code changes; no LLM, MP or cluster calls. **Next:** vacuum and relaxed registry
+checks for both contacts, then seed 4. The cathode substrate thickness is still untested.
+
+
+## 2026-10-21 — Presentation accuracy review and v4 update
+
+**Branch:** `davide`, scientific source HEAD `40b80fa` plus the local
+`SYNC_CLAUDE_3.md` review. The user asked whether the presentation in the other
+chat was correct and could be updated. Confirmed that chat was idle, inspected
+all 21 slides and notes, and edited a copy of its v3 deck using the Presentations
+workflow. Kept 16 main slides and five backups, the existing design, numerical
+evidence, source images and editable tables/charts. No message was sent to the
+other chat and no scientific experiment ran.
+
+**Result:** the main numerical claims check out. V4 makes the LLM’s role explicit:
+interpreting feedback, revising a chemical hypothesis and selecting the next
+coating from the fixed pool. It narrows the acceptance headline to this benchmark,
+records the published frozen tables and smoke-only approval, and identifies
+cathode coating thickness as the next atomistic test. Added the reviewed
+constraint/registry qualifications and no-plateau limitation. Corrected the
+ambiguous cathode label “34% fixed” to “104 fixed” and a speaker-note rounding
+from 0.0673 to 0.0674 J/m². No experimental performance claim or production
+approval was added.
+
+**Verification:** recounted all 120 original run histories, checked the reviewed
+shuffled counts and paired exact test, and recalculated the expansion’s random
+probabilities and displayed example bins from the frozen tables. Checked
+thickness energies and proposal-call accounting. Rendered and visually inspected
+all 21 final slides. Exactly seven slides changed visually (2, 7, 10, 14, 16,
+20, 21); every other slide is pixel-identical to v3. The three native charts,
+relationships and embedded XLSX parts remain byte-identical to the source.
+Package, font, layout, table/chart/workbook and import checks pass with no
+findings or warnings. All local source paths in notes exist. Native PowerPoint
+execution was not tested. No full project tests were needed for this artifact
+and documentation update.
+
+**Output:** `../presentations/output/interphAIse_main_ideas_and_results_2026-10-21_v4.pptx`.
+SHA-256: `b17067ec76c60ed7f31459172e77e1781cbb6e7c392c5c7ef69bbd325c973bd8`.
+REPORT.md links v4; v3 is preserved. Reproduction scripts are in
+`../presentations/.build/`: `update_progress_v4.mjs`,
+`preserve_v4_chart_packages.py` and `finalize_v4.mjs`. Use the bundled Node/Python
+runtimes and set RUNTIME_NODE_MODULES as documented in earlier deck checkpoints.
+The private `v4-data-check.json`, `v4-validation.json` and render comparison
+record the checks. Use a new final filename for another revision.
+
+This artifact and the documentation changes remain local; no commit or push
+occurred. Next presentation update should use approved environment results and
+completed cathode/vacuum/registry/seed checks when available.
+
+## 2026-10-21 — Cathode coating-thickness audit and follow-up handoff
+
+**Branch:** `davide`, HEAD `84f1c76`. Reviewed Claude's completed coating
+thickness study. A live `git ls-remote origin refs/heads/davide` confirms GitHub
+remains at `40b80fa`; the new commit is local. Recommend publishing that commit
+and proceeding with a bounded vacuum check; no push or external message was
+sent by this review.
+
+**Verification:** Using the project `.venv`, independently recomputed W_adh
+and W_sep from saved energies/area for the 504/600/696-atom runs, checked all
+nine stored relaxation records against convergence, finite, free-force and
+overlap conditions, and reconciled 426 calls plus six rigid-separation single
+points. Checked that all three substrates and their physical 104-site fixed
+masks match the archived constraint baseline after removing a rigid z shift.
+Global indices differ, as expected. The two-layer energy differences are at
+most 0.00024415 eV. The final thickness increments are 0.0146684 / 0.0185227
+J/m², passing the 0.1 J/m² criterion. A fixed depth of 9.10044154 Å reproduces
+the current cathode constraint mask; this is a baseline correspondence check,
+not verification of a thicker substrate build. The initial audit lookup used
+a newer top-level mask field absent in the older archive; reading its
+relaxation record instead resolved the schema difference and all assertions
+passed. No scientific files were modified to make a check pass.
+
+**Files:** new `SYNC_CLAUDE_4.md` and
+`data/reviews/cathode_thickness_review_20261021.json` with source-file hashes;
+updated CONTACT_PROTOCOL.md and REPORT.md. The handoff proposes vacuum 15/20/25
+Å with unchanged Cartesian structures and matched reference cells, starting
+with energy/force checks and relaxing if needed. It explicitly retains two
+thickness gaps: cathode substrate and electrolyte-contact coating. Proposed
+bounded geometry/cost checks precede further thickness calculations; they
+have not run. The original cathode constraint bracket was at two coating
+layers and must not be presented as a repeated bracket at four layers.
+
+**Interpretation and next work:** four cathode coating layers meets the
+declared coating-thickness tolerance. It does not establish whole-contact
+convergence or resolve formal polarity. Current values are cathode
+3.6001 / 5.1275 and electrolyte 1.5317 / 2.8579 J/m² (adhesion / rigid
+separation). Vacuum insensitivity under the finite-range model is a numerical
+check, not validation of polar electrostatics. Follow with the bounded missing
+thickness checks, relaxed registry competitors and the mapped seed-4 comparison,
+or keep unfinished checks explicit if time limits the study. This does not
+alter Adem's smoke-only approval or the separate production cost gate.
+
+No new MLIP, LLM, MP or cluster calculation occurred. No full test suite was
+rerun for this archive/documentation review; the documentation diff and JSON
+validation pass. Preserved the existing uncommitted edits and v4 presentation;
+the deck predates the cathode result and awaits a later revision. This review
+is uncommitted and unpushed.
+
+
+## 2026-10-21 — Viewer update delegated
+
+**Branch:** `davide`, observed HEAD `84f1c76`. The user explicitly requested a
+new subagent for the visualizer. Started `/root/viewer_update` to extend the
+existing offline viewer with the expanded materials, battery environments,
+bulk references and completed nested PET-MAD studies. Scope includes searchable
+provenance, distinct initial/relaxed/slab states, correctly associated adhesion
+and separation results, provisional-status labels, relevant tests and browser
+verification where available. The current builder discovers only one-level
+`selected.json` directories and defaults to the older candidate pool.
+
+The subagent owns viewer code/template/tests and a new `VIEWER_UPDATE.md`; it
+will append a completion report here. Shared science documents and concurrent
+Claude vacuum work are outside its editing scope. No new simulation/API calls,
+commit or push are requested. This entry records dispatch only: implementation
+and validation are pending. Parent remains available for collaborator updates.
+
+## 2026-10-21 — Vacuum check and remaining thickness directions
+
+**Branch:** `davide`; `84f1c76` was pushed first. Follows SYNC_CLAUDE_4.md. Details:
+[CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+
+**Vacuum** (`scripts/vacuum_check.py`, new). Working geometries: cathode 2 + 4 layers,
+electrolyte 4 + 2 layers. Cell z lengthened to 15 / 20 / 25 Å vacuum without scaling
+coordinates; single points on the relaxed interface, the relaxed references and the rigid
+fragments (30 total). W_adh and W_sep change by ≤ 4.4×10⁻⁵ J/m², and the free forces are
+unchanged and within target, so no relaxation was needed. Empty gaps are 15.5–25.7 Å. This is
+expected: PET-MAD's 8.0 Å neighbour list means no edge crosses the vacuum (interaction range
+24 Å via message passing). It is an image-isolation check only, not a treatment of polar
+electrostatics.
+
+**Cathode substrate thickness** (coating 4 layers; LiCoO2 2 / 3 / 4 layers = 696 / 852 /
+1,008 atoms; frozen depth 9.10044154 Å = the same 104 physical atoms; cap 1,200): W_adh
+3.6001 / 3.6011 / 3.6009, W_sep 5.1275 / 5.1278 / 5.1275 J/m². Flat; two LiCoO2 layers kept.
+
+**Electrolyte coating thickness** (argyrodite 4 layers; LiNbF6 2 / 3 / 4 = 544 / 712 / 880
+atoms; depth 3.257602 Å = 38 atoms): W_adh 1.5317 / 1.6198 / 1.6329, W_sep 2.8579 / 2.9525 /
+2.9669 J/m². Final changes +0.013 / +0.014, so **four coating layers is chosen**.
+
+Working values: cathode 3.60 / 5.13 J/m² (696 atoms); electrolyte 1.63 / 2.97 J/m² (880
+atoms). The constraint brackets were measured at two coating layers only. Both contacts are
+formally polar and provisional. All 12 new relaxations converged, with no overlaps; 1,054
+calls plus 8 single points (PET-MAD S 1.6.0, checkpoint `3f52e97c…`, CPU). Evidence:
+`data/petmad/vacuum_v1/`, `data/petmad/thickness_gaps_v1/`; inspections replay identically.
+No LLM, MP or cluster calls. **Next:** relaxed checks of a declared set of competing
+registries, then the seed-4 electrolyte comparison.
+
+
+## 2026-10-21 — Vacuum and remaining-thickness audit
+
+**Branch:** `davide`, HEAD `d0bd1f3`. Checked Claude's new vacuum and remaining
+thickness results. A live GitHub branch-tip query returned `84f1c76`, so the
+new commit was still local. No push or external message was sent.
+
+**Verification:** independently recomputed W_adh/W_sep for four new runs,
+checked all 12 archived relaxation records against finite/convergence/force/
+overlap conditions, reconciled 1,054 calls plus eight separation points, and
+verified fixed masks against baseline physical site coordinates and species.
+Checked all 30 archived vacuum points, their energy arithmetic and the free
+forces of the three relaxed structures per contact; rigid-fragment forces
+are intentionally excluded from the convergence claim. Maximum vacuum energy
+spread is 0.0000441 J/m². The electrolyte coating final increments are
+0.01318 / 0.01436 J/m². Current exact working electrolyte values are
+1.6329358066 / 2.9669046670 J/m² for 880 atoms. Cathode remains
+3.6001359937 / 5.1275398305 J/m² for 696 atoms.
+
+**Scope correction:** vacuum was checked for the earlier 544-atom electrolyte,
+not the final 880-atom geometry. Direct geometry inspection finds the latter's
+empty gap is 15.73147 Å. No new energy/force calculation was made for it.
+Final-geometry constraint brackets remain unrun. The proposed follow-up uses
+two bracket endpoints per contact, a declared four-offset relaxed registry
+comparison (reusing matching baselines), then seed 4 at matched protocol.
+Registry selection must use lowest converged joined energy at fixed
+composition/cell; independently varying isolated-reference minima can
+confound selecting the largest adhesion value. Both contacts remain polar
+and all these checks are bounded numerical sensitivities.
+
+**Files:** `SYNC_CLAUDE_5.md`,
+`data/reviews/vacuum_thickness_review_20261021.json` (including input hashes),
+and the latest REPORT.md checkpoint. The viewer subagent was told the exact
+new working values and vacuum/constraint scope. Its viewer changes and all
+concurrent work were preserved. Presentation v4 is unchanged and predates
+these results. No new MLIP, LLM, Materials Project or cluster runs occurred.
+JSON and whitespace validation pass; no full test suite was rerun for this
+archive/documentation review. The review changes remain uncommitted.
+
+## 2026-10-21 — Expanded structure viewer and archived contact results
+
+**Branch:** `davide`; implementation began at `84f1c76` and includes the completed
+science archives committed concurrently as `d0bd1f3`. The explicitly requested
+viewer subagent updated only viewer code/template/tests, wrote VIEWER_UPDATE.md,
+and appended this checkpoint. It did not edit REPORT.md, CONTACT_PROTOCOL.md,
+Claude's science inputs, parent reviews or their existing log content. No commit,
+push, API, LLM, MP, MLIP or cluster calculation was made by this work.
+
+**Implemented:** recursive contact discovery, exact result/build association,
+verified state-local labels/masks, source hashes, deduplicated expanded candidates,
+all three environment endpoint structures, bulk-relaxed/multistart references,
+search and collection/environment/study/state/contact filters. Added current-contact,
+initial/relaxed and within-study thickness comparisons, exact archived W_adh/W_sep
+cards only on valid relaxed contacts, and explicit build-only, historical and
+provisional labels. Kept offline rendering, XYZ/PNG export, replication, cells and
+fixed/coating/substrate coloring. No benchmark outcome fields are exported.
+
+**Coverage:** 278 geometries: 141 candidate IDs (100 formulas, original 50 included),
+four battery endpoints, 40 reference states and 93 interface/slab states. The latter
+represent 20 calculated runs over two physical contact pairs plus 13 build-only
+inputs. No chloride/LLZO interface geometry is invented. JSON-only vacuum checks do
+not create fake geometry entries. Current shortcuts follow d0bd1f3: cathode 696 atoms,
+3.600136 / 5.127540 J/m²; electrolyte 880 atoms, 1.632936 / 2.966905 J/m². The 544-atom
+baseline remains separately browsable. Both contacts are polar; final-geometry
+constraint brackets and registry/seed sensitivity remain open. The electrolyte
+vacuum sweep belongs to the 544-atom setting, not the final 880-atom geometry.
+
+**Verification:** `.venv/bin/pytest -q tests/test_structure_viewer.py`: **11 passed**,
+including complete catalogue coordinate/mask round trips, polymorph/environment
+identity, missing-metadata recovery, mismatch rejection, partial-run suppression and
+new protocol selection. Existing ASE/NumPy deprecation warnings remain. The local
+browser rendered the final page and exercised filters, no-results/reset, both
+comparison modes, state-specific cards, fixed/group coloring, substrate-only view,
+replication and camera presets. An empty-result reset bug was caught, fixed and
+retested. The final browser check had no new console errors. An actual XYZ download
+round-tripped the cathode coordinates and 104 fixed sites. PNG download and direct
+file:// launch were not separately tested. `git diff --check` is clean; no full
+science tests were needed for the viewer-only change.
+
+**Outputs/reproduce:** `.venv/bin/python scripts/build_structure_viewer.py` writes
+`runs/structure_viewer.html` (about 13.3 MB); refresh the existing localhost:8876 viewer
+or share the HTML itself with Adem. It contains all data/code with no CDN/fetch
+requirement. `runs/structure_viewer_updated_preview.jpg` records the visual check.
+These ignored generated files are local outputs. Detailed coverage, provenance,
+share instructions, limitations and checks are in `VIEWER_UPDATE.md`. Code, tests
+and report remain uncommitted for parent review. Rebuild when new complete studies
+are archived; update the explicit current-run choices only after protocol decisions.
+
+
+## 2026-10-21 — Environment analysis and production-cost review
+
+**Branch:** `davide`, scientific HEAD `d0bd1f3`. Fetched Adem's published
+`work/agent-experiments` at `710d346` and reviewed `0072f3d` (new analysis)
+and smoke execution `26beb73`. No branch merge, checkout switch, commit or
+push occurred. Used an isolated git-archive snapshot under `/private/tmp`
+for execution; concurrent physics and viewer edits were preserved.
+
+**Checks:** workflow code is unchanged since the smoke commit. All smoke
+manifests verify the frozen hashes, seed 999 and approved model/settings;
+returned models are all `claude-haiku-5-5`. Independently counted 31 calls,
+one format retry, 57 queries, 222,668 input and 27,416 output tokens (16,080
+thinking already included). No missing usage/cache/truncated outputs. Public
+Anthropic rates rechecked via its pricing documentation. Smoke arithmetic
+agrees at USD 0.0359748, explicitly a list estimate rather than billed cost.
+Recomputed full-study scenarios: USD 3.67857 expected, 5.26872 contingency,
+9.48899 with all outputs capped and 10% retry allowance. The latter is not
+a true hard spending ceiling. `test_environment_study.py` plus
+`test_experiment_analysis.py` pass: **11 tests**.
+
+**Decision:** recommend the frozen 450-run / 2,790-call production design,
+subject to Davide's explicit approval because his existing approval covers
+smoke only. Adem remains execution owner. Final analysis needs a full-study
+completeness assertion (all 3 environments, 5 arms, seeds 200–229, 6 Holm
+contrasts) and the predeclared secondary uncertainty/per-run fluoride
+summaries. These do not require changing the workflow or collecting another
+smoke batch. No study result or threshold was used to redefine an endpoint.
+
+**Files:** `SYNC_ADEM_8.md`,
+`data/reviews/environment_production_review_20261021.json`, REPORT.md latest
+readiness checkpoint. Also linked the completed viewer subagent's report and
+278-geometry output; its 11 tests and browser checks are recorded in its own
+checkpoint. No new API/LLM/MP/MLIP/cluster run or credential access occurred.
+Whitespace/JSON checks pass. Approval remains pending; no message was sent
+to Adem and no production sign-off box was changed.
+
+
+## 2026-10-21 — Publish the reviewed collaboration package
+
+**Branch:** `davide`, parent `d0bd1f3`. Davide explicitly asked to push
+everything Adem needs. Prepared one commit containing the completed expanded
+viewer (builder, template, tests, report), environment production-cost/analysis
+handoff `SYNC_ADEM_8.md`, physics handoffs 3–5, four machine-readable review
+records, and the accumulated report/log checkpoints. README now points to
+the current handoff and 141-candidate viewer. Frozen scientific tables and
+production spending approval are unchanged; production remains pending.
+
+Copied the already verified v4 presentation unchanged into `presentations/`
+so its GitHub link works. SHA-256 remains
+`b17067ec76c60ed7f31459172e77e1781cbb6e7c392c5c7ef69bbd325c973bd8`.
+A companion README explicitly lists the newer 696/880-atom contact results
+that are absent from v4. No slide content was edited during publication.
+The generated 13 MB viewer HTML remains an ignored local build output; all
+source and archived inputs required to regenerate it are in the shared repo.
+
+**Verification:** tested an isolated snapshot of committed science inputs
+plus the intended publication files, excluding concurrent Claude edits.
+`tests/test_structure_viewer.py`: **11 passed**, existing ASE/NumPy
+deprecation warnings only. Earlier environment analysis review also passed
+11 tests in Adem's isolated branch snapshot. Documentation whitespace and
+review JSON checks pass. Scanned the intended files, including unpacked
+presentation contents, for configured credential values without printing
+them; no matches. `.env` remains ignored and untracked.
+
+A fresh remote check found `origin/davide` already at `d0bd1f3`. This
+publication adds the reviewed collaboration package above it. Concurrent
+CONTACT_PROTOCOL.md additions, final880 vacuum evidence, PET-MAD runner
+changes and Niflheim scripts are intentionally left unstaged for Claude's
+own completed-work commit. No simulation, paid API call or merge of Adem's
+branch occurred. The commit and remote-push result will be reported in chat;
+no production sign-off box was changed.
+
+
+## 2026-10-21 — Explicit production approval recorded
+
+**Branch:** `davide`, parent `3ec7e9d`. Davide explicitly replied
+**“i approve the production”** after the measured smoke-cost review and the
+question requesting approval for the full frozen 2,790-call study. This is
+authorization for the existing full design: three environments, five arms,
+30 repeats per environment/arm, budget 10, seeds 200–229, direct Anthropic
+`claude-haiku-5-5`, temperature 1.0, 4096 output tokens and the frozen prompt,
+tables and six-comparison Holm analysis. Normal recorded retries are included;
+no extra cohort, different model or outcome-driven extension is authorized.
+
+**Changes:** checked the production sign-off in ENVIRONMENT_PROTOCOL.md and
+recorded Adem's already-published smoke verification from `c44d90c`. Updated
+SYNC_ADEM_8.md with an unambiguous go-ahead for Adem, the sole execution owner;
+aligned README.md, current WORK_DIVISION.md, REPORT.md and presentation README.
+Historical review entries and the cost-review JSON retain the approval state
+at their original review time; this later sign-off supersedes those pending
+statements. Costs remain the reviewed estimates, not an invented hard cap.
+
+**Verification:** sections 2–4 of ENVIRONMENT_PROTOCOL.md (frozen inputs,
+settings, outcomes and analysis) are byte-identical to the parent version.
+Documentation diff/whitespace checks pass. No code or scientific data changed,
+so tests were not rerun. No API call, credential access, simulation, paid run
+or duplicate production launch occurred here. Concurrent Claude changes in
+CONTACT_PROTOCOL.md, the PET-MAD runner, final880 vacuum evidence and Niflheim
+scripts are excluded. This sign-off is being committed and pushed for Adem
+under Davide's request to publish everything he needs; actual execution must
+be recorded by Adem's runner.

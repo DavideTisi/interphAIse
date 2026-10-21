@@ -1,0 +1,124 @@
+{
+  "review_date": "2026-10-21",
+  "branch": "davide",
+  "source_commit": "84f1c76",
+  "remote_tip_verified": "40b80fa3f1f65b330a372878c2589ea17c80e7f2",
+  "new_calculations_run": false,
+  "rows": [
+    {
+      "film_layers": 2,
+      "n_atoms": 504,
+      "W_adh_J_m2": 3.479353259166147,
+      "W_sep_J_m2": 5.055056975050356,
+      "film_relaxation_J_m2": 1.4860637214242507,
+      "substrate_relaxation_J_m2": 0.08963999445995732,
+      "calculator_calls": 144,
+      "rigid_separation_single_points": 2,
+      "converged_relaxations": 3,
+      "max_free_force_eV_A": 0.047676670858907,
+      "fixed_substrate_atoms": 104,
+      "same_physical_substrate_and_fixed_mask_as_baseline": true,
+      "baseline_equivalent_fixed_depth_A": 9.100441540200002,
+      "formal_film_polarity_e_per_A": 0.613008057585647,
+      "registry_scan_optimum": {
+        "offset": [
+          0,
+          0
+        ],
+        "gap_A": 2.0,
+        "energy_eV": -3434.247802734375,
+        "status": "ok"
+      },
+      "wall_seconds": 137.97742120799376
+    },
+    {
+      "film_layers": 3,
+      "n_atoms": 600,
+      "W_adh_J_m2": 3.585467630986313,
+      "W_sep_J_m2": 5.109017168275636,
+      "film_relaxation_J_m2": 1.4427634194320453,
+      "substrate_relaxation_J_m2": 0.08078611785727849,
+      "calculator_calls": 146,
+      "rigid_separation_single_points": 2,
+      "converged_relaxations": 3,
+      "max_free_force_eV_A": 0.046057988612412816,
+      "fixed_substrate_atoms": 104,
+      "same_physical_substrate_and_fixed_mask_as_baseline": true,
+      "baseline_equivalent_fixed_depth_A": 9.1004415368,
+      "formal_film_polarity_e_per_A": 0.9195120863784628,
+      "registry_scan_optimum": {
+        "offset": [
+          0,
+          0
+        ],
+        "gap_A": 2.0,
+        "energy_eV": -4060.871826171875,
+        "status": "ok"
+      },
+      "wall_seconds": 153.54112141596852
+    },
+    {
+      "film_layers": 4,
+      "n_atoms": 696,
+      "W_adh_J_m2": 3.600135993716124,
+      "W_sep_J_m2": 5.127539830521539,
+      "film_relaxation_J_m2": 1.4409794293703115,
+      "substrate_relaxation_J_m2": 0.08642440743510382,
+      "calculator_calls": 136,
+      "rigid_separation_single_points": 2,
+      "converged_relaxations": 3,
+      "max_free_force_eV_A": 0.04550692778826697,
+      "fixed_substrate_atoms": 104,
+      "same_physical_substrate_and_fixed_mask_as_baseline": true,
+      "baseline_equivalent_fixed_depth_A": 9.1004415402,
+      "formal_film_polarity_e_per_A": 1.2260161151712965,
+      "registry_scan_optimum": {
+        "offset": [
+          0,
+          0
+        ],
+        "gap_A": 2.0,
+        "energy_eV": -4687.49560546875,
+        "status": "ok"
+      },
+      "wall_seconds": 165.79306120902766
+    }
+  ],
+  "last_step_deltas_J_m2": {
+    "W_adh_J_m2": 0.01466836272981098,
+    "W_sep_J_m2": 0.018522662245903376
+  },
+  "passes_final_two_film_thickness_tolerance": true,
+  "baseline_energy_errors_eV": {
+    "interface": -0.000244140625,
+    "film": 0.0001220703125,
+    "substrate": 0.000244140625
+  },
+  "total_calculator_calls": 426,
+  "additional_rigid_separation_single_points": 6,
+  "total_converged_relaxations": 9,
+  "source_sha256": {
+    "data/petmad/cathode_thickness_v1/run_F2/result.json": "456cb3a942b000fc5c98b817c250f3b6f10be8e39533ce6dfbb7d686cd4a6b0f",
+    "data/petmad/cathode_thickness_v1/run_F2/relaxation_records.json": "899ac2411e23dec4e59488507b111c98c8ced0113fcd9d0b34b1926adfb7ba1b",
+    "data/petmad/cathode_thickness_v1/run_F2/fixed_geometry_separation.json": "697a337fae4bced1b9717990a5a0381c5721719674de4d62959fc54b60ad3627",
+    "data/petmad/cathode_thickness_v1/run_F2/initial.extxyz": "9aff00d1383b0beb6e04a8aa41f26ca35882b02d529fb1a87b00779b69866eb5",
+    "data/petmad/cathode_thickness_v1/run_F2/registry_scan.json": "b24c9c653c2e770f2fed2c54a5e01daf96273915b82b71b28d045f51e7346b7c",
+    "data/petmad/cathode_thickness_v1/run_F3/result.json": "af56eb44137c0d96e2057a4c67361271b069cc60affc51a4cb53eaed1f521eee",
+    "data/petmad/cathode_thickness_v1/run_F3/relaxation_records.json": "c462eadfaa5f7e17b35b05d393a33a2d1d36fbf52783552889cc28113cbb2124",
+    "data/petmad/cathode_thickness_v1/run_F3/fixed_geometry_separation.json": "40a1b60c8814931ad7ed062a829e9b1998949e83f073d0c8af1a5f7c25c7e333",
+    "data/petmad/cathode_thickness_v1/run_F3/initial.extxyz": "54f741d80299773f22e806fd6df45b0bca2cbc488f030059dfe69b189a78a03a",
+    "data/petmad/cathode_thickness_v1/run_F3/registry_scan.json": "2671f9f0de190ba736c4bfb8104fb78b155bfff016521375f5cc070714397568",
+    "data/petmad/cathode_thickness_v1/run_F4/result.json": "ad97256762a84e738e01b793ed10a85c31a5efd830730bdb58a5d19af07d16b4",
+    "data/petmad/cathode_thickness_v1/run_F4/relaxation_records.json": "dd1caf6f3876be6a5b68446b78cacd98d399b89d62bbfceb0121f9e2bf3cbf58",
+    "data/petmad/cathode_thickness_v1/run_F4/fixed_geometry_separation.json": "43655f31756b680f63f88cea0aca3897ab1addda958fd60ef702a1f0d966ead8",
+    "data/petmad/cathode_thickness_v1/run_F4/initial.extxyz": "8029023a9631e93c331ac3e6ba41a92dff366050992cb83a2e0876884afd3d98",
+    "data/petmad/cathode_thickness_v1/run_F4/registry_scan.json": "8d074c8c3b58361a8aa30e43ad0e294750f0dd30e92af25e78da9db6ec4ff815"
+  },
+  "limitations": [
+    "Only cathode coating thickness is tested here; cathode substrate remains two layers.",
+    "Electrolyte-contact coating thickness has not been varied independently.",
+    "Cathode constraint bracket was tested at the original two coating layers, not repeated at four.",
+    "Both contacts are formally polar; numerical tolerances do not validate physical adhesion.",
+    "Registry scans are unrelaxed; relaxed competitors remain untested."
+  ]
+}

@@ -4,14 +4,17 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current handoff — 21 October
 
-The expansion data are now frozen as separate copies in
-`data/benchmarks/environment_v1/`. [SYNC_ADEM_7.md](SYNC_ADEM_7.md) records the
-review of Adem's `fc6a54c`, seeds 200–229, six Holm-corrected contrasts and shuffled
-in every environment. Davide's data review is complete; Adem should finalize the
-protocol and verify the frozen runner. Davide approved the roughly 30-call smoke
-batch only; production remains on hold pending measured-cost review and approval.
-No expanded live LLM batch has started. The temporary combined checkout passes
-136 tests; publication and real branch integration remain separate steps.
+The expansion data are frozen in `data/benchmarks/environment_v1/`. The smoke
+batch, cost review and analysis review are complete. Davide explicitly approved
+**production** on 21 October 2026. **Adem owns execution** of the three-environment,
+five-arm, 30-repeat study at budget 10, seeds 200–229, with six Holm-corrected
+contrasts and shuffled in every environment. Use the unchanged Haiku 5.5 settings
+and record the actual execution commit. See [SYNC_ADEM_8.md](SYNC_ADEM_8.md) and
+[ENVIRONMENT_PROTOCOL.md](ENVIRONMENT_PROTOCOL.md). No duplicate batch has been
+launched from Davide's checkout; start/completion must be recorded by the runner.
+
+The following paragraphs record earlier integration and physics checkpoints;
+the current next-work table below supersedes their pending-task descriptions.
 
 The integrated four-arm experiment is complete: 30 runs per arm, budget 10,
 seeds 100–129, frozen v3, direct Anthropic Haiku 5.5. Iterative finds an acceptable
@@ -42,8 +45,8 @@ prioritize the environment experiment and release review. See
 
 | Owner | Action | Completion evidence |
 |---|---|---|
-| Adem | Finalize the environment protocol, verify the frozen runner and run the approved smoke batch | Frozen hashes, explicit arms, unchanged accounting and excluded smoke batches; report usage/cost for Davide's separate production decision |
-| Davide, with Claude's current implementation | Test electrolyte thickness at fixed depth, then cathode film thickness, vacuum/registry and seed 4 | Primary inputs and constraint bracket complete; 3/4-layer electrolyte inputs fit a 600-atom cap; report W_adh and W_sep convergence, keep polar cathode provisional |
+| Adem | Run the approved full environment study, archive/replay it and complete final analysis | All three environments, five arms, 30 seeds each; six Holm contrasts; smoke excluded; usage and costs reported |
+| Davide, with Claude's current implementation | Complete final-geometry constraint, relaxed registry and seed-4 sensitivity checks | Current working contacts have 696/880 atoms; retain all outcomes and polar-surface limitations, report both W_adh and W_sep |
 | Adem + Davide | Prepare the presentation and reproducible demonstration alongside the calculations | Acceptance and best-bin curves with baselines, one successful and one failed trace, offline two-contact viewer, explicit scientific limits |
 | Together | Review the combined branch and publish a reproducible release | Tests and archive replay pass, reports match the results, both people review scope before merging to `main` |
 

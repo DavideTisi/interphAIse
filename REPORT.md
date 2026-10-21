@@ -1,5 +1,68 @@
 # interphAIse — project report
 
+**Environment production approved — 2026-10-21:** Following the measured-cost
+review, Davide explicitly said “i approve the production”. The approval covers
+the unchanged frozen study: three environments, five arms, 30 repeats, budget
+10, seeds 200–229, Haiku 5.5 via direct Anthropic, temperature 1.0 and 4096
+output tokens. That is 450 runs and approximately 2,790 LLM calls before
+retries. Adem owns execution and may use the commands on his branch in
+SYNC_DAVIDE_4.md. The [protocol](ENVIRONMENT_PROTOCOL.md) and
+[handoff](SYNC_ADEM_8.md) now record the sign-off. No production run was
+launched here; approval does not establish that a run has started. Earlier
+smoke-only/pending statements below describe their historical checkpoints.
+
+**Environment production readiness — 2026-10-21:** Reviewed Adem's `0072f3d`
+analysis at branch head `710d346` and the smoke archive from `26beb73`.
+Eleven relevant analysis tests pass in an isolated snapshot. Recounted 31
+smoke calls, one format retry and complete usage records: USD 0.03597 at
+current public list rates, not provider-billed cost. The full frozen study
+projects to USD 3.68 expected / 5.27 with contingency; USD 9.49 is a high-output
+scenario, not an enforced ceiling. Scientific recommendation is to proceed
+once Davide explicitly approves production; only smoke is currently approved.
+Adem owns execution. See [cost and analysis review](SYNC_ADEM_8.md) for the
+complete-study guard and secondary reporting details to finish before final
+analysis. No live calls or branch merge occurred in this review.
+
+**Viewer update complete — 2026-10-21:** The offline viewer now includes 278
+geometries, with 141 candidate IDs, four battery endpoints, bulk references
+and saved interface/slab states. Current contacts use the 696-atom cathode and
+880-atom electrolyte. Search/filter and comparison controls retain exact
+provenance and provisional labels. Eleven viewer tests and browser interaction
+checks passed; no new calculation was performed. See [VIEWER_UPDATE.md](VIEWER_UPDATE.md)
+and regenerate the local viewer with `python scripts/build_structure_viewer.py`.
+The HTML is an ignored build output; the source and archived inputs are shared.
+
+**Latest contact validation — 2026-10-21:** Reviewed Claude's `d0bd1f3`.
+The working cathode remains 696 atoms at W_adh / W_sep = 3.60014 / 5.12754
+J/m²; the electrolyte now has four substrate and four coating layers, 880
+atoms, at 1.63294 / 2.96690 J/m². Its earlier 544-atom value below is a
+thinner-coating comparison. Independent checks reproduce the four new
+thickness-run energies, 12 converged relaxation records, physical fixed
+masks and 1,054 calls plus eight separation single points. The 30 archived
+vacuum points pass the numerical isolation check, at the cathode 2+4 and
+electrolyte 4+2 geometries. The final electrolyte has a 15.731 Å empty gap but
+no separately archived vacuum sweep. Final-geometry constraint brackets,
+relaxed registry comparisons and the seed-4 comparison remain pending;
+polarity remains unresolved. Recommend publishing the commit and the bounded
+plan in [SYNC_CLAUDE_5.md](SYNC_CLAUDE_5.md). GitHub was at `84f1c76` when
+checked; this audit ran no calculation and made no push. Presentation v4
+still predates the new contact results. Earlier checkpoints below are history.
+
+**Cathode coating-thickness review — 2026-10-21:** Claude's `84f1c76` selects
+four coating layers (696 atoms): W_adh 3.6001 and W_sep 5.1275 J/m², with final
+increments 0.0147 / 0.0185 J/m². Independent archive checks confirm all nine
+recorded relaxations, energy arithmetic, the same physical 104 fixed substrate
+atoms, and 426 calls plus six separation single points. GitHub still points to
+`40b80fa` at this review; `84f1c76` remains local. Recommend publishing it and
+performing bounded vacuum checks, while explicitly addressing the still
+untested LiCoO2 substrate thickness and electrolyte-contact coating thickness
+before claiming whole-contact thickness convergence. Both contacts remain
+formally polar and provisional. See [current Claude handoff](SYNC_CLAUDE_4.md).
+No new calculation or push occurred in this review. The v4 presentation below
+predates this cathode result and needs that update in its next revision.
+
+**Scientific presentation — 21 October 2026:** [Main ideas and results](presentations/interphAIse_main_ideas_and_results_2026-10-21_v4.pptx), 16 main slides plus five technical backup slides, focused exclusively on interphAIse, with editable charts and source notes. Reviewed against the archived results and updated with an explicit LLM decision role, published environment freeze and smoke-only approval, and the bounded cathode-thickness next step. Includes the shuffled control, expanded environment screen and provisional four-layer electrolyte result. This is a saved checkpoint; [presentation notes](presentations/README.md) list newer contact results that are not yet in the deck.
+
 **Publication and smoke sign-off — 2026-10-21:** The frozen environment copies
 preserve every original result row and scientific field. ENVIRONMENT_PROTOCOL.md
 now records their exact hashes and Davide's smoke-only approval. Adem owns the
@@ -8,7 +71,17 @@ current local suite passes 127 tests, including Claude's new thickness code.
 The publication also includes his committed `b51c14e`: four electrolyte layers
 meet the declared final-two-thickness and tested constraint tolerances, while
 vacuum/registry, seed sensitivity and polar-surface limitations remain open.
-The requested presentation is being prepared from this evidence checkpoint.
+The presentation linked above uses this evidence checkpoint.
+
+**Thickness review and next physics step — 2026-10-21:** Confirmed on GitHub
+that `40b80fa` already includes Claude's `b51c14e`. Independent checks of five
+unique archived runs verify 15 converged relaxations, adhesion arithmetic and
+1,827 calculator calls plus ten separation single points. Recommend a bounded
+cathode coating-thickness test at two/three/four layers: geometry-only checks
+give 504/600/696 atoms in the same matching cell, with the same physical
+104-atom substrate constraint. Use an 800-atom study cap and preserve the
+surface cuts. No new MLIP run occurred. See [Claude handoff](SYNC_CLAUDE_3.md)
+for the protocol and qualifications on constraint and registry sensitivity.
 
 **Environment tables frozen; paid study pending — 2026-10-21:** Reviewed Adem's
 `fc6a54c` protocol and froze separate copies of the three environment tables in

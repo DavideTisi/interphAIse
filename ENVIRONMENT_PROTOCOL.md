@@ -1,8 +1,11 @@
-# Environment study: frozen inputs and smoke-approved protocol
+# Environment study: frozen inputs and production-approved protocol
 
 21 October 2026. Drafted by Adem and reviewed on Davide’s side through Codex.
-The data and scientific design are frozen. Davide approved the smoke batch only.
-**Production requires a separate approval after the measured-cost report.** Builds on `ENVIRONMENT_EXPANSION.md`,
+The data and scientific design are frozen. After the measured smoke-cost review,
+Davide explicitly approved production in this chat on 21 October 2026:
+**“i approve the production”. Adem is the execution owner.**
+Approval covers the full frozen design below; it does not mean the runs have
+started or finished. Builds on `ENVIRONMENT_EXPANSION.md`,
 `EXPANSION_PROGRESS.md` and `SYNC_ADEM_5.md`.
 
 ## 1. Question
@@ -95,16 +98,21 @@ as a result.
 
 ## 5. Sequence
 
-1. **Freeze complete** (Davide/Codex): inputs and hashes above are verified. Adem confirms
-   the runner on these copies and records the code commit before smoke.
-2. **Smoke batch approved** (excluded from results): per environment, one upfront run at
+1. **Freeze complete** (Davide/Codex): inputs and hashes above are verified. Adem verified
+   the runner on these copies and recorded smoke execution commit `26beb73`.
+2. **Smoke batch complete** (excluded from results): per environment, one upfront run at
    budget 10 and one sequential, iterative and shuffled run each at budget 3, seed 999.
    Use the frozen tables and omit `--allow-draft`. It checks prompt length, retries and the output cap with
    141 candidates. About 3 × (1 + 3 × 3) = 30 calls. If the prompt or code must change after
    the smoke batch, re-version the prompt and re-freeze this protocol before production.
-3. **Production on hold:** after smoke, report measured usage and expected/conservative
-   costs to Davide and wait for explicit approval. Planned scope: 3 environments × 5 arms × 30 runs. LLM calls before retries:
+3. **Production approved:** Davide approved the full study after reviewing the smoke
+   usage and cost projection in `SYNC_ADEM_8.md`. Adem may execute the commands in
+   `SYNC_DAVIDE_4.md` on his branch, recording the actual commit and workflow hashes.
+   Scope: 3 environments × 5 arms × 30 runs. LLM calls before retries:
    3 × (30 upfront + 3 × 300) = **2,790**.
+   Keep the frozen settings and normal recorded retry policy; report usage after each
+   environment. There is no approval for an additional cohort, alternative model or
+   outcome-driven extension. No duplicate batch should be launched from Davide's checkout.
 4. **Archive** each environment like the v3 batches: runs, manifest, summary, replay audit,
    file hashes, figures and README. Then analyse as section 4.
 
@@ -115,24 +123,28 @@ about 7,200 characters per prompt, roughly 3,900 tokens at the observed 1.86 cha
 token, so about 9,000 input tokens per call. For 2,790 calls that's roughly **25M input and
 2.4M output tokens**. Measure the real figures in the smoke batch before committing. With
 `--workers 3`, v3 ran 300 calls in about 12 minutes, so production is roughly 2 hours of wall
-time.
+time. This earlier token estimate is superseded by the measured-cost projection
+in `SYNC_ADEM_8.md`: USD 3.68 expected, 5.27 with contingency, or 9.49 under the
+stated high-output scenario. These are list-price estimates, not billed amounts
+or an enforced dollar ceiling. The reviewed smoke cost was USD 0.0359748.
 
 ## 7. Recorded decisions
 
 1. Seeds 200–229, disjoint from the original cohort.
 2. Holm over all six planned comparisons.
 3. Shuffled in all three environments.
-4. Davide explicitly approved only the approximately 30-call smoke batch in this chat.
-   Production remains on hold until its measured-cost review and further approval.
+4. Davide first approved the approximately 30-call smoke batch only. After its
+   measured-cost review, he explicitly approved production on 21 October 2026.
+   The approved scope is the unchanged full study in sections 2–5.
 
 ## Sign-off
 
 - [x] Davide side, recorded by Codex on 21 October 2026: data hashes and scientific
   protocol reviewed; smoke spending approved by Davide’s explicit chat answer.
-- [x] Adem, 21 October 2026: runner verified offline on the frozen copies (hashes match, no
-  `--allow-draft`); smoke executed at commit `26beb73` as approved; measured usage and cost
-  in `SYNC_DAVIDE_4.md`.
-- [ ] Davide: approve production after the measured smoke cost report.
+- [x] Adem, as recorded on his branch in `c44d90c`: runner verified on the frozen
+  copies, smoke executed at `26beb73`, usage and costs recorded in `SYNC_DAVIDE_4.md`.
+- [x] Davide, recorded by Codex on 21 October 2026 after the measured-cost review:
+  **“i approve the production”**. Full frozen production approved; Adem owns execution.
 
 ## Public-price cross-check and account billing
 

@@ -1,0 +1,116 @@
+{
+  "review_date": "2026-10-21",
+  "source_commit": "d0bd1f3",
+  "remote_tip_verified": "84f1c762a8a22ab9aeb3264e870b115767bf38e9",
+  "new_calculations_run": false,
+  "thickness_runs": [
+    {
+      "run": "data/petmad/thickness_gaps_v1/run_cathode_S3_F4",
+      "atoms": 852,
+      "W_adh_J_m2": 3.6011050747373123,
+      "W_sep_J_m2": 5.1278041253455,
+      "calls": 136,
+      "new_relaxations": 3,
+      "extra_separation_single_points": 2,
+      "fixed_atoms": 104,
+      "physical_fixed_mask_matches_baseline": true,
+      "actual_final_empty_gap_A": 15.513028832208349,
+      "max_free_force_eV_A": 0.045471662274700536
+    },
+    {
+      "run": "data/petmad/thickness_gaps_v1/run_cathode_S4_F4",
+      "atoms": 1008,
+      "W_adh_J_m2": 3.6008848290506785,
+      "W_sep_J_m2": 5.127495781384212,
+      "calls": 136,
+      "new_relaxations": 3,
+      "extra_separation_single_points": 2,
+      "fixed_atoms": 104,
+      "physical_fixed_mask_matches_baseline": true,
+      "actual_final_empty_gap_A": 15.513031365909399,
+      "max_free_force_eV_A": 0.04550590291536276
+    },
+    {
+      "run": "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F3",
+      "atoms": 712,
+      "W_adh_J_m2": 1.6197604094728648,
+      "W_sep_J_m2": 2.9525434841457874,
+      "calls": 366,
+      "new_relaxations": 3,
+      "extra_separation_single_points": 2,
+      "fixed_atoms": 38,
+      "physical_fixed_mask_matches_baseline": true,
+      "actual_final_empty_gap_A": 15.733018594836409,
+      "max_free_force_eV_A": 0.049634554363683796
+    },
+    {
+      "run": "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4",
+      "atoms": 880,
+      "W_adh_J_m2": 1.6329358066032293,
+      "W_sep_J_m2": 2.9669046670178845,
+      "calls": 416,
+      "new_relaxations": 3,
+      "extra_separation_single_points": 2,
+      "fixed_atoms": 38,
+      "physical_fixed_mask_matches_baseline": true,
+      "actual_final_empty_gap_A": 15.731474414781758,
+      "max_free_force_eV_A": 0.049621267041958
+    }
+  ],
+  "vacuum_checks": [
+    {
+      "source": "data/petmad/vacuum_v1/cathode_coating4.json",
+      "geometry_run": "data/petmad/cathode_thickness_v1/run_F4",
+      "W_adh_spread_J_m2": 4.4049137326585e-05,
+      "W_sep_spread_J_m2": 4.4049137327029086e-05,
+      "relaxed_free_force_targets_pass": true,
+      "minimum_empty_gap_A": 15.513032628507347,
+      "single_points": 15
+    },
+    {
+      "source": "data/petmad/vacuum_v1/electrolyte_substrate4.json",
+      "geometry_run": "data/petmad/thickness_v1/run_L4",
+      "W_adh_spread_J_m2": 0.0,
+      "W_sep_spread_J_m2": 2.29137341398733e-05,
+      "relaxed_free_force_targets_pass": true,
+      "minimum_empty_gap_A": 15.741153954891068,
+      "single_points": 15
+    }
+  ],
+  "new_thickness_calculator_calls": 1054,
+  "new_thickness_relaxations": 12,
+  "extra_separation_single_points": 8,
+  "vacuum_single_points": 30,
+  "electrolyte_final_increment_J_m2": {
+    "W_adh_J_m2": 0.01317539713036453,
+    "W_sep_J_m2": 0.014361182872097089
+  },
+  "source_sha256": {
+    "data/petmad/thickness_gaps_v1/run_cathode_S3_F4/result.json": "14389a5cd5be45d66a00c60b0315a899dfd318762ac26110bfa96bffdb4e3216",
+    "data/petmad/thickness_gaps_v1/run_cathode_S3_F4/relaxation_records.json": "1cbd64ec48255b6bffc938af05cefe4eab49e93333618610f29f8166b24e8cab",
+    "data/petmad/thickness_gaps_v1/run_cathode_S3_F4/fixed_geometry_separation.json": "068d874b5ce8a7cfe974c06f41e4c1ee36578541befb89abcb352a45c5ec0997",
+    "data/petmad/thickness_gaps_v1/run_cathode_S3_F4/registry_scan.json": "745a1bc6cd453f4aa404dbf3bb08feae32a23bd1cafc33f8a5db0bce2d642f54",
+    "data/petmad/cathode_thickness_v1/run_F4/result.json": "ad97256762a84e738e01b793ed10a85c31a5efd830730bdb58a5d19af07d16b4",
+    "data/petmad/thickness_gaps_v1/run_cathode_S4_F4/result.json": "8da43b597e891369aee3c14e27ef760c880f73a5a8cf76c3d68e8128066256ad",
+    "data/petmad/thickness_gaps_v1/run_cathode_S4_F4/relaxation_records.json": "e08357a2458ce839e73a0d7a87a2bb818aa2014b71fe92117724d4ada90d88ad",
+    "data/petmad/thickness_gaps_v1/run_cathode_S4_F4/fixed_geometry_separation.json": "b2938afe6fc6fb8baf083310ef9b8e2b8155800c66673afffc1ee76b84b4f4e5",
+    "data/petmad/thickness_gaps_v1/run_cathode_S4_F4/registry_scan.json": "7ef77866645f6ac4b7e0a6439382be50b59edb9b85ca775e1ef62b684471065d",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F3/result.json": "2cf10f9bfaf7bf0dec7bb9150f3b42da2dcba37370e58a8d686994b2b8e2a690",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F3/relaxation_records.json": "4ab99f2bcc316f453398778c69091fde027822016ea09d1d7e106d1e8e6b005b",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F3/fixed_geometry_separation.json": "15550b71de96035d276ed3797535d2f0f9fc3e8ee4beccd3b9956a0e178cfd00",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F3/registry_scan.json": "30fd16319f9b6dac9bd8313032f0dafacddc37568bbd264277ea1ac2164f7fde",
+    "data/petmad/thickness_v1/run_L4/result.json": "7be2ba7762a18cc1c7c25a70783f9eebb9831588f9c0d121e473db12fde0d906",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/result.json": "c1ed197ddb05f32140b4543e740dd2c6d51e1e0dbc4c7e5250c74a93c3e57243",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/relaxation_records.json": "5df9458a1abaf5e3c9f7f151380a0b8fadd450c90ab72dd6ba7cef7cd723e174",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/fixed_geometry_separation.json": "44e221fd36462640dfb0fe321778231255348eb4f31c723b6e77ea1c9a87d09e",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/registry_scan.json": "7289767552196d7c30e6d8ed0ac90372952d22edc9d04c185193b826201c4294",
+    "data/petmad/vacuum_v1/cathode_coating4.json": "cba33e4e266c9539978703898ac1375ed37ea52b224d0f1d50d733c25897fd35",
+    "data/petmad/vacuum_v1/electrolyte_substrate4.json": "29b76397935c0134b22a9e0991270df3422a5329fddf6812bde98dde2658298e"
+  },
+  "remaining_scope": [
+    "Final-geometry constraint brackets are not run.",
+    "Vacuum scan used the earlier 544-atom electrolyte; final 880-atom geometry has an empty gap above 15 A, but was not separately vacuum-scanned.",
+    "Relaxed registry competitors and seed-4 comparison are not run.",
+    "The numerical checks do not resolve formal polarity or validate physical accuracy."
+  ]
+}
