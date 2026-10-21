@@ -1036,3 +1036,253 @@ force push or collaborator message is part of this request. The new agent-contro
 code/results are still on Adem's branch; both frozen result cohorts and exploratory
 status of the expansion are preserved. Interface construction/validation and the
 separate expanded LLM protocol remain next work.
+
+## 2026-10-21 — Explicit terminations, primary contact builds and constraint check
+
+**Branch:** `davide`. Follows SYNC_CLAUDE_1.md. Details: [CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+
+**Termination selection.** `enumerate_interfaces` gains `terminations`, applied before the
+60-candidate cap, and a `report` that records the available terminations, the ZSL match
+count and truncation. An unknown label raises. New regression test. This recovers the
+F-terminated cathode match that the cap had hidden.
+
+**Equivalent electrolyte cuts.** Termination labels differ between Li6PS5Cl seeds because
+their symmetries differ. Cuts were matched by framework groups (species, parent (111) height
+u = (x+y+z) mod 1, with Li ignored) ranked by mean z on each face. Both seeds descend from the
+same symmetric parent in the same atom order. Atom-index sets and fixed distance windows were
+tried first and were unreliable. Rule, fixed before any interface energy: no cut PS4, an
+equivalent cut in both seeds, then the lowest formal substrate polarity. It selects the Cl
+cut (seed 0 `Li6Cl_P1_7` ≡ seed 4 `Cl2_P-1_2`, identical framework signatures on both faces).
+The old seed-0 pick `P_C2/m_2` cut four PS4 units.
+
+**Builds** (`scripts/build_contact.py`; deterministic, and rebuilding reproduces `build.json`).
+Cathode LiCoO2(001) | LiNbF6(001): 504 atoms, 88.800 Å², 1.952 %, `F2_P-6_3`/`Li_P6/mmm_1`,
+formal |p|/A 2.058 / 0.613. Electrolyte Li6PS5Cl(111) | LiNbF6(001): 440 atoms, seed 0
+170.708 Å², 3.006 %, |p|/A 0.174 / 0.558; seed 4 172.926 Å², 2.864 %, 0.129 / 0.551.
+All slabs are formally neutral and stoichiometric; no polyhedra are cut. The fixed-fraction
+rule fixes 38 vs 36 atoms in seeds 0 and 4. Saved under `data/petmad/contact_v1_*`, which
+the viewer discovers (61 structures after a rebuild).
+
+**Constraint check** (MLIP; PET-MAD S 1.6.0, checkpoint `3f52e97c…`, CPU, 2 threads × 6
+concurrent). `run_petmad_interface.py` gains `--fixed-fraction`/`--threads`; the defaults keep
+the pilot behaviour. Fractions 0.17 / 0.34 / 0.50, all 18 relaxations converged. Cathode W_adh
+3.488 / 3.479 / 3.471 J/m² (insensitive). Electrolyte 1.288 / 1.329 / 1.411 J/m² (monotonic,
+0.123 spread, above the 0.1 tolerance). Fixed-geometry separation
+(`scripts/fixed_geometry_separation.py`, 12 single points): cathode 5.04–5.06 J/m², with the
+separated LiNbF6 slab relaxing by 1.49 J/m²; electrolyte 2.47–2.56 J/m², with the separated
+Li6PS5Cl slab rearranging (Li RMS 0.55–0.65 Å vs the joined interface, about 0.6 J/m²). Cost:
+1,208 calls plus 12 single points, 236–309 s per run. Evidence:
+`data/petmad/constraint_test_v1/`; the inspection replays identically.
+
+**Correction (chat only).** I first attributed the electrolyte sensitivity "almost entirely"
+to the separated slab, from total energies that include different fixed regions. The
+decomposition shows +0.092 J/m² from the fixed-geometry separation, +0.049 from substrate
+relaxation and −0.018 from the film.
+
+**Verification.** The full suite passes (114 tests) with the matcher and runner changes.
+No LLM, MP API or cluster calls. **Next:** electrolyte substrate thickness with a
+fixed-thickness constraint rule, then the cathode film thickness, vacuum, registry, and the
+seed-4 sensitivity. See CONTACT_PROTOCOL.md.
+
+## 2026-10-21 — Independent contact audit and bounded thickness recommendation
+
+**Branch:** `davide`, reviewing Claude's local `7249e7a` on top of published
+`08747a0`. The user relayed the completed contact/constraint study and asked
+whether publication and electrolyte thickness should proceed. Recommendation:
+yes, publish that implementation and run a controlled thickness study. This
+review does not itself push or launch new MLIP calculations.
+
+Read the implementation, CONTACT_PROTOCOL.md, build records and saved outputs.
+Recomputed adhesion and the fixed-geometry separation/relaxation identity from
+archived energies; verified all 18 saved free-force convergence results and
+matching fixed-index maps between joined and separated references. Inspected
+fixed-atom force-vector differences: maxima are 0.033–0.075 eV/Å for the cathode,
+versus 0.418–0.948 eV/Å for the electrolyte. Similar cathode residual forces
+support insensitivity within this bracket, not proof that polar energy errors
+cancel exactly. The +0.092 J/m² electrolyte term is a separation-energy
+difference, not a unique decomposition of the joined-interface energy alone.
+
+Geometry-only reconstructions preserve the seed-0 Cl cut, coating (001), both
+in-plane transformations and the 170.7083 Å² area. Two/three/four substrate layers
+give 440/492/544 atoms and z spans 9.58/15.43/21.28 Å. A fixed bottom depth of
+3.2576018324 Å gives 38 fixed atoms throughout. The two-layer mask equals the
+archived 0.34-fraction mask; coordinates agree modulo periodic wrapping.
+No PS4 tetrahedra are cut. Recommend a 600-atom cap for this bounded test, with
+fixed physical depth, consistent reference masks, and both W_adh/W_sep reported.
+These are input-geometry checks, not thickness-convergence results.
+
+Saved SYNC_CLAUDE_2.md with the calculation protocol, interpretation qualifiers,
+and next-step sequence. Saved numerical review and source/input hashes in
+data/reviews/contact_constraint_review_20261021.json. Updated REPORT.md and
+WORK_DIVISION.md to distinguish completed contact construction/constraint tests
+from pending thickness, vacuum, registry, seed-4 and polarity work. Adem's
+environment-study protocol remains independent; no expanded LLM run is frozen.
+
+Verification: `MPLCONFIGDIR=/private/tmp/interphaise-mpl .venv/bin/python -m
+pytest -q` passes **114 tests** (existing ASE/spglib warnings). The archive
+accounts for 1,208 calculator calls plus 12 separation single points. Scanned
+the 99 committed paths against local configured credential values: no matches;
+.env is ignored and untracked. Full commit whitespace check reports 880 trailing
+spaces in two ASE-generated electrolyte initial.extxyz files; excluding EXTXYZ,
+the check passes. Raw scientific artifacts were left byte-for-byte intact.
+The first scratch geometry export hit NumPy JSON serialization; later scratch
+checks also needed periodic wrapping and the actual archive filename layout
+accounted for. Those diagnostic attempts produced no scientific calculation or
+production data; the completed review export is the one linked above.
+
+No new LLM calls, MP API requests, MLIP evaluations or cluster jobs occurred.
+All review changes are local; Claude retains implementation ownership of the
+thickness study. The original discovery cohort and exploratory expansion tables
+are unchanged. Next: publish the implementation, implement fixed-depth/layer
+options with provenance, run three/four-layer electrolyte cases, then repeat the
+constraint check and remaining numerical/seed sensitivity tests.
+
+## 2026-10-21 — Freeze environment tables and review Adem's experiment protocol
+
+**Branch:** `davide`; reviewed fetched `origin/work/agent-experiments` at
+`fc6a54c`. The user relayed Adem's runner/protocol update and requested the next
+decisions. Read the draft protocol and changed runner/prompt-boundary tests.
+Recommend seeds 200–229, six paired exact McNemar contrasts with Holm correction,
+and shuffled feedback in all three environments. Keep the original v3 objective,
+all 141 candidates per environment, near-ceiling chloride, and the cohorts
+separate. Final protocol sign-off belongs to the collaborators.
+
+Added scripts/freeze_environment_tables.py and nine tests. Froze separate copies
+under data/benchmarks/environment_v1/; every scientific field and all 423 outcomes
+remain exactly equal to their exploratory sources. Original files/manifests are
+unchanged. The new manifest records original/frozen semantic and byte hashes,
+timestamp, scientific decision, and freezer hash. The objective version/hash is
+unchanged. The utility validates the full three-environment set, pool/result
+identity, hashes and scientific consistency and refuses overwrites. Frozen tables
+load through BenchmarkQueries without a draft override.
+
+Found a real integration gap: analysis accepted draft runs although the protocol
+excluded them. Added rejection of draft metadata or unfrozen table contents to
+scripts/analyse_discovery_experiment.py, with three regression tests; existing
+frozen historical archives remain supported. Pinned pymatgen==2026.9.24 and
+pymatgen-core==2026.10.16 in pyproject.toml and requirements.txt, and documented
+the tested setup in README.md. No packages were installed or changed. Adem's
+2026.4.16 mismatch was not independently reproduced, so no upstream root-cause
+claim or matcher-tolerance change is made.
+
+Validation used an isolated archive of fc6a54c with Claude's committed 7249e7a
+changes overlaid: 124 tests passed before this review's code additions, and
+**136 passed after** the freezer/analysis changes. Existing ASE/spglib warnings
+remain. No actual branch merge or branch switch occurred. An initial test-patch
+application encountered Adem's extra analysis tests; applied only the guard and
+appended the new tests, retaining his best-bin code/tests. Reviewed snapshot
+source hashes are saved in data/reviews/environment_freeze_review_20261021.json.
+Later concurrent Claude thickness edits in the shared tree are outside that test
+snapshot and were not overwritten.
+
+Independently reran 100 offline random searches per environment (seeds 0–99):
+25/98/72 successes, matching Adem. Exact probabilities are 25.7369/99.4265/73.5723%.
+Fluoride-first first succeeds at queries 3/1/40. Scripted full ten-query runs of
+upfront/sequential/iterative/shuffled generated 93 inspected prompts across the
+three frozen environments; none contained the checked internal diagnostic fields
+and every task showed the correct electrolyte. These are offline workflow checks,
+not live LLM results. Verified the original expansion artifact manifest, the new
+freeze manifest, all table hashes and unchanged scientific fields.
+
+**Human resource decision:** Davide explicitly chose “Smoke batch only; review
+measured cost before production” in the asynchronous question. Record approval
+for approximately 30 smoke calls only; production is NOT authorized. Recommend
+one upfront run at budget 10 and three sequential-arm runs at budget 3 per
+environment, seed 999: still 30 calls before retries, now testing the full
+shortlist output cap. Adem owns execution to prevent duplicate live batches.
+He must report actual usage, retries and projected production cost before the
+roughly 2,790-call production decision. Keep smoke runs outside all results.
+
+Wrote ENVIRONMENT_FREEZE_REVIEW.md and SYNC_ADEM_7.md and aligned REPORT.md and
+WORK_DIVISION.md. No new paid/API/MLIP or cluster calls occurred in this review.
+These new changes remain local and uncommitted; Claude separately published
+7249e7a during the session (local origin/davide now matches it). Next: publish
+this scoped package, finalize the protocol with frozen hashes, verify the merged
+runner, execute the approved smoke batch once, then seek production approval
+using measured cost. PET-MAD thickness work continues independently.
+
+## 2026-10-21 — Clarify Adem's scientific brief and cost request
+
+**Branch:** `davide`. The user asked for a clear explanation to Adem of what we
+want to do, why, and how to assess expense. Expanded SYNC_ADEM_7.md with the
+scientific question: whether feedback helps the LLM revise chemical hypotheses
+and select the next coating beyond prior knowledge, using the differing sulfide
+and LLZO chemistry as a test. Restated all five arms, three environments, fixed
+settings and primary/secondary measures; distinguished within-run revision from
+cross-environment transfer.
+
+Added a concrete cost-report checklist: verify the returned model/account rates,
+measure input/output/cache usage and retries, report actual versus estimated
+smoke cost, and project expected/conservative production cost by arm/environment
+and total. The 2,790 calls and 25M/2.4M token counts remain planning estimates,
+not dollar quotes or spending caps. Davide's approval remains smoke only; Adem
+must stop afterward and request production approval using the measured costs.
+No external message was sent: the note is saved locally and the chat response
+provides a copyable message for the user to forward.
+
+Documentation-only change; checked the diff and consistency with the existing
+protocol/resource decision. No tests rerun, API/LLM calls, MLIP calculations,
+package changes, commit or push. Concurrent physics changes were left untouched.
+
+## 2026-10-21 — Electrolyte substrate thickness and constraint check at four layers
+
+**Branch:** `davide`. Follows SYNC_CLAUDE_2.md; `7249e7a` was pushed first. Details:
+[CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+
+**Code.** `bottom_fixed_indices` gains `depth`. `run_petmad_interface.py` gains
+`--fixed-depth` (mutually exclusive with `--fixed-fraction`, whose default stays 0.34) and
+`--registry X Y GAP`, which holds the registry while still saving the scan and records the
+scan optimum. It also records fixed indices and slab spans. `build_contact.py` gains
+`--substrate-layers`/`--film-layers`. New test: a constant depth does not grow with slab
+thickness. 115 tests pass.
+
+**Thickness** (seed 0 Cl cut, LiNbF6(001), same transformations, strain and 170.708 Å² area;
+fixed depth 3.257602 Å = 38 atoms throughout; registry (0,0,2 Å); PET-MAD S 1.6.0, checkpoint
+`3f52e97c…`, CPU, 4 threads, 3 concurrent):
+- 2 layers (440 atoms): W_adh 1.3291, W_sep 2.5190 J/m². This reproduces the archived
+  0.34-fraction run, with an identical mask.
+- 3 layers (492): 1.4644 / 2.8052. The unrelaxed scan optimum moved to (0,0.5), but by only
+  0.0177 J/m².
+- 4 layers (544): 1.5317 / 2.8579.
+
+From 3 to 4 layers the changes are +0.067 and +0.053 J/m², below the 0.1 tolerance, so
+**four layers is chosen**. W_adh is still rising. Formal substrate polarity grows with
+thickness (0.174 / 0.260 / 0.347 e/Å) because the Cl cut's two faces are inequivalent.
+
+**Constraint at four layers** (depths declared before running: 1.628801 / 3.257602 /
+6.515204 Å = 26 / 38 / 68 atoms): W_adh 1.5069 / 1.5317 / 1.5549, W_sep 2.8448 / 2.8579 /
+2.8688 J/m². Spreads 0.048 and 0.024 J/m²; criterion met. The separated-slab Li/Cl
+rearrangement (Li RMS about 0.6 Å) persists at every thickness and depth.
+
+**Cost:** 1,827 calculator calls in the five MLIP runs plus 10 separation single points.
+Evidence: `data/petmad/thickness_v1/` (builds and runs); the inspection replays identically.
+No LLM, MP or cluster calls. **Next:** cathode coating thickness, then vacuum/registry for
+both contacts, then the seed-4 sensitivity.
+
+## 2026-10-21 — Publish frozen inputs and smoke-only protocol sign-off
+
+The user relayed Adem's request to publish the frozen inputs and clarify approval,
+while the requested progress presentation remains active. Fetched his 76c493b
+usage-report commit and reviewed the pricing arithmetic. The official Anthropic
+pricing page agrees with USD 0.10/M input and 0.50/M output for Haiku 5.5 prompts
+up to 100k tokens; cache reads/writes have separate rates. The existing planning
+estimate implies about USD 3.70 before retries/account-specific adjustments.
+No Console access or contract terms were verified; no billed-cost claim is made.
+
+Created ENVIRONMENT_PROTOCOL.md from Adem's draft, recording all three exact
+frozen hashes, preserving the agreed scientific design and marking Davide-side
+review/smoke authorization as recorded by Codex. Production approval remains
+unchecked. The protocol incorporates the ten-candidate upfront smoke test,
+three-query sequential arms, and the requirement to report measured cost before
+any production launch. Rechecked every source scientific field and all 423 rows:
+no changes. Only frozen status, provenance metadata and table hashes differ.
+
+The complete current suite passes 127 tests with existing ASE/spglib warnings.
+Claude independently committed b51c14e during prior coordination; that committed
+thickness work is preserved and accompanies the normal branch push. This package
+publishes the previously reviewed freezer, snapshots, analysis guard, dependency
+pins and handoff/report files. No LLM/MP/MLIP or cluster calls were launched here.
+Credential scans and explicit staging precede the push; .env remains ignored.
+Next: Adem verifies the frozen runner and performs the single approved smoke
+batch; Codex continues the progress deck with the original feedback results,
+expanded landscape and current interface evidence separated clearly.

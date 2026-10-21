@@ -39,12 +39,18 @@ def enumerate_interfaces(
     film_miller: tuple[int, int, int],
     names: tuple[str, str],
     settings: MatchSettings | None = None,
+    terminations: list[tuple[str, str]] | None = None,
+    report: dict | None = None,
 ) -> list[tuple[Candidate, Interface]]:
     """All lattice-matched interfaces for one facet pair, every termination.
 
     ``names`` = (substrate_name, film_name) for logging. Returns an empty
     list (not an error) when no match exists within tolerance — the
     orchestrator treats that as a signal to go back to facet selection.
+    ``terminations`` restricts enumeration to those (film, substrate) labels
+    *before* the ``max_candidates`` cap, so a cap cannot hide them; an unknown
+    label raises. ``report``, if given, receives the available terminations,
+    the ZSL match count and whether the cap truncated the enumeration.
     """
     s = settings or MatchSettings()
     zsl = ZSLGenerator(
@@ -60,12 +66,22 @@ def enumerate_interfaces(
         substrate_miller=tuple(substrate_miller),
         zslgen=zsl,
     )
+    if report is not None:
+        report.update(terminations_available=[tuple(t) for t in builder.terminations],
+                      zsl_matches=len(builder.zsl_matches), truncated=False)
     # Newer pymatgen raises on get_interfaces when no ZSL match exists.
     if not builder.zsl_matches:
         return []
+    selected = builder.terminations
+    if terminations is not None:
+        wanted = [tuple(t) for t in terminations]
+        unknown = [t for t in wanted if t not in [tuple(x) for x in builder.terminations]]
+        if unknown:
+            raise ValueError(f"Unknown terminations {unknown}; available: {builder.terminations}")
+        selected = [t for t in builder.terminations if tuple(t) in wanted]
     out: list[tuple[Candidate, Interface]] = []
     seen: set = set()
-    for term in builder.terminations:
+    for term in selected:
         gen = builder.get_interfaces(
             term,
             gap=s.gap,
@@ -95,6 +111,8 @@ def enumerate_interfaces(
             seen.add(key)
             out.append((cand, iface))
             if len(out) >= s.max_candidates:
+                if report is not None:
+                    report["truncated"] = True
                 return out
     return out
 

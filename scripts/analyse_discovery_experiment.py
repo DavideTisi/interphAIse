@@ -63,6 +63,11 @@ def load_experiments(directories, *, benchmark=None, replace_duplicates=False, a
     runs, exclusions = {}, []
     fields = ('prompt_version', 'model', 'temperature', 'max_tokens')
     for directory, manifest in exps:
+        if not manifest.get('synthetic', False) and (
+            manifest.get('allow_draft', False)
+            or manifest.get('benchmark_status', 'frozen') != 'frozen'
+        ):
+            raise ValueError(f'{directory}: draft-table runs are excluded from scientific analysis')
         if manifest['hashes'] != exp['hashes'] or manifest['budget'] != exp['budget']:
             raise ValueError(f'{directory}: hashes or budget differ')
         differences = [key for key in fields if manifest.get(key) != exp.get(key)]
@@ -100,6 +105,8 @@ def load_experiments(directories, *, benchmark=None, replace_duplicates=False, a
     verify_hash(data)
     if data['sha256'] != exp['hashes']['benchmark_sha256']:
         raise ValueError('Analysis benchmark hash differs from runs')
+    if not exp.get('synthetic', False) and data.get('status') != 'frozen':
+        raise ValueError('Draft benchmark is excluded from scientific analysis')
     return exp, data['results'], {arm:[by_seed[s] for s in sorted(by_seed)] for arm,by_seed in runs.items()}, exclusions
 
 

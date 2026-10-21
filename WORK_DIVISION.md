@@ -4,6 +4,15 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current handoff — 21 October
 
+The expansion data are now frozen as separate copies in
+`data/benchmarks/environment_v1/`. [SYNC_ADEM_7.md](SYNC_ADEM_7.md) records the
+review of Adem's `fc6a54c`, seeds 200–229, six Holm-corrected contrasts and shuffled
+in every environment. Davide's data review is complete; Adem should finalize the
+protocol and verify the frozen runner. Davide approved the roughly 30-call smoke
+batch only; production remains on hold pending measured-cost review and approval.
+No expanded live LLM batch has started. The temporary combined checkout passes
+136 tests; publication and real branch integration remain separate steps.
+
 The integrated four-arm experiment is complete: 30 runs per arm, budget 10,
 seeds 100–129, frozen v3, direct Anthropic Haiku 5.5. Iterative finds an acceptable
 candidate in 19/30 runs, upfront and sequential each in 4/30, and sampled random
@@ -14,12 +23,14 @@ succeeds at query 2; best-bin performance is close to random. See
 The publication batch on `davide` builds on `b210db0`, which includes the
 electrolyte-pilot preparation code and provenance. Bulk implementation/evidence
 and audits are committed as `57774d6`; the environment expansion as `81e4625`.
-The full current suite passes 113 tests. See [SYNC_ADEM_6.md](SYNC_ADEM_6.md) for
+That publication checkpoint passed 113 tests. See [SYNC_ADEM_6.md](SYNC_ADEM_6.md) for
 the short handoff. Multistart is now complete: seed 0
 is retained for both distorted materials, with alternative seeds 4 and 1.
-The next physics step is a common LiNbF6(001) orientation with mapped termination
-and consistent reference cells, then polarity/constraint checks; see
-[SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md).
+Claude's subsequent `7249e7a` builds the common LiNbF6(001) contacts, fixes
+termination selection and maps equivalent electrolyte cuts. All 18 constraint
+relaxations and the current 114 tests pass. The next physics step is electrolyte
+thickness at a constant fixed depth, followed by cathode coating thickness and
+remaining convergence checks; see [SYNC_CLAUDE_2.md](SYNC_CLAUDE_2.md).
 Adem's `6e74e88` adds the completed shuffled control: 6/30 versus iterative 19/30,
 with exact paired p = 0.004425. All 300 outcomes and prompt/source maps validate.
 A temporary merge of both committed branches passes 104 tests and preserves
@@ -31,8 +42,8 @@ prioritize the environment experiment and release review. See
 
 | Owner | Action | Completion evidence |
 |---|---|---|
-| Adem | Prepare the expanded environment runner and pre-run protocol; shuffled control is complete | Hashed per-environment query tables, unchanged accounting, matched controls and metrics frozen before new calls |
-| Davide, with Claude's current implementation | Build primary LiNbF6(001) contacts with controlled terminations, then validate polarity and constraints | Multistart references selected; mapped seed-4 alternative, explicit termination selection, inspected interfaces and convergence evidence |
+| Adem | Finalize the environment protocol, verify the frozen runner and run the approved smoke batch | Frozen hashes, explicit arms, unchanged accounting and excluded smoke batches; report usage/cost for Davide's separate production decision |
+| Davide, with Claude's current implementation | Test electrolyte thickness at fixed depth, then cathode film thickness, vacuum/registry and seed 4 | Primary inputs and constraint bracket complete; 3/4-layer electrolyte inputs fit a 600-atom cap; report W_adh and W_sep convergence, keep polar cathode provisional |
 | Adem + Davide | Prepare the presentation and reproducible demonstration alongside the calculations | Acceptance and best-bin curves with baselines, one successful and one failed trace, offline two-contact viewer, explicit scientific limits |
 | Together | Review the combined branch and publish a reproducible release | Tests and archive replay pass, reports match the results, both people review scope before merging to `main` |
 
@@ -63,8 +74,10 @@ follow [SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md): common coating (001) orientation,
 explicit surface selection before truncation, and mapped electrolyte cuts for
 the bulk-configuration comparison. The 200-atom option remains secondary.
 
-Start with LiNbF6 against both endpoints. Rematch the relaxed lattices, inspect
-termination/polarity and constraints, then vary thickness, vacuum and registry.
+LiNbF6 against both endpoints is built and the first constraint bracket is
+complete. Follow [SYNC_CLAUDE_2.md](SYNC_CLAUDE_2.md) for electrolyte thickness
+with a fixed 3.257602 Å bottom depth and unchanged in-plane matching cell.
+Then vary cathode film thickness, vacuum and registry and test the mapped seed 4.
 Use consistent strained cells and reference constraints in adhesion differences.
 Freeze the numerical convergence criterion before comparing candidates; the
 amendment proposes a change of at most 0.1 J/m² across the final two settings,
@@ -72,7 +85,8 @@ which is not an accuracy guarantee. Expand to the other two pinned coatings only
 if this protocol is usable. Start locally and use Niflheim Slurm if measured
 workload warrants it.
 
-The current 2.10 and 0.43 J/m² values remain feasibility results. The electrolyte
+The earlier 2.10 and 0.43 J/m² values remain feasibility results and cannot be
+compared with the new protocol's 3.47–3.49 and 1.29–1.41 J/m² ranges. The electrolyte
 matching limitation was observed for the tested low-index facet pairs and
 unrelaxed lattices; reassess area limits after bulk relaxation. Do not convert the
 present ~185 Å² observation into a universal matching bound. See
@@ -115,8 +129,10 @@ exactly. Davide/Codex owns data/evaluator review; Adem owns adapting the matched
 search experiments and preparing a separate pre-run protocol. Retain all three
 environments, including the easy chloride condition, and report early-query and
 bin-regret curves. These are additional exploratory tasks, not revisions of v3.
-No expanded LLM batch has been launched or frozen; interface validation continues
-independently. The original plan remains in
+The data tables are now frozen, with smoke-only spending approved and final
+protocol/production sign-off pending; no expanded live LLM batch was launched here.
+Interface validation continues independently.
+See [ENVIRONMENT_FREEZE_REVIEW.md](ENVIRONMENT_FREEZE_REVIEW.md). The original plan remains in
 [ENVIRONMENT_EXPANSION.md](ENVIRONMENT_EXPANSION.md).
 
 ## Shared objective

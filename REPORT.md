@@ -1,8 +1,44 @@
 # interphAIse — project report
 
+**Publication and smoke sign-off — 2026-10-21:** The frozen environment copies
+preserve every original result row and scientific field. ENVIRONMENT_PROTOCOL.md
+now records their exact hashes and Davide's smoke-only approval. Adem owns the
+single live smoke batch; production remains on hold for its cost report. The
+current local suite passes 127 tests, including Claude's new thickness code.
+The publication also includes his committed `b51c14e`: four electrolyte layers
+meet the declared final-two-thickness and tested constraint tolerances, while
+vacuum/registry, seed sensitivity and polar-surface limitations remain open.
+The requested presentation is being prepared from this evidence checkpoint.
+
+**Environment tables frozen; paid study pending — 2026-10-21:** Reviewed Adem's
+`fc6a54c` protocol and froze separate copies of the three environment tables in
+`data/benchmarks/environment_v1/`, preserving every scientific field and all 423
+outcomes. Recommend seeds 200–229, Holm correction across six planned paired
+contrasts, and shuffled in all three environments. Davide approved only the
+approximately 30-call smoke batch; production requires a cost review and further
+approval. Final protocol sign-off remains pending; no expanded live LLM run has
+started here. A temporary
+integration with Claude's contact work and the new freezer/analysis guard passes
+136 tests. Both dependency files now pin the tested pymatgen/core versions.
+See [ENVIRONMENT_FREEZE_REVIEW.md](ENVIRONMENT_FREEZE_REVIEW.md) and the short
+[Adem handoff](SYNC_ADEM_7.md). Earlier “no freeze” entries are historical.
+
+**Primary contacts built and reviewed — 2026-10-21:** Claude's `7249e7a` fixes
+termination selection before truncation and maps equivalent, uncut Cl surfaces
+across electrolyte seeds. The 504-atom cathode and two 440-atom electrolyte
+inputs are built. All 18 constraint-study relaxations and 114 tests pass.
+Cathode W_adh spans 3.471–3.488 J/m²; electrolyte seed 0 spans 1.288–1.411 J/m².
+These remain provisional: cathode constraint insensitivity does not prove
+cancellation of polar-surface energy errors, and the electrolyte is sensitive
+across the tested bracket. Recommend publishing the commit and testing electrolyte
+thickness at a fixed bottom depth of 3.257602 Å. Geometry-only checks give
+492/544 atoms for three/four substrate layers; no thickness relaxations were run
+in this review. See [SYNC_CLAUDE_2.md](SYNC_CLAUDE_2.md). The commit is still local
+at this review checkpoint; the earlier contact-build status below is historical.
+
 **Publication checkpoint — 2026-10-21:** Bulk calculations and audits are committed
 as `57774d6`; the audited environment expansion is committed as `81e4625`, both
-on `davide`. The full current suite passes 113 tests. The user requested publication
+on `davide`. That publication checkpoint passed 113 tests. The user requested publication
 to `origin/davide`; [SYNC_ADEM_6.md](SYNC_ADEM_6.md) is the short team handoff.
 Earlier entries saying the work was uncommitted describe their review checkpoints.
 The new agent-control commits remain on Adem's branch pending integration.

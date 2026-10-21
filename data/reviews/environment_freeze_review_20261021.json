@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-21",
+  "reviewed_agent_commit": "fc6a54c",
+  "contact_overlay_commit": "7249e7a",
+  "environments": {
+    "lco_lpscl_4v": {
+      "frozen_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+      "source_sha256": "65f5991aa0ccb87a7f65fd10de411a1dea6cca61d7db736c742426c88286e0a2",
+      "all_scientific_fields_unchanged": true,
+      "random_runs": 100,
+      "random_seeds": [
+        0,
+        99
+      ],
+      "random_acceptable": 25,
+      "exact_random_acceptable_at_10": 0.25736862604537747,
+      "fluoride_first_acceptable_query": 3,
+      "scripted_prompt_checks": {
+        "upfront": 1,
+        "sequential": 10,
+        "iterative": 10,
+        "shuffled": 10
+      }
+    },
+    "lco_lic_4v": {
+      "frozen_sha256": "a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2",
+      "source_sha256": "a5d4eb205f9860a3e49ac4cd361d3d1f11f2f9d8f025fff77b6c3b9c87324464",
+      "all_scientific_fields_unchanged": true,
+      "random_runs": 100,
+      "random_seeds": [
+        0,
+        99
+      ],
+      "random_acceptable": 98,
+      "exact_random_acceptable_at_10": 0.994265291024548,
+      "fluoride_first_acceptable_query": 1,
+      "scripted_prompt_checks": {
+        "upfront": 1,
+        "sequential": 10,
+        "iterative": 10,
+        "shuffled": 10
+      }
+    },
+    "lco_llzo_4v": {
+      "frozen_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060",
+      "source_sha256": "d6ce854b1ffbd77d2771649e9e5d895f7247d2e4b71431fdc41245e5adcc0d54",
+      "all_scientific_fields_unchanged": true,
+      "random_runs": 100,
+      "random_seeds": [
+        0,
+        99
+      ],
+      "random_acceptable": 72,
+      "exact_random_acceptable_at_10": 0.7357230694047536,
+      "fluoride_first_acceptable_query": 40,
+      "scripted_prompt_checks": {
+        "upfront": 1,
+        "sequential": 10,
+        "iterative": 10,
+        "shuffled": 10
+      }
+    }
+  },
+  "original_artifact_manifest_verified": true,
+  "new_live_llm_calls": 0,
+  "new_mp_api_calls": 0,
+  "new_mlip_calls": 0,
+  "tests": {
+    "original_temporary_integration": 124,
+    "with_freezer_and_analysis_guard": 136
+  },
+  "versions": {
+    "pymatgen": "2026.9.24",
+    "pymatgen-core": "2026.10.16",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "ase": "3.29.0",
+    "spglib": "2.8.0"
+  },
+  "tested_snapshot_file_sha256": {
+    "interphaise/discovery.py": "b83ecda178e23019756878d7a18359edc81e38974644a2ea7f0979c322dbdeee",
+    "interphaise/benchmark.py": "738347d89fa7f667d2ff89b14a16381d468def991943708e02644e55ba42d7fd",
+    "interphaise/tools/matcher.py": "314d0ae5c8ba9be8713fd9f6b6b128714c1ad52117ba24cf8dc6dfa8da4915d4",
+    "interphaise/tools/energetics.py": "7c15d7778b8f767fd713d8b4d94f254c233715366dbbaa0c4a242c08180e646e",
+    "scripts/run_discovery_experiment.py": "e88560ce7624c6adbd8cc1fb0482c7d8913a418b1547f693c4240bd0ee092335",
+    "scripts/analyse_discovery_experiment.py": "ea03fb021d6b66e8745121014f29a76d77b2745c41308b85022b47bdd28d1f4e",
+    "scripts/freeze_environment_tables.py": "d07d22a2503b70be5dcc208b8ea3b94bfdd21f293c674b430e686fba669dac9f",
+    "tests/test_experiment_analysis.py": "39d0cfc6f1513d2272637d778214d26e477a11041afdf45320c90cb14bcf0234",
+    "tests/test_freeze_environment_tables.py": "03d3a5d91d83d3018875e5fab8fa2b45e67229b820f1bfd2c21b2e32704c50e5"
+  },
+  "scope": "Temporary integrated snapshot; excludes concurrent later thickness edits in the shared working tree. Offline scripted prompts are not live LLM results.",
+  "resource_decision": {
+    "source": "Direct user answer in this chat, 2026-10-21",
+    "smoke_batch_approved": true,
+    "production_approved": false,
+    "execution_owner": "Adem",
+    "live_calls_by_this_review": 0
+  }
+}

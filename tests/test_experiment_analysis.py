@@ -66,3 +66,31 @@ def test_exact_median_is_inf_when_eligible_candidates_are_sparse():
     # k=5: P(bin<=1) = 1 - C(9,5)/C(10,5) = 0.5
     assert exact_median_best_bin(sparse, 5) == [float('inf'), float('inf'), 4, 4, 1]
     assert exact_median_best_bin([bad] * 6, 3) == [float('inf')] * 3
+
+
+@pytest.mark.parametrize('field,value', [('allow_draft', True), ('benchmark_status', 'exploratory-exhaustive-not-frozen')])
+def test_draft_run_metadata_is_rejected(tmp_path, field, value):
+    directory = batch(tmp_path/'batch')
+    path = directory/'experiment.json'
+    manifest = json.loads(path.read_text())
+    manifest[field] = value
+    path.write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match='draft-table'):
+        load_experiments([directory])
+
+
+def test_draft_table_is_rejected_even_without_manifest_flag(tmp_path):
+    from interphaise.tools.thermo_dataset import digest
+    directory = batch(tmp_path/'batch')
+    table = json.loads((ROOT/'data/benchmarks/coating_v3.json').read_text())
+    table['status'] = 'exploratory-exhaustive-not-frozen'
+    del table['sha256']
+    table['sha256'] = digest(table)
+    table_path = tmp_path/'draft.json'
+    table_path.write_text(json.dumps(table))
+    for path in (directory/'experiment.json', directory/'random_r00.json'):
+        content = json.loads(path.read_text())
+        content['hashes']['benchmark_sha256'] = table['sha256']
+        path.write_text(json.dumps(content))
+    with pytest.raises(ValueError, match='Draft benchmark'):
+        load_experiments([directory], benchmark=table_path)

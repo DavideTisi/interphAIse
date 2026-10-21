@@ -1,0 +1,146 @@
+{
+  "runs": [
+    {
+      "run": "cathode_primary_f0.17",
+      "fixed_atoms": 52,
+      "substrate_span_A": 26.766004530000004,
+      "fixed_cut_depth_A": 4.550220770100001,
+      "max_delta_fixed_force_eV_A": 0.049062642086203416,
+      "mean_delta_fixed_force_eV_A": 0.025312543956323413,
+      "Wadh": 3.488295234043479,
+      "Wsep": 5.055761761247584,
+      "film_relax": 1.486768507621479,
+      "sub_relax": 0.08069801958262497
+    },
+    {
+      "run": "cathode_primary_f0.34",
+      "fixed_atoms": 104,
+      "substrate_span_A": 26.766004530000004,
+      "fixed_cut_depth_A": 9.100441540200002,
+      "max_delta_fixed_force_eV_A": 0.03284061377377256,
+      "mean_delta_fixed_force_eV_A": 0.009063338166018833,
+      "Wadh": 3.47924313632283,
+      "Wsep": 5.0550129259130285,
+      "film_relax": 1.4860857459929142,
+      "sub_relax": 0.08968404359728409
+    },
+    {
+      "run": "cathode_primary_f0.50",
+      "fixed_atoms": 156,
+      "substrate_span_A": 26.766004530000004,
+      "fixed_cut_depth_A": 13.383002265000002,
+      "max_delta_fixed_force_eV_A": 0.07448521531800927,
+      "mean_delta_fixed_force_eV_A": 0.01317508324102886,
+      "Wadh": 3.4708297510934187,
+      "Wsep": 5.044132788993319,
+      "film_relax": 1.4797426702178607,
+      "sub_relax": 0.093560367682039
+    },
+    {
+      "run": "electrolyte_seed0_Cl_f0.17",
+      "fixed_atoms": 26,
+      "substrate_span_A": 9.58118186,
+      "fixed_cut_depth_A": 1.6288009162,
+      "max_delta_fixed_force_eV_A": 0.4176128086783169,
+      "mean_delta_fixed_force_eV_A": 0.21480538526888998,
+      "Wadh": 1.2878205998571701,
+      "Wsep": 2.468318997437219,
+      "film_relax": 0.5655338723035214,
+      "sub_relax": 0.6149645252765279
+    },
+    {
+      "run": "electrolyte_seed0_Cl_f0.34",
+      "fixed_atoms": 38,
+      "substrate_span_A": 9.58118186,
+      "fixed_cut_depth_A": 3.2576018324,
+      "max_delta_fixed_force_eV_A": 0.8772782759218543,
+      "mean_delta_fixed_force_eV_A": 0.37565773836498734,
+      "Wadh": 1.3291082845602578,
+      "Wsep": 2.5189841278370055,
+      "film_relax": 0.5743785736814704,
+      "sub_relax": 0.6154972695952774
+    },
+    {
+      "run": "electrolyte_seed0_Cl_f0.50",
+      "fixed_atoms": 52,
+      "substrate_span_A": 9.58118186,
+      "fixed_cut_depth_A": 4.79059093,
+      "max_delta_fixed_force_eV_A": 0.9481938664829797,
+      "mean_delta_fixed_force_eV_A": 0.4356370649339591,
+      "Wadh": 1.4113542690381742,
+      "Wsep": 2.5603577390431176,
+      "film_relax": 0.5833378437301182,
+      "sub_relax": 0.5656656262748251
+    }
+  ],
+  "calculator_calls_archived": 1208,
+  "separation_single_points_archived": 12,
+  "new_calculator_calls": 0,
+  "review_date": "2026-10-21",
+  "branch": "davide",
+  "reviewed_commit": "7249e7a",
+  "description": "Offline audit of archived forces, energy differences and geometry-only thickness feasibility; not a thickness convergence result.",
+  "geometry_feasibility": [
+    {
+      "substrate_layers": 2,
+      "total_atoms": 440,
+      "substrate_atoms": 104,
+      "film_atoms": 336,
+      "substrate_span_A": 9.581181864731214,
+      "fixed_depth_A": 3.2576018324,
+      "fixed_atoms": 38,
+      "same_mask_as_archived_fraction_0_34": true,
+      "area_A2": 170.70827540491757,
+      "von_mises_strain": 0.030056453923939012,
+      "cut_polyhedra": {
+        "PS4": 0
+      }
+    },
+    {
+      "substrate_layers": 3,
+      "total_atoms": 492,
+      "substrate_atoms": 156,
+      "film_atoms": 336,
+      "substrate_span_A": 15.429539463786456,
+      "fixed_depth_A": 3.2576018324,
+      "fixed_atoms": 38,
+      "same_mask_as_archived_fraction_0_34": null,
+      "area_A2": 170.70827540491757,
+      "von_mises_strain": 0.030056453923939012,
+      "cut_polyhedra": {
+        "PS4": 0
+      }
+    },
+    {
+      "substrate_layers": 4,
+      "total_atoms": 544,
+      "substrate_atoms": 208,
+      "film_atoms": 336,
+      "substrate_span_A": 21.277897062841717,
+      "fixed_depth_A": 3.2576018324,
+      "fixed_atoms": 38,
+      "same_mask_as_archived_fraction_0_34": null,
+      "area_A2": 170.70827540491757,
+      "von_mises_strain": 0.030056453923939012,
+      "cut_polyhedra": {
+        "PS4": 0
+      }
+    }
+  ],
+  "checks": {
+    "pytest_passed": 114,
+    "archived_relaxations_verified": 18,
+    "full_diff_whitespace_check": "880 trailing spaces in two generated initial.extxyz files; code/docs and other data pass",
+    "credential_value_scan": "99 committed paths scanned; no matches; .env ignored and untracked"
+  },
+  "input_hashes": {
+    "data/petmad/contact_v1_electrolyte_seed0_Cl/build.json": "153e30ef307f01750dc12af57e34e81c1e0dce3d5b01977d8f65ce0c0fb499b3",
+    "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+    "data/petmad/bulk_relaxation_v1/LiNbF6/stability_check/final.extxyz": "beaee7192431dd84b292d95935fc8c45151bc63162f64530ec18d739700508b8",
+    "scripts/build_contact.py": "f5b0f1ca460bb64d67989dc757ce88ce5870b04ebf62cce29df8b9105b8eacb4",
+    "interphaise/tools/matcher.py": "314d0ae5c8ba9be8713fd9f6b6b128714c1ad52117ba24cf8dc6dfa8da4915d4",
+    "interphaise/tools/energetics.py": "7c15d7778b8f767fd713d8b4d94f254c233715366dbbaa0c4a242c08180e646e"
+  },
+  "new_live_llm_calls": 0,
+  "new_mp_api_calls": 0
+}

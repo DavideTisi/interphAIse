@@ -1,7 +1,8 @@
-# Environment study: pre-run protocol (DRAFT, not frozen)
+# Environment study: frozen inputs and smoke-approved protocol
 
-21 October 2026. Drafted by Adem for joint review with Davide. Nothing here is frozen until
-both sign off below. **No production LLM calls before then.** Builds on `ENVIRONMENT_EXPANSION.md`,
+21 October 2026. Drafted by Adem and reviewed on Davide’s side through Codex.
+The data and scientific design are frozen. Davide approved the smoke batch only.
+**Production requires a separate approval after the measured-cost report.** Builds on `ENVIRONMENT_EXPANSION.md`,
 `EXPANSION_PROGRESS.md` and `SYNC_ADEM_5.md`.
 
 ## 1. Question
@@ -17,19 +18,21 @@ winners.
 history in a single environment. "Adaptation" means revising the model's prior within a run,
 given the stated environment and the results it queries.
 
-## 2. Frozen inputs (to be confirmed at freeze)
+## 2. Frozen inputs
 
 | Item | Value |
 |---|---|
 | Pool (141 structures, 100 formulas) | `data/exploration/environment_expansion_v1/pool.json`, sha256 `833d5a68…e71d` |
 | Objective (unchanged v3) | sha256 `a194076f…6c0d`: 2 eV gap gate, 0.020 bins, 0.050 acceptance |
 | Cathode / voltage | LiCoO₂ (mp-22526), 4.0 V, imposed Li potential |
-| Li₆PS₅Cl table | `…/evaluation/lco_lpscl_4v.json`, sha256 `65f5991a…e0a2` |
-| Li₃InCl₆ table | `…/evaluation/lco_lic_4v.json`, sha256 `a5d4eb20…4464` |
-| LLZO (ordered tetragonal) table | `…/evaluation/lco_llzo_4v.json`, sha256 `d6ce854b…0d54` |
+| Li₆PS₅Cl table | `data/benchmarks/environment_v1/lco_lpscl_4v.json`, sha256 `f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510` |
+| Li₃InCl₆ table | `data/benchmarks/environment_v1/lco_lic_4v.json`, sha256 `a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2` |
+| LLZO (ordered tetragonal) table | `data/benchmarks/environment_v1/lco_llzo_4v.json`, sha256 `9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060` |
 
-The tables are currently `exploratory-exhaustive-not-frozen`. **Davide freezes them** (status
-`frozen`, hashes recorded here) before production. `BenchmarkQueries` refuses unfrozen tables
+The new copies have status `frozen`; the exploratory originals remain unchanged.
+Every result row and scientific field is identical to its source. Only status, freeze
+metadata and table hash differ. The manifest in `data/benchmarks/environment_v1/`
+records both original and frozen hashes. Use the new copies for smoke and production. `BenchmarkQueries` refuses unfrozen tables
 unless `--allow-draft` is passed. The runner records `allow_draft` and `benchmark_status` in
 `experiment.json`, and runs on drafts are excluded from every result. Endpoints, pool, objective
 and thresholds do not change after freeze. Changing any of them makes a separately labelled
@@ -92,13 +95,15 @@ as a result.
 
 ## 5. Sequence
 
-1. **Freeze** (Davide): set the three tables to `frozen`, record the hashes above, and both sign
-   this file.
-2. **Smoke batch** (excluded from results): 1 repeat × 4 LLM arms × 3 environments, budget 3,
-   seed 999, on the frozen tables. It checks prompt length, retries and the output cap with
+1. **Freeze complete** (Davide/Codex): inputs and hashes above are verified. Adem confirms
+   the runner on these copies and records the code commit before smoke.
+2. **Smoke batch approved** (excluded from results): per environment, one upfront run at
+   budget 10 and one sequential, iterative and shuffled run each at budget 3, seed 999.
+   Use the frozen tables and omit `--allow-draft`. It checks prompt length, retries and the output cap with
    141 candidates. About 3 × (1 + 3 × 3) = 30 calls. If the prompt or code must change after
    the smoke batch, re-version the prompt and re-freeze this protocol before production.
-3. **Production:** 3 environments × 5 arms × 30 runs. LLM calls before retries:
+3. **Production on hold:** after smoke, report measured usage and expected/conservative
+   costs to Davide and wait for explicit approval. Planned scope: 3 environments × 5 arms × 30 runs. LLM calls before retries:
    3 × (30 upfront + 3 × 300) = **2,790**.
 4. **Archive** each environment like the v3 batches: runs, manifest, summary, replay audit,
    file hashes, figures and README. Then analyse as section 4.
@@ -112,20 +117,38 @@ token, so about 9,000 input tokens per call. For 2,790 calls that's roughly **25
 `--workers 3`, v3 ran 300 calls in about 12 minutes, so production is roughly 2 hours of wall
 time.
 
-## 7. Open decisions for the freeze
+## 7. Recorded decisions
 
-1. Seeds 200–229, or reuse 100–129 for continuity? (Disjoint seeds are proposed to avoid
-   implying a pairing with v3.)
-2. Holm over 6 tests, or name LLZO iterative against sequential as the single primary test, the
-   environment where the shortcut fails, with the rest secondary?
-3. Include shuffled in all three environments (2,790 calls), or only LLZO and the sulfide
-   (2,490)?
-4. Is ~25M input tokens within the agreed budget?
+1. Seeds 200–229, disjoint from the original cohort.
+2. Holm over all six planned comparisons.
+3. Shuffled in all three environments.
+4. Davide explicitly approved only the approximately 30-call smoke batch in this chat.
+   Production remains on hold until its measured-cost review and further approval.
 
 ## Sign-off
 
-- [ ] Davide: tables frozen, hashes confirmed, protocol approved
-- [ ] Adem: protocol approved, runner verified on frozen tables
+- [x] Davide side, recorded by Codex on 21 October 2026: data hashes and scientific
+  protocol reviewed; smoke spending approved by Davide’s explicit chat answer.
+- [ ] Adem: verify runner on the frozen copies, record execution code commit and confirm
+  the final smoke protocol before calling the API.
+- [ ] Davide: approve production after the measured smoke cost report.
+
+## Public-price cross-check and account billing
+
+Anthropic’s public pricing page, checked on 21 October 2026, agrees with Adem’s
+rates for Haiku 5.5 prompts up to 100k tokens: USD 0.10/M input, 0.50/M output,
+0.01/M cache reads, 0.125/M five-minute writes and 0.20/M one-hour writes.
+Thus 25M uncached input plus 2.4M output implies about USD 3.70 before retries,
+additional features or account-specific adjustments. This is arithmetic on a
+planning estimate, not a quote or billed cost. Source:
+https://platform.claude.com/docs/en/about-claude/pricing
+
+The API credential does not establish Console access or the account’s contract
+terms. Billed cost and negotiated pricing remain unverified; the account owner
+must confirm them. The smoke report should label usage-based list estimates
+accordingly, include missing usage/retry records, and avoid double-counting
+thinking tokens already included in output tokens. No production approval is
+implied by the public-price check.
 
 ## Already verified (offline, no LLM calls)
 

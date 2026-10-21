@@ -1,0 +1,228 @@
+{
+  "model": "upet:pet-mad-s@1.6.0",
+  "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+  "device": "cpu",
+  "torch_threads": 5,
+  "purpose": "one-contact finite-cell pilot",
+  "fixed_fraction": null,
+  "fixed_depth_A": 1.628801,
+  "n_fixed": 26,
+  "fixed_indices": [
+    0,
+    1,
+    6,
+    7,
+    12,
+    13,
+    18,
+    19,
+    20,
+    21,
+    180,
+    181,
+    182,
+    183,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211
+  ],
+  "slab_z_span_A": {
+    "film": 26.094762522049358,
+    "substrate": 21.277897062841717
+  },
+  "registry_fixed": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "registry_scan_optimum": {
+    "offset": [
+      0,
+      0
+    ],
+    "gap_A": 2.0,
+    "energy_eV": -3114.822021484375,
+    "status": "ok"
+  },
+  "registry_scan_optimum_used": true,
+  "selected": {
+    "candidate": {
+      "pair": [
+        "Li6PS5Cl",
+        "LiNbF6"
+      ],
+      "film_miller": [
+        0,
+        0,
+        1
+      ],
+      "substrate_miller": [
+        1,
+        1,
+        1
+      ],
+      "termination": [
+        "F2_P-6_3",
+        "Li6Cl_P1_7"
+      ],
+      "n_atoms": 544,
+      "area": 170.70827540491757,
+      "von_mises_strain": 0.030056453923939012,
+      "index": 0,
+      "valid": true,
+      "reject_reasons": []
+    },
+    "warnings": [
+      "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+      "substrate slab is polar: |p_z|/A = 0.347 e/\u00c5"
+    ],
+    "contact": "electrolyte_seed0_Cl_L4",
+    "purpose": "explicit-termination contact build; not yet relaxed",
+    "substrate_file": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz",
+    "film_file": "data/petmad/bulk_relaxation_v1/LiNbF6/stability_check/final.extxyz"
+  },
+  "area_A2": 170.70827540491757,
+  "n_atoms": 544,
+  "registry_points": 12,
+  "best_registry": {
+    "offset": [
+      0,
+      0
+    ],
+    "gap_A": 2.0,
+    "energy_eV": -3114.822021484375,
+    "status": "ok"
+  },
+  "relaxations": {
+    "interface": {
+      "converged": true,
+      "finite": true,
+      "steps": 238,
+      "step_limit": 400,
+      "fmax_target_eV_A": 0.05,
+      "initial_energy_eV": -3114.822021484375,
+      "final_energy_eV": -3129.260498046875,
+      "max_free_force_eV_A": 0.04974068574549052,
+      "max_unconstrained_force_eV_A": 0.5377839448667441,
+      "fixed_atom_indices": [
+        0,
+        1,
+        6,
+        7,
+        12,
+        13,
+        18,
+        19,
+        20,
+        21,
+        180,
+        181,
+        182,
+        183,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211
+      ],
+      "calculator_calls": 240,
+      "wall_seconds": 276.0481567500392,
+      "overlap_violations": []
+    },
+    "film": {
+      "converged": true,
+      "finite": true,
+      "steps": 54,
+      "step_limit": 400,
+      "fmax_target_eV_A": 0.05,
+      "initial_energy_eV": -2167.22412109375,
+      "final_energy_eV": -2181.937255859375,
+      "max_free_force_eV_A": 0.030040726879283084,
+      "max_unconstrained_force_eV_A": 0.030040726879283084,
+      "fixed_atom_indices": [],
+      "calculator_calls": 56,
+      "wall_seconds": 41.969002875033766,
+      "overlap_violations": []
+    },
+    "substrate": {
+      "converged": true,
+      "finite": true,
+      "steps": 85,
+      "step_limit": 400,
+      "fmax_target_eV_A": 0.05,
+      "initial_energy_eV": -926.300537109375,
+      "final_energy_eV": -931.267578125,
+      "max_free_force_eV_A": 0.04269871837244461,
+      "max_unconstrained_force_eV_A": 0.4786291806935608,
+      "fixed_atom_indices": [
+        0,
+        1,
+        6,
+        7,
+        12,
+        13,
+        18,
+        19,
+        20,
+        21,
+        96,
+        97,
+        98,
+        99,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127
+      ],
+      "calculator_calls": 87,
+      "wall_seconds": 42.80193179205526,
+      "overlap_violations": []
+    }
+  },
+  "numerically_valid": true,
+  "status": "converged_pilot",
+  "work_of_adhesion_J_m2": 1.506898811967456,
+  "unvalidated_energy_difference_J_m2": 1.506898811967456,
+  "calculator_calls": 395,
+  "calculator_wall_seconds": 373.48003733792575,
+  "wall_seconds": 378.04189204098657,
+  "packages": {
+    "upet": "0.3.1",
+    "torch": "2.14.1",
+    "ase": "3.29.0",
+    "pymatgen": "2026.9.24",
+    "pymatgen-core": "2026.10.16"
+  },
+  "limitations": [
+    "One sharp contact, not both sides of the coating.",
+    "Fixed in-plane cell; no thickness, vacuum, termination or facet convergence study.",
+    "Formal polar-slab warnings remain; the model is a finite-range MLIP.",
+    "Neutral stoichiometric atomistic calculation; no explicit applied voltage or electron reservoir.",
+    "Separate slab references relaxed from the same registry/cell with the same substrate constraints.",
+    "Numerical convergence does not validate chemical accuracy or transport."
+  ]
+}
