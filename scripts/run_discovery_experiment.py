@@ -1,23 +1,25 @@
-"""Repeat discovery runs per arm with paired pool orders. See DISCOVERY_IMPLEMENTATION_PLAN.md §6–7.
+"""Repeat discovery runs per arm against the frozen v3 benchmark. See EVALUATOR_HANDOFF.md.
 
-    python scripts/run_discovery_experiment.py --synthetic --repeats 3 --budget 10
-    python scripts/analyse_discovery_experiment.py runs/<stamp>_experiment --accept -0.05
+    python scripts/run_discovery_experiment.py --arms random --repeats 100        # no LLM
+    python scripts/run_discovery_experiment.py --repeats 10 --temperature 1.0     # main run
+    python scripts/run_discovery_experiment.py --synthetic --repeats 3            # fake pool, dev only
+    python scripts/analyse_discovery_experiment.py runs/<stamp>_experiment --plot curve.png
 
-Repeat r shows every arm the same pool order, so list-order bias is paired across arms.
-Failed runs are kept (their discovery.json has status "failed").
+Repeat r shows every arm the same candidate order (seed r). Each run gets a fresh
+BenchmarkQueries, so failed, repeated and invalid queries cost budget as defined there.
+Failed runs are kept (their JSON has status "failed").
 """
 import argparse
 import json
-import random
 import sys
-from dataclasses import asdict, replace
 from datetime import datetime, timezone
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 import config
-from interphaise.discovery import (LLM_STRATEGIES, STRATEGIES, CoatingEvaluator, SyntheticEvaluator,
-                                   run_discovery, synthetic_pool)
+from interphaise.benchmark import BenchmarkQueries
+from interphaise.discovery import LLM_STRATEGIES, PROMPT_VERSION, STRATEGIES, run_discovery, write_synthetic_benchmark
 from interphaise.llm import make_llm
 
 
@@ -27,50 +29,35 @@ def main():
                         default=["random", "upfront", "sequential", "iterative"])
     parser.add_argument("--repeats", type=int, default=10)
     parser.add_argument("--budget", type=int, default=10)
-    parser.add_argument("--synthetic", action="store_true", help="Fake pool and evaluator (no MP, not chemistry)")
-    parser.add_argument("--pool-seed", type=int, default=0, help="Synthetic benchmark seed (fixed across repeats)")
+    parser.add_argument("--pool", type=Path, default=ROOT / "data/pools/mp_candidates_v2.json")
+    parser.add_argument("--benchmark", type=Path, default=ROOT / "data/benchmarks/coating_v3.json")
+    parser.add_argument("--synthetic", action="store_true", help="Fake pool and benchmark (development only)")
     parser.add_argument("--temperature", type=float, default=None)
     parser.add_argument("--model", choices=[config.LLM_MODEL], default=config.LLM_MODEL)
-    parser.add_argument("--out", type=Path, default=Path("runs"))
+    parser.add_argument("--out", type=Path, default=ROOT / "runs")
     args = parser.parse_args()
 
-    cfg = config.COATING_SCREEN
-    if args.synthetic:
-        cfg = replace(cfg, coatings=synthetic_pool(), include_uncoated=False)
-        base = SyntheticEvaluator(cfg.coatings, seed=args.pool_seed)
-    else:
-        base = CoatingEvaluator(cfg)
-    if not 1 <= args.budget <= len(cfg.coatings):
-        parser.error("budget must be between 1 and the pool size")
-
-    # Outcomes are cached across runs, but every query still costs budget inside run_discovery.
-    cache = {}
-    def evaluator(coating):
-        if coating not in cache:
-            cache[coating] = base(coating)
-        return cache[coating]
-
-    llm = make_llm(args.model, temperature=args.temperature) if set(args.arms) & LLM_STRATEGIES else None
     root = args.out / (datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S") + "_experiment")
     root.mkdir(parents=True)
-    experiment = dict(arms=args.arms, repeats=args.repeats, budget=args.budget, pool=cfg.coatings,
-                      mode="synthetic" if args.synthetic else "thermodynamic", pool_seed=args.pool_seed,
-                      model=args.model if llm else None, temperature=args.temperature,
-                      table={c: asdict(e) for c, e in base.table.items()} if args.synthetic else None)
+    if args.synthetic:
+        args.pool, args.benchmark = write_synthetic_benchmark(root)
+    new_queries = lambda: BenchmarkQueries(args.pool, args.benchmark, budget=args.budget, allow_draft=args.synthetic)
+    task = new_queries().task()  # validates hashes and budget before any paid call
+    llm = make_llm(args.model, temperature=args.temperature) if set(args.arms) & LLM_STRATEGIES else None
+    experiment = dict(arms=args.arms, repeats=args.repeats, budget=args.budget, synthetic=args.synthetic,
+                      pool=str(args.pool), benchmark=str(args.benchmark),
+                      hashes={k: task[k] for k in ("objective_sha256", "pool_sha256", "benchmark_sha256")},
+                      prompt_version=PROMPT_VERSION, model=args.model if llm else None, temperature=args.temperature)
     (root / "experiment.json").write_text(json.dumps(experiment, indent=2))
 
     for r in range(args.repeats):
-        order = cfg.coatings.copy()
-        random.Random(1000 + r).shuffle(order)
         for arm in args.arms:
-            out = root / f"{arm}_r{r:02d}.json"
             try:
-                state = run_discovery(replace(cfg, coatings=order), evaluator, strategy=arm, budget=args.budget,
-                                      seed=r, llm=llm if arm in LLM_STRATEGIES else None, output=out,
-                                      metadata={"repeat": r, "model": experiment["model"],
-                                                "temperature": args.temperature})
-                best = state["trace"][-1]["best"]
-                print(f"r{r:02d} {arm:<10} best={best['coating'] if best else None}", flush=True)
+                state = run_discovery(new_queries(), strategy=arm, seed=r,
+                                      llm=llm if arm in LLM_STRATEGIES else None, output=root / f"{arm}_r{r:02d}.json",
+                                      metadata={"repeat": r, "model": experiment["model"], "temperature": args.temperature})
+                last = state["trace"][-1]
+                print(f"r{r:02d} {arm:<10} best={last['best_candidate_id']} acceptable={last['any_acceptable']}", flush=True)
             except Exception as exc:
                 print(f"r{r:02d} {arm:<10} FAILED {type(exc).__name__}: {exc}", flush=True)
     print(f"Saved {root}")
