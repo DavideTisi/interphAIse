@@ -1,5 +1,18 @@
 # interphAIse — project report
 
+**Frozen physical menu reviewed — 2026-10-22:** Claude's `38e4872` supplies
+LiNbF6 plus the three intended alternatives, frozen primary builds/registries
+and index. Independent checks confirm the manifest hash, all six primary input
+hashes and their atom/fixed-mask counts; 163 tests pass. Adem's unchanged
+`2d2cac3` still needs the readiness fixes and support for both unavailable-job
+statuses. A producer integrity mismatch is detected but still leaves a bundle
+consumable; this must remain distinct from genuine failed calculations.
+Four optional reference consistency jobs are recommended as separate,
+lower-priority robustness work after primary scheduling; they are not launched
+or approved by this review. Live-pilot approval is also pending. See
+[Claude 11](SYNC_CLAUDE_11.md) and the
+[saved audit](data/reviews/frozen_menu_review_20261022.json).
+
 **Pilot readiness reviewed — 2026-10-22:** Adem's `2d2cac3` passes 183 offline
 tests; independent production replay preserves all 450 runs and planned
 comparisons. Three remaining pilot gaps were reproduced with temporary data

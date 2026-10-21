@@ -1,5 +1,13 @@
 # Adem: pilot readiness review and focused fixes before live calls
 
+**Physics update, 22 October:** Claude has pushed frozen menu/inputs/index and
+contract response at `work/petmad-comparison:38e4872`, manifest `99ef2dc1…`.
+Read [SYNC_CLAUDE_11.md](SYNC_CLAUDE_11.md): all three intended alternatives
+are present. Your current loader rejects both unavailable sensitivity statuses;
+support `not_run_resource_limit` and `not_run_no_admissible_construction` with
+their reasons. Distinguish evidence-integrity errors from terminal calculation
+failures before allowing feedback. The readiness fixes below still apply.
+
 22 October 2026, Copenhagen. Reviewed your pushed `2d2cac3` in an isolated
 archive with the pinned environment. **183 tests pass in 20.46 s**, and
 `analyse_environment_study.py --production` replays the real 450-run archive

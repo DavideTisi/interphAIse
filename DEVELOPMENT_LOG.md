@@ -2558,3 +2558,48 @@ implementation fix occurred. Check JSON, document links, whitespace and staged
 credentials; commit/push the review handoff under Davide's standing sharing
 authorization and verify the remote head. The earlier tests are sufficient;
 documentation-only edits do not require another full suite.
+
+## 2026-10-22 — Review Claude's frozen menu and recommend execution priorities
+
+**Branch:** `davide`, starting `92fcb27`. Read the user-supplied Claude transcript
+as status evidence, then fetched both contributor branches. Claude is at
+`38e4872250e5317bf54e4805a302e29f7621196c`; Adem remains at
+`2d2cac35093e6f481048701fb216ab48a7d033f1`. Inspected an isolated Git archive;
+neither contributor worktree nor the shared implementation was changed.
+
+The frozen physical menu has LiNbF6 reference and LiTaF6/LiCaAlF6/LiF options.
+Verified manifest SHA256 `99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f`
+against its sidecar and index. Checked the six primary interface hashes and
+loaded the structures to reconstruct total atom counts plus fixed counts/species
+under the declared depths. All match the manifest and fit the 1,250 cap. LiF's
+frozen cathode has 1,032 atoms. The index declares 18 pending primary jobs for
+the three options and five reused reference runs; only the two selected options
+are to be evaluated. The three unavailable sensitivities remain explicit.
+
+`python -m pytest -q -p no:cacheprovider` on Claude's snapshot passes **163 tests
+in 25.84 s**, with 2,661 existing ASE/spglib deprecation warnings. Passing the
+real frozen index to Adem's current loader fails on the two unavailable-status
+types. A temporary stored-W_adh mutation to 999 is correctly detected by the
+new producer, but it becomes a terminal failed run while the bundle remains
+`consumable_by_agent: true`. Assigned the remaining distinction between corrupt
+evidence and genuine failed calculations to Claude/Adem; the former must block
+consumption, the latter remains a reported outcome. The larger readiness fixes
+in SYNC_ADEM_13 remain pending. No genuine result was modified or invalidated.
+
+Recommended four optional reference registry checks as lower-priority robustness
+work after selected primaries are scheduled, conditional on approval and no
+delay. Their 12–24 GPU-minute estimate uses Claude's reference timing and excludes
+queue/setup. An additive execution note must preserve the original frozen
+manifest (which says zero new reference jobs), budget and primary information
+state. No optional outcome goes into decision prompts. This is a recommendation,
+not authorization, submission or a live-API approval. Six primary jobs for each
+new coating remain ordered after its archived approved LLM selection/predictions.
+
+Saved `SYNC_CLAUDE_11.md` and `data/reviews/frozen_menu_review_20261022.json`;
+updated SYNC_ADEM_13, REPORT and WORK_DIVISION. Checked hashes/counts and focused
+integration cases, not every registry equivalence or the full construction search.
+No live API request, potential evaluation, cluster job, external message or branch
+merge. Preserve the unrelated README edit. Validate documentation/JSON/whitespace
+and staged credentials, then publish these handoff files under the standing
+sharing authorization. Next: focused integration fixes, reviewed real-reference
+mock, explicit live approval, first archived selection and bounded primary batch.

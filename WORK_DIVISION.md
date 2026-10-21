@@ -4,6 +4,13 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current assignments: LLM-guided three-coating pilot — 22 October
 
+**Latest handoff:** Claude has frozen the four-member feasible menu and primary
+inputs in `38e4872`; hashes/counts and 163 offline tests reproduce. Read
+[SYNC_CLAUDE_11.md](SYNC_CLAUDE_11.md) for the final contract integration,
+integrity-versus-calculation-failure distinction and recommended lower-priority
+reference checks. Adem remains at `2d2cac3`; [note 13](SYNC_ADEM_13.md) is pending.
+No new calculation or live-call approval is implied by this status update.
+
 Davide clarified that the LLM should choose new coatings using PET-MAD feedback.
 Use LiNbF6 as the known reference, then let the LLM select two new coatings
 sequentially from a frozen feasible menu. The current scope and scientific
@@ -41,7 +48,7 @@ No new interface calculation was made in these reviews.
 | Owner | Next work | Done when |
 |---|---|---|
 | **Adem** | Finish the focused readiness fixes: validate sources on the live path, persist attempt accounting before transport, include prior predictions, and agree the revised contract with Claude. | Reproduction regressions pass; genuine reference feedback completes the mocked loop; settings/snapshots remain frozen; bounded live command and cost are ready for approval. See [SYNC_ADEM_13.md](SYNC_ADEM_13.md). |
-| **Claude** | Retain tested F1/F2; revalidate the menu at 1,250; fix feedback gates and freeze builds/registries; evaluate each archived LLM choice. | Comparable complete primary feedback, validated arithmetic, explicit costs/failures and unavailable checks. See [SYNC_CLAUDE_10.md](SYNC_CLAUDE_10.md). |
+| **Claude** | Keep the frozen menu/builds; finish the producer/consumer contract with Adem and block corrupt evidence; calculate six primary jobs for each archived approved selection. | Complete validated primary feedback; costs and failure types explicit; optional reference work separately approved and reported. See [SYNC_CLAUDE_11.md](SYNC_CLAUDE_11.md). |
 | **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
 
 Adem keeps `work/agent-experiments`; give Claude an isolated physics

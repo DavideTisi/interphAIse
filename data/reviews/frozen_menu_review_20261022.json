@@ -1,0 +1,104 @@
+{
+  "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+  "primary_builds": [
+    {
+      "formula": "LiTaF6",
+      "contact": "cathode",
+      "atoms": 696,
+      "fixed_atoms": 104,
+      "primary_registry_count": 3,
+      "interface_sha256_verified": true
+    },
+    {
+      "formula": "LiTaF6",
+      "contact": "electrolyte",
+      "atoms": 880,
+      "fixed_atoms": 38,
+      "primary_registry_count": 3,
+      "interface_sha256_verified": true
+    },
+    {
+      "formula": "LiCaAlF6",
+      "contact": "cathode",
+      "atoms": 720,
+      "fixed_atoms": 120,
+      "primary_registry_count": 3,
+      "interface_sha256_verified": true
+    },
+    {
+      "formula": "LiCaAlF6",
+      "contact": "electrolyte",
+      "atoms": 1212,
+      "fixed_atoms": 57,
+      "primary_registry_count": 3,
+      "interface_sha256_verified": true
+    },
+    {
+      "formula": "LiF",
+      "contact": "cathode",
+      "atoms": 1032,
+      "fixed_atoms": 144,
+      "primary_registry_count": 3,
+      "interface_sha256_verified": true
+    },
+    {
+      "formula": "LiF",
+      "contact": "electrolyte",
+      "atoms": 1108,
+      "fixed_atoms": 38,
+      "primary_registry_count": 3,
+      "interface_sha256_verified": true
+    }
+  ],
+  "new_primary_jobs_pending": 18,
+  "reference_primary_jobs_reused": 5,
+  "unavailable_sensitivity": [
+    {
+      "run_id": "mp-aaaaajby:electrolyte:sensitivity:thickness_increment",
+      "status": "not_run_resource_limit"
+    },
+    {
+      "run_id": "mp-aaaaajby:electrolyte:sensitivity:robustness_case",
+      "status": "not_run_no_admissible_construction"
+    },
+    {
+      "run_id": "mp-aaaaabru:electrolyte:sensitivity:robustness_case",
+      "status": "not_run_no_admissible_construction"
+    }
+  ],
+  "review_date_copenhagen": "2026-10-22",
+  "physics_commit": "38e4872250e5317bf54e4805a302e29f7621196c",
+  "agent_commit": "2d2cac35093e6f481048701fb216ab48a7d033f1",
+  "full_offline_suite": {
+    "passed": 163,
+    "elapsed_seconds": 25.84,
+    "command": "python -m pytest -q -p no:cacheprovider",
+    "warnings": 2661
+  },
+  "consumer_integration": {
+    "result": "rejected",
+    "reason": "Current agent RUN_STATUSES excludes not_run_resource_limit and not_run_no_admissible_construction",
+    "source": "Imported the reviewed agent loader and passed the unmodified frozen physics index"
+  },
+  "producer_integrity_case": {
+    "mutation": "Stored W_adh changed to 999 in a temporary copy of a genuine reference run",
+    "run_status": "failed",
+    "consumable_by_agent": true,
+    "failure": "stored W_adh 999 != recomputed 3.600356",
+    "selected_cathode_registry": "R3"
+  },
+  "recommendation": {
+    "live_LLM": "Await existing SYNC_ADEM_13 fixes, contract integration and explicit user approval",
+    "optional_reference_jobs": "Recommend four as lower-priority robustness work after primaries are scheduled; separate approval/addendum, outside decision feedback, no delay to pilot",
+    "selected_new_materials": 2,
+    "primary_jobs_per_selected_material": 6
+  },
+  "scope": "Manifest/hash and primary atom/fixed-mask reconstruction, full offline tests and targeted interface checks; not a new independent search of every geometry or registry equivalence.",
+  "actions": {
+    "live_LLM_calls": 0,
+    "MLIP_evaluations": 0,
+    "cluster_jobs": 0,
+    "external_messages": 0,
+    "branch_merges": 0
+  }
+}
