@@ -1,8 +1,44 @@
-# interphAIse — work division for Davide and Adem
+# interphAIse — work division for Davide, Adem and Claude
 
 OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
-## Current handoff — 21 October
+## Current assignments: deliver the three-coating comparison — 21 October
+
+Davide confirmed the three-coating PET-MAD expansion as the next deliverable.
+Code polishing supports that comparison. Start with LiNbF6, LiCaAlF6 and
+LiZr2(PO4)3 at both battery contacts, using the bounded construction and
+predeclared fallback policy in [MLIP_COMPARISON_PLAN.md](MLIP_COMPARISON_PLAN.md).
+The geometry checkpoint is the first milestone, not the end of Claude's task.
+
+The review of `davide:8975d4b` and Adem's latest `b8b1392` reproduces the
+completed results and identifies four code safeguards to add. See
+[JOINT_REVIEW_AND_HANDOFF.md](JOINT_REVIEW_AND_HANDOFF.md) for reproductions,
+scope and acceptance criteria. The findings are open; no implementation fix
+or new production calculation has been made in this review.
+
+| Owner | Next work | Done when |
+|---|---|---|
+| **Adem** | Fix F3 production validation and F4 retry accounting; build the manifest-driven MLIP reader/validator, comparison table and figures alongside Claude's work; update slides. | Old results reproduce; invalid new results are flagged; three-coating outcomes and sensitivity flags regenerate from committed inputs. See [SYNC_ADEM_11.md](SYNC_ADEM_11.md). |
+| **Claude** | Fix F1 convergence and F2 checkpoint/reference safeguards; prepare/freeze the three-coating cohort; execute the bounded two-contact campaign and archive results. | Safeguards pass; three selected coatings have two documented contact outcomes each and their declared sensitivity checks, with failures retained explicitly. See [SYNC_CLAUDE_8.md](SYNC_CLAUDE_8.md). |
+| **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
+
+Adem keeps `work/agent-experiments`; give Claude an isolated physics
+branch/worktree for new work; Davide integrates on `davide`. This is a proposed
+ownership arrangement, not a branch creation or a message sent to either
+contributor. Adem owns `llm.py` and analysis; Claude owns energetics/relaxation
+and PET-MAD scripts. Davide consolidates the shared status files. Keep scoped
+handoff entries to avoid simultaneous edits to the same log paragraphs.
+
+The safeguards, geometry preparation and analysis infrastructure can proceed
+in parallel. Commit the manifest before new interface energies, then carry the
+bounded campaign through validation and comparison. Routine work inside the
+declared scope needs no repeated sign-off. No repeat of the 450-run LLM study
+is needed. Complete slides and release preparation alongside this work.
+
+## Previous production handoff — 21 October
+
+The following section records the earlier handoff; the assignments above
+supersede its next-work table and pending-task descriptions.
 
 **Production is complete and reviewed:** Adem's `06a4271` has all 450 runs;
 independent replay and the six planned comparisons pass. The current work is

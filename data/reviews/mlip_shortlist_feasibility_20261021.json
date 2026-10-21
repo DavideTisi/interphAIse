@@ -1,0 +1,1549 @@
+{
+  "date": "2026-10-21",
+  "branch": "davide",
+  "source_commit": "8975d4bac6e4c66230281610574ca8bb47a08950",
+  "status": "offline feasibility assessment only; no MLIP or API runs",
+  "packages": {
+    "pymatgen": "2026.9.24",
+    "pymatgen-core": "2026.10.16",
+    "ase": "3.29.0",
+    "numpy": "2.5.4"
+  },
+  "inputs": {
+    "data/petmad/bulk_relaxation_v1/LiCoO2/stability_check/final.extxyz": "fbc74ea9f3a0d0e8cffce48c842fa93ef9b206b10973f77737f7571598706cb2",
+    "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+    "data/petmad/bulk_relaxation_v1/LiCaAlF6/stability_check/final.extxyz": "50f9f096d3d8e7ab4a032fbfe3384f623f199ef3f59d5ddfbdd4e238ba44e0ac",
+    "data/petmad/bulk_relaxation_v1/LiZr2(PO4)3/stability_check/final.extxyz": "367c9fce92389fa81e64fe86f06f48c44fb2e97520e0b0abc81df025e8097775"
+  },
+  "audits": {
+    "facet_001_geometry": {
+      "scope": "Bounded geometry-only (001) coating-facet preflight; 2+2 layers, not convergence or an exhaustive search; no MLIP calls",
+      "max_area_A2": 300,
+      "max_atoms": 1200,
+      "contacts": [
+        {
+          "substrate": "LiCoO2",
+          "film": "LiCaAlF6",
+          "substrate_miller": [
+            0,
+            0,
+            1
+          ],
+          "film_miller": [
+            0,
+            0,
+            1
+          ],
+          "substrate_termination": "Li_P6/mmm_1",
+          "input_sha256": {
+            "substrate": "fbc74ea9f3a0d0e8cffce48c842fa93ef9b206b10973f77737f7571598706cb2",
+            "film": "50f9f096d3d8e7ab4a032fbfe3384f623f199ef3f59d5ddfbdd4e238ba44e0ac"
+          },
+          "enumeration": {
+            "terminations_available": [
+              [
+                "Ca_P6/mmm_1",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "Ca_P6/mmm_1",
+                "O2_P6/mmm_1"
+              ],
+              [
+                "F2_P-6_3",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "F2_P-6_3",
+                "O2_P6/mmm_1"
+              ]
+            ],
+            "zsl_matches": 779,
+            "truncated": true
+          },
+          "term_samples": [
+            {
+              "termination": [
+                "Ca_P6/mmm_1",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 8,
+              "truncated": true,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": [
+                {
+                  "atoms": 108,
+                  "area_A2": 20.49231106338367,
+                  "strain": 0.016297613363872584,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.948 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991006994,
+                  "substrate_span_A": 26.766004526567293
+                },
+                {
+                  "atoms": 216,
+                  "area_A2": 40.984622126767334,
+                  "strain": 0.016297613363872532,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.948 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991007,
+                  "substrate_span_A": 26.766004526567293
+                },
+                {
+                  "atoms": 324,
+                  "area_A2": 61.47693319015101,
+                  "strain": 0.016297613363872532,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.948 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991006994,
+                  "substrate_span_A": 26.766004526567304
+                },
+                {
+                  "atoms": 432,
+                  "area_A2": 81.96924425353467,
+                  "strain": 0.016297613363872417,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.948 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991007,
+                  "substrate_span_A": 26.766004526567293
+                },
+                {
+                  "atoms": 456,
+                  "area_A2": 88.8000146079959,
+                  "strain": 0.010130673956979563,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.875 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991007,
+                  "substrate_span_A": 26.7660045265673
+                },
+                {
+                  "atoms": 540,
+                  "area_A2": 102.46155531691834,
+                  "strain": 0.016297613363872494,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.948 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991006994,
+                  "substrate_span_A": 26.766004526567304
+                },
+                {
+                  "atoms": 648,
+                  "area_A2": 122.953866380302,
+                  "strain": 0.016297613363872455,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.948 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991007,
+                  "substrate_span_A": 26.766004526567293
+                },
+                {
+                  "atoms": 756,
+                  "area_A2": 143.44617744368568,
+                  "strain": 0.016297613363872192,
+                  "cut_polyhedra": {
+                    "film": {
+                      "AlF6": 0
+                    },
+                    "substrate": {
+                      "CoO6": 0
+                    }
+                  },
+                  "warnings": [
+                    "film slab is polar: |p_z|/A = 0.948 e/\u00c5",
+                    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+                  ],
+                  "film_span_A": 17.980468991007,
+                  "substrate_span_A": 26.766004526567297
+                }
+              ]
+            },
+            {
+              "termination": [
+                "F2_P-6_3",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 8,
+              "truncated": true,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            }
+          ],
+          "wall_seconds": 5.5975800000014715
+        },
+        {
+          "substrate": "Li6PS5Cl",
+          "film": "LiCaAlF6",
+          "substrate_miller": [
+            1,
+            1,
+            1
+          ],
+          "film_miller": [
+            0,
+            0,
+            1
+          ],
+          "substrate_termination": "Li6Cl_P1_7",
+          "input_sha256": {
+            "substrate": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+            "film": "50f9f096d3d8e7ab4a032fbfe3384f623f199ef3f59d5ddfbdd4e238ba44e0ac"
+          },
+          "enumeration": {
+            "terminations_available": [
+              [
+                "Ca_P6/mmm_1",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "Ca_P6/mmm_1",
+                "LiS3_P1_8"
+              ],
+              [
+                "Ca_P6/mmm_1",
+                "P_C2/m_2"
+              ],
+              [
+                "Ca_P6/mmm_1",
+                "Li_P-1_2"
+              ],
+              [
+                "Ca_P6/mmm_1",
+                "S_P2_1/m_2"
+              ],
+              [
+                "Ca_P6/mmm_1",
+                "S_P-1_2"
+              ],
+              [
+                "Ca_P6/mmm_1",
+                "Cl2_P2/m_1"
+              ],
+              [
+                "F2_P-6_3",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "F2_P-6_3",
+                "LiS3_P1_8"
+              ],
+              [
+                "F2_P-6_3",
+                "P_C2/m_2"
+              ],
+              [
+                "F2_P-6_3",
+                "Li_P-1_2"
+              ],
+              [
+                "F2_P-6_3",
+                "S_P2_1/m_2"
+              ],
+              [
+                "F2_P-6_3",
+                "S_P-1_2"
+              ],
+              [
+                "F2_P-6_3",
+                "Cl2_P2/m_1"
+              ]
+            ],
+            "zsl_matches": 0,
+            "truncated": false
+          },
+          "term_samples": [
+            {
+              "termination": [
+                "Ca_P6/mmm_1",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "F2_P-6_3",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            }
+          ],
+          "wall_seconds": 0.8061515419976786
+        },
+        {
+          "substrate": "LiCoO2",
+          "film": "LiZr2(PO4)3",
+          "substrate_miller": [
+            0,
+            0,
+            1
+          ],
+          "film_miller": [
+            0,
+            0,
+            1
+          ],
+          "substrate_termination": "Li_P6/mmm_1",
+          "input_sha256": {
+            "substrate": "fbc74ea9f3a0d0e8cffce48c842fa93ef9b206b10973f77737f7571598706cb2",
+            "film": "367c9fce92389fa81e64fe86f06f48c44fb2e97520e0b0abc81df025e8097775"
+          },
+          "enumeration": {
+            "terminations_available": [
+              [
+                "O2_P6/mmm_1",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "O2_P6/mmm_1",
+                "O2_P6/mmm_1"
+              ],
+              [
+                "ZrO2_P1_3",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "ZrO2_P1_3",
+                "O2_P6/mmm_1"
+              ],
+              [
+                "PO2_P1_9",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "PO2_P1_9",
+                "O2_P6/mmm_1"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "O2_P6/mmm_1"
+              ],
+              [
+                "ZrO3_P1_4",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "ZrO3_P1_4",
+                "O2_P6/mmm_1"
+              ],
+              [
+                "PO2_C2_9",
+                "Li_P6/mmm_1"
+              ],
+              [
+                "PO2_C2_9",
+                "O2_P6/mmm_1"
+              ]
+            ],
+            "zsl_matches": 10,
+            "truncated": true
+          },
+          "term_samples": [
+            {
+              "termination": [
+                "O2_P6/mmm_1",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 5,
+              "truncated": false,
+              "reject_reasons": {
+                "too many atoms": 5
+              },
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "ZrO2_P1_3",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 5,
+              "truncated": false,
+              "reject_reasons": {
+                "too many atoms": 5
+              },
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "PO2_P1_9",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 5,
+              "truncated": false,
+              "reject_reasons": {
+                "too many atoms": 5
+              },
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "LiZrO3_P1_5",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 5,
+              "truncated": false,
+              "reject_reasons": {
+                "too many atoms": 5
+              },
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "ZrO3_P1_4",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 5,
+              "truncated": false,
+              "reject_reasons": {
+                "too many atoms": 5
+              },
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "PO2_C2_9",
+                "Li_P6/mmm_1"
+              ],
+              "sampled": 5,
+              "truncated": false,
+              "reject_reasons": {
+                "too many atoms": 5
+              },
+              "valid_uncut_stoichiometric": []
+            }
+          ],
+          "wall_seconds": 29.057169167033862
+        },
+        {
+          "substrate": "Li6PS5Cl",
+          "film": "LiZr2(PO4)3",
+          "substrate_miller": [
+            1,
+            1,
+            1
+          ],
+          "film_miller": [
+            0,
+            0,
+            1
+          ],
+          "substrate_termination": "Li6Cl_P1_7",
+          "input_sha256": {
+            "substrate": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+            "film": "367c9fce92389fa81e64fe86f06f48c44fb2e97520e0b0abc81df025e8097775"
+          },
+          "enumeration": {
+            "terminations_available": [
+              [
+                "O2_P6/mmm_1",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "O2_P6/mmm_1",
+                "LiS3_P1_8"
+              ],
+              [
+                "O2_P6/mmm_1",
+                "P_C2/m_2"
+              ],
+              [
+                "O2_P6/mmm_1",
+                "Li_P-1_2"
+              ],
+              [
+                "O2_P6/mmm_1",
+                "S_P2_1/m_2"
+              ],
+              [
+                "O2_P6/mmm_1",
+                "S_P-1_2"
+              ],
+              [
+                "O2_P6/mmm_1",
+                "Cl2_P2/m_1"
+              ],
+              [
+                "ZrO2_P1_3",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "ZrO2_P1_3",
+                "LiS3_P1_8"
+              ],
+              [
+                "ZrO2_P1_3",
+                "P_C2/m_2"
+              ],
+              [
+                "ZrO2_P1_3",
+                "Li_P-1_2"
+              ],
+              [
+                "ZrO2_P1_3",
+                "S_P2_1/m_2"
+              ],
+              [
+                "ZrO2_P1_3",
+                "S_P-1_2"
+              ],
+              [
+                "ZrO2_P1_3",
+                "Cl2_P2/m_1"
+              ],
+              [
+                "PO2_P1_9",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "PO2_P1_9",
+                "LiS3_P1_8"
+              ],
+              [
+                "PO2_P1_9",
+                "P_C2/m_2"
+              ],
+              [
+                "PO2_P1_9",
+                "Li_P-1_2"
+              ],
+              [
+                "PO2_P1_9",
+                "S_P2_1/m_2"
+              ],
+              [
+                "PO2_P1_9",
+                "S_P-1_2"
+              ],
+              [
+                "PO2_P1_9",
+                "Cl2_P2/m_1"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "LiS3_P1_8"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "P_C2/m_2"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "Li_P-1_2"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "S_P2_1/m_2"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "S_P-1_2"
+              ],
+              [
+                "LiZrO3_P1_5",
+                "Cl2_P2/m_1"
+              ],
+              [
+                "ZrO3_P1_4",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "ZrO3_P1_4",
+                "LiS3_P1_8"
+              ],
+              [
+                "ZrO3_P1_4",
+                "P_C2/m_2"
+              ],
+              [
+                "ZrO3_P1_4",
+                "Li_P-1_2"
+              ],
+              [
+                "ZrO3_P1_4",
+                "S_P2_1/m_2"
+              ],
+              [
+                "ZrO3_P1_4",
+                "S_P-1_2"
+              ],
+              [
+                "ZrO3_P1_4",
+                "Cl2_P2/m_1"
+              ],
+              [
+                "PO2_C2_9",
+                "Li6Cl_P1_7"
+              ],
+              [
+                "PO2_C2_9",
+                "LiS3_P1_8"
+              ],
+              [
+                "PO2_C2_9",
+                "P_C2/m_2"
+              ],
+              [
+                "PO2_C2_9",
+                "Li_P-1_2"
+              ],
+              [
+                "PO2_C2_9",
+                "S_P2_1/m_2"
+              ],
+              [
+                "PO2_C2_9",
+                "S_P-1_2"
+              ],
+              [
+                "PO2_C2_9",
+                "Cl2_P2/m_1"
+              ]
+            ],
+            "zsl_matches": 0,
+            "truncated": false
+          },
+          "term_samples": [
+            {
+              "termination": [
+                "O2_P6/mmm_1",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "ZrO2_P1_3",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "PO2_P1_9",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "LiZrO3_P1_5",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "ZrO3_P1_4",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            },
+            {
+              "termination": [
+                "PO2_C2_9",
+                "Li6Cl_P1_7"
+              ],
+              "sampled": 0,
+              "truncated": false,
+              "reject_reasons": {},
+              "valid_uncut_stoichiometric": []
+            }
+          ],
+          "wall_seconds": 21.34846754197497
+        }
+      ]
+    },
+    "low_index_lattice": {
+      "scope": "Lattice feasibility only: no atom-count, termination chemistry, polyhedra or convergence claims",
+      "max_area_A2": 300,
+      "max_length_tol": 0.05,
+      "max_angle_tol": 0.03,
+      "max_area_ratio_tol": 0.1,
+      "results": [
+        {
+          "film": "LiCaAlF6",
+          "film_miller": [
+            1,
+            0,
+            0
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 137,
+              "termination_pairs": 4
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 4,
+              "termination_pairs": 14
+            }
+          }
+        },
+        {
+          "film": "LiCaAlF6",
+          "film_miller": [
+            0,
+            0,
+            1
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 779,
+              "termination_pairs": 4
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 14
+            }
+          }
+        },
+        {
+          "film": "LiCaAlF6",
+          "film_miller": [
+            1,
+            1,
+            0
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 42,
+              "termination_pairs": 4
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 14
+            }
+          }
+        },
+        {
+          "film": "LiCaAlF6",
+          "film_miller": [
+            1,
+            0,
+            1
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 62,
+              "termination_pairs": 8
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 28
+            }
+          }
+        },
+        {
+          "film": "LiCaAlF6",
+          "film_miller": [
+            1,
+            1,
+            1
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 15,
+              "termination_pairs": 2
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 7
+            }
+          }
+        },
+        {
+          "film": "LiZr2(PO4)3",
+          "film_miller": [
+            1,
+            0,
+            0
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 0,
+              "termination_pairs": 8
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 28
+            }
+          }
+        },
+        {
+          "film": "LiZr2(PO4)3",
+          "film_miller": [
+            0,
+            1,
+            0
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 0,
+              "termination_pairs": 16
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 56
+            }
+          }
+        },
+        {
+          "film": "LiZr2(PO4)3",
+          "film_miller": [
+            0,
+            0,
+            1
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 10,
+              "termination_pairs": 12
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 42
+            }
+          }
+        },
+        {
+          "film": "LiZr2(PO4)3",
+          "film_miller": [
+            1,
+            1,
+            0
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 0,
+              "termination_pairs": 6
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 21
+            }
+          }
+        },
+        {
+          "film": "LiZr2(PO4)3",
+          "film_miller": [
+            1,
+            0,
+            1
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 0,
+              "termination_pairs": 4
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 14
+            }
+          }
+        },
+        {
+          "film": "LiZr2(PO4)3",
+          "film_miller": [
+            0,
+            1,
+            1
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 0,
+              "termination_pairs": 8
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 28
+            }
+          }
+        },
+        {
+          "film": "LiZr2(PO4)3",
+          "film_miller": [
+            1,
+            1,
+            1
+          ],
+          "contacts": {
+            "LiCoO2": {
+              "zsl_matches": 0,
+              "termination_pairs": 2
+            },
+            "Li6PS5Cl": {
+              "zsl_matches": 0,
+              "termination_pairs": 7
+            }
+          }
+        }
+      ]
+    },
+    "lcaf_100_geometry": {
+      "scope": "Bounded geometry-only two-layer sampling, at most eight matches per selected termination; not a final converged geometry",
+      "results": [
+        {
+          "substrate": "LiCoO2",
+          "substrate_miller": [
+            0,
+            0,
+            1
+          ],
+          "film": "LiCaAlF6",
+          "film_miller": [
+            1,
+            0,
+            0
+          ],
+          "records": [
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 408,
+              "area_A2": 95.63078496245711,
+              "strain": 0.022707213560004103,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 2
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 408,
+              "area_A2": 95.63078496245713,
+              "strain": 0.023165003645093756,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 2
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 408,
+              "area_A2": 95.63078496245711,
+              "strain": 0.023450786890624156,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 2
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 432,
+              "area_A2": 102.46155531691836,
+              "strain": 0.03591913857223245,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 2
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 432,
+              "area_A2": 102.46155531691838,
+              "strain": 0.03639253914115424,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 2
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 432,
+              "area_A2": 102.46155531691835,
+              "strain": 0.03580516831113857,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 2
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 588,
+              "area_A2": 136.61540708922445,
+              "strain": 0.01964361467414463,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 3
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 588,
+              "area_A2": 136.61540708922448,
+              "strain": 0.019537216014898426,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 3
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 408,
+              "area_A2": 95.63078496245711,
+              "strain": 0.022707213560004103,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 4
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 408,
+              "area_A2": 95.63078496245713,
+              "strain": 0.023165003645093756,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 4
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 408,
+              "area_A2": 95.63078496245711,
+              "strain": 0.023450786890624156,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 4
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 432,
+              "area_A2": 102.46155531691836,
+              "strain": 0.03591913857223245,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 4
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 432,
+              "area_A2": 102.46155531691838,
+              "strain": 0.03639253914115424,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 4
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 432,
+              "area_A2": 102.46155531691835,
+              "strain": 0.03580516831113857,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 4
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 588,
+              "area_A2": 136.61540708922445,
+              "strain": 0.01964361467414463,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 6
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li_P6/mmm_1"
+              ],
+              "atoms": 588,
+              "area_A2": 136.61540708922448,
+              "strain": 0.019537216014898426,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 6
+              },
+              "cut_substrate_polyhedra": {
+                "CoO6": 0
+              },
+              "termination_sample_truncated": true
+            }
+          ]
+        },
+        {
+          "substrate": "Li6PS5Cl",
+          "substrate_miller": [
+            1,
+            1,
+            1
+          ],
+          "film": "LiCaAlF6",
+          "film_miller": [
+            1,
+            0,
+            0
+          ],
+          "records": [
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.06241310737636,
+              "strain": 0.024243481907260337,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 5
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.0624131073764,
+              "strain": 0.022195801975390398,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 5
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.06241310737636,
+              "strain": 0.0244109658985027,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 5
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            },
+            {
+              "termination": [
+                "CaF2_P2/c_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.0624131073764,
+              "strain": 0.022319137505932864,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 5
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.06241310737636,
+              "strain": 0.024243481907260337,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 10
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.0624131073764,
+              "strain": 0.022195801975390398,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 10
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.06241310737636,
+              "strain": 0.0244109658985027,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 10
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            },
+            {
+              "termination": [
+                "LiAlF4_P2_6",
+                "Li6Cl_P1_7"
+              ],
+              "atoms": 336,
+              "area_A2": 256.0624131073764,
+              "strain": 0.022319137505932864,
+              "valid_basic_gates": true,
+              "reject": [],
+              "warnings": [
+                "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+              ],
+              "stoichiometric": true,
+              "cut_film_polyhedra": {
+                "AlF6": 10
+              },
+              "cut_substrate_polyhedra": {
+                "PS4": 0
+              },
+              "termination_sample_truncated": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Only the low-index facets returned by the existing low_index_millers helper were examined. No higher-index or larger-area search.",
+    "The geometry sample used 2+2 crystallographic layers, which are unequal physical thicknesses across materials.",
+    "Per-termination geometry samples are capped at eight unique candidates; truncation is recorded.",
+    "No surface energy, force, relaxation, final thickness/constraint gate or MLIP energy was evaluated.",
+    "An AlF6 cut is a surface-model decision to review; it is not by itself proof the material cannot be modelled."
+  ]
+}

@@ -1,5 +1,43 @@
 # interphAIse — project report
 
+**Three-coating campaign directed — 2026-10-21:** Davide confirmed the
+three-coating comparison as the next deliverable. Start with LiNbF6, LiCaAlF6
+and LiZr2(PO4)3 at both contacts, with a bounded geometry gate and a declared
+LiF-then-LiTaF6 contingency before interface energies. Claude owns calculation
+safeguards, construction and the full bounded campaign; Adem owns discovery
+code safeguards plus the MLIP validator, table and figures; Davide/Codex owns
+scope, independent review, integration and the viewer. See
+[Claude's handoff](SYNC_CLAUDE_8.md), [Adem's handoff](SYNC_ADEM_11.md) and
+[the updated plan](MLIP_COMPARISON_PLAN.md). This is physical assessment of a
+shortlist, separate from the completed thermodynamic feedback experiment.
+The handoffs are written; fixes and new calculations have not been performed
+in this planning update. No external message was sent.
+
+**Joint code/evidence review — 2026-10-21:** Reviewed `davide:8975d4b` and
+Adem's freshly fetched `b8b1392`. Fresh replay matches all 450 runs, 4,500
+charged outcomes and 2,800 recorded proposal attempts; primary results are
+unchanged. Checked 37 PET-MAD result packages and 105 available final
+relaxations, with no force/energy inconsistency found. The two compact smoke
+packages omit their final structures. Offline suites pass 145 tests on davide,
+158 on Adem's branch and 159 on the combined committed-tree preview; the
+preview has one development-log conflict and is not an actual branch merge.
+Four open safeguards concern legacy relaxation convergence, matching model
+checkpoints, production-analysis integrity/settings, and HTTP retry accounting.
+They do not invalidate the independently replayed archive. See
+[review and assignments](JOINT_REVIEW_AND_HANDOFF.md) and
+[WORK_DIVISION.md](WORK_DIVISION.md). No implementation fix or new production
+calculation was made.
+
+**MLIP comparison feasibility — 2026-10-21:** The proposed three-coating
+follow-up is useful but not ready for an unchanged-protocol launch. Offline
+geometry checks find a shared LiCaAlF6(100) orientation with exposed Al
+coordination to review; LiZr2(PO4)3 has no electrolyte match in the tested
+low-index set under the existing 300 Å² cap. The bounded plan budgets a
+geometry gate first, then approximately 2–6 GPU-hours and 1–2 working days
+for three coatings, conditional on suitable cells. See
+[MLIP_COMPARISON_PLAN.md](MLIP_COMPARISON_PLAN.md) and its saved audit.
+No new MLIP production, API call or cluster job has started.
+
 **Goals versus results — 2026-10-21:** [GOALS_AND_RESULTS.md](GOALS_AND_RESULTS.md)
 compares the 20 October plan with the completed evidence. Feedback improves
 sulfide candidate selection, with environment-dependent limits; general search
