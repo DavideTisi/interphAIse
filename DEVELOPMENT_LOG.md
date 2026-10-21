@@ -355,3 +355,106 @@ Git confirmed the remote advance from `a2880b5` to `35be6ef`. The working tree w
 clean before publication; `.env` remains untracked and ignored. No code changes,
 tests, calculations, cluster submissions or merges were performed in this step.
 This follow-up log entry accompanies the publication on the same branch.
+
+## 2026-10-21 — Audit review concerns and amend the pre-run plan
+
+On `davide`, checked the supplied review against the frozen v3 artifacts. Added
+`scripts/audit_chemical_prior.py` and its replayable output
+`data/benchmarks/chemical_prior_audit.json`. It validates the frozen inputs through
+BenchmarkQueries, orders candidates using only fluorine membership and candidate
+ID, and records the full offline trajectory and input hashes. The heuristic itself
+was motivated by inspection of outcomes; the report discloses this rather than
+claiming blind preregistration.
+
+Results: 50 IDs, **42** distinct formula strings (correcting the review's 43), six
+fluorinated candidates, both acceptable candidates fluorinated. The deterministic
+order first succeeds at query 2. Random ordering within the six succeeds by query 3
+with probability 0.8. Removing fluorine leaves zero acceptable candidates. Both
+LiO8 entries fail insulation (gaps 0.1521 and 0 eV); physical plausibility remains
+unvalidated. The frozen pool/objective were not modified.
+
+Added `EXPERIMENT_AMENDMENT.md`, linked it from REPORT and SYNC_ADEM, and superseded
+the earlier ten-repeat recommendation with at least 30. The plan specifies the
+feedback contrast, saturation interpretation, polymorph identity, controls and
+integration responsibilities. It keeps the 2.1003 J/m² pilot outside comparative
+rankings and prioritizes bulk relaxation followed by surface/constraint/convergence
+checks. These experiments remain planned, not executed.
+
+Verification: ran the audit against the actual frozen benchmark; independently
+enumerated all three-element subsets of the fluoride group to check the 0.8
+probability; checked deterministic replay and whitespace. No paid LLM, MP API,
+MLIP or cluster run occurred. No incoming Adem branch was inspected or merged.
+Changes are local and not pushed. Next: integrate Adem's runner against this
+protocol and implement/validate PET-MAD bulk relaxation before rebuilding slabs.
+
+## 2026-10-21 — Offline interactive structure viewer
+
+On `davide`, added `scripts/build_structure_viewer.py` and
+`scripts/viewer/template.html`. The generator reads the 50 saved pool structures
+and four pilot geometries into a self-contained HTML file, with no external web
+assets, credentials or API calls. The generated local deliverable is
+`runs/structure_viewer.html` (ignored, approximately 420 KB). A browser preview is
+running at http://127.0.0.1:8876/structure_viewer.html; opening the HTML directly
+also works without a server.
+
+Implemented linked orthographic views, initial/relaxed selection, drag rotation,
+zoom and orientation presets, a/b cell replication, element/layer/constraint
+colouring, layer filtering, atom hover details and PNG/extended-XYZ exports.
+Custom ASE-readable inputs can be appended with repeated `--structure` arguments.
+No interpolation, bond assignment, energy ranking or new calculation is performed.
+Cells and coordinates remain unwrapped; panels centre their geometry independently.
+The initial file lacks the later relaxation constraints, which the UI states.
+
+Verification: generated 54 entries and round-tripped all geometry downloads through
+ASE, matching species, coordinates, cells and PBC. Confirmed 64 fixed atoms and
+32 film atoms in the relaxed interface. Added a scientific data-preservation test:
+`.venv/bin/python -m pytest tests/test_structure_viewer.py -q` passed (1 test;
+4 existing ASE/NumPy deprecation warnings). Browser checks verified comparison at
+desktop width, narrow layout, bulk selection, layer filtering (128 coating atoms
+for 2x2), cell replication (896 interface atoms for 2x2), and orientation controls.
+No browser JavaScript errors were observed. Saved a visual preview to
+`runs/structure_viewer_preview.png`. Whitespace checks passed.
+
+Updated README and REPORT and wrote STRUCTURE_VIEWER.md with usage, extension
+instructions and scientific limitations. Earlier review amendments remain local.
+An independent edit to scripts/prepare_interface_pilot.py appeared during this
+session; it was not changed or included in viewer verification. No LLM/MP calls,
+MLIP runs, cluster jobs, commits or pushes were made for this viewer task.
+Next: rebuild the viewer as bulk-relaxed and converged interface geometries become
+available; the viewer itself does not resolve those outstanding scientific checks.
+
+## 2026-10-21 — Show both coating contacts in the viewer
+
+The electrolyte pilot artifacts were already present from independent work when
+this request began. Inspected selected.json/result.json and the saved geometries;
+no new calculation was needed or launched here. Removed the viewer's single-folder
+limitation: its default now discovers data/petmad/*/selected.json, and --pilot can
+be repeated. Each geometry carries its material pair, source directory and state.
+The rebuilt offline HTML contains 58 structures: 50 bulk and eight pilot geometries
+from LiCoO2 | LiNbF6 (224 interface atoms) and Li6PS5Cl | LiNbF6 (216).
+
+Added a Contact selector for initial/relaxed comparisons and Compare contacts for
+both relaxed interfaces. Corrected cathode-specific substrate labels. Added optional
+in-plane periodic wrapping (on by default) to display the electrolyte slab inside
+its cell; original coordinates remain in exports. No z wrapping or geometry
+optimization occurs. Updated STRUCTURE_VIEWER.md and REPORT.md.
+
+Verification: two viewer tests passed, including both contact identities and all
+four electrolyte geometry exports against their original files. Browser checks
+confirmed contact switching, the 224/216-atom comparison, and wrapped rendering;
+no JavaScript errors were observed before the wrapping addition. Saved the updated
+comparison preview under runs/structure_viewer_preview.png. Changes remain local,
+not committed or pushed. Other ongoing pilot-code/data changes were left intact.
+
+## 2026-10-21 — Prepare viewer publication
+
+At the user's request, preparing a commit on davide containing the offline viewer,
+its tests/documentation, the saved electrolyte pilot data required for the second
+contact, and the pending review amendment/audit referenced by REPORT and SYNC_ADEM.
+The two viewer tests and interactive checks passed in the preceding session; no
+implementation changes required repeating them. Publication checks include staged
+whitespace, explicit file inventory and credential exclusion. Generated HTML stays
+ignored under runs and can be rebuilt with scripts/build_structure_viewer.py.
+Independent modifications to scripts/prepare_interface_pilot.py and
+scripts/inspect_interface_pilot.py remain unstaged and are not part of this commit.
+No API or calculation runs were performed. Push outcome is reported in the chat.

@@ -1,5 +1,12 @@
 # Reply to Adem — evaluator and experiment sync
 
+**Latest amendment (21 October):** See [EXPERIMENT_AMENDMENT.md](EXPERIMENT_AMENDMENT.md).
+It supersedes the ten-repeat recommendation below with at least 30 per arm and
+adds the implemented fluoride-first baseline, saturation interpretation and explicit
+polymorph wording. Removing fluorine is not a valid acceptance control: no remaining
+candidate passes v3. Earlier publication status below is historical; the evaluator
+and PET-MAD pilot were subsequently pushed to `origin/davide` through `8f97726`.
+
 21 October 2026. Prepared for Davide to share; not sent automatically.
 Responds to Adem's `SYNC_DAVIDE.md`. His branch and live-run results are reported
 in that note; they have not yet been independently inspected in this session.

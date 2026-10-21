@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>interphAIse · Structure explorer</title>
+<style>
+:root{color-scheme:dark;font:15px system-ui,sans-serif;color:#e7eef6;background:#0c1420}*{box-sizing:border-box}body{margin:0}header{padding:24px 28px 14px;border-bottom:1px solid #2c3b50}h1{margin:0;font-size:25px;font-weight:650}header p{color:#aebed0;margin:8px 0;max-width:1000px;line-height:1.5}.tag{color:#6ee7c3;font:12px monospace;letter-spacing:2px;margin-bottom:8px}.toolbar{padding:14px 28px;display:flex;gap:15px;flex-wrap:wrap;align-items:center;background:#121e2d}label{display:flex;gap:7px;align-items:center;font-size:13px}button,select,input{font:inherit;color:inherit;background:#1a2a3e;border:1px solid #40516b;border-radius:6px;padding:7px}button{cursor:pointer}button:hover{border-color:#6ee7c3}input[type=checkbox]{accent-color:#6ee7c3}input[type=range]{width:95px}select{max-width:100%}main{padding:18px 28px;display:grid;grid-template-columns:1fr 1fr;gap:18px}article{min-width:0;background:#121e2d;border:1px solid #304158;border-radius:12px;overflow:hidden}.panel-head{padding:14px;display:flex;gap:10px;flex-wrap:wrap}.panel-head select{flex:1;min-width:200px}.scene{position:relative;height:510px}canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab;background:#0d1725}.caption{padding:12px 16px;font-size:13px;line-height:1.6;color:#b9c7d8;min-height:95px}.hover{position:absolute;bottom:12px;left:12px;right:12px;pointer-events:none;font:12px monospace;white-space:pre-wrap;color:#fff;background:#101c2dd9;padding:8px;border-radius:5px}.legend{display:flex;gap:13px;flex-wrap:wrap;padding:0 28px 15px}.swatch{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;border:1px solid #aab}footer{padding:0 28px 28px;color:#aebed0;line-height:1.6;font-size:13px}.hide{display:none}body.single main{grid-template-columns:1fr}body.single article:nth-child(2){display:none}body.single .scene{height:600px}@media(max-width:850px){main{grid-template-columns:1fr;padding:12px}.scene{height:420px}header,.toolbar{padding:16px}.legend,footer{padding-left:16px}}
+</style>
+</head>
+<body>
+<header><div class="tag">interphAIse / ATOMISTIC MODELS</div><h1>Structure explorer</h1><p>Explore bulk candidates and both coating contacts: cathode | coating and electrolyte | coating. Drag to rotate, scroll to zoom, and hover over an atom to inspect its coordinates. Side-by-side views share the same camera and scale.</p></header>
+<div class="toolbar">
+<label>Contact <select id="contact"><option value="">Choose a contact…</option></select></label>
+<button id="contacts">Compare contacts</button>
+<label><input type="checkbox" id="compare" checked>Compare</label>
+<label>Colour <select id="color"><option value="element">Elements</option><option value="group">Coating / substrate</option><option value="fixed">Fixed atoms</option></select></label>
+<label>Show <select id="group"><option value="all">All atoms</option><option value="film">Coating only</option><option value="substrate">Substrate only</option></select></label>
+<label><input type="checkbox" id="cell" checked>Cell</label>
+<label><input type="checkbox" id="wrap" checked>Wrap a/b</label>
+<label>Repeat a×b <select id="repeat"><option value="1">1 × 1</option><option value="2">2 × 2</option><option value="3">3 × 3</option></select></label>
+<label>Atom size <input id="size" type="range" min="0.15" max="0.75" step="0.05" value="0.35"></label>
+<button id="side">Side x–z</button><button id="top">Top x–y</button><button id="oblique">Oblique</button><button id="reset">Fit</button>
+</div>
+<main id="panels"></main><div class="legend" id="legend"></div>
+<footer><strong>Geometry inspection, not a validated adhesion result.</strong> The pilots have polar surfaces and unrelaxed bulk reference lattices; surface and cell convergence checks remain open. Atomic radii are scaled for visibility; bonds are not inferred. Cell edges represent the saved simulation cell, including vacuum. Replication shows translated copies along a and b; it does not relax atoms. Wrap a/b brings atoms into the periodic in-plane cell for display only. Downloads contain the original selected geometry, not displayed copies. Fixed-atom colouring shows stored FixAtoms constraints; the initial file does not store the later relaxation constraints. Bulk structures come from the frozen Materials Project pool. This viewer contains no benchmark outcome table.</footer>
+<script id="structures" type="application/json">__STRUCTURES_JSON__</script>
+<script>
+'use strict';
+const structures=JSON.parse(document.getElementById('structures').textContent);
+const $=id=>document.getElementById(id);
+let yaw=0,pitch=-Math.PI/2,zoom=1;
+const panels=[];
+const pilotIds=[...new Set(structures.filter(s=>s.kind==='pilot').map(s=>s.pilot))];
+for(const id of pilotIds){const o=document.createElement('option');o.value=id;o.textContent=structures.find(s=>s.pilot===id).contact;$('contact').append(o);}
+function compareIndices(left,right){
+ panels[0].select.value=left;panels[1].select.value=right;
+ $('compare').checked=true;document.body.classList.remove('single');zoom=1;draw();
+}
+$('contact').onchange=()=>{
+ const indices=structures.map((s,i)=>({s,i})).filter(x=>x.s.pilot===$('contact').value&&['initial','relaxed'].includes(x.s.state));
+ if(indices.length)compareIndices(indices[0].i,indices[1]?.i??indices[0].i);
+};
+$('contacts').disabled=pilotIds.length<2;
+$('contacts').onclick=()=>{
+ const preferred=pilotIds.slice(0,2).map(id=>{
+  let i=structures.findIndex(s=>s.pilot===id&&s.state==='relaxed');
+  return i<0?structures.findIndex(s=>s.pilot===id):i;
+ });
+ if(preferred.length===2){$('contact').value='';compareIndices(...preferred);}
+};
+const add=(a,b)=>a.map((x,i)=>x+b[i]);
+const mul=(v,s)=>v.map(x=>x*s);
+function rotate(p){const [x,y,z]=p,c=Math.cos(yaw),s=Math.sin(yaw),u=c*x+s*y,v=-s*x+c*y;return [u,Math.cos(pitch)*v-Math.sin(pitch)*z,Math.sin(pitch)*v+Math.cos(pitch)*z];}
+function download(blob,name){const a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+for(let n=0;n<2;n++){
+ const article=document.createElement('article');article.innerHTML='<div class="panel-head"><select aria-label="Structure '+(n+1)+'"></select><button class="xyz">Save XYZ</button><button class="png">Save PNG</button></div><div class="scene"><canvas aria-label="Interactive atomic structure"></canvas><div class="hover">Hover over an atom for details</div></div><div class="caption"></div>';
+ $('panels').append(article);
+ const select=article.querySelector('select');
+ for(const [i,s] of structures.entries()){const o=document.createElement('option');o.value=i;o.textContent=s.title;select.append(o);}
+ select.value=Math.min(n,structures.length-1);
+ const p={article,select,canvas:article.querySelector('canvas'),hover:article.querySelector('.hover'),caption:article.querySelector('.caption'),hits:[]};panels.push(p);
+ select.addEventListener('change',()=>{zoom=1;draw();});
+ article.querySelector('.xyz').onclick=()=>{const s=structures[select.value];download(new Blob([s.xyz],{type:'text/plain'}),'structure-'+select.value+'.extxyz');};
+ article.querySelector('.png').onclick=()=>p.canvas.toBlob(b=>{if(b)download(b,'structure-'+select.value+'.png');});
+ let drag=null;
+ p.canvas.onpointerdown=e=>{drag=[e.clientX,e.clientY];p.canvas.setPointerCapture(e.pointerId);};
+ p.canvas.onpointerup=p.canvas.onpointercancel=()=>{drag=null;};
+ p.canvas.onpointermove=e=>{
+  if(drag){yaw+=(e.clientX-drag[0])*.008;pitch+=(e.clientY-drag[1])*.008;drag=[e.clientX,e.clientY];draw();return;}
+  const rect=p.canvas.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
+  const h=[...p.hits].reverse().find(h=>(h.x-x)**2+(h.y-y)**2<=h.r**2);
+  p.hover.textContent=h?`Atom ${h.index+1} · ${h.atom.element} · ${h.atom.group}${h.atom.fixed?' · fixed':''}\nDisplayed xyz: ${h.position.map(v=>v.toFixed(3)).join(', ')} Å · copy (${h.copy.join(', ')})`:'Hover over an atom for details';
+ };
+ p.canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.25,Math.min(8,zoom*Math.exp(-e.deltaY*.001)));draw();},{passive:false});
+}
+function geometry(s){
+ const repeat=Number($('repeat').value),atoms=[],corners=[];
+ for(let a=0;a<repeat;a++)for(let b=0;b<repeat;b++)s.atoms.forEach((atom,index)=>{
+  if($('group').value!=='all'&&atom.group!==$('group').value)return;
+  atoms.push({atom,index,position:add($('wrap').checked?atom.wrapped_position:atom.position,add(mul(s.cell[0],a),mul(s.cell[1],b))),copy:[a,b]});
+ });
+ for(let i=0;i<8;i++)corners.push(add(add(mul(s.cell[0],(i&1)?repeat:0),mul(s.cell[1],(i&2)?repeat:0)),mul(s.cell[2],(i&4)?1:0)));
+ const points=atoms.map(a=>a.position).concat($('cell').checked?corners:[]);
+ const lo=[0,1,2].map(i=>points.length?Math.min(...points.map(p=>p[i])):0),hi=[0,1,2].map(i=>points.length?Math.max(...points.map(p=>p[i])):1);
+ return {atoms,corners,center:lo.map((x,i)=>(x+hi[i])/2),span:Math.max(1,Math.hypot(...hi.map((x,i)=>x-lo[i])))};
+}
+function draw(){
+ const active=$('compare').checked?panels:panels.slice(0,1),geos=active.map(p=>geometry(structures[p.select.value]));
+ const maxSpan=Math.max(...geos.map(g=>g.span));
+ const scale= Math.min(...active.map(p=>Math.min(p.canvas.clientWidth,p.canvas.clientHeight)))*.84/maxSpan*zoom;
+ const legends=new Map();
+ active.forEach((p,which)=>{
+  const s=structures[p.select.value],g=geos[which],canvas=p.canvas,w=canvas.clientWidth,h=canvas.clientHeight,dpr=window.devicePixelRatio||1;
+  canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);ctx.fillStyle='#0d1725';ctx.fillRect(0,0,w,h);
+  const project=pos=>{const q=rotate(pos.map((v,i)=>v-g.center[i]));return [w/2+q[0]*scale,h/2-q[1]*scale,q[2]];};
+  if($('cell').checked){ctx.strokeStyle='#556a84';ctx.lineWidth=1;g.corners.forEach((c,i)=>{for(const bit of [1,2,4])if(!(i&bit)){const a=project(c),b=project(g.corners[i|bit]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();}});}
+  p.hits=g.atoms.map(a=>{const [x,y,z]=project(a.position);return {...a,x,y,z,r:Math.max(1.8,a.atom.radius*Number($('size').value)*scale)};}).sort((a,b)=>a.z-b.z);
+  for(const a of p.hits){
+   let color=a.atom.color,key=a.atom.element;
+   if($('color').value==='group'){key=a.atom.group;color=key==='film'?'#67e8c5':key==='substrate'?'#9bafff':'#aebed0';}
+   if($('color').value==='fixed'){key=a.atom.fixed?'Fixed (stored constraint)':'No stored fixed constraint';color=a.atom.fixed?'#ffb454':'#769bb9';}
+   legends.set(key,color);
+   const gradient=ctx.createRadialGradient(a.x-a.r*.3,a.y-a.r*.3,a.r*.04,a.x,a.y,a.r);gradient.addColorStop(0,'#fff');gradient.addColorStop(.35,color);gradient.addColorStop(1,color);
+   ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle=gradient;ctx.fill();ctx.strokeStyle='#0a1220';ctx.lineWidth=.6;ctx.stroke();
+  }
+  // Cartesian orientation triad, independent of the (possibly nonorthogonal) cell.
+  for(const [i,label,color] of [[0,'x','#ff9292'],[1,'y','#80e7b4'],[2,'z','#91baff']]){const v=[0,0,0];v[i]=27;const q=rotate(v);ctx.strokeStyle=color;ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(43,h-55);ctx.lineTo(43+q[0],h-55-q[1]);ctx.stroke();ctx.fillText(label,45+q[0],h-58-q[1]);}
+  ctx.fillStyle='#c4d2e1';ctx.font='12px system-ui';ctx.fillText(s.title,14,23);
+  p.caption.textContent=`${s.atoms.length} atoms in saved cell · ${g.atoms.length} displayed · PBC ${s.pbc.map(v=>v?'yes':'no').join('/')}\nCell lengths: ${s.cell.map(v=>Math.hypot(...v).toFixed(2)).join(' × ')} Å. Source: ${s.source}`;
+ });
+ $('legend').replaceChildren();
+ for(const [key,color] of legends){const label=document.createElement('span'),swatch=document.createElement('span');swatch.className='swatch';swatch.style.background=color;label.append(swatch,document.createTextNode(key));$('legend').append(label);}
+}
+for(const id of ['color','group','cell','wrap','repeat','size'])$(id).addEventListener('input',draw);
+$('compare').onchange=()=>{document.body.classList.toggle('single',!$('compare').checked);draw();};
+$('side').onclick=()=>{yaw=0;pitch=-Math.PI/2;draw();};
+$('top').onclick=()=>{yaw=0;pitch=0;draw();};
+$('oblique').onclick=()=>{yaw=.5;pitch=-1.1;draw();};
+$('reset').onclick=()=>{zoom=1;draw();};
+new ResizeObserver(draw).observe($('panels'));draw();
+</script>
+</body>
+</html>

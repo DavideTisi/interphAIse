@@ -1,5 +1,20 @@
 # interphAIse — project report
 
+**Structure viewer — 2026-10-21:** An offline interactive viewer now displays the
+50 bulk candidates and eight saved pilot geometries from both contacts, including linked initial/relaxed
+interface views, cell replication and coating/cathode or fixed-atom colouring.
+Geometry exports preserve the saved coordinates and cell. See
+[STRUCTURE_VIEWER.md](STRUCTURE_VIEWER.md) for build instructions and limitations.
+
+**Pre-run review amendment — 2026-10-21:** The offline fluoride-first baseline
+finds an acceptable coating on query 2. The pool contains 42 distinct formula
+strings; removing fluorine leaves zero acceptable candidates. The revised plan
+uses at least 30 runs per LLM arm and explicitly allows a prior-knowledge-only
+conclusion if feedback adds no demonstrated benefit. PET-MAD bulk relaxation and
+surface/convergence validation precede comparative adhesion rankings. See
+[EXPERIMENT_AMENDMENT.md](EXPERIMENT_AMENDMENT.md) for the audit, integration
+checklist and distinction between implemented checks and planned experiments.
+
 **PET-MAD pilot completed — 2026-10-21:** LiCoO2(001) | LiNbF6(101), 224 atoms:
 registry scan and joined/separated slab relaxations completed with movable-atom
 forces below 0.05 eV/Å. The provisional constrained adhesion estimate is 2.1003 J/m²

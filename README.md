@@ -1,5 +1,10 @@
 # interphAIse
 
+**Interactive structures:** Run `.venv/bin/python scripts/build_structure_viewer.py`,
+then open `runs/structure_viewer.html` in a browser. Explore all 50 candidates and
+compare the initial/relaxed interface in 3D, with cell replication, layer colours
+and geometry/image exports. Works offline. See [STRUCTURE_VIEWER.md](STRUCTURE_VIEWER.md).
+
 **PET-MAD pilot:** A real 224-atom interface and its separated slab references have
 been relaxed. See [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md) for the
 provisional constrained adhesion estimate, convergence evidence and limitations.
