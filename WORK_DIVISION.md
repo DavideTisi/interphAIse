@@ -4,11 +4,120 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current handoff — 21 October
 
-Davide's frozen v3.0 benchmark and budgeted query interface are ready. See
-[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md); its exact schema supersedes the
-illustrative schema below. Adem can integrate by candidate ID and run controls.
-Davide's remaining work is the PET-MAD interface protocol and compute accounting.
-The objective measures coating compatibility, not whole-stack stability.
+The integrated four-arm experiment is complete: 30 runs per arm, budget 10,
+seeds 100–129, frozen v3, direct Anthropic Haiku 5.5. Iterative finds an acceptable
+candidate in 19/30 runs, upfront and sequential each in 4/30, and sampled random
+in 10/30. All 1,200 queries replay exactly. The post-hoc fluoride-first heuristic
+succeeds at query 2; best-bin performance is close to random. See
+[INTEGRATED_DISCOVERY_RESULTS.md](INTEGRATED_DISCOVERY_RESULTS.md).
+
+The publication batch on `davide` builds on `b210db0`, which includes the
+electrolyte-pilot preparation code and provenance. Bulk implementation/evidence
+and audits are committed as `57774d6`; the environment expansion as `81e4625`.
+The full current suite passes 113 tests. See [SYNC_ADEM_6.md](SYNC_ADEM_6.md) for
+the short handoff. Multistart is now complete: seed 0
+is retained for both distorted materials, with alternative seeds 4 and 1.
+The next physics step is a common LiNbF6(001) orientation with mapped termination
+and consistent reference cells, then polarity/constraint checks; see
+[SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md).
+Adem's `6e74e88` adds the completed shuffled control: 6/30 versus iterative 19/30,
+with exact paired p = 0.004425. All 300 outcomes and prompt/source maps validate.
+A temporary merge of both committed branches passes 104 tests and preserves
+Claude's pilot provenance. No actual branch merge has occurred. Defer IDs-only;
+prioritize the environment experiment and release review. See
+[SYNC_ADEM_5.md](SYNC_ADEM_5.md).
+
+**Next work, in priority order:**
+
+| Owner | Action | Completion evidence |
+|---|---|---|
+| Adem | Prepare the expanded environment runner and pre-run protocol; shuffled control is complete | Hashed per-environment query tables, unchanged accounting, matched controls and metrics frozen before new calls |
+| Davide, with Claude's current implementation | Build primary LiNbF6(001) contacts with controlled terminations, then validate polarity and constraints | Multistart references selected; mapped seed-4 alternative, explicit termination selection, inspected interfaces and convergence evidence |
+| Adem + Davide | Prepare the presentation and reproducible demonstration alongside the calculations | Acceptance and best-bin curves with baselines, one successful and one failed trace, offline two-contact viewer, explicit scientific limits |
+| Together | Review the combined branch and publish a reproducible release | Tests and archive replay pass, reports match the results, both people review scope before merging to `main` |
+
+### 1. Preserve the completed feedback evidence
+
+Follow [SYNC_ADEM_5.md](SYNC_ADEM_5.md). The 30 matched shuffled repeats are
+complete and independently verified; the sparse exact-median plotting bug is
+fixed. Use the five-arm figure and selected success/failure traces for the
+presentation. Describe the control as feedback corruption with partial identity
+leakage and possible history contradictions. The result supports useful feedback,
+but does not alone prove sound chemical reasoning.
+
+Keep both archives immutable and label the shuffled comparison as a planned
+follow-up after the original result. Defer the optional roughly 300-call IDs-only
+diagnostic. Prepare the expanded environment study before further paid runs;
+freeze its protocol separately and do not pool it with the original cohort.
+
+### 2. Establish a usable interface protocol
+
+Bulk inputs are LiCoO2, Li6PS5Cl, LiNbF6 (`mp-aaacjjwh`), LiCaAlF6
+(`mp-aaaaajby`) and LiZr2(PO4)3 (`mp-aaabevhd`). Endpoint IDs come from the
+frozen dataset. Use the same conservative PET-MAD S 1.6.0 checkpoint. The initial
+positions/cell relaxations and bounded multistart check are complete. Seed 0 is
+the reference for both distorted materials; alternatives are Li6PS5Cl seed 4 and
+LiZr2(PO4)3 seed 1. Completing an optimizer does not establish a physical phase.
+Use the existing unconstrained LiCoO2/LiNbF6 references for construction and
+follow [SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md): common coating (001) orientation,
+explicit surface selection before truncation, and mapped electrolyte cuts for
+the bulk-configuration comparison. The 200-atom option remains secondary.
+
+Start with LiNbF6 against both endpoints. Rematch the relaxed lattices, inspect
+termination/polarity and constraints, then vary thickness, vacuum and registry.
+Use consistent strained cells and reference constraints in adhesion differences.
+Freeze the numerical convergence criterion before comparing candidates; the
+amendment proposes a change of at most 0.1 J/m² across the final two settings,
+which is not an accuracy guarantee. Expand to the other two pinned coatings only
+if this protocol is usable. Start locally and use Niflheim Slurm if measured
+workload warrants it.
+
+The current 2.10 and 0.43 J/m² values remain feasibility results. The electrolyte
+matching limitation was observed for the tested low-index facet pairs and
+unrelaxed lattices; reassess area limits after bulk relaxation. Do not convert the
+present ~185 Å² observation into a universal matching bound. See
+[EXPERIMENT_AMENDMENT.md](EXPERIMENT_AMENDMENT.md) and
+[PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md).
+
+### 3. Prepare the submission now
+
+The central demonstration should show the LLM replacing the human decision:
+"Given the measured failure of this coating, what chemical hypothesis should I
+revise, and which candidate should I test next?" The LLM selects and revises;
+deterministic tools supply outcomes. Connect the selected trace to observed
+feedback and check its chemistry rather than presenting its prose as proof.
+
+Use a short narrative: scientific question and division of roles; frozen benchmark
+and controls; quantitative results; one proposal–feedback–revision trace; both
+interfaces and limitations. Include the exact random curve, the post-hoc heuristic,
+threshold sensitivity and the failed trace in the main or supporting material.
+The viewer can be shared as generated HTML, independent of a localhost server.
+
+For the hackathon, prioritize a reproducible feedback experiment and an honest
+materials feasibility demonstration. If physical convergence fails, report that
+failure and retain the interfaces as feasibility illustrations. Do not delay the
+submission or claim validated adhesion because the numerical protocol remains open.
+Li transport, synthesis and real battery performance remain outside the evidence.
+
+Keep the frozen pool, threshold and existing run count unchanged. Additional
+conditions, larger pools, composition generation and new agent features are
+follow-up studies, not requirements for finishing this submission.
+
+The sections below retain the original ownership and startup plan for context.
+This current handoff supersedes their preliminary schedules and ten-run target.
+
+### User-selected extension: more coatings and environments
+
+The delegated expansion has completed endpoint review, compatible retrieval and
+all 423 outcomes. [EXPANSION_PROGRESS.md](EXPANSION_PROGRESS.md) records the
+141-coating, three-environment results and audits. The original 50 scores replay
+exactly. Davide/Codex owns data/evaluator review; Adem owns adapting the matched
+search experiments and preparing a separate pre-run protocol. Retain all three
+environments, including the easy chloride condition, and report early-query and
+bin-regret curves. These are additional exploratory tasks, not revisions of v3.
+No expanded LLM batch has been launched or frozen; interface validation continues
+independently. The original plan remains in
+[ENVIRONMENT_EXPANSION.md](ENVIRONMENT_EXPANSION.md).
 
 ## Shared objective
 
@@ -160,7 +269,7 @@ Create personal work branches from the same latest integration commit:
 - Davide: `davide` (created from `main`, active evaluator development)
 - Adem: `work/agent-experiments`
 
-Adem’s branch name is a suggestion; Davide’s branch already exists.
+Both personal branches now exist; integrated development is currently on `davide`.
 Keep changes within the owned files where practical. Agree before changing shared
 configuration or the evaluator contract. Use small commits and merge at the
 milestones; avoid simultaneous edits of the same file. Do not merge to `main`
@@ -185,8 +294,9 @@ Minimum successful submission:
 2. One complete proposal–calculation–revision loop.
 3. A controlled comparison against prior-only/no-feedback and random selection.
 
-Stretch work: shuffled feedback, a second operating condition, more MLIP interfaces,
-and broader composition proposals. Keep the original modelling-decision arms as
+Current priority beyond the completed experiment is shuffled feedback, as specified
+above. Stretch work: a second operating condition, additional MLIP interfaces and
+broader composition proposals. Keep the original modelling-decision arms as
 supporting material only if the main experiment is complete.
 
 The main claim, if supported, is that calculated feedback improves candidate

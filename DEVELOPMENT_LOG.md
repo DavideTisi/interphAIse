@@ -616,6 +616,344 @@ PETMAD_INTERFACE_PILOT.md (new section), REPORT.md (status line), EXPERIMENT_AME
 shortlist coatings, then rebuild both contacts under one matching setting with a cap
 of at least ~185 Å². Then do the constraint, thickness, vacuum and registry checks.
 
+## 2026-10-21 — Verify Claude's electrolyte provenance commit
+
+Reviewed local commit b210db0 (six files), one commit ahead of origin/davide at
+6097831. Checked the archived electrolyte energies directly: joined
+-1190.93994140625 eV, film -723.2285766601562 eV, substrate -462.8282165527344 eV;
+reported W_adh is 0.42747021237517197 J/m2, area 183.02248179483956 A2.
+All three saved movable-atom convergence flags are true. These match the new
+energy table and feasibility interpretation. The 97-test pass is reported by
+Claude; no test rerun or new calculation was performed in this read-only review.
+
+Recommended publishing the provenance commit and then relaxing the five pinned
+bulk inputs (LiCoO2, Li6PS5Cl, LiNbF6, LiCaAlF6, LiZr2(PO4)3), keeping the same
+checkpoint and saving cell/position/stress/convergence provenance. The matching
+statement should refer to the tested low-index facets, not every possible facet;
+the suggested ~185 A2 cap belongs to the present unrelaxed lattices and must be
+reassessed after bulk relaxation. A 300 A2 cap was the demonstrated successful
+search setting. No push, message to Claude or new job was issued in this review.
+
+## 2026-10-21 — Refresh the remaining work and ownership
+
+Branch `davide`. Reviewed the current repository and handoffs to answer what moves
+the project forward. Local HEAD and the origin/davide tracking reference now both
+point to b210db0; this corrects the earlier checkpoint's then-current ahead-by-one
+status. Observed independent unfinished bulk-relaxation edits in relaxation.py,
+test_relaxation.py and a new scripts/relax_bulk.py. Left those files untouched;
+no saved bulk results were found during this review and no implementation test
+or calculation was run here.
+
+Updated WORK_DIVISION.md with the completed 30-repeat baseline, current ownership,
+prioritized next work and completion evidence. Adem's next control is 30 matched
+shuffled-feedback runs after integration and offline validation; IDs-only remains
+optional. Davide's physics path is five pinned bulk relaxations, validation of
+both LiNbF6 contacts, then conditional shortlist expansion. Presentation work can
+proceed alongside these tasks. The existing four-arm archive and frozen criterion
+remain unchanged. This is a work recommendation, not a newly launched paid batch
+or a message sent to either collaborator.
+
+Added the plan link to REPORT.md and corrected its overbroad matching statement:
+the 160 Å² failure concerned tested low-index facets on unrelaxed lattices, while
+300 Å² yielded the archived ~183 Å² interface. Matching limits must be reassessed
+after bulk relaxation. Earlier log entries are preserved as historical records.
+
+Verification: checked plan figures/settings against INTEGRATED_DISCOVERY_RESULTS.md
+and SYNC_ADEM_3.md and performed a documentation diff/whitespace check. No new LLM,
+MP API, MLIP or cluster run, git commit or push was performed in this planning work.
+Next: complete the two evidence checks while preparing the reproducible demo,
+then review the integrated code and scientific claims before a main-branch merge.
+
+## 2026-10-21 — Prepare a broader coating/environment exploration
+
+Branch `davide`. The user asked to explore more combinations and selected more
+coatings across battery environments. Audited the local summary snapshot and
+corrected-energy dataset without API calls. The unchanged coating filters admit
+141 structures (100 formula strings), not the initially considered 200; retained
+all 141, including every original candidate, without using new scores. The saved
+pool includes 61 other oxides, 29 halides, 23 silicates, 16 phosphates and 12 borates.
+
+Added all-eligible selection to scripts/build_candidate_pool.py while preserving
+its fixed-size default. Added scripts/prepare_environment_expansion.py to prepare
+hashed pool/plan/coverage records under data/exploration/environment_expansion_v1.
+Kept the original LiCoO2 endpoint and 4 V, and prepared Li6PS5Cl, Li3InCl6 and LLZO
+electrolyte environments: 423 combinations. The new endpoint models are the
+lowest-summary-hull ordered cached records, explicitly pending phase review.
+The LLZO model is tetragonal I4_1/acd, not a disordered cubic conductor. The script
+checks hashes and original-pool inclusion, refuses output overwrites, and makes
+no energy or search calls. Existing benchmark files and archives were untouched.
+
+The audit finds 117/141 coating IDs in the existing energy dataset. Full ID and
+subsystem-query coverage exists for 104 sulfide combinations; neither new endpoint
+has a cached corrected entry. Additional queried systems needed are 496 (sulfide),
+536 (chloride) and 724 (oxide), with a deduplicated union of 1,430. These are chemical
+systems, not material or request counts. Coverage is not structure validation; no
+partial phase diagram was scored. This avoids optimistic scores from missing
+competing phases.
+
+Added ENVIRONMENT_EXPANSION.md with the scientific question, sources supporting
+the electrolyte-family choices, numerical audit, next implementation steps, owner
+assignments and estimated proposal-call counts for future matched experiments.
+Updated REPORT.md and WORK_DIVISION.md to distinguish this user-selected extension
+from the completed experiment. The LLM role is adapting material choices and
+chemical hypotheses to feedback in each environment; success is not assumed.
+
+Validation: 12 targeted tests passed (candidate pool, environment expansion and
+thermodynamic dataset helpers). A fractional-occupancy test initially failed
+because reduced_composition does not normalize all fractional occupancies to
+integer formulas; endpoint comparison was corrected to fractional_composition.
+Verified the three generated artifact hashes and their pool links, and reproduced
+the original 50-candidate selection with exactly its original hash. Whitespace
+check passed.
+No MP request, paid LLM call, PET-MAD run, cluster job, git commit or push occurred.
+Independent bulk-relaxation edits remain untouched. Next: review endpoint phases,
+extend the fetcher for the plan, obtain complete compatible energies, exhaustively
+audit all environments, then freeze a new experiment before LLM production.
+
+## 2026-10-21 — Review completed bulk relaxation and recommend next protocol
+
+Branch `davide`. Read Claude's bulk report, code and archived evidence. Verified
+the ten convergence records against their declared projected/unprojected criteria,
+recomputed energy drops, and reconciled 2,944 calls with the saved total. Inspection
+replayed exactly in a temporary copy. All six relaxation tests passed, with ASE/
+NumPy deprecation warnings. Original code and bulk evidence were left unchanged.
+
+The 440-atom electrolyte and 456-atom cathode-(001) matches use symmetric bulk cells;
+they must be recomputed after unconstrained reference selection. The 128-atom cathode
+alternative changes the surface. Wrote BULK_REVIEW_AND_NEXT_STEPS.md recommending
+five additional fixed rattle seeds for each distorted material, then an initial
+512-atom construction cap and primary LiCoO2(001), subject to rematching and slab
+validation. No multistart, MD or interface relaxation was launched in this review.
+
+Performed a focused rotation-sensitivity diagnostic with the verified PET-MAD S
+1.6.0 checkpoint: identity plus three random orientations for symmetric/distorted
+Li6PS5Cl and LiZr2(PO4)3. The drops persist at 63.58–64.20 and 7.57–7.75 meV/atom;
+largest single-structure orientation ranges are 0.663 and 0.557 meV/atom. This checks
+one numerical explanation, not model accuracy or experimental phase identity.
+Saved reproducible scripts/check_bulk_rotations.py and
+data/petmad/bulk_rotation_review_v1.json with checkpoint, input and script hashes.
+An initial interactive check used 16 single points; testing the saved script used
+another 16 and gave identical energies (32 calls total, separate from Claude's run).
+
+Updated REPORT.md and WORK_DIVISION.md with the completed milestone. Documented
+the distinction between projected convergence and raw convergence, ordered models
+and experimental disorder, and possible cancellation of bulk reconstruction in an
+adhesion energy difference. Checked relevant primary literature and UPET guidance;
+sources are linked in the review. The frozen discovery result and expansion remain
+unchanged. Whitespace check performed. No MP or LLM API calls, cluster jobs, git
+commit/push or messages to other sessions. Next: Claude's bounded multistart check,
+new matching, and consistent two-contact validation; expanded MP data and feedback
+controls remain separate workstreams.
+
+## 2026-10-21 — Review Adem's ea0326d and prioritize the controls
+
+Branch `davide`. Fetched origin/work/agent-experiments from 0889d0e to ea0326d,
+read SYNC_DAVIDE_3.md and inspected discovery/analysis/test changes. Created an
+isolated git-archive checkout under /private/tmp for testing; no branch merge or
+shared code edit occurred. The new control handles charged malformed/repeated IDs
+and preserves true outcomes. Online reshuffling/history contradictions and chemical
+identity hints remain disclosed limitations, not implementation claims of blinding.
+
+All 41 relevant tests passed after correcting an initial test-command filename.
+Re-ran the archived production analysis and visually checked the new three-panel
+plot. It reproduces acceptance 19/10/4/4 and best-bin 7/6/0/1 in iterative/random/
+sequential/upfront order. An offline deterministic comparison to b210db0 showed
+identical prompt payloads, histories and traces for the original four strategies.
+The first smoke fixture used a wrong payload key; correcting the fixture to count
+resolved it, with no product-code change or live call.
+
+Confirmed one future-pool plotting edge case: next(...) for the exact random median
+raises StopIteration if no eligible-bin cumulative probability reaches 0.5. This
+does not affect current v3 (47/50 eligible), but needs a no-eligible-result fallback
+and sparse/all-ineligible tests before broader use.
+
+Wrote SYNC_ADEM_4.md recommending 30 matched shuffled repeats now, deferring IDs-only,
+and preparing the figure and r111/r114 examples. Included explicit settings, immutable
+archive handling, a request to report actual source displacement, limitations and
+interpretation of either outcome. Updated REPORT.md and WORK_DIVISION.md. Whitespace
+check performed. No paid API calls, MP requests, MLIP runs, messages to Adem, commit
+or push occurred. Bulk and expansion changes in the shared checkout were preserved.
+
+## 2026-10-21 — Delegate environment data and exhaustive evaluation
+
+The user explicitly authorized a subagent so the parent can remain available for
+Claude's and Adem's reports. Started `/root/environment_expansion` in the shared
+checkout to review the new endpoint models, implement resumable compatible MP data
+retrieval, evaluate all 423 prepared coating/environment combinations, and produce
+audited exploratory results. MP retrieval is within the authorized project scope;
+no paid LLM experiment, automatic benchmark freeze, PET-MAD run or cluster job is
+part of this delegation. The original frozen benchmark and archives stay intact.
+
+The subagent owns new expansion scripts/tests/data and EXPANSION_PROGRESS.md.
+It will coordinate a final append to this development log; the parent retains
+REPORT.md, WORK_DIVISION.md and collaborator handoffs. Claude's bulk/interface work
+and Adem's agent/control files are excluded from its edits. No branch switch,
+commit, push or additional agent delegation was requested. The parent will review
+the implementation and evidence when available; delegation is underway, not a
+claim that the expanded evaluation has completed.
+
+## 2026-10-21 — Complete delegated environment expansion and exhaustive audit
+
+Branch `davide`; implementation not committed. The authorized expansion subagent
+completed all 141 coatings × 3 environments without paid LLM runs or an automatic
+benchmark freeze. Retained the preselected ordered Li3InCl6 (C2, 60 primitive sites)
+and tetragonal LLZO (I4_1/acd, 96) as explicit 0 K computational models; inspected
+composition, occupancy, geometry, provenance and exact corrected-entry structure
+matches before scoring. No outcome-driven endpoint replacement or PET-MAD energy
+mixing occurred. Parent-owned reports and collaborator implementation files were
+left unchanged; detailed conclusions are in EXPANSION_PROGRESS.md.
+
+Added scripts/fetch_environment_dataset.py, scripts/evaluate_environment_expansion.py,
+scripts/plot_environment_expansion.py and tests/test_environment_evaluation.py.
+The resumable fetcher checks source vintage/correction scheme, conflicting duplicate
+entries, per-batch hashes and complete subsystem coverage. MP remains 2026.09.28:
+36 new batched get_entries calls filled 1,430 missing subsystems, giving 7,420
+corrected GGA/GGA+U entries and 2,379 covered systems. API exception/header strings
+and credentials are not recorded. Inspection caught that the deprecated client
+version getter only returns a cached attribute; corrected it to fetch a fresh
+public heartbeat, then replayed all cached batches with no new entry queries.
+The first and verified snapshots have exactly identical entries and batches.
+
+Saved sanitized compressed data and all 423 outcomes in
+data/exploration/environment_expansion_v2/ (dataset ~9.8 MB). Each environment has
+138 computed candidates, 120 eligible and 3 explicit missing pinned-entry failures.
+Sulfide/chloride/LLZO respectively have 4/55/17 acceptable candidates; exact random
+acceptance by 10 queries is 25.74%/99.43%/73.57%. The unchanged fluoride-first rule
+first succeeds at queries 3/1/40. All four sulfide acceptable structures contain F;
+none of the 17 LLZO acceptable structures does. Best bins are 1/0/0, with 3/38/1
+structures tied. LLZO's unique model optimum is LiClO4, a computational criterion
+result rather than a validated coating recommendation. All environments remain;
+chloride saturation and the limitations of the objective are explicit in the report.
+
+All 50 original sulfide results reproduce, with maximum numerical difference 0.0
+and identical status/insulation/bin/acceptability/pinned entries. Six independent
+Qhull LiF contact checks agree with linear programming within 8.88e-16 eV/non-Li
+atom. All 423 IDs and result hashes, source-code hashes, original benchmark identity,
+and dataset/query provenance validate. 40 targeted tests pass (new evaluation,
+expansion preparation, thermodynamic helpers, candidate selection and evaluator).
+The final exhaustive pass took 66.87 s; an earlier pass took 69.17 s and is preserved
+in ignored runs after the fresh-version-check correction. MP retrieval took 31.69 s
+plus 3.20 s cached replay. HTTP pagination counts were not instrumented. No LLM,
+MLIP or cluster calls, git commit/push, branch switch or further delegation.
+
+Pool SHA-256 833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d;
+new dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea;
+audit 2fe5770d5687306ac4451dd36cde28348a9b8d1d894ab349b885f8e6ced1ee62.
+The report records exact reproduction commands and remaining experimental choices.
+A scan of new source/report/decompressed data found no configured credential values;
+.env remains ignored/untracked. Whitespace check passes. The figure was visually
+inspected, and artifact_manifest.json records byte hashes and validation accounting.
+
+Next: parent reviews the outputs and aligns REPORT.md/WORK_DIVISION.md. Jointly
+freeze separate prompts, budgets, per-environment metrics and controls before any
+expanded paid LLM study. Keep the existing v3 cohort separate and retain all three
+environments. Claude's validated-interface work and Adem's completed original
+shuffled control remain independent workstreams.
+
+
+## 2026-10-21 — Verify completed shuffled control and review integration
+
+Branch `davide`, HEAD b210db0. Fetched origin/work/agent-experiments to 6e74e88
+and reviewed the new archived shuffled run (source ea0326d), median fix and figures
+in an isolated git-archive checkout. All 104 tests pass. Replayed all 300 true
+query outcomes and independently reconstructed all 300 source permutations and
+saved prompt histories. All source/archive hashes match. No malformed retries;
+12 failed queries remain charged (10 missing-entry, 2 unknown ID). The 300 calls
+record 1,594,978 input and 259,023 output tokens. No live LLM calls in this review.
+
+Acceptance is shuffled 6/30 against iterative 19/30. The directly reconstructed
+paired table is both 3, iterative only 16, shuffled only 3, neither 8; exact
+two-sided McNemar p = 0.004425048828125. Reproduced the five-arm analysis and
+visually inspected its plot and the selected r111/r114 figure. Treat the contrast
+as a planned follow-up supporting useful correctly associated feedback, with
+history contradictions and partial identity leakage, not proof of chemical
+reasoning. Existing heuristic and best-bin limitations remain explicit.
+
+Created an isolated temporary clone and merged committed b210db0 with 6e74e88
+without committing. No conflicts; Claude's pilot code/docs remain included.
+The resulting combined tree passes all 104 tests and whitespace checks. This is
+an integration rehearsal, excludes uncommitted work, and is not a merge to main.
+Real working branches were untouched. Standard ASE/spglib deprecation warnings
+remain. Saved compact evidence in data/reviews/shuffled_v3_20261021.json.
+
+The environment subagent completed its work and appended the preceding checkpoint.
+Parent reviewed its scripts/report/figure and independently verified all eight
+artifact byte hashes, present semantic hashes, complete row sets, acceptance counts,
+fluorine split and exact-random probabilities. It reports 40 passing tests, exact
+50-row replay and six independent solver checks. All 423 combinations remain;
+414 compute and nine fail explicitly. Sulfide/chloride/LLZO acceptance is 4/55/17;
+fluoride-first first successes are queries 3/1/40. No LLM adaptation result exists
+yet. Chloride is easy and must remain in the declared study. Original scores are
+unchanged; no PET-MAD energies entered the thermodynamic expansion.
+
+Wrote SYNC_ADEM_5.md and aligned REPORT.md/WORK_DIVISION.md: defer IDs-only, have
+Adem prepare the environment runner and a separate pre-run protocol, retain
+Claude's independent interface validation, and review the completed discovery
+release now. The subagent's expansion remains uncommitted. No messages were sent
+to external collaborators, no actual merge/commit/push occurred, and no additional
+MP/MLIP/cluster calls were made by this parent review. The expansion subagent's
+36 MP entry calls are accounted separately in its checkpoint. Documentation and
+whitespace checks performed; next is scoped integration and experiment freeze.
+
+
+## 2026-10-21 — Review multistart references and choose primary coating orientation
+
+Branch davide at b210db0, shared uncommitted work preserved. Read Claude's completed
+multistart report/code/evidence. Re-read all twelve final structures with archived
+single-point results: energies, force/stress criteria and convergence flags agree.
+Li6PS5Cl 6/6 and LiZr2(PO4)3 5/6 converge; the latter's seed 5 force is 0.011387 eV/Å
+and remains excluded. Seed 0 has the lowest saved energy among valid starts in both
+materials. Additional batch cost is 7,216 calls and 1,567.47 summed seconds, not
+elapsed batch wall time because the materials ran concurrently. No new MLIP call
+was needed for this audit. All six targeted relaxation tests pass; the reported
+113-test full-suite result was not independently rerun here.
+
+Recommend LiNbF6(001) on both primary contacts, retain LiCoO2(001), and keep the
+200-atom alternative as a separate orientation comparison. A common facet controls
+orientation but does not establish a continuous coherent film. The selected seed-0
+and seed-4 electrolyte matches have different saved termination identifiers
+(P_C2/m_2 versus Cl2_P-1_2), so equivalent framework cuts and surface chemistry need
+mapping before claiming a bulk-only sensitivity. P-labelled alternatives exist at
+440 atoms in both archived scans; their actual equivalence remains to be inspected.
+
+Performed geometry-only rematching with existing unconstrained LiCoO2/LiNbF6
+stability-check cells and Li6PS5Cl seeds 0/4. Same-facet 504-/440-atom matches remain
+feasible. Found that the 60-candidate global cap can omit F-terminated cathode
+matches: the builder has 113 ZSL matches and four termination pairs. Explicitly
+enumerating F2_P-6_3 / Li_P6/mmm_1 recovers the valid 504-atom match (1.9520% strain,
+88.800 Å²). Requested termination selection before truncation and a regression
+check in Claude's implementation. Exact geometries were enumerated transiently;
+no production interface was exported or relaxed. Saved audit/input/code hashes in
+data/reviews/multistart_facet_review_20261021.json.
+
+Corrected interpretation in the new handoff: archived cathode polarity values
+include 2.06 and 6.17 e/Å, rather than 2.06 for every termination; this is a formal
+oxidation-state diagnostic. Read official pymatgen and UPET guidance. The small
+LiZr2(PO4)3 seed gap does not demonstrate robust energetic ordering against the
+earlier rotation diagnostic; neither check establishes a physical phase.
+
+Wrote SYNC_CLAUDE_1.md with facet/termination/reference choices, validation order,
+explicit interpretation limits and separate-commit guidance. Updated REPORT.md
+and WORK_DIVISION.md; Claude's report/code/evidence were not edited. Shared log is
+available for Claude to append its own provenance. Documentation/whitespace checks
+passed. No MP/LLM API calls, MLIP evaluations, cluster jobs, external messages,
+commit, push or actual branch merge. Next: Claude builds the pinned contacts and
+mapped alternative, then checks polarity/constraints before convergence and ranking.
+The discovery result and environment study remain unchanged.
+
+
+## 2026-10-21 — Short team handoff for Adem
+
+Branch davide. At the user's request, wrote SYNC_ADEM_6.md summarizing Codex's
+shuffled-control and integration review, the subagent's completed 423-combination
+expansion, and Claude's bulk/multistart work plus the remaining interface checks.
+Included the three-environment baseline table, the LLM's hypothesis-revision role,
+Adem's proposed next work and explicit uncommitted/not-yet-on-GitHub status.
+Detailed source reports are linked rather than duplicating the technical reviews.
+Checked consistency against REPORT.md, WORK_DIVISION.md and the latest log entries;
+all local document links resolve and whitespace checks pass. Documentation only:
+no new calculations, API calls, tests, collaborator messages, commit or push.
+
 ## 2026-10-21 — PET-MAD bulk relaxation, multistart references and rematch (provenance)
 
 **Branch:** `davide`. The code and evidence for this work were committed in `57774d6`
@@ -662,3 +1000,39 @@ retention; explicit exhaustion/stress gate). The full suite passed 104, then 113
 the shared tree. The inspection replays identically from the archived evidence. No LLM,
 MP API or cluster calls were made. The checkpoint was also copied to
 `~/.cache/interphaise/` (hash verified).
+
+
+## 2026-10-21 — Commit the reviewed work for publication on davide
+
+The user explicitly requested committing and pushing so Adem can access the work.
+Fetched origin: davide was still at b210db0 with no divergence; the agent branch
+advanced to 1ef2c8a (merge of the electrolyte pilot), which was not merged here.
+Reviewed and grouped all 118 changed/new files into explicit publication scopes.
+No files were left outside those groups at the initial inventory.
+
+Created 57774d6 for PET-MAD bulk relaxation, multistart data, reference/rotation/
+facet audits and associated tests/reports (88 files). Created 81e4625 for the
+141-coating, three-environment implementation, dataset, audits and figure
+(22 files). The remaining handoffs and shared reports form a separate documentation
+commit. Updated the short Adem handoff and current status reports to identify the
+implementation commits and supersede earlier uncommitted-status checkpoints.
+
+During preparation Claude added its separate provenance-only commit 408a37f.
+Inspected that 47-line log addition and preserved it; it is included in the push
+alongside the two implementation commits and the final handoff/report commit.
+
+Validation: the full current suite passes 113 tests (existing ASE/spglib
+warnings). Checked all expansion artifact hashes and recorded source hashes,
+plus the rotation-review source hash. Whitespace checks pass. Scanned every
+publication file for configured credential values, including decompressed
+thermodynamic JSON: no matches. .env remains ignored and untracked; explicit
+staging excludes runtime caches, environments, checkpoints and trajectories.
+The bulk/expansion commits use a reviewed content snapshot to detect concurrent
+changes before staging. No new LLM/MP API calls, MLIP calculations or cluster jobs.
+
+Publication target is origin/davide using a normal push, with remote-head and
+working-tree verification after the final documentation commit. No main merge,
+force push or collaborator message is part of this request. The new agent-control
+code/results are still on Adem's branch; both frozen result cohorts and exploratory
+status of the expansion are preserved. Interface construction/validation and the
+separate expanded LLM protocol remain next work.
