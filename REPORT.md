@@ -1,5 +1,7 @@
 # interphAIse — project report
 
+**Environment production results — 2026-10-21:** All 450 frozen runs completed (execution commit `710d346`, 2,800 calls, ≈ USD 3.63 at list price, estimate). Acceptable within 10 queries (n = 30/arm), iterative / sequential / shuffled / upfront / random (exact): Li6PS5Cl 20/2/6/0/8 (25.7%); Li3InCl6 30/30/30/30/29 (ceiling, declared in advance); LLZO 12/0/4/1/24 (73.6%). Paired exact McNemar, Holm over six: iterative > sequential in Li6PS5Cl (Holm p 4.6e-5) and LLZO (0.0024); iterative > shuffled in Li6PS5Cl (0.0024), not in LLZO (0.17). In LLZO random search beats every LLM arm. Feedback consistently beats no feedback, but where Haiku's chemical prior is wrong (LLZO) it stays below random within 10 queries. Archive and README: `data/experiments/environment_v1/`; note: `SYNC_DAVIDE_5.md`.
+
 **Environment production approved — 2026-10-21:** Following the measured-cost
 review, Davide explicitly said “i approve the production”. The approval covers
 the unchanged frozen study: three environments, five arms, 30 repeats, budget

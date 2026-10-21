@@ -1867,3 +1867,18 @@ CONTACT_PROTOCOL.md, the PET-MAD runner, final880 vacuum evidence and Niflheim
 scripts are excluded. This sign-off is being committed and pushed for Adem
 under Davide's request to publish everything he needs; actual execution must
 be recorded by Adem's runner.
+
+## 2026-10-21 — Agent side (Adem): environment production run and final analysis
+
+Branch `work/agent-experiments`. Davide approved production (`e5c745e`). Ran the three environments in
+sequence at execution commit `710d346` (workflow files identical to smoke `26beb73`), checking usage
+after each: Li6PS5Cl USD 1.21, Li3InCl6 1.19, LLZO 1.23 (list-price estimates; billing unverified).
+450/450 runs complete, 2,800 calls (10 format retries), 24.30M in / 2.40M out tokens. All 4,500 queries
+replay (audit). Final analysis `analyse_environment_study.py --production`: completeness check passed.
+Acceptable within 10 queries (n = 30/arm), iterative / sequential / shuffled / upfront / random (exact): Li6PS5Cl 20/2/6/0/8 (25.7%); Li3InCl6 30/30/30/30/29 (ceiling, declared in advance); LLZO 12/0/4/1/24 (73.6%). Paired exact McNemar, Holm over six: iterative > sequential in Li6PS5Cl (Holm p 4.6e-5) and LLZO (0.0024); iterative > shuffled in Li6PS5Cl (0.0024), not in LLZO (0.17). In LLZO random search beats every LLM arm.
+Archived in `data/experiments/environment_v1/` (runs, summaries, curves, replay audits, hashes, README).
+Analysis-only changes committed separately in `abab0a2`: `--production` check and secondary summaries
+(SYNC_ADEM_8), and a JSON fix (numpy p-value made the Holm flag non-serialisable; no values changed).
+Correction to the earlier entry: the "USD 9.50 hard ceiling" is a high-output scenario, not an enforced limit.
+Not done: the archived figures were generated but not viewed (image viewing timed out on the host).
+Next: Davide reviews `SYNC_DAVIDE_5.md`; update slides; joint review before merging to main.
