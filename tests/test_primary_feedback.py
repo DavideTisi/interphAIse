@@ -81,8 +81,9 @@ def test_mislabelled_contact_fails_and_cannot_win_selection(setup):
     del runs[('electrolyte', 'R1')]
     b = assemble(manifest, 'mp-aaacjjwh', supplied(runs))
     r2 = next(r for r in b['contacts']['cathode']['registries'] if r['registry_id'] == 'R2')
-    assert r2['status'] == 'failed' and r2['W_adh_J_m2'] is None
+    assert r2['status'] == 'invalid_evidence' and r2['W_adh_J_m2'] is None
     assert b['contacts']['cathode']['selected']['registry_id'] == 'R3'
+    assert not b['consumable_by_agent'] and b['blocking_integrity_issues']
 
 
 def test_tampered_stored_values_are_rejected(setup):
@@ -93,9 +94,9 @@ def test_tampered_stored_values_are_rejected(setup):
     data = json.loads(sep.read_text()); data['W_sep_fixed_geometry_J_m2'] = 9.0; sep.write_text(json.dumps(data))
     b = assemble(manifest, 'mp-aaacjjwh', supplied(runs))
     regs = {r['registry_id']: r for r in b['contacts']['cathode']['registries']}
-    assert regs['R1']['status'] == 'failed' and 'recomputed' in regs['R1']['failure']
-    assert regs['R3']['status'] == 'valid' and regs['R3']['W_sep_J_m2'] is None
-    assert regs['R3']['separation_status'].startswith('invalid')
+    assert regs['R1']['status'] == 'invalid_evidence' and 'recomputed' in regs['R1']['failure']
+    assert regs['R3']['status'] == 'invalid_evidence' and 'W_sep arithmetic' in regs['R3']['failure']
+    assert not b['consumable_by_agent'] and len(b['blocking_integrity_issues']) == 2
 
 
 def test_failed_run_cost_is_kept(setup):
@@ -105,5 +106,28 @@ def test_failed_run_cost_is_kept(setup):
     b = assemble(manifest, 'mp-aaacjjwh', supplied(runs))
     r2 = next(r for r in b['contacts']['cathode']['registries'] if r['registry_id'] == 'R2')
     assert r2['status'] == 'failed' and r2['calculator_calls'] == 132
+    assert b['consumable_by_agent'] and not b['blocking_integrity_issues']   # a genuine failure is feedback
     valid_calls = sum(r['calculator_calls'] for c in b['contacts'].values() for r in c['registries'] if r['status'] == 'valid')
     assert b['costs']['calculator_calls_known'] == valid_calls + 132
+
+
+def test_integrity_error_blocks_but_calculation_failure_is_reported(setup):
+    """SYNC_CLAUDE_11: a broken package stops consumption; non-convergence is an outcome."""
+    manifest, runs = setup
+    rec = runs[('electrolyte', 'R2')] / 'relaxation_records.json'
+    data = json.loads(rec.read_text()); data['interface']['converged'] = False; rec.write_text(json.dumps(data))
+    genuine = assemble(manifest, 'mp-aaacjjwh', supplied(runs))
+    assert genuine['consumable_by_agent'] and genuine['observed_failures'][0]['registry_id'] == 'R2'
+    res = runs[('cathode', 'R1')] / 'result.json'
+    data = json.loads(res.read_text()); data['checkpoint_sha256'] = '0' * 64; res.write_text(json.dumps(data))
+    broken = assemble(manifest, 'mp-aaacjjwh', supplied(runs))
+    assert not broken['consumable_by_agent'] and broken['summary']['weaker_contact'] == 'unresolved'
+    assert [i['registry_id'] for i in broken['blocking_integrity_issues']] == ['R1']
+    assert [f['registry_id'] for f in broken['observed_failures']] == ['R2']
+
+
+def test_missing_separation_blocks(setup):
+    manifest, runs = setup
+    (runs[('cathode', 'R3')] / 'fixed_geometry_separation.json').unlink()
+    b = assemble(manifest, 'mp-aaacjjwh', supplied(runs))
+    assert not b['consumable_by_agent'] and 'separation file missing' in b['blocking_integrity_issues'][0]['reason']

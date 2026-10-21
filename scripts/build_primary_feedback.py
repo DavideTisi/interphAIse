@@ -15,8 +15,11 @@ offset, gap). Runs are supplied as REGISTRY_ID=DIR and are accepted only if:
 * the numbers are consistent: W_adh is recomputed from the saved energies and area; W_sep from
   the rigid-fragment energies, with checkpoint, joined energy and area matched to the run.
 
-A failing run is a terminal `failed` outcome with null works and its known cost; it is never
-dropped. Selection per contact: lowest relaxed joined energy among valid runs. Sensitivity
+Two kinds of non-valid run are kept apart, both with null works, known cost and reason:
+`failed` is a genuine completed calculation failure (unconverged/non-finite relaxation, overlaps);
+it is reported as feedback and consumes the slot. `invalid_evidence` is a broken or inconsistent
+package (wrong checkpoint, tampered or mismatched numbers, files, identity, cell, mask or registry,
+missing separation); it **blocks** consumption (`consumable_by_agent: false`) until resolved. Selection per contact: lowest relaxed joined energy among valid runs. Sensitivity
 checks are listed as pending/not_run with null values and never enter this bundle.
 """
 import argparse,hashlib,json,sys
@@ -76,20 +79,25 @@ def check_run(run,plan,expected,protocol):
     w_adh=work(energies['film'],energies['substrate'],energies['interface'],area)
     if abs(w_adh-r['work_of_adhesion_J_m2'])>ARITHMETIC_TOL:
         problems.append(f"stored W_adh {r['work_of_adhesion_J_m2']} != recomputed {w_adh:.6f}")
-    sep_path=Path(run)/'fixed_geometry_separation.json';w_sep=None;sep_status='missing';sep_relax={'film':None,'substrate':None}
-    if sep_path.exists():
-        sep=json.loads(sep_path.read_text());sep_problems=[]
+    sep_path=Path(run)/'fixed_geometry_separation.json';w_sep=None;sep_relax={'film':None,'substrate':None}
+    if not sep_path.exists():
+        sep_status='missing';problems.append('separation file missing: the primary package is incomplete')
+    else:
+        try:sep=json.loads(sep_path.read_text())
+        except json.JSONDecodeError:sep={}
+        sep_problems=[]
         if sep.get('checkpoint_sha256')!=protocol['checkpoint_sha256']:sep_problems.append('checkpoint')
         if sep.get('E_interface_eV')!=energies['interface']:sep_problems.append('joined energy')
         if not np.isclose(sep.get('area_A2',np.nan),area,rtol=1e-9):sep_problems.append('area')
         rigid=[sep.get('E_film_rigid_eV',np.nan),sep.get('E_substrate_rigid_eV',np.nan)]
-        if not np.all(np.isfinite(rigid)):sep_problems.append('non-finite fragments')
+        finite=bool(np.all(np.isfinite(rigid)))
+        if finite and abs(work(rigid[0],rigid[1],energies['interface'],area)-sep.get('W_sep_fixed_geometry_J_m2',np.nan))>ARITHMETIC_TOL:
+            sep_problems.append('W_sep arithmetic')
+        if sep_problems:   # an inconsistent separation file is invalid evidence, not a chemistry outcome
+            sep_status='invalid_evidence: '+', '.join(sep_problems);problems.append('separation '+sep_status)
+        elif not finite:sep_status='failed_calculation: non-finite rigid-fragment energy'
         else:
-            recomputed=work(rigid[0],rigid[1],energies['interface'],area)
-            if abs(recomputed-sep.get('W_sep_fixed_geometry_J_m2',np.nan))>ARITHMETIC_TOL:sep_problems.append('W_sep arithmetic')
-        if sep_problems:sep_status='invalid: '+', '.join(sep_problems)
-        else:
-            sep_status='valid';w_sep=recomputed
+            sep_status='valid';w_sep=work(rigid[0],rigid[1],energies['interface'],area)
             sep_relax={p:(sep[f'E_{p}_rigid_eV']-energies[p])/area*EV_PER_A2_TO_J_PER_M2 for p in ('film','substrate')}
     labels=valid['labels'];reconstruction={}
     for part in ('film','substrate'):
@@ -124,7 +132,7 @@ def assemble(manifest,coating_id,runs):
         if (contact,rid) in supplied:raise FeedbackError(f'duplicate run for {contact}/{rid}')
         if path in supplied.values():raise FeedbackError(f'{path} supplied for more than one registry')
         supplied[(contact,rid)]=path
-    contacts={};failures=[];costs={'new_jobs':0,'reused_jobs':0,'calculator_calls_known':0,'separation_single_points':0,
+    contacts={};failures=[];blocking=[];costs={'new_jobs':0,'reused_jobs':0,'calculator_calls_known':0,'separation_single_points':0,
                                     'wall_seconds_known':0.0,'runs_with_unknown_cost':0,'pending_jobs':0}
     for contact,spec in entry['contacts'].items():
         recs=[]
@@ -134,13 +142,18 @@ def assemble(manifest,coating_id,runs):
             if path is None:
                 recs.append(base|{'status':'pending','W_adh_J_m2':None,'W_sep_J_m2':None});costs['pending_jobs']+=1;continue
             costs['reused_jobs' if base['reused'] else 'new_jobs']+=1
+            kind='integrity'
             try:record,problems=check_run(path,plan,spec['expected'],protocol)
-            except (ProvenanceError,FileNotFoundError,KeyError,json.JSONDecodeError) as error:record,problems=None,[str(error)]
+            except ProvenanceError as error:record,problems,kind=None,[str(error)],error.kind
+            except (FileNotFoundError,KeyError,json.JSONDecodeError) as error:record,problems=None,[str(error)]
             if problems:
+                # 'failed': a genuine completed calculation failure (reported, consumes the slot).
+                # 'invalid_evidence': the package is broken or inconsistent; it blocks consumption until resolved.
+                status='failed' if kind=='calculation' else 'invalid_evidence'
                 calls,wall=known_cost(path)
-                recs.append(base|{'status':'failed','failure':'; '.join(problems),'run':str(path),'W_adh_J_m2':None,'W_sep_J_m2':None,
+                recs.append(base|{'status':status,'failure':'; '.join(problems),'run':str(path),'W_adh_J_m2':None,'W_sep_J_m2':None,
                                   'calculator_calls':calls,'wall_seconds':wall})
-                failures.append({'contact':contact,'registry_id':plan['id'],'failure':'; '.join(problems)})
+                (failures if status=='failed' else blocking).append({'contact':contact,'registry_id':plan['id'],'reason':'; '.join(problems)})
                 if calls is None:costs['runs_with_unknown_cost']+=1
                 else:costs['calculator_calls_known']+=calls;costs['wall_seconds_known']+=wall or 0
                 continue
@@ -158,8 +171,9 @@ def assemble(manifest,coating_id,runs):
             selected={'registry_id':None,'W_adh_J_m2':None,'W_sep_J_m2':None};rng={'W_adh_J_m2':None,'W_sep_J_m2':None}
         contacts[contact]={'build':spec['expected'],'registries':recs,'selected':selected,'registry_range':rng,
                            'n_planned':len(spec['registries']),'n_valid':len(valid),
-                           'n_failed':sum(r['status']=='failed' for r in recs),'n_pending':sum(r['status']=='pending' for r in recs)}
-    consumable=costs['pending_jobs']==0
+                           'n_failed':sum(r['status']=='failed' for r in recs),'n_pending':sum(r['status']=='pending' for r in recs),
+                           'n_invalid_evidence':sum(r['status']=='invalid_evidence' for r in recs)}
+    consumable=costs['pending_jobs']==0 and not blocking
     w={c:contacts[c]['selected']['W_adh_J_m2'] for c in contacts}
     if not consumable or None in w.values():weaker,gap,wmin='unresolved',None,None
     else:
@@ -172,7 +186,7 @@ def assemble(manifest,coating_id,runs):
         'sensitivity':{**{k:{'status':v,'value':None} for k,v in entry.get('sensitivity',{}).items()},
                        **{f'{c}:{k}':{'status':v['status'],'reason':v.get('reason'),'value':None}
                           for c,spec in entry['contacts'].items() for k,v in spec.get('sensitivity',{}).items()}},
-        'observed_failures':failures,'model_limitations':LIMITATIONS,'costs':costs}
+        'observed_failures':failures,'blocking_integrity_issues':blocking,'model_limitations':LIMITATIONS,'costs':costs}
 
 
 def main():
