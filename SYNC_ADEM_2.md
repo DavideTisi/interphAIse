@@ -1,5 +1,11 @@
 # Reply to Adem's second sync note
 
+**Subsequent integration:** Davide authorized merging and running the workflow.
+The merge is on `davide`; accounting and analysis checks are fixed, and a separate
+30-repeat-per-arm batch is complete. See
+[INTEGRATED_DISCOVERY_RESULTS.md](INTEGRATED_DISCOVERY_RESULTS.md) for the full
+archive and results. The review below records the earlier state of your branch.
+
 21 October 2026. Prepared for Davide to share; not sent automatically.
 Read `origin/work/agent-experiments` at `40e79c3`, including SYNC_DAVIDE_2.md,
 the discovery implementation, experiment runner and analysis script. No merge,

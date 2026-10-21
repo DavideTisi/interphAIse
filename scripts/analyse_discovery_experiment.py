@@ -143,7 +143,7 @@ def main():
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        fig, axes = plt.subplots(1, 2, figsize=(11, 4), sharey=True)
+        fig, axes = plt.subplots(1, 2, figsize=(12, 5.5), sharey=True)
         for ax, (target, rows) in zip(axes, curves.items()):
             for arm, (p, se, n, _) in rows.items():
                 if se is None:
@@ -151,10 +151,13 @@ def main():
                 else:
                     ax.errorbar(steps, p, yerr=se, marker="o", capsize=3, label=f"{arm} (n={n})")
             ax.set(xlabel="evaluations", title=f"P({target} found)", ylim=(0, 1.05))
-            ax.legend(fontsize=8)
         axes[0].set_ylabel("probability")
         fig.suptitle(f"{'synthetic' if exp['synthetic'] else 'frozen v3'} benchmark, budget {budget}; error bars: 95% Wilson")
-        fig.tight_layout()
+        handles, labels = axes[0].get_legend_handles_labels()
+        # Shared legend outside the data region. M differs between targets.
+        labels = ['random (exact)' if name.startswith('random (exact)') else name for name in labels]
+        fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5,.95), ncol=3, fontsize=9)
+        fig.tight_layout(rect=(0,0,1,.80))
         fig.savefig(args.plot, dpi=150)
         print(f"Saved {args.plot}")
 

@@ -1,0 +1,83 @@
+{
+  "replayed_queries": 1200,
+  "arms": {
+    "iterative": {
+      "runs": 30,
+      "successes": 19,
+      "rate": 0.6333333333333333,
+      "wilson_95": [
+        0.45513246433604937,
+        0.7812629779598231
+      ],
+      "failed_runs": 0,
+      "failed_queries": 26,
+      "proposal_attempts": 300
+    },
+    "random": {
+      "runs": 30,
+      "successes": 10,
+      "rate": 0.3333333333333333,
+      "wilson_95": [
+        0.19230295526846194,
+        0.5122027418616973
+      ],
+      "failed_runs": 0,
+      "failed_queries": 1,
+      "proposal_attempts": 0
+    },
+    "sequential": {
+      "runs": 30,
+      "successes": 4,
+      "rate": 0.13333333333333333,
+      "wilson_95": [
+        0.05309569424218104,
+        0.2968168394441695
+      ],
+      "failed_runs": 0,
+      "failed_queries": 5,
+      "proposal_attempts": 301
+    },
+    "upfront": {
+      "runs": 30,
+      "successes": 4,
+      "rate": 0.13333333333333333,
+      "wilson_95": [
+        0.05309569424218104,
+        0.2968168394441695
+      ],
+      "failed_runs": 0,
+      "failed_queries": 5,
+      "proposal_attempts": 30
+    }
+  },
+  "paired_acceptance": {
+    "iterative_vs_sequential": {
+      "both": 2,
+      "left_only": 17,
+      "right_only": 2,
+      "neither": 9,
+      "difference_in_success_rate": 0.5,
+      "exact_two_sided_mcnemar_p": 0.000728607177734375,
+      "n_pairs": 30
+    },
+    "iterative_vs_upfront": {
+      "both": 3,
+      "left_only": 16,
+      "right_only": 1,
+      "neither": 10,
+      "difference_in_success_rate": 0.5,
+      "exact_two_sided_mcnemar_p": 0.000274658203125,
+      "n_pairs": 30
+    },
+    "iterative_vs_random": {
+      "both": 6,
+      "left_only": 13,
+      "right_only": 4,
+      "neither": 7,
+      "difference_in_success_rate": 0.3,
+      "exact_two_sided_mcnemar_p": 0.049041748046875,
+      "n_pairs": 30
+    }
+  },
+  "note": "Paired tests are supplementary; the frozen primary outcome is acceptable found by budget 10."
+}

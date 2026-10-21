@@ -502,3 +502,41 @@ The live pilot is recorded separately under runs/integration_smoke. Wrote
 INTEGRATED_DISCOVERY_PROTOCOL.md before production, fixing the 30-repeat follow-up,
 settings, exclusion policy, interpretation and relation to Adem's earlier results.
 No new MLIP or Materials Project calculation/request occurred.
+
+## 2026-10-21 — Integrated production completed and independently replayed
+
+Production used commit 6c81809 and the frozen follow-up protocol, seeds 100–129,
+budget 10, three independent runs in flight, direct Haiku 5.5 at temperature 1.0
+and 4096 output tokens. The separate seed-90 live pilot completed all three arms
+with seven calls and is excluded. No provider/model fallback was used.
+
+All 120 production runs completed (30 per arm), with 1,200 evaluations. Independent
+query replay matched every saved result. Acceptance counts: iterative 19/30,
+upfront 4/30, sequential 4/30, random 10/30; best-bin counts 7, 1, 0 and 6 respectively.
+The fixed, review-motivated fluoride-first heuristic succeeds at query 2 and finds
+the best bin at query 4. The observed iterative/sequential acceptance difference
+is +50 percentage points, with 17 versus 2 discordant pairs (supplementary exact
+McNemar p=0.000729). No runs were excluded/replaced or stopped based on significance.
+
+Production used 631 proposal calls, with 2,773,563 recorded input and 576,415 output
+tokens; every proposal attempt has usage. There was one schema-repair attempt.
+Failed queries (retained and charged): iterative 26, sequential 5, upfront 5,
+random 1. These include missing evaluator data and invalid/repeated IDs; none is a
+run-level failure. The diagnostic bin<=2 sensitivity is upfront 26/30, iterative
+22/30, random 18/30, sequential 13/30; it remains secondary, not a changed objective.
+
+Added scripts/audit_discovery_batch.py and a passing paired-analysis unit test.
+The earlier 92-test suite, four analysis tests and this one test all passed (97
+across those runs). Inspected the generated plot and moved its legend outside the
+data region, then regenerated it. Wrote INTEGRATED_DISCOVERY_RESULTS.md and updated
+README, REPORT and the sync reply to identify current versus historical status.
+
+Archived 120 full JSON traces, manifest, original-file hashes, summary, audit and
+plot under data/experiments/integrated_v3_20261021_s100 (about 10 MB). Checked all
+raw JSON files against configured credential values before copying; none occurred.
+All paths needed for ordinary archive analysis are repository-relative. Reproduction
+commands are in the report. No new MP requests, MLIP runs or cluster jobs occurred.
+Main remains unchanged, and independent preparation/inspection script edits remain
+local. The tested integration and archive are being committed/pushed on davide;
+publication outcome is reported in chat. Shuffled feedback and physically validated
+bulk/slab/transport work remain future scientific controls, not completed claims.
