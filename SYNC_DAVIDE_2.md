@@ -39,6 +39,11 @@ All on `work/agent-experiments` (pushed, head `11aa655`), in order:
 8. **`11aa655` Fixes after the main run.** The runner's output cap defaults to 4096 tokens and
    is recorded, after upfront truncation at 2048. The analysis uses 95% Wilson intervals and
    can combine experiment folders, so a rerun arm replaces the original.
+9. **`e66a12d` Shuffled-feedback arm (implemented, not yet run) and a third plot.** The
+   shuffled arm proposes like iterative, but each turn the newest outcome swaps places with a
+   random earlier one among already-queried candidates. Each displayed outcome is relabelled
+   with the candidate it sits next to, and its true source is logged. The analysis adds the
+   median best penalty bin found so far, against the exact random median.
 
 ## Main experiment
 
@@ -90,6 +95,47 @@ alone does very well, because it already knows LiZr₂(PO₄)₃ is a good coati
 sequential still holds either way. Sequential choosing one candidate per turn without results
 avoids LiZr₂(PO₄)₃, unlike upfront, which is odd and worth looking into.
 
+## Further analysis: why the arms differ (no new runs)
+
+**Why sequential misses LiZr₂(PO₄)₃.** It never picks it and never mentions it. Seeing its
+own earlier hypotheses but no results, it anchors on an untested idea: "high Li content limits
+the reaction driving force". "Li-rich" appears in 59 of its 70 hypotheses from step 4 on, and
+it walks through very Li-rich oxides (Li₂O, Li₈ZrO₆, Li₈SiO₆, Li₆Zr₂O₇). Upfront writes all 10
+picks at once, so it spreads across families and includes LiZr₂(PO₄)₃. Iterative starts with
+the same Li-rich instinct (Li₃PO₄, LiF), but the poor results break it, and it ends up mostly
+on halides (64 of 100 picks).
+
+So iterative against sequential measures feedback **plus** escaping a self-reinforcing
+hypothesis, not feedback alone. A sequential variant that shows only earlier IDs, without
+hypotheses, would separate the two. Iterative against upfront is the cleaner comparison of
+prior against feedback: 7/10 against 2/10 on the frozen criterion, 8/10 against 10/10 on
+bin ≤ 2.
+
+**Median best bin found so far** (lower is better; runs with nothing valid yet count as worse
+than every bin):
+
+| k | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Random (exact median) | 15 | 8 | 5 | 3 | 3 | 3 | 2 | 2 | 2 | 2 |
+| Random (10 runs) | 7 | 4 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 2 |
+| Upfront | 16 | 15 | 15 | 10 | 2 | 2 | 2 | 2 | 2 | 2 |
+| Iterative | 16 | 15 | 15 | 9 | 9 | 9 | 9 | 2 | 2 | 2 |
+| Sequential | 16 | 15 | 15 | 15 | 15 | 10 | 10 | 10 | 10 | 10 |
+
+- **The pool is easy to get close in and hard to cross.** Many candidates sit just above the
+  0.050 limit (bins 2–3), so random gets near quickly but rarely gets under it; only the two
+  fluorides cross.
+- **Haiku's prior works against it at first.** Its textbook first picks (Li₃PO₄, LiF) score
+  badly under this evaluator, so every LLM arm starts worse than random.
+- **The advantage of feedback is narrow.** It lets Haiku correct a wrong working hypothesis
+  and cross the limit; it doesn't improve faster in general.
+
+Proposed headline, if you agree: *"With computed feedback, Haiku revised a wrong working
+hypothesis and found a criterion-passing coating in 7/10 runs, against 2/10 for its prior-only
+shortlist and 36% expected from random; without feedback it reinforced the wrong hypothesis
+(1/10)."* Plus the caveats: one benchmark, n = 10 per arm, and the result depends on the
+0.050 limit.
+
 ## Questions
 
 1. **Threshold within a bin:** was it intended that 0.050 falls inside bin 2? I'd keep 0.050
@@ -98,9 +144,10 @@ avoids LiZr₂(PO₄)₃, unlike upfront, which is odd and worth looking into.
 2. **Run data:** `runs/` is git-ignored. Should I commit the two experiment folders (~4 MB,
    including prompts and responses) under something like `data/experiments/`, so you can inspect
    and reproduce the figures?
-3. **Shuffled-feedback control** (about 100 more calls): run it now? It tests whether the
-   iterative gain depends on the right result being tied to the right candidate, or only on
-   seeing some results at all.
+3. **Shuffled-feedback control** (implemented, about 100 more calls): run it now? It tests
+   whether the iterative gain depends on the right result being tied to the right candidate,
+   or only on seeing some results at all. Should we also add the IDs-only sequential variant
+   (another 100 calls) to separate feedback from self-anchoring?
 4. **MLIP follow-up:** your predeclared selection should stay as it is. Does it already cover
    LiNbF₆, LiCaAlF₆ and a LiZr₂(PO₄)₃ polymorph? If not, I'm only noting it; it shouldn't be
    changed to fit these results.
