@@ -1,5 +1,18 @@
 # interphAIse — project report
 
+**Deadline plan refined — 2026-10-21:** The pilot now uses validated primary
+registry results for each decision; declared sensitivity checks can run in
+parallel or afterwards and remain explicitly pending until complete. LiNbF6's
+sensitivity is material-specific context, not a noise bound for new coatings.
+Require pre-energy W_adh ranges for both contacts and a weak-contact prediction.
+Disable/test the unsafe legacy F1 route for now; F2 remains mandatory. The
+execution plan sets Thursday 10:00/12:00 progress/fallback checkpoints, a 20:00
+slide/writeup freeze and Friday 00:30 submission target before the user-provided
+23 October 02:00 CEST deadline. A completed reviewed pilot gets one slide;
+otherwise report future work and only tests actually performed. See the updated
+[pilot plan](LLM_PETMAD_PILOT_PLAN.md) and recipient handoffs. These are plan
+changes, not implemented fixes, new calculations or scheduled automations.
+
 **LLM–PET-MAD pilot plan amended — 2026-10-21:** Davide clarified that the
 new coating exploration should exercise the LLM's hypothesis revision. The
 active plan uses the existing LiNbF6 evidence and two new coatings selected

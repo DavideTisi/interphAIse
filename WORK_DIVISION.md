@@ -11,6 +11,14 @@ brief are in [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md). Code polishin
 supports this loop. The physical rules in MLIP_COMPARISON_PLAN.md remain;
 the previous fixed cohort and automatic fallback order are superseded.
 
+Deadline execution: Thursday 22 October 10:00 progress check, 12:00
+adaptive/fixed-comparison decision, 20:00 slide/writeup freeze; target submission
+Friday 23 October 00:30, before the 02:00 CEST deadline supplied by Davide.
+Primary registry feedback advances the loop; declared sensitivities can follow
+or run in parallel, with their absence explicit. Require numeric W_adh forecasts
+and preserve each decision-time feedback snapshot. LiNbF6 sensitivity is context
+only. See the pilot plan for the exact fallback and validation rules.
+
 The review of `davide:8975d4b` and Adem's latest `b8b1392` reproduces the
 completed results and identifies four code safeguards to add. See
 [JOINT_REVIEW_AND_HANDOFF.md](JOINT_REVIEW_AND_HANDOFF.md) for reproductions,
@@ -20,7 +28,7 @@ or new production calculation has been made in this review.
 | Owner | Next work | Done when |
 |---|---|---|
 | **Adem** | Fix F3/F4; implement and mock-test the resumable selection/feedback loop and MLIP validator; estimate capped API cost; produce the comparison and decision timeline. | Old results reproduce; new choices precede their energies; prompts/feedback replay; failures and costs remain visible. See [SYNC_ADEM_12.md](SYNC_ADEM_12.md). |
-| **Claude** | Fix F1/F2; prepare a feasible menu and frozen physical protocol; evaluate the LLM's two successive choices at both contacts and archive the declared checks. | Safeguards pass; each selected slot has documented contact outcomes and costs, with failures retained. See [SYNC_CLAUDE_9.md](SYNC_CLAUDE_9.md). |
+| **Claude** | Disable/test the unsafe F1 legacy route, defer its full refactor, and fix F2; prepare the menu/protocol; return primary registry feedback before the later sensitivity assessment. | Safeguards pass; each selected slot has documented contact outcomes/costs; pending checks and failures remain visible. See [SYNC_CLAUDE_9.md](SYNC_CLAUDE_9.md). |
 | **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
 
 Adem keeps `work/agent-experiments`; give Claude an isolated physics

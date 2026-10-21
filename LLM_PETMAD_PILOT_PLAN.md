@@ -7,6 +7,13 @@ SYNC_CLAUDE_8.md. Their code safeguards and physical construction rules remain
 applicable. No pilot code, new live calls or calculations were executed while
 writing this plan. The completed 450-run environment study remains immutable.
 
+**Deadline amendment, 21 October:** sensitivity jobs no longer block the next
+LLM decision; use a frozen primary-feedback stage and label robustness checks
+pending. Require quantitative predictions. Disable the unsafe legacy F1 route
+for this campaign and defer its full refactor; F2 remains a prerequisite.
+The checkpoints at the end of this document protect the submission deadline
+provided by Davide: **Friday 23 October, 02:00 CEST (Copenhagen)**.
+
 ## Question and role of the LLM
 
 Can an LLM use computed interface behaviour to revise a chemical hypothesis
@@ -97,16 +104,60 @@ this is a prospective model interaction, not a blinded human experiment.
    consistently formatted two-contact reference package with numerical and
    physical caveats. Ask for an ordered shortlist of remaining IDs, the first
    selection, its testable hypothesis, predicted weak contact and an observation
-   that would change the next choice. Freeze this ordered shortlist.
+   that would change the next choice. Require the numeric prediction fields
+   specified below and freeze this ordered shortlist.
 4. **Calculate coating 2, then choose coating 3 (one response).** Claude runs
-   both contacts and the predeclared checks. Adem validates and supplies the
-   complete feedback package, including failures and costs. The model selects
+   the primary registry evaluations at both contacts. Adem validates and supplies
+   the frozen primary-feedback package, including failures, costs and explicit
+   pending sensitivity fields. The model selects
    one still-unevaluated feasible ID and identifies the observations supporting
    its decision, whether its choice changes or stays the same. Archive the
    choice before any interface energy for coating 3.
 5. **Calculate coating 3 and summarise (one response).** Run the same protocol,
    validate the results, and report which predictions were supported, contradicted
    or unresolved, alongside the thermodynamic/adhesion trade-offs and limitations.
+
+## Quantitative predictions and staged feedback
+
+Before each selected new coating's interface energies, require a short chemical
+hypothesis, predicted weaker contact (`cathode`, `electrolyte` or `unresolved`)
+and finite ordered W_adh ranges in J/m² for **both** contacts. Record the ranges
+as model forecasts, not calibrated confidence intervals. The prediction target
+is each contact's selected primary-registry result at the frozen geometry,
+using the lowest valid relaxed joined energy as already specified.
+
+After the calculation, report the observed value, whether it lies in the
+original range, the range width and the distance outside it if missed. Keep
+wide forecasts visible; merely covering the result does not demonstrate a
+useful prediction. Assess the weak-contact prediction separately, retaining
+`unresolved` when the observed gap is below 0.1 J/m² or validation fails.
+This tolerance is a reporting convention, not universal uncertainty. Prediction
+agreement is descriptive with two new materials and does not establish a
+mechanism. Never widen forecasts or change the prediction target after results.
+
+Each new coating's **primary feedback** comprises the predeclared, up to three
+physically distinct registries per contact, with joined/film/substrate
+relaxations and rigid-separation calculations. Every planned primary job must
+have a recorded terminal outcome (valid or failed); use the bounded step limits,
+not endless retries. Include all primary outcomes and the selected registry,
+convergence/geometry gates, observed reconstruction, limitations and costs.
+Failed or missing quantities remain null; the validation gate is unchanged.
+
+Thickness, fixed-depth and alternative-bulk checks retain their predeclared
+settings and overall budget, but run afterwards or in parallel. They do not
+block the next choice. Mark each as pending, completed or not run at submission.
+LiNbF6's archived sensitivity accompanies the reference as **material-specific
+context**. In particular its roughly 0.12 J/m² W_adh seed/construction difference
+cannot be assigned to another chemistry as a noise level or error bar. A registry
+spread also does not bound the missing thickness, bulk or polar-model errors.
+
+Freeze a `primary_feedback` bundle and hash before each decision. Even if a
+sensitivity job finishes early, keep its numerical outcome out of decision
+prompts under this staged protocol; reveal and discuss it in a separately
+versioned robustness assessment after both selections. Report integrity failures
+immediately and stop dependent calculations when necessary; do not hide a
+discovered invalid input to preserve this schedule. Late sensitivity can qualify
+the conclusion, but cannot rewrite the archived information state or selection.
 
 Compare the chosen third coating with the next unevaluated ID in step 3's frozen
 shortlist. This is a descriptive decision comparison at a common initial
@@ -130,7 +181,10 @@ adhesion summary. Do not silently buy a replacement evaluation.
   out-of-menu IDs and retry-driven selection changes. Use archived fixtures and
   mocked responses for development. Save prompt/response, structured hypotheses,
   hashes, selected IDs, feedback, model/settings and transport/token accounting.
-- **Claude:** retain F1/F2 fixes; supply the feasible menu, per-candidate builds,
+- **Claude:** disable the unsafe legacy F1 route with a clear failure and a
+  regression test; defer its full refactor. Keep the convergence-aware campaign
+  runner. Complete F2 checkpoint/reference validation before derived energies.
+  Supply the feasible menu, per-candidate builds,
   declared checks and a standard feedback package. Prepare all eligible inputs,
   but run new interface energies only for the IDs chosen at each stage. Within
   each selected coating, the two contacts and independent jobs can run in
@@ -161,3 +215,37 @@ whole menu/protocol first, then append hashed selection records prospectively;
 the final cohort is intentionally unknown at the initial freeze. Deliver the
 three-slot outcome table, decision timeline, prediction checks, cost report,
 replayable records and viewer structures. Work is pending, not a new result.
+
+## Deadline checkpoints and fallback
+
+All times below are **Copenhagen CEST**; these are execution checkpoints, not
+scheduled reminders. The submission deadline is Friday **23 October at 02:00**,
+using the deadline supplied by Davide. The later deadline leaves time on
+Thursday but does not remove geometry, integration or submission risk.
+
+- **Thursday 22 October, 10:00:** progress checkpoint. Report feasible menu size,
+  F1/F2 status, mocked end-to-end validation, API-cost/approval status and a
+  realistic remaining calculation estimate. Continue independent preparation.
+- **Thursday, 12:00:** choose the submission path. Start/continue the adaptive
+  pilot only if there are at least three feasible unmeasured alternatives,
+  a working validated loop and the required capped API-cost approval. Otherwise
+  use a fixed physical comparison of up to three feasible materials in the
+  predeclared order LiNbF6, LiCaAlF6, LiZr2(PO4)3, LiF, LiTaF6. Choose by
+  feasibility/provenance, never by new adhesion energies; retain the total
+  material/job caps and any already charged slots. Freeze a fallback manifest
+  before new energies and label it a fixed comparison. Do not expand the
+  construction pool to rescue the adaptive story near the deadline.
+- **Thursday, 20:00:** freeze the slides/writeup on validated existing results.
+  Add one pilot slide only if the prospective choices, primary outcomes and
+  analysis are complete and reviewed. Otherwise describe it as future work;
+  say mocked tests passed only if they actually did. Archive partial live work
+  and its limitations without presenting the full loop as completed. Later
+  robustness results can be added to the repository without reopening the
+  submission narrative, except to correct a material factual error.
+- **Friday, 00:30:** target submission completion, leaving 90 minutes before
+  the 02:00 deadline for account/upload/access problems. Davide owns submission;
+  this plan does not submit, post publicly or schedule any automated action.
+
+The fallback protects a complete submission. It does not turn unfinished pilot
+work into a completed discovery result, and does not require abandoning useful
+bounded robustness checks that can finish independently.

@@ -4,6 +4,11 @@
 LLM should choose new coatings using the physical feedback. Please read
 [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md) as the current plan.
 
+**Deadline update:** follow the quantitative-prediction, staged-feedback and
+checkpoint sections added to that plan. Thursday 22 October 10:00 is a status
+check, 12:00 the adaptive/fixed-comparison decision, and 20:00 the slide/writeup
+freeze; submission target is Friday 00:30 ahead of the 02:00 CEST deadline.
+
 Keep the completed 450-run environment study and its analysis unchanged.
 Keep your F3/F4 polishing and MLIP reader/validator tasks. The change is that
 the new cohort is **LiNbF6 as a known reference plus two adaptive choices**,
@@ -18,14 +23,25 @@ instead of three fixed coatings selected by us.
 2. Build a small resumable runner with mocked responses and existing reference
    archives. Optionally save a chemistry-only prior ranking; then reveal the
    complete LiNbF6 feedback and save an ordered shortlist with testable
-   predictions. The first ID is coating 2.
-3. Pause until Claude's coating-2 package passes validation. Reveal the full
-   feedback and ask the LLM to choose coating 3, with a brief explanation tied
+   predictions, including W_adh ranges for both contacts and the expected weaker
+   contact. Record interval widths and preserve predictions before energies.
+   The first ID is coating 2.
+3. Pause until Claude's primary coating-2 registry package passes validation.
+   Reveal the complete primary feedback with sensitivity checks marked pending
+   and ask the LLM to choose coating 3, with a brief explanation tied
    to specific observations. Freeze that selection before its energies exist.
 4. After coating 3, generate a decision timeline and comparison table showing
    predictions, outcomes, changes/retained choices and limitations. Save hashes,
    prompts/responses, settings, charges, failures and costs for deterministic
    replay of the orchestration.
+
+Sensitivity checks run in parallel or afterwards and do not block choices.
+Freeze/hash primary feedback for both decisions; do not inject an early finished
+sensitivity result into just one decision. LiNbF6's sensitivity is specific to
+that material and construction, not a transferable error bar. Keep delayed
+robustness results separately versioned and visible in the final assessment.
+Report range hits/misses, widths and weak-contact agreement without implying
+calibrated confidence or a statistically demonstrated predictive advantage.
 
 The fixed brief is to explore the trade-off between frozen thermodynamic
 penalty and the weaker of two valid W_adh values. Keep acceptance/insulation
@@ -54,9 +70,16 @@ comparison, failed-contact handling and the total attempt cap. An interface
 failure consumes a material slot; no silent replacement or retry until the
 model gives a preferred answer. Continue the original F3/F4 regression tests
 and verify that the completed production archive still gives the same numbers.
+Add coverage for numeric range validation, frozen primary-feedback snapshots
+and pending/late robustness metadata. Unconverged energies remain unusable.
 
 Claude owns physics and raw results; you own the LLM loop, validator and figures;
 Davide/Codex owns scientific scope, independent review, viewer and integration.
 Please first return the field contract, a mocked end-to-end trace and the capped
 cost estimate. This replaces only the fixed-cohort/no-new-calls directions in
 note 11; its safeguards, archival discipline and comparison outputs still apply.
+
+Prepare the existing-results slides/writeup independently of the pilot. At the
+20:00 freeze, use one pilot slide only for a completed, reviewed live sequence;
+otherwise a next-steps line with truthful mocked-test status. The noon fallback
+uses a fixed physical comparison, with no fabricated adaptive result.

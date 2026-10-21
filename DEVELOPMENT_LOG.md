@@ -2403,3 +2403,47 @@ for prose. Publish the amendment with the handoffs under Davide's existing
 authorization to make them available to Adem, then verify the remote commit.
 Next deliverables are the feasible menu, shared feedback contract, mocked
 end-to-end trace and capped cost estimate; the new scientific work is pending.
+
+## 2026-10-21 — Reduce the pilot's critical path and protect submission
+
+**Branch:** `davide`, starting at `953c632`. Davide proposed deadline-focused
+changes and clarified the deadline as Friday 23 October 02:00 CEST. Updated
+LLM_PETMAD_PILOT_PLAN.md, the existing recipient notes SYNC_ADEM_12.md and
+SYNC_CLAUDE_9.md, WORK_DIVISION.md and REPORT.md. No new handoff numbering or
+scientific objective change was needed.
+
+Kept a Thursday 10:00 progress checkpoint, with the adaptive/fixed-comparison
+decision at 12:00, slides/writeup frozen at 20:00 and submission target Friday
+00:30. A fixed fallback uses feasible materials in a declared order within
+existing slot/job caps. It is not an adaptive result. A pilot enters the slides
+only as a completed, reviewed sequence; otherwise describe future work and
+mocked tests only if actually passed. Partial live evidence is still archived.
+
+Moved sensitivity jobs off the decision dependency: complete the bounded
+primary registry attempts at both contacts, validate results/failures and
+freeze/hash that feedback bundle. Thickness, constraints and alternate bulk
+checks keep their planned settings/budget and run later or concurrently, with
+pending/not-run status explicit. Do not use LiNbF6's roughly 0.12 J/m² seed
+effect as an uncertainty bound for another material. Even early completed
+sensitivity numbers stay outside decision prompts under the staged contract;
+integrity failures must still stop dependent work. Later robustness evidence
+qualifies conclusions without rewriting the archived information state.
+
+Added pre-energy numeric W_adh ranges for both contacts and a weak-contact
+forecast. Record range widths, observed values, hits/misses and miss distance;
+no interval widening or calibrated-confidence claims. Tiny contact differences
+or invalid results leave the weak-contact assessment unresolved. Two material
+predictions remain descriptive, not evidence of statistical predictive skill.
+
+F1's full legacy refactor is deferred; explicitly disabling the unsafe route
+with a regression check is the required containment. F2 checkpoint/reference
+validation remains a campaign prerequisite, as do convergence and numerical
+validity gates in the current runner. These are implementation assignments,
+not fixes performed in this session.
+
+This session only updates documentation. No code change, new API/LLM/MLIP run,
+cluster job, direct collaborator message, reminder or submission was performed.
+The unrelated local README edit remains separate. Check document links,
+whitespace, schedule/date consistency and staged credentials, then publish the
+updated handoffs under Davide's existing sharing authorization and verify the
+remote commit. Full code tests are unnecessary for this planning revision.
