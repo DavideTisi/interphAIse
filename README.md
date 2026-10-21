@@ -95,7 +95,7 @@ for each adjacent pair in the stack:
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev,llm]"          # + pip install pet-mad / mace-torch for energetics
+pip install -e ".[dev,llm,upet]"    # includes the selected PET-MAD backend
 pip install -e ../hellmm              # optional: reuse HELLMM's LLM router + MLIP loader
 cp .env.example .env                  # MP key + LLM keys (same names as HELLMM)
 
@@ -157,7 +157,7 @@ Headline we are aiming for: *"the LLM makes the expert modelling decisions as pu
 - **Multilayer cell.** An interphase stack is currently built as pairwise interfaces (electrode|P1, P1|P2, …). Merging them into one cell with a common in-plane supercell is the main open task.
 - **γ_int.** Only W_adh is computed. Interface energy needs surface energies and chemical potentials for non-stoichiometric slabs (`validation` already flags them).
 - **MD anneal and interfacial Li transport** (stretch): short NVT on the accepted structure, Li MSD across the interface.
-- **MLIP domain.** PET-MAD is PBEsol without +U or spin. Use an MPtrj model for magnetic TM-oxide cathodes (`MLIP_CATHODE` in config).
+- **MLIP domain.** Both defaults use PET-MAD S 1.6.0 (r²SCAN) via UPET. Validate its behaviour on the target interfaces; do not mix its total energies with MP energies.
 - **Disorder.** Argyrodites and garnets are partially disordered; MP's ordered approximant is used. Record the MP id actually used.
 - Energy counters are process-global; run one case per process when comparing with brute force.
 - **Hybrid mode** (rule outputs given to the LLM as inputs, override rate as metric) is not built yet.
@@ -183,3 +183,19 @@ need the configured provider credentials. Each run writes `discovery.json` with
 proposal attempts, evaluation failures, timings and best-so-far history. Failed
 calculations consume budget. `fixed` follows configuration order; it is not an
 expert baseline unless that order was independently specified by an expert.
+
+### Explicit UPET checkpoints
+
+The current PET model family uses the `upet` package. Install with
+`pip install -e '.[upet]'` and pass an explicit model/version, for example
+`--mlip upet:pet-mad-s@1.6.0` to `scripts/run_discovery.py --full`.
+This public checkpoint is documented as r²SCAN-trained. The old `pet-mad`
+loader remains a separate legacy backend; it does not select the new model.
+Both anode and cathode defaults are pinned to PET-MAD S 1.6.0 (r²SCAN),
+as confirmed for this project. Loader tests do not validate model accuracy or inference.
+Reference: https://github.com/lab-cosmo/upet
+
+Run the real-model software check with `.venv/bin/python scripts/smoke_mlip.py`.
+It uses CPU, a slightly displaced two-atom Li crystal and at most five FIRE steps.
+Results are written to ignored `runs/petmad_smoke.json`. This is not an interface
+accuracy benchmark.

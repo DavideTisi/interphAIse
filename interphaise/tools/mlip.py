@@ -1,7 +1,9 @@
 """MLIP loader.
 
 Prefixes:
-  pet-mad[-<version>]        PET-MAD (PBEsol, non-spin-polarised). Good for
+  upet:<model>@<version>    Explicit UPET family and checkpoint, e.g.
+                             upet:pet-mad-s@1.6.0 (r2SCAN).
+  pet-mad[-<version>]        Legacy PET-MAD (PBEsol, non-spin-polarised). Good for
                              sulfides/halides/Li metal; be careful with magnetic
                              TM-oxide cathodes (NMC, LFP).
   metatomic:<path.pt>        any exported metatomic model, e.g. a PET-MAD
@@ -29,12 +31,25 @@ def best_device() -> str:
 
 
 def load_mlip(model: str, device: str | None = None):
-    device = device or best_device()
+    if device is None:
+        device = best_device()
+        # Use CPU on Apple hardware unless MPS was explicitly requested.
+        if model.startswith("upet:") and device == "mps":
+            device = "cpu"
 
     if model == "lj":
         from ase.calculators.lj import LennardJones
 
         return LennardJones(sigma=2.0, epsilon=0.05, rc=6.0, smooth=True)
+
+    if model.startswith("upet:"):
+        specification = model[len("upet:"):]
+        name, separator, version = specification.partition("@")
+        if not separator or not name or not version or "@" in version or version == "latest":
+            raise ValueError("Use an explicit UPET checkpoint: upet:<model>@<version>")
+        from upet.ase import UPETCalculator
+
+        return UPETCalculator(model=name, version=version, device=device)
 
     if model.startswith("pet-mad"):
         from pet_mad.calculator import PETMADCalculator  # pip install pet-mad

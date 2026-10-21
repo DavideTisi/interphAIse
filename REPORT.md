@@ -1,5 +1,16 @@
 # interphAIse — project report
 
+**Runtime update — 2026-10-21:** PET-MAD S 1.6.0 (r²SCAN) is now the default for
+both anode and cathode calculations, loaded through UPET 0.3.1. A real CPU smoke
+test on displaced two-atom bcc lithium returned finite energy, forces and stress.
+Five FIRE steps reduced energy from −3.931923 to −3.932929 eV and maximum force
+from 0.06625 to 0.04152 eV/Å; it did not converge within that deliberately short
+budget. All 38 offline tests passed in the new `.venv`. This supersedes the older
+“no real MLIP run” status below; full interfaces remain unvalidated. Results and
+dependency versions are in ignored `runs/petmad_smoke.json` and
+`runs/petmad_environment.txt`. Public weights were cached under
+`/private/tmp/interphaise-hf` (set `HF_HOME` to reuse this test cache).
+
 > **Purpose of this file.** A self-contained brief for people and for LLM sessions that pick this
 > project up later. It records what the project is, every design decision taken so far and why, what
 > is built, what is verified and what is not. Read this before the code. Last updated 2026-10-20
@@ -239,14 +250,15 @@ W_adh (higher better) → consensus agreement.
 **Potential convention:** both contacts of a cathode coating are evaluated with Li open at the cathode
 potential. Conservative for the coating | electrolyte side; state it when reporting.
 
-**MLIP choice:** PET-MAD is PBEsol without +U or spin; magnetic TM-oxide cathodes need an
-MPtrj-trained model (`MLIP_CATHODE = "mace-mp-medium-0b3"`). LiCoO₂ (low-spin Co³⁺) is the safer
-flagship.
+**MLIP choice (updated 2026-10-21):** both defaults now use the public PET-MAD S 1.6.0
+r²SCAN checkpoint via `upet:pet-mad-s@1.6.0`. This replaces the earlier legacy
+PBEsol PET-MAD / MACE default selection. Model suitability for each interface still
+requires validation. Keep MLIP energy differences separate from MP thermodynamics.
 
 ## 7. How to run
 
 ```bash
-pip install -e ".[dev,llm]"           # + pet-mad / mace-torch for energetics
+pip install -e ".[dev,llm,upet]"     # selected PET-MAD backend
 pip install -e ../hellmm              # optional: reuse HELLMM's LLM router and MLIP loader
 cp .env.example .env                  # MY_MP_API_KEY, MY_OPENROUTER_API_KEY, MY_ANTHROPIC_KEY
 pytest                                # offline: toy Li–S chemistry, scripted LLM, LJ calculator
