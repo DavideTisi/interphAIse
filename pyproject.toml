@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-llm = ["litellm"]
+llm = ["litellm", "anthropic"]
 mp = ["mp-api"]
 mlip = ["torch", "mace-torch"]
 petmad = ["pet-mad"]

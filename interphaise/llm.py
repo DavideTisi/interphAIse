@@ -13,6 +13,7 @@ model string (e.g. "openrouter/deepseek/deepseek-v3.2").
 from __future__ import annotations
 
 import json
+import os
 import time
 from typing import Callable
 
@@ -60,6 +61,10 @@ def make_llm(model: str, temperature: float | None = None, retries: int = 3) -> 
         }
         if temperature is not None:
             kwargs["temperature"] = temperature
+        if model.startswith("anthropic/"):
+            # .env uses MY_ANTHROPIC_KEY (not the ANTHROPIC_API_KEY name litellm
+            # looks up on its own) — see scripts/check_anthropic_key.py.
+            kwargs["api_key"] = os.getenv("ANTHROPIC_API_KEY") or os.getenv("MY_ANTHROPIC_KEY")
         last: Exception | None = None
         for attempt in range(retries):
             try:

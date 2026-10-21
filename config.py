@@ -4,7 +4,9 @@ from interphaise.context import InterfaceContext
 from interphaise.screen import ScreenConfig
 
 # LLM: a HELLMM alias if hellmm is installed, otherwise a litellm model string.
-LLM_MODEL = "deepseek-v3.2"            # or "openrouter/deepseek/deepseek-v3.2"
+# Default: direct Anthropic Claude Haiku 5.5, billed on MY_ANTHROPIC_KEY (see
+# interphaise/llm.py / scripts/check_anthropic_key.py).
+LLM_MODEL = "anthropic/claude-haiku-5-5"   # or "deepseek-v3.2" / "openrouter/deepseek/deepseek-v3.2"
 
 # MLIP: "pet-mad", "metatomic:/path/to/lpscl_finetune.pt", "mace-mp-medium-0b3", ...
 # Cathode cases with magnetic TM oxides: prefer an MPtrj (PBE+U) model.
