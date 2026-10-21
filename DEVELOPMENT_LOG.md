@@ -1286,3 +1286,78 @@ Credential scans and explicit staging precede the push; .env remains ignored.
 Next: Adem verifies the frozen runner and performs the single approved smoke
 batch; Codex continues the progress deck with the original feedback results,
 expanded landscape and current interface evidence separated clearly.
+
+## 2026-10-21 — Agent side (Adem): discovery arms, controls, analysis and environment smoke
+
+Branch `work/agent-experiments`, head `0072f3d` at the time of writing. This entry records the
+agent-side work of the day that was previously documented only in the SYNC notes and commit
+messages. Davide-side entries above are unchanged.
+
+**Implemented and tested (offline unless stated):**
+- `d380de0`, `072c941`: sequential no-feedback arm; synthetic evaluator; proposal fields
+  `motivation`/`mode`; per-attempt LLM metadata; repeated-run runner; exact random curve
+  `1 - C(N-M,k)/C(N,k)` (checked by enumeration). Also removed leftover lines in `llm.py` that
+  raised NameError on every live Haiku call.
+- `c312010`: arms run against `BenchmarkQueries` (frozen v3). Feedback whitelist
+  (`FEEDBACK_FIELDS`) keeps provenance, timing and diagnostics out of prompts.
+- `e66a12d`, `e3bab25`: shuffled-feedback arm (inside-out Fisher–Yates over real first queries;
+  charged invalid/repeated IDs stay in place; `displayed_sources` logged), `sequential_ids` arm
+  (implemented, not run), best-bin-so-far panel, `scripts/__init__.py` (an installed `scripts`
+  package shadowed the repo folder in the `agents` conda env).
+- `6e74e88`: exact random median returns inf when fewer than half the pool is eligible
+  (StopIteration fix, sparse and all-ineligible tests).
+- `07c48e7`: fixed per-arm colours and direct labels; `scripts/plot_trace_pair.py`; slide
+  figures in `figures/`.
+- `fc6a54c`: `--allow-draft` guard and manifest fields; tests on all three expansion tables
+  check that `bin_regret`, `component_analysis` and other diagnostics never reach a prompt.
+- `76c493b`: `scripts/usage_report.py` (tokens by arm and environment, list-price estimates).
+- `0072f3d`: `scripts/analyse_environment_study.py` implements ENVIRONMENT_PROTOCOL.md section 4
+  (McNemar contrasts, Holm across six, first-acceptable index, best-bin rate, fluoride fraction
+  early/late, equal-weight aggregate) before any production results.
+
+**Live LLM runs (Haiku 5.5 direct; credential never printed or committed):**
+- A 10-run pilot per arm on frozen v3 (prompt `v3-2026-10-21b`, 2048-token cap; upfront rerun at
+  4096). It is superseded by Davide's 30-run integrated batch and kept only in ignored `runs/`.
+  It is not cited as a result.
+- Shuffled control, 30 runs, seeds 100–129, settings matching
+  `integrated_v3_20261021_s100`, source `ea0326d`. Result: **6/30 against iterative 19/30**;
+  paired 16/3, exact McNemar p = 0.0044. All 300 queries replay. Archived at
+  `data/experiments/shuffled_v3_20261021_s100/` (README: chronology, displacement per turn,
+  limitations). Independently re-verified on Davide's side (SYNC_ADEM_5).
+- Environment smoke batch, approved by Davide (smoke only), on the frozen tables at execution
+  commit `26beb73`, seed 999. Per environment: upfront at budget 10; sequential, iterative and
+  shuffled at budget 3. 31 calls (1 format retry), 222,668 input and 27,416 output tokens,
+  ≈ USD 0.036 at list price. No truncation and no charged failures. Archived at
+  `data/experiments/environment_smoke_v1/`, excluded from results.
+
+**Verification performed:**
+- Tests: 41 discovery/analysis/benchmark/viewer tests after the integration merge; 34
+  discovery/analysis tests at `0072f3d`.
+- Full suite in the `agents` conda env: 100 passed, 4 failed (orchestrator/screen/matcher). The
+  same tests fail at `c92699a` in this env, and Davide's `.venv` passes them. Probable cause:
+  pymatgen 2026.4.16 here; not confirmed.
+- Exact reproduction of Davide's 30-run numbers (19/10/4/4).
+- Offline random runs on all three environment tables match the exact curves.
+- Frozen-table hashes match the protocol, and the frozen rows are identical to the exploratory
+  rows.
+
+**Decisions and reasons:**
+- Kept Davide's prompt version and analysis at every merge, so new arms stay comparable with
+  his archived cohort.
+- Invalid and repeated IDs are charged (his fix).
+- Secondary environment endpoints were defined in code before production results, to avoid
+  choosing them afterwards.
+- Cheaper designs (caching, Batch API) are not recommended: the conservative production
+  estimate is about USD 5, and a change would require re-freezing.
+
+**Unresolved:**
+- Production environment runs await Davide's approval (`SYNC_DAVIDE_4.md`: about 2,790 calls,
+  ≈ USD 3.70 expected, 5.30 conservative, 9.50 hard ceiling, list-price estimates).
+- Billed cost and contract pricing are unverified (account owner).
+- pymatgen/matcher test failures in the `agents` env.
+- IDs-only arm not run.
+- `REPORT.md` still describes v3 results without the environment study; align after production.
+
+**Next:** on approval, run the three commands at the end of `SYNC_DAVIDE_4.md`. Then
+`analyse_environment_study.py`, the per-environment curves and `usage_report.py`; archive like
+v3; update this log and `REPORT.md`.
