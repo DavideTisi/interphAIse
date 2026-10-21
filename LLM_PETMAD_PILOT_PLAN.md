@@ -14,6 +14,17 @@ for this campaign and defer its full refactor; F2 remains a prerequisite.
 The checkpoints at the end of this document protect the submission deadline
 provided by Davide: **Friday 23 October, 02:00 CEST (Copenhagen)**.
 
+**Construction amendment, 21 October:** use a uniform **1,250-atom cap** following
+the energy-free review of Claude's `49daa72` screen. The 1,212-atom LiCaAlF6
+electrolyte build passes all other recorded gates and has been independently
+rebuilt. Intended alternatives are LiTaF6, LiF and LiCaAlF6, pending final menu
+validation/manifest. The original 1,200 rejection stays in the archive.
+LiCaAlF6's next thicker film is 1,302 atoms and cannot be tested within this cap;
+mark it unavailable, never passed. See [SYNC_CLAUDE_10.md](SYNC_CLAUDE_10.md) for
+the decision and feedback completeness/identity/arithmetic fixes required before
+live agent use. This changes neither the two-new-material budget nor the
+thermodynamic objective and is not a new paid-call approval.
+
 ## Question and role of the LLM
 
 Can an LLM use computed interface behaviour to revise a chemical hypothesis
@@ -65,11 +76,15 @@ Claude starts construction screening with the five previously named IDs:
 | LiTaF6 | mp-aaacjmqp | Prospective option |
 
 Use the bounded physical rules in MLIP_COMPARISON_PLAN.md and SYNC_CLAUDE_8.md:
-300 then at most 600 Å², 1,200 atoms, unchanged strain tolerances, reviewed
+300 then at most 600 Å², 1,250 atoms, unchanged strain tolerances, reviewed
 substrate cuts, protected PS4/PO4, recorded exposed coordination, physical
 thickness and fixed depths. Complete necessary bulk checks and freeze feasible
 builds/registry and sensitivity rules before the agent selects. Geometry and
 bulk preparation costs belong in the campaign accounting.
+
+The uniform cap also applies to sensitivity jobs. If a declared larger input
+cannot fit, record `not_run_resource_limit`; its uncertainty stays unquantified.
+Do not modify the baseline or add a more permissive cap to force a pass.
 
 For a meaningful choice at both rounds, aim for at least **three unevaluated,
 feasible alternatives plus LiNbF6**. Five formulas is the current construction

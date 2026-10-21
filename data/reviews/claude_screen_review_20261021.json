@@ -1,0 +1,600 @@
+{
+  "review_date_client": "2026-10-21",
+  "reviewed_branch": "work/petmad-comparison",
+  "reviewed_commit": "49daa7299a5cd36db6b5ac08c5192f74bce2b942",
+  "review_kind": "offline independent geometry and feedback validation",
+  "no_new_interface_energy_or_live_call": true,
+  "full_tests": {
+    "passed": 157,
+    "seconds": 20.7,
+    "environment": "davide pinned .venv",
+    "source": "isolated git archive"
+  },
+  "candidate": "mp-aaaaajby",
+  "atom_cap_amendment": {
+    "old": 1200,
+    "new": 1250,
+    "all_other_geometry_gates_unchanged": true,
+    "next_layer_sensitivity_exceeds_cap": 1302
+  },
+  "geometry_rebuilds": [
+    {
+      "contact": "cathode",
+      "film_layers": 10,
+      "rows": [
+        {
+          "n_atoms": 696,
+          "area_A2": 95.63078496245711,
+          "strain": 0.022707213560004103,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 8,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 696,
+          "area_A2": 95.63078496245713,
+          "strain": 0.023165003645093756,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 8,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 696,
+          "area_A2": 95.63078496245711,
+          "strain": 0.023450786890624156,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 8,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 720,
+          "area_A2": 102.46155531691836,
+          "strain": 0.03591913857223245,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 8,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 720,
+          "area_A2": 102.46155531691838,
+          "strain": 0.03639253914115424,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 8,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 720,
+          "area_A2": 102.46155531691835,
+          "strain": 0.03580516831113857,
+          "film_span_A": 42.13907007221085,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 8,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1020,
+          "area_A2": 136.61540708922445,
+          "strain": 0.01964361467414463,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 12,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1020,
+          "area_A2": 136.61540708922448,
+          "strain": 0.019537216014898426,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 12,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1392,
+          "area_A2": 191.26156992491423,
+          "strain": 0.022707213560004103,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1392 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 16,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1392,
+          "area_A2": 191.26156992491426,
+          "strain": 0.023165003645094037,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1392 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 16,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1392,
+          "area_A2": 191.26156992491423,
+          "strain": 0.023450786890624156,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1392 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 16,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1392,
+          "area_A2": 191.2615699249142,
+          "strain": 0.04298266248176938,
+          "film_span_A": 42.139070072210856,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1392 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 16,
+            "Ca": 0
+          }
+        }
+      ],
+      "enumeration": {
+        "terminations_available": [
+          [
+            "CaF2_P2/c_6",
+            "Li_P6/mmm_1"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "O2_P6/mmm_1"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "Li_P6/mmm_1"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "O2_P6/mmm_1"
+          ]
+        ],
+        "zsl_matches": 137,
+        "truncated": true
+      }
+    },
+    {
+      "contact": "electrolyte",
+      "film_layers": 10,
+      "rows": [
+        {
+          "n_atoms": 1212,
+          "area_A2": 256.06241310737636,
+          "strain": 0.024243481907260337,
+          "film_span_A": 42.139070072210885,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1212,
+          "area_A2": 256.0624131073764,
+          "strain": 0.022195801975390398,
+          "film_span_A": 42.13907007221086,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1212,
+          "area_A2": 256.06241310737636,
+          "strain": 0.0244109658985027,
+          "film_span_A": 42.139070072210856,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1212,
+          "area_A2": 256.0624131073764,
+          "strain": 0.022319137505932864,
+          "film_span_A": 42.139070072210856,
+          "valid_at_1250": true,
+          "reject": [],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        }
+      ],
+      "enumeration": {
+        "terminations_available": [
+          [
+            "CaF2_P2/c_6",
+            "Li6Cl_P1_7"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "LiS3_P1_8"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "P_C2/m_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "Li_P-1_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "S_P2_1/m_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "S_P-1_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "Cl2_P2/m_1"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "Li6Cl_P1_7"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "LiS3_P1_8"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "P_C2/m_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "Li_P-1_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "S_P2_1/m_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "S_P-1_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "Cl2_P2/m_1"
+          ]
+        ],
+        "zsl_matches": 4,
+        "truncated": false
+      }
+    },
+    {
+      "contact": "electrolyte_thicker",
+      "film_layers": 11,
+      "rows": [
+        {
+          "n_atoms": 1302,
+          "area_A2": 256.06241310737636,
+          "strain": 0.024243481907260337,
+          "film_span_A": 46.45918621938959,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1302 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1302,
+          "area_A2": 256.0624131073764,
+          "strain": 0.022195801975390398,
+          "film_span_A": 46.459186219389586,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1302 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1302,
+          "area_A2": 256.06241310737636,
+          "strain": 0.0244109658985027,
+          "film_span_A": 46.45918621938959,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1302 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        },
+        {
+          "n_atoms": 1302,
+          "area_A2": 256.0624131073764,
+          "strain": 0.022319137505932864,
+          "film_span_A": 46.45918621938959,
+          "valid_at_1250": false,
+          "reject": [
+            "too many atoms: 1302 > 1250"
+          ],
+          "stoichiometric": true,
+          "ps4_cut": 0,
+          "broken_film_bonds": {
+            "Al": 20,
+            "Ca": 0
+          }
+        }
+      ],
+      "enumeration": {
+        "terminations_available": [
+          [
+            "CaF2_P2/c_6",
+            "Li6Cl_P1_7"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "LiS3_P1_8"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "P_C2/m_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "Li_P-1_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "S_P2_1/m_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "S_P-1_2"
+          ],
+          [
+            "CaF2_P2/c_6",
+            "Cl2_P2/m_1"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "Li6Cl_P1_7"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "LiS3_P1_8"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "P_C2/m_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "Li_P-1_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "S_P2_1/m_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "S_P-1_2"
+          ],
+          [
+            "LiAlF4_P2_6",
+            "Cl2_P2/m_1"
+          ]
+        ],
+        "zsl_matches": 4,
+        "truncated": false
+      }
+    }
+  ],
+  "feedback_reproductions": {
+    "missing_planned": {
+      "exit_code": 0,
+      "bundle_written": true,
+      "summary": {
+        "weaker_contact": "electrolyte",
+        "min_W_adh_J_m2": 1.6333940812860246,
+        "W_adh_gap_J_m2": 1.9669621581167331,
+        "tolerance_J_m2": 0.1
+      },
+      "contacts": {
+        "cathode": {
+          "planned": 3,
+          "actual": 1,
+          "valid": 1,
+          "selected": {
+            "registry": "0,0",
+            "W_adh_J_m2": 3.6003562394027577,
+            "W_sep_J_m2": 5.127716027070846
+          }
+        },
+        "electrolyte": {
+          "planned": 3,
+          "actual": 1,
+          "valid": 1,
+          "selected": {
+            "registry": "0,0",
+            "W_adh_J_m2": 1.6333940812860246,
+            "W_sep_J_m2": 2.9672197308623063
+          }
+        }
+      }
+    },
+    "mixed_cells": {
+      "exit_code": 0,
+      "bundle_written": true,
+      "summary": {
+        "weaker_contact": "unresolved",
+        "min_W_adh_J_m2": 1.6333940812860246,
+        "W_adh_gap_J_m2": 0.0,
+        "tolerance_J_m2": 0.1
+      },
+      "contacts": {
+        "cathode": {
+          "planned": 2,
+          "actual": 2,
+          "valid": 2,
+          "selected": {
+            "registry": "other_cell",
+            "W_adh_J_m2": 1.6333940812860246,
+            "W_sep_J_m2": 2.9672197308623063
+          }
+        },
+        "electrolyte": {
+          "planned": 1,
+          "actual": 1,
+          "valid": 1,
+          "selected": {
+            "registry": "0,0",
+            "W_adh_J_m2": 1.6333940812860246,
+            "W_sep_J_m2": 2.9672197308623063
+          }
+        }
+      }
+    },
+    "tampered_adhesion": {
+      "status": "valid",
+      "W_adh_J_m2": 999.0
+    },
+    "failed_cost": {
+      "known_source_calls": 136,
+      "reported_calls": 0,
+      "reported_jobs": 1
+    }
+  },
+  "real_reference_bundle": {
+    "hash_verified": true,
+    "registries_checked": [
+      {
+        "contact": "cathode",
+        "run": "data/petmad/niflheim_batch1/cathode_ref",
+        "W_adh_error_J_m2": 8.988662258957447e-09,
+        "W_sep_error_J_m2": 1.2801874227363896e-08
+      },
+      {
+        "contact": "cathode",
+        "run": "data/petmad/niflheim_batch1/cathode_reg_sixth_0",
+        "W_adh_error_J_m2": 8.980194809993236e-09,
+        "W_sep_error_J_m2": 1.2709716834535811e-08
+      },
+      {
+        "contact": "cathode",
+        "run": "data/petmad/niflheim_batch1/cathode_reg_third_third",
+        "W_adh_error_J_m2": 9.030342251747925e-09,
+        "W_sep_error_J_m2": 1.2901510082485856e-08
+      },
+      {
+        "contact": "electrolyte",
+        "run": "data/petmad/niflheim_batch1/electrolyte_seed0_ref",
+        "W_adh_error_J_m2": 4.07793754320096e-09,
+        "W_sep_error_J_m2": 7.407971569506344e-09
+      },
+      {
+        "contact": "electrolyte",
+        "run": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5",
+        "W_adh_error_J_m2": 4.073475334820387e-09,
+        "W_sep_error_J_m2": 7.651371092265435e-09
+      }
+    ],
+    "scientific_values_consistent": true
+  },
+  "notes": [
+    "Geometry probes use LiCaAlF6(100) LiAlF4_P2_6 with fixed reviewed substrate terms; no potential loaded.",
+    "The cathode probe is capped at 12 distinct matches; it is a constructive feasibility check, not an exhaustive surface search.",
+    "Full five-formula re-screen at the amended cap, manifest/registry selection and new-material interface calculations are still assigned to Claude.",
+    "Tampered, mixed and incomplete bundle tests used temporary copies only; the committed scientific archive was not altered.",
+    "No fixes to the feedback assembler were made in this review."
+  ]
+}

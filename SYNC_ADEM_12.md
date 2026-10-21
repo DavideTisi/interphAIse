@@ -4,6 +4,23 @@
 LLM should choose new coatings using the physical feedback. Please read
 [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md) as the current plan.
 
+**Screening update:** Claude's code/evidence is pushed on
+`work/petmad-comparison:49daa72`. Read that branch's
+`data/petmad/coating_comparison_v1/SCREENING_REPORT.md` and the new
+[review/decision note](SYNC_CLAUDE_10.md). A uniform 1,250-atom amendment can
+admit LiCaAlF6, giving the intended three unevaluated alternatives LiCaAlF6,
+LiTaF6 and LiF. Wait for the revalidated menu/manifest; the LLM still selects
+two new materials. The phosphate remains a construction failure.
+
+The reference feedback example's genuine values check out, but the current
+assembler accepts missing planned runs, mismatched cells/endpoints and a
+tampered stored adhesion value. Claude is assigned producer-side fixes. Your
+consumer must enforce manifest coverage/identity and recomputed numerical
+validity before feedback advances the state. Preserve known failed-job costs,
+mark reused/new work, and keep unavailable sensitivity distinct from a pass.
+Specific reproductions are in SYNC_CLAUDE_10.md. This does not change the
+proposed paid-call cap or approval step.
+
 **Deadline update:** follow the quantitative-prediction, staged-feedback and
 checkpoint sections added to that plan. Thursday 22 October 10:00 is a status
 check, 12:00 the adaptive/fixed-comparison decision, and 20:00 the slide/writeup

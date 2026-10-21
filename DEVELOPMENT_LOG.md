@@ -2447,3 +2447,53 @@ The unrelated local README edit remains separate. Check document links,
 whitespace, schedule/date consistency and staged credentials, then publish the
 updated handoffs under Davide's existing sharing authorization and verify the
 remote commit. Full code tests are unnecessary for this planning revision.
+
+## 2026-10-21 — Review Claude's screen and retain a real adaptive choice
+
+**Branch:** `davide`, source `3cb606b`. Fetched and reviewed Claude's pushed
+`work/petmad-comparison:49daa7299a5cd36db6b5ac08c5192f74bce2b942`, including
+`b9f8468` safeguards. Used an isolated Git archive in `/private/tmp`; no branch
+switch, merge or edit to Claude's worktree. The full offline suite reproduces
+157 passes in 20.70 s with the pinned local environment (existing ASE/spglib
+deprecation warnings). F1 now rejects unconverged work values and F2 checks
+model identity before derived calculations. Keep completed tested fixes rather
+than undoing them to implement the earlier deadline containment suggestion.
+
+The original five-material screen yields only two unevaluated alternatives at
+1,200 atoms. Saved LiCaAlF6(100) rows show that the 1,212-atom electrolyte input
+is rejected only for the atom cap. Independently rebuilt the LiAlF4_P2_6 cut
+with 10 coating layers and the fixed reviewed substrate cuts. Both contacts
+pass the geometry gates at 1,250; the electrolyte has area 256.062 Å², span
+42.139 Å, about 2.22% strain and no cut PS4. Broken Al–F coordination remains
+explicit. The cathode search was capped at 12 matches, sufficient to establish
+constructibility but not an exhaustive surface optimum.
+
+Recorded a uniform resource amendment from 1,200 to 1,250 atoms for every
+candidate/job before new interface energies. Intended menu is LiNbF6 plus
+LiCaAlF6, LiTaF6 and LiF, with final revalidation/manifest still assigned to
+Claude. No new chemical/strain exception or extra evaluated material slot.
+Independently rebuilt the 11-layer electrolyte film: 1,302 atoms, outside the
+new cap. That sensitivity is explicitly unavailable if selected, not a pass;
+the cap is not silently enlarged again. Wall time depends on the chosen cells.
+
+Checked all five genuine reference feedback registry records: adhesion and
+rigid separation arithmetic match, checkpoint hashes agree and the bundle
+hash verifies. Found reproducible assembler gaps on temporary copies: one of
+three planned runs per contact still yields a decision summary; an electrolyte
+run mislabelled as a cathode registry is compared and selected by incompatible
+absolute energy; a stored W_adh altered to 999 is accepted as valid. A known
+136-call failed run contributes zero calls to its feedback totals. These tests
+do not modify or invalidate the original archived scientific values. Assigned
+producer fixes and focused tests to Claude, independent consumer checks to Adem,
+plus accurate force labels and failed/rigid/reused cost accounting.
+
+Saved `SYNC_CLAUDE_10.md` and
+`data/reviews/claude_screen_review_20261021.json`; updated the pilot/engineering
+plans, current recipient notes, WORK_DIVISION.md and REPORT.md. The audit includes
+the independent builds, test result, mutation outputs and reference checks.
+This review contains no potential evaluation, live API/LLM call, SSH/Slurm
+action, direct collaborator message or implementation fix. Screening fixes,
+registry selection, revised manifest and live execution remain with their owners.
+The unrelated README edit is preserved. Validate links, JSON, whitespace and
+credentials, then publish the handoffs under the existing sharing authorization
+and verify the remote head. The main checkout has not merged Claude's code.

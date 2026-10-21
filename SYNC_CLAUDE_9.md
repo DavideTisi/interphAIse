@@ -1,5 +1,10 @@
 # Claude: prepare a candidate menu and evaluate the LLM's two selections
 
+**Screening follow-up:** [SYNC_CLAUDE_10.md](SYNC_CLAUDE_10.md) records the review
+of your `49daa72`, the uniform 1,250-atom amendment and remaining feedback gates.
+Use it with the current pilot plan. Keep your completed F1 implementation;
+the earlier deferral advice below preceded its review.
+
 21 October 2026. Davide wants the new work to exercise LLM intuition using
 PET-MAD feedback. [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md) supersedes
 the fixed three-coating selection in SYNC_CLAUDE_8.md. Your F1/F2 safeguards,

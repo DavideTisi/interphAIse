@@ -1,5 +1,22 @@
 # interphAIse — project report
 
+**Construction screen reviewed; cap amended — 2026-10-21:** Reviewed Claude's
+`work/petmad-comparison:49daa72` and reproduced 157 passing tests. Independently
+rebuilt LiCaAlF6(100) against both contacts without a potential: its 1,212-atom
+electrolyte cell passes all geometry gates when the uniform cap becomes 1,250.
+The original screen is retained; this pre-energy resource amendment is applied
+to all candidates, with other rules and material/job budgets unchanged. Intended
+menu: LiNbF6 reference plus LiTaF6, LiF and LiCaAlF6, pending final manifest.
+The next LiCaAlF6 film-thickness increment is 1,302 atoms and remains unavailable,
+not a passed sensitivity test. The real LiNbF6 feedback example's five registry
+values and hash check out. Offline mutation tests exposed remaining assembler
+gaps in coverage, comparable run identity and work arithmetic; failed-run cost
+accounting also needs correction before live use. See
+[decision and follow-up](SYNC_CLAUDE_10.md) and
+[saved audit](data/reviews/claude_screen_review_20261021.json).
+F1/F2 are implemented on Claude's branch; it has not been merged here. No new
+interface energy, live LLM call or cluster action occurred in this review.
+
 **Deadline plan refined — 2026-10-21:** The pilot now uses validated primary
 registry results for each decision; declared sensitivity checks can run in
 parallel or afterwards and remain explicitly pending until complete. LiNbF6's
