@@ -1,5 +1,13 @@
 # interphAIse — project report
 
+**Goals versus results — 2026-10-21:** [GOALS_AND_RESULTS.md](GOALS_AND_RESULTS.md)
+compares the 20 October plan with the completed evidence. Feedback improves
+sulfide candidate selection, with environment-dependent limits; general search
+superiority, best-material discovery and actual compute savings are not shown.
+The 141-ID/three-environment benchmark exceeds the original scale, while the
+planned 3–5-coating MLIP comparison remains incomplete: physical follow-up covers
+one coating's two contacts. This synthesis changes no objective or result.
+
 **Structure viewer current — 2026-10-21:** The shareable offline export now
 opens the selected Niflheim cathode registry (1/3, 1/3) and GPU seed-0 electrolyte
 reference. Four named evidence comparisons include the completed seed-4 result

@@ -2161,3 +2161,28 @@ publication outcome in chat. No external message was sent.
 The viewer is ready for the offline demo; both interfaces remain provisional,
 and no chloride/LLZO atomistic interface is claimed. The earlier viewer-pending
 entries are historical checkpoints, superseded by this one.
+
+## 2026-10-21 — Compared achieved results with the original project goals
+
+**Branch:** `davide`, parent `ee4a264`. User asked what the results mean relative
+to yesterday's initial ideas. Re-read the 20 October discovery agreement and
+implementation plan, original 50-candidate results, production review and
+current physics/LLZO audits. Checked the frozen sulfide criterion and accepted
+IDs directly against the benchmark JSON. No new analysis test or scientific
+calculation was required.
+
+Saved `GOALS_AND_RESULTS.md` and linked it from REPORT.md. The synthesis states
+the main feedback result and environment heterogeneity, distinguishes
+acceptability from best-bin search, and separates the LLM's candidate-choice
+role from team-designed modelling decisions. It explicitly identifies the
+unfinished 3–5-coating MLIP comparison: existing physical work covers LiNbF6
+at two contacts, not a cross-coating validation or MLIP-driven search loop.
+No human-expert superiority, new material discovery, experimentally validated
+coating or real compute-saving claim is supported. The HELLMM comparison uses
+Davide's described mechanism-proposal analogy, not a new paper audit.
+
+Verification is a documentation consistency/whitespace check against the
+archived counts and reviews; the project tests were not rerun for this prose
+change. Frozen criteria, source data, experiment archives and presentation are
+unchanged. No live LLM/MP/MLIP call, cluster job or external message occurred.
+Remaining work is still final slides and joint integration/release review.
