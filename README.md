@@ -204,8 +204,8 @@ accuracy benchmark.
 
 The configured model is `anthropic/claude-haiku-5-5` (Claude Haiku 5.5).
 `make_llm` calls Anthropic directly with the local `MY_ANTHROPIC_KEY` (or
-`ANTHROPIC_API_KEY`), bypassing HELLMM/OpenRouter routing. Other direct Claude
-models are rejected; no automatic model fallback is used. Credentials remain in
+`ANTHROPIC_API_KEY`), bypassing HELLMM/OpenRouter routing. Every other live model/provider is rejected; the discovery CLI permits only the
+configured default. No automatic model fallback is used. Credentials remain in
 ignored `.env`. Calls have a default 2048-output-token cap and may be given an
 explicit temperature; the direct client exposes response model and token usage
 in `last_metadata`. The small authentication/generation test does not establish

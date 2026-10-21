@@ -21,7 +21,8 @@ def main():
     parser.add_argument("--budget", type=int, default=3)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--full", action="store_true", help="Use fixed-policy MLIP interfaces and require adhesion")
-    parser.add_argument("--model", default=config.LLM_MODEL)
+    parser.add_argument("--model", choices=[config.LLM_MODEL], default=config.LLM_MODEL,
+                        help="Locked to the project-approved Haiku 5.5 model")
     parser.add_argument("--mlip", default=config.MLIP_CATHODE)
     parser.add_argument("--out", type=Path, default=Path("runs"))
     args = parser.parse_args()

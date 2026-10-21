@@ -8,3 +8,5 @@
 - If a credential is missing, ask the user to enter it locally; do not ask them to paste it into chat.
 
 - The collaborator Anthropic credential is authorised only for Claude Haiku 5.5 (`claude-haiku-5-5`). Use the direct Anthropic endpoint; never route it to OpenRouter or fall back to another model.
+
+- All live project LLM calls are locked to the configured Haiku 5.5 model and the Anthropic credential. Do not use other providers or credentials even if they are available.

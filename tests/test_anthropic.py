@@ -25,7 +25,9 @@ def test_direct_haiku_payload(monkeypatch):
     assert llm.last_metadata['usage']['output_tokens'] == 5
 
 
-@pytest.mark.parametrize('model', ['anthropic/claude-sonnet-4-6', 'claude-sonnet', 'claude-haiku-4-5-20251001'])
+@pytest.mark.parametrize('model', ['anthropic/claude-sonnet-4-6', 'claude-sonnet', 'claude-haiku-4-5-20251001',
+                                 'openrouter/anthropic/claude-haiku-5-5',
+                                 'openrouter/deepseek/deepseek-v3.2', 'gpt-4o', 'deepseek-v3.2'])
 def test_other_anthropic_models_blocked(model):
     with pytest.raises(ValueError, match='restricted'):
         make_llm(model)

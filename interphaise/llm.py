@@ -4,11 +4,8 @@ Every reasoner takes an ``llm`` callable ``(system, user) -> dict | list`` so
 that tests (and the human-baseline mode) can swap in something else without
 touching the reasoners. ``make_llm`` builds the real one.
 
-Direct Anthropic calls are restricted to Claude Haiku 5.5 and bypass all routers.
-For other providers, if HELLMM is installed (``pip install -e ../hellmm``) its litellm Router and
-model aliases are reused, so the same .env and aliases work in both projects.
-Otherwise a plain ``litellm.completion`` call is used with a full litellm
-model string (e.g. "openrouter/deepseek/deepseek-v3.2").
+All live calls use the configured Claude Haiku 5.5 model and the Anthropic key.
+No other provider, router or model fallback is supported.
 """
 
 from __future__ import annotations
@@ -40,96 +37,56 @@ def extract_json(text: str):
 
 def make_llm(model: str, temperature: float | None = None, retries: int = 3,
              max_tokens: int = 2048) -> LLM:
-    """Build an ``llm(system, user)`` callable for ``model``.
-
-    ``model`` is either a HELLMM alias (when hellmm is importable) or a litellm
-    model string.
-    """
+    """Build a direct Haiku 5.5 client; reject every other live model/provider."""
     # Never send the collaborator's Anthropic key through an external router.
-    if model.startswith(("anthropic/", "claude-")):
-        model_id = model.removeprefix("anthropic/")
-        if model_id != ANTHROPIC_MODEL:
-            raise ValueError(f"Project Anthropic credential is restricted to {ANTHROPIC_MODEL}")
-        key = (os.environ.get("MY_ANTHROPIC_KEY") or os.environ.get("ANTHROPIC_API_KEY") or "").strip()
-        if not key:
-            raise EnvironmentError("Anthropic credential is not configured in the local environment")
-        if max_tokens < 1 or retries < 1:
-            raise ValueError("max_tokens and retries must be positive")
+    model_id = model.removeprefix("anthropic/")
+    if model_id != ANTHROPIC_MODEL:
+        raise ValueError(f"Project Anthropic credential is restricted to {ANTHROPIC_MODEL}")
+    key = (os.environ.get("MY_ANTHROPIC_KEY") or os.environ.get("ANTHROPIC_API_KEY") or "").strip()
+    if not key:
+        raise EnvironmentError("Anthropic credential is not configured in the local environment")
+    if max_tokens < 1 or retries < 1:
+        raise ValueError("max_tokens and retries must be positive")
 
-        def _anthropic(system: str, user: str):
-            payload = {"model": model_id, "max_tokens": max_tokens, "system": system,
-                       "messages": [{"role": "user", "content": user}]}
-            if temperature is not None:
-                payload["temperature"] = temperature
-            for attempt in range(retries):
-                request = urllib.request.Request(
-                    "https://api.anthropic.com/v1/messages",
-                    data=json.dumps(payload).encode(),
-                    headers={"x-api-key": key, "anthropic-version": "2023-06-01",
-                             "content-type": "application/json"}, method="POST")
-                try:
-                    with urllib.request.urlopen(request, timeout=90) as response:
-                        data = json.load(response)
-                except urllib.error.HTTPError as error:
-                    # Never include raw provider responses or headers in logs.
-                    code = error.code
-                    error.close()
-                    if code in (429, 500, 502, 503, 504, 529) and attempt + 1 < retries:
-                        time.sleep(2 ** attempt)
-                        continue
-                    raise RuntimeError(f"Anthropic request failed (HTTP {code})") from None
-                except urllib.error.URLError:
-                    raise RuntimeError("Anthropic connection failed") from None
-                _anthropic.last_metadata = {"requested_model": model_id, "returned_model": data.get("model"),
-                                            "usage": data.get("usage"), "stop_reason": data.get("stop_reason"),
-                                            "temperature": temperature, "max_tokens": max_tokens}
-                if data.get("stop_reason") == "max_tokens":
-                    raise RuntimeError("Anthropic response reached the output-token limit")
-                text = "".join(block.get("text", "") for block in data.get("content", [])
-                               if block.get("type") == "text")
-                try:
-                    return extract_json(text)
-                except (ValueError, TypeError):
-                    raise RuntimeError("Anthropic response was not valid JSON") from None
-            raise RuntimeError("Anthropic retries exhausted")
-
-        _anthropic.last_metadata = None
-        return _anthropic
-
-    try:  # reuse HELLMM's router + aliases when available
-        from hellmm.llm import call_llm as _hellmm_call  # type: ignore
-
-        def _call(system: str, user: str):
-            return _hellmm_call(system=system, user=user, model=model)
-
-        return _call
-    except Exception:
-        pass
-
-    import litellm  # imported lazily so offline tests don't need it
-
-    def _call(system: str, user: str):
-        kwargs = {
-            "model": model,
-            "messages": [
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-        }
+    def _anthropic(system: str, user: str):
+        payload = {"model": model_id, "max_tokens": max_tokens, "system": system,
+                   "messages": [{"role": "user", "content": user}]}
         if temperature is not None:
-            kwargs["temperature"] = temperature
-        last: Exception | None = None
+            payload["temperature"] = temperature
         for attempt in range(retries):
+            request = urllib.request.Request(
+                "https://api.anthropic.com/v1/messages",
+                data=json.dumps(payload).encode(),
+                headers={"x-api-key": key, "anthropic-version": "2023-06-01",
+                         "content-type": "application/json"}, method="POST")
             try:
-                resp = litellm.completion(**kwargs)
-                return extract_json(resp.choices[0].message.content or "")
-            except Exception as e:  # network, rate limit, malformed JSON
-                last = e
-                time.sleep(2**attempt)
-        raise RuntimeError(f"LLM call failed after {retries} attempts: {last}")
+                with urllib.request.urlopen(request, timeout=90) as response:
+                    data = json.load(response)
+            except urllib.error.HTTPError as error:
+                # Never include raw provider responses or headers in logs.
+                code = error.code
+                error.close()
+                if code in (429, 500, 502, 503, 504, 529) and attempt + 1 < retries:
+                    time.sleep(2 ** attempt)
+                    continue
+                raise RuntimeError(f"Anthropic request failed (HTTP {code})") from None
+            except urllib.error.URLError:
+                raise RuntimeError("Anthropic connection failed") from None
+            _anthropic.last_metadata = {"requested_model": model_id, "returned_model": data.get("model"),
+                                        "usage": data.get("usage"), "stop_reason": data.get("stop_reason"),
+                                        "temperature": temperature, "max_tokens": max_tokens}
+            if data.get("stop_reason") == "max_tokens":
+                raise RuntimeError("Anthropic response reached the output-token limit")
+            text = "".join(block.get("text", "") for block in data.get("content", [])
+                           if block.get("type") == "text")
+            try:
+                return extract_json(text)
+            except (ValueError, TypeError):
+                raise RuntimeError("Anthropic response was not valid JSON") from None
+        raise RuntimeError("Anthropic retries exhausted")
 
-    return _call
-
+    _anthropic.last_metadata = None
+    return _anthropic
 
 class HumanLLM:
     """Human-baseline mode: a team member answers the same prompts.
