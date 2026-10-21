@@ -40,11 +40,15 @@ def main():
                               sum(r['status']=='ok' for r in json.loads((root/'registry_scan.json').read_text()))}
     (root/'inspection.json').write_text(json.dumps(inspection,indent=2)+'\n')
     fig,axes=plt.subplots(1,3,figsize=(12,6),layout='constrained')
-    for ax,atoms,title in zip(axes[:2],[initial,final],['Initial interface','Relaxed interface']):
+    # Wrapped copies for plotting only: non-orthogonal in-plane cells otherwise put atoms outside the x window.
+    shown=[atoms.copy() for atoms in (initial,final)]
+    for atoms in shown:atoms.wrap()
+    xmax=max(float(atoms.positions[:,0].max()) for atoms in shown)
+    for ax,atoms,title in zip(axes[:2],shown,['Initial interface','Relaxed interface']):
         ax.scatter(atoms.positions[:,0],atoms.positions[:,2],c=jmol_colors[atoms.numbers],
                    s=55*covalent_radii[atoms.numbers]**2,edgecolors='#333333',linewidths=.4)
         ax.set(title=title,xlabel='x (Å)',ylabel='z (Å)',aspect='equal')
-        ax.set_xlim(-1,float(initial.cell[0,0])+1)
+        ax.set_xlim(-1,xmax+1)
         ax.set_ylim(initial.positions[:,2].min()-2,max(initial.positions[:,2].max(),final.positions[:,2].max())+2)
     handles=[Line2D([0],[0],marker='o',color='w',markerfacecolor=jmol_colors[z],markeredgecolor='#333333',
                     label=chemical_symbols[z]) for z in sorted(set(initial.numbers))]
@@ -60,7 +64,9 @@ def main():
     axes[2].axhline(.05,color='black',linestyle='--',linewidth=.8,label='Target 0.05 eV/Å')
     axes[2].set(yscale='log',xlabel='FIRE step',ylabel='Maximum free-atom force (eV/Å)',title='Numerical convergence')
     axes[2].legend(frameon=False,fontsize=9);axes[2].grid(alpha=.2)
-    fig.suptitle('PET-MAD S 1.6.0 pilot: LiCoO₂(001) | LiNbF₆(101)',fontsize=14)
+    cand=result['selected']['candidate'];miller=lambda m:'('+''.join(str(i) for i in m)+')'
+    fig.suptitle(f"PET-MAD S 1.6.0 pilot: {cand['pair'][0]}{miller(cand['substrate_miller'])} | "
+                 f"{cand['pair'][1]}{miller(cand['film_miller'])}",fontsize=14)
     fig.savefig(root/'inspection.png',dpi=170)
     print(json.dumps(inspection,indent=2))
 

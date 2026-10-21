@@ -9,6 +9,13 @@ performance is close to random. The full sanitized archive, figures, costs and
 interpretation are in [INTEGRATED_DISCOVERY_RESULTS.md](INTEGRATED_DISCOVERY_RESULTS.md).
 The older checkpoint entries below are retained as history.
 
+**Electrolyte-contact feasibility pilot — 2026-10-21:** Li6PS5Cl(111) | LiNbF6(101),
+216 atoms, converged on free atoms; provisional constrained W_adh 0.4275 J/m². Under the
+cathode pilot's 160 Å² matching cap no valid LiNbF6 | Li6PS5Cl interface exists on any
+facet, so a common two-contact protocol needs a cap of at least ~185 Å². Run before the
+amendment's protocol validation; not comparable with the cathode value for ranking.
+See the electrolyte section of [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md).
+
 **Structure viewer — 2026-10-21:** An offline interactive viewer now displays the
 50 bulk candidates and eight saved pilot geometries from both contacts, including linked initial/relaxed
 interface views, cell replication and coating/cathode or fixed-atom colouring.
