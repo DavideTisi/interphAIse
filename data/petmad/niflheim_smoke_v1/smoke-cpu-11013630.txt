@@ -1,0 +1,31 @@
+job=11013630 node=x180.nifl.fysik.dtu.dk partition=xeon24el9 cpus=24 gpus=none code=ea02e86
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, CUDA driver not available (NVRTC compilation available)
+   Devices:
+     "cpu"      : "x86_64"
+   Kernel cache:
+     /home/energy/davti/.cache/warp/1.18.0
+Registry 0,0, gap 2.0: -3434.247803 eV
+Registry 0,0, gap 2.5: -3431.344727 eV
+Registry 0,0, gap 3.0: -3428.617676 eV
+Registry 0,0.5, gap 2.0: -3434.247803 eV
+Registry 0,0.5, gap 2.5: -3431.344727 eV
+Registry 0,0.5, gap 3.0: -3428.617676 eV
+Registry 0.5,0, gap 2.0: -3434.247803 eV
+Registry 0.5,0, gap 2.5: -3431.344727 eV
+Registry 0.5,0, gap 3.0: -3428.617676 eV
+Registry 0.5,0.5, gap 2.0: -3434.247803 eV
+Registry 0.5,0.5, gap 2.5: -3431.344727 eV
+Registry 0.5,0.5, gap 3.0: -3428.617676 eV
+Relaxing interface: 504 atoms, 104 fixed
+interface: converged=True, steps=59, fmax=0.04771
+Relaxing film: 192 atoms, 0 fixed
+film: converged=True, steps=43, fmax=0.04013
+Relaxing substrate: 312 atoms, 104 fixed
+substrate: converged=True, steps=24, fmax=0.04549
+{
+  "status": "converged_pilot",
+  "work_of_adhesion_J_m2": 3.479287185460157,
+  "calculator_calls": 144,
+  "wall_seconds": 89.98139773297589
+}

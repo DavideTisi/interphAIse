@@ -1826,3 +1826,13 @@ pymatgen 2026.9.24); freeze saved in `envs/interphaise_freeze.txt`. Existing use
 unrelated pending jobs are untouched. `run_petmad_interface.py` gains `--device` (default
 cpu); `scripts/niflheim/run_interface.sbatch` added. No cluster job submitted yet; GPU
 driver/CUDA 13 compatibility is untested.
+
+## 2026-10-21 — Niflheim smoke test
+
+The job script now passes runner arguments via `RUN_ARGS`, because Niflheim allows at most
+10 script arguments (`ea02e86`). Two jobs reproduced the archived 504-atom cathode run.
+GPU job 11013629 (RTX 3090, `sm3090el9_devel`): W_adh 3.479507 J/m², 37 s. CPU job 11013630
+(`xeon24el9`, exclusive, 24 cores): 3.479287 J/m², 90 s. Local reference: 3.479353 J/m²,
+138 s. Step counts and the 144 calls are identical. Package pins and checkpoint hash are
+confirmed on the cluster. Details and environment: NIFLHEIM.md; evidence:
+`data/petmad/niflheim_smoke_v1/`. Next: seed-4 electrolyte (880 atoms) on GPU.
