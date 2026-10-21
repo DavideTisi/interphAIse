@@ -1,5 +1,14 @@
 # interphAIse — project report
 
+**Discovery update — 2026-10-21:** Discovery is the headline experiment; the
+original six-coating modelling screen below is supporting work. On `davide`, a
+separate v2 draft evaluator now includes coating self-decomposition, an insulation
+gate and fixed energy bins. A reproducible 50-candidate MP pool has been built.
+The complete suite passes 62 tests. Neither the new evaluator nor the pool is
+yet wired into the legacy discovery CLI; no v2 LLM benchmark has been run. See
+[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md) for the exact contract, assumptions
+and remaining integration work.
+
 **Runtime update — 2026-10-21:** PET-MAD S 1.6.0 (r²SCAN) is now the default for
 both anode and cathode calculations, loaded through UPET 0.3.1. A real CPU smoke
 test on displaced two-atom bcc lithium returned finite energy, forces and stress.

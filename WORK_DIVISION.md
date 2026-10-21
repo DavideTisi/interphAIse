@@ -145,14 +145,14 @@ fails, fix it before adding more candidates or more agent features.
 
 ## Git and collaboration
 
-Integration base: `codex/iterative-coating-discovery`.
+Integration base: `main` (updated 21 October after the discovery work was merged).
 
 Create personal work branches from the same latest integration commit:
 
-- Davide: `work/evaluator`
+- Davide: `davide` (created from `main`, active evaluator development)
 - Adem: `work/agent-experiments`
 
-These branch names are a plan, not confirmation that the branches already exist.
+Adem’s branch name is a suggestion; Davide’s branch already exists.
 Keep changes within the owned files where practical. Agree before changing shared
 configuration or the evaluator contract. Use small commits and merge at the
 milestones; avoid simultaneous edits of the same file. Do not merge to `main`

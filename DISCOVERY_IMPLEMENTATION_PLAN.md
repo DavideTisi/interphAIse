@@ -4,6 +4,10 @@
 explicitly listed as existing. This plan supersedes the experimental design in
 `DISCOVERY_REPORT.md` where they differ, and incorporates `DISCOVERY_REVIEW.md`.
 
+**Implementation checkpoint — 21 October:** See [EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md).
+The standalone v2 evaluator and 50-candidate draft pool now exist on `davide`;
+consistent thermo-entry retrieval, full-pool validation and agent integration remain.
+
 ## 1. The scientific question
 
 **Does computational feedback improve an LLM's selection of compatible battery
