@@ -133,9 +133,12 @@ class EnergeticsResult:
     e_interface: float            # eV
     e_film: float                 # eV, isolated film slab in the same cell
     e_substrate: float            # eV, isolated substrate slab in the same cell
-    w_adh: float                  # J/m^2, work of adhesion (>0 = bound)
+    w_adh: float | None           # J/m^2 (>0 = bound); None unless every relaxation converged
     n_single_points: int = 0
     n_relaxations: int = 0
+    status: str = "validated"     # validated | unconverged | unrelaxed | nonfinite
+    unconverged: list[str] = field(default_factory=list)   # which relaxations exhausted their budget
+    w_adh_unvalidated: float | None = None                  # raw energy difference, diagnosis only
 
 
 @dataclass

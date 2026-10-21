@@ -55,13 +55,22 @@ def single_point(atoms, calc) -> float:
 
 
 def relax(atoms, calc, fixed: list[int] | None = None, fmax: float = 0.05, steps: int = 300):
+    """Relax and report convergence; an exhausted step budget is never silently accepted.
+
+    Returns (atoms, energy, converged). ``converged`` is re-checked on the final free-atom
+    forces and finite values, not taken from the optimizer's exit flag alone.
+    """
     atoms = atoms.copy()
     if fixed:
         atoms.set_constraint(FixAtoms(indices=fixed))
     atoms.calc = calc
-    FIRE(atoms, logfile=None).run(fmax=fmax, steps=steps)
+    finished = bool(FIRE(atoms, logfile=None).run(fmax=fmax, steps=steps))
     Counter.relaxations += 1
-    return atoms, float(atoms.get_potential_energy())
+    energy = float(atoms.get_potential_energy())
+    forces = atoms.get_forces()
+    converged = (finished and np.isfinite(energy) and bool(np.isfinite(forces).all())
+                 and float(np.linalg.norm(forces, axis=1).max()) <= fmax)
+    return atoms, energy, converged
 
 
 def registry_scan(
@@ -115,14 +124,21 @@ def work_of_adhesion(
     sub_fixed = [sub_idx.index(i) for i in fixed]
 
     if do_relax:
-        relaxed, e_int = relax(start, calc, fixed=fixed, fmax=fmax, steps=steps)
-        _, e_film = relax(film0, calc, fixed=None, fmax=fmax, steps=steps)
-        _, e_sub = relax(sub0, calc, fixed=sub_fixed, fmax=fmax, steps=steps)
+        relaxed, e_int, ok_int = relax(start, calc, fixed=fixed, fmax=fmax, steps=steps)
+        _, e_film, ok_film = relax(film0, calc, fixed=None, fmax=fmax, steps=steps)
+        _, e_sub, ok_sub = relax(sub0, calc, fixed=sub_fixed, fmax=fmax, steps=steps)
+        failed = [name for name, ok in (("interface", ok_int), ("film", ok_film), ("substrate", ok_sub)) if not ok]
+        status = "validated" if not failed else "unconverged"
     else:
         relaxed = start
         e_int, e_film, e_sub = single_point(start, calc), single_point(film0, calc), single_point(sub0, calc)
+        failed, status = [], "unrelaxed"
 
     w = (e_film + e_sub - e_int) / cand.area * EV_PER_A2_TO_J_PER_M2
+    # Only converged relaxations give a validated work of adhesion; the raw number is kept for diagnosis.
+    if status == "validated" and not np.isfinite(w):
+        status = "nonfinite"
+    validated = status == "validated"
     res = EnergeticsResult(
         candidate=cand,
         best_offset=(dx, dy),
@@ -130,7 +146,10 @@ def work_of_adhesion(
         e_interface=e_int,
         e_film=e_film,
         e_substrate=e_sub,
-        w_adh=float(w),
+        w_adh=float(w) if validated else None,
+        status=status,
+        unconverged=failed,
+        w_adh_unvalidated=float(w),
         n_single_points=Counter.single_points - sp0,
         n_relaxations=Counter.relaxations - rx0,
     )

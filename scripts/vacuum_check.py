@@ -9,14 +9,14 @@ the actual empty separation along z (largest periodic gap between atomic planes)
 A finite-range model cannot couple images across a gap wider than its neighbour cutoff,
 so this checks isolation numerically; it says nothing about real polar electrostatics.
 """
-import argparse,hashlib,json,sys
+import argparse,json,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import numpy as np
 from ase.constraints import FixAtoms
-from ase.io import read
 from interphaise.tools.energetics import EV_PER_A2_TO_J_PER_M2
+from interphaise.tools.provenance import checkpoint_sha256,load_valid_interface_run,ProvenanceError
 
 
 def empty_gap(atoms):
@@ -30,14 +30,15 @@ def main():
     ap.add_argument('--vacuum',type=float,nargs='+',default=[15,20,25]);ap.add_argument('--base',type=float,default=15)
     ap.add_argument('--threads',type=int,default=8)
     args=ap.parse_args()
+    sha=checkpoint_sha256(args.checkpoint)
+    # F2: validate every source run before loading the model; a mismatch writes nothing.
+    try:runs={run:load_valid_interface_run(run,sha) for run in args.runs}
+    except ProvenanceError as error:ap.error(str(error))
     import torch;torch.set_num_threads(args.threads)
     from upet.ase import UPETCalculator
-    sha=hashlib.sha256(args.checkpoint.read_bytes()).hexdigest()
     calc=UPETCalculator(checkpoint_path=str(args.checkpoint),device='cpu')
-    for run in args.runs:
-        r=json.loads((run/'result.json').read_text());records=json.loads((run/'relaxation_records.json').read_text())
-        labels=read(run/'initial.extxyz').arrays['interface_label']
-        saved={k:read(run/k/'final.extxyz') for k in ('interface','film','substrate')}
+    for run,valid in runs.items():
+        r=valid['result'];records=valid['records'];labels=valid['labels'];saved=valid['finals']
         rigid={k:saved['interface'][np.where(labels==k)[0]] for k in ('film','substrate')}
         masks={k:records[k]['fixed_atom_indices'] for k in ('interface','film','substrate')}
         out={'run':str(run),'checkpoint_sha256':sha,'area_A2':r['area_A2'],'base_vacuum_A':args.base,'fmax_target_eV_A':records['interface']['fmax_target_eV_A'],'settings':{}}

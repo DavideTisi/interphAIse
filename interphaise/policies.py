@@ -262,7 +262,9 @@ class RulesPolicy:
         cn_change = abs(cn1 - cn0) / cn0 if cn0 else 0.0
         disp = d.get("mean_displacement_interface_region_A", 0.0)
 
-        if d.get("min_distance_after_A", 9.9) < s.min_distance:
+        if res.w_adh is None:
+            v = JudgeVerdict("reject", "next_termination", f"rule: energetics not validated ({res.status})")
+        elif d.get("min_distance_after_A", 9.9) < s.min_distance:
             v = JudgeVerdict("reject", "next_termination",
                              f"rule: overlapping atoms ({d['min_distance_after_A']:.2f} Å < {s.min_distance} Å)")
         elif gap_open > s.max_gap_opening or res.w_adh <= 0:

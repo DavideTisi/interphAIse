@@ -22,8 +22,9 @@ def facets(system, user):
 
 def settings(**kw):
     m = MatchSettings(max_area=120, film_thickness=2, substrate_thickness=2, max_length_tol=0.05)
+    kw.setdefault("steps", 300)   # enough for the toy LJ relaxations to converge (F1 gate)
     return OrchestratorSettings(n_runs=2, max_retries=1, top_k_candidates=1, registry_n_xy=2,
-                                registry_gaps=(2.0,), steps=10, match=m, **kw)
+                                registry_gaps=(2.0,), match=m, **kw)
 
 
 def ctx():

@@ -7,7 +7,7 @@ budget. Seed 0 is read back from the bulk run, not recomputed. Exhausted runs ar
 reported, never extended silently. This probes nearby basins only, not Li/S/Cl disorder.
 """
 import argparse
-import hashlib
+import numpy as np
 import json
 from pathlib import Path
 import sys
@@ -20,6 +20,7 @@ from pymatgen.analysis.structure_matcher import StructureMatcher
 from pymatgen.io.ase import AseAtomsAdaptor
 from interphaise.tools.relaxation import CountedCalculator,relax_cell_record,space_group
 from interphaise.tools.validation import _min_distance_violations
+from interphaise.tools.provenance import checkpoint_sha256,require_matching_checkpoint,ProvenanceError
 from inspect_bulk_relaxation import CHECKS,coordination
 
 
@@ -45,14 +46,21 @@ def main():
     ap.add_argument('--threads',type=int,default=2)
     args=ap.parse_args()
     if args.output.exists():ap.error('Use a fresh output directory')
-    args.output.mkdir(parents=True)
     if args.checkpoint.name!='pet-mad-s-v1.6.0.ckpt':ap.error('Checkpoint must be the pinned PET-MAD S 1.6.0 file')
+    # F2: new seed energies are compared with saved ones, so the saved bulk run must use this exact checkpoint
+    # and its symmetric reference must have converged. Checked before loading the model or writing output.
+    sha=checkpoint_sha256(args.checkpoint)
+    summary=json.loads((args.bulk/'summary.json').read_text())
+    try:require_matching_checkpoint(sha,{'bulk summary.json':summary.get('checkpoint_sha256')})
+    except ProvenanceError as error:ap.error(str(error))
+    bulk=summary['materials'][args.material]
+    if not bulk['symmetric']['converged'] or not np.isfinite(bulk['symmetric']['final']['energy_eV']):
+        ap.error(f'{args.material}: saved symmetric reference is unconverged or non-finite')
+    args.output.mkdir(parents=True)
     import torch
     torch.set_num_threads(args.threads)
     from upet.ase import UPETCalculator
-    sha=hashlib.sha256(args.checkpoint.read_bytes()).hexdigest()
     calc=CountedCalculator(UPETCalculator(checkpoint_path=str(args.checkpoint),device='cpu'))
-    bulk=json.loads((args.bulk/'summary.json').read_text())['materials'][args.material]
     symmetric=read(args.bulk/args.material/'symmetric/final.extxyz')
     e_sym=bulk['symmetric']['final']['energy_eV'];n=len(symmetric)
     runs={0:{'source':'bulk run stability check (not recomputed)','converged':bulk['stability_check']['converged'],
