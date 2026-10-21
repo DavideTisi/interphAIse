@@ -1,5 +1,10 @@
 # Evaluator handoff — frozen v3.0, 21 October 2026
 
+**MLIP update:** One LiCoO2/LiNbF6 interface pilot is now complete; see
+[PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md). It does not change the frozen
+v3 objective or provide a two-contact adhesion score. The status below describes
+the preceding evaluator-validation session.
+
 **Ready for Adem:** a frozen 50-candidate benchmark and a budgeted query API.
 Read [BENCHMARK_VALIDATION.md](BENCHMARK_VALIDATION.md) for the scientific definition,
 validation evidence, provenance and limitations. That report contains all outcomes;

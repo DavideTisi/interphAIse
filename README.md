@@ -1,5 +1,9 @@
 # interphAIse
 
+**PET-MAD pilot:** A real 224-atom interface and its separated slab references have
+been relaxed. See [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md) for the
+provisional constrained adhesion estimate, convergence evidence and limitations.
+
 **Discovery benchmark update (21 October):** Use the frozen v3.0 query API in
 [EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md). The legacy discovery CLI below still
 uses the earlier objective. [BENCHMARK_VALIDATION.md](BENCHMARK_VALIDATION.md) records

@@ -1,0 +1,1439 @@
+{
+  "settings": {
+    "max_area": 160,
+    "max_length_tol": 0.05,
+    "max_angle_tol": 0.03,
+    "max_area_ratio_tol": 0.1,
+    "film_thickness": 2,
+    "substrate_thickness": 2,
+    "gap": 2.0,
+    "vacuum_over_film": 15.0,
+    "max_candidates": 30
+  },
+  "max_atoms": 256,
+  "dataset_sha256": "e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+  "attempts": [
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "LiNb_Pmmm_2",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 320,
+        "area": 83.99134143965318,
+        "von_mises_strain": 0.04597106641007342,
+        "index": 0,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 320 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 320 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.387 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "LiNb_Pmmm_2",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 456,
+        "area": 118.98773370617536,
+        "von_mises_strain": 0.02770771109146272,
+        "index": 3,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 456 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 456 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.409 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "LiNb_Pmmm_2",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 480,
+        "area": 125.98701215947978,
+        "von_mises_strain": 0.04372900706967355,
+        "index": 9,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 480 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 480 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.387 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "LiNb_Pmmm_2",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 320,
+        "area": 83.99134143965318,
+        "von_mises_strain": 0.04597106641007342,
+        "index": 0,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 320 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 320 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.387 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "LiNb_Pmmm_2",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 456,
+        "area": 118.98773370617536,
+        "von_mises_strain": 0.02770771109146272,
+        "index": 3,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 456 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 456 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.409 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "LiNb_Pmmm_2",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 480,
+        "area": 125.98701215947978,
+        "von_mises_strain": 0.04372900706967355,
+        "index": 9,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 480 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 480 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.387 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_Pmmm_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 320,
+        "area": 83.99134143965318,
+        "von_mises_strain": 0.04597106641007342,
+        "index": 0,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 320 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 320 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.258 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_Pmmm_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 456,
+        "area": 118.98773370617536,
+        "von_mises_strain": 0.02770771109146272,
+        "index": 3,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 456 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 456 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.273 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_Pmmm_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 480,
+        "area": 125.98701215947978,
+        "von_mises_strain": 0.04372900706967355,
+        "index": 9,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 480 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 480 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.258 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_Pmmm_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 320,
+        "area": 83.99134143965318,
+        "von_mises_strain": 0.04597106641007342,
+        "index": 0,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 320 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 320 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.258 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_Pmmm_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 456,
+        "area": 118.98773370617536,
+        "von_mises_strain": 0.02770771109146272,
+        "index": 3,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 456 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 456 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.273 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_Pmmm_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 480,
+        "area": 125.98701215947978,
+        "von_mises_strain": 0.04372900706967355,
+        "index": 9,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 480 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 480 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.258 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_P-1_2",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 320,
+        "area": 83.99134143965318,
+        "von_mises_strain": 0.04597106641007342,
+        "index": 0,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 320 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 320 > 256"
+      ],
+      "warnings": [
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_P-1_2",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 456,
+        "area": 118.98773370617536,
+        "von_mises_strain": 0.02770771109146272,
+        "index": 3,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 456 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 456 > 256"
+      ],
+      "warnings": [
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_P-1_2",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 480,
+        "area": 125.98701215947978,
+        "von_mises_strain": 0.04372900706967355,
+        "index": 9,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 480 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 480 > 256"
+      ],
+      "warnings": [
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_P-1_2",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 320,
+        "area": 83.99134143965318,
+        "von_mises_strain": 0.04597106641007342,
+        "index": 0,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 320 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 320 > 256"
+      ],
+      "warnings": [
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_P-1_2",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 456,
+        "area": 118.98773370617536,
+        "von_mises_strain": 0.02770771109146272,
+        "index": 3,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 456 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 456 > 256"
+      ],
+      "warnings": [
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          1,
+          0
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_P-1_2",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 480,
+        "area": 125.98701215947978,
+        "von_mises_strain": 0.04372900706967355,
+        "index": 9,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 480 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 480 > 256"
+      ],
+      "warnings": [
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 224,
+        "area": 55.99422762643546,
+        "von_mises_strain": 0.030709383220493953,
+        "index": 0,
+        "valid": true,
+        "reject_reasons": []
+      },
+      "valid": true,
+      "reject": [],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 336,
+        "area": 83.9913414396532,
+        "von_mises_strain": 0.03070938322049398,
+        "index": 6,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 336 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 336 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 448,
+        "area": 111.98845525287092,
+        "von_mises_strain": 0.03070938322049425,
+        "index": 13,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 448 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 448 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 560,
+        "area": 139.98556906608866,
+        "von_mises_strain": 0.030709383220494355,
+        "index": 25,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 560 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 560 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 624,
+        "area": 153.9841259726975,
+        "von_mises_strain": 0.04189572017909128,
+        "index": 40,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 624 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 624 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.864 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 224,
+        "area": 55.99422762643546,
+        "von_mises_strain": 0.030709383220493953,
+        "index": 0,
+        "valid": true,
+        "reject_reasons": []
+      },
+      "valid": true,
+      "reject": [],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 336,
+        "area": 83.9913414396532,
+        "von_mises_strain": 0.03070938322049398,
+        "index": 6,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 336 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 336 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 448,
+        "area": 111.98845525287092,
+        "von_mises_strain": 0.03070938322049425,
+        "index": 13,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 448 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 448 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 560,
+        "area": 139.98556906608866,
+        "von_mises_strain": 0.030709383220494355,
+        "index": 25,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 560 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 560 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.792 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "Nb_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 624,
+        "area": 153.9841259726975,
+        "von_mises_strain": 0.04189572017909128,
+        "index": 40,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 624 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 624 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.864 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 224,
+        "area": 55.99422762643546,
+        "von_mises_strain": 0.030709383220493953,
+        "index": 0,
+        "valid": true,
+        "reject_reasons": []
+      },
+      "valid": true,
+      "reject": [],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 336,
+        "area": 83.9913414396532,
+        "von_mises_strain": 0.03070938322049398,
+        "index": 6,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 336 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 336 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 448,
+        "area": 111.98845525287092,
+        "von_mises_strain": 0.03070938322049425,
+        "index": 13,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 448 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 448 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 560,
+        "area": 139.98556906608866,
+        "von_mises_strain": 0.030709383220494355,
+        "index": 25,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 560 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 560 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "Li_P6/mmm_1"
+        ],
+        "n_atoms": 624,
+        "area": 153.9841259726975,
+        "von_mises_strain": 0.04189572017909128,
+        "index": 40,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 624 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 624 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.173 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 2.021 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 224,
+        "area": 55.99422762643546,
+        "von_mises_strain": 0.030709383220493953,
+        "index": 0,
+        "valid": true,
+        "reject_reasons": []
+      },
+      "valid": true,
+      "reject": [],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 336,
+        "area": 83.9913414396532,
+        "von_mises_strain": 0.03070938322049398,
+        "index": 6,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 336 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 336 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 448,
+        "area": 111.98845525287092,
+        "von_mises_strain": 0.03070938322049425,
+        "index": 13,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 448 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 448 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 560,
+        "area": 139.98556906608866,
+        "von_mises_strain": 0.030709383220494355,
+        "index": 25,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 560 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 560 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.158 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    },
+    {
+      "candidate": {
+        "pair": [
+          "LiCoO2",
+          "LiNbF6"
+        ],
+        "film_miller": [
+          1,
+          0,
+          1
+        ],
+        "substrate_miller": [
+          0,
+          0,
+          1
+        ],
+        "termination": [
+          "F2_C2/m_1",
+          "O2_P6/mmm_1"
+        ],
+        "n_atoms": 624,
+        "area": 153.9841259726975,
+        "von_mises_strain": 0.04189572017909128,
+        "index": 40,
+        "valid": false,
+        "reject_reasons": [
+          "too many atoms: 624 > 256"
+        ]
+      },
+      "valid": false,
+      "reject": [
+        "too many atoms: 624 > 256"
+      ],
+      "warnings": [
+        "film slab is polar: |p_z|/A = 0.173 e/\u00c5",
+        "substrate slab is polar: |p_z|/A = 6.063 e/\u00c5"
+      ]
+    }
+  ]
+}

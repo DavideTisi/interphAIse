@@ -245,3 +245,87 @@ API key values, including in decompressed thermodynamic data. No code changed;
 tests were not rerun. No merge, pull request, LLM call or message to Adem was made.
 This documentation entry is a follow-up commit for the same branch. Next: Adem can
 fetch `origin/davide` and integrate the v3 contract described in `SYNC_ADEM.md`.
+
+## 2026-10-21 — End-to-end PET-MAD interface pilot
+
+**Branch:** `davide`, starting from published `a2880b5`.
+**User request:** perform one end-to-end PET-MAD interface calculation.
+
+### Completed calculation
+
+Selected LiNbF6 from the frozen benchmark's best bin, without consulting an MLIP
+result. Constructed a sharp LiCoO2(001) | LiNbF6(101) interface from pinned MP
+structures. The selected model has 224 atoms, 55.9942 Å² contact area and 0.03071
+von Mises matching strain. There are 192 cathode atoms and 32 coating atoms; 64
+bottom-substrate atoms are fixed. Both slabs are formally neutral but polar.
+
+Scanned 12 registry/gap combinations, then relaxed the joined interface and both
+separated references in the same cell and strain state. PET-MAD S 1.6.0 (r²SCAN)
+ran on CPU with two Torch threads, using the already cached checkpoint directly.
+All three relaxations converged below 0.05 eV/Å on movable atoms:
+
+- Interface: 126 steps, final free force maximum 0.04723 eV/Å.
+- Coating reference: 57 steps, 0.04628 eV/Å.
+- Cathode reference: 35 steps, 0.04506 eV/Å.
+
+The provisional constrained work of adhesion is **2.100316 J/m²**. Calculation time
+was 98.9 seconds, excluding lattice enumeration. There were 236 actual ASE calculator
+executions: 12 registry executions and 224 across the three relaxations; property
+cache hits are excluded. The count reconciles exactly with per-stage records.
+
+### Interpretation and limits
+
+This is one contact, not a complete coating score. The simulation is neutral and
+fixed-stoichiometry, with no explicit voltage or electron reservoir; its energies
+were not mixed into MP thermodynamics. The frozen v3 benchmark is unchanged.
+
+Numerical convergence applies only to free atoms. Forces on constrained atoms remain
+about 2.465 eV/Å. Formal polar-slab warnings and those large constraint forces make
+this a provisional constrained estimate, not validated experimental adhesion. The
+MP-derived bulk lattice was not reoptimized with PET-MAD. Slab thickness, vacuum,
+constraints, termination choice and registry sampling have not been convergence-tested.
+
+Structural inspection found no overlap violations in any final structure. Atom
+counts, cell and element ordering are preserved. The minimum cross-contact distance
+changes from 2.481 to 2.049 Å; maximum displacement is 1.624 Å and RMS displacement
+0.390 Å. Rendered and visually inspected the geometry and force histories.
+
+### Implementation, encountered issues and evidence
+
+- Fixed `tools/matcher.py`: newer pymatgen raises for no ZSL matches; the wrapper
+  now returns the empty list promised by its contract.
+- The initial 200-atom cap rejected all neutral valid matches. Increased it to 256
+  before model evaluation; four of 38 enumerated interfaces then passed the gates.
+  Among small equal-strain options, chose the lower formal-dipole termination.
+- Fixed interface serialization of numpy arrays using MontyEncoder.
+- UPET's named model loader tried repository-file discovery in offline mode despite
+  cached weights. Added a direct `--checkpoint` route; the successful run needed no
+  download, credentials or external service. Failed initialization directories are
+  retained under ignored runs; they contain no claimed calculation result.
+- Added `tools/relaxation.py`: convergence records, raw versus constrained force
+  maxima and actual calculator-call accounting. Exhausted relaxations are explicit.
+- Added preparation, run and inspection scripts. An unconverged/invalid calculation
+  produces a null validated adhesion field, retaining its raw energy difference
+  separately for diagnosis.
+- Added four tests covering no-match handling, cache-aware execution counting,
+  step-budget exhaustion and constrained-force convergence. **86 tests pass**;
+  existing dependency deprecation warnings remain.
+- Saved compact, replayable evidence under `data/petmad/linbf6_cathode_pilot_v1/`,
+  including initial/final structures, optimizer logs as text, registry scan, provenance,
+  metrics and figure. Full trajectories remain ignored under `runs/`.
+- Re-ran the inspection using only tracked artifacts, including archived optimizer
+  logs, and verified that its accounting and geometry checks reproduce.
+- Updated REPORT, README, evaluator handoff and the follow-up manifest. Wrote
+  [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md) with full interpretation,
+  energies, commands and next steps. No live LLM or Materials Project call was made.
+
+Checkpoint hash:
+`3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9`.
+
+### What remains
+
+Before comparative adhesion ranking, validate bulk preparation, polarity and
+constraint sensitivity, then thickness/vacuum/registry settings. Calculate the
+coating–electrolyte contact and apply an identical protocol to the shortlist.
+The weakest-contact adhesion is not yet available. Adem's v3 experiment integration
+can proceed independently. This checkpoint is committed locally, not pushed.
