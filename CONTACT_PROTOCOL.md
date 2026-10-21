@@ -447,8 +447,10 @@ matched supercell, and several of them are lattice translations of one slab:
 | B (0.5,0.5) | +0.0181 eV (0.0017 J/m²) | 1.6313 | 3.0640 |
 
 Registry B starts 0.70 eV (0.066 J/m²) higher before relaxation, but relaxes to within
-0.018 eV of A. The two copies of each registry agree within 0.001 eV, which measures the
-relaxation noise. The separated references are identical across registries (within 4×10⁻⁴
+0.018 eV of A. **Review correction:** the repeated A runs differ by 0.000977 eV;
+the repeated B runs differ by 0.002930 eV, not less than 0.001 eV. These are observed
+optimizer/numerical variations, not a general uncertainty bound. The separated references
+are identical across registries (within 4×10⁻⁴
 eV), as expected for translated copies. **Selection (lowest joined energy): registry A,
 i.e. (0,0) is kept.** W_adh is registry-robust (±0.002 J/m²). W_sep differs by about
 0.1 J/m² between A and B, because the two registries relax into different joined
@@ -470,3 +472,40 @@ reproduced. Evidence: `data/petmad/vacuum_v1/electrolyte_final880.json`.
 at 4 + 4 layers with the mapped Cl cut, depth rule and registry (0,0).
 
 Evidence: `data/petmad/final_checks_v1/`.
+
+## Niflheim batch 1: seed 4, distinct cathode registries, GPU references (SYNC_CLAUDE_6.md; declared before running)
+
+Five runs, no more. All on RTX 3090 (`sm3090el9_devel`, 1 GPU, 4 CPUs), using the isolated
+env, checkpoint `3f52e97c…` and one immutable code snapshot per job (`CODE=code_<commit>`).
+Runner plus rigid-fragment separation in the same job on CUDA. 15 Å vacuum, initial gap
+2 Å, FIRE 0.05 eV/Å, 400-step limit. Outputs go to
+`/home/scratch12/davti/OSI_Hackathon/runs/niflheim_batch1/<name>`.
+
+| # | Name | Input build | Constraint | Registry |
+|---|---|---|---|---|
+| 1 | `cathode_ref` | `cathode_thickness_v1/build_F4` (696) | fraction 0.34 = 104 atoms | (0, 0) |
+| 2 | `cathode_reg_third_third` | same | same | (1/3, 1/3) |
+| 3 | `cathode_reg_sixth_0` | same | same | (1/6, 0) |
+| 4 | `electrolyte_seed0_ref` | `thickness_gaps_v1/build_electrolyte_S4_F4` (880) | depth 3.257602 Å | (0, 0) |
+| 5 | `electrolyte_seed4` | `contact_v2_electrolyte_seed4_S4F4` (880) | depth 3.257602 Å | (0, 0) |
+
+The cathode offsets (1/3,1/3) and (1/6,0) are the most distinct registry classes in the 6 × 6
+unrelaxed diagnostic: +0.0081 and +0.0031 J/m² relative to (0,0), with no overlap
+violations. Runs 1 and 4 are GPU references, so each comparison uses one device.
+
+**Seed-4 input** (`scripts/build_contact.py`; seed-4 bulk, termination `Cl2_P-1_2`,
+4 + 4 layers). Its framework signature on both faces is identical to the seed-0 4 + 4 build
+(contact Cl(0.00)/S(0.85)/S(0.75); far S(0.38)/P(0.50)/S(0.75)). Same composition
+(Li96P16S80Cl16 + Li84Nb84F504), no cut PS4 or NbF6, no overlaps. Differences from seed 0:
+area 172.926 vs 170.708 Å²; strain 2.864 vs 3.006 %; formal substrate |p|/A 0.257 vs 0.347
+e/Å; fixed atoms at 3.2576 Å are 36 (Li12P4S20) vs 38 (Cl2Li12P4S20). The matcher chose
+different supercell bases (film [[1,5],[0,7]] / substrate identity vs [[1,3],[0,7]] /
+[[2,0],[0,1]]). The same fractional registry (0,0) is therefore not guaranteed to be the same
+physical lateral alignment. The seed comparison holds the cut, layer counts, depth rule and
+fractional registry fixed; it does not hold the supercell basis fixed.
+
+**Rules.** Cathode registries: compare relaxed joined energies only within the identical
+cell, composition and mask, keeping each run's own references. Seeds: compare both works at
+the same fractional registry, report every geometry difference, and do not rank seeds by
+total energy. 0.1 J/m² is the reporting tolerance, not a trigger for more settings.
+Failures and exhausted runs are kept and reported.

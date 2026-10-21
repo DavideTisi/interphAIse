@@ -20,3 +20,8 @@ cd $CODE
 echo "job=$SLURM_JOB_ID node=$(hostname) partition=$SLURM_JOB_PARTITION cpus=${SLURM_CPUS_PER_TASK:-1} gpus=${CUDA_VISIBLE_DEVICES:-none} code=$(cat $CODE/COMMIT 2>/dev/null || echo unknown)"
 nvidia-smi --query-gpu=name,driver_version --format=csv,noheader 2>/dev/null || true
 python scripts/run_petmad_interface.py --checkpoint $ROOT/models/pet-mad-s-v1.6.0.ckpt --threads ${SLURM_CPUS_PER_TASK:-1} $RUN_ARGS "$@"
+# Optional: fixed-geometry separation of the finished run, on the same device (SEPARATE=<run dir>).
+if [ -n "$SEPARATE" ]; then
+    python scripts/fixed_geometry_separation.py "$SEPARATE" --checkpoint $ROOT/models/pet-mad-s-v1.6.0.ckpt \
+        --threads ${SLURM_CPUS_PER_TASK:-1} --device ${SEP_DEVICE:-cpu}
+fi
