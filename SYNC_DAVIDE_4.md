@@ -95,3 +95,36 @@ Other numbers:
    smoke batch in the Console against the USD 0.036 estimate).
 3. **Sign-off:** I'll tick my box in `ENVIRONMENT_PROTOCOL.md` (runner verified on the frozen
    copies, execution commit recorded) in the same commit as this report.
+
+## Ready once approved: production and analysis commands
+
+The workflow code (`run_discovery_experiment.py`, `discovery.py`, `llm.py`, `benchmark.py`) is
+byte-identical to the smoke execution commit `26beb73`. Later commits only add analysis and
+docs. Each manifest records the actual `source_commit` and these file hashes.
+
+```bash
+for env in lpscl lic llzo; do
+  python scripts/run_discovery_experiment.py \
+    --arms random upfront sequential iterative shuffled --repeats 30 --start-seed 200 \
+    --budget 10 --temperature 1.0 --max-tokens 4096 --workers 3 \
+    --pool data/exploration/environment_expansion_v1/pool.json \
+    --benchmark data/benchmarks/environment_v1/lco_${env}_4v.json \
+    --out runs/environment_v1/${env}
+done
+```
+
+Analysis (written and tested before any production results; definitions in its docstring):
+
+```bash
+python scripts/analyse_environment_study.py runs/environment_v1/*/*_experiment --json environment_summary.json
+for d in runs/environment_v1/*/*_experiment; do                    # per-environment curves
+  python scripts/analyse_discovery_experiment.py "$d" --plot "$d/curves.png" --summary "$d/summary.json"
+done
+python scripts/usage_report.py runs/environment_v1/*/*_experiment --json environment_usage.json
+```
+
+`analyse_environment_study.py` gives the primary endpoint per environment, the exact paired
+McNemar contrasts (iterative against sequential, iterative against shuffled), Holm across all six,
+first-acceptable query index (none counts as 11), best-bin rate, fluoride fraction in queries
+1–5 against 6–10, and the equal-weight mean difference across environments. The fluoride
+fraction is how "moves away from fluorides in LLZO" is measured; it is fixed now, before results.
