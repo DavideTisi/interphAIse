@@ -180,30 +180,30 @@ Headline we are aiming for: *"the LLM makes the expert modelling decisions as pu
 
 ## Iterative discovery (new branch)
 
-See [DISCOVERY_REPORT.md](DISCOVERY_REPORT.md) for the agreed scientific scope.
-This outer loop selects coatings under a fixed evaluation budget. Candidate
-quality uses calculated reactivity and optionally adhesion, never the proposing
-LLM's stability labels. The existing screen/arm comparison remains separate.
+Design: [DISCOVERY_IMPLEMENTATION_PLAN.md](DISCOVERY_IMPLEMENTATION_PLAN.md); evaluator
+contract: [EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md). Every arm queries the frozen v3
+benchmark through `BenchmarkQueries` under the same budget. Arms: `random`, `upfront`
+(one shortlist, no feedback), `sequential` (one choice per turn, no outcomes: the control)
+and `iterative` (sees queried outcomes only).
 
 ```bash
-python scripts/run_discovery.py --strategy random --budget 3 --seed 42
-python scripts/run_discovery.py --strategy fixed --budget 3
-python scripts/run_discovery.py --strategy upfront --budget 3 --model anthropic/claude-haiku-5-5
-python scripts/run_discovery.py --strategy iterative --budget 3 --model anthropic/claude-haiku-5-5
-# Add --full for fixed-RulesPolicy interface construction and MLIP adhesion.
+python scripts/run_discovery_experiment.py --arms random --repeats 100   # offline, no LLM
+python scripts/run_discovery_experiment.py --repeats 10                   # all arms, live Haiku
+python scripts/run_discovery_experiment.py --synthetic --repeats 3        # fake pool, development only
+python scripts/analyse_discovery_experiment.py runs/<stamp>_experiment --plot runs/curve.png
 ```
 
-Default mode requires Materials Project access but no MLIP. LLM strategies also
-need the configured provider credentials. Each run writes `discovery.json` with
-proposal attempts, evaluation failures, timings and best-so-far history. Failed
-calculations consume budget. `fixed` follows configuration order; it is not an
-expert baseline unless that order was independently specified by an expert.
+The benchmark is tracked under `data/`, so no Materials Project access is needed. Each run
+writes `<arm>_rNN.json` with prompts, responses, LLM metadata, true outcomes and best-so-far
+trace; `experiment.json` records pool, objective and benchmark hashes and the prompt version.
+Failed runs are kept. The analysis plots P(acceptable found) and P(best bin found) against
+evaluations, with the exact random baselines.
 
 ### Explicit UPET checkpoints
 
 The current PET model family uses the `upet` package. Install with
-`pip install -e '.[upet]'` and pass an explicit model/version, for example
-`--mlip upet:pet-mad-s@1.6.0` to `scripts/run_discovery.py --full`.
+`pip install -e '.[upet]'` and select an explicit model/version, for example
+`upet:pet-mad-s@1.6.0` (`MLIP_ANODE` / `MLIP_CATHODE` in `config.py`).
 This public checkpoint is documented as r²SCAN-trained. The old `pet-mad`
 loader remains a separate legacy backend; it does not select the new model.
 Both anode and cathode defaults are pinned to PET-MAD S 1.6.0 (r²SCAN),

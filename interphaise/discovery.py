@@ -1,54 +1,55 @@
-"""Budgeted candidate search with a fixed evaluator, independent of the proposer."""
+"""Budgeted candidate search against the frozen query boundary (``BenchmarkQueries``).
+
+Arms: random; upfront (one shortlist, no feedback); sequential (one choice per turn,
+sees its own earlier choices, no outcomes); iterative (sees queried outcomes).
+The proposer never sees unqueried outcomes, the answer table, provenance or timing.
+"""
 from __future__ import annotations
 
 import json
 import math
 import random
-import time
-from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 
-OBJECTIVE = "valid first; maximise worst-contact reaction energy; then weakest adhesion"
-PROMPT = """You are a battery coating discovery scientist. Select only from available coatings.
-Use chemical hypotheses and observed calculation feedback to choose promising candidates.
-Do not invent computed outcomes. The fixed objective is supplied in the task.
-Return {"proposals": [{"coating": "exact available formula", "hypothesis": "chemical rationale and how feedback informed the choice"}]}.
-Return exactly the requested number of distinct candidates. No other candidates."""
+from .discovery_evaluator import ranking_key
+from .tools.thermo_dataset import digest
+
+PROMPT_VERSION = "v3-2026-10-21b"
+LLM_STRATEGIES = {"iterative", "sequential", "upfront"}
+STRATEGIES = LLM_STRATEGIES | {"random"}
+PROMPT = """You are a battery coating discovery scientist choosing which candidate coatings to evaluate.
+Select only from the available candidates, by candidate_id. Formulas are not unique: polymorphs are separate candidates.
+Use chemical hypotheses and any calculation results you are shown. Do not invent computed outcomes.
+The task, operating conditions and fixed objective are supplied; you cannot change them.
+Return {"proposals": [{"candidate_id": "exact available candidate_id", "hypothesis": "concise chemical rationale",
+"motivation": "the earlier observation that motivated this choice, or \\"none\\"", "mode": "explore" or "refine"}]}.
+"explore" means a chemically different family from earlier choices; "refine" means close to an earlier choice.
+Return exactly as many proposals as the "count" field of the request, no more and no fewer.
+Copy each candidate_id character for character from the available list."""
+
+# Outcome fields the iterative arm may see; provenance, timing and diagnostics stay out of prompts.
+FEEDBACK_FIELDS = ("candidate_id", "formula", "status", "error", "insulating", "band_gap_eV",
+                   "self_decomposition_penalty", "contact_reaction_energies", "contacts",
+                   "penalty", "penalty_bin", "acceptable", "warnings", "energy_units")
+PUBLIC_TASK_FIELDS = ("endpoints", "voltage_V", "objective", "instructions")
+HASH_FIELDS = ("objective_sha256", "pool_sha256", "benchmark_sha256")
 
 
-@dataclass
-class Evaluation:
-    coating: str
-    status: str
-    worst_reaction_energy: float | None = None
-    weakest_adhesion: float | None = None
-    details: dict | None = None
-    error: str | None = None
-
-
-def quality(result: Evaluation, require_adhesion: bool = False) -> tuple:
-    energy, adhesion = result.worst_reaction_energy, result.weakest_adhesion
-    valid = (result.status == "ok" and energy is not None and math.isfinite(energy)
-             and (not require_adhesion or (adhesion is not None and math.isfinite(adhesion))))
-    if not valid:
-        return (0, 0.0, 0.0)
-    return (1, energy, adhesion if adhesion is not None and math.isfinite(adhesion) else 0.0)
-
-
-def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
-                  seed=0, require_adhesion=False, output: Path | None = None,
+def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Path | None = None,
                   max_proposal_attempts=3, metadata=None):
-    pool = list(cfg.coatings)
-    if not pool or len(set(pool)) != len(pool):
-        raise ValueError("Candidate pool must be nonempty and contain unique formulas")
-    if not 1 <= budget <= len(pool) or max_proposal_attempts < 1:
-        raise ValueError("Budget must be between 1 and pool size; proposal attempts must be positive")
-    if strategy not in {"iterative", "upfront", "random", "fixed"}:
+    """One independent run; ``queries`` is a fresh BenchmarkQueries whose budget is the run budget."""
+    if strategy not in STRATEGIES:
         raise ValueError("Unknown strategy")
-    if strategy in {"iterative", "upfront"} and llm is None:
+    if strategy in LLM_STRATEGIES and llm is None:
         raise ValueError("This strategy requires an LLM")
-    state = dict(config=asdict(cfg), strategy=strategy, seed=seed, budget=budget,
-                 objective=OBJECTIVE, require_adhesion=require_adhesion,
+    if max_proposal_attempts < 1:
+        raise ValueError("Proposal attempts must be positive")
+    task, budget = queries.task(), queries.remaining
+    public_task = {k: task[k] for k in PUBLIC_TASK_FIELDS}
+    pool = queries.available()
+    random.Random(seed).shuffle(pool)  # displayed order; same seed => same order across arms
+    state = dict(strategy=strategy, seed=seed, budget=budget, prompt_version=PROMPT_VERSION,
+                 hashes={k: task[k] for k in HASH_FIELDS}, objective=task["objective"],
                  metadata=metadata or {}, proposal_attempts=[], history=[], trace=[], status="running")
 
     def save():
@@ -58,25 +59,39 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
             temp.write_text(json.dumps(state, indent=2, allow_nan=False))
             temp.replace(output)
 
-    def propose(available, count):
+    def shown_history():
+        if strategy == "iterative":
+            return [dict(proposal=h["proposal"], result={k: h["result"][k] for k in FEEDBACK_FIELDS
+                                                         if k in h["result"]}) for h in state["history"]]
+        return [dict(proposal=h["proposal"]) for h in state["history"]]
+
+    def propose(count):
+        queried = {h["proposal"]["candidate_id"] for h in state["history"]}
+        available = [c for c in pool if c["candidate_id"] not in queried]
+        ids = {c["candidate_id"] for c in available}
         feedback = ""
         for _ in range(max_proposal_attempts):
-            user = json.dumps(dict(task={"electrode": cfg.electrode, "electrolyte": cfg.electrolyte,
-                                        "voltage": cfg.voltage}, objective=OBJECTIVE,
-                                   require_adhesion=require_adhesion, available=available, count=count,
-                                   evaluated=state["history"], validation_feedback=feedback))
+            user = json.dumps(dict(task=public_task, available=available, count=count,
+                                   evaluated=shown_history(), validation_feedback=feedback))
             attempt = {"prompt": user}
             try:
                 response = llm(PROMPT, user)
                 attempt["response"] = response
+                attempt["llm_metadata"] = getattr(llm, "last_metadata", None)
                 proposals = response["proposals"]
                 if not isinstance(proposals, list) or len(proposals) != count:
-                    raise ValueError("Return exactly the requested number of proposals")
-                names = [p["coating"] for p in proposals]
-                if any(n not in available for n in names) or len(set(names)) != len(names):
-                    raise ValueError("Use distinct available candidates only")
+                    raise ValueError(f"Return exactly {count} proposal(s); got "
+                                     f"{len(proposals) if isinstance(proposals, list) else 'none'}")
+                chosen = [p["candidate_id"] for p in proposals]
+                if bad := [c for c in chosen if c not in ids]:
+                    raise ValueError(f"Not available candidate_ids (copy exactly from the list): {bad}")
+                if len(set(chosen)) != len(chosen):
+                    raise ValueError("Proposals must be distinct")
                 if any(not isinstance(p.get("hypothesis"), str) or not p["hypothesis"].strip() for p in proposals):
                     raise ValueError("Each proposal needs a nonempty hypothesis")
+                if any(not isinstance(p.get("motivation"), str) or p.get("mode") not in {"explore", "refine"}
+                       for p in proposals):
+                    raise ValueError('Each proposal needs a motivation string and mode "explore" or "refine"')
             except Exception as exc:
                 feedback = f"{type(exc).__name__}: {exc}"
                 attempt["error"] = feedback
@@ -90,34 +105,22 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
 
     save()
     try:
-        available = pool.copy()
         planned = []
         if strategy == "upfront":
-            planned = propose(available, budget)
-        elif strategy in {"random", "fixed"}:
-            if strategy == "random":
-                random.Random(seed).shuffle(available)
-            planned = [{"coating": c, "hypothesis": strategy + " baseline"} for c in available[:budget]]
+            planned = propose(budget)
+        elif strategy == "random":
+            planned = [{"candidate_id": c["candidate_id"], "hypothesis": "random baseline"} for c in pool[:budget]]
         best = None
         for step in range(budget):
-            proposal = propose(available, 1)[0] if strategy == "iterative" else planned[step]
-            coating = proposal["coating"]
-            started = time.monotonic()
-            try:
-                result = evaluator(coating)
-                if result.coating != coating:
-                    raise ValueError("Evaluator returned a different coating")
-                if not quality(result, require_adhesion)[0]:
-                    result = Evaluation(coating, "failed", details=result.details,
-                                        error=result.error or "Invalid or incomplete evaluation")
-            except Exception as exc:
-                result = Evaluation(coating, "failed", error=f"{type(exc).__name__}: {exc}")
-            available.remove(coating)
-            state["history"].append(dict(proposal=proposal, result=asdict(result),
-                                         elapsed_seconds=time.monotonic() - started))
-            if quality(result, require_adhesion)[0] and (best is None or quality(result, require_adhesion) > quality(best, require_adhesion)):
+            proposal = propose(1)[0] if strategy in {"iterative", "sequential"} else planned[step]
+            result = queries.query(proposal["candidate_id"])
+            state["history"].append(dict(proposal=proposal, result=result))
+            if ranking_key(result)[0] and (best is None or ranking_key(result) > ranking_key(best)):
                 best = result
-            state["trace"].append(dict(evaluations=step + 1, best=asdict(best) if best else None))
+            state["trace"].append(dict(evaluations=step + 1,
+                                       best_candidate_id=best["candidate_id"] if best else None,
+                                       best_rank=list(ranking_key(best)) if best else None,
+                                       any_acceptable=any(h["result"].get("acceptable") for h in state["history"])))
             save()
         state["status"] = "complete"
     except Exception as exc:
@@ -129,35 +132,40 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
     return state
 
 
-class CoatingEvaluator:
-    """Same deterministic modelling policy for all search arms; never calls an LLM."""
+def random_success_curve(n_pool, n_successes, budget):
+    """P(at least one success in k uniform draws without replacement), k = 1..budget."""
+    return [1 - math.comb(n_pool - n_successes, k) / math.comb(n_pool, k) for k in range(1, budget + 1)]
 
-    def __init__(self, cfg, *, calc=None, settings=None, run_root=None):
-        self.cfg, self.calc, self.settings, self.run_root = cfg, calc, settings, run_root
 
-    def __call__(self, coating):
-        if coating not in self.cfg.coatings:
-            raise ValueError("Candidate outside configured pool")
-        from .screen import contacts_for, run_screen
-        if self.calc is None:
-            from .tools.materials import get_bulk, get_entries
-            from .tools.reactivity import elements_of, interfacial_reactivity
-            contacts = []
-            for ctx in contacts_for(self.cfg, coating):
-                get_bulk(ctx.electrode, ctx.electrode_mp_id)
-                get_bulk(ctx.electrolyte, ctx.electrolyte_mp_id)
-                entries = get_entries(elements_of(ctx.electrode, ctx.electrolyte, "Li"))
-                rep = interfacial_reactivity(ctx.electrode, ctx.electrolyte, entries, ctx.voltage)
-                contacts.append(dict(pair=list(rep.pair), reaction_energy=rep.min_reaction_energy,
-                                     products=rep.most_favourable.products if rep.most_favourable else []))
-            return Evaluation(coating, "ok", min(c["reaction_energy"] for c in contacts),
-                              details={"contacts": contacts, "mode": "thermodynamic"})
-        from .policies import RulesPolicy
-        out = run_screen(replace(self.cfg, coatings=[coating], include_uncoated=False),
-                         RulesPolicy(), calc=self.calc, settings=self.settings, run_root=self.run_root)
-        if not out["ranking"]:
-            return Evaluation(coating, "failed", error="No completed contacts", details={"run_dir": out["run_dir"]})
-        row = out["ranking"][0]
-        valid = all(c["status"] == "ok" for c in row["contacts"]) and len(row["contacts"]) == 2
-        return Evaluation(coating, "ok" if valid else "failed", row["worst_reaction_energy"],
-                          row["weakest_w_adh"], {"run_dir": out["run_dir"], "contacts": row["contacts"]})
+def write_synthetic_benchmark(directory: Path, seed=0, families=5, per_family=10):
+    """Fake pool + benchmark files readable by BenchmarkQueries(..., allow_draft=True); not chemistry.
+
+    Penalties cluster by family so feedback is informative. Returns (pool_path, benchmark_path).
+    """
+    rng = random.Random(seed)
+    objective = {"version": "synthetic", "min_band_gap_eV": 2.0, "bin_width_eV": 0.02, "acceptable_penalty_eV": 0.05}
+    candidates, results = [], []
+    for f in range(families):
+        mean = rng.uniform(0.0, 0.25)
+        for i in range(per_family):
+            cid, formula = f"syn-{f}-{i:02d}", f"X{f}Y{i}"
+            candidates.append(dict(candidate_id=cid, formula=formula, family=f"family-{f}"))
+            if rng.random() < 0.05:
+                results.append(dict(candidate_id=cid, formula=formula, status="failed", error="synthetic failure"))
+                continue
+            penalty = max(0.0, mean + rng.gauss(0, 0.04))
+            insulating = rng.random() > 0.05
+            results.append(dict(candidate_id=cid, formula=formula, status="ok", insulating=insulating,
+                                penalty=penalty, penalty_bin=math.floor(penalty / 0.02 + 1e-12),
+                                acceptable=insulating and penalty <= 0.05, energy_units="synthetic"))
+    pool = dict(candidates=candidates, seed=seed, status="synthetic")
+    pool["sha256"] = digest(pool)
+    benchmark = dict(status="synthetic", objective=objective, objective_sha256=digest(objective),
+                     pool_sha256=pool["sha256"], voltage_V=4.0, results=results,
+                     endpoints={"electrode": {"formula": "SYN-CATHODE"}, "electrolyte": {"formula": "SYN-ELECTROLYTE"}})
+    benchmark["sha256"] = digest(benchmark)
+    directory.mkdir(parents=True, exist_ok=True)
+    paths = directory / "synthetic_pool.json", directory / "synthetic_benchmark.json"
+    for path, data in zip(paths, (pool, benchmark)):
+        path.write_text(json.dumps(data, indent=2))
+    return paths

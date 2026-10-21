@@ -1,119 +1,133 @@
 import json
+from itertools import permutations
+from pathlib import Path
 
 import pytest
 
-from interphaise.discovery import Evaluation, quality, run_discovery
-from interphaise.screen import ScreenConfig
+from interphaise.benchmark import BenchmarkQueries
+from interphaise.discovery import FEEDBACK_FIELDS, random_success_curve, run_discovery, write_synthetic_benchmark
 
-CFG = ScreenConfig("LiCoO2", "Li6PS5Cl", ["LiNbO3", "Li3PO4", "LiTaO3"])
+ROOT = Path(__file__).resolve().parents[1]
+POOL, BENCH = ROOT / "data/pools/mp_candidates_v2.json", ROOT / "data/benchmarks/coating_v3.json"
+TABLE = {r["candidate_id"]: r for r in json.loads(BENCH.read_text())["results"]}
+FAILED = next(c for c, r in TABLE.items() if r["status"] != "ok")
 
 
-def test_iterative_feedback_and_no_future_outcomes(tmp_path):
+def queries(budget=3):
+    return BenchmarkQueries(POOL, BENCH, budget=budget)
+
+
+def P(cid):
+    return {"candidate_id": cid, "hypothesis": "chemistry", "motivation": "none", "mode": "explore"}
+
+
+def first_available(calls):
+    def llm(system, user):
+        data = json.loads(user)
+        calls.append(user)
+        return {"proposals": [P(data["available"][0]["candidate_id"])]}
+    return llm
+
+
+def test_iterative_sees_only_queried_outcomes_without_provenance():
+    calls = []
+    state = run_discovery(queries(), strategy="iterative", llm=first_available(calls))
+    assert len(state["history"]) == 3 and state["status"] == "complete"
+    shown = json.loads(calls[2])["evaluated"]
+    assert [h["proposal"]["candidate_id"] for h in shown] == [h["proposal"]["candidate_id"] for h in state["history"][:2]]
+    assert "penalty_bin" in shown[0]["result"]
+    for user in calls:
+        for leak in ("evaluation_wall_seconds", "entries", "endpoint_decomposition", "absolute_contact", "mu_Li"):
+            assert leak not in user
+    assert all(set(h["result"]) <= set(FEEDBACK_FIELDS) for h in shown)
+
+
+def test_sequential_sees_choices_but_no_outcomes():
+    calls = []
+    state = run_discovery(queries(), strategy="sequential", llm=first_available(calls))
+    later = json.loads(calls[2])
+    assert [h["proposal"]["candidate_id"] for h in later["evaluated"]] == \
+           [h["proposal"]["candidate_id"] for h in state["history"][:2]]
+    for user in calls:
+        assert all(set(h) == {"proposal"} for h in json.loads(user)["evaluated"])
+        for h in state["history"]:
+            if "penalty" in h["result"]:
+                assert repr(h["result"]["penalty"]) not in user
+
+
+def test_failed_query_consumes_budget_and_stays_hidden_from_sequential():
+    calls = []
+    def llm(system, user):
+        calls.append(user)
+        data = json.loads(user)
+        ids = [c["candidate_id"] for c in data["available"]]
+        return {"proposals": [P(FAILED if FAILED in ids else ids[0])]}
+    state = run_discovery(queries(2), strategy="sequential", llm=llm)
+    assert state["history"][0]["result"]["status"] == "failed"
+    assert len(state["history"]) == 2 and state["trace"][0]["best_candidate_id"] is None
+    assert json.loads(calls[1])["evaluated"] == [{"proposal": state["history"][0]["proposal"]}]
+    assert TABLE[FAILED]["error"] not in calls[1]
+
+
+def test_upfront_one_call_before_any_query():
     calls = []
     def llm(system, user):
         data = json.loads(user)
         calls.append(data)
-        return {"proposals": [{"coating": data["available"][0], "hypothesis": "test chemistry"}]}
-    def evaluate(c):
-        return Evaluation(c, "ok", -0.2 if c == "LiNbO3" else -0.1)
-    out = tmp_path / "discovery.json"
-    state = run_discovery(CFG, evaluate, budget=2, llm=llm, output=out)
-    assert calls[0]["evaluated"] == []
-    assert len(calls[1]["evaluated"]) == 1
-    assert calls[1]["evaluated"][0]["result"]["worst_reaction_energy"] == -0.2
-    assert "LiNbO3" not in calls[1]["available"]
-    assert state["trace"][-1]["best"]["coating"] == "Li3PO4"
-    assert json.loads(out.read_text())["status"] == "complete"
+        assert data["evaluated"] == []
+        return {"proposals": [P(c["candidate_id"]) for c in data["available"][:3]]}
+    state = run_discovery(queries(), strategy="upfront", llm=llm)
+    assert len(calls) == 1 and len(state["history"]) == 3
 
 
-def test_upfront_one_call_before_any_evaluation():
-    events = []
-    def llm(system, user):
-        events.append("proposal")
-        assert json.loads(user)["evaluated"] == []
-        return {"proposals": [{"coating": c, "hypothesis": "chemistry"} for c in CFG.coatings[:2]]}
-    def evaluate(c):
-        events.append(c)
-        return Evaluation(c, "ok", -0.1)
-    run_discovery(CFG, evaluate, budget=2, strategy="upfront", llm=llm)
-    assert events == ["proposal", *CFG.coatings[:2]]
-
-
-def test_failures_consume_budget_and_do_not_win():
-    def evaluate(c):
-        if c == CFG.coatings[0]:
-            raise RuntimeError("calculation failed")
-        return Evaluation(c, "ok", -0.4)
-    state = run_discovery(CFG, evaluate, budget=2, strategy="fixed")
-    assert len(state["history"]) == 2
-    assert state["history"][0]["result"]["status"] == "failed"
-    assert state["trace"][0]["best"] is None
-    assert state["trace"][1]["best"]["coating"] == CFG.coatings[1]
-
-
-def test_invalid_proposals_bounded_and_checkpointed(tmp_path):
-    def llm(*_):
-        return {"proposals": [{"coating": "not in pool", "hypothesis": "test"}]}
-    def evaluate(c):
-        pytest.fail("Invalid proposal must not run a calculation")
-    out = tmp_path / "discovery.json"
+def test_invalid_proposals_bounded_cost_no_budget_and_checkpointed(tmp_path):
+    q = queries()
+    out = tmp_path / "run.json"
     with pytest.raises(ValueError, match="exhausted"):
-        run_discovery(CFG, evaluate, llm=llm, output=out, max_proposal_attempts=2)
-    state = json.loads(out.read_text())
-    assert state["status"] == "failed"
-    assert len(state["proposal_attempts"]) == 2
-    assert state["history"] == []
+        run_discovery(q, strategy="iterative", llm=lambda *_: {"proposals": [P("mp-not-in-pool")]},
+                      output=out, max_proposal_attempts=2)
+    saved = json.loads(out.read_text())
+    assert saved["status"] == "failed" and len(saved["proposal_attempts"]) == 2
+    assert q.remaining == 3
 
 
-def test_fixed_objective_and_missing_adhesion():
-    assert quality(Evaluation("A", "ok", -0.01, 0.1)) > quality(Evaluation("B", "ok", -0.2, 4.0))
-    assert quality(Evaluation("A", "ok", -0.1, 2.0)) > quality(Evaluation("B", "ok", -0.1, 1.0))
-    assert not quality(Evaluation("A", "ok", -0.1), require_adhesion=True)[0]
-    assert not quality(Evaluation("A", "ok", float("nan")))[0]
+def test_proposal_without_mode_or_repeat_is_repaired():
+    first = queries().available()[0]["candidate_id"]
+    responses = iter([{"candidate_id": first, "hypothesis": "chemistry"}, P(first)])
+    state = run_discovery(queries(1), strategy="iterative", llm=lambda *_: {"proposals": [next(responses)]})
+    assert "mode" in state["proposal_attempts"][0]["error"]
+    assert state["history"][0]["proposal"]["mode"] == "explore"
 
 
-def test_random_reproducible_and_no_repeats():
-    evaluate = lambda c: Evaluation(c, "ok", -0.1)
-    a = run_discovery(CFG, evaluate, strategy="random", seed=7)
-    b = run_discovery(CFG, evaluate, strategy="random", seed=7)
-    order = lambda s: [h["result"]["coating"] for h in s["history"]]
-    assert order(a) == order(b)
-    assert len(set(order(a))) == 3
+def test_random_reproducible_and_order_paired_with_llm_arms():
+    a = run_discovery(queries(), strategy="random", seed=7)
+    b = run_discovery(queries(), strategy="random", seed=7)
+    ids = lambda s: [h["proposal"]["candidate_id"] for h in s["history"]]
+    assert ids(a) == ids(b) and len(set(ids(a))) == 3
+    calls = []
+    run_discovery(queries(), strategy="sequential", seed=7, llm=first_available(calls))
+    assert [c["candidate_id"] for c in json.loads(calls[0])["available"][:3]] == ids(a)
 
 
-def test_live_thermodynamic_adapter(monkeypatch, toy_bulk, toy_entries):
-    from interphaise.discovery import CoatingEvaluator
-    from interphaise.tools import materials
-    monkeypatch.setattr(materials, "get_bulk", toy_bulk)
-    monkeypatch.setattr(materials, "get_entries", toy_entries)
-    cfg = ScreenConfig("Li", "LiS2", ["Li2S"], voltage=0, role="anode")
-    result = CoatingEvaluator(cfg)("Li2S")
-    assert result.status == "ok"
-    assert len(result.details["contacts"]) == 2
-    assert result.worst_reaction_energy >= -1e-8
+def test_run_records_hashes_and_prompt_version():
+    state = run_discovery(queries(), strategy="random")
+    assert state["hashes"]["benchmark_sha256"] == json.loads(BENCH.read_text())["sha256"]
+    assert state["prompt_version"]
 
 
-def test_full_adapter_rejects_partial_contact_failure(monkeypatch):
-    from interphaise.discovery import CoatingEvaluator
-    from interphaise import screen
-    monkeypatch.setattr(screen, "run_screen", lambda *a, **k: {
-        "ranking": [{"contacts": [{"status": "ok"}, {"status": "failed"}],
-                     "worst_reaction_energy": 0., "weakest_w_adh": None}], "run_dir": "test"})
-    result = CoatingEvaluator(CFG, calc=object())(CFG.coatings[0])
-    assert result.status == "failed"
-    assert not quality(result, True)[0]
+def test_random_curve_matches_enumeration_and_handoff_numbers():
+    pool, good = range(6), {1, 4}
+    orders = list(permutations(pool))
+    for k, p in enumerate(random_success_curve(6, 2, 6), start=1):
+        assert p == pytest.approx(sum(bool(good & set(o[:k])) for o in orders) / len(orders))
+    assert random_success_curve(50, 2, 10)[-1] == pytest.approx(0.363265, abs=1e-6)
+    assert random_success_curve(50, 1, 10)[-1] == pytest.approx(0.2)
 
 
-def test_repeated_candidate_rejected_then_repaired():
-    responses = iter(["LiNbO3", "LiNbO3", "Li3PO4"])
-    def llm(*_):
-        return {"proposals": [{"coating": next(responses), "hypothesis": "chemistry"}]}
-    state = run_discovery(CFG, lambda c: Evaluation(c, "ok", -0.1), budget=2, llm=llm)
-    assert len(state["proposal_attempts"]) == 3
-    assert len(state["history"]) == 2
-    assert "error" in state["proposal_attempts"][1]
-
-
-def test_budget_validation_precedes_evaluation():
-    with pytest.raises(ValueError, match="Budget"):
-        run_discovery(CFG, lambda c: pytest.fail("must not evaluate"), budget=4, strategy="random")
+def test_synthetic_benchmark_runs_through_real_query_boundary(tmp_path):
+    pool, bench = write_synthetic_benchmark(tmp_path, seed=3)
+    with pytest.raises(ValueError, match="Draft"):
+        BenchmarkQueries(pool, bench, budget=5)
+    state = run_discovery(BenchmarkQueries(pool, bench, budget=5, allow_draft=True), strategy="random", seed=1)
+    assert len(state["history"]) == 5
+    assert write_synthetic_benchmark(tmp_path / "again", seed=3)[1].read_text() == bench.read_text()
