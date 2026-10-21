@@ -2,6 +2,14 @@
 
 OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
+## Current handoff — 21 October
+
+Davide's frozen v3.0 benchmark and budgeted query interface are ready. See
+[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md); its exact schema supersedes the
+illustrative schema below. Adem can integrate by candidate ID and run controls.
+Davide's remaining work is the PET-MAD interface protocol and compute accounting.
+The objective measures coating compatibility, not whole-stack stability.
+
 ## Shared objective
 
 Test whether computed feedback improves an LLM's selection of compatible battery
@@ -145,14 +153,14 @@ fails, fix it before adding more candidates or more agent features.
 
 ## Git and collaboration
 
-Integration base: `codex/iterative-coating-discovery`.
+Integration base: `main` (updated 21 October after the discovery work was merged).
 
 Create personal work branches from the same latest integration commit:
 
-- Davide: `work/evaluator`
+- Davide: `davide` (created from `main`, active evaluator development)
 - Adem: `work/agent-experiments`
 
-These branch names are a plan, not confirmation that the branches already exist.
+Adem’s branch name is a suggestion; Davide’s branch already exists.
 Keep changes within the owned files where practical. Agree before changing shared
 configuration or the evaluator contract. Use small commits and merge at the
 milestones; avoid simultaneous edits of the same file. Do not merge to `main`

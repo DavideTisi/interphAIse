@@ -1,0 +1,78 @@
+{
+  "dataset_sha256": "e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+  "tolerance_eV_non_Li_atom": 1e-07,
+  "checks": [
+    {
+      "formula": "LiF",
+      "endpoint": "electrode",
+      "reference": "pinned",
+      "entries": 760,
+      "lp_energy": -0.09667843006944565,
+      "qhull_energy": -0.09667843006944565,
+      "absolute_difference_eV_non_Li_atom": 0.0
+    },
+    {
+      "formula": "LiF",
+      "endpoint": "electrode",
+      "reference": "equilibrated",
+      "entries": 760,
+      "lp_energy": 0.0,
+      "qhull_energy": 0.0,
+      "absolute_difference_eV_non_Li_atom": 0.0
+    },
+    {
+      "formula": "LiF",
+      "endpoint": "electrolyte",
+      "reference": "pinned",
+      "entries": 131,
+      "lp_energy": -1.43962821763393,
+      "qhull_energy": -1.439628217633929,
+      "absolute_difference_eV_non_Li_atom": 8.881784197001252e-16
+    },
+    {
+      "formula": "LiF",
+      "endpoint": "electrolyte",
+      "reference": "equilibrated",
+      "entries": 131,
+      "lp_energy": -0.310439652107374,
+      "qhull_energy": -0.3104396521073731,
+      "absolute_difference_eV_non_Li_atom": 8.881784197001252e-16
+    },
+    {
+      "formula": "LiNbF6",
+      "endpoint": "electrode",
+      "reference": "pinned",
+      "entries": 939,
+      "lp_energy": -0.09667843006944565,
+      "qhull_energy": -0.09667843006944565,
+      "absolute_difference_eV_non_Li_atom": 0.0
+    },
+    {
+      "formula": "LiNbF6",
+      "endpoint": "electrode",
+      "reference": "equilibrated",
+      "entries": 939,
+      "lp_energy": -0.028772005147425617,
+      "qhull_energy": -0.028772005147427393,
+      "absolute_difference_eV_non_Li_atom": 1.7763568394002505e-15
+    },
+    {
+      "formula": "LiNbF6",
+      "endpoint": "electrolyte",
+      "reference": "pinned",
+      "entries": 229,
+      "lp_energy": -1.43962821763393,
+      "qhull_energy": -1.439628217633929,
+      "absolute_difference_eV_non_Li_atom": 8.881784197001252e-16
+    },
+    {
+      "formula": "LiNbF6",
+      "endpoint": "electrolyte",
+      "reference": "equilibrated",
+      "entries": 229,
+      "lp_energy": -0.026230669748284363,
+      "qhull_energy": -0.02623066974828614,
+      "absolute_difference_eV_non_Li_atom": 1.7763568394002505e-15
+    }
+  ]
+}

@@ -1,5 +1,24 @@
 # interphAIse — project report
 
+**Latest checkpoint — 2026-10-21:** The 50-candidate thermodynamic benchmark is now
+computed and **objective v3.0 is frozen**, following the user's choice of additional
+contact reactivity plus coating self-stability and insulation. V2 produced 41 tied
+best candidates because electrolyte decomposition dominated. V3 has 24 occupied
+eligible bins, one best-bin candidate and two criterion passes. It measures coating
+compatibility, not whole-stack stability. A budgeted query API is ready for Adem;
+82 tests and real-data LP/Qhull cross-checks pass. No LLM performance experiment
+or new MLIP relaxation has been run. See [BENCHMARK_VALIDATION.md](BENCHMARK_VALIDATION.md)
+and [EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md). The entries below describe earlier checkpoints.
+
+**Discovery update — 2026-10-21:** Discovery is the headline experiment; the
+original six-coating modelling screen below is supporting work. On `davide`, a
+separate v2 draft evaluator now includes coating self-decomposition, an insulation
+gate and fixed energy bins. A reproducible 50-candidate MP pool has been built.
+The complete suite passes 62 tests. Neither the new evaluator nor the pool is
+yet wired into the legacy discovery CLI; no v2 LLM benchmark has been run. See
+[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md) for the exact contract, assumptions
+and remaining integration work.
+
 **Runtime update — 2026-10-21:** PET-MAD S 1.6.0 (r²SCAN) is now the default for
 both anode and cathode calculations, loaded through UPET 0.3.1. A real CPU smoke
 test on displaced two-atom bcc lithium returned finite energy, forces and stress.
