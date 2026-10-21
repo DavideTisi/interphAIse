@@ -2125,3 +2125,13 @@ needs pushing. The first staged whitespace check caught Matplotlib's SVG
 path-line trailing spaces. Normalized them and updated the figure generator
 to do the same on future exports; the SVG parses successfully and its plotted
 content is unchanged. Recheck the staged diff and credentials before commit.
+
+## 2026-10-21 — Agent side (Adem): integrate production review
+
+Merged `davide` at `ad6b471` (SYNC_ADEM_9: production passes review; Niflheim PET-MAD batch). Conflicts
+in REPORT.md and DEVELOPMENT_LOG.md resolved by keeping both sides; the production archive is unchanged.
+Combined tests: 43 passed (discovery, experiment analysis, environment study, PET-MAD registry).
+SYNC_DAVIDE_6.md records the requested clarifications: primary analysis definitions fixed at `0072f3d`,
+with completeness and secondary-reporting additions in `abab0a2` (not byte-identical); chloride
+wording (LLM arms 30/30, random 29/30); and the LLZO oxidiser caveat question. No live calls.
+Next: slides.
