@@ -1,0 +1,343 @@
+{
+  "review_date": "2026-10-21",
+  "source_commit": "f1861ef",
+  "execution_commit": "279e2b1",
+  "new_calculations_run": false,
+  "all_15_relaxations_checked_from_saved_forces_and_energies": true,
+  "overlaps_rechecked": true,
+  "runs": {
+    "cathode_ref": {
+      "run": "data/petmad/niflheim_batch1/cathode_ref",
+      "W_adh_J_m2": 3.6003562394027577,
+      "W_sep_J_m2": 5.127716027070846,
+      "joined_eV": -4707.380859375,
+      "film_eV": -2502.995361328125,
+      "substrate_eV": -2184.4306640625,
+      "registry": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "scan_points": 12,
+      "calls": 136,
+      "atoms": 696,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "strain": 0.019520477463318392,
+      "cell_A": [
+        [
+          10.123602841061322,
+          0.0,
+          6.1989189075724e-16
+        ],
+        [
+          5.0566360568659965,
+          8.771582212591662,
+          6.199611063464839e-16
+        ],
+        [
+          0.0,
+          0.0,
+          97.11845634850735
+        ]
+      ],
+      "composition": {
+        "Li": 126,
+        "Nb": 48,
+        "Co": 78,
+        "O": 156,
+        "F": 288
+      },
+      "fixed_composition": {
+        "Li": 26,
+        "Co": 26,
+        "O": 52
+      },
+      "wall_seconds": 61.33621682699999,
+      "cell_and_fixed_positions_preserved": true,
+      "joined_delta_vs_reference_eV": 0.0
+    },
+    "cathode_reg_sixth_0": {
+      "run": "data/petmad/niflheim_batch1/cathode_reg_sixth_0",
+      "W_adh_J_m2": 3.596964455828597,
+      "W_sep_J_m2": 5.090802849991021,
+      "joined_eV": -4707.3623046875,
+      "film_eV": -2502.99560546875,
+      "substrate_eV": -2184.4306640625,
+      "registry": [
+        0.16666666666666666,
+        0.0,
+        2.0
+      ],
+      "scan_points": 13,
+      "calls": 132,
+      "atoms": 696,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "strain": 0.019520477463318392,
+      "cell_A": [
+        [
+          10.123602841061322,
+          0.0,
+          6.1989189075724e-16
+        ],
+        [
+          5.0566360568659965,
+          8.771582212591662,
+          6.199611063464839e-16
+        ],
+        [
+          0.0,
+          0.0,
+          97.11845634850735
+        ]
+      ],
+      "composition": {
+        "Li": 126,
+        "Nb": 48,
+        "Co": 78,
+        "O": 156,
+        "F": 288
+      },
+      "fixed_composition": {
+        "Li": 26,
+        "Co": 26,
+        "O": 52
+      },
+      "wall_seconds": 60.68415441299999,
+      "cell_and_fixed_positions_preserved": true,
+      "joined_delta_vs_reference_eV": 0.0185546875
+    },
+    "cathode_reg_third_third": {
+      "run": "data/petmad/niflheim_batch1/cathode_reg_third_third",
+      "W_adh_J_m2": 3.6170508624496,
+      "W_sep_J_m2": 5.167624545488891,
+      "joined_eV": -4707.4736328125,
+      "film_eV": -2502.99560546875,
+      "substrate_eV": -2184.4306640625,
+      "registry": [
+        0.3333333333333333,
+        0.3333333333333333,
+        2.0
+      ],
+      "scan_points": 13,
+      "calls": 132,
+      "atoms": 696,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "strain": 0.019520477463318392,
+      "cell_A": [
+        [
+          10.123602841061322,
+          0.0,
+          6.1989189075724e-16
+        ],
+        [
+          5.0566360568659965,
+          8.771582212591662,
+          6.199611063464839e-16
+        ],
+        [
+          0.0,
+          0.0,
+          97.11845634850735
+        ]
+      ],
+      "composition": {
+        "Li": 126,
+        "Nb": 48,
+        "Co": 78,
+        "O": 156,
+        "F": 288
+      },
+      "fixed_composition": {
+        "Li": 26,
+        "Co": 26,
+        "O": 52
+      },
+      "wall_seconds": 60.63588191000002,
+      "cell_and_fixed_positions_preserved": true,
+      "joined_delta_vs_reference_eV": -0.0927734375
+    },
+    "electrolyte_seed0_ref": {
+      "run": "data/petmad/niflheim_batch1/electrolyte_seed0_ref",
+      "W_adh_J_m2": 1.6333940812860246,
+      "W_sep_J_m2": 2.9672197308623063,
+      "joined_eV": -5328.5966796875,
+      "film_eV": -4380.4453125,
+      "substrate_eV": -930.7479248046875,
+      "registry": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "scan_points": 12,
+      "calls": 416,
+      "atoms": 880,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "strain": 0.030056453923939012,
+      "cell_A": [
+        [
+          13.716333398371312,
+          0.0,
+          8.398831896176682e-16
+        ],
+        [
+          6.815659096808363,
+          12.44562015568881,
+          8.6886655766907605e-16
+        ],
+        [
+          0.0,
+          0.0,
+          91.63034888478177
+        ]
+      ],
+      "composition": {
+        "Li": 180,
+        "Nb": 84,
+        "P": 16,
+        "S": 80,
+        "Cl": 16,
+        "F": 504
+      },
+      "fixed_composition": {
+        "Li": 12,
+        "P": 4,
+        "S": 20,
+        "Cl": 2
+      },
+      "wall_seconds": 85.48660626099999,
+      "cell_and_fixed_positions_preserved": true
+    },
+    "electrolyte_seed4": {
+      "run": "data/petmad/niflheim_batch1/electrolyte_seed4",
+      "W_adh_J_m2": 1.5120118610940148,
+      "W_sep_J_m2": 2.8053633887540066,
+      "joined_eV": -5327.646484375,
+      "film_eV": -4380.64208984375,
+      "substrate_eV": -930.6849365234375,
+      "registry": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "scan_points": 12,
+      "calls": 400,
+      "atoms": 880,
+      "fixed_atoms": 36,
+      "area_A2": 172.9262508262677,
+      "strain": 0.02864103249889704,
+      "cell_A": [
+        [
+          13.899693520280323,
+          0.0,
+          8.511107589370252e-16
+        ],
+        [
+          6.682720969143159,
+          12.441011780148964,
+          8.647375210784827e-16
+        ],
+        [
+          0.0,
+          0.0,
+          91.51062650197
+        ]
+      ],
+      "composition": {
+        "Li": 180,
+        "Nb": 84,
+        "P": 16,
+        "S": 80,
+        "Cl": 16,
+        "F": 504
+      },
+      "fixed_composition": {
+        "Li": 12,
+        "P": 4,
+        "S": 20
+      },
+      "wall_seconds": 82.604542057,
+      "cell_and_fixed_positions_preserved": true
+    }
+  },
+  "total_calculator_calls": 1216,
+  "extra_separation_single_points": 10,
+  "cpu_gpu_reference_differences": {
+    "cathode": {
+      "W_adh_delta_J_m2": 0.00022024568663381316,
+      "W_sep_delta_J_m2": 0.00017619654930722817
+    },
+    "electrolyte": {
+      "W_adh_delta_J_m2": 0.0004582746827952455,
+      "W_sep_delta_J_m2": 0.00031506384442181457
+    }
+  },
+  "seed4_minus_seed0_J_m2": {
+    "W_adh_J_m2": -0.12138222019200984,
+    "W_sep_J_m2": -0.1618563421082997
+  },
+  "interpretation": "Combined bulk/reference construction sensitivity, not isolated disorder effect or statistical uncertainty. Largest quantified sensitivity so far; polar-model error is unquantified.",
+  "source_sha256": {
+    "data/petmad/niflheim_batch1/cathode_ref/result.json": "366df9799ba2468b1edcc8a2aa67d014f9f52835eecabf69c434e04f2f8299d9",
+    "data/petmad/niflheim_batch1/cathode_ref/relaxation_records.json": "bdc85f74950b8a559c62f988f7a738963d05f324bc35c6651bdcd9421897c137",
+    "data/petmad/niflheim_batch1/cathode_ref/fixed_geometry_separation.json": "bef75f124563dacdfc63dee16f107d0d52805adbf16c6cbffd78a250eb7af519",
+    "data/petmad/niflheim_batch1/cathode_ref/registry_scan.json": "79dfe700e676e0383226b06b075d2d2eefa6971d70f1e875f18bf454c4caa2a7",
+    "data/petmad/niflheim_batch1/cathode_ref/initial.extxyz": "be783a1ccf6b4b4554c1e131a4ac5e11a5ef8000d6d2dd7da5d3d6c8f7ae25f9",
+    "data/petmad/niflheim_batch1/cathode_ref/interface/final.extxyz": "3c092da4b3106682b6f615031c91a0cd05dcda6f3962f6965a758ad9e02b1227",
+    "data/petmad/niflheim_batch1/cathode_ref/film/final.extxyz": "6b2d48092f4d8d228e478213f87d76eac5658e30b35c7238da22a88eaed82e69",
+    "data/petmad/niflheim_batch1/cathode_ref/substrate/final.extxyz": "60ab842c13c460b0d803340c564ab9e44948676ba0940782672d7f64001fa353",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/result.json": "77888b18784edcf5d388b547bad80e59d478dab4ef367625cb2b459dca5c6ef4",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/relaxation_records.json": "9b33ccc8747e3307edac73c4b20892c40bf1cb85282f00c3f401ef2552cfc2cb",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/fixed_geometry_separation.json": "4b47c05c94885dea21090cf163660c9695647ecfa9457438efecb77745f28fed",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/registry_scan.json": "d77bf080a362875b5e19f6ad4b0fcefcbfa5d194d8cce447a5446c25d6c2d6ba",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/initial.extxyz": "d1031d8a64a8da01168000a7931c1df0374ff166387e63a49e7997def7f17710",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/interface/final.extxyz": "4430f8a046ebbed043c1dc3b6cafbd76d863ffa17aa513cb8bf974d49a904f8c",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/film/final.extxyz": "06ff88dc7cc970e417b1405f67a31e049a813595b986821c3ca639433e3555cc",
+    "data/petmad/niflheim_batch1/cathode_reg_sixth_0/substrate/final.extxyz": "d0fe2f7baa14e053a33f50649891f9bbf32352fc880422818a0cb0094e279821",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/result.json": "61fa32258e8d63a2439b69fedb987d1f207cd2a8c790cdcd9b30b293a52e3494",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/relaxation_records.json": "646c72b96ef27c6fd9d59b36a105b85d944a4521b6a88098412954480ee5d091",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/fixed_geometry_separation.json": "0ea16185a64aa021f300b7fa76ae297ceac1ceb649edc02ea154445c30609af5",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/registry_scan.json": "5596c5e3b86f8f21f61b83afa48b5e982db4398c9bf5cce9722cf3a9a900e48c",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/initial.extxyz": "9232aa8ff21ceea146d213137b02e93da775d72dd32a2ccb57f39f3f1a3e6881",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/interface/final.extxyz": "17fc8675d696ee926de84a820ba8664c241df77b5619666cef726b69f6827b79",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/film/final.extxyz": "76442c94ee75cc1c008634374f6af77ecf153cb441739a959256de1237c73bb6",
+    "data/petmad/niflheim_batch1/cathode_reg_third_third/substrate/final.extxyz": "3593f1d31b64d693cd4ef13f0608719f311498d2eba2341a42cb6e81b4a45c7d",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/result.json": "dfc7f55f3d12b797f16aefbe4c9f6a1e1c2a8a4673e9b37ae689cd52cd64fb37",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/relaxation_records.json": "aa5a7bfbd3a23b04fe4ef70d981a4435533615d4c9a8a28d05be50cb5bee5c60",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/fixed_geometry_separation.json": "6d21aededd7007e0b54656a36e530463a2fe2274abc0ff33fe8304f5ac5ae6d6",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/registry_scan.json": "9f210d2526763bc07b489c7172f68114e41488f61c61bdbe9b5dc697b6e098be",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/initial.extxyz": "73839bb8e920f0c6f8ee13d5d20970addbc6612103b1505260b847019914a4fd",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/interface/final.extxyz": "2c28aeff6c35d21f8a0276c9b85e7317dfeb24a9732f7202071778b06534fcd9",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/film/final.extxyz": "228a611fde77181df54870992ddd9fe58d95774b24ec7c690f7e4eadbb834f10",
+    "data/petmad/niflheim_batch1/electrolyte_seed0_ref/substrate/final.extxyz": "7aea7aa2f0e8b640d643271451bf7639ee9eaabf1984024482d7790eba4b8834",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/result.json": "d2ce00cd3a5d9ba96b2b8019934387614d065db44d1078583d9ff7402e5261dc",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/relaxation_records.json": "ff191184229a61f4f18a66d64b02abd08bd76fb3152c4ec7a1f6d13152ab90dd",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/fixed_geometry_separation.json": "ece4930bc9d1baa929e629560d48ddfad28791b87d76fa8bc1ae436bba5f5709",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/registry_scan.json": "b4b02ff8475ec5e28a2f8a3c0a259994d072ca3e44260dd6030bcbb48b5cc159",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/initial.extxyz": "113e788ba705a43b5c5e87e4f657c5852d163ef0b3bacc83a36004cf29be915d",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/interface/final.extxyz": "ced9ed026156f84311f85d4db860da60ea3ef4796550b10b6c1420bda61c9779",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/film/final.extxyz": "2b6bb8a73c4bdca476c69f06f786a963f291decffd77ce07f151e4bd43089f54",
+    "data/petmad/niflheim_batch1/electrolyte_seed4/substrate/final.extxyz": "4752136cd30b2fe8ebe27b1f7502a4bf5c413fa2f184b756f1df5b011cd7a521",
+    "data/petmad/cathode_thickness_v1/run_F4/result.json": "ad97256762a84e738e01b793ed10a85c31a5efd830730bdb58a5d19af07d16b4",
+    "data/petmad/cathode_thickness_v1/run_F4/fixed_geometry_separation.json": "43655f31756b680f63f88cea0aca3897ab1addda958fd60ef702a1f0d966ead8",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/result.json": "c1ed197ddb05f32140b4543e740dd2c6d51e1e0dbc4c7e5250c74a93c3e57243",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/fixed_geometry_separation.json": "44e221fd36462640dfb0fe321778231255348eb4f31c723b6e77ea1c9a87d09e",
+    "data/petmad/niflheim_batch1/b1-cathode_reg_sixth_0-11013922.txt": "4cc469a5e9d00d2309e51b6a4f1c580f0cbd4f45723a16c14af5ee5cdc3103db",
+    "data/petmad/niflheim_batch1/b1-cathode_reg_third_third-11013921.txt": "b071bef99b0ceaf71c4b218f9eee4cd7795f4e691900fe9bcfe0da3525e20043",
+    "data/petmad/niflheim_batch1/b1-cathode_ref-11013920.txt": "d65b1c4702856af95b14b0d0f405e2529dc29fec1af8e6949720e8260914aa82",
+    "data/petmad/niflheim_batch1/sacct.txt": "774ed81370d591f9a33f7cd777f5ca8db5f3cba8a3ba0c1af6599b015ca7c597",
+    "data/petmad/niflheim_batch1/b1-electrolyte_seed0_ref-11013923.txt": "1001ce756de32bbb0b10060b81f9cddc7f50e1f78fdddcb6e2d63f3e14531453",
+    "data/petmad/niflheim_batch1/b1-electrolyte_seed4-11013924.txt": "f5159f6873dc8040cb098dbfbd0f8c0aa08e8ffbd0ab350d469ef2234406b7e2"
+  },
+  "format_only_correction": {
+    "file": "data/petmad/niflheim_batch1/cathode_reg_third_third/initial.extxyz",
+    "original_commit_sha256": "919938a1cadcd64e28b22df62790ef2f4396b06956f8da91a9e87939b6e216cd",
+    "normalized_sha256": "9232aa8ff21ceea146d213137b02e93da775d72dd32a2ccb57f39f3f1a3e6881",
+    "all_ASE_arrays_cell_pbc_info_identical": true,
+    "affected_lines": 696
+  },
+  "remote_tip_verified": "dc62dfed3540cbd535a974922f908e3eab9eabfd"
+}

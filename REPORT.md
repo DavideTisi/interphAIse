@@ -1,5 +1,52 @@
 # interphAIse — project report
 
+**Environment production complete and reviewed — 2026-10-21:** Adem's
+`06a4271` archives 450 completed runs executed at `710d346`. Independent
+review reproduces all 4,500 charged query outcomes, 2,800 archived prompts,
+full run states and shuffled source maps, and the six-test Holm analysis.
+Twelve targeted analysis tests pass. Successes (iterative / sequential /
+shuffled / upfront / random) are sulfide **20/2/6/0/8**, chloride
+**30/30/30/30/29**, and LLZO **12/0/4/1/24**, each out of 30. Iterative beats
+both planned controls in sulfide after Holm correction; in LLZO it beats
+sequential, but not shuffled at the corrected threshold, and random search
+has the higher observed success rate. This is environment-dependent benefit,
+not universal search superiority. Usage recomputes to USD 3.6303784 at the
+archived rates, not billed cost. See [review and slide handoff](SYNC_ADEM_9.md)
+and [overview figure](figures/environment_acceptance_review_20261021.png).
+No new live calls or branch merge occurred. Stop data collection and proceed
+to presentation/demo updates and joint integration review. Earlier production
+pending/approved-only entries below describe their historical checkpoints.
+
+**Niflheim batch reviewed — 2026-10-21:** The bounded five-run batch at
+`f1861ef` is complete: all 15 archived relaxations, physical fixed masks,
+energy arithmetic, overlap gates and 1,216 calls plus ten separation points
+check out. The lowest sampled cathode registry is now (1/3,1/3), at
+W_adh / W_sep = **3.61705 / 5.16762 J/m²**. The GPU electrolyte reference is
+**1.63339 / 2.96722**, while seed 4 gives **1.51201 / 2.80536**. The differences
+(0.12138 / 0.16186) exceed the 0.1 tolerance and measure combined bulk-reference
+and interface-construction sensitivity, not an isolated disorder effect or
+statistical error bar. Both contacts remain formally polar and provisional.
+Recommend publishing the three commits plus the reviewed formatting/docs
+and stopping this batch; see [SYNC_CLAUDE_7.md](SYNC_CLAUDE_7.md).
+The viewer's current-cathode pointer and presentation v4 still need updating.
+No new MLIP/LLM run or push occurred in this review. Adem's environment
+production remains approved and independent.
+
+**Final-geometry review — 2026-10-21:** Reviewed Claude's `97cf4af` through
+`dc62dfe`. Saved forces/energies and accounting support 30 converged
+relaxations and final-geometry constraint spreads of 0.0133 J/m² (cathode)
+and 0.0482 (electrolyte) in W_adh. The final 880-atom vacuum check passes.
+The half-supercell cathode offsets were redundant: the earlier relaxed scan
+sampled one physical registry. The electrolyte has two sampled registries,
+with W_adh 1.631–1.633 but W_sep 2.967–3.065 J/m². Both contacts remain
+formally polar and provisional. The 504-atom Niflheim smoke reproduces local
+W_adh within 0.0002 J/m² on CPU and GPU. Recommend the bounded seed-4 and
+distinct-cathode-registry batch with matching GPU references in
+[SYNC_CLAUDE_6.md](SYNC_CLAUDE_6.md). Fixed a runner bug that would reject
+explicit off-grid offsets; eight regression tests pass. No new MLIP/API run
+or push occurred here. Earlier pending constraint/vacuum statements below
+are historical checkpoints. Adem's environment production remains approved.
+
 **Environment production approved — 2026-10-21:** Following the measured-cost
 review, Davide explicitly said “i approve the production”. The approval covers
 the unchanged frozen study: three environments, five arms, 30 repeats, budget

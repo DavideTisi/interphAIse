@@ -13,8 +13,9 @@ The following **newer atomistic results are not incorporated in v4**:
 
 | Contact | Current working geometry | W_adh / W_sep (J/m²) |
 |---|---|---|
-| LiCoO2 / LiNbF6 | 2 substrate + 4 coating layers, 696 atoms | 3.60014 / 5.12754 |
-| Li6PS5Cl / LiNbF6, seed 0 | 4 substrate + 4 coating layers, 880 atoms | 1.63294 / 2.96690 |
+| LiCoO2 / LiNbF6 | 2 substrate + 4 coating layers, 696 atoms; registry (1/3,1/3) | 3.61705 / 5.16762 |
+| Li6PS5Cl / LiNbF6, seed 0 | 4 substrate + 4 coating layers, 880 atoms; GPU reference | 1.63339 / 2.96722 |
+| Li6PS5Cl / LiNbF6, seed 4 comparison | Same layer counts and depth rule; different cell/basis/fixed count | 1.51201 / 2.80536 |
 
 V4 instead shows the earlier cathode values (about 3.48 / 5.05) and
 544-atom electrolyte values (about 1.53 / 2.86). Update the corresponding
@@ -28,3 +29,24 @@ on 21 October 2026; the deck's earlier smoke-only approval wording is historical
 Some speaker notes refer to the author's original local source paths; the
 scientific source files themselves are in this repository. No deck content
 or embedded chart was changed during publication.
+
+The Niflheim batch changes the cathode selection and documents electrolyte
+sensitivity above tolerance. Report the seed-4 shifts (0.121 / 0.162 J/m²)
+as combined bulk-reference/interface-construction sensitivity, separately
+from seed-0 registry variation (W_sep 2.97–3.06). Neither is a statistical
+confidence interval or a bound on the unquantified polar-model error. The
+cathode's earlier constraint/thickness brackets used registry (0,0).
+See [batch review](../SYNC_CLAUDE_7.md). V4 itself has not been revised.
+
+## Environment production result, ready for the next revision
+
+Production is complete at `work/agent-experiments:06a4271` and independently
+reviewed. Presentation v4 does not contain it. Use
+[the audited overview](../figures/environment_acceptance_review_20261021.png)
+([editable SVG](../figures/environment_acceptance_review_20261021.svg)) and
+[SYNC_ADEM_9.md](../SYNC_ADEM_9.md): iterative benefits from correctly attributed
+feedback in sulfide; chloride is at ceiling; random search outperforms every
+LLM arm in LLZO. LLZO iterative versus shuffled is not significant after Holm.
+Do not describe the experiment as universal superiority to random search or
+as measured MLIP compute savings. The new figure was visually checked; no
+PowerPoint content was edited in this review.

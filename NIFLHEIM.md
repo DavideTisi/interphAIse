@@ -2,6 +2,10 @@
 
 User-authorized on 21 October 2026 for heavier interphAIse calculations.
 
+**Current status:** the isolated environment and 504-atom CPU/GPU smoke tests
+are validated; see the verified-setup section below. The initial inspection
+and setup checklist immediately below are historical.
+
 - SSH alias: `fjorm`; verified hostname: `fjorm.fysik.dtu.dk`.
 - Working directory: `/home/scratch12/davti/OSI_Hackathon`.
 - SSH batch-mode access succeeded. The directory exists and was empty at inspection.
@@ -13,7 +17,7 @@ User-authorized on 21 October 2026 for heavier interphAIse calculations.
   separate compatible environment before running the workflow. No environment was
   installed, no project files were transferred and no jobs were submitted in this check.
 
-## Next setup for a heavier run
+## Initial setup checklist (historical; completed below)
 
 1. Inspect available Python/CUDA modules and account/partition constraints; choose
    a supported Python environment and a suitable Slurm resource request.
@@ -64,3 +68,16 @@ The user re-authorised heavier runs and named both login hosts, `ssh fjorm` and 
 The differences are float noise. GPU execution is validated for this workflow. Evidence:
 `data/petmad/niflheim_smoke_v1/`. Pending jobs not belonging to this project were left
 untouched. SSH use is kept to single batched calls (fail2ban).
+
+## Bounded batch 1 reviewed — 21 October 2026
+
+Jobs 11013920–11013924, source `279e2b1`, completed the five-run plan on RTX
+3090s. Both relaxation and rigid separation used CUDA and the pinned checkpoint.
+Archived scheduler elapsed times are 2:43–2:57 per job; runner-only times are
+61–85 s. All 15 relaxations converge, with 1,216 calls plus ten separation
+single points. The 696/880-atom GPU references reproduce both CPU works within
+0.0005 J/m². The selected cathode registry changes; the electrolyte seed
+comparison exceeds the 0.1 J/m² tolerance. See SYNC_CLAUDE_7.md and
+`data/petmad/niflheim_batch1/`. The recommendation is to publish and stop the
+bounded batch. No additional cluster access or calculation was made in this
+independent archive review.

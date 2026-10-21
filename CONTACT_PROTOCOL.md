@@ -562,3 +562,17 @@ seeds are not compared.
 
 Evidence: `data/petmad/niflheim_batch1/` (results, records, scans, separation, structures,
 FIRE logs, filtered job logs, `sacct`).
+
+### Independent batch review and scope qualification
+
+The archive review at `f1861ef` confirms the five runs, 15 relaxation force
+records, fixed masks, geometry gates, work arithmetic and call accounting.
+See [SYNC_CLAUDE_7.md](SYNC_CLAUDE_7.md). “Largest documented uncertainty” above
+should be read as **largest quantified sensitivity tested so far**: the
+polar-model error is unquantified. The seed difference is a combined
+bulk-reference/construction effect, not an isolated disorder effect or an
+ensemble error estimate. Earlier cathode constraint/thickness brackets were
+measured at (0,0), not the newly selected (1/3,1/3); retain that scope.
+Recommendation: publish the bounded study and defer further seed-4 registry
+runs. Numerical tolerance failure is a reportable outcome, not a trigger to
+extend the sample until it passes.
