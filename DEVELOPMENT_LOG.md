@@ -615,3 +615,50 @@ PETMAD_INTERFACE_PILOT.md (new section), REPORT.md (status line), EXPERIMENT_AME
 **Next.** Follow the amendment: PET-MAD bulk relaxation of LiCoO2, Li6PS5Cl and the
 shortlist coatings, then rebuild both contacts under one matching setting with a cap
 of at least ~185 Å². Then do the constraint, thickness, vacuum and registry checks.
+
+## 2026-10-21 — PET-MAD bulk relaxation, multistart references and rematch (provenance)
+
+**Branch:** `davide`. The code and evidence for this work were committed in `57774d6`
+together with the parallel review files. This entry records how they were produced.
+Full results and interpretation: [BULK_RELAXATION.md](BULK_RELAXATION.md). Reviews:
+BULK_REVIEW_AND_NEXT_STEPS.md and SYNC_CLAUDE_1.md.
+
+**Bulk relaxation (EXPERIMENT_AMENDMENT step 1).** `scripts/relax_bulk.py` relaxes the
+pymatgen conventional cells of the five pinned entries (LiCoO2 `mp-aaaabhik`, Li6PS5Cl
+`mp-aaacebzk`, LiNbF6 `mp-aaacjjwh`, LiCaAlF6 `mp-aaaaajby`, LiZr2(PO4)3 `mp-aaabevhd`).
+It uses PET-MAD S 1.6.0, CPU, offline checkpoint SHA-256 `3f52e97c…ffa1e9`. Each cell gets
+a symmetric relaxation (FixSymmetry + FrechetCellFilter, FIRE), then a stability check:
+rattle σ = 0.02 Å, seed 0, relax without symmetry. Converged means force ≤ 0.01 eV/Å and
+|stress| ≤ 0.05 GPa, evaluated explicitly on the final structure.
+- The first attempt stopped LiCoO2 at 0.198 GPa: FrechetCellFilter scales stress by atom
+  count, so FIRE's own exit is loose. The run was stopped. `relax_cell_record` now restarts
+  FIRE with a halved fmax until both criteria hold, and uses symmetry-projected
+  forces/stress in symmetric mode (raw values recorded). The aborted output is kept in
+  ignored `runs/bulk_relaxation_aborted_v0/` and is not used.
+- Production: all 10 relaxations converged; 2,944 calculator calls, 548.8 s. Stable under
+  the check: LiCoO2, LiNbF6, LiCaAlF6 (|ΔE| ≤ 0.05 meV/atom). Lower-energy distorted
+  minima: Li6PS5Cl −63.81 meV/atom (Pc), LiZr2(PO4)3 −7.57 meV/atom (P1). Frameworks are
+  intact; Li (and Cl) rearrange.
+
+**Multistart (option c).** `scripts/multistart_bulk.py`, seeds 1–5, same settings and
+1,000-step budget, four threads, the two materials run concurrently. Li6PS5Cl: 6/6
+converged, six distinct minima from −57.73 to −63.81 meV/atom; 2,299 calls, 342 s.
+LiZr2(PO4)3: 5/6 converged; seed 5 exhausted at 0.0114 eV/Å and is excluded; five
+distinct minima from −6.07 to −7.57 meV/atom; 4,917 calls, 1,225 s. Selected model
+references: seed 0 for both; alternatives Li6PS5Cl seed 4 and LiZr2(PO4)3 seed 1. The
+LiZr2(PO4)3 seed 0/1 gap (0.3 meV/atom) is below the rotation-diagnostic spread, so that
+ordering is not robust.
+
+**Matching.** `scripts/scan_interface_matches.py` (matching only, no MLIP). The pilot
+matches (224/216 atoms) no longer exist with relaxed lattices. Decision (SYNC_CLAUDE_1):
+LiNbF6(001) on both primary contacts, LiCoO2(001) kept. Cathode 504 atoms; electrolyte
+(111) 440 atoms for seeds 0 and 4. The 200-atom Li6PS5Cl(011)|LiNbF6(100) contact is an
+optional secondary comparison. Open issues from the review: the 60-candidate cutoff hides
+the F-terminated cathode match, and the seed 0/4 electrolyte matches differ in termination
+(P vs Cl labels). Both are addressed next.
+
+**Verification.** Two new relaxation tests (EMT Cu: lattice recovery and symmetry
+retention; explicit exhaustion/stress gate). The full suite passed 104, then 113, tests on
+the shared tree. The inspection replays identically from the archived evidence. No LLM,
+MP API or cluster calls were made. The checkpoint was also copied to
+`~/.cache/interphaise/` (hash verified).
