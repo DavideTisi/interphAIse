@@ -1,0 +1,844 @@
+{
+  "status": "geometry-only-review-not-interface-relaxation",
+  "film": "data/petmad/bulk_relaxation_v1/LiNbF6/stability_check/final.extxyz",
+  "film_sha256": "beaee7192431dd84b292d95935fc8c45151bc63162f64530ec18d739700508b8",
+  "film_miller": [
+    0,
+    0,
+    1
+  ],
+  "max_candidates_per_pair": 60,
+  "max_atoms": 512,
+  "matches": {
+    "cathode": {
+      "substrate": "data/petmad/bulk_relaxation_v1/LiCoO2/stability_check/final.extxyz",
+      "substrate_sha256": "fbc74ea9f3a0d0e8cffce48c842fa93ef9b206b10973f77737f7571598706cb2",
+      "substrate_miller": [
+        0,
+        0,
+        1
+      ],
+      "enumerated": 60,
+      "potentially_truncated": true,
+      "valid": [
+        {
+          "atoms": 504,
+          "area_A2": 88.8000146079959,
+          "strain": 0.019520477463318392,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Li_P6/mmm_1"
+          ],
+          "formal_dipole_per_area": [
+            3.070462863479221,
+            2.058413554829966
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 3.070 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 504,
+          "area_A2": 88.8000146079959,
+          "strain": 0.019520477463318392,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "O2_P6/mmm_1"
+          ],
+          "formal_dipole_per_area": [
+            3.070462863479221,
+            6.164365888797558
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 3.070 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 6.164 e/\u00c5"
+          ]
+        }
+      ]
+    },
+    "electrolyte_seed0": {
+      "substrate": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz",
+      "substrate_sha256": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+      "substrate_miller": [
+        1,
+        1,
+        1
+      ],
+      "enumerated": 14,
+      "potentially_truncated": false,
+      "valid": [
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "F2_P-6_3",
+            "Li6Cl_P1_7"
+          ],
+          "formal_dipole_per_area": [
+            0.5580366130100262,
+            0.17357333450176823
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "F2_P-6_3",
+            "P_C2/m_2"
+          ],
+          "formal_dipole_per_area": [
+            0.5580366130100262,
+            0.17357333450176893
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "F2_P-6_3",
+            "S_P2_1/m_2"
+          ],
+          "formal_dipole_per_area": [
+            0.5580366130100268,
+            0.17357333450176896
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "F2_P-6_3",
+            "S_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            0.5580366130100275,
+            0.37457655080946467
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.375 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "F2_P-6_3",
+            "Cl2_P2/m_1"
+          ],
+          "formal_dipole_per_area": [
+            0.5580366130100275,
+            0.5116140221372737
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.512 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "F2_P-6_3",
+            "Li_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            0.5580366130100275,
+            0.7217232198130018
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.722 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "F2_P-6_3",
+            "LiS3_P1_8"
+          ],
+          "formal_dipole_per_area": [
+            0.5580366130100268,
+            1.1968013787763148
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.558 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 1.197 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "P_C2/m_2"
+          ],
+          "formal_dipole_per_area": [
+            2.7951193716073117,
+            0.17357333450176857
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.795 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Li6Cl_P1_7"
+          ],
+          "formal_dipole_per_area": [
+            2.795119371607313,
+            0.1735733345017683
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.795 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "S_P2_1/m_2"
+          ],
+          "formal_dipole_per_area": [
+            2.7951193716073126,
+            0.17357333450176912
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.795 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.174 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "S_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            2.7951193716073117,
+            0.3745765508094646
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.795 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.375 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Cl2_P2/m_1"
+          ],
+          "formal_dipole_per_area": [
+            2.7951193716073126,
+            0.511614022137274
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.795 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.512 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Li_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            2.795119371607317,
+            0.7217232198130019
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.795 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.722 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 170.70827540491757,
+          "strain": 0.030056453923939012,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "LiS3_P1_8"
+          ],
+          "formal_dipole_per_area": [
+            2.795119371607313,
+            1.1968013787763148
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.795 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 1.197 e/\u00c5"
+          ]
+        }
+      ]
+    },
+    "electrolyte_seed4": {
+      "substrate": "data/petmad/bulk_multistart_v1/Li6PS5Cl/seed_4/final.extxyz",
+      "substrate_sha256": "08cbc20587067b6474753176f43999fa9c2c2f9cccdc7744727aa8c8317fc5a8",
+      "substrate_miller": [
+        1,
+        1,
+        1
+      ],
+      "enumerated": 20,
+      "potentially_truncated": false,
+      "valid": [
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "F2_P-6_3",
+            "Cl2_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308025,
+            0.12851530959264607
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.129 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "F2_P-6_3",
+            "P_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308032,
+            0.2611204579472642
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.261 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "F2_P-6_3",
+            "S_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308038,
+            0.4019052838258252
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.402 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "F2_P-6_3",
+            "Li_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308045,
+            0.5926333288338089
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.593 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "F2_P-6_3",
+            "LiS2_P1_18"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308032,
+            1.0649310255989142
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 1.065 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Cl2_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            2.7592687934773727,
+            0.12851530959264632
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.129 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "P_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            2.7592687934773727,
+            0.26112045794726413
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.261 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "S_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            2.759268793477371,
+            0.40190528382582497
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.402 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Li_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            2.75926879347737,
+            0.5926333288338088
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.593 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.02864103249889704,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "LiS2_P1_18"
+          ],
+          "formal_dipole_per_area": [
+            2.7592687934773754,
+            1.0649310255989142
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 1.065 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "F2_P-6_3",
+            "Cl2_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308018,
+            0.12851530959264637
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.129 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "F2_P-6_3",
+            "P_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308045,
+            0.2611204579472642
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.261 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "F2_P-6_3",
+            "S_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308025,
+            0.4019052838258251
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.402 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "F2_P-6_3",
+            "Li_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308038,
+            0.5926333288338089
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.593 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "F2_P-6_3",
+            "LiS2_P1_18"
+          ],
+          "formal_dipole_per_area": [
+            0.5508791601308038,
+            1.0649310255989142
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 0.551 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 1.065 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Cl2_P-1_2"
+          ],
+          "formal_dipole_per_area": [
+            2.759268793477371,
+            0.12851530959264612
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.129 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "P_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            2.759268793477374,
+            0.2611204579472641
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.261 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "S_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            2.7592687934773727,
+            0.40190528382582513
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.402 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "Li_P1_4"
+          ],
+          "formal_dipole_per_area": [
+            2.759268793477375,
+            0.5926333288338089
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 0.593 e/\u00c5"
+          ]
+        },
+        {
+          "atoms": 440,
+          "area_A2": 172.9262508262677,
+          "strain": 0.028664554666422766,
+          "termination": [
+            "Nb_P6/mmm_1",
+            "LiS2_P1_18"
+          ],
+          "formal_dipole_per_area": [
+            2.7592687934773714,
+            1.0649310255989142
+          ],
+          "warnings": [
+            "film slab is polar: |p_z|/A = 2.759 e/\u00c5",
+            "substrate slab is polar: |p_z|/A = 1.065 e/\u00c5"
+          ]
+        }
+      ]
+    }
+  },
+  "cathode_explicit_termination_check": {
+    "terminations_available": [
+      [
+        "Nb_P6/mmm_1",
+        "Li_P6/mmm_1"
+      ],
+      [
+        "Nb_P6/mmm_1",
+        "O2_P6/mmm_1"
+      ],
+      [
+        "F2_P-6_3",
+        "Li_P6/mmm_1"
+      ],
+      [
+        "F2_P-6_3",
+        "O2_P6/mmm_1"
+      ]
+    ],
+    "selected_termination": [
+      "F2_P-6_3",
+      "Li_P6/mmm_1"
+    ],
+    "total_zsl_matches": 113,
+    "enumerated_selected_termination": 113,
+    "valid": [
+      {
+        "atoms": 504,
+        "area_A2": 88.8000146079959,
+        "strain": 0.019520477463318392,
+        "termination": [
+          "F2_P-6_3",
+          "Li_P6/mmm_1"
+        ],
+        "formal_dipole_per_area": [
+          0.613008057585647,
+          2.0584135548299614
+        ],
+        "warnings": [
+          "film slab is polar: |p_z|/A = 0.613 e/\u00c5",
+          "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+        ]
+      }
+    ]
+  },
+  "multistart_verification": {
+    "Li6PS5Cl": {
+      "summary": "data/petmad/bulk_multistart_v1/Li6PS5Cl/multistart.json",
+      "summary_sha256": "7d1a19bdfc2207358f2f67c3ef0a615ea58f3f7eb237428918c775aa94fb0551",
+      "calculator_calls_existing_batch": 2299,
+      "summed_seconds_existing_batch": 342.1801199170295,
+      "seeds": [
+        {
+          "seed": 0,
+          "structure": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz",
+          "sha256": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+          "energy_eV": -234.77427673339844,
+          "max_raw_force_eV_A": 0.002471632988309551,
+          "max_raw_abs_stress_GPa": 0.03148831675852027,
+          "converged": true
+        },
+        {
+          "seed": 1,
+          "structure": "data/petmad/bulk_multistart_v1/Li6PS5Cl/seed_1/final.extxyz",
+          "sha256": "f18b291d739c98fd35dad53c7155d0efa79b53a801f1d3832750ea07533fc2be",
+          "energy_eV": -234.45777893066406,
+          "max_raw_force_eV_A": 0.008960730511944882,
+          "max_raw_abs_stress_GPa": 0.04582735647473596,
+          "converged": true
+        },
+        {
+          "seed": 2,
+          "structure": "data/petmad/bulk_multistart_v1/Li6PS5Cl/seed_2/final.extxyz",
+          "sha256": "7edb7aa4b9b601ba2688c1a35388b91e3d42952d5ef5b09aa6bf0665266a8e07",
+          "energy_eV": -234.45904541015625,
+          "max_raw_force_eV_A": 0.001192759147690765,
+          "max_raw_abs_stress_GPa": 0.03871075640977297,
+          "converged": true
+        },
+        {
+          "seed": 3,
+          "structure": "data/petmad/bulk_multistart_v1/Li6PS5Cl/seed_3/final.extxyz",
+          "sha256": "5a824c85e481ea46e4714ba07148d21bf5fdb8450b2e362d2d51d7a24b873679",
+          "energy_eV": -234.60873413085938,
+          "max_raw_force_eV_A": 0.002932977673730231,
+          "max_raw_abs_stress_GPa": 0.039539208334054145,
+          "converged": true
+        },
+        {
+          "seed": 4,
+          "structure": "data/petmad/bulk_multistart_v1/Li6PS5Cl/seed_4/final.extxyz",
+          "sha256": "08cbc20587067b6474753176f43999fa9c2c2f9cccdc7744727aa8c8317fc5a8",
+          "energy_eV": -234.66888427734375,
+          "max_raw_force_eV_A": 0.0029982255114984263,
+          "max_raw_abs_stress_GPa": 0.029588454684385656,
+          "converged": true
+        },
+        {
+          "seed": 5,
+          "structure": "data/petmad/bulk_multistart_v1/Li6PS5Cl/seed_5/final.extxyz",
+          "sha256": "9c8249f5911883783aff2d1263f221d7e64a7e67519303a3ad957b813a46c62f",
+          "energy_eV": -234.5629119873047,
+          "max_raw_force_eV_A": 0.0022421060043851626,
+          "max_raw_abs_stress_GPa": 0.04086707128004652,
+          "converged": true
+        }
+      ]
+    },
+    "LiZr2(PO4)3": {
+      "summary": "data/petmad/bulk_multistart_v1/LiZr2(PO4)3/multistart.json",
+      "summary_sha256": "2f2f5c69e817d04953d1005ff12acc2f1a94a3e1dba29307b6ed53f8c19e3f5a",
+      "calculator_calls_existing_batch": 4917,
+      "summed_seconds_existing_batch": 1225.2863545830478,
+      "seeds": [
+        {
+          "seed": 0,
+          "structure": "data/petmad/bulk_relaxation_v1/LiZr2(PO4)3/stability_check/final.extxyz",
+          "sha256": "367c9fce92389fa81e64fe86f06f48c44fb2e97520e0b0abc81df025e8097775",
+          "energy_eV": -932.14306640625,
+          "max_raw_force_eV_A": 0.0040851876385179665,
+          "max_raw_abs_stress_GPa": 0.041804486965558545,
+          "converged": true
+        },
+        {
+          "seed": 1,
+          "structure": "data/petmad/bulk_multistart_v1/LiZr2(PO4)3/seed_1/final.extxyz",
+          "sha256": "4cd7a0d8dab2f6852ec256ea030e02baa6782455aa1c3218a19075dde23d8c5d",
+          "energy_eV": -932.1112060546875,
+          "max_raw_force_eV_A": 0.0010264082044196647,
+          "max_raw_abs_stress_GPa": 0.037633380018371486,
+          "converged": true
+        },
+        {
+          "seed": 2,
+          "structure": "data/petmad/bulk_multistart_v1/LiZr2(PO4)3/seed_2/final.extxyz",
+          "sha256": "0b1add8417780e355dcfe63ba5cb68cb3d2b8875fca5eb522ffbe4977e6bfa42",
+          "energy_eV": -931.98095703125,
+          "max_raw_force_eV_A": 0.0037751051681509484,
+          "max_raw_abs_stress_GPa": 0.02833955409429381,
+          "converged": true
+        },
+        {
+          "seed": 3,
+          "structure": "data/petmad/bulk_multistart_v1/LiZr2(PO4)3/seed_3/final.extxyz",
+          "sha256": "c2b66f4ab82281718dcb21696717e0e7dbaa1cb2cf2b1ef834e3ac835d7131ea",
+          "energy_eV": -931.9884033203125,
+          "max_raw_force_eV_A": 0.00998441906981573,
+          "max_raw_abs_stress_GPa": 0.047933502690991926,
+          "converged": true
+        },
+        {
+          "seed": 4,
+          "structure": "data/petmad/bulk_multistart_v1/LiZr2(PO4)3/seed_4/final.extxyz",
+          "sha256": "e0adf4009831716c89c39cb172cecad18202fa31e27dbb071ffb028cc15b2553",
+          "energy_eV": -932.01416015625,
+          "max_raw_force_eV_A": 0.0005199500508702735,
+          "max_raw_abs_stress_GPa": 0.02593439985569499,
+          "converged": true
+        },
+        {
+          "seed": 5,
+          "structure": "data/petmad/bulk_multistart_v1/LiZr2(PO4)3/seed_5/final.extxyz",
+          "sha256": "78f13853c8ecdad420d598878288a84e656aabf57f108ea51e6f36317c2a3b9e",
+          "energy_eV": -931.8937377929688,
+          "max_raw_force_eV_A": 0.011386706430175498,
+          "max_raw_abs_stress_GPa": 0.04124492391886113,
+          "converged": false
+        }
+      ]
+    }
+  },
+  "source_file_hashes": {
+    "interphaise/tools/matcher.py": "0d3d6b2bd22fbb0495f134b9bcebeb08804fae5466cecdafdbccaaa2707673ac",
+    "interphaise/tools/validation.py": "e2ce07e5678b6f1280108ce13a0b8f5a20a82e50816ac8960aeb33428e0d67ae",
+    "scripts/scan_interface_matches.py": "c92bbe182a7d0d77ea012f9439c0615fa0f6d066b2edf8d643b5f3ae7476e050",
+    "scripts/multistart_bulk.py": "729323e7745c4bca615b09cd17e8811bb89e0b2a29ebb35099813c88791ed629"
+  },
+  "review_calculator_calls": 0,
+  "targeted_relaxation_tests_passed": 6
+}

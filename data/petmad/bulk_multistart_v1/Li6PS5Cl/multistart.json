@@ -1,0 +1,285 @@
+{
+  "material": "Li6PS5Cl",
+  "material_id": "mp-aaacebzk",
+  "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+  "n_atoms": 52,
+  "symmetric_energy_eV": -231.4560089111328,
+  "rattle_A": 0.02,
+  "fmax_eV_A": 0.01,
+  "smax_GPa": 0.05,
+  "step_limit": 1000,
+  "torch_threads": 4,
+  "calculator_calls": 2299,
+  "wall_seconds": 342.1801199170295,
+  "structure_matcher": {
+    "ltol": 0.2,
+    "stol": 0.3,
+    "angle_tol": 5
+  },
+  "seeds": {
+    "0": {
+      "source": "bulk run stability check (not recomputed)",
+      "converged": true,
+      "steps": 760,
+      "energy_eV": -234.77427673339844,
+      "dE_vs_symmetric_meV_per_atom": -63.81284273587741,
+      "cellpar": [
+        10.162665138013693,
+        9.910099523631057,
+        9.92235438693568,
+        87.51543639197114,
+        90.22156613303756,
+        89.95927652919295
+      ],
+      "volume_A3": 998.3630396859662,
+      "overlap_violations": [],
+      "min_distance_A": 2.046111926481309,
+      "space_group": {
+        "0.001": "P1 (1)",
+        "0.01": "P1 (1)",
+        "0.1": "Pc (7)"
+      },
+      "coordination": {
+        "P-S<2.4": {
+          "4": 4
+        },
+        "Li-S<3.0": {
+          "3": 24
+        },
+        "Li-Cl<3.0": {
+          "0": 4,
+          "1": 20
+        }
+      }
+    },
+    "1": {
+      "source": "this run",
+      "converged": true,
+      "steps": 240,
+      "energy_eV": -234.45777893066406,
+      "dE_vs_symmetric_meV_per_atom": -57.72634652944711,
+      "cellpar": [
+        9.985457983402659,
+        10.124151811156452,
+        10.103703427723833,
+        91.00419692014134,
+        88.76523929810028,
+        91.80366757595652
+      ],
+      "volume_A3": 1020.5385436491937,
+      "overlap_violations": [],
+      "min_distance_A": 2.043539711543789,
+      "space_group": {
+        "0.001": "P1 (1)",
+        "0.01": "P1 (1)",
+        "0.1": "P1 (1)"
+      },
+      "coordination": {
+        "P-S<2.4": {
+          "4": 4
+        },
+        "Li-S<3.0": {
+          "3": 24
+        },
+        "Li-Cl<3.0": {
+          "0": 7,
+          "1": 17
+        }
+      },
+      "max_force_eV_A": 0.008960728097754037,
+      "max_abs_stress_GPa": 0.04582735647473596
+    },
+    "2": {
+      "source": "this run",
+      "converged": true,
+      "steps": 323,
+      "energy_eV": -234.45904541015625,
+      "dE_vs_symmetric_meV_per_atom": -57.750701904296875,
+      "cellpar": [
+        10.11903479476597,
+        10.34669172327034,
+        9.899215977981237,
+        89.8933920377316,
+        92.41009806659079,
+        90.20207278000753
+      ],
+      "volume_A3": 1035.5086417601738,
+      "overlap_violations": [],
+      "min_distance_A": 2.0399889255556665,
+      "space_group": {
+        "0.001": "P1 (1)",
+        "0.01": "P1 (1)",
+        "0.1": "P1 (1)"
+      },
+      "coordination": {
+        "P-S<2.4": {
+          "4": 4
+        },
+        "Li-S<3.0": {
+          "3": 24
+        },
+        "Li-Cl<3.0": {
+          "0": 5,
+          "1": 19
+        }
+      },
+      "max_force_eV_A": 0.0011927628298344611,
+      "max_abs_stress_GPa": 0.03871075640977297
+    },
+    "3": {
+      "source": "this run",
+      "converged": true,
+      "steps": 476,
+      "energy_eV": -234.60873413085938,
+      "dE_vs_symmetric_meV_per_atom": -60.62933114858774,
+      "cellpar": [
+        9.914732809712804,
+        9.9806046631387,
+        10.03476650802343,
+        88.54148938862829,
+        90.4559675251478,
+        90.94062809268279
+      ],
+      "volume_A3": 992.5068847726629,
+      "overlap_violations": [],
+      "min_distance_A": 2.04219527730568,
+      "space_group": {
+        "0.001": "P1 (1)",
+        "0.01": "P1 (1)",
+        "0.1": "P1 (1)"
+      },
+      "coordination": {
+        "P-S<2.4": {
+          "4": 4
+        },
+        "Li-S<3.0": {
+          "3": 24
+        },
+        "Li-Cl<3.0": {
+          "0": 4,
+          "1": 20
+        }
+      },
+      "max_force_eV_A": 0.0029329819715632585,
+      "max_abs_stress_GPa": 0.039539208334054145
+    },
+    "4": {
+      "source": "this run",
+      "converged": true,
+      "steps": 830,
+      "energy_eV": -234.66888427734375,
+      "dE_vs_symmetric_meV_per_atom": -61.78606473482572,
+      "cellpar": [
+        10.108962020682778,
+        9.986281480974402,
+        9.824189409120114,
+        89.11254726629767,
+        90.21107510965307,
+        91.40387000716807
+      ],
+      "volume_A3": 991.3391230935122,
+      "overlap_violations": [],
+      "min_distance_A": 2.0413469488414377,
+      "space_group": {
+        "0.001": "P1 (1)",
+        "0.01": "P1 (1)",
+        "0.1": "P1 (1)"
+      },
+      "coordination": {
+        "P-S<2.4": {
+          "4": 4
+        },
+        "Li-S<3.0": {
+          "3": 24
+        },
+        "Li-Cl<3.0": {
+          "0": 3,
+          "1": 21
+        }
+      },
+      "max_force_eV_A": 0.002998228059711568,
+      "max_abs_stress_GPa": 0.029588454684385656
+    },
+    "5": {
+      "source": "this run",
+      "converged": true,
+      "steps": 420,
+      "energy_eV": -234.5629119873047,
+      "dE_vs_symmetric_meV_per_atom": -59.74813608022836,
+      "cellpar": [
+        9.977292298529912,
+        10.083046186488577,
+        9.86031598105915,
+        89.63893200673844,
+        91.87347391158436,
+        89.5121998604039
+      ],
+      "volume_A3": 991.3749054374604,
+      "overlap_violations": [],
+      "min_distance_A": 2.039920683225297,
+      "space_group": {
+        "0.001": "P1 (1)",
+        "0.01": "P1 (1)",
+        "0.1": "P1 (1)"
+      },
+      "coordination": {
+        "P-S<2.4": {
+          "4": 4
+        },
+        "Li-S<3.0": {
+          "3": 24
+        },
+        "Li-Cl<3.0": {
+          "0": 2,
+          "1": 22
+        }
+      },
+      "max_force_eV_A": 0.0022421071768263284,
+      "max_abs_stress_GPa": 0.04086707128004652
+    }
+  },
+  "basins": [
+    {
+      "seeds": [
+        0
+      ],
+      "lowest_seed": 0,
+      "dE_vs_symmetric_meV_per_atom": -63.81284273587741
+    },
+    {
+      "seeds": [
+        4
+      ],
+      "lowest_seed": 4,
+      "dE_vs_symmetric_meV_per_atom": -61.78606473482572
+    },
+    {
+      "seeds": [
+        3
+      ],
+      "lowest_seed": 3,
+      "dE_vs_symmetric_meV_per_atom": -60.62933114858774
+    },
+    {
+      "seeds": [
+        5
+      ],
+      "lowest_seed": 5,
+      "dE_vs_symmetric_meV_per_atom": -59.74813608022836
+    },
+    {
+      "seeds": [
+        2
+      ],
+      "lowest_seed": 2,
+      "dE_vs_symmetric_meV_per_atom": -57.750701904296875
+    },
+    {
+      "seeds": [
+        1
+      ],
+      "lowest_seed": 1,
+      "dE_vs_symmetric_meV_per_atom": -57.72634652944711
+    }
+  ]
+}
