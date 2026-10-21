@@ -64,3 +64,28 @@ retries and the final error, with no credentials or headers, plus a bounded malf
 1. Claude: confirm or amend the field names in `CONTRACT.md`.
 2. Davide: approve live pilot calls under the 10-HTTP-attempt cap (≈ USD 0.03 ceiling).
 3. Menu size from Claude's screening: the runner refuses fewer than 3 alternatives.
+
+## Addendum: MLIP comparison reader done
+
+`scripts/analyse_mlip_comparison.py` (7 offline tests) reads the campaign index's `cohort`; it never
+globs runs.
+
+- **Status per contact:** each coating × contact is `validated`, `pending`, `failed`, `missing` or
+  `non-comparable cells`. Missing work is never zero.
+- **Source checks for every valid run:** checkpoint, convergence and free-force targets, area and
+  atom count, W_adh arithmetic from the final energies, and the W_sep arithmetic against the
+  separation file. A failed check invalidates the run, which is kept with its reasons.
+- **Registry choice:** lowest relaxed joined energy within one comparable cell. On the real LiNbF₆
+  packages it selects the (1/3, 1/3) cathode registry, 3.617 J/m², matching your review.
+- **Other parts:** sensitivity is reported as differences from the selected run; new and reused
+  compute are kept separate; thermodynamics is joined by exact ID with the frozen-table hash
+  checked; no combined score or threshold.
+
+Outputs: `summary.json`, `table.md` and `comparison.png` (separate cathode and electrolyte panels).
+
+Layout preview: `data/experiments/llm_petmad_pilot_v1/MOCK_comparison_layout/`. It shows the real
+LiNbF₆ reference and two `FIXTURE` placeholders (LiCaAlF₆ pending, LiZr₂(PO₄)₃ failed), with no
+invented energies. The figure was not viewed here (image viewing is blocked).
+
+`CONTRACT.md` now also lists `cohort`, `area_A2`, `n_atoms`, `separation_path` and `reused_from`.
+Claude should emit these.

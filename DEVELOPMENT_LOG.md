@@ -2567,3 +2567,6 @@ Pilot: `interphaise/pilot.py`, `scripts/run_llm_petmad_pilot.py`, `tests/test_pi
 `data/experiments/llm_petmad_pilot_v1/CONTRACT.md`; mocked trace `MOCK_state.json` (synthetic fixture, not a
 result). Capped cost estimate ≈ USD 0.005 expected, 0.03 ceiling (list price). No paid calls, no PET-MAD
 runs. Next: the MLIP comparison reader and figure; Claude to confirm the contract; Davide to approve the cap.
+Addendum: added `scripts/analyse_mlip_comparison.py` and `tests/test_mlip_comparison.py` (7 passed: real LiNbF6
+archive, registry selection 3.617 J/m², incomplete/failed/duplicate/unconverged/checkpoint/area/arithmetic cases),
+contract fields for the reader, and a labelled layout preview (`MOCK_comparison_layout`). No new calculations.

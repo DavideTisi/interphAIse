@@ -18,7 +18,9 @@ together, before Claude emits final records.
            "W_adh_J_m2": 3.6, "W_sep_J_m2": 5.17, "joined_energy_eV": -4687.49,
            "checkpoint_sha256": "<same as top>", "result_path": "...", "result_sha256": "...",
            "source_commit": "...", "job_id": "...", "device": "cuda",
-           "calculator_calls": 136, "wall_seconds": 61.3, "reused_from": null, "warnings": ["..."]}]}
+           "area_A2": 88.8, "n_atoms": 696, "separation_path": ".../fixed_geometry_separation.json",
+           "calculator_calls": 136, "wall_seconds": 61.3, "reused_from": null, "warnings": ["..."]}],
+ "cohort": [{"candidate_id": "mp-aaacjjwh", "slot_reason": "reference|llm_choice_2|llm_choice_3|fixed|fallback"}]}
 ```
 
 Validation enforced by `load_index`:
@@ -70,3 +72,25 @@ request IDs), the feedback hashes it saw, a timestamp, and `record_sha256`.
 - A menu with fewer than 3 alternatives is refused unless `allow_small_menu` is set.
 
 `MOCK_*` files are an offline end-to-end trace with synthetic fixture energies. They are not results.
+
+## 4. Comparison reader (`scripts/analyse_mlip_comparison.py`)
+
+The reader reads the `cohort` slots (never globs runs). Each declared coating × contact is reported as
+`validated`, `pending`, `failed`, `missing` or `non-comparable cells`; missing work is never zero.
+
+Each `valid` run is re-checked against `result_path`:
+- the hash, when `result_sha256` is given;
+- the checkpoint;
+- convergence, finite values and free force at or below the target, for interface, film and substrate;
+- `area_A2` and `n_atoms`;
+- W_adh = (E_film + E_substrate − E_interface)/A, against both the index and `result.json`;
+- W_sep, against `separation_path`: checkpoint, area and interface energy must match.
+
+A failed check makes the run invalid; it is kept, with its reasons.
+
+Other rules:
+- The selected registry is the lowest `joined_energy_eV` among validated primary runs in one comparable
+  cell.
+- Sensitivity results are reported as differences from the selected run.
+- `reused_from` separates reused compute from new compute.
+- Thermodynamic values are joined by exact ID from the frozen sulfide table, with the hash verified.
