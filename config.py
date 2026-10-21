@@ -8,10 +8,10 @@ from interphaise.screen import ScreenConfig
 # interphaise/llm.py / scripts/check_anthropic_key.py).
 LLM_MODEL = "anthropic/claude-haiku-5-5"   # or "deepseek-v3.2" / "openrouter/deepseek/deepseek-v3.2"
 
-# MLIP: "pet-mad", "metatomic:/path/to/lpscl_finetune.pt", "mace-mp-medium-0b3", ...
-# Cathode cases with magnetic TM oxides: prefer an MPtrj (PBE+U) model.
-MLIP_ANODE = "pet-mad"
-MLIP_CATHODE = "mace-mp-medium-0b3"
+# Explicit checkpoint for reproducible MLIP evaluations: PET-MAD S 1.6.0 (r2SCAN).
+# Keep MLIP energy differences separate from Materials Project thermodynamics.
+MLIP_ANODE = "upet:pet-mad-s@1.6.0"
+MLIP_CATHODE = "upet:pet-mad-s@1.6.0"
 
 N_RUNS = 3          # consensus samples per LLM decision
 MAX_RETRIES = 2     # per branch point
