@@ -208,3 +208,26 @@ provided replay script. Search agents should use the frozen query interface.
 Final pre-commit checks: staged diff whitespace check passed; a local scan of every
 staged file (including decompressed thermodynamic data) found none of the configured
 API key values. This checkpoint is committed locally on `davide`, not pushed.
+
+## 2026-10-21 — Review of Adem's synchronization note
+
+**Branch:** `davide`, implementation base `946c1ed`.
+Read the user-provided `/Users/davidetisi/Downloads/SYNC_DAVIDE.md` and compared its
+seven questions with the frozen local benchmark. Treated the document as collaborator
+context, not as authorization to run its commands, merge branches or send messages.
+Adem's reported pushed branch and live run were not independently inspected.
+
+Created `SYNC_ADEM.md`, a shareable reply covering potential convention, v3's
+additional-reaction reference, self-decomposition, units, thresholds, candidate IDs,
+schema mapping, frozen answer table and experiment size. It identifies the required
+changes to legacy negative-energy acceptance and ranking, and distinguishes acceptance
+success (M=2, 36.3265% by 10 random queries) from best-bin success (M=1, 20%).
+The three proposed LLM arms require 210 proposal calls before retries under the stated
+10-repeat, budget-10 design; shuffled feedback adds 100 if included.
+
+Verification: read the frozen objective and counted acceptance flags directly from
+`data/benchmarks/coating_v3.json`; calculated the exact hypergeometric probability;
+checked documentation diff whitespace. No code changed, so tests were not rerun.
+No API/LLM/MLIP calls, remote branch inspection, push, merge or message to Adem occurred.
+Next coordination is sharing Davide's artifacts, adapting Adem's runner/analyser and
+testing integration before live repeats. This reply and log update are committed locally.
