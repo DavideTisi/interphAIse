@@ -30,6 +30,11 @@ and such runs are excluded from fluoride_change_mean (the number used is reporte
 
 --production enforces the frozen study (ENVIRONMENT_PROTOCOL.md): exactly the three frozen table
 hashes, all five arms, budget 10, seeds 200..229 for every arm and environment, Holm family of 6.
+It also validates the evidence (JOINT_REVIEW F3): every manifest, run and recorded call must match
+the production specification (model, temperature 1.0, 4096 tokens, prompt version, pool, archived
+execution commit and workflow hashes; versioned policy "environment_v1", which applies to this
+archive only), and every charged query is replayed through BenchmarkQueries; stored results and
+derived traces must match the replay exactly. Failed runs stay in the denominators.
 Without it the analyser accepts subsets (useful for checks); never publish such output as final.
 """
 import argparse
@@ -53,7 +58,64 @@ PRODUCTION = dict(
             "Li3InCl6": "a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2",
             "Li7La3Zr2O12": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"},
     arms={"random", "upfront", "sequential", "iterative", "shuffled"}, budget=10, seeds=list(range(200, 230)),
-    holm_family_size=6)
+    holm_family_size=6,
+    # Versioned evidence policy "environment_v1": the archived execution of this study (710d346).
+    settings=dict(model="anthropic/claude-haiku-5-5", temperature=1.0, max_tokens=4096,
+                  prompt_version="v3-2026-10-21c-charged-ids", pool="data/exploration/environment_expansion_v1/pool.json",
+                  source_commit="710d34680eb12009b2cc56ac988b1a0453829235", allow_draft=False, budget=10),
+    workflow_sha256={"scripts/run_discovery_experiment.py": "e88560ce7624c6adbd8cc1fb0482c7d8913a418b1547f693c4240bd0ee092335",
+                     "interphaise/discovery.py": "b83ecda178e23019756878d7a18359edc81e38974644a2ea7f0979c322dbdeee",
+                     "interphaise/llm.py": "a54c38a3e9c5bad2b0c7d6a0b0b3318b30e15e3834d2a3ba1c0eac7a3c01892e",
+                     "interphaise/benchmark.py": "738347d89fa7f667d2ff89b14a16381d468def991943708e02644e55ba42d7fd"},
+    call_metadata=dict(requested_model="claude-haiku-5-5", returned_model="claude-haiku-5-5",
+                       temperature=1.0, max_tokens=4096))
+
+
+def replay_trace(history):
+    """Best-so-far trace exactly as run_discovery derives it."""
+    best, trace = None, []
+    for step, h in enumerate(history, start=1):
+        result = h["result"]
+        if ranking_key(result)[0] and (best is None or ranking_key(result) > ranking_key(best)):
+            best = result
+        trace.append(dict(evaluations=step, best_candidate_id=best["candidate_id"] if best else None,
+                          best_rank=list(ranking_key(best)) if best else None,
+                          any_acceptable=any(x["result"].get("acceptable") for x in history[:step])))
+    return trace
+
+
+def validate_production_evidence(directories):
+    """Evidence problems (empty = valid): settings vs the frozen spec, per-call metadata, query replay."""
+    import copy
+    from interphaise.benchmark import BenchmarkQueries
+    problems, spec = [], PRODUCTION["settings"]
+    for d in directories:
+        exp = json.loads((d / "experiment.json").read_text())
+        for key, value in spec.items():
+            if exp.get(key) != value:
+                problems.append(f"{d.name}: manifest {key}={exp.get(key)!r}, expected {value!r}")
+        if exp.get("workflow_sha256") != PRODUCTION["workflow_sha256"]:
+            problems.append(f"{d.name}: workflow hashes differ from the archived execution")
+        if exp.get("benchmark_status") != "frozen":
+            problems.append(f"{d.name}: benchmark_status {exp.get('benchmark_status')!r}")
+        template = BenchmarkQueries(ROOT / exp["pool"], ROOT / exp["benchmark"], budget=exp["budget"])
+        for path in sorted(d.glob("*_r*.json")):
+            run = json.loads(path.read_text())
+            if run.get("prompt_version") != spec["prompt_version"] or run.get("budget") != spec["budget"]:
+                problems.append(f"{d.name}/{path.name}: run prompt version or budget differs")
+            for i, attempt in enumerate(run["proposal_attempts"]):
+                meta = attempt.get("llm_metadata") or {}
+                for key, value in PRODUCTION["call_metadata"].items():
+                    if key in meta and meta[key] is not None and meta[key] != value:
+                        problems.append(f"{d.name}/{path.name}: attempt {i} {key}={meta[key]!r}")
+            queries = copy.copy(template)
+            queries._history = []  # fresh run state; stored results are read-only and copied on query
+            for i, h in enumerate(run["history"]):
+                if queries.query(h["proposal"].get("candidate_id")) != h["result"]:
+                    problems.append(f"{d.name}/{path.name}: query {i + 1} result differs from replay")
+            if replay_trace(run["history"]) != run["trace"]:
+                problems.append(f"{d.name}/{path.name}: stored trace differs from the replayed trace")
+    return problems
 
 
 def wilson_interval(k, n):
@@ -191,6 +253,8 @@ def main():
     args = parser.parse_args()
     out = analyse(args.experiments)
     out["production_check"] = check_production(out)
+    if args.production:
+        out["production_check"] += validate_production_evidence(args.experiments)
     if args.production and out["production_check"]:
         raise SystemExit("Not the complete frozen study:\n  " + "\n  ".join(out["production_check"]))
     for env, e in out["environments"].items():

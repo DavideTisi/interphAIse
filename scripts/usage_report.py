@@ -6,6 +6,12 @@ Costs are ESTIMATES: logged `usage` x Anthropic public list prices for claude-ha
 (https://platform.claude.com/docs/en/about-claude/pricing, fetched 2026-10-21), global routing,
 no batch discount. Billed amounts come only from the Anthropic Console. Thinking tokens are
 included in `output_tokens`. Prompts over 100k tokens use the higher tier and are flagged.
+
+Accounting terms: `calls` = proposal attempts (one per logical model call recorded in a run);
+`retries` = format retries (attempts the runner rejected and re-asked); `http` = HTTP attempts and
+`transport` = transport retries (429/5xx re-sends inside one call), known only for runs whose
+metadata records `http_attempts`. Older archives did not record them: those calls are counted in
+`http_unknown` and their HTTP totals are reported as unknown, never inferred.
 """
 import argparse
 import json
@@ -57,7 +63,13 @@ def main():
             for i, a in enumerate(run["proposal_attempts"]):
                 r["calls"] += 1
                 r["retries"] += "error" in a
-                u = (a.get("llm_metadata") or {}).get("usage")
+                meta = a.get("llm_metadata") or {}
+                if "http_attempts" in meta:
+                    r["http"] += meta["http_attempts"]
+                    r["transport"] += meta.get("transport_retries", 0)
+                else:
+                    r["http_unknown"] += 1
+                u = meta.get("usage")
                 if not u:
                     r["missing_usage"] += 1
                     continue
@@ -71,8 +83,8 @@ def main():
                                                     "cache_read_input_tokens"))
                 by_index[(run["strategy"], i)].append(prompt)
 
-    cols = ("runs", "calls", "retries", "input_tokens", "output_tokens", "thinking_tokens",
-            "cache_creation_input_tokens", "cache_read_input_tokens", "over_100k", "missing_usage")
+    cols = ("runs", "calls", "retries", "http", "transport", "http_unknown", "input_tokens", "output_tokens",
+            "thinking_tokens", "cache_creation_input_tokens", "cache_read_input_tokens", "over_100k", "missing_usage")
     print(f"{'environment':<14}{'arm':<12}" + "".join(f"{c.split('_')[0][:9]:>10}" for c in cols) + f"{'USD':>9}")
     total = defaultdict(float)
     for (env, arm), r in sorted(rows.items()):
@@ -80,8 +92,12 @@ def main():
         for c in (*cols, "usd"):
             total[c] += r[c]
     print(f"{'TOTAL':<26}" + "".join(f"{int(total[c]):>10}" for c in cols) + f"{total['usd']:>9.4f}")
-    print("(columns: runs, calls, retries = invalid-format attempts, input, output incl. thinking, thinking,"
-          " cache write, cache read, prompts >100k, calls without usage; USD = list-price estimate)")
+    print("(columns: runs, calls = proposal attempts, retries = format retries, http = HTTP attempts, transport ="
+          " transport retries, http_unknown = calls without HTTP records, input, output incl. thinking, thinking,"
+          " cache write, cache read, prompts >100k, calls without usage; USD = list-price estimate, not billed)")
+    if total["http_unknown"]:
+        print(f"HTTP attempts unknown for {int(total['http_unknown'])} of {int(total['calls'])} calls (not recorded"
+              " in those archives); http/transport columns cover only calls with records.")
 
     print("\nmean prompt tokens by call index within a run (history growth):")
     for arm in sorted({a for a, _ in by_index}):

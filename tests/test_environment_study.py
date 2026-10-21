@@ -84,3 +84,50 @@ def test_production_check_requires_the_complete_frozen_study():
     assert any("environments" in p for p in problems) and any("Holm" in p for p in problems)
     out = complete_study(); out["environments"]["Li6PS5Cl"]["hashes"]["benchmark_sha256"] = "x"
     assert any("frozen" in p for p in check_production(out))
+
+
+LLZO_ARCHIVE = ROOT / "data/experiments/environment_v1/llzo"
+
+
+@pytest.fixture
+def llzo_copy(tmp_path):
+    import shutil
+    d = tmp_path / "llzo"
+    shutil.copytree(LLZO_ARCHIVE, d)
+    return d
+
+
+def _edit(path, change):
+    data = json.loads(path.read_text())
+    change(data)
+    path.write_text(json.dumps(data))
+
+
+def test_production_evidence_accepts_the_real_archive(llzo_copy):
+    from scripts.analyse_environment_study import validate_production_evidence
+    assert validate_production_evidence([llzo_copy]) == []
+
+
+def test_production_evidence_rejects_an_altered_outcome(llzo_copy):
+    from scripts.analyse_environment_study import validate_production_evidence
+    _edit(llzo_copy / "upfront_r200.json", lambda r: r["history"][0]["result"].update(acceptable=True))
+    assert any("differs from replay" in p for p in validate_production_evidence([llzo_copy]))
+
+
+def test_production_evidence_rejects_wrong_manifest_settings(llzo_copy):
+    from scripts.analyse_environment_study import validate_production_evidence
+    _edit(llzo_copy / "experiment.json", lambda e: e.update(temperature=0.0))
+    assert any("manifest temperature" in p for p in validate_production_evidence([llzo_copy]))
+
+
+def test_production_evidence_rejects_wrong_call_metadata(llzo_copy):
+    from scripts.analyse_environment_study import validate_production_evidence
+    _edit(llzo_copy / "iterative_r201.json",
+          lambda r: r["proposal_attempts"][0]["llm_metadata"].update(temperature=0.0))
+    assert any("attempt 0 temperature" in p for p in validate_production_evidence([llzo_copy]))
+
+
+def test_production_evidence_rejects_an_altered_trace(llzo_copy):
+    from scripts.analyse_environment_study import validate_production_evidence
+    _edit(llzo_copy / "random_r200.json", lambda r: r["trace"][-1].update(any_acceptable=not r["trace"][-1]["any_acceptable"]))
+    assert any("trace differs" in p for p in validate_production_evidence([llzo_copy]))
