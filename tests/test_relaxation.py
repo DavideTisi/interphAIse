@@ -70,3 +70,28 @@ def test_cell_relaxation_exhaustion_and_stress_gate_are_explicit(tmp_path):
     # Forces vanish by symmetry, so only the stress criterion keeps this unconverged.
     assert not r['converged'] and r['steps']==0
     assert r['final']['max_force_eV_A']<1e-8 and r['final']['max_abs_stress_GPa']>.05
+
+
+def test_explicit_termination_is_enumerated_before_the_cap(monkeypatch):
+    import pytest
+    from interphaise.tools import matcher
+    from pymatgen.core import Lattice,Structure
+    def iface(n):
+        s=Structure(Lattice.cubic(5+n),['H'],[[0,0,0]])
+        s.interface_properties={'von_mises_strain':.01};return s
+    class TwoTerminations:
+        zsl_matches=[object()]
+        terminations=[('A','x'),('F','y')]
+        def __init__(self,**kwargs):pass
+        def get_interfaces(self,term,**kwargs):
+            return [iface(i) for i in range(3)]
+    monkeypatch.setattr(matcher,'CoherentInterfaceBuilder',TwoTerminations)
+    capped=matcher.MatchSettings(max_candidates=3)
+    report={}
+    out=matcher.enumerate_interfaces(None,None,(0,0,1),(0,0,1),('s','f'),capped,report=report)
+    assert {c.termination for c,_ in out}=={('A','x')} and report['truncated']
+    report={}
+    out=matcher.enumerate_interfaces(None,None,(0,0,1),(0,0,1),('s','f'),capped,terminations=[('F','y')],report=report)
+    assert {c.termination for c,_ in out}=={('F','y')} and len(out)==3
+    with pytest.raises(ValueError):
+        matcher.enumerate_interfaces(None,None,(0,0,1),(0,0,1),('s','f'),capped,terminations=[('Q','z')])

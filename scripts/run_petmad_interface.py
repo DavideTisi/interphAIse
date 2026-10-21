@@ -28,11 +28,13 @@ def main():
     ap.add_argument('--checkpoint',type=Path,help='Optional cached pet-mad-s-v1.6.0.ckpt for fully offline loading')
     ap.add_argument('--steps',type=int,default=400)
     ap.add_argument('--fmax',type=float,default=.05)
+    ap.add_argument('--fixed-fraction',type=float,default=.34,help='Bottom fraction of the substrate z span held fixed')
+    ap.add_argument('--threads',type=int,default=2)
     args=ap.parse_args()
     if args.output.exists():ap.error('Use a fresh calculation output directory')
     args.output.mkdir(parents=True)
     import torch
-    torch.set_num_threads(2)
+    torch.set_num_threads(args.threads)
     started=time.monotonic()
     interface=Interface.from_dict(json.loads((args.input/'interface.json').read_text()))
     selected=json.loads((args.input/'selected.json').read_text())
@@ -66,7 +68,7 @@ def main():
     start=to_atoms(interface)
     write(args.output/'initial.extxyz',start)
     (args.output/'registry_scan.json').write_text(json.dumps(scan,indent=2)+'\n')
-    fixed=bottom_fixed_indices(start,interface.substrate_indices)
+    fixed=bottom_fixed_indices(start,interface.substrate_indices,args.fixed_fraction)
     film_indices=list(interface.film_indices);sub_indices=list(interface.substrate_indices)
     separated={'interface':(start,fixed),'film':(start[film_indices],[]),
                'substrate':(start[sub_indices],[sub_indices.index(i) for i in fixed])}
@@ -82,7 +84,8 @@ def main():
     candidate_w=(records['film']['final_energy_eV']+records['substrate']['final_energy_eV']-
                  records['interface']['final_energy_eV'])/area*EV_PER_A2_TO_J_PER_M2
     valid=all(r['converged'] and not r['overlap_violations'] for r in records.values())
-    result={'model':model,'checkpoint_sha256':checkpoint_sha256,'device':'cpu','torch_threads':2,'purpose':'one-contact finite-cell pilot',
+    result={'model':model,'checkpoint_sha256':checkpoint_sha256,'device':'cpu','torch_threads':args.threads,'purpose':'one-contact finite-cell pilot',
+        'fixed_fraction':args.fixed_fraction,'n_fixed':len(fixed),
         'selected':selected,'area_A2':area,'n_atoms':len(start),'registry_points':len(scan),
         'best_registry':best,'relaxations':records,'numerically_valid':valid,
         'status':'converged_pilot' if valid else 'unconverged_or_invalid',

@@ -1036,3 +1036,50 @@ force push or collaborator message is part of this request. The new agent-contro
 code/results are still on Adem's branch; both frozen result cohorts and exploratory
 status of the expansion are preserved. Interface construction/validation and the
 separate expanded LLM protocol remain next work.
+
+## 2026-10-21 — Explicit terminations, primary contact builds and constraint check
+
+**Branch:** `davide`. Follows SYNC_CLAUDE_1.md. Details: [CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+
+**Termination selection.** `enumerate_interfaces` gains `terminations`, applied before the
+60-candidate cap, and a `report` that records the available terminations, the ZSL match
+count and truncation. An unknown label raises. New regression test. This recovers the
+F-terminated cathode match that the cap had hidden.
+
+**Equivalent electrolyte cuts.** Termination labels differ between Li6PS5Cl seeds because
+their symmetries differ. Cuts were matched by framework groups (species, parent (111) height
+u = (x+y+z) mod 1, with Li ignored) ranked by mean z on each face. Both seeds descend from the
+same symmetric parent in the same atom order. Atom-index sets and fixed distance windows were
+tried first and were unreliable. Rule, fixed before any interface energy: no cut PS4, an
+equivalent cut in both seeds, then the lowest formal substrate polarity. It selects the Cl
+cut (seed 0 `Li6Cl_P1_7` ≡ seed 4 `Cl2_P-1_2`, identical framework signatures on both faces).
+The old seed-0 pick `P_C2/m_2` cut four PS4 units.
+
+**Builds** (`scripts/build_contact.py`; deterministic, and rebuilding reproduces `build.json`).
+Cathode LiCoO2(001) | LiNbF6(001): 504 atoms, 88.800 Å², 1.952 %, `F2_P-6_3`/`Li_P6/mmm_1`,
+formal |p|/A 2.058 / 0.613. Electrolyte Li6PS5Cl(111) | LiNbF6(001): 440 atoms, seed 0
+170.708 Å², 3.006 %, |p|/A 0.174 / 0.558; seed 4 172.926 Å², 2.864 %, 0.129 / 0.551.
+All slabs are formally neutral and stoichiometric; no polyhedra are cut. The fixed-fraction
+rule fixes 38 vs 36 atoms in seeds 0 and 4. Saved under `data/petmad/contact_v1_*`, which
+the viewer discovers (61 structures after a rebuild).
+
+**Constraint check** (MLIP; PET-MAD S 1.6.0, checkpoint `3f52e97c…`, CPU, 2 threads × 6
+concurrent). `run_petmad_interface.py` gains `--fixed-fraction`/`--threads`; the defaults keep
+the pilot behaviour. Fractions 0.17 / 0.34 / 0.50, all 18 relaxations converged. Cathode W_adh
+3.488 / 3.479 / 3.471 J/m² (insensitive). Electrolyte 1.288 / 1.329 / 1.411 J/m² (monotonic,
+0.123 spread, above the 0.1 tolerance). Fixed-geometry separation
+(`scripts/fixed_geometry_separation.py`, 12 single points): cathode 5.04–5.06 J/m², with the
+separated LiNbF6 slab relaxing by 1.49 J/m²; electrolyte 2.47–2.56 J/m², with the separated
+Li6PS5Cl slab rearranging (Li RMS 0.55–0.65 Å vs the joined interface, about 0.6 J/m²). Cost:
+1,208 calls plus 12 single points, 236–309 s per run. Evidence:
+`data/petmad/constraint_test_v1/`; the inspection replays identically.
+
+**Correction (chat only).** I first attributed the electrolyte sensitivity "almost entirely"
+to the separated slab, from total energies that include different fixed regions. The
+decomposition shows +0.092 J/m² from the fixed-geometry separation, +0.049 from substrate
+relaxation and −0.018 from the film.
+
+**Verification.** The full suite passes (114 tests) with the matcher and runner changes.
+No LLM, MP API or cluster calls. **Next:** electrolyte substrate thickness with a
+fixed-thickness constraint rule, then the cathode film thickness, vacuum, registry, and the
+seed-4 sensitivity. See CONTACT_PROTOCOL.md.
