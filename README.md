@@ -1,5 +1,11 @@
 # interphAIse
 
+**Latest team handoff (21 October):** [SYNC_ADEM_8.md](SYNC_ADEM_8.md) reviews
+the environment smoke cost and production analysis. Production spending still
+awaits Davide's explicit approval. [REPORT.md](REPORT.md) records the latest
+physics and viewer status; [presentation v4](presentations/README.md) is a
+saved presentation checkpoint with its newer-result corrections listed.
+
 **Integrated discovery results:** The new 30-repeat v3 batch completed on `davide`:
 acceptable coating found in 19/30 iterative, 4/30 upfront, 4/30 sequential and
 10/30 random runs. All 1,200 query results replay exactly. A post-hoc fluoride-first
@@ -8,9 +14,12 @@ heuristic succeeds earlier than the LLMs. See
 evidence, uncertainty, limitations and offline reproduction commands.
 
 **Interactive structures:** Run `.venv/bin/python scripts/build_structure_viewer.py`,
-then open `runs/structure_viewer.html` in a browser. Explore all 50 candidates and
-compare the initial/relaxed interface in 3D, with cell replication, layer colours
-and geometry/image exports. Works offline. See [STRUCTURE_VIEWER.md](STRUCTURE_VIEWER.md).
+then open `runs/structure_viewer.html` in a browser. Browse 141 candidate IDs,
+battery endpoints, relaxed bulk references and archived interfaces. Compare
+initial/relaxed and thickness cases, with search, filters, cell replication,
+fixed-atom colouring and geometry/image exports. Share the generated HTML file
+itself with a collaborator; it works offline. See [VIEWER_UPDATE.md](VIEWER_UPDATE.md)
+for the current 278-geometry catalogue and reproducibility checks.
 
 **PET-MAD pilot:** A real 224-atom interface and its separated slab references have
 been relaxed. See [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md) for the

@@ -1,0 +1,87 @@
+{
+  "review_date": "2026-10-21",
+  "reviewed_head": "710d346",
+  "analysis_commit": "0072f3d",
+  "smoke_execution_commit": "26beb73",
+  "smoke": {
+    "calls": 31,
+    "format_retries": 1,
+    "input_tokens": 222668,
+    "output_tokens": 27416,
+    "thinking_tokens": 16080,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "history_queries": 57,
+    "returned_models": [
+      "claude-haiku-5-5"
+    ],
+    "max_input_tokens": 7873,
+    "max_output_tokens": 1906,
+    "usd_list_estimate": 0.0359748,
+    "not_provider_billed": true
+  },
+  "production": {
+    "environments": 3,
+    "arms": 5,
+    "repeats": 30,
+    "budget": 10,
+    "seeds": [
+      200,
+      229
+    ],
+    "planned_calls": 2790,
+    "expected_input_tokens": 24270300,
+    "expected_output_tokens": 2503080,
+    "expected_usd": 3.6785699999999997,
+    "contingency_usd": 5.268720600000001,
+    "all_outputs_capped_plus_10percent_retries_scenario_usd": 9.488991600000002,
+    "cost_ceiling_enforced": false,
+    "approved": false
+  },
+  "manifests": [
+    {
+      "path": "data/experiments/environment_smoke_v1/lic_b3/20261021_160245_729301_experiment/experiment.json",
+      "sha256": "f5dc174069443700a6a83645348fbc4805644b5ff1ac47a00fa4f5163137c162",
+      "benchmark_sha256": "a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2"
+    },
+    {
+      "path": "data/experiments/environment_smoke_v1/lic_upfront/20261021_160227_779848_experiment/experiment.json",
+      "sha256": "9384520d191e7bcde76cc90baf94c010a9d3a797cc25febfa20b09806e19c55a",
+      "benchmark_sha256": "a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2"
+    },
+    {
+      "path": "data/experiments/environment_smoke_v1/llzo_b3/20261021_160340_710298_experiment/experiment.json",
+      "sha256": "cfdce71ad0a2399ce015c8023c42bbb2111f274a6b39a7aa820170b319fff841",
+      "benchmark_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"
+    },
+    {
+      "path": "data/experiments/environment_smoke_v1/llzo_upfront/20261021_160311_518599_experiment/experiment.json",
+      "sha256": "0614c31b2d2fea708d2a921f95605b6678734cd40b4a6fb5dccfe5a479fc64ca",
+      "benchmark_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"
+    },
+    {
+      "path": "data/experiments/environment_smoke_v1/lpscl_b3/20261021_160205_166408_experiment/experiment.json",
+      "sha256": "db62524106a81a88c23ba3ba7af8a4e77ee9eaed087a8271208ed6a60073371d",
+      "benchmark_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
+    },
+    {
+      "path": "data/experiments/environment_smoke_v1/lpscl_upfront/20261021_160148_695849_experiment/experiment.json",
+      "sha256": "c12f5afdcf77905dad5cfa59bb7c8bd6661ed78391d016a77adfdb850b14316b",
+      "benchmark_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
+    }
+  ],
+  "live_calls_during_review": 0,
+  "analysis_tests": {
+    "passed": 11,
+    "files": [
+      "tests/test_environment_study.py",
+      "tests/test_experiment_analysis.py"
+    ]
+  },
+  "pricing_verified_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "analysis_followups": [
+    "Enforce all three frozen environments, five arms and seeds 200-229 with six Holm contrasts before final reporting.",
+    "Include predeclared secondary uncertainty and per-run fluoride summaries.",
+    "High-output projection is not an enforced cost ceiling."
+  ]
+}
