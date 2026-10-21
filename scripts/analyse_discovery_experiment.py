@@ -205,7 +205,7 @@ def main():
         handles, labels = axes[0].get_legend_handles_labels()
         # Shared legend outside the data region. M differs between targets.
         labels = ['random (exact)' if name.startswith('random (exact)') else name for name in labels]
-        fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5,.95), ncol=3, fontsize=9)
+        fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5,.95), ncol=4, fontsize=9)
         fig.tight_layout(rect=(0,0,1,.86))
         fig.subplots_adjust(top=0.80)
         fig.savefig(args.plot, dpi=150)

@@ -1,0 +1,19 @@
+{
+  "replayed_queries": 300,
+  "arms": {
+    "shuffled": {
+      "runs": 30,
+      "successes": 6,
+      "rate": 0.2,
+      "wilson_95": [
+        0.09504978102401235,
+        0.37306047381027446
+      ],
+      "failed_runs": 0,
+      "failed_queries": 12,
+      "proposal_attempts": 300
+    }
+  },
+  "paired_acceptance": {},
+  "note": "Paired tests are supplementary; the frozen primary outcome is acceptable found by budget 10."
+}
