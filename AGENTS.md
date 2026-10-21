@@ -10,3 +10,12 @@
 - The collaborator Anthropic credential is authorised only for Claude Haiku 5.5 (`claude-haiku-5-5`). Use the direct Anthropic endpoint; never route it to OpenRouter or fall back to another model.
 
 - All live project LLM calls are locked to the configured Haiku 5.5 model and the Anthropic credential. Do not use other providers or credentials even if they are available.
+
+# Development reporting
+
+- After every substantive work session, update `DEVELOPMENT_LOG.md` before handing the work back. This is an explicit user requirement: a human or another LLM must be able to follow the process and continue it.
+- Record the date, branch, purpose, changes and relevant files, reasons for important decisions, verification actually performed and its results, unresolved limitations, and concrete next steps. Include the implementation commit when known; never invent a commit or test result.
+- Distinguish implemented, tested, proposed and unfinished work. State whether live API/LLM/MLIP runs occurred, without exposing credentials. Record reproducibility commands, dataset/objective versions and hashes when relevant.
+- Preserve earlier log entries; append a new dated checkpoint. Correct earlier mistakes explicitly instead of silently rewriting the history.
+- Keep `REPORT.md` aligned when project status or scientific conclusions change. Link detailed handoff documents rather than duplicating them. Documentation-only edits need a consistency/diff check, not an unnecessary full test run.
+- At the start of substantive work, read the latest log entry and the relevant handoff documents alongside these instructions.
