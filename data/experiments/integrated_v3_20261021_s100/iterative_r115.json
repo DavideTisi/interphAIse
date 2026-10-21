@@ -1,0 +1,1277 @@
+{
+  "strategy": "iterative",
+  "seed": 115,
+  "budget": 10,
+  "prompt_version": "v3-2026-10-21c-charged-ids",
+  "hashes": {
+    "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+    "pool_sha256": "e850b4f1d77e12e895d6d5446ab80f3210184842b6c91ecf88577158c34a8758",
+    "benchmark_sha256": "d2718c20f0ca8c3cc25d2378011bc68736ad71a502d657312bfff1da15a4ecfa"
+  },
+  "objective": {
+    "acceptable_penalty_eV": 0.05,
+    "bin_width_eV": 0.02,
+    "contact_reference": "equilibrated",
+    "min_band_gap_eV": 2.0,
+    "version": "v3.0"
+  },
+  "metadata": {
+    "repeat": 115,
+    "model": "anthropic/claude-haiku-5-5",
+    "temperature": 1.0
+  },
+  "proposal_attempts": [
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaaegs",
+            "hypothesis": "Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.",
+            "motivation": "none",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 2862,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 414,
+          "output_tokens_details": {
+            "thinking_tokens": 218
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaabru",
+            "hypothesis": "LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.",
+            "motivation": "Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 3299,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 609,
+          "output_tokens_details": {
+            "thinking_tokens": 312
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaacffw",
+            "hypothesis": "Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.",
+            "motivation": "Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 3829,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 826,
+          "output_tokens_details": {
+            "thinking_tokens": 454
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaacffw\", \"hypothesis\": \"Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.2764, \"self_decomposition_penalty\": 0.00920549500000023, \"contact_reaction_energies\": [-0.027210233046239374, -0.18875885890858202], \"contacts\": [{\"products\": [\"LiCl\", \"LiClO4\", \"Mg5Co19O32\"], \"reaction_energy\": -0.027210233046239374, \"second_non_Li_fraction\": 0.3048780487804878}, {\"products\": [\"MgCl2\", \"PCl5\", \"SCl4\"], \"reaction_energy\": -0.18875885890858202, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858202, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaahikjt",
+            "hypothesis": "LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.",
+            "motivation": "Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 4478,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 772,
+          "output_tokens_details": {
+            "thinking_tokens": 455
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaacffw\", \"hypothesis\": \"Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.2764, \"self_decomposition_penalty\": 0.00920549500000023, \"contact_reaction_energies\": [-0.027210233046239374, -0.18875885890858202], \"contacts\": [{\"products\": [\"LiCl\", \"LiClO4\", \"Mg5Co19O32\"], \"reaction_energy\": -0.027210233046239374, \"second_non_Li_fraction\": 0.3048780487804878}, {\"products\": [\"MgCl2\", \"PCl5\", \"SCl4\"], \"reaction_energy\": -0.18875885890858202, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858202, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaahikjt\", \"hypothesis\": \"LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"status\": \"failed\", \"error\": \"No GGA_GGA+U entry for pinned material mp-3346453\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaabhzd",
+            "hypothesis": "Li2ZnCl4 is a wide-gap chloride with a divalent cation, the same chemical class as Li2MgCl4, which gave the lowest contact penalty so far (0.189 eV/non-Li atom). Its Cl- anion matches the Cl- in Li6PS5Cl, which should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Zn2+ is somewhat more reducible than Mg2+, so the penalty may be higher, but this tests whether the chloride trend holds.",
+            "motivation": "Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. LiMgCl3 failed with a pinned-material error, so the chloride with a divalent cation remains the most promising family.",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 4823,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 776,
+          "output_tokens_details": {
+            "thinking_tokens": 432
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaacffw\", \"hypothesis\": \"Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.2764, \"self_decomposition_penalty\": 0.00920549500000023, \"contact_reaction_energies\": [-0.027210233046239374, -0.18875885890858202], \"contacts\": [{\"products\": [\"LiCl\", \"LiClO4\", \"Mg5Co19O32\"], \"reaction_energy\": -0.027210233046239374, \"second_non_Li_fraction\": 0.3048780487804878}, {\"products\": [\"MgCl2\", \"PCl5\", \"SCl4\"], \"reaction_energy\": -0.18875885890858202, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858202, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaahikjt\", \"hypothesis\": \"LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"status\": \"failed\", \"error\": \"No GGA_GGA+U entry for pinned material mp-3346453\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaabhzd\", \"hypothesis\": \"Li2ZnCl4 is a wide-gap chloride with a divalent cation, the same chemical class as Li2MgCl4, which gave the lowest contact penalty so far (0.189 eV/non-Li atom). Its Cl- anion matches the Cl- in Li6PS5Cl, which should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Zn2+ is somewhat more reducible than Mg2+, so the penalty may be higher, but this tests whether the chloride trend holds.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. LiMgCl3 failed with a pinned-material error, so the chloride with a divalent cation remains the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.1422, \"self_decomposition_penalty\": 0.023990836000000293, \"contact_reaction_energies\": [-0.013538633296557023, -0.18875885890858246], \"contacts\": [{\"products\": [\"Co23O32\", \"LiClO4\", \"Zn5Co19O32\"], \"reaction_energy\": -0.013538633296557023, \"second_non_Li_fraction\": 0.055964182922929324}, {\"products\": [\"PCl5\", \"SCl4\", \"ZnCl2\"], \"reaction_energy\": -0.18875885890858246, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858246, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaajby",
+            "hypothesis": "LiCaAlF6 is a wide-gap mixed fluoride whose cations (Li+, Ca2+, Al3+) are all non-reducible, so it lacks the reducible transition-metal or Ti4+ sites that could drive sulfide contact reduction. Its fluoride anion is oxidation-resistant near 4 V. The Ca/Al framework is chemically different from the simple LiF and the chloride Li2MgCl4 / Li2ZnCl4, and it tests whether a non-reducible multication fluoride gives a lower contact penalty than the Li3PO4 and LiF results.",
+            "motivation": "Li2MgCl4 (mp-aaaacffw) and Li2ZnCl4 (mp-aaaabhzd) gave the lowest contact penalties so far (0.189, bin 9), and both were built on non-reducible or weakly reducible divalent cations. Li3PO4 (0.337) and LiF (0.310) did worse. LiMgCl3 failed, and no chloride candidates remain in the available list.",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 5446,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 924,
+          "output_tokens_details": {
+            "thinking_tokens": 529
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaacffw\", \"hypothesis\": \"Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.2764, \"self_decomposition_penalty\": 0.00920549500000023, \"contact_reaction_energies\": [-0.027210233046239374, -0.18875885890858202], \"contacts\": [{\"products\": [\"LiCl\", \"LiClO4\", \"Mg5Co19O32\"], \"reaction_energy\": -0.027210233046239374, \"second_non_Li_fraction\": 0.3048780487804878}, {\"products\": [\"MgCl2\", \"PCl5\", \"SCl4\"], \"reaction_energy\": -0.18875885890858202, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858202, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaahikjt\", \"hypothesis\": \"LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"status\": \"failed\", \"error\": \"No GGA_GGA+U entry for pinned material mp-3346453\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaabhzd\", \"hypothesis\": \"Li2ZnCl4 is a wide-gap chloride with a divalent cation, the same chemical class as Li2MgCl4, which gave the lowest contact penalty so far (0.189 eV/non-Li atom). Its Cl- anion matches the Cl- in Li6PS5Cl, which should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Zn2+ is somewhat more reducible than Mg2+, so the penalty may be higher, but this tests whether the chloride trend holds.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. LiMgCl3 failed with a pinned-material error, so the chloride with a divalent cation remains the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.1422, \"self_decomposition_penalty\": 0.023990836000000293, \"contact_reaction_energies\": [-0.013538633296557023, -0.18875885890858246], \"contacts\": [{\"products\": [\"Co23O32\", \"LiClO4\", \"Zn5Co19O32\"], \"reaction_energy\": -0.013538633296557023, \"second_non_Li_fraction\": 0.055964182922929324}, {\"products\": [\"PCl5\", \"SCl4\", \"ZnCl2\"], \"reaction_energy\": -0.18875885890858246, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858246, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaajby\", \"hypothesis\": \"LiCaAlF6 is a wide-gap mixed fluoride whose cations (Li+, Ca2+, Al3+) are all non-reducible, so it lacks the reducible transition-metal or Ti4+ sites that could drive sulfide contact reduction. Its fluoride anion is oxidation-resistant near 4 V. The Ca/Al framework is chemically different from the simple LiF and the chloride Li2MgCl4 / Li2ZnCl4, and it tests whether a non-reducible multication fluoride gives a lower contact penalty than the Li3PO4 and LiF results.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) and Li2ZnCl4 (mp-aaaabhzd) gave the lowest contact penalties so far (0.189, bin 9), and both were built on non-reducible or weakly reducible divalent cations. Li3PO4 (0.337) and LiF (0.310) did worse. LiMgCl3 failed, and no chloride candidates remain in the available list.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 7.6448, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.047719477710549185], \"contacts\": [{\"products\": [\"LiCaAlF6\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"CaAlF5\", \"PF5\", \"S\", \"SCl\"], \"reaction_energy\": -0.047719477710549185, \"second_non_Li_fraction\": 0.14893617021276587}], \"penalty\": 0.047719477710549185, \"penalty_bin\": 2, \"acceptable\": true, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaacpxez",
+            "hypothesis": "Li2SiF6 is a wide-gap fluoride built only from non-reducible cations (Li+, Si4+), with the same oxidation-resistant F- anion as the best coating so far, LiCaAlF6 (penalty 0.048, acceptable). Si4+ cannot be reduced by Li6PS5Cl, unlike Ti4+ or Nb5+, so the sulfide contact should mainly lose only minor PF5/SCl-type products. It is a fluoride with a different cation framework, so it tests whether non-reducible multication fluorides keep the contact penalty below the 0.05 eV/atom threshold.",
+            "motivation": "LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate, with a contact penalty of 0.048 eV/non-Li atom (bin 2). It is a non-reducible-cation fluoride, and the other fluoride LiF gave 0.310 and the chlorides gave about 0.189. Li2SiF6 keeps the non-reducible fluoride chemistry while changing the cation.",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 6085,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 750,
+          "output_tokens_details": {
+            "thinking_tokens": 349
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaacffw\", \"hypothesis\": \"Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.2764, \"self_decomposition_penalty\": 0.00920549500000023, \"contact_reaction_energies\": [-0.027210233046239374, -0.18875885890858202], \"contacts\": [{\"products\": [\"LiCl\", \"LiClO4\", \"Mg5Co19O32\"], \"reaction_energy\": -0.027210233046239374, \"second_non_Li_fraction\": 0.3048780487804878}, {\"products\": [\"MgCl2\", \"PCl5\", \"SCl4\"], \"reaction_energy\": -0.18875885890858202, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858202, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaahikjt\", \"hypothesis\": \"LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"status\": \"failed\", \"error\": \"No GGA_GGA+U entry for pinned material mp-3346453\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaabhzd\", \"hypothesis\": \"Li2ZnCl4 is a wide-gap chloride with a divalent cation, the same chemical class as Li2MgCl4, which gave the lowest contact penalty so far (0.189 eV/non-Li atom). Its Cl- anion matches the Cl- in Li6PS5Cl, which should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Zn2+ is somewhat more reducible than Mg2+, so the penalty may be higher, but this tests whether the chloride trend holds.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. LiMgCl3 failed with a pinned-material error, so the chloride with a divalent cation remains the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.1422, \"self_decomposition_penalty\": 0.023990836000000293, \"contact_reaction_energies\": [-0.013538633296557023, -0.18875885890858246], \"contacts\": [{\"products\": [\"Co23O32\", \"LiClO4\", \"Zn5Co19O32\"], \"reaction_energy\": -0.013538633296557023, \"second_non_Li_fraction\": 0.055964182922929324}, {\"products\": [\"PCl5\", \"SCl4\", \"ZnCl2\"], \"reaction_energy\": -0.18875885890858246, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858246, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaajby\", \"hypothesis\": \"LiCaAlF6 is a wide-gap mixed fluoride whose cations (Li+, Ca2+, Al3+) are all non-reducible, so it lacks the reducible transition-metal or Ti4+ sites that could drive sulfide contact reduction. Its fluoride anion is oxidation-resistant near 4 V. The Ca/Al framework is chemically different from the simple LiF and the chloride Li2MgCl4 / Li2ZnCl4, and it tests whether a non-reducible multication fluoride gives a lower contact penalty than the Li3PO4 and LiF results.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) and Li2ZnCl4 (mp-aaaabhzd) gave the lowest contact penalties so far (0.189, bin 9), and both were built on non-reducible or weakly reducible divalent cations. Li3PO4 (0.337) and LiF (0.310) did worse. LiMgCl3 failed, and no chloride candidates remain in the available list.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 7.6448, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.047719477710549185], \"contacts\": [{\"products\": [\"LiCaAlF6\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"CaAlF5\", \"PF5\", \"S\", \"SCl\"], \"reaction_energy\": -0.047719477710549185, \"second_non_Li_fraction\": 0.14893617021276587}], \"penalty\": 0.047719477710549185, \"penalty_bin\": 2, \"acceptable\": true, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacpxez\", \"hypothesis\": \"Li2SiF6 is a wide-gap fluoride built only from non-reducible cations (Li+, Si4+), with the same oxidation-resistant F- anion as the best coating so far, LiCaAlF6 (penalty 0.048, acceptable). Si4+ cannot be reduced by Li6PS5Cl, unlike Ti4+ or Nb5+, so the sulfide contact should mainly lose only minor PF5/SCl-type products. It is a fluoride with a different cation framework, so it tests whether non-reducible multication fluorides keep the contact penalty below the 0.05 eV/atom threshold.\", \"motivation\": \"LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate, with a contact penalty of 0.048 eV/non-Li atom (bin 2). It is a non-reducible-cation fluoride, and the other fluoride LiF gave 0.310 and the chlorides gave about 0.189. Li2SiF6 keeps the non-reducible fluoride chemistry while changing the cation.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.084860675283553, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [-0.02210857933792365, -0.08114019805697215], \"contacts\": [{\"products\": [\"Co23O32\", \"LiF\", \"SiO2\"], \"reaction_energy\": -0.02210857933792365, \"second_non_Li_fraction\": 0.41525423728813554}, {\"products\": [\"PF5\", \"S\", \"SCl\", \"SiF4\"], \"reaction_energy\": -0.08114019805697215, \"second_non_Li_fraction\": 0.28571428571428575}], \"penalty\": 0.08114019805697215, \"penalty_bin\": 4, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaalgl",
+            "hypothesis": "Li2TiF6 is a wide-gap fluoride with the same oxidation-resistant F- anion and Li/M4+ cation framework as Li2SiF6 (penalty 0.081) and the acceptable LiCaAlF6 (penalty 0.048). Ti4+ is more reducible than Si4+, so the sulfide contact penalty may be higher, but this tests whether a fluoride with a different M4+ cation can get closer to the 0.05 eV/atom threshold.",
+            "motivation": "LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate (penalty 0.048, bin 2), and Li2SiF6 (mp-aaacpxez) gave 0.081 (bin 4). Both are non-chloride fluorides, and fluorides with non-reducible cations outperformed the phosphate, LiF and chloride coatings.",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 6755,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 1082,
+          "output_tokens_details": {
+            "thinking_tokens": 741
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaacffw\", \"hypothesis\": \"Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.2764, \"self_decomposition_penalty\": 0.00920549500000023, \"contact_reaction_energies\": [-0.027210233046239374, -0.18875885890858202], \"contacts\": [{\"products\": [\"LiCl\", \"LiClO4\", \"Mg5Co19O32\"], \"reaction_energy\": -0.027210233046239374, \"second_non_Li_fraction\": 0.3048780487804878}, {\"products\": [\"MgCl2\", \"PCl5\", \"SCl4\"], \"reaction_energy\": -0.18875885890858202, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858202, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaahikjt\", \"hypothesis\": \"LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"status\": \"failed\", \"error\": \"No GGA_GGA+U entry for pinned material mp-3346453\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaabhzd\", \"hypothesis\": \"Li2ZnCl4 is a wide-gap chloride with a divalent cation, the same chemical class as Li2MgCl4, which gave the lowest contact penalty so far (0.189 eV/non-Li atom). Its Cl- anion matches the Cl- in Li6PS5Cl, which should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Zn2+ is somewhat more reducible than Mg2+, so the penalty may be higher, but this tests whether the chloride trend holds.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. LiMgCl3 failed with a pinned-material error, so the chloride with a divalent cation remains the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.1422, \"self_decomposition_penalty\": 0.023990836000000293, \"contact_reaction_energies\": [-0.013538633296557023, -0.18875885890858246], \"contacts\": [{\"products\": [\"Co23O32\", \"LiClO4\", \"Zn5Co19O32\"], \"reaction_energy\": -0.013538633296557023, \"second_non_Li_fraction\": 0.055964182922929324}, {\"products\": [\"PCl5\", \"SCl4\", \"ZnCl2\"], \"reaction_energy\": -0.18875885890858246, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858246, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaajby\", \"hypothesis\": \"LiCaAlF6 is a wide-gap mixed fluoride whose cations (Li+, Ca2+, Al3+) are all non-reducible, so it lacks the reducible transition-metal or Ti4+ sites that could drive sulfide contact reduction. Its fluoride anion is oxidation-resistant near 4 V. The Ca/Al framework is chemically different from the simple LiF and the chloride Li2MgCl4 / Li2ZnCl4, and it tests whether a non-reducible multication fluoride gives a lower contact penalty than the Li3PO4 and LiF results.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) and Li2ZnCl4 (mp-aaaabhzd) gave the lowest contact penalties so far (0.189, bin 9), and both were built on non-reducible or weakly reducible divalent cations. Li3PO4 (0.337) and LiF (0.310) did worse. LiMgCl3 failed, and no chloride candidates remain in the available list.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 7.6448, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.047719477710549185], \"contacts\": [{\"products\": [\"LiCaAlF6\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"CaAlF5\", \"PF5\", \"S\", \"SCl\"], \"reaction_energy\": -0.047719477710549185, \"second_non_Li_fraction\": 0.14893617021276587}], \"penalty\": 0.047719477710549185, \"penalty_bin\": 2, \"acceptable\": true, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacpxez\", \"hypothesis\": \"Li2SiF6 is a wide-gap fluoride built only from non-reducible cations (Li+, Si4+), with the same oxidation-resistant F- anion as the best coating so far, LiCaAlF6 (penalty 0.048, acceptable). Si4+ cannot be reduced by Li6PS5Cl, unlike Ti4+ or Nb5+, so the sulfide contact should mainly lose only minor PF5/SCl-type products. It is a fluoride with a different cation framework, so it tests whether non-reducible multication fluorides keep the contact penalty below the 0.05 eV/atom threshold.\", \"motivation\": \"LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate, with a contact penalty of 0.048 eV/non-Li atom (bin 2). It is a non-reducible-cation fluoride, and the other fluoride LiF gave 0.310 and the chlorides gave about 0.189. Li2SiF6 keeps the non-reducible fluoride chemistry while changing the cation.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.084860675283553, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [-0.02210857933792365, -0.08114019805697215], \"contacts\": [{\"products\": [\"Co23O32\", \"LiF\", \"SiO2\"], \"reaction_energy\": -0.02210857933792365, \"second_non_Li_fraction\": 0.41525423728813554}, {\"products\": [\"PF5\", \"S\", \"SCl\", \"SiF4\"], \"reaction_energy\": -0.08114019805697215, \"second_non_Li_fraction\": 0.28571428571428575}], \"penalty\": 0.08114019805697215, \"penalty_bin\": 4, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaalgl\", \"hypothesis\": \"Li2TiF6 is a wide-gap fluoride with the same oxidation-resistant F- anion and Li/M4+ cation framework as Li2SiF6 (penalty 0.081) and the acceptable LiCaAlF6 (penalty 0.048). Ti4+ is more reducible than Si4+, so the sulfide contact penalty may be higher, but this tests whether a fluoride with a different M4+ cation can get closer to the 0.05 eV/atom threshold.\", \"motivation\": \"LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate (penalty 0.048, bin 2), and Li2SiF6 (mp-aaacpxez) gave 0.081 (bin 4). Both are non-chloride fluorides, and fluorides with non-reducible cations outperformed the phosphate, LiF and chloride coatings.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.3715, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.07624735162840146], \"contacts\": [{\"products\": [\"Li2TiF6\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"PF5\", \"S\", \"SCl\", \"TiF4\"], \"reaction_energy\": -0.07624735162840146, \"second_non_Li_fraction\": 0.28571428571428575}], \"penalty\": 0.07624735162840146, \"penalty_bin\": 3, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaacjjwh",
+            "hypothesis": "LiNbF6 is a wide-gap lithium fluoride with the same oxidation-resistant F- anion as the best acceptable coating, LiCaAlF6 (penalty 0.048). Nb5+ is more reducible than Ca2+/Al3+, so some contact penalty is expected, but the fluoride family has given the lowest penalties so far (Li2SiF6 0.081, Li2TiF6 0.076). This tests whether a fluoride with a high-valent M5+ cation stays near the 0.05 eV/atom threshold.",
+            "motivation": "LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate (penalty 0.048, bin 2). Li2TiF6 (0.076) and Li2SiF6 (0.081) showed that fluorides with M4+ cations outperform the phosphate (0.337), LiF (0.310) and chloride (about 0.189) coatings. LiNbF6 is the remaining fluoride on the candidate list.",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 7337,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 1243,
+          "output_tokens_details": {
+            "thinking_tokens": 862
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-aaaabhik\"}, \"electrolyte\": {\"formula\": \"Li6PS5Cl\", \"material_id\": \"mp-aaacebzk\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.\", \"motivation\": \"none\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.7279, \"self_decomposition_penalty\": 0.0016910970000001413, \"contact_reaction_energies\": [0.0, -0.3369637728075139], \"contacts\": [{\"products\": [\"Li3PO4\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"P2O5\", \"SCl4\", \"SO2\"], \"reaction_energy\": -0.3369637728075139, \"second_non_Li_fraction\": 0.14893617021276598}], \"penalty\": 0.3369637728075139, \"penalty_bin\": 16, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.7161, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.3104396521073731], \"contacts\": [{\"products\": [\"LiF\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"LiPF6\", \"S\", \"SCl\"], \"reaction_energy\": -0.3104396521073731, \"second_non_Li_fraction\": 0.5384615384615385}], \"penalty\": 0.3104396521073731, \"penalty_bin\": 15, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaacffw\", \"hypothesis\": \"Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.\", \"motivation\": \"Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 5.2764, \"self_decomposition_penalty\": 0.00920549500000023, \"contact_reaction_energies\": [-0.027210233046239374, -0.18875885890858202], \"contacts\": [{\"products\": [\"LiCl\", \"LiClO4\", \"Mg5Co19O32\"], \"reaction_energy\": -0.027210233046239374, \"second_non_Li_fraction\": 0.3048780487804878}, {\"products\": [\"MgCl2\", \"PCl5\", \"SCl4\"], \"reaction_energy\": -0.18875885890858202, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858202, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaahikjt\", \"hypothesis\": \"LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"status\": \"failed\", \"error\": \"No GGA_GGA+U entry for pinned material mp-3346453\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaabhzd\", \"hypothesis\": \"Li2ZnCl4 is a wide-gap chloride with a divalent cation, the same chemical class as Li2MgCl4, which gave the lowest contact penalty so far (0.189 eV/non-Li atom). Its Cl- anion matches the Cl- in Li6PS5Cl, which should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Zn2+ is somewhat more reducible than Mg2+, so the penalty may be higher, but this tests whether the chloride trend holds.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. LiMgCl3 failed with a pinned-material error, so the chloride with a divalent cation remains the most promising family.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.1422, \"self_decomposition_penalty\": 0.023990836000000293, \"contact_reaction_energies\": [-0.013538633296557023, -0.18875885890858246], \"contacts\": [{\"products\": [\"Co23O32\", \"LiClO4\", \"Zn5Co19O32\"], \"reaction_energy\": -0.013538633296557023, \"second_non_Li_fraction\": 0.055964182922929324}, {\"products\": [\"PCl5\", \"SCl4\", \"ZnCl2\"], \"reaction_energy\": -0.18875885890858246, \"second_non_Li_fraction\": 0.10447761194029852}], \"penalty\": 0.18875885890858246, \"penalty_bin\": 9, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaajby\", \"hypothesis\": \"LiCaAlF6 is a wide-gap mixed fluoride whose cations (Li+, Ca2+, Al3+) are all non-reducible, so it lacks the reducible transition-metal or Ti4+ sites that could drive sulfide contact reduction. Its fluoride anion is oxidation-resistant near 4 V. The Ca/Al framework is chemically different from the simple LiF and the chloride Li2MgCl4 / Li2ZnCl4, and it tests whether a non-reducible multication fluoride gives a lower contact penalty than the Li3PO4 and LiF results.\", \"motivation\": \"Li2MgCl4 (mp-aaaacffw) and Li2ZnCl4 (mp-aaaabhzd) gave the lowest contact penalties so far (0.189, bin 9), and both were built on non-reducible or weakly reducible divalent cations. Li3PO4 (0.337) and LiF (0.310) did worse. LiMgCl3 failed, and no chloride candidates remain in the available list.\", \"mode\": \"explore\"}, \"result\": {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 7.6448, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.047719477710549185], \"contacts\": [{\"products\": [\"LiCaAlF6\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"CaAlF5\", \"PF5\", \"S\", \"SCl\"], \"reaction_energy\": -0.047719477710549185, \"second_non_Li_fraction\": 0.14893617021276587}], \"penalty\": 0.047719477710549185, \"penalty_bin\": 2, \"acceptable\": true, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacpxez\", \"hypothesis\": \"Li2SiF6 is a wide-gap fluoride built only from non-reducible cations (Li+, Si4+), with the same oxidation-resistant F- anion as the best coating so far, LiCaAlF6 (penalty 0.048, acceptable). Si4+ cannot be reduced by Li6PS5Cl, unlike Ti4+ or Nb5+, so the sulfide contact should mainly lose only minor PF5/SCl-type products. It is a fluoride with a different cation framework, so it tests whether non-reducible multication fluorides keep the contact penalty below the 0.05 eV/atom threshold.\", \"motivation\": \"LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate, with a contact penalty of 0.048 eV/non-Li atom (bin 2). It is a non-reducible-cation fluoride, and the other fluoride LiF gave 0.310 and the chlorides gave about 0.189. Li2SiF6 keeps the non-reducible fluoride chemistry while changing the cation.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 8.084860675283553, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [-0.02210857933792365, -0.08114019805697215], \"contacts\": [{\"products\": [\"Co23O32\", \"LiF\", \"SiO2\"], \"reaction_energy\": -0.02210857933792365, \"second_non_Li_fraction\": 0.41525423728813554}, {\"products\": [\"PF5\", \"S\", \"SCl\", \"SiF4\"], \"reaction_energy\": -0.08114019805697215, \"second_non_Li_fraction\": 0.28571428571428575}], \"penalty\": 0.08114019805697215, \"penalty_bin\": 4, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaalgl\", \"hypothesis\": \"Li2TiF6 is a wide-gap fluoride with the same oxidation-resistant F- anion and Li/M4+ cation framework as Li2SiF6 (penalty 0.081) and the acceptable LiCaAlF6 (penalty 0.048). Ti4+ is more reducible than Si4+, so the sulfide contact penalty may be higher, but this tests whether a fluoride with a different M4+ cation can get closer to the 0.05 eV/atom threshold.\", \"motivation\": \"LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate (penalty 0.048, bin 2), and Li2SiF6 (mp-aaacpxez) gave 0.081 (bin 4). Both are non-chloride fluorides, and fluorides with non-reducible cations outperformed the phosphate, LiF and chloride coatings.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.3715, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [0.0, -0.07624735162840146], \"contacts\": [{\"products\": [\"Li2TiF6\"], \"reaction_energy\": 0.0, \"second_non_Li_fraction\": 1.0}, {\"products\": [\"PF5\", \"S\", \"SCl\", \"TiF4\"], \"reaction_energy\": -0.07624735162840146, \"second_non_Li_fraction\": 0.28571428571428575}], \"penalty\": 0.07624735162840146, \"penalty_bin\": 3, \"acceptable\": false, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacjjwh\", \"hypothesis\": \"LiNbF6 is a wide-gap lithium fluoride with the same oxidation-resistant F- anion as the best acceptable coating, LiCaAlF6 (penalty 0.048). Nb5+ is more reducible than Ca2+/Al3+, so some contact penalty is expected, but the fluoride family has given the lowest penalties so far (Li2SiF6 0.081, Li2TiF6 0.076). This tests whether a fluoride with a high-valent M5+ cation stays near the 0.05 eV/atom threshold.\", \"motivation\": \"LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate (penalty 0.048, bin 2). Li2TiF6 (0.076) and Li2SiF6 (0.081) showed that fluorides with M4+ cations outperform the phosphate (0.337), LiF (0.310) and chloride (about 0.189) coatings. LiNbF6 is the remaining fluoride on the candidate list.\", \"mode\": \"refine\"}, \"result\": {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"status\": \"ok\", \"insulating\": true, \"band_gap_eV\": 4.788851973014669, \"self_decomposition_penalty\": 0.0, \"contact_reaction_energies\": [-0.028772005147425617, -0.02623066974828525], \"contacts\": [{\"products\": [\"CoF2\", \"LiF\", \"Nb2O5\"], \"reaction_energy\": -0.028772005147425617, \"second_non_Li_fraction\": 0.6511627906976745}, {\"products\": [\"Nb(SCl)2\", \"Nb4P2S21\", \"PF5\", \"S\"], \"reaction_energy\": -0.02623066974828525, \"second_non_Li_fraction\": 0.5762711864406779}], \"penalty\": 0.028772005147425617, \"penalty_bin\": 1, \"acceptable\": true, \"warnings\": [], \"energy_units\": \"eV/non-Li atom\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaacqhlx",
+            "hypothesis": "Li2B6O9F2 is a borate-fluoride built only from non-reducible cations (Li+, B3+) and retains the oxidation-resistant F- anion that made the fluorides LiNbF6, LiCaAlF6 and Li2TiF6 the lowest-penalty coatings. B3+ cannot be reduced by Li6PS5Cl, so it should avoid the reducible-cation decomposition seen with Ti and Nb. It tests whether a mixed borate/fluoride framework can match or beat the LiNbF6 penalty of 0.029 eV/non-Li atom.",
+            "motivation": "LiNbF6 (mp-aaacjjwh) was the best result so far (penalty 0.029, bin 1, acceptable). Fluorides with non-reducible or weakly reducible cations consistently outperformed the phosphate, LiF and chloride coatings. The remaining candidates with fluorine are limited, so this tests the borate-fluoride family.",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "usage": {
+          "input_tokens": 7998,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 860,
+          "output_tokens_details": {
+            "thinking_tokens": 488
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096
+      }
+    }
+  ],
+  "history": [
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaaegs",
+        "hypothesis": "Li3PO4 is a wide-gap (about 5 eV), electronically insulating phosphate that is chemically compatible with both the sulfide electrolyte and the LiCoO2 surface. It is a well-known protective coating for sulfide-cathode interfaces. Its phosphate anion is relatively oxidation-resistant at about 4 V, so it should limit interfacial decomposition with minimal reaction penalty.",
+        "motivation": "none",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -1.4396282176339295
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 5.7279,
+        "candidate_id": "mp-aaaaaegs",
+        "contact_reaction_energies": [
+          0.0,
+          -0.3369637728075139
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li3PO4"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "P2O5",
+              "SCl4",
+              "SO2"
+            ],
+            "reaction_energy": -0.3369637728075139,
+            "second_non_Li_fraction": 0.14893617021276598
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -211.80576048,
+            "entry_id": "mp-2878-GGA",
+            "formula": "Li3PO4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.11457491596229374,
+        "formula": "Li3PO4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.3369637728075139,
+        "penalty_bin": 16,
+        "self_decomposition_penalty": 0.0016910970000001413,
+        "status": "ok",
+        "thermo_entry_count": 959,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaabru",
+        "hypothesis": "LiF is a very wide-gap, electronically insulating fluoride with high thermodynamic and oxidative stability. It is a classic interfacial coating for sulfide and oxide cathodes. Its Li-F bonds should resist reduction by Li6PS5Cl and oxidation near 4 V vs Li, so the contact reaction penalty should be low, possibly below the Li3PO4 result of 0.34 eV per non-Li atom.",
+        "motivation": "Li3PO4 (mp-aaaaaegs) was insulating with a wide gap but showed a large contact penalty (0.337 eV/non-Li atom) from decomposition to P2O5, SCl4 and SO2 with the sulfide. A chemically different, more inert family is needed.",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -1.4396282176339303
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 8.7161,
+        "candidate_id": "mp-aaaaabru",
+        "contact_reaction_energies": [
+          0.0,
+          -0.3104396521073731
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "LiF"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "LiPF6",
+              "S",
+              "SCl"
+            ],
+            "reaction_energy": -0.3104396521073731,
+            "second_non_Li_fraction": 0.5384615384615385
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -10.152291029999999,
+            "entry_id": "mp-1138-GGA",
+            "formula": "LiF"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.10755375004373491,
+        "formula": "LiF",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.3104396521073731,
+        "penalty_bin": 15,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 1286,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaacffw",
+        "hypothesis": "Li2MgCl4 is a chloride with a wide gap and no reducible transition metal. Its Mg2+ and Cl- are chemically close to the Cl- in Li6PS5Cl, so the contact with the sulfide should be milder than for the phosphate (Li3PO4) or fluoride (LiF) coatings, which both decomposed to S/P/Cl-containing products. Chloride-based coatings are also expected to resist oxidation near 4 V vs Li, so this tests a halide family to bring the contact penalty toward the 0.05 eV/atom target.",
+        "motivation": "Li3PO4 (mp-aaaaaegs, penalty 0.337) and LiF (mp-aaaaabru, penalty 0.310) both had large contact reaction penalties with the sulfide, and both were in the non-chloride or non-reducible-cation space. A chloride with a non-reducible divalent cation is a chemically different family that might reduce the sulfide interface penalty.",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.10800118975642459,
+          -1.439628217633929
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 5.2764,
+        "candidate_id": "mp-aaaacffw",
+        "contact_reaction_energies": [
+          -0.027210233046239374,
+          -0.18875885890858202
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "LiCl",
+              "LiClO4",
+              "Mg5Co19O32"
+            ],
+            "reaction_energy": -0.027210233046239374,
+            "second_non_Li_fraction": 0.3048780487804878
+          },
+          {
+            "products": [
+              "MgCl2",
+              "PCl5",
+              "SCl4"
+            ],
+            "reaction_energy": -0.18875885890858202,
+            "second_non_Li_fraction": 0.10447761194029852
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -56.22098775,
+            "entry_id": "mp-38684-GGA",
+            "formula": "Li2MgCl4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.11123170901555568,
+        "formula": "Li2MgCl4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.18875885890858202,
+        "penalty_bin": 9,
+        "self_decomposition_penalty": 0.00920549500000023,
+        "status": "ok",
+        "thermo_entry_count": 1284,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaahikjt",
+        "hypothesis": "LiMgCl3 is a wide-gap chloride with a non-reducible Mg2+ cation, like the best candidate so far, Li2MgCl4. Its Cl- anion is chemically close to the Cl- in Li6PS5Cl, so it should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Its Mg-to-Cl ratio is different, so it tests whether the chloride trend lowers the contact penalty further.",
+        "motivation": "Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189 eV/non-Li atom, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. The chloride with a non-reducible divalent cation appears to be the most promising family.",
+        "mode": "refine"
+      },
+      "result": {
+        "candidate_id": "mp-aaahikjt",
+        "error": "No GGA_GGA+U entry for pinned material mp-3346453",
+        "error_type": "ValueError",
+        "evaluation_wall_seconds": 0.0256290000397712,
+        "formula": "LiMgCl3",
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "status": "failed"
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaabhzd",
+        "hypothesis": "Li2ZnCl4 is a wide-gap chloride with a divalent cation, the same chemical class as Li2MgCl4, which gave the lowest contact penalty so far (0.189 eV/non-Li atom). Its Cl- anion matches the Cl- in Li6PS5Cl, which should avoid the S/P-containing decomposition products seen with the phosphate and fluoride coatings. Zn2+ is somewhat more reducible than Mg2+, so the penalty may be higher, but this tests whether the chloride trend holds.",
+        "motivation": "Li2MgCl4 (mp-aaaacffw) gave the lowest contact penalty so far (0.189, bin 9), versus 0.337 for Li3PO4 and 0.310 for LiF. LiMgCl3 failed with a pinned-material error, so the chloride with a divalent cation remains the most promising family.",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.10614916155527254,
+          -1.439628217633929
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.1422,
+        "candidate_id": "mp-aaaabhzd",
+        "contact_reaction_energies": [
+          -0.013538633296557023,
+          -0.18875885890858246
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Co23O32",
+              "LiClO4",
+              "Zn5Co19O32"
+            ],
+            "reaction_energy": -0.013538633296557023,
+            "second_non_Li_fraction": 0.055964182922929324
+          },
+          {
+            "products": [
+              "PCl5",
+              "SCl4",
+              "ZnCl2"
+            ],
+            "reaction_energy": -0.18875885890858246,
+            "second_non_Li_fraction": 0.10447761194029852
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -51.14035662,
+            "entry_id": "mp-22961-GGA",
+            "formula": "Li2ZnCl4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.11234016704838723,
+        "formula": "Li2ZnCl4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.18875885890858246,
+        "penalty_bin": 9,
+        "self_decomposition_penalty": 0.023990836000000293,
+        "status": "ok",
+        "thermo_entry_count": 1345,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaajby",
+        "hypothesis": "LiCaAlF6 is a wide-gap mixed fluoride whose cations (Li+, Ca2+, Al3+) are all non-reducible, so it lacks the reducible transition-metal or Ti4+ sites that could drive sulfide contact reduction. Its fluoride anion is oxidation-resistant near 4 V. The Ca/Al framework is chemically different from the simple LiF and the chloride Li2MgCl4 / Li2ZnCl4, and it tests whether a non-reducible multication fluoride gives a lower contact penalty than the Li3PO4 and LiF results.",
+        "motivation": "Li2MgCl4 (mp-aaaacffw) and Li2ZnCl4 (mp-aaaabhzd) gave the lowest contact penalties so far (0.189, bin 9), and both were built on non-reducible or weakly reducible divalent cations. Li3PO4 (0.337) and LiF (0.310) did worse. LiMgCl3 failed, and no chloride candidates remain in the available list.",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -1.4396282176339303
+        ],
+        "acceptable": true,
+        "backend": "linprog",
+        "band_gap_eV": 7.6448,
+        "candidate_id": "mp-aaaaajby",
+        "contact_reaction_energies": [
+          0.0,
+          -0.047719477710549185
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "LiCaAlF6"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "CaAlF5",
+              "PF5",
+              "S",
+              "SCl"
+            ],
+            "reaction_energy": -0.047719477710549185,
+            "second_non_Li_fraction": 0.14893617021276587
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -107.95168206,
+            "entry_id": "mp-6134-GGA",
+            "formula": "LiCaAlF6"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.1660169999813661,
+        "formula": "LiCaAlF6",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.047719477710549185,
+        "penalty_bin": 2,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 1861,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaacpxez",
+        "hypothesis": "Li2SiF6 is a wide-gap fluoride built only from non-reducible cations (Li+, Si4+), with the same oxidation-resistant F- anion as the best coating so far, LiCaAlF6 (penalty 0.048, acceptable). Si4+ cannot be reduced by Li6PS5Cl, unlike Ti4+ or Nb5+, so the sulfide contact should mainly lose only minor PF5/SCl-type products. It is a fluoride with a different cation framework, so it tests whether non-reducible multication fluorides keep the contact penalty below the 0.05 eV/atom threshold.",
+        "motivation": "LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate, with a contact penalty of 0.048 eV/non-Li atom (bin 2). It is a non-reducible-cation fluoride, and the other fluoride LiF gave 0.310 and the chlorides gave about 0.189. Li2SiF6 keeps the non-reducible fluoride chemistry while changing the cation.",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -1.4396282176339303
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 8.084860675283553,
+        "candidate_id": "mp-aaacpxez",
+        "contact_reaction_energies": [
+          -0.02210857933792365,
+          -0.08114019805697215
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Co23O32",
+              "LiF",
+              "SiO2"
+            ],
+            "reaction_energy": -0.02210857933792365,
+            "second_non_Li_fraction": 0.41525423728813554
+          },
+          {
+            "products": [
+              "PF5",
+              "S",
+              "SCl",
+              "SiF4"
+            ],
+            "reaction_energy": -0.08114019805697215,
+            "second_non_Li_fraction": 0.28571428571428575
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -154.14185085,
+            "entry_id": "mp-1193269-GGA",
+            "formula": "Li2SiF6"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.15649920795112848,
+        "formula": "Li2SiF6",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.08114019805697215,
+        "penalty_bin": 4,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 1873,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaalgl",
+        "hypothesis": "Li2TiF6 is a wide-gap fluoride with the same oxidation-resistant F- anion and Li/M4+ cation framework as Li2SiF6 (penalty 0.081) and the acceptable LiCaAlF6 (penalty 0.048). Ti4+ is more reducible than Si4+, so the sulfide contact penalty may be higher, but this tests whether a fluoride with a different M4+ cation can get closer to the 0.05 eV/atom threshold.",
+        "motivation": "LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate (penalty 0.048, bin 2), and Li2SiF6 (mp-aaacpxez) gave 0.081 (bin 4). Both are non-chloride fluorides, and fluorides with non-reducible cations outperformed the phosphate, LiF and chloride coatings.",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -1.4396282176339303
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.3715,
+        "candidate_id": "mp-aaaaalgl",
+        "contact_reaction_energies": [
+          0.0,
+          -0.07624735162840146
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li2TiF6"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "PF5",
+              "S",
+              "SCl",
+              "TiF4"
+            ],
+            "reaction_energy": -0.07624735162840146,
+            "second_non_Li_fraction": 0.28571428571428575
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -109.93357411,
+            "entry_id": "mp-7603-GGA",
+            "formula": "Li2TiF6"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.14917862502625212,
+        "formula": "Li2TiF6",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.07624735162840146,
+        "penalty_bin": 3,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 1895,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaacjjwh",
+        "hypothesis": "LiNbF6 is a wide-gap lithium fluoride with the same oxidation-resistant F- anion as the best acceptable coating, LiCaAlF6 (penalty 0.048). Nb5+ is more reducible than Ca2+/Al3+, so some contact penalty is expected, but the fluoride family has given the lowest penalties so far (Li2SiF6 0.081, Li2TiF6 0.076). This tests whether a fluoride with a high-valent M5+ cation stays near the 0.05 eV/atom threshold.",
+        "motivation": "LiCaAlF6 (mp-aaaaajby) was the first acceptable candidate (penalty 0.048, bin 2). Li2TiF6 (0.076) and Li2SiF6 (0.081) showed that fluorides with M4+ cations outperform the phosphate (0.337), LiF (0.310) and chloride (about 0.189) coatings. LiNbF6 is the remaining fluoride on the candidate list.",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -1.4396282176339303
+        ],
+        "acceptable": true,
+        "backend": "linprog",
+        "band_gap_eV": 4.788851973014669,
+        "candidate_id": "mp-aaacjjwh",
+        "contact_reaction_energies": [
+          -0.028772005147425617,
+          -0.02623066974828525
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "CoF2",
+              "LiF",
+              "Nb2O5"
+            ],
+            "reaction_energy": -0.028772005147425617,
+            "second_non_Li_fraction": 0.6511627906976745
+          },
+          {
+            "products": [
+              "Nb(SCl)2",
+              "Nb4P2S21",
+              "PF5",
+              "S"
+            ],
+            "reaction_energy": -0.02623066974828525,
+            "second_non_Li_fraction": 0.5762711864406779
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -50.647542879999996,
+            "entry_id": "mp-1078799-GGA",
+            "formula": "LiNbF6"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.13089212501654401,
+        "formula": "LiNbF6",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.028772005147425617,
+        "penalty_bin": 1,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 1544,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaacqhlx",
+        "hypothesis": "Li2B6O9F2 is a borate-fluoride built only from non-reducible cations (Li+, B3+) and retains the oxidation-resistant F- anion that made the fluorides LiNbF6, LiCaAlF6 and Li2TiF6 the lowest-penalty coatings. B3+ cannot be reduced by Li6PS5Cl, so it should avoid the reducible-cation decomposition seen with Ti and Nb. It tests whether a mixed borate/fluoride framework can match or beat the LiNbF6 penalty of 0.029 eV/non-Li atom.",
+        "motivation": "LiNbF6 (mp-aaacjjwh) was the best result so far (penalty 0.029, bin 1, acceptable). Fluorides with non-reducible or weakly reducible cations consistently outperformed the phosphate, LiF and chloride coatings. The remaining candidates with fluorine are limited, so this tests the borate-fluoride family.",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.13415383943182047,
+          -1.4396282176339295
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 6.283,
+        "candidate_id": "mp-aaacqhlx",
+        "contact_reaction_energies": [
+          -0.0748284391619336,
+          -0.07196556949003963
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Co3(BO3)2",
+              "LiF",
+              "O2"
+            ],
+            "reaction_energy": -0.0748284391619336,
+            "second_non_Li_fraction": 0.3863636363636363
+          },
+          {
+            "products": [
+              "B2O3",
+              "BF3",
+              "BPO4",
+              "S",
+              "SCl"
+            ],
+            "reaction_energy": -0.07196556949003963,
+            "second_non_Li_fraction": 0.1414141414141414
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 1.43962821763393
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset e9fa1add41e7a5a5b3f42522e59f1c8915c9ad6fd428d0289e80069918cb48e4",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -294.69263442,
+            "entry_id": "mp-1200209-GGA",
+            "formula": "Li2B6O9F2"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -56.572330869999995,
+            "entry_id": "mp-985592-GGA",
+            "formula": "Li6PS5Cl"
+          }
+        },
+        "evaluation_wall_seconds": 0.1490206669550389,
+        "formula": "Li2B6O9F2",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.0748284391619336,
+        "penalty_bin": 3,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 1459,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    }
+  ],
+  "trace": [
+    {
+      "evaluations": 1,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -16,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 2,
+      "best_candidate_id": "mp-aaaaabru",
+      "best_rank": [
+        1,
+        -15,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 3,
+      "best_candidate_id": "mp-aaaacffw",
+      "best_rank": [
+        1,
+        -9,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 4,
+      "best_candidate_id": "mp-aaaacffw",
+      "best_rank": [
+        1,
+        -9,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 5,
+      "best_candidate_id": "mp-aaaacffw",
+      "best_rank": [
+        1,
+        -9,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 6,
+      "best_candidate_id": "mp-aaaaajby",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 7,
+      "best_candidate_id": "mp-aaaaajby",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 8,
+      "best_candidate_id": "mp-aaaaajby",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 9,
+      "best_candidate_id": "mp-aaacjjwh",
+      "best_rank": [
+        1,
+        -1,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 10,
+      "best_candidate_id": "mp-aaacjjwh",
+      "best_rank": [
+        1,
+        -1,
+        0.0
+      ],
+      "any_acceptable": true
+    }
+  ],
+  "status": "complete"
+}

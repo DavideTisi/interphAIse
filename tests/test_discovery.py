@@ -80,15 +80,33 @@ def test_upfront_one_call_before_any_query():
     assert len(calls) == 1 and len(state["history"]) == 3
 
 
-def test_invalid_proposals_bounded_cost_no_budget_and_checkpointed(tmp_path):
+def test_malformed_messages_bounded_retries_without_evaluation(tmp_path):
     q = queries()
     out = tmp_path / "run.json"
     with pytest.raises(ValueError, match="exhausted"):
-        run_discovery(q, strategy="iterative", llm=lambda *_: {"proposals": [P("mp-not-in-pool")]},
+        run_discovery(q, strategy="iterative", llm=lambda *_: {"proposals": []},
                       output=out, max_proposal_attempts=2)
     saved = json.loads(out.read_text())
     assert saved["status"] == "failed" and len(saved["proposal_attempts"]) == 2
     assert q.remaining == 3
+
+
+@pytest.mark.parametrize('bad_id', ['mp-not-in-pool', None, ['invalid']])
+def test_invalid_id_is_charged_and_does_not_trigger_free_repair(bad_id):
+    q = queries(2)
+    state = run_discovery(q, strategy='iterative', llm=lambda *_: {'proposals': [P(bad_id)]})
+    assert q.remaining == 0
+    assert len(state['proposal_attempts']) == len(state['history']) == 2
+    assert all(h['result']['status'] == 'failed' for h in state['history'])
+
+
+def test_repeated_id_in_upfront_list_costs_an_evaluation():
+    q = queries(2)
+    cid = q.available()[0]['candidate_id']
+    state = run_discovery(q, strategy='upfront', llm=lambda *_: {'proposals': [P(cid), P(cid)]})
+    assert q.remaining == 0
+    assert state['history'][1]['result']['error'] == 'Candidate already queried'
+    assert len(state['proposal_attempts']) == 1
 
 
 def test_proposal_without_mode_or_repeat_is_repaired():
@@ -149,3 +167,36 @@ def test_shuffled_shows_permutation_of_queried_outcomes_only():
                for src, h in zip(state["displayed_sources"][-1], state["history"]))
     again = run_discovery(queries(6), strategy="shuffled", seed=4, llm=first_available([]))
     assert again["displayed_sources"] == state["displayed_sources"]
+
+
+@pytest.mark.parametrize("bad_id", ["mp-not-in-pool", None, ["invalid"], "REPEAT"])
+def test_shuffled_survives_charged_invalid_ids_and_keeps_them_in_place(bad_id):
+    q = queries(6)
+    ids = [c["candidate_id"] for c in q.available()]
+    plan = iter([ids[0], ids[1], ids[0] if bad_id == "REPEAT" else bad_id, ids[2], ids[3], ids[4]])
+    calls = []
+    def llm(system, user):
+        calls.append(json.loads(user))
+        return {"proposals": [P(next(plan))]}
+    state = run_discovery(q, strategy="shuffled", seed=1, llm=llm)
+    assert q.remaining == 0 and len(state["history"]) == 6
+    bad = state["history"][2]["result"]
+    assert bad["status"] == "failed"
+    for later in calls[3:]:
+        shown = later["evaluated"][2]["result"]
+        assert shown.get("error") == bad["error"]  # charged error shown at its own slot, never moved
+    real = [s for i, s in enumerate(state["displayed_sources"][-1]) if i != 2]
+    assert sorted(real) == sorted(h["result"]["candidate_id"] for i, h in enumerate(state["history"]) if i != 2)
+
+
+def test_sequential_ids_sees_only_earlier_ids():
+    calls = []
+    def llm(system, user):
+        data = json.loads(user)
+        calls.append(data)
+        return {"proposals": [{"candidate_id": data["available"][0]["candidate_id"], "hypothesis": "SECRET-RATIONALE",
+                               "motivation": "SECRET-MOTIVE", "mode": "explore"}]}
+    state = run_discovery(queries(), strategy="sequential_ids", llm=llm)
+    assert calls[2]["evaluated"] == [{"proposal": {"candidate_id": h["proposal"]["candidate_id"]}}
+                                     for h in state["history"][:2]]
+    assert all("SECRET" not in json.dumps(c) for c in calls)

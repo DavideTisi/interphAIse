@@ -1,0 +1,574 @@
+{
+  "purpose": "Review-motivated chemical heuristic; fixed before main LLM runs, not a blind prior",
+  "ordering": "F-containing formulas first, then lexicographic candidate_id within each group",
+  "task": {
+    "objective": {
+      "acceptable_penalty_eV": 0.05,
+      "bin_width_eV": 0.02,
+      "contact_reference": "equilibrated",
+      "min_band_gap_eV": 2.0,
+      "version": "v3.0"
+    },
+    "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+    "pool_sha256": "e850b4f1d77e12e895d6d5446ab80f3210184842b6c91ecf88577158c34a8758",
+    "endpoints": {
+      "electrode": {
+        "formula": "LiCoO2",
+        "material_id": "mp-aaaabhik"
+      },
+      "electrolyte": {
+        "formula": "Li6PS5Cl",
+        "material_id": "mp-aaacebzk"
+      }
+    },
+    "voltage_V": 4.0,
+    "benchmark_sha256": "d2718c20f0ca8c3cc25d2378011bc68736ad71a502d657312bfff1da15a4ecfa",
+    "instructions": "Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates."
+  },
+  "distinct_formula_strings": 42,
+  "repeated_formulas": {
+    "LiAlSiO4": 2,
+    "LiTi2(PO4)3": 2,
+    "LiIO3": 2,
+    "LiBr": 2,
+    "LiZr2(PO4)3": 3,
+    "Li6Ti2O7": 2,
+    "LiO8": 2
+  },
+  "fluorinated_candidates": 6,
+  "acceptable_fluorinated": 2,
+  "acceptable_nonfluorinated": 0,
+  "first_acceptable_evaluation": 2,
+  "random_order_within_fluorinated_success": [
+    {
+      "evaluations": 0,
+      "probability": 0.0
+    },
+    {
+      "evaluations": 1,
+      "probability": 0.33333333333333337
+    },
+    {
+      "evaluations": 2,
+      "probability": 0.6
+    },
+    {
+      "evaluations": 3,
+      "probability": 0.8
+    },
+    {
+      "evaluations": 4,
+      "probability": 0.9333333333333333
+    },
+    {
+      "evaluations": 5,
+      "probability": 1.0
+    },
+    {
+      "evaluations": 6,
+      "probability": 1.0
+    }
+  ],
+  "deterministic_trace": [
+    {
+      "evaluation": 1,
+      "candidate_id": "mp-aaaaabru",
+      "formula": "LiF",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": 15,
+      "insulating": true,
+      "band_gap_eV": 8.7161
+    },
+    {
+      "evaluation": 2,
+      "candidate_id": "mp-aaaaajby",
+      "formula": "LiCaAlF6",
+      "family": "halide",
+      "acceptable": true,
+      "penalty_bin": 2,
+      "insulating": true,
+      "band_gap_eV": 7.6448
+    },
+    {
+      "evaluation": 3,
+      "candidate_id": "mp-aaaaalgl",
+      "formula": "Li2TiF6",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": 3,
+      "insulating": true,
+      "band_gap_eV": 4.3715
+    },
+    {
+      "evaluation": 4,
+      "candidate_id": "mp-aaacjjwh",
+      "formula": "LiNbF6",
+      "family": "halide",
+      "acceptable": true,
+      "penalty_bin": 1,
+      "insulating": true,
+      "band_gap_eV": 4.788851973014669
+    },
+    {
+      "evaluation": 5,
+      "candidate_id": "mp-aaacpxez",
+      "formula": "Li2SiF6",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": 4,
+      "insulating": true,
+      "band_gap_eV": 8.084860675283553
+    },
+    {
+      "evaluation": 6,
+      "candidate_id": "mp-aaacqhlx",
+      "formula": "Li2B6O9F2",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 3,
+      "insulating": true,
+      "band_gap_eV": 6.283
+    },
+    {
+      "evaluation": 7,
+      "candidate_id": "mp-aaaaacxk",
+      "formula": "Li2O",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 90,
+      "insulating": true,
+      "band_gap_eV": 4.8986
+    },
+    {
+      "evaluation": 8,
+      "candidate_id": "mp-aaaaaegs",
+      "formula": "Li3PO4",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 16,
+      "insulating": true,
+      "band_gap_eV": 5.7279
+    },
+    {
+      "evaluation": 9,
+      "candidate_id": "mp-aaaaafku",
+      "formula": "LiB3O5",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 5,
+      "insulating": true,
+      "band_gap_eV": 6.3532
+    },
+    {
+      "evaluation": 10,
+      "candidate_id": "mp-aaaaagcj",
+      "formula": "Li2Si2O5",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 15,
+      "insulating": true,
+      "band_gap_eV": 5.154
+    },
+    {
+      "evaluation": 11,
+      "candidate_id": "mp-aaaaaiak",
+      "formula": "Li6Zr2O7",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 37,
+      "insulating": true,
+      "band_gap_eV": 3.9436
+    },
+    {
+      "evaluation": 12,
+      "candidate_id": "mp-aaaaajan",
+      "formula": "Li3Al(BO3)2",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 18,
+      "insulating": true,
+      "band_gap_eV": 4.8248
+    },
+    {
+      "evaluation": 13,
+      "candidate_id": "mp-aaaaajjj",
+      "formula": "LiAlSiO4",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 10,
+      "insulating": true,
+      "band_gap_eV": 4.7985999999999995
+    },
+    {
+      "evaluation": 14,
+      "candidate_id": "mp-aaaaandi",
+      "formula": "LiSiBO4",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 8,
+      "insulating": true,
+      "band_gap_eV": 6.4308
+    },
+    {
+      "evaluation": 15,
+      "candidate_id": "mp-aaaaaogf",
+      "formula": "LiMgPO4",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 8,
+      "insulating": true,
+      "band_gap_eV": 5.4297
+    },
+    {
+      "evaluation": 16,
+      "candidate_id": "mp-aaaaavbk",
+      "formula": "LiBO2",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 16,
+      "insulating": true,
+      "band_gap_eV": 7.2810999999999995
+    },
+    {
+      "evaluation": 17,
+      "candidate_id": "mp-aaaaazoy",
+      "formula": "Li2ZnSiO4",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 22,
+      "insulating": true,
+      "band_gap_eV": 3.7868999999999997
+    },
+    {
+      "evaluation": 18,
+      "candidate_id": "mp-aaaabboy",
+      "formula": "LiTi2(PO4)3",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 3,
+      "insulating": true,
+      "band_gap_eV": 2.4404
+    },
+    {
+      "evaluation": 19,
+      "candidate_id": "mp-aaaabhyx",
+      "formula": "LiIO3",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 36,
+      "insulating": true,
+      "band_gap_eV": 3.6860999999999997
+    },
+    {
+      "evaluation": 20,
+      "candidate_id": "mp-aaaabhzd",
+      "formula": "Li2ZnCl4",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": 9,
+      "insulating": true,
+      "band_gap_eV": 4.1422
+    },
+    {
+      "evaluation": 21,
+      "candidate_id": "mp-aaaabiak",
+      "formula": "LiIO3",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 36,
+      "insulating": true,
+      "band_gap_eV": 3.6546000000000003
+    },
+    {
+      "evaluation": 22,
+      "candidate_id": "mp-aaaabikp",
+      "formula": "LiBr",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": 18,
+      "insulating": true,
+      "band_gap_eV": 4.9234
+    },
+    {
+      "evaluation": 23,
+      "candidate_id": "mp-aaaabojb",
+      "formula": "Li3BO3",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 36,
+      "insulating": true,
+      "band_gap_eV": 5.1473
+    },
+    {
+      "evaluation": 24,
+      "candidate_id": "mp-aaaabpbz",
+      "formula": "Li6Si2O7",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 32,
+      "insulating": true,
+      "band_gap_eV": 4.7951999999999995
+    },
+    {
+      "evaluation": 25,
+      "candidate_id": "mp-aaaabqcg",
+      "formula": "Li4P2O7",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 10,
+      "insulating": true,
+      "band_gap_eV": 5.6108
+    },
+    {
+      "evaluation": 26,
+      "candidate_id": "mp-aaaabqgb",
+      "formula": "Li8SiO6",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 52,
+      "insulating": true,
+      "band_gap_eV": 4.4497
+    },
+    {
+      "evaluation": 27,
+      "candidate_id": "mp-aaaacffw",
+      "formula": "Li2MgCl4",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": 9,
+      "insulating": true,
+      "band_gap_eV": 5.2764
+    },
+    {
+      "evaluation": 28,
+      "candidate_id": "mp-aaabevhd",
+      "formula": "LiZr2(PO4)3",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 2,
+      "insulating": true,
+      "band_gap_eV": 4.1295
+    },
+    {
+      "evaluation": 29,
+      "candidate_id": "mp-aaabfsdc",
+      "formula": "LiAlB2O5",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 7,
+      "insulating": true,
+      "band_gap_eV": 5.4116
+    },
+    {
+      "evaluation": 30,
+      "candidate_id": "mp-aaabfsrb",
+      "formula": "Li4Ca(BO3)2",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 29,
+      "insulating": true,
+      "band_gap_eV": 4.7254
+    },
+    {
+      "evaluation": 31,
+      "candidate_id": "mp-aaabfumz",
+      "formula": "LiAlSiO4",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 10,
+      "insulating": true,
+      "band_gap_eV": 4.6935
+    },
+    {
+      "evaluation": 32,
+      "candidate_id": "mp-aaabfuqq",
+      "formula": "LiAl(SiO3)2",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 7,
+      "insulating": true,
+      "band_gap_eV": 4.9005
+    },
+    {
+      "evaluation": 33,
+      "candidate_id": "mp-aaabfvoz",
+      "formula": "LiTiPO5",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 9,
+      "insulating": true,
+      "band_gap_eV": 3.0747
+    },
+    {
+      "evaluation": 34,
+      "candidate_id": "mp-aaabfwhy",
+      "formula": "LiZnPO4",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 6,
+      "insulating": true,
+      "band_gap_eV": 4.13
+    },
+    {
+      "evaluation": 35,
+      "candidate_id": "mp-aaabfwvx",
+      "formula": "LiTaSiO5",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 9,
+      "insulating": true,
+      "band_gap_eV": 3.7965
+    },
+    {
+      "evaluation": 36,
+      "candidate_id": "mp-aaabqzfd",
+      "formula": "Li8ZrO6",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 58,
+      "insulating": true,
+      "band_gap_eV": 4.7583
+    },
+    {
+      "evaluation": 37,
+      "candidate_id": "mp-aaabrffc",
+      "formula": "LiZr2(PO4)3",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 2,
+      "insulating": true,
+      "band_gap_eV": 4.4162
+    },
+    {
+      "evaluation": 38,
+      "candidate_id": "mp-aaabrvsy",
+      "formula": "Li6Ti2O7",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 36,
+      "insulating": true,
+      "band_gap_eV": 2.3765
+    },
+    {
+      "evaluation": 39,
+      "candidate_id": "mp-aaabrygd",
+      "formula": "Li2Ti4O9",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 12,
+      "insulating": true,
+      "band_gap_eV": 2.8924
+    },
+    {
+      "evaluation": 40,
+      "candidate_id": "mp-aaabrzpk",
+      "formula": "LiZr2(PO4)3",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 2,
+      "insulating": true,
+      "band_gap_eV": 4.2911
+    },
+    {
+      "evaluation": 41,
+      "candidate_id": "mp-aaabserm",
+      "formula": "LiTi2(PO4)3",
+      "family": "phosphate",
+      "acceptable": false,
+      "penalty_bin": 3,
+      "insulating": true,
+      "band_gap_eV": 2.6769
+    },
+    {
+      "evaluation": 42,
+      "candidate_id": "mp-aaacdaer",
+      "formula": "LiCaBO3",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 15,
+      "insulating": true,
+      "band_gap_eV": 5.0761
+    },
+    {
+      "evaluation": 43,
+      "candidate_id": "mp-aaacdofg",
+      "formula": "LiBr",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": 16,
+      "insulating": true,
+      "band_gap_eV": 4.9350000000000005
+    },
+    {
+      "evaluation": 44,
+      "candidate_id": "mp-aaacgaxr",
+      "formula": "Li3AlSiO5",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 25,
+      "insulating": true,
+      "band_gap_eV": 4.7208000000000006
+    },
+    {
+      "evaluation": 45,
+      "candidate_id": "mp-aaacozau",
+      "formula": "Li6Ti2O7",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 36,
+      "insulating": true,
+      "band_gap_eV": 2.3414
+    },
+    {
+      "evaluation": 46,
+      "candidate_id": "mp-aaacrogm",
+      "formula": "LiZnBO3",
+      "family": "borate",
+      "acceptable": false,
+      "penalty_bin": 16,
+      "insulating": true,
+      "band_gap_eV": 4.3387
+    },
+    {
+      "evaluation": 47,
+      "candidate_id": "mp-aaacroks",
+      "formula": "Li5Al(SiO4)2",
+      "family": "silicate",
+      "acceptable": false,
+      "penalty_bin": 26,
+      "insulating": true,
+      "band_gap_eV": 4.5604
+    },
+    {
+      "evaluation": 48,
+      "candidate_id": "mp-aaacsdzb",
+      "formula": "LiO8",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 80,
+      "insulating": false,
+      "band_gap_eV": 0.15209999999999996
+    },
+    {
+      "evaluation": 49,
+      "candidate_id": "mp-aaacshah",
+      "formula": "LiO8",
+      "family": "other_oxide",
+      "acceptable": false,
+      "penalty_bin": 80,
+      "insulating": false,
+      "band_gap_eV": 0.0
+    },
+    {
+      "evaluation": 50,
+      "candidate_id": "mp-aaahikjt",
+      "formula": "LiMgCl3",
+      "family": "halide",
+      "acceptable": false,
+      "penalty_bin": null,
+      "insulating": null,
+      "band_gap_eV": null
+    }
+  ]
+}

@@ -1,5 +1,29 @@
 # interphAIse — project report
 
+**Integrated live experiment — 2026-10-21:** Merged Adem's agent branch into
+`davide`, corrected invalid-ID accounting and ran 30 repeats per arm. At budget 10,
+iterative succeeds 19/30 versus upfront 4/30, sequential 4/30 and random 10/30.
+All 120 runs completed and all 1,200 evaluations matched an independent offline
+replay. The post-hoc fluoride-first heuristic still succeeds earlier, and best-bin
+performance is close to random. The full sanitized archive, figures, costs and
+interpretation are in [INTEGRATED_DISCOVERY_RESULTS.md](INTEGRATED_DISCOVERY_RESULTS.md).
+The older checkpoint entries below are retained as history.
+
+**Structure viewer — 2026-10-21:** An offline interactive viewer now displays the
+50 bulk candidates and eight saved pilot geometries from both contacts, including linked initial/relaxed
+interface views, cell replication and coating/cathode or fixed-atom colouring.
+Geometry exports preserve the saved coordinates and cell. See
+[STRUCTURE_VIEWER.md](STRUCTURE_VIEWER.md) for build instructions and limitations.
+
+**Pre-run review amendment — 2026-10-21:** The offline fluoride-first baseline
+finds an acceptable coating on query 2. The pool contains 42 distinct formula
+strings; removing fluorine leaves zero acceptable candidates. The revised plan
+uses at least 30 runs per LLM arm and explicitly allows a prior-knowledge-only
+conclusion if feedback adds no demonstrated benefit. PET-MAD bulk relaxation and
+surface/convergence validation precede comparative adhesion rankings. See
+[EXPERIMENT_AMENDMENT.md](EXPERIMENT_AMENDMENT.md) for the audit, integration
+checklist and distinction between implemented checks and planned experiments.
+
 **PET-MAD pilot completed — 2026-10-21:** LiCoO2(001) | LiNbF6(101), 224 atoms:
 registry scan and joined/separated slab relaxations completed with movable-atom
 forces below 0.05 eV/Å. The provisional constrained adhesion estimate is 2.1003 J/m²

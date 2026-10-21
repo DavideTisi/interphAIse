@@ -1,8 +1,9 @@
 """Budgeted candidate search against the frozen query boundary (``BenchmarkQueries``).
 
 Arms: random; upfront (one shortlist, no feedback); sequential (one choice per turn,
-sees its own earlier choices, no outcomes); iterative (sees queried outcomes); shuffled
-(as iterative, but outcomes are permuted among already-queried candidates).
+sees its own earlier choices, no outcomes); sequential_ids (as sequential, but sees only
+earlier candidate IDs, no rationales); iterative (sees queried outcomes); shuffled (as
+iterative, but outcomes are permuted among already-queried candidates).
 The proposer never sees unqueried outcomes, the answer table, provenance or timing.
 """
 from __future__ import annotations
@@ -15,8 +16,8 @@ from pathlib import Path
 from .discovery_evaluator import ranking_key
 from .tools.thermo_dataset import digest
 
-PROMPT_VERSION = "v3-2026-10-21b"
-LLM_STRATEGIES = {"iterative", "sequential", "shuffled", "upfront"}
+PROMPT_VERSION = "v3-2026-10-21c-charged-ids"
+LLM_STRATEGIES = {"iterative", "sequential", "sequential_ids", "shuffled", "upfront"}
 STRATEGIES = LLM_STRATEGIES | {"random"}
 PROMPT = """You are a battery coating discovery scientist choosing which candidate coatings to evaluate.
 Select only from the available candidates, by candidate_id. Formulas are not unique: polymorphs are separate candidates.
@@ -26,7 +27,9 @@ Return {"proposals": [{"candidate_id": "exact available candidate_id", "hypothes
 "motivation": "the earlier observation that motivated this choice, or \\"none\\"", "mode": "explore" or "refine"}]}.
 "explore" means a chemically different family from earlier choices; "refine" means close to an earlier choice.
 Return exactly as many proposals as the "count" field of the request, no more and no fewer.
-Copy each candidate_id character for character from the available list."""
+Copy each candidate_id character for character from the available list. Select distinct IDs.
+Each submitted candidate_id costs one evaluation, including invalid or repeated IDs.
+Another polymorph of the same formula is a separate candidate and costs another evaluation."""
 
 # Outcome fields the iterative arm may see; provenance, timing and diagnostics stay out of prompts.
 FEEDBACK_FIELDS = ("candidate_id", "formula", "status", "error", "insulating", "band_gap_eV",
@@ -51,7 +54,8 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
     random.Random(seed).shuffle(pool)  # displayed order; same seed => same order across arms
     formula = {c["candidate_id"]: c["formula"] for c in pool}
     shuffle_rng = random.Random(f"shuffle-{seed}")
-    shown_bundles = []  # shuffled arm: displayed outcome per history slot, permuted among queried ones
+    shown_bundles = []  # shuffled arm: displayed outcome per history slot
+    real_slots = []     # shuffled arm: slots holding a first query of a pool candidate
     state = dict(strategy=strategy, seed=seed, budget=budget, prompt_version=PROMPT_VERSION,
                  hashes={k: task[k] for k in HASH_FIELDS}, objective=task["objective"],
                  metadata=metadata or {}, proposal_attempts=[], history=[], trace=[],
@@ -64,24 +68,27 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
             temp.write_text(json.dumps(state, indent=2, allow_nan=False))
             temp.replace(output)
 
-    def feedback(result):
+    def visible(result):
         return {k: result[k] for k in FEEDBACK_FIELDS if k in result}
 
     def shown_history():
         if strategy == "iterative":
-            return [dict(proposal=h["proposal"], result=feedback(h["result"])) for h in state["history"]]
+            return [dict(proposal=h["proposal"], result=visible(h["result"])) for h in state["history"]]
         if strategy == "shuffled":
             # Relabel each displayed bundle with the candidate it is shown next to.
+            # Charged invalid/repeated IDs are never permuted, so their own error stays in place.
             return [dict(proposal=h["proposal"],
-                         result=dict(b, candidate_id=h["proposal"]["candidate_id"],
-                                     formula=formula.get(h["proposal"]["candidate_id"])))
-                    for h, b in zip(state["history"], shown_bundles)]
+                         result=dict(b, candidate_id=h["result"].get("candidate_id"),
+                                     formula=h["result"].get("formula")) if i in real_slots else b)
+                    for i, (h, b) in enumerate(zip(state["history"], shown_bundles))]
+        if strategy == "sequential_ids":
+            return [dict(proposal={"candidate_id": h["proposal"]["candidate_id"]}) for h in state["history"]]
         return [dict(proposal=h["proposal"]) for h in state["history"]]
 
     def propose(count):
-        queried = {h["proposal"]["candidate_id"] for h in state["history"]}
+        queried = {h["result"]["candidate_id"] for h in state["history"]
+                   if isinstance(h["result"].get("candidate_id"), str)}
         available = [c for c in pool if c["candidate_id"] not in queried]
-        ids = {c["candidate_id"] for c in available}
         feedback = ""
         for _ in range(max_proposal_attempts):
             user = json.dumps(dict(task=public_task, available=available, count=count,
@@ -95,17 +102,17 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
                 if not isinstance(proposals, list) or len(proposals) != count:
                     raise ValueError(f"Return exactly {count} proposal(s); got "
                                      f"{len(proposals) if isinstance(proposals, list) else 'none'}")
-                chosen = [p["candidate_id"] for p in proposals]
-                if bad := [c for c in chosen if c not in ids]:
-                    raise ValueError(f"Not available candidate_ids (copy exactly from the list): {bad}")
-                if len(set(chosen)) != len(chosen):
-                    raise ValueError("Proposals must be distinct")
+                # Missing proposal fields are a message-format failure. Once a
+                # candidate_id is supplied, query() owns validation and charges it.
+                if any(not isinstance(p, dict) or "candidate_id" not in p for p in proposals):
+                    raise ValueError("Each proposal needs a candidate_id field")
                 if any(not isinstance(p.get("hypothesis"), str) or not p["hypothesis"].strip() for p in proposals):
                     raise ValueError("Each proposal needs a nonempty hypothesis")
                 if any(not isinstance(p.get("motivation"), str) or p.get("mode") not in {"explore", "refine"}
                        for p in proposals):
                     raise ValueError('Each proposal needs a motivation string and mode "explore" or "refine"')
             except Exception as exc:
+                attempt["llm_metadata"] = getattr(llm, "last_metadata", None)
                 feedback = f"{type(exc).__name__}: {exc}"
                 attempt["error"] = feedback
                 state["proposal_attempts"].append(attempt)
@@ -125,14 +132,23 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
             planned = [{"candidate_id": c["candidate_id"], "hypothesis": "random baseline"} for c in pool[:budget]]
         best = None
         for step in range(budget):
-            proposal = propose(1)[0] if strategy in {"iterative", "sequential", "shuffled"} else planned[step]
-            result = queries.query(proposal["candidate_id"])
+            proposal = propose(1)[0] if strategy not in {"upfront", "random"} else planned[step]
+            cid = proposal["candidate_id"]
+            first_query = (isinstance(cid, str) and cid in formula
+                           and all(h["result"].get("candidate_id") != cid for h in state["history"]))
+            result = queries.query(cid)
             state["history"].append(dict(proposal=proposal, result=result))
             if strategy == "shuffled":
-                # Inside-out Fisher-Yates: uniform permutation, at most one earlier display changes per turn.
-                shown_bundles.append(feedback(result))
-                j = shuffle_rng.randint(0, len(shown_bundles) - 1)
-                shown_bundles[-1], shown_bundles[j] = shown_bundles[j], shown_bundles[-1]
+                # Inside-out Fisher-Yates over real evaluations only: their displayed outcomes form a
+                # uniform permutation of queried outcomes, and at most one earlier display changes per
+                # turn. Known limits: a moved outcome can contradict a rationale written when it was
+                # shown elsewhere, reaction products can hint at the true source, and the first real
+                # outcome cannot be shuffled.
+                shown_bundles.append(visible(result))
+                if first_query:
+                    real_slots.append(len(shown_bundles) - 1)
+                    j = real_slots[shuffle_rng.randint(0, len(real_slots) - 1)]
+                    shown_bundles[-1], shown_bundles[j] = shown_bundles[j], shown_bundles[-1]
                 state["displayed_sources"].append([b.get("candidate_id") for b in shown_bundles])
             if ranking_key(result)[0] and (best is None or ranking_key(result) > ranking_key(best)):
                 best = result
