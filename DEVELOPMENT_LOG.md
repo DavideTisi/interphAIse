@@ -231,3 +231,17 @@ checked documentation diff whitespace. No code changed, so tests were not rerun.
 No API/LLM/MLIP calls, remote branch inspection, push, merge or message to Adem occurred.
 Next coordination is sharing Davide's artifacts, adapting Adem's runner/analyser and
 testing integration before live repeats. This reply and log update are committed locally.
+
+## 2026-10-21 — Publish Davide's branch
+
+The user authorized pushing the branch. Published `davide` to
+`https://github.com/DavideTisi/interphAIse` and configured upstream tracking of
+`origin/davide`. Git confirmed creation of the remote branch at `6f93458`, containing
+the frozen benchmark, evaluator, reproducible data and reply to Adem.
+
+Before publication, the working tree was clean, `.env` was confirmed untracked and
+ignored, and a scan of outgoing development commits found none of the configured
+API key values, including in decompressed thermodynamic data. No code changed;
+tests were not rerun. No merge, pull request, LLM call or message to Adem was made.
+This documentation entry is a follow-up commit for the same branch. Next: Adem can
+fetch `origin/davide` and integrate the v3 contract described in `SYNC_ADEM.md`.
