@@ -21,6 +21,30 @@ from interphaise.tools.relaxation import CountedCalculator,relax_record
 from interphaise.tools.validation import _min_distance_violations
 
 
+def registry_points(requested=None):
+    """Keep the historical scan and additionally evaluate an explicitly requested point."""
+    points=[(x,y,gap) for x in (0.,.5) for y in (0.,.5) for gap in (2.,2.5,3.)]
+    if requested is not None:
+        if len(requested)!=3 or not np.all(np.isfinite(requested)) or requested[2]<=0:
+            raise ValueError('Registry must contain finite X, Y and a positive gap')
+        point=tuple(float(v) for v in requested)
+        if point not in points:points.append(point)
+    return points
+
+
+def select_registry(scan,requested=None):
+    """Return the scan optimum and the requested valid point, without silent fallback."""
+    valid=[r for r in scan if r['status']=='ok']
+    if not valid:raise ValueError('No valid registry remains after overlap checks')
+    optimum=min(valid,key=lambda r:r['energy_eV'])
+    if requested is None:return optimum,optimum
+    x,y,gap=requested
+    chosen=next((r for r in valid if r['offset']==[x,y] and r['gap_A']==gap),None)
+    if chosen is None:
+        raise ValueError(f'Requested registry {x}, {y}, gap {gap} was rejected or not evaluated')
+    return optimum,chosen
+
+
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--input',type=Path,default=ROOT/'runs/petmad_interface_pilot')
@@ -36,6 +60,8 @@ def main():
     ap.add_argument('--threads',type=int,default=2)
     ap.add_argument('--device',default='cpu',help="Torch device, e.g. 'cpu' or 'cuda'")
     args=ap.parse_args()
+    try:points=registry_points(args.registry)
+    except ValueError as error:ap.error(str(error))
     if args.output.exists():ap.error('Use a fresh calculation output directory')
     args.output.mkdir(parents=True)
     import torch
@@ -55,29 +81,24 @@ def main():
         inner=load_mlip(model,device=args.device)
     calc=CountedCalculator(inner)
     scan=[]
-    for x in (0,.5):
-        for y in (0,.5):
-            for gap in (2.,2.5,3.):
-                trial=copy.deepcopy(interface);trial.in_plane_offset=(x,y);trial.gap=gap
-                clashes=_min_distance_violations(trial)
-                if clashes:
-                    scan.append({'offset':[x,y],'gap_A':gap,'status':'rejected','clashes':clashes})
-                    continue
-                atoms=to_atoms(trial);atoms.calc=calc
-                energy=float(atoms.get_potential_energy())
-                if not np.isfinite(energy):raise ValueError('Nonfinite registry energy')
-                scan.append({'offset':[x,y],'gap_A':gap,'energy_eV':energy,'status':'ok'})
-                print(f'Registry {x},{y}, gap {gap}: {energy:.6f} eV',flush=True)
-    scan_best=min((r for r in scan if r['status']=='ok'),key=lambda r:r['energy_eV'])
-    best=scan_best
-    if args.registry:
-        x,y,gap=args.registry
-        best=next(r for r in scan if r['offset']==[x,y] and r['gap_A']==gap and r['status']=='ok')
-        if best is not scan_best:print(f'Registry fixed at {best["offset"]}, {best["gap_A"]} Å; scan optimum differs: {scan_best["offset"]}, {scan_best["gap_A"]} Å',flush=True)
+    for x,y,gap in points:
+        trial=copy.deepcopy(interface);trial.in_plane_offset=(x,y);trial.gap=gap
+        clashes=_min_distance_violations(trial)
+        if clashes:
+            scan.append({'offset':[x,y],'gap_A':gap,'status':'rejected','clashes':clashes})
+            continue
+        atoms=to_atoms(trial);atoms.calc=calc
+        energy=float(atoms.get_potential_energy())
+        if not np.isfinite(energy):raise ValueError('Nonfinite registry energy')
+        scan.append({'offset':[x,y],'gap_A':gap,'energy_eV':energy,'status':'ok'})
+        print(f'Registry {x},{y}, gap {gap}: {energy:.6f} eV',flush=True)
+    # Save rejected/accepted points even when the requested point cannot be used.
+    (args.output/'registry_scan.json').write_text(json.dumps(scan,indent=2)+'\n')
+    scan_best,best=select_registry(scan,args.registry)
+    if best is not scan_best:print(f'Registry fixed at {best["offset"]}, {best["gap_A"]} Å; scan optimum differs: {scan_best["offset"]}, {scan_best["gap_A"]} Å',flush=True)
     interface.in_plane_offset=best['offset'];interface.gap=best['gap_A']
     start=to_atoms(interface)
     write(args.output/'initial.extxyz',start)
-    (args.output/'registry_scan.json').write_text(json.dumps(scan,indent=2)+'\n')
     fraction=.34 if args.fixed_fraction is None and args.fixed_depth is None else args.fixed_fraction
     fixed=bottom_fixed_indices(start,interface.substrate_indices,fraction,depth=args.fixed_depth)
     zs={name:start.positions[list(idx),2] for name,idx in (('film',interface.film_indices),('substrate',interface.substrate_indices))}
