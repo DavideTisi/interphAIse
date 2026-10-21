@@ -329,3 +329,20 @@ constraint sensitivity, then thickness/vacuum/registry settings. Calculate the
 coating–electrolyte contact and apply an identical protocol to the shortlist.
 The weakest-contact adhesion is not yet available. Adem's v3 experiment integration
 can proceed independently. This checkpoint is committed locally, not pushed.
+
+## 2026-10-21 — Niflheim access authorized and checked
+
+The user authorized heavier calculations through `ssh fjorm`, using
+`/home/scratch12/davti/OSI_Hackathon`. Read-only SSH checks succeeded: the expected
+hostname and scratch directory were found, Slurm tools and rsync are available,
+and CPU/GPU partitions are advertised. Default Python is 3.9.25, below the project's
+>=3.11 requirement. GPU account eligibility and a compatible runtime remain unverified.
+
+Added `NIFLHEIM.md` with the verified status and setup steps, and persistent cluster
+instructions in `AGENTS.md`. The current pilot runner fixes CPU/two threads and will
+need configurable device/thread arguments for a GPU job. No files were transferred,
+packages installed or jobs submitted; unrelated running jobs were not modified.
+Documentation consistency and whitespace checks were performed; no code changed,
+so the test suite was not rerun. No LLM/Materials Project calls were made.
+Next cluster work is runtime/resource setup and an allocated PET-MAD smoke test
+before heavy production calculations. Documentation is committed locally, not pushed.
