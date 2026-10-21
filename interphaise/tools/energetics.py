@@ -36,11 +36,14 @@ def to_atoms(struct):
     return atoms
 
 
-def bottom_fixed_indices(atoms, substrate_indices, fraction: float = 0.34) -> list[int]:
-    """Fix the bottom ``fraction`` of the substrate (bulk-like region)."""
+def bottom_fixed_indices(atoms, substrate_indices, fraction: float = 0.34, depth: float | None = None) -> list[int]:
+    """Fix the bottom ``fraction`` of the substrate (bulk-like region), or a fixed ``depth`` in Å.
+
+    A fixed depth keeps the frozen region the same when the slab is made thicker.
+    """
     sub = np.array(list(substrate_indices))
     z = atoms.positions[sub, 2]
-    cut = z.min() + fraction * (z.max() - z.min())
+    cut = z.min() + (depth if depth is not None else fraction * (z.max() - z.min()))
     return [int(i) for i in sub[z <= cut + 1e-6]]
 
 

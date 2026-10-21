@@ -41,7 +41,10 @@ seeds use different surface supercells and distorted layer spacings.
 | `P_C2/m_2` | `P_P1_4` | P(0.50) + S(0.38) on top | — | 4 | 0.174 / 0.261 |
 
 (The first two rows come from the window-free signature on the built contacts. The last two
-are summaries of the exploratory mapping.)
+are summaries of the exploratory mapping. Counts such as ×8 are slab totals for each
+(species, height) group across all periods, not surface-layer counts. The order of the
+groups' mean z fixes where the cut lies within the period, and the equivalence test compares
+group identities and order.)
 
 **Rule** (fixed before any interface energy was computed; applied to both seeds alike):
 1. no cut PS4 tetrahedra;
@@ -114,19 +117,23 @@ separation. Its difference from W_adh is exactly the separated slabs' relaxation
 | Electrolyte s0 | 0.34 (38) | 1.3291 | 2.5190 | 0.5744 | 0.6155 | 0.936 |
 | Electrolyte s0 | 0.50 (52) | 1.4114 | 2.5604 | 0.5833 | 0.5657 | 0.880 |
 
-**Cathode: insensitive to the constraint.** W_adh spans 0.017 J/m² and W_sep 0.012 J/m².
-Forces on fixed atoms stay at about 2.45 eV/Å at every fraction, and equally in the separated
-LiCoO2 slab (2.45–2.46 eV/Å). They belong to the formally polar LiCoO2(001) slab, not to the
-contact, and cancel in W_adh. That does not make the polar slab physically resolved. The
+**Cathode: insensitive within the tested constraint bracket.** W_adh spans 0.017 J/m² and
+W_sep 0.012 J/m². Forces on fixed atoms stay at about 2.45 eV/Å at every fraction, and
+equally in the separated LiCoO2 slab (2.45–2.46 eV/Å). This suggests a residual force
+pattern belonging to the formally polar LiCoO2(001) slab rather than to the contact. Similar
+forces do not prove that polar-surface energy errors cancel exactly in W_adh. The polarity
+remains unresolved. The
 separated LiNbF6 slab relaxes by about 1.49 J/m² once the contact is removed, so relaxed
 adhesion and fixed-geometry separation differ by about 1.6 J/m². The LiCoO2 side tracks its
 joined geometry (RMS 0.06–0.07 Å).
 
 **Electrolyte: sensitive to the constraint.** W_adh rises monotonically by 0.123 J/m² across
 the bracket: +0.041 from 0.17 to 0.34, and +0.082 from 0.34 to 0.50. That exceeds the
-proposed 0.1 J/m² tolerance. Decomposition from 0.17 to 0.50: +0.092 from the fixed-geometry
-separation, i.e. the joined contact itself; +0.049 from smaller substrate relaxation; −0.018
-from the film. The separated Li6PS5Cl slab relaxes into a different arrangement from the one
+proposed 0.1 J/m² tolerance. Decomposition from 0.17 to 0.50: +0.092 from the change in
+fixed-geometry separation energy (a difference involving the joined structure and both
+rigid fragments, not the joined-interface total energy alone); +0.049 from smaller
+substrate relaxation; −0.018 from the film. The algebra is exact. It does not establish the
+relaxation path or which minimum an isolated fragment would reach. The separated Li6PS5Cl slab relaxes into a different arrangement from the one
 in the joined interface: Li RMS 0.55–0.65 Å (maximum 1.7 Å), Cl 0.18–0.30 Å, P ≤ 0.08 Å. That
 relaxation is worth about 0.6 J/m², so W_adh here includes Li/Cl rearrangement at the newly
 free argyrodite surface as well as adhesion. The substrate has only 104 atoms, of which 26–52
@@ -152,3 +159,77 @@ inspection replays identically from the archive.
 3. Seed-4 electrolyte at the chosen settings (bulk sensitivity; the input is prepared).
    Report both relaxed W_adh and fixed-geometry W_sep. Treat the polar cathode as unresolved,
    even if numerically converged.
+
+## Electrolyte substrate thickness (SYNC_CLAUDE_2.md)
+
+Only the substrate thickness changes: seed 0, Cl cut, LiNbF6(001), two coating layers,
+the same in-plane transformations, strain tensor and area (170.708 Å²), 15 Å vacuum, FIRE to
+0.05 eV/Å. Cap 600 atoms. Fixed **depth** 3.257602 Å from the substrate bottom, which fixes
+38 atoms at every thickness (`--fixed-depth`; mutually exclusive with `--fixed-fraction`,
+whose default stays 0.34). The same mask is applied to the joined interface and the separated
+substrate. The registry is held at offset (0,0), gap 2 Å (`--registry 0 0 2`); the 12-point
+scan is still run and saved. `build_contact.py` gains `--substrate-layers`/`--film-layers`;
+all builds match the v1 termination, transformations, area and strain tensor. PET-MAD S 1.6.0,
+CPU, 4 threads per run, three runs concurrent.
+
+| Layers | Atoms (sub) | Sub span Å | Formal \|p\|/A sub | W_adh relaxed | Δ | W_sep fixed geometry | Δ | Film / sub relaxation on separation | Max force on fixed atoms (interface / separated sub) | Calls | Wall |
+|---|---|---:|---:|---:|---:|---:|---:|---|---|---:|---:|
+| 2 | 440 (104) | 9.58 | 0.174 | 1.3291 | — | 2.5190 | — | 0.574 / 0.616 | 0.94 / 1.74 | 267 | 287 s |
+| 3 | 492 (156) | 15.43 | 0.260 | 1.4644 | +0.135 | 2.8052 | +0.286 | 0.625 / 0.716 | 1.19 / 1.49 | 322 | 375 s |
+| 4 | 544 (208) | 21.28 | 0.347 | 1.5317 | **+0.067** | 2.8579 | **+0.053** | 0.636 / 0.690 | 1.28 / 1.39 | 411 | 449 s |
+
+Energies are in J/m², forces in eV/Å. All nine relaxations converged on free atoms, with no
+overlap violations, and the accounting reconciles. The 2-layer run reproduces the archived
+0.34-fraction run: identical fixed set, film/substrate energies identical, interface energy
+−2.4×10⁻⁴ eV (thread-count float noise), W_adh 1.32913 vs 1.32911 J/m².
+
+- **Tolerance:** between the final two settings (3 → 4 layers), both observables change by
+  less than 0.1 J/m². **Four layers is the chosen thickness** by the predeclared criterion.
+  W_adh is still increasing (+0.135 then +0.067), so this meets the tolerance; it does not
+  show a plateau.
+- **Registry:** at 3 layers the unrelaxed scan optimum moved to (0, 0.5). The gap from (0,0)
+  is 0.1887 eV = 0.0177 J/m² at the single-point level. At 2 and 4 layers (0,0,2 Å) is the
+  optimum.
+- **Separated-slab rearrangement persists at every thickness:** Li RMS 0.57–0.65 Å and Cl
+  0.20–0.33 Å versus the joined substrate, P ≤ 0.08 Å. It is a free-surface effect, not a
+  thin-slab artefact.
+- **Formal polarity grows linearly with thickness** (0.174 → 0.260 → 0.347 e/Å): the two
+  faces of this Cl cut are inequivalent (Cl/S contact face, S/P far face), so each (111)
+  period adds a net formal dipole. This is a formal oxidation-state diagnostic, not a computed
+  electronic dipole. Like the cathode, this contact is formally polar, and the polarity grows
+  with slab thickness.
+
+Evidence: `data/petmad/thickness_v1/`.
+
+### Constraint check at four layers (declared before running)
+
+Fixed depths 1.628801, 3.257602 (done above) and 6.515204 Å, i.e. half, the same as, and
+double the thickness-study depth. These fix 26, 38 and 68 of 208 substrate atoms. Everything
+else as in the thickness study, including the registry held at (0,0,2 Å). Criterion: report
+the W_adh and W_sep spread. With the frozen depth doubled, both should stay within 0.1 J/m² of
+the 3.2576 Å value for the constraint to count as not controlling the result.
+
+**Result.** All nine relaxations converged on free atoms, with no overlap violations; the
+accounting reconciles and the scan optimum was (0,0,2 Å) in each run.
+
+| Fixed depth Å (atoms) | W_adh relaxed | W_sep fixed geometry | Film / sub relaxation | Max force on fixed atoms (interface / separated sub) | Calls | Wall |
+|---|---:|---:|---|---|---:|---:|
+| 1.628801 (26) | 1.5069 | 2.8448 | 0.634 / 0.705 | 0.54 / 0.48 | 395 | 378 s |
+| 3.257602 (38) | 1.5317 | 2.8579 | 0.636 / 0.690 | 1.28 / 1.39 | 411 | 449 s |
+| 6.515204 (68) | 1.5549 | 2.8688 | 0.638 / 0.676 | 1.12 / 1.27 | 432 | 398 s |
+
+Energies are in J/m², forces in eV/Å. **Both bracket values are within 0.03 J/m² of the
+3.2576 Å reference.** Spreads: W_adh 0.048 J/m² (0.123 at two layers), W_sep 0.024 J/m². The
+criterion is met, so the constraint does not control the result at four layers within this
+bracket. A small monotonic trend with frozen depth remains. Li/Cl rearrangement of the
+separated slab is unchanged (Li RMS 0.57–0.59 Å).
+
+**Current electrolyte protocol:** four substrate layers (544 atoms), fixed depth 3.2576 Å,
+registry (0,0,2 Å). Provisional values: W_adh 1.53 J/m², W_sep 2.86 J/m². These are
+numerical-protocol results for one PET-MAD model and one formally polar Cl cut, not
+experimental adhesion.
+
+**Next (not run):** cathode coating thickness (the separated LiNbF6 relaxes by about
+1.49 J/m²), then vacuum and denser registry checks for both contacts. Then seed 4 with this
+protocol and the equivalent Cl cut, recording any seed-dependent fixed count. The polar
+cathode stays provisional.

@@ -1083,3 +1083,38 @@ relaxation and −0.018 from the film.
 No LLM, MP API or cluster calls. **Next:** electrolyte substrate thickness with a
 fixed-thickness constraint rule, then the cathode film thickness, vacuum, registry, and the
 seed-4 sensitivity. See CONTACT_PROTOCOL.md.
+
+## 2026-10-21 — Electrolyte substrate thickness and constraint check at four layers
+
+**Branch:** `davide`. Follows SYNC_CLAUDE_2.md; `7249e7a` was pushed first. Details:
+[CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+
+**Code.** `bottom_fixed_indices` gains `depth`. `run_petmad_interface.py` gains
+`--fixed-depth` (mutually exclusive with `--fixed-fraction`, whose default stays 0.34) and
+`--registry X Y GAP`, which holds the registry while still saving the scan and records the
+scan optimum. It also records fixed indices and slab spans. `build_contact.py` gains
+`--substrate-layers`/`--film-layers`. New test: a constant depth does not grow with slab
+thickness. 115 tests pass.
+
+**Thickness** (seed 0 Cl cut, LiNbF6(001), same transformations, strain and 170.708 Å² area;
+fixed depth 3.257602 Å = 38 atoms throughout; registry (0,0,2 Å); PET-MAD S 1.6.0, checkpoint
+`3f52e97c…`, CPU, 4 threads, 3 concurrent):
+- 2 layers (440 atoms): W_adh 1.3291, W_sep 2.5190 J/m². This reproduces the archived
+  0.34-fraction run, with an identical mask.
+- 3 layers (492): 1.4644 / 2.8052. The unrelaxed scan optimum moved to (0,0.5), but by only
+  0.0177 J/m².
+- 4 layers (544): 1.5317 / 2.8579.
+
+From 3 to 4 layers the changes are +0.067 and +0.053 J/m², below the 0.1 tolerance, so
+**four layers is chosen**. W_adh is still rising. Formal substrate polarity grows with
+thickness (0.174 / 0.260 / 0.347 e/Å) because the Cl cut's two faces are inequivalent.
+
+**Constraint at four layers** (depths declared before running: 1.628801 / 3.257602 /
+6.515204 Å = 26 / 38 / 68 atoms): W_adh 1.5069 / 1.5317 / 1.5549, W_sep 2.8448 / 2.8579 /
+2.8688 J/m². Spreads 0.048 and 0.024 J/m²; criterion met. The separated-slab Li/Cl
+rearrangement (Li RMS about 0.6 Å) persists at every thickness and depth.
+
+**Cost:** 1,827 calculator calls in the five MLIP runs plus 10 separation single points.
+Evidence: `data/petmad/thickness_v1/` (builds and runs); the inspection replays identically.
+No LLM, MP or cluster calls. **Next:** cathode coating thickness, then vacuum/registry for
+both contacts, then the seed-4 sensitivity.

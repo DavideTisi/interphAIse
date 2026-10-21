@@ -95,3 +95,12 @@ def test_explicit_termination_is_enumerated_before_the_cap(monkeypatch):
     assert {c.termination for c,_ in out}=={('F','y')} and len(out)==3
     with pytest.raises(ValueError):
         matcher.enumerate_interfaces(None,None,(0,0,1),(0,0,1),('s','f'),capped,terminations=[('Q','z')])
+
+
+def test_fixed_depth_does_not_grow_with_slab_thickness():
+    from interphaise.tools.energetics import bottom_fixed_indices
+    def slab(layers):
+        return Atoms('H'*layers,positions=[[0,0,1.5*k] for k in range(layers)],cell=[5,5,40])
+    thin,thick=slab(4),slab(8)
+    assert bottom_fixed_indices(thin,range(4),depth=1.6)==bottom_fixed_indices(thick,range(8),depth=1.6)==[0,1]
+    assert len(bottom_fixed_indices(thick,range(8),.34))>len(bottom_fixed_indices(thin,range(4),.34))

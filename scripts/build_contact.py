@@ -77,6 +77,7 @@ def main():
     ap.add_argument('--termination',nargs=2,required=True,metavar=('FILM','SUBSTRATE'),help='pymatgen termination labels')
     ap.add_argument('--parent',type=Path,help='Symmetric parent bulk of the substrate (same atom order)')
     ap.add_argument('--max-area',type=float,default=300);ap.add_argument('--max-atoms',type=int,default=512)
+    ap.add_argument('--film-layers',type=int,default=2);ap.add_argument('--substrate-layers',type=int,default=2)
     ap.add_argument('--label',required=True);ap.add_argument('--output',type=Path,required=True)
     args=ap.parse_args()
     if args.output.exists():ap.error('Use a fresh output directory')
@@ -89,7 +90,7 @@ def main():
         if parent.get_chemical_symbols()!=[site.specie.symbol for site in s]:raise SystemExit('Parent atom order differs')
         # Height of each parent site along the substrate Miller direction, modulo one interplanar period.
         heights=np.round((parent.get_scaled_positions()@np.array(args.substrate_miller))%1,3)%1
-    settings=MatchSettings(max_area=args.max_area,max_length_tol=.05,max_angle_tol=.03,film_thickness=2,substrate_thickness=2,max_candidates=60)
+    settings=MatchSettings(max_area=args.max_area,max_length_tol=.05,max_angle_tol=.03,film_thickness=args.film_layers,substrate_thickness=args.substrate_layers,max_candidates=60)
     report={}
     pairs=enumerate_interfaces(s,f,tuple(args.substrate_miller),tuple(args.film_miller),(sname,fname),settings,
                                terminations=[tuple(args.termination)],report=report)
@@ -119,7 +120,7 @@ def main():
                   'film_sha256':sha256(args.film),'parent':str(args.parent) if args.parent else None,
                   'parent_sha256':sha256(args.parent) if args.parent else None},
         'settings':{'max_area_A2':args.max_area,'max_atoms':args.max_atoms,'max_length_tol':.05,'max_angle_tol':.03,
-                    'film_layers':2,'substrate_layers':2,'max_strain':.06,'candidate_cap':60},
+                    'film_layers':args.film_layers,'substrate_layers':args.substrate_layers,'max_strain':.06,'candidate_cap':60},
         'enumeration':{**report,'termination_requested':list(args.termination),'valid_for_termination':len(valid)},
         'termination':list(c.termination),'n_atoms':c.n_atoms,'area_A2':c.area,'von_mises_strain':c.von_mises_strain,
         'strain_tensor':np.asarray(props['strain']).tolist(),

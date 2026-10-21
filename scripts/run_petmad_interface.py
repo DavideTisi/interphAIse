@@ -28,7 +28,11 @@ def main():
     ap.add_argument('--checkpoint',type=Path,help='Optional cached pet-mad-s-v1.6.0.ckpt for fully offline loading')
     ap.add_argument('--steps',type=int,default=400)
     ap.add_argument('--fmax',type=float,default=.05)
-    ap.add_argument('--fixed-fraction',type=float,default=.34,help='Bottom fraction of the substrate z span held fixed')
+    fix=ap.add_mutually_exclusive_group()
+    fix.add_argument('--fixed-fraction',type=float,help='Bottom fraction of the substrate z span held fixed (default 0.34)')
+    fix.add_argument('--fixed-depth',type=float,help='Bottom depth of the substrate held fixed, Å; constant when the slab is thickened')
+    ap.add_argument('--registry',type=float,nargs=3,metavar=('X','Y','GAP'),
+                    help='Use this registry instead of the scan optimum; the scan is still run and saved')
     ap.add_argument('--threads',type=int,default=2)
     args=ap.parse_args()
     if args.output.exists():ap.error('Use a fresh calculation output directory')
@@ -63,12 +67,19 @@ def main():
                 if not np.isfinite(energy):raise ValueError('Nonfinite registry energy')
                 scan.append({'offset':[x,y],'gap_A':gap,'energy_eV':energy,'status':'ok'})
                 print(f'Registry {x},{y}, gap {gap}: {energy:.6f} eV',flush=True)
-    best=min((r for r in scan if r['status']=='ok'),key=lambda r:r['energy_eV'])
+    scan_best=min((r for r in scan if r['status']=='ok'),key=lambda r:r['energy_eV'])
+    best=scan_best
+    if args.registry:
+        x,y,gap=args.registry
+        best=next(r for r in scan if r['offset']==[x,y] and r['gap_A']==gap and r['status']=='ok')
+        if best is not scan_best:print(f'Registry fixed at {best["offset"]}, {best["gap_A"]} Å; scan optimum differs: {scan_best["offset"]}, {scan_best["gap_A"]} Å',flush=True)
     interface.in_plane_offset=best['offset'];interface.gap=best['gap_A']
     start=to_atoms(interface)
     write(args.output/'initial.extxyz',start)
     (args.output/'registry_scan.json').write_text(json.dumps(scan,indent=2)+'\n')
-    fixed=bottom_fixed_indices(start,interface.substrate_indices,args.fixed_fraction)
+    fraction=.34 if args.fixed_fraction is None and args.fixed_depth is None else args.fixed_fraction
+    fixed=bottom_fixed_indices(start,interface.substrate_indices,fraction,depth=args.fixed_depth)
+    zs={name:start.positions[list(idx),2] for name,idx in (('film',interface.film_indices),('substrate',interface.substrate_indices))}
     film_indices=list(interface.film_indices);sub_indices=list(interface.substrate_indices)
     separated={'interface':(start,fixed),'film':(start[film_indices],[]),
                'substrate':(start[sub_indices],[sub_indices.index(i) for i in fixed])}
@@ -85,7 +96,9 @@ def main():
                  records['interface']['final_energy_eV'])/area*EV_PER_A2_TO_J_PER_M2
     valid=all(r['converged'] and not r['overlap_violations'] for r in records.values())
     result={'model':model,'checkpoint_sha256':checkpoint_sha256,'device':'cpu','torch_threads':args.threads,'purpose':'one-contact finite-cell pilot',
-        'fixed_fraction':args.fixed_fraction,'n_fixed':len(fixed),
+        'fixed_fraction':fraction,'fixed_depth_A':args.fixed_depth,'n_fixed':len(fixed),'fixed_indices':fixed,
+        'slab_z_span_A':{k:float(np.ptp(v)) for k,v in zs.items()},
+        'registry_fixed':args.registry,'registry_scan_optimum':scan_best,'registry_scan_optimum_used':best is scan_best,
         'selected':selected,'area_A2':area,'n_atoms':len(start),'registry_points':len(scan),
         'best_registry':best,'relaxations':records,'numerically_valid':valid,
         'status':'converged_pilot' if valid else 'unconverged_or_invalid',
