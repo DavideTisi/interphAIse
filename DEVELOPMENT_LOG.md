@@ -346,3 +346,12 @@ Documentation consistency and whitespace checks were performed; no code changed,
 so the test suite was not rerun. No LLM/Materials Project calls were made.
 Next cluster work is runtime/resource setup and an allocated PET-MAD smoke test
 before heavy production calculations. Documentation is committed locally, not pushed.
+
+## 2026-10-21 — Publish pilot and cluster-access updates
+
+At the user's request, pushed `3922869` (completed PET-MAD interface pilot) and
+`35be6ef` (authorized Niflheim access documentation) to `origin/davide`.
+Git confirmed the remote advance from `a2880b5` to `35be6ef`. The working tree was
+clean before publication; `.env` remains untracked and ignored. No code changes,
+tests, calculations, cluster submissions or merges were performed in this step.
+This follow-up log entry accompanies the publication on the same branch.
