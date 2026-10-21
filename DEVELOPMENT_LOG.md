@@ -458,3 +458,24 @@ ignored under runs and can be rebuilt with scripts/build_structure_viewer.py.
 Independent modifications to scripts/prepare_interface_pilot.py and
 scripts/inspect_interface_pilot.py remain unstaged and are not part of this commit.
 No API or calculation runs were performed. Push outcome is reported in the chat.
+
+## 2026-10-21 — Review Adem's second sync note
+
+Read origin/work/agent-experiments at 40e79c3 and inspected discovery.py plus the
+experiment/analysis runners. Wrote SYNC_ADEM_2.md as a local reply for Davide to
+share, with responses to all five questions and concrete integration issues.
+The reported 7/10 versus 1/10 outcome remains unverified without the ignored run
+archive. Retain frozen acceptance and label bin<=2 as post-hoc sensitivity.
+Confirmed all three proposed MLIP shortlist materials in the saved manifest.
+
+Found by inspection: invalid/repeated-ID proposals are retried before the budgeted
+query API, contradicting the stated accounting; analysis uses nonportable absolute
+benchmark paths, does not validate missing repeat files, and replaces whole arms
+rather than appending follow-up repeats. It also checks hashes/budget but not all
+experimental settings across batches. No claim is made that these findings alter
+the reported counts without inspecting raw runs.
+
+Verification: read-only source comparison and whitespace check. No branch switch,
+merge, test execution, paid calls, calculations, message to Adem, commit or push.
+Existing local preparation/inspection edits preserved. Next: obtain a sanitized
+run archive and settle accounting/analysis policy before integrating into main.
