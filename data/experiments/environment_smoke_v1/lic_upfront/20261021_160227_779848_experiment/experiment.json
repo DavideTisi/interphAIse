@@ -1,0 +1,30 @@
+{
+  "arms": [
+    "upfront"
+  ],
+  "repeats": 1,
+  "budget": 10,
+  "synthetic": false,
+  "allow_draft": false,
+  "benchmark_status": "frozen",
+  "start_seed": 999,
+  "workers": 3,
+  "pool": "data/exploration/environment_expansion_v1/pool.json",
+  "benchmark": "data/benchmarks/environment_v1/lco_lic_4v.json",
+  "hashes": {
+    "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+    "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+    "benchmark_sha256": "a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2"
+  },
+  "prompt_version": "v3-2026-10-21c-charged-ids",
+  "model": "anthropic/claude-haiku-5-5",
+  "temperature": 1.0,
+  "max_tokens": 4096,
+  "source_commit": "26beb73e62b41ea311dc5dbe4fd9e2c0a7f084b2",
+  "workflow_sha256": {
+    "scripts/run_discovery_experiment.py": "e88560ce7624c6adbd8cc1fb0482c7d8913a418b1547f693c4240bd0ee092335",
+    "interphaise/discovery.py": "b83ecda178e23019756878d7a18359edc81e38974644a2ea7f0979c322dbdeee",
+    "interphaise/llm.py": "a54c38a3e9c5bad2b0c7d6a0b0b3318b30e15e3834d2a3ba1c0eac7a3c01892e",
+    "interphaise/benchmark.py": "738347d89fa7f667d2ff89b14a16381d468def991943708e02644e55ba42d7fd"
+  }
+}

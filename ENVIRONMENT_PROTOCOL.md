@@ -129,8 +129,9 @@ time.
 
 - [x] Davide side, recorded by Codex on 21 October 2026: data hashes and scientific
   protocol reviewed; smoke spending approved by Davide’s explicit chat answer.
-- [ ] Adem: verify runner on the frozen copies, record execution code commit and confirm
-  the final smoke protocol before calling the API.
+- [x] Adem, 21 October 2026: runner verified offline on the frozen copies (hashes match, no
+  `--allow-draft`); smoke executed at commit `26beb73` as approved; measured usage and cost
+  in `SYNC_DAVIDE_4.md`.
 - [ ] Davide: approve production after the measured smoke cost report.
 
 ## Public-price cross-check and account billing
