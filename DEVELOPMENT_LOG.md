@@ -2037,3 +2037,66 @@ needs pushing. The first staged whitespace check caught Matplotlib's SVG
 path-line trailing spaces. Normalized them and updated the figure generator
 to do the same on future exports; the SVG parses successfully and its plotted
 content is unchanged. Recheck the staged diff and credentials before commit.
+
+## 2026-10-21 — LLZO chemistry caveat and selection concentration audited
+
+**Branch:** `davide`, parent `ad6b471`. Purpose: assess Adem's proposed
+explanation of random's LLZO advantage, annotate possible practical-chemistry
+blind spots without changing the frozen objective or retrospectively replacing
+the primary outcome. Read the frozen table/evaluator and the same isolated
+production snapshot at `06a4271` used in the preceding review.
+
+**Findings:** the 17 acceptable structure IDs represent ten formulas. Five IDs
+belong to an explicitly named oxyhalogen review set: three LiIO3 polymorphs,
+LiClO4 and Li5IO6. Manufacturer sources directly classify the first two
+formulas as oxidisers; the Li5IO6 identity is orthoperiodate, supported by a
+primary paper, but its compound-specific GHS classification was not verified.
+Do not describe all five as established unusable coatings, or the remaining
+twelve IDs as safe/validated. Sources and evidence levels are in SYNC_ADEM_10.
+
+Random has eleven flagged acceptable picks among 33; six of its 24 successful
+runs find only flagged compounds. Eighteen also find an unflagged acceptable
+candidate, versus iterative's twelve. This is a descriptive partition of
+unchanged original trajectories, not a new primary endpoint, filtered-pool
+rerun or inferential test. Ten of iterative's twelve successful runs first
+succeed at queries 8–10; 28/29 acceptable picks are in the last five queries,
+and 26/29 are LiAlSiO4 polymorphs. The concentration explains why similar
+pick-level hit rates do not imply similar run-level success. A limited keyword
+check of proposal hypotheses/motivations supplies no evidence of explicit
+oxidiser avoidance; no model intent is inferred from that absence.
+
+**Evaluator correction:** it includes self-decomposition and oxygen phases;
+LiClO4's frozen LLZO contact products include O2. Low additional reaction
+penalty does not mean zero absolute reaction or an intact gas-free stack.
+For the diagnostic LiClO4 -> LiCl + 2 O2 reaction, the pinned coating and
+lowest cached corrected product entries give +1.77425 eV/formula. Li is
+conserved, so mu_Li cancels. This diagnostic rejects the explanation that 4 V
+alone prevents this reaction; it does not establish which energy/reference
+or finite-temperature approximation is responsible for practical discrepancy.
+Practical thermal stability, processing, safety and transport remain outside
+the proxy. The original random 24/30 versus iterative 12/30 result stands.
+
+**Files and verification:** added `scripts/audit_llzo_chemistry.py` and its
+output `data/reviews/llzo_chemistry_audit_20261021.json`, including source
+hashes, evidence levels, per-run counts, first-hit positions, formulas and
+diagnostic entry energies. The script verifies the frozen benchmark/dataset
+digests and all 150 LLZO run-file hashes. The first diagnostic implementation
+compared normalized numeric IDs against an unnormalized alpha ID; fixed that
+comparison before the successful run. Independently recounted all 150 runs
+with a separate direct loop and verified late-hit counts, formula concentration
+and reaction arithmetic. Python compilation and diff whitespace checks pass.
+No production code changed, so no full simulation/unit suite was repeated.
+
+Reproduce from the repository root with:
+` .venv/bin/python scripts/audit_llzo_chemistry.py --experiment /path/to/environment_v1/llzo --output data/reviews/llzo_chemistry_audit_20261021.json `.
+The actual archive used was the tracked snapshot under
+`/private/tmp/interphaise-env-06a4271.xfaTv5/data/experiments/environment_v1/llzo`.
+
+Updated REPORT.md and presentation README; SYNC_ADEM_10.md supplies the
+standalone handoff and slide text. No deck, frozen input, experiment outcome,
+Holm family or primary figure was modified. No live LLM/MLIP call, credential
+use, cluster job or external message occurred. Next: incorporate the qualified
+interpretation in the slides and complete the joint integration review.
+Prepare this bounded audit for publication under Davide's standing request
+to push what Adem needs, after configured-credential and whitespace checks;
+the actual commit/push outcome will be reported in chat.
