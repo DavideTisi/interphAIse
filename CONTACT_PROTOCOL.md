@@ -509,3 +509,56 @@ cell, composition and mask, keeping each run's own references. Seeds: compare bo
 the same fractional registry, report every geometry difference, and do not rank seeds by
 total energy. 0.1 J/m² is the reporting tolerance, not a trigger for more settings.
 Failures and exhausted runs are kept and reported.
+
+### Batch 1 results
+
+Code `279e2b1`, checkpoint `3f52e97c…`. Jobs 11013920–11013924 on s001 (`sm3090el9_devel`,
+1 RTX 3090, 4 CPUs each), all COMPLETED in 2:43–2:57. Both the relaxations and the
+rigid-fragment separation ran on CUDA. All 15 relaxations converged on free atoms, with no
+overlap violations; the accounting reconciles. The off-grid registries added exactly one
+scan point each (13 instead of 12). Cost: 1,216 calculator calls plus 10 separation single
+points; runner wall time 61–85 s per run.
+
+**Device check.** GPU seed-0 electrolyte reference: W_adh 1.6334 / W_sep 2.9672, against
+1.6329 / 2.9669 J/m² from local CPU. GPU cathode reference: 3.6004 / 5.1277, against
+3.6001 / 5.1275. Differences ≤ 5×10⁻⁴ J/m².
+
+**Cathode registries** (same 696-atom cell, composition and 104-atom mask; all on GPU):
+
+| Registry | Unrelaxed rank (6 × 6 grid) | Relaxed joined energy vs (0,0) | W_adh | W_sep | Film / sub relaxation |
+|---|---|---:|---:|---:|---|
+| (0,0) | lowest | 0 | 3.6004 | 5.1277 | 1.441 / 0.086 |
+| (1/6,0) | +0.0031 J/m² | +0.0186 eV | 3.5970 | 5.0908 | 1.409 / 0.085 |
+| **(1/3,1/3)** | highest (+0.0081 J/m²) | **−0.0927 eV (−0.0167 J/m²)** | **3.6171** | **5.1676** | 1.443 / 0.107 |
+
+The separated references agree within 2×10⁻⁴ eV (in-plane translations). The relaxed order
+inverts the unrelaxed one: the highest-ranked unrelaxed registry relaxes to the lowest
+joined energy. **By the declared rule, (1/3,1/3) becomes the working cathode registry.**
+Across the three relaxed registries, W_adh spans 3.597–3.617 and W_sep 5.091–5.168 J/m²,
+both within 0.1 J/m². Three distinct relaxed registries out of nine classes is a coarse
+check, not a registry search.
+
+**Seed sensitivity** (both on GPU, same mapped Cl cut, 4 + 4 layers, depth 3.2576 Å,
+fractional registry (0,0)):
+
+| Bulk reference | Area Å² | Strain | Fixed atoms | W_adh | W_sep | Film / sub relaxation |
+|---|---:|---:|---:|---:|---:|---|
+| Seed 0 | 170.708 | 3.006 % | 38 | 1.6334 | 2.9672 | 0.616 / 0.717 |
+| Seed 4 | 172.926 | 2.864 % | 36 | **1.5120** | **2.8054** | 0.595 / 0.699 |
+
+Seed 4 is lower by **0.121 (W_adh) and 0.162 (W_sep) J/m², which exceeds the 0.1 J/m²
+reporting tolerance.** It is a combined sensitivity: bulk Li/Cl arrangement, strain, area,
+supercell basis and fixed count all differ. The fractional registry (0,0) is not
+guaranteed to be the same physical alignment in the two bases. Seed 4's unrelaxed scan
+preferred (0,0.5), and its registry was not explored, by design. Total energies of the two
+seeds are not compared.
+
+**Working values after batch 1** (provisional; formally polar contacts):
+- Cathode, registry (1/3,1/3): **W_adh 3.62, W_sep 5.17 J/m²**; registry range 3.60–3.62 /
+  5.09–5.17.
+- Electrolyte, seed 0, registry (0,0): **W_adh 1.63, W_sep 2.97 J/m²**; registry range of
+  W_sep 2.97–3.06. **Bulk-reference (seed) sensitivity is about 0.12 (W_adh) and 0.16 (W_sep)
+  J/m²**, which is now the largest documented uncertainty on the electrolyte side.
+
+Evidence: `data/petmad/niflheim_batch1/` (results, records, scans, separation, structures,
+FIRE logs, filtered job logs, `sacct`).

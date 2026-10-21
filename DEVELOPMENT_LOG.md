@@ -1836,3 +1836,22 @@ GPU job 11013629 (RTX 3090, `sm3090el9_devel`): W_adh 3.479507 J/m², 37 s. CPU 
 138 s. Step counts and the 144 calls are identical. Package pins and checkpoint hash are
 confirmed on the cluster. Details and environment: NIFLHEIM.md; evidence:
 `data/petmad/niflheim_smoke_v1/`. Next: seed-4 electrolyte (880 atoms) on GPU.
+
+## 2026-10-21 — Niflheim batch 1: distinct cathode registries and seed 4
+
+Pushed `97cf4af`, `ea02e86` and `dc62dfe`. Committed the review's runner fix (off-grid
+`--registry` points are evaluated and selected; `fixed_geometry_separation.py --device`) as
+`72353cd`; 144 tests passed. Built the seed-4 4 + 4 electrolyte (framework signature
+identical to seed 0; 36 fixed atoms vs 38; different supercell basis) and declared the batch
+in `279e2b1`. A first submission failed at SSH connect: both login nodes timed out
+(fail2ban-like); nothing reached the cluster. After the user reported access restored, all
+commands went through one shared ControlMaster connection.
+
+Jobs 11013920–11013924 (RTX 3090, code `279e2b1`): all converged; GPU matches CPU references
+to ≤ 5×10⁻⁴ J/m². Cathode registries (0,0) / (1/6,0) / (1/3,1/3): W_adh 3.6004 / 3.5970 /
+3.6171, W_sep 5.1277 / 5.0908 / 5.1676 J/m². The lowest relaxed joined energy is (1/3,1/3)
+(−0.093 eV), which was highest unrelaxed; it becomes the working cathode registry
+(3.62 / 5.17). Seed 4 vs seed 0 (electrolyte, registry (0,0)): W_adh 1.5120 vs 1.6334, W_sep
+2.8054 vs 2.9672 J/m². This combined bulk/strain/basis sensitivity of 0.12 / 0.16 J/m²
+exceeds the 0.1 tolerance and is reported, not extended. Cost: 1,216 calls plus 10 single
+points. Evidence: `data/petmad/niflheim_batch1/`; details in CONTACT_PROTOCOL.md.
