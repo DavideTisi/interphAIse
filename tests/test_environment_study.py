@@ -5,7 +5,7 @@ import pytest
 
 from interphaise.benchmark import BenchmarkQueries
 from interphaise.discovery import PROMPT_VERSION, run_discovery
-from scripts.analyse_environment_study import analyse, holm, mcnemar
+from scripts.analyse_environment_study import PRODUCTION, analyse, check_production, holm, mcnemar
 
 ROOT = Path(__file__).resolve().parents[1]
 POOL, BENCH = ROOT / "data/pools/mp_candidates_v2.json", ROOT / "data/benchmarks/coating_v3.json"
@@ -58,3 +58,29 @@ def test_end_to_end_on_frozen_table(tmp_path):
     assert (t["left_only"], t["right_only"], t["difference"]) == (2, 0, 1.0)
     assert out["holm_family_size"] == 2 and "p_holm" in t
     assert out["aggregate_equal_weight_difference"]["iterative-sequential"] == 1.0
+
+    assert it["best_bin_wilson95"][0] <= it["best_bin_rate"] <= it["best_bin_wilson95"][1]
+    assert seq["first_acceptable_counts"]["4"] == 2 and seq["first_acceptable_quartiles"] == [4, 4, 4]
+    run = it["per_run"][0]
+    assert run["fluoride_early"] == [1, 1] and run["accepted"] and run["first_acceptable"] == 1
+    assert out["environments"]["Li6PS5Cl"]["arms"]["iterative"]["fluoride_change_runs"] <= 2
+    assert check_production(out)                  # 3 arms, budget 3, one environment: not final
+
+
+def complete_study():
+    arm = dict(seeds=PRODUCTION["seeds"])
+    return dict(environments={env: dict(hashes={"benchmark_sha256": h}, budget=10,
+                                        arms={a: dict(arm) for a in PRODUCTION["arms"]})
+                              for env, h in PRODUCTION["hashes"].items()}, holm_family_size=6)
+
+
+def test_production_check_requires_the_complete_frozen_study():
+    out = complete_study()
+    assert check_production(out) == []
+    out["environments"]["Li3InCl6"]["arms"]["shuffled"]["seeds"] = list(range(200, 229))
+    assert any("seeds" in p for p in check_production(out))
+    out = complete_study(); del out["environments"]["Li7La3Zr2O12"]; out["holm_family_size"] = 4
+    problems = check_production(out)
+    assert any("environments" in p for p in problems) and any("Holm" in p for p in problems)
+    out = complete_study(); out["environments"]["Li6PS5Cl"]["hashes"]["benchmark_sha256"] = "x"
+    assert any("frozen" in p for p in check_production(out))

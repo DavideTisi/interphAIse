@@ -1,0 +1,95 @@
+{
+  "replayed_queries": 1500,
+  "arms": {
+    "iterative": {
+      "runs": 30,
+      "successes": 12,
+      "rate": 0.4,
+      "wilson_95": [
+        0.24590394326083403,
+        0.5767994750172616
+      ],
+      "failed_runs": 0,
+      "failed_queries": 0,
+      "proposal_attempts": 300
+    },
+    "random": {
+      "runs": 30,
+      "successes": 24,
+      "rate": 0.8,
+      "wilson_95": [
+        0.6269395261897256,
+        0.9049502189759876
+      ],
+      "failed_runs": 0,
+      "failed_queries": 6,
+      "proposal_attempts": 0
+    },
+    "sequential": {
+      "runs": 30,
+      "successes": 0,
+      "rate": 0.0,
+      "wilson_95": [
+        -1.3877787807814457e-17,
+        0.113517091390478
+      ],
+      "failed_runs": 0,
+      "failed_queries": 2,
+      "proposal_attempts": 300
+    },
+    "shuffled": {
+      "runs": 30,
+      "successes": 4,
+      "rate": 0.13333333333333333,
+      "wilson_95": [
+        0.05309569424218104,
+        0.2968168394441695
+      ],
+      "failed_runs": 0,
+      "failed_queries": 3,
+      "proposal_attempts": 301
+    },
+    "upfront": {
+      "runs": 30,
+      "successes": 1,
+      "rate": 0.03333333333333333,
+      "wilson_95": [
+        0.0059084379948573795,
+        0.16670751396958874
+      ],
+      "failed_runs": 0,
+      "failed_queries": 3,
+      "proposal_attempts": 33
+    }
+  },
+  "paired_acceptance": {
+    "iterative_vs_sequential": {
+      "both": 0,
+      "left_only": 12,
+      "right_only": 0,
+      "neither": 18,
+      "difference_in_success_rate": 0.4,
+      "exact_two_sided_mcnemar_p": 0.00048828125,
+      "n_pairs": 30
+    },
+    "iterative_vs_upfront": {
+      "both": 1,
+      "left_only": 11,
+      "right_only": 0,
+      "neither": 18,
+      "difference_in_success_rate": 0.36666666666666664,
+      "exact_two_sided_mcnemar_p": 0.0009765625,
+      "n_pairs": 30
+    },
+    "iterative_vs_random": {
+      "both": 10,
+      "left_only": 2,
+      "right_only": 14,
+      "neither": 4,
+      "difference_in_success_rate": -0.4,
+      "exact_two_sided_mcnemar_p": 0.004180908203125,
+      "n_pairs": 30
+    }
+  },
+  "note": "Paired tests are supplementary; the frozen primary outcome is acceptable found by budget 10."
+}

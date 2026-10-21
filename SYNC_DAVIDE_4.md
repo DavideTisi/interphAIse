@@ -76,7 +76,7 @@ Output per call uses v3's values, which are higher than the smoke batch's (~750)
 |---|---|---|---|
 | **Expected** | 24.3M | 2.50M | **≈ 3.70** |
 | **Conservative:** input +20% (longer rationales in the history), +10% calls for retries, output +50% | 32.0M | 4.13M | **≈ 5.30** |
-| **Hard ceiling:** conservative input, and every call (+10% retries) hitting the 4,096-token output cap | 32.0M | 12.6M | **≈ 9.50** |
+| **High-output scenario** (not an enforced ceiling; corrected per SYNC_ADEM_8): conservative input, and every call (+10% retries) hitting the 4,096-token output cap | 32.0M | 12.6M | **≈ 9.50** |
 
 Other numbers:
 - **Retry rates:** 1 in 931 calls (0.1%) in the v3 production batches, 1 in 31 in this smoke.
