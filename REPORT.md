@@ -1,5 +1,13 @@
 # interphAIse — project report
 
+**PET-MAD pilot completed — 2026-10-21:** LiCoO2(001) | LiNbF6(101), 224 atoms:
+registry scan and joined/separated slab relaxations completed with movable-atom
+forces below 0.05 eV/Å. The provisional constrained adhesion estimate is 2.1003 J/m²
+(236 calculator executions; 98.9 s CPU calculation time). Polar slabs and large
+reaction forces on fixed atoms prevent interpreting this as a validated adhesion
+prediction. It is one contact, not a full coating score. See
+[PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md). The suite now has 86 passing tests.
+
 **Latest checkpoint — 2026-10-21:** The 50-candidate thermodynamic benchmark is now
 computed and **objective v3.0 is frozen**, following the user's choice of additional
 contact reactivity plus coating self-stability and insulation. V2 produced 41 tied

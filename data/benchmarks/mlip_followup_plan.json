@@ -1,5 +1,5 @@
 {
-  "status": "planned-not-run",
+  "status": "one_contact_pilot_completed_shortlist_not_run",
   "benchmark_sha256": "d2718c20f0ca8c3cc25d2378011bc68736ad71a502d657312bfff1da15a4ecfa",
   "selection_seed": 2026,
   "candidates": [
@@ -31,5 +31,13 @@
     "Record termination, convergence, force calls, relaxation count and wall time per candidate.",
     "Do not mix MLIP total energies into the Materials Project phase diagrams.",
     "A failed or unconverged calculation is not a valid adhesion measurement."
+  ],
+  "completed_pilots": [
+    {
+      "candidate_id": "mp-aaacjjwh",
+      "contact": "LiCoO2(001) | LiNbF6(101)",
+      "artifact": "data/petmad/linbf6_cathode_pilot_v1/result.json",
+      "scope": "constrained polar-slab pilot only; not a two-contact coating score"
+    }
   ]
 }

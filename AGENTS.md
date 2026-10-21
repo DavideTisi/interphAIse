@@ -19,3 +19,10 @@
 - Preserve earlier log entries; append a new dated checkpoint. Correct earlier mistakes explicitly instead of silently rewriting the history.
 - Keep `REPORT.md` aligned when project status or scientific conclusions change. Link detailed handoff documents rather than duplicating them. Documentation-only edits need a consistency/diff check, not an unnecessary full test run.
 - At the start of substantive work, read the latest log entry and the relevant handoff documents alongside these instructions.
+
+# Niflheim compute access
+
+- The user authorizes heavier interphAIse calculations on Niflheim via `ssh fjorm`, working under `/home/scratch12/davti/OSI_Hackathon`.
+- Use Slurm allocations for heavy calculations; use the login host for inspection, transfers and job submission. Keep this project's files/jobs separate from unrelated work.
+- Consult `NIFLHEIM.md` for verified access and setup status. Do not assume a PET-MAD environment or GPU allocation is already configured.
+- Transfer explicit project inputs and code. Keep `.env` and API credentials local; offline MLIP jobs do not need them. Record the source commit, checkpoint hash, Slurm job ID, resource request, convergence and compute usage in the report.

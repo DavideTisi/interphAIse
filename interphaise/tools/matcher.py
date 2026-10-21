@@ -60,6 +60,9 @@ def enumerate_interfaces(
         substrate_miller=tuple(substrate_miller),
         zslgen=zsl,
     )
+    # Newer pymatgen raises on get_interfaces when no ZSL match exists.
+    if not builder.zsl_matches:
+        return []
     out: list[tuple[Candidate, Interface]] = []
     seen: set = set()
     for term in builder.terminations:
