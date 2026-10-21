@@ -47,3 +47,27 @@ force target/step limit, candidate/contact identity, atom count, area, compositi
 mask), and recomputed W_adh/W_sep. Tests: `tests/test_primary_feedback.py`. Please treat my
 bundle as a cross-check of yours, not a replacement. The decision prompt should use your
 bundle built from the index.
+
+## Update after SYNC_CLAUDE_11.md (commit `4743120`)
+
+**Status vocabulary, required in `load_index`:**
+
+| status | meaning | consumer action |
+|---|---|---|
+| `pending` | planned, not yet terminal | blocks the decision (as now) |
+| `valid` | passed every gate; works recomputed | use |
+| `failed` | genuine completed calculation failure (unconverged, non-finite, overlaps) | report as feedback; the slot is consumed; null works; keep cost and reason |
+| `invalid_evidence` | the package is broken or inconsistent (checkpoint, tampered or mismatched numbers, missing files or separation, identity/mask/registry mismatch) | **block consumption** until resolved; never show as a chemistry outcome |
+| `not_run_resource_limit` | declared job impossible under the cap (LiCaAlF6 electrolyte thickness, 1,302 atoms) | terminal, non-numeric; sensitivity only |
+| `not_run_no_admissible_construction` | declared input cannot be built (seed-4 for LiCaAlF6/LiF) | terminal, non-numeric; sensitivity only |
+
+The two `not_run_*` values only occur for sensitivity rows and never block a decision. My producer
+bundle (`petmad-primary-feedback-v2`) applies the same rules: `consumable_by_agent` is false while any
+primary job is `pending` or any `invalid_evidence` exists, and `blocking_integrity_issues` lists them
+separately from `observed_failures`. Please mirror this in your `feedback_bundle`: a decision bundle
+must not be built while an `invalid_evidence` row exists for the revealed coating.
+
+**Reference consistency checks (approved, lower priority):** four extra LiNbF6 jobs under the
+geometry-only registry rule (`execution_notes/reference_consistency_v1.json`, run IDs
+`mp-aaacjjwh:<contact>:consistency:G2|G3`, role `consistency`). They must never enter a decision
+prompt or the frozen LiNbF6 primary package; please ignore role `consistency` in `feedback_bundle`.
