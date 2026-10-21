@@ -1,5 +1,7 @@
 # Core (deterministic stages run with these alone)
-pymatgen>=2025.1.1
+# Reproduce the validated matcher/termination behavior (see ENVIRONMENT_FREEZE_REVIEW.md).
+pymatgen==2026.9.24
+pymatgen-core==2026.10.16
 ase>=3.23
 numpy
 pydantic>=2

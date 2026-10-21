@@ -117,6 +117,12 @@ for each adjacent pair in the stack:
 
 ## Quick start
 
+The reproducibility versions are `pymatgen==2026.9.24` and
+`pymatgen-core==2026.10.16`, pinned in both dependency files. Install in a clean
+environment when comparing machines; the older 2026.4.16 environment has reported
+interface-matching test failures. These pins reproduce our tested setup, without
+asserting a diagnosed upstream defect. See [ENVIRONMENT_FREEZE_REVIEW.md](ENVIRONMENT_FREEZE_REVIEW.md).
+
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,llm,upet]"    # includes the selected PET-MAD backend
