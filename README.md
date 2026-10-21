@@ -19,7 +19,9 @@ battery endpoints, relaxed bulk references and archived interfaces. Compare
 initial/relaxed and thickness cases, with search, filters, cell replication,
 fixed-atom colouring and geometry/image exports. Share the generated HTML file
 itself with a collaborator; it works offline. See [VIEWER_UPDATE.md](VIEWER_UPDATE.md)
-for the current 278-geometry catalogue and reproducibility checks.
+for the current 339-geometry catalogue, selected cathode registry, seed-4
+comparison and reproducibility checks. Use **Evidence comparison** to inspect
+paired archived runs and their scientific limitations.
 
 **PET-MAD pilot:** A real 224-atom interface and its separated slab references have
 been relaxed. See [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md) for the

@@ -2208,3 +2208,349 @@ folder; validator passed; not rendered or visually checked: no LibreOffice, and 
 blocked). Selected traces by a fixed rule: sulfide iterative seed 202, LLZO iterative seed 207.
 Full suite: 154 passed, 4 failed (pre-existing pymatgen/matcher failures in the `agents` env).
 No paid runs; archive unchanged. Details: SYNC_DAVIDE_7.md.
+## 2026-10-21 — Viewer updated to the reviewed Niflheim results
+
+**Branch:** `davide`, parent `fa10a1a`. User requested the remaining structure
+viewer update. Read AGENTS.md, latest review/log and the viewer implementation,
+tests and archived result schemas. The working tree was clean at the start.
+
+**Changes:** current-contact shortcuts now select the 696-atom cathode at
+registry (1/3,1/3) and the 880-atom GPU seed-0 electrolyte. Retained earlier
+references as explicitly labelled fallbacks for partial checkouts. Added four
+named evidence comparisons, including the completed seed-4 electrolyte and
+distinct cathode registries. Differences are computed from each exact pair
+of valid archived relaxed results; a missing member removes that comparison.
+Run titles distinguish starting registry and device. Captions expose area,
+starting gap and recorded frozen depth. Seed-4's different fixed count and
+area are preserved. Updated coverage/limitations to describe the completed
+final-geometry checks, unquantified polarity and combined seed/construction
+sensitivity. No scientific archive or benchmark outcome changed.
+
+The catalogue now contains 339 geometries: 141 candidate IDs, four endpoints,
+40 bulk references and 154 interface/slab states (35 calculated runs and
+14 build-only inputs). These represent two contact chemistries. Automatic
+discovery already found the newer files; this update corrects the featured
+selections, labels, interpretation and navigation. Thickness comparison now
+uses explicit constraint fields instead of parsing a display label, so the
+new registry/device text cannot change which thicknesses it pairs.
+
+**Files:** updated `scripts/build_structure_viewer.py`,
+`scripts/viewer/template.html`, `tests/test_structure_viewer.py`,
+VIEWER_UPDATE.md, README.md, REPORT.md and WORK_DIVISION.md. Rebuilt
+`runs/structure_viewer.html` (23.3 MB, ignored). The file remains self-contained
+with no external libraries, network requests or credentials. The existing
+localhost server is reused; collaborators can regenerate from committed code
+or open the shared HTML directly. No new simulation or live API call occurred.
+
+**Verification:** `.venv/bin/python -m pytest tests/test_structure_viewer.py -q`
+passes all twelve tests, including round trips for every exported geometry,
+cell, atom label and fixed mask; exact selected energies; seed arithmetic;
+and absent-archive comparisons. ASE/NumPy deprecation warnings persist.
+Rebuilt using `.venv/bin/python scripts/build_structure_viewer.py` with no
+catalogue warnings. Browser checks confirmed the selected contacts, seed and
+cathode comparisons, initial/relaxed energy separation, thickness pairing,
+LLZO empty-interface state and four separately identified LiAlSiO4 polymorphs.
+Browser error/warning logs were empty. Downloaded the selected cathode via
+Save XYZ and independently verified its archived coordinates, cell/species,
+696 atoms and 104 fixed atoms. An exact-label browser locator did not resolve;
+the observed combobox role locator worked. The download tool returned slowly
+but the downloaded file is correct. No browser permission or scientific
+workflow settings were changed.
+
+Visually checked the existing narrow in-app-browser layout. Saved full-page
+and cathode-panel previews as ignored files under `runs/`. No desktop viewport
+override or full project suite was run. Whitespace checks pass. Complete the
+configured-credential scan before committing/pushing the explicit viewer/docs
+file list under the standing request to share work with Adem; report the actual
+publication outcome in chat. No external message was sent.
+
+**Remaining:** presentation update and joint branch integration/release review.
+The viewer is ready for the offline demo; both interfaces remain provisional,
+and no chloride/LLZO atomistic interface is claimed. The earlier viewer-pending
+entries are historical checkpoints, superseded by this one.
+
+## 2026-10-21 — Compared achieved results with the original project goals
+
+**Branch:** `davide`, parent `ee4a264`. User asked what the results mean relative
+to yesterday's initial ideas. Re-read the 20 October discovery agreement and
+implementation plan, original 50-candidate results, production review and
+current physics/LLZO audits. Checked the frozen sulfide criterion and accepted
+IDs directly against the benchmark JSON. No new analysis test or scientific
+calculation was required.
+
+Saved `GOALS_AND_RESULTS.md` and linked it from REPORT.md. The synthesis states
+the main feedback result and environment heterogeneity, distinguishes
+acceptability from best-bin search, and separates the LLM's candidate-choice
+role from team-designed modelling decisions. It explicitly identifies the
+unfinished 3–5-coating MLIP comparison: existing physical work covers LiNbF6
+at two contacts, not a cross-coating validation or MLIP-driven search loop.
+No human-expert superiority, new material discovery, experimentally validated
+coating or real compute-saving claim is supported. The HELLMM comparison uses
+Davide's described mechanism-proposal analogy, not a new paper audit.
+
+Verification is a documentation consistency/whitespace check against the
+archived counts and reviews; the project tests were not rerun for this prose
+change. Frozen criteria, source data, experiment archives and presentation are
+unchanged. No live LLM/MP/MLIP call, cluster job or external message occurred.
+Remaining work is still final slides and joint integration/release review.
+
+## 2026-10-21 — Assessed the proposed common-protocol MLIP comparison
+
+**Branch:** `davide`, source `8975d4b`. Davide asked whether the planned
+3–5-coating comparison is feasible, worthwhile and how long it would take.
+Re-read the original shortlist, current contact protocol, bulk references and
+archived Niflheim timing/accounting. No production run was requested or
+launched during this assessment.
+
+Ran offline geometry checks with the existing pinned scientific environment:
+12 coating facets returned by the existing low-index helper against both
+endpoint facets, plus bounded explicit-termination samples at (001) and for
+LiCaAlF6(100). Used the existing relaxed reference structures, 300 Å² area cap,
+0.05/0.03 length/angle tolerances, 0.06 validation strain cap and 1,200 atoms.
+Detailed geometry samples use two layers per slab and eight unique candidates
+per termination at most; these are not physically thickness-matched inputs.
+Preserved the selected substrate cuts before enumeration caps.
+
+LiCaAlF6(100) has sampled neutral, stoichiometric basic-gate-passing cells for
+both contacts, but the cuts expose undercoordinated Al and need surface review.
+LiCaAlF6(001) has no electrolyte lattice match. LiZr2(PO4)3 has no electrolyte
+match among the tested low-index facets; its sampled (001) cathode cells exceed
+the atom cap. These are bounded construction findings, not proof that a coating
+is physically unsuitable or cannot be modelled under another protocol.
+
+Saved the raw audit with input hashes, source commit, package versions and
+truncation metadata in
+`data/reviews/mlip_shortlist_feasibility_20261021.json`. Saved the recommendation,
+selection provenance, proposed geometry gate, job budget, implementation stages
+and limitations in `MLIP_COMPARISON_PLAN.md`; linked it from REPORT.md. The
+existing random-comparator ID duplicates LiCaAlF6, so the original plan has
+three distinct coatings. Proposed estimates are conditional: approximately
+2–6 GPU-hours and 1–2 working days for three coatings, excluding queue delay,
+with 36 full jobs before reuse of compatible existing references. These are
+planning ranges based on measured roughly three-minute GPU jobs, not new
+timing measurements or a promise of complete convergence.
+
+**Verification:** all offline scripts completed. JSON checks confirm 12 facet
+records, four (001) contact probes, zero tested phosphate/electrolyte lattice
+matches, and basic-gate/stoichiometry passes on each LiCaAlF6(100) contact.
+Checked the shortlist penalties directly against the frozen sulfide table and
+the five cluster elapsed times against archived `sacct.txt`. No project code
+was changed and the test suite was not rerun. Whitespace/document consistency
+checks are sufficient for these assessment files. No potential was loaded,
+no API/LLM/MLIP call or SSH/job submission occurred, and no message was sent
+to Adem or Claude. These assessment files are local and not committed/pushed.
+
+**Next:** review the new surfaces, bound any matching extension, retain failed
+builds and freeze a three-coating manifest before interface energies. Any
+fallback comparator must be declared explicitly; no changes to the frozen
+agent experiments or retrospective MLIP-based re-ranking are proposed.
+
+## 2026-10-21 — Reviewed Adem and Claude's code/evidence and divided next work
+
+**Branch:** `davide`, source `8975d4b`; fetched Adem's latest
+`work/agent-experiments:b8b1392` (previously `06a4271`). Davide requested a
+code/science review and a division of work between Davide, Adem and Claude.
+Preserved the existing uncommitted comparison plan and all scientific inputs.
+Reviewed an isolated archive of Adem's committed branch, plus the current
+PET-MAD workflow, saved results and relevant earlier reviews.
+
+**Evidence verification:** all 450 production states reproduce using archived
+parsed responses/exceptions, with 4,500 charged outcomes and 2,800 matching
+proposal attempts/prompts, including the two recorded JSON failures. Current
+production analysis reproduces acceptance counts and the six Holm contrasts.
+The production archive and core experiment/analysis code have not changed
+since `06a4271`. This is archive replay, not stochastic or HTTP-transport replay.
+Checked adhesion arithmetic in 37 PET-MAD result packages and saved forces,
+masks and energies for 105 relaxations in 35 complete archives; no numerical
+inconsistency was found. Six final files are absent from the two compact
+Niflheim smoke packages. All result and separation checkpoint hashes inspected
+match, including the bulk multistart reference hash.
+
+**Findings reproduced without live calls:** legacy `energetics.relax` returns
+an energy after zero-step exhaustion while `relax_record` correctly rejects
+the same harmonic fixture; the separation script accepts a wrong checkpoint
+hash with a fake calculator; a copied production dataset with an altered
+outcome/temperature still passes the standalone production-analysis guard;
+mocked HTTP 429 then success produces two transport attempts but records no
+retry count. Real archives were never altered. These are open implementation
+tasks and do not overturn the verified results. Scientific wording should
+retain polar-model and seed/construction limitations, the corrected LLZO audit,
+and the distinction between independently relaxed references and an actual
+post-separation relaxation path.
+
+**Tests/integration:** complete offline suites pass 145 tests on davide (18.94 s),
+158 on Adem's snapshot (19.00 s), and 159 on an isolated combined-tree export
+(19.90 s). Existing ASE/NumPy/spglib deprecation warnings remain. A Git merge
+preview generated tree `36caa2a072a4429dd22e04739e0bd0aba8f7bfb4` with one
+conflict, DEVELOPMENT_LOG.md. The exported code tests pass, but the documentation
+conflict is unresolved. Neither branch nor the checkout was merged; uncommitted
+planning/review files are outside that committed-tree preview.
+
+Saved `JOINT_REVIEW_AND_HANDOFF.md` and
+`data/reviews/joint_code_review_20261021.json`; updated WORK_DIVISION.md and
+REPORT.md. Adem owns analysis/configuration validation, HTTP accounting and
+environment slides. Claude owns convergence/checkpoint safeguards and the
+bounded geometry gate for the optional MLIP extension. Davide/Codex owns
+scientific decisions, independent review and integration, and consolidates
+shared status files. Findings remain unfixed so each owner has a concrete task.
+
+No new API/LLM/MLIP calculation, SSH/Slurm action, external message, actual
+branch merge, commit or push occurred. Fetch and Git merge-preview object
+creation were the only Git operations beyond reading. Review/plan files remain
+local. Next: share the assignments, implement scoped fixes with failure tests,
+review/integrate while preserving both histories, and freeze any new coating
+manifest before further interface energies. Do not rerun the completed LLM
+cohort or alter its frozen criterion. Final whitespace/document consistency
+checks apply to the saved review files.
+
+## 2026-10-21 — Three-coating campaign assigned through completion
+
+Davide clarified that expanding to three coatings is the next deliverable and
+asked for directions to Claude and Adem including code polishing. Wrote
+`SYNC_CLAUDE_8.md` and `SYNC_ADEM_11.md`; updated `MLIP_COMPARISON_PLAN.md`,
+`WORK_DIVISION.md`, `JOINT_REVIEW_AND_HANDOFF.md` and the top of `REPORT.md`.
+This supersedes the preceding assignment's optional-extension wording.
+
+Claude's assignment now covers F1/F2 safeguards, construction, a committed
+manifest, bounded calculations and archived outcomes. Adem owns F3/F4 fixes
+and a manifest-driven MLIP reader/validator, comparison table, figure and slide
+integration; he can build against existing fixtures while geometries are
+prepared. Davide/Codex retains scientific scope, independent review, shared
+status documents, viewer and integration. No implementation fixes are claimed.
+
+The starting cohort remains LiNbF6, LiCaAlF6 and LiZr2(PO4)3. Declared a bounded
+300-to-600 Å² matching extension with the existing strain tolerances and
+1,200-atom cap, physical-thickness/constraint rules, and protected PS4/PO4
+groups. Exposed metal coordination is a recorded surface choice. If an
+original new member fails construction/bulk-reference gates, retain that
+failure and try LiF `mp-aaaaabru`, then LiTaF6 `mp-aaacjmqp`, before interface
+energies. These fallback IDs and their frozen sulfide acceptance status were
+checked against the expanded table; their interface feasibility is unverified.
+At most five formulas enter construction and three are frozen for the energy
+campaign. Poor adhesion or later relaxation failure cannot trigger replacement.
+
+The calculation allocation is at most 18 registry plus 18 sensitivity jobs
+before compatible archive reuse. The conditional estimate remains 2–6 GPU-hours
+and 1–2 working days, with queue delay additional. A manifest and passing code
+safeguards precede interface energies; routine work inside the declared scope
+needs no additional permission checkpoint. Failure to assemble three admissible
+materials must be reported explicitly rather than marked complete.
+
+This turn changes documentation only. Existing README changes were left alone.
+No paid call, fresh simulation, SSH/Slurm action, branch change, message to a
+collaborator, commit or push occurred. The recipient handoffs are local files
+for sharing. Validation is limited to document consistency, referenced files,
+candidate identities and whitespace; the earlier code review/test results
+remain historical and are not rerun for these prose changes.
+
+## 2026-10-21 — Publish the three-coating handoffs for collaborators
+
+**Branch:** `davide`, starting at `8975d4b`. Davide explicitly requested that
+the handoffs be pushed so Adem can read them. Prepared one scoped publication
+commit containing `SYNC_ADEM_11.md`, `SYNC_CLAUDE_8.md`, their joint review and
+comparison plan, both supporting review JSON files, WORK_DIVISION.md,
+REPORT.md and this log. The unrelated local README submission instructions
+are excluded and preserved.
+
+Refreshed `origin/davide`; it matched the local starting commit with no ahead
+or behind commits. All nine selected files passed credential-value/pattern,
+local-link, JSON and whitespace checks. `.env` remains ignored and untracked.
+This is documentation and saved review evidence only; no code test rerun,
+new API/LLM/MLIP calculation or cluster action is needed. Publish with an
+ordinary push to `origin/davide`, then verify that the remote head equals the
+new local commit. The earlier local-only entries describe their historical
+checkpoints. No message is being sent directly to either collaborator.
+
+Next: Adem follows SYNC_ADEM_11.md for code polishing and comparison analysis;
+Claude follows SYNC_CLAUDE_8.md for safeguards and the bounded three-coating
+campaign. New scientific outputs remain pending.
+
+## 2026-10-21 — Amend the next campaign to use LLM–PET-MAD feedback
+
+**Branch:** `davide`, starting at published handoff commit `174993b`. Davide
+questioned the no-new-paid-LLM instruction and accepted planning a physical
+feedback pilot. Wrote `LLM_PETMAD_PILOT_PLAN.md`, `SYNC_ADEM_12.md` and
+`SYNC_CLAUDE_9.md`. Added supersession notices to the earlier plan, review and
+recipient handoffs; updated current WORK_DIVISION.md and REPORT.md. The earlier
+instructions described a fixed shortlist assessment, which did not itself
+expand the LLM's role.
+
+The new three material slots are the existing LiNbF6 reference plus two
+prospective selections by the LLM, with validated two-contact feedback between
+choices. Claude screens the five named formulas under the existing geometry
+and resource bounds. At least three unmeasured feasible alternatives are
+needed to leave a real choice in both rounds; a smaller pool must be reported
+before live calls. LiF/TaF6 become menu options, not automatic replacements.
+Freeze the menu, objective, per-candidate physical protocol and information
+boundary first; append selection records before each new material's energies.
+
+Declared a thermodynamic-penalty/weakest-contact-adhesion trade-off with the
+original acceptance labels retained, no weighted score, and explicit validity
+and sensitivity flags. The initial shortlist after reference feedback is a
+descriptive comparison of choices. An optional chemistry-only prior snapshot
+has less information and is not a matched baseline. Uncomputed candidates have
+no measured performance; three slots cannot support statistical superiority.
+Failures consume slots and remain visible. No retries until an interesting
+choice, hidden results in prompts or retrospective selection labels.
+
+Adem keeps F3/F4 and the validator/figures and adds a mocked resumable loop;
+Claude keeps F1/F2, builds and the bounded selected-coating calculations;
+Davide/Codex reviews and integrates. Proposed API scope is four scientific
+responses plus at most one smoke if needed, with 10 total HTTP attempts
+including retries. Adem is asked to supply the expected/conservative cost
+before live execution; the old production authorization does not authorize
+another large batch. The 36-full-job physical cap remains, with bulk/menu
+preparation and integration outside the earlier interface-only timing estimate.
+
+This session edits plans only. No new pilot code, API/LLM/MLIP call, cluster
+action or direct collaborator message occurred. README changes remain separate.
+Validation for this publication is document/link consistency, JSON-independent
+scope review, whitespace and credential checks; no project tests are required
+for prose. Publish the amendment with the handoffs under Davide's existing
+authorization to make them available to Adem, then verify the remote commit.
+Next deliverables are the feasible menu, shared feedback contract, mocked
+end-to-end trace and capped cost estimate; the new scientific work is pending.
+
+## 2026-10-21 — Reduce the pilot's critical path and protect submission
+
+**Branch:** `davide`, starting at `953c632`. Davide proposed deadline-focused
+changes and clarified the deadline as Friday 23 October 02:00 CEST. Updated
+LLM_PETMAD_PILOT_PLAN.md, the existing recipient notes SYNC_ADEM_12.md and
+SYNC_CLAUDE_9.md, WORK_DIVISION.md and REPORT.md. No new handoff numbering or
+scientific objective change was needed.
+
+Kept a Thursday 10:00 progress checkpoint, with the adaptive/fixed-comparison
+decision at 12:00, slides/writeup frozen at 20:00 and submission target Friday
+00:30. A fixed fallback uses feasible materials in a declared order within
+existing slot/job caps. It is not an adaptive result. A pilot enters the slides
+only as a completed, reviewed sequence; otherwise describe future work and
+mocked tests only if actually passed. Partial live evidence is still archived.
+
+Moved sensitivity jobs off the decision dependency: complete the bounded
+primary registry attempts at both contacts, validate results/failures and
+freeze/hash that feedback bundle. Thickness, constraints and alternate bulk
+checks keep their planned settings/budget and run later or concurrently, with
+pending/not-run status explicit. Do not use LiNbF6's roughly 0.12 J/m² seed
+effect as an uncertainty bound for another material. Even early completed
+sensitivity numbers stay outside decision prompts under the staged contract;
+integrity failures must still stop dependent work. Later robustness evidence
+qualifies conclusions without rewriting the archived information state.
+
+Added pre-energy numeric W_adh ranges for both contacts and a weak-contact
+forecast. Record range widths, observed values, hits/misses and miss distance;
+no interval widening or calibrated-confidence claims. Tiny contact differences
+or invalid results leave the weak-contact assessment unresolved. Two material
+predictions remain descriptive, not evidence of statistical predictive skill.
+
+F1's full legacy refactor is deferred; explicitly disabling the unsafe route
+with a regression check is the required containment. F2 checkpoint/reference
+validation remains a campaign prerequisite, as do convergence and numerical
+validity gates in the current runner. These are implementation assignments,
+not fixes performed in this session.
+
+This session only updates documentation. No code change, new API/LLM/MLIP run,
+cluster job, direct collaborator message, reminder or submission was performed.
+The unrelated local README edit remains separate. Check document links,
+whitespace, schedule/date consistency and staged credentials, then publish the
+updated handoffs under Davide's existing sharing authorization and verify the
+remote commit. Full code tests are unnecessary for this planning revision.

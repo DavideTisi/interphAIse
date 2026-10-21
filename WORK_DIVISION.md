@@ -1,12 +1,61 @@
-# interphAIse — work division for Davide and Adem
+# interphAIse — work division for Davide, Adem and Claude
 
 OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
-## Current handoff — 21 October
+## Current assignments: LLM-guided three-coating pilot — 21 October
+
+Davide clarified that the LLM should choose new coatings using PET-MAD feedback.
+Use LiNbF6 as the known reference, then let the LLM select two new coatings
+sequentially from a frozen feasible menu. The current scope and scientific
+brief are in [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md). Code polishing
+supports this loop. The physical rules in MLIP_COMPARISON_PLAN.md remain;
+the previous fixed cohort and automatic fallback order are superseded.
+
+Deadline execution: Thursday 22 October 10:00 progress check, 12:00
+adaptive/fixed-comparison decision, 20:00 slide/writeup freeze; target submission
+Friday 23 October 00:30, before the 02:00 CEST deadline supplied by Davide.
+Primary registry feedback advances the loop; declared sensitivities can follow
+or run in parallel, with their absence explicit. Require numeric W_adh forecasts
+and preserve each decision-time feedback snapshot. LiNbF6 sensitivity is context
+only. See the pilot plan for the exact fallback and validation rules.
+
+The review of `davide:8975d4b` and Adem's latest `b8b1392` reproduces the
+completed results and identifies four code safeguards to add. See
+[JOINT_REVIEW_AND_HANDOFF.md](JOINT_REVIEW_AND_HANDOFF.md) for reproductions,
+scope and acceptance criteria. The findings are open; no implementation fix
+or new production calculation has been made in this review.
+
+| Owner | Next work | Done when |
+|---|---|---|
+| **Adem** | Fix F3/F4; implement and mock-test the resumable selection/feedback loop and MLIP validator; estimate capped API cost; produce the comparison and decision timeline. | Old results reproduce; new choices precede their energies; prompts/feedback replay; failures and costs remain visible. See [SYNC_ADEM_12.md](SYNC_ADEM_12.md). |
+| **Claude** | Disable/test the unsafe F1 legacy route, defer its full refactor, and fix F2; prepare the menu/protocol; return primary registry feedback before the later sensitivity assessment. | Safeguards pass; each selected slot has documented contact outcomes/costs; pending checks and failures remain visible. See [SYNC_CLAUDE_9.md](SYNC_CLAUDE_9.md). |
+| **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
+
+Adem keeps `work/agent-experiments`; give Claude an isolated physics
+branch/worktree for new work; Davide integrates on `davide`. This is a proposed
+ownership arrangement, not a branch creation or a message sent to either
+contributor. Adem owns `llm.py` and analysis; Claude owns energetics/relaxation
+and PET-MAD scripts. Davide consolidates the shared status files. Keep scoped
+handoff entries to avoid simultaneous edits to the same log paragraphs.
+
+Safeguards, geometry preparation and mocked loop/analysis development proceed
+in parallel. Freeze the feasible menu, objective and evaluation protocol first,
+then archive each new selection before its interface energies. Adem supplies
+the bounded API cost estimate before live pilot execution. No repeat of the
+450-run LLM study is needed. Three coating slots demonstrate the physical
+feedback loop; they do not establish statistically superior search. Complete
+slides and release preparation alongside this work.
+
+## Previous production handoff — 21 October
+
+The following section records the earlier handoff; the assignments above
+supersede its next-work table and pending-task descriptions.
 
 **Production is complete and reviewed:** Adem's `06a4271` has all 450 runs;
 independent replay and the six planned comparisons pass. The current work is
-slides, final viewer selection, joint branch review and a reproducible release.
+slides, joint branch review and a reproducible release. The viewer now opens
+the selected cathode registry and includes the completed seed-4 comparison;
+see [VIEWER_UPDATE.md](VIEWER_UPDATE.md).
 See [SYNC_ADEM_9.md](SYNC_ADEM_9.md). No additional runs are requested.
 The production approval below records the prior authorization, not pending work.
 
@@ -52,7 +101,7 @@ prioritize the environment experiment and release review. See
 | Owner | Action | Completion evidence |
 |---|---|---|
 | Adem | Present the completed environment study with its positive and negative results | Production reviewed at 06a4271; overview and six primary contrasts in SYNC_ADEM_9.md; retain LLZO random advantage |
-| Davide + Claude | Publish the completed bounded Niflheim batch and its review; stop additional simulations | Cathode registry selected; seed-4 sensitivity exceeds tolerance and is reported with construction confounders; see SYNC_CLAUDE_7.md |
+| Davide + Claude | Use the published bounded Niflheim batch and reviewed viewer in the demo | Selected cathode and seed-4 comparison are available with their limitations; see SYNC_CLAUDE_7.md and VIEWER_UPDATE.md; no additional simulations requested |
 | Adem + Davide | Prepare the presentation and reproducible demonstration alongside the calculations | Acceptance and best-bin curves with baselines, one successful and one failed trace, offline two-contact viewer, explicit scientific limits |
 | Together | Review the combined branch and publish a reproducible release | Tests and archive replay pass, reports match the results, both people review scope before merging to `main` |
 

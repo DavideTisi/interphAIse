@@ -49,7 +49,7 @@ def test_multiple_contacts_keep_identity_and_geometry_separate():
 
 from scripts.build_structure_viewer import (
     build_catalog, candidate_records, interface_records, load_json,
-    restore_metadata, write_viewer,
+    restore_metadata, write_viewer, evidence_comparisons,
 )
 
 
@@ -186,12 +186,41 @@ def test_export_roundtrips_all_saved_coordinates_masks_and_escapes_html(catalog,
 
 def test_latest_committed_electrolyte_setting_replaces_only_the_shortcut(catalog):
     items = {r['id']: r for r in catalog['records']}
-    current = items['interface:thickness_gaps_v1/run_electrolyte_S4_F4:relaxed']
+    current = items['interface:niflheim_batch1/electrolyte_seed0_ref:relaxed']
+    cpu = items['interface:thickness_gaps_v1/run_electrolyte_S4_F4:relaxed']
     baseline = items['interface:thickness_v1/run_L4:relaxed']
-    assert current['featured'] and not baseline['featured']
+    assert current['featured'] and not baseline['featured'] and not cpu['featured']
     assert len(current['atoms']) == 880 and current['n_fixed'] == 38
     assert current['layers'] == {'film_layers': 4, 'substrate_layers': 4}
-    assert current['results']['W_adh_J_m2'] == pytest.approx(1.6329358066032293)
-    assert current['results']['W_sep_J_m2'] == pytest.approx(2.9669046670178845)
-    assert current['study'] == 'Additional thickness checks'
+    assert current['results']['W_adh_J_m2'] == pytest.approx(1.6333940812860246)
+    assert current['results']['W_sep_J_m2'] == pytest.approx(2.9672197308623063)
+    assert current['device'] == 'cuda'
+    assert cpu['results']['W_adh_J_m2'] == pytest.approx(1.6329358066032293)
     assert len(baseline['atoms']) == 544 and baseline['results']['W_adh_J_m2'] == pytest.approx(1.5317258429078906)
+
+
+def test_selected_registry_and_seed_comparison_match_exact_archives(catalog):
+    items = {r['id']: r for r in catalog['records']}
+    cathode = items['interface:niflheim_batch1/cathode_reg_third_third:relaxed']
+    old = items['interface:cathode_thickness_v1/run_F4:relaxed']
+    assert cathode['featured'] and not old['featured']
+    assert cathode['registry']['offset'] == pytest.approx([1 / 3, 1 / 3])
+    assert 'registry (1/3, 1/3)' in cathode['title']
+    assert len(cathode['atoms']) == 696 and cathode['n_fixed'] == 104
+    assert cathode['layers'] == {'film_layers': 4, 'substrate_layers': 2}
+    assert cathode['results']['W_adh_J_m2'] == pytest.approx(3.6170508624496)
+    assert cathode['results']['W_sep_J_m2'] == pytest.approx(5.167624545488891)
+    comparisons = {c['id']: c for c in catalog['comparisons']}
+    assert len(comparisons) == 4
+    seeds = comparisons['electrolyte_seeds']
+    left, right = (items[seeds[k]] for k in ('left', 'right'))
+    assert (left['seed'], right['seed']) == (0, 4)
+    assert (left['n_fixed'], right['n_fixed']) == (38, 36)
+    assert left['results']['area_A2'] != right['results']['area_A2']
+    assert right['results']['W_adh_J_m2'] == pytest.approx(1.5120118610940148)
+    assert seeds['delta_right_minus_left']['W_adh_J_m2'] == pytest.approx(-0.1213822201920098)
+    assert seeds['delta_right_minus_left']['W_sep_J_m2'] == pytest.approx(-0.1618563421082997)
+    assert 'not an isolated disorder effect' in seeds['note']
+    # A partial catalogue must not substitute a different seed/cell for missing evidence.
+    partial = [r for r in catalog['records'] if r['run'] != 'niflheim_batch1/electrolyte_seed4']
+    assert 'electrolyte_seeds' not in {c['id'] for c in evidence_comparisons(partial)}

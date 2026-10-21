@@ -2,6 +2,7 @@
 """Build a self-contained offline catalogue of saved structures; never calls APIs or MLIPs."""
 import argparse
 from collections import Counter
+from fractions import Fraction
 import gzip
 import hashlib
 from io import StringIO
@@ -29,13 +30,52 @@ STUDIES = {
     'thickness_gaps_v1': 'Additional thickness checks',
     'bulk_relaxation_v1': 'Bulk relaxation',
     'bulk_multistart_v1': 'Bulk multistart',
+    'final_checks_v1': 'Final geometry checks',
+    'niflheim_batch1': 'Niflheim · registries and bulk references',
 }
-# Explicit working settings in CONTACT_PROTOCOL.md at d0bd1f3, not an energy ranking.
-# Retain the audited electrolyte baseline as a fallback for older checkouts.
+# Explicit selections reviewed in SYNC_CLAUDE_7.md, not an automatic energy ranking.
+# Retain earlier references only as fallbacks for partial/older checkouts.
 WORKING_CONTACTS = (
-    ('cathode_thickness_v1/run_F4',),
-    ('thickness_gaps_v1/run_electrolyte_S4_F4', 'thickness_v1/run_L4'),
+    ('niflheim_batch1/cathode_reg_third_third', 'cathode_thickness_v1/run_F4'),
+    ('niflheim_batch1/electrolyte_seed0_ref', 'thickness_gaps_v1/run_electrolyte_S4_F4', 'thickness_v1/run_L4'),
 )
+COMPARISONS = (
+    ('cathode_registry', 'Cathode · reference → selected registry',
+     'niflheim_batch1/cathode_ref', 'niflheim_batch1/cathode_reg_third_third',
+     'Selected by the lowest relaxed joined energy among three sampled distinct registries, not a full registry search. Earlier thickness and constraint brackets used (0, 0).'),
+    ('cathode_alternative', 'Cathode · alternative → selected registry',
+     'niflheim_batch1/cathode_reg_sixth_0', 'niflheim_batch1/cathode_reg_third_third',
+     'Two distinct sampled registries in the same matched cell. Neither the unrelaxed ordering nor a small energy spread establishes polar-surface accuracy.'),
+    ('electrolyte_seeds', 'Electrolyte · seed 0 → seed 4',
+     'niflheim_batch1/electrolyte_seed0_ref', 'niflheim_batch1/electrolyte_seed4',
+     'Same mapped Cl cut and layer/depth rules, but bulk arrangement, cell, area, strain, matching basis and fixed-atom count differ. Registry (0, 0) need not represent the same physical alignment. This is combined construction sensitivity, not an isolated disorder effect or error bar.'),
+    ('electrolyte_registry', 'Electrolyte · reference → alternate registry (CPU)',
+     'thickness_gaps_v1/run_electrolyte_S4_F4', 'final_checks_v1/electrolyte_reg_0_0.5',
+     'Seed 0 in the same cell: adhesion is similar, but fixed-geometry separation is more sensitive. Keep this registry comparison separate from the two-seed comparison.'),
+)
+
+
+def offset_label(offset):
+    def component(value):
+        fraction = Fraction(float(value)).limit_denominator(12)
+        return str(fraction) if abs(float(fraction) - value) < 1e-8 else f'{value:.4g}'
+    return '(' + ', '.join(component(v) for v in offset) + ')'
+
+
+def evidence_comparisons(records):
+    """Publish comparisons only when both exact, valid relaxed archives exist."""
+    runs = {r['run']: r for r in records if r.get('results')}
+    comparisons = []
+    for key, label, left_run, right_run, note in COMPARISONS:
+        if left_run not in runs or right_run not in runs:
+            continue
+        left, right = runs[left_run], runs[right_run]
+        delta = {metric: right['results'][metric] - left['results'][metric]
+                 for metric in ('W_adh_J_m2', 'W_sep_J_m2')
+                 if left['results'].get(metric) is not None and right['results'].get(metric) is not None}
+        comparisons.append(dict(id=key, label=label, left=left['id'], right=right['id'],
+                                note=note, delta_right_minus_left=delta))
+    return comparisons
 
 
 def load_json(path):
@@ -195,6 +235,11 @@ def interface_records(directory, petmad, builds=(), root=ROOT):
         details.append(f"frozen depth {result['fixed_depth_A']:.3f} Å")
     elif result.get('fixed_fraction') is not None:
         details.append(f"fixed fraction {result['fixed_fraction']:g} of substrate z span")
+    registry = result.get('best_registry', {})
+    if registry.get('offset') is not None:
+        details.append(f"registry {offset_label(registry['offset'])}")
+    if result.get('device'):
+        details.append('GPU' if result['device'].startswith('cuda') else result['device'].upper())
     variant = ' · '.join(details) or directory.name
     metadata_paths = [p for p in (initial_path, result_path, selected_path, build_path, relaxation_path) if p and p.exists()]
     separation_path = directory / 'fixed_geometry_separation.json'
@@ -227,6 +272,8 @@ def interface_records(directory, petmad, builds=(), root=ROOT):
                     study=study_label(run), state=state, state_label=label, variant=variant,
                     environments=['lco_lpscl_4v'], materials=candidate.get('pair', []),
                     layers=layers, seed=seed, status=status, historical=historical,
+                    registry=registry, device=result.get('device'),
+                    fixed_depth_A=result.get('fixed_depth_A'), fixed_fraction=result.get('fixed_fraction'),
                     featured=False,
                     candidate=candidate, warnings=selected.get('warnings', []),
                     source_path=source(path, root), provenance=[provenance(path, root)] + [provenance(p, root) for p in metadata_paths if p != path],
@@ -407,6 +454,11 @@ def build_catalog(root=ROOT, pools=None, pilots=None, extra=()):
         if selected:
             selected['featured'] = True
             selected['featured_order'] = order
+            selected['working_role'] = ('Selected cathode · lowest sampled joined energy'
+                                        if selected['run'] == 'niflheim_batch1/cathode_reg_third_third'
+                                        else 'Electrolyte · seed-0 GPU reference'
+                                        if selected['run'] == 'niflheim_batch1/electrolyte_seed0_ref'
+                                        else 'Earlier reference · latest selected archive unavailable')
     records.sort(key=lambda r: (not r.get('featured', False), r.get('featured_order', 9), r.get('historical', False), r['kind'], r.get('study', ''), r['title']))
     summary = {
         'total': len(records), 'by_kind': dict(Counter(r['kind'] for r in records)),
@@ -417,12 +469,16 @@ def build_catalog(root=ROOT, pools=None, pilots=None, extra=()):
         'limitations': [
             'No saved atomistic chloride or LLZO contact is available. Their bulk endpoints and candidate structures can be viewed.',
             'Environment membership means inclusion in a thermodynamic benchmark, not an interface calculation or a performance claim.',
-            'Both present contacts are formally polar and provisional. The current-contact shortcut uses the archived protocol: cathode 2 substrate + 4 coating layers; electrolyte 4 substrate + 4 coating layers when available, otherwise the earlier 4 + 2 baseline. Constraint brackets were measured at earlier two-coating-layer geometries.',
+            'Both contacts are formally polar and provisional. Current archived settings are the 696-atom cathode at registry (1/3, 1/3) and the 880-atom seed-0 electrolyte at (0, 0); partial checkouts may show a labelled earlier reference.',
+            'Final-geometry constraint brackets passed at the reference registries. Cathode thickness and constraint checks used (0, 0), not the newly selected (1/3, 1/3). Three of nine distinct cathode registries were relaxed.',
+            'Electrolyte seed-4 shifts exceed the 0.1 J/m² reporting tolerance and combine bulk-reference and interface-construction effects. They are not a statistical error bar or an isolated disorder effect.',
+            'Vacuum checks isolate periodic images within the finite-range model; they do not address polar electrostatics. No explicit applied voltage is present in these atomistic calculations.',
             'Historical pilots used different lattices, facets or cuts. Do not compare their energies as a coating ranking.',
             'Only completed result.json archives are associated with energies. Live or JSON-only studies without saved geometries are not added.',
         ],
     }
-    return {'records': records, 'summary': summary, 'environments': ENVIRONMENTS}
+    return {'records': records, 'summary': summary, 'environments': ENVIRONMENTS,
+            'comparisons': evidence_comparisons(records)}
 
 
 def write_viewer(catalog, output):

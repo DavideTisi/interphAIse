@@ -1,0 +1,569 @@
+{
+  "date": "2026-10-21",
+  "review_type": "read-only code and scientific-archive review with offline fault-injection probes",
+  "heads": {
+    "davide": "8975d4bac6e4c66230281610574ca8bb47a08950",
+    "agent_experiments": "b8b139212430751857f09a05be6e22ae5766b832"
+  },
+  "tests": {
+    "davide": {
+      "passed": 145,
+      "seconds": 18.94
+    },
+    "agent_experiments": {
+      "passed": 158,
+      "seconds": 19.0
+    },
+    "merge_preview": {
+      "passed": 159,
+      "seconds": 19.9
+    }
+  },
+  "merge_preview": {
+    "tree": "36caa2a072a4429dd22e04739e0bd0aba8f7bfb4",
+    "conflicts": [
+      "DEVELOPMENT_LOG.md"
+    ],
+    "branches_or_worktree_changed": false,
+    "note": "Tests used an isolated export of the merge tree; the documentation conflict remains unresolved. Working-directory planning edits were not in the committed-tree preview."
+  },
+  "production_archive_and_core_workflow_unchanged_since": "06a4271",
+  "checks": {
+    "agent_replay": {
+      "runs": 450,
+      "queries": 4500,
+      "proposal_attempts": 2800,
+      "parse_failures_replayed": 2,
+      "issues": [],
+      "wall_seconds": 16.353513832960743,
+      "scope": "Archived parsed-response/exception replay, not a fresh model inference or HTTP-transport replay"
+    },
+    "petmad_archive": {
+      "runs_checked": 37,
+      "relaxations_checked": 105,
+      "issues": [
+        [
+          "data/petmad/niflheim_smoke_v1/smoke_cpu_F2",
+          "interface",
+          "missing final"
+        ],
+        [
+          "data/petmad/niflheim_smoke_v1/smoke_cpu_F2",
+          "film",
+          "missing final"
+        ],
+        [
+          "data/petmad/niflheim_smoke_v1/smoke_cpu_F2",
+          "substrate",
+          "missing final"
+        ],
+        [
+          "data/petmad/niflheim_smoke_v1/smoke_gpu_F2",
+          "interface",
+          "missing final"
+        ],
+        [
+          "data/petmad/niflheim_smoke_v1/smoke_gpu_F2",
+          "film",
+          "missing final"
+        ],
+        [
+          "data/petmad/niflheim_smoke_v1/smoke_gpu_F2",
+          "substrate",
+          "missing final"
+        ]
+      ],
+      "rows": [
+        {
+          "run": "data/petmad/cathode_thickness_v1/run_F2",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.047676666602257334,
+            "film": 0.04012634670791997,
+            "substrate": 0.0455105035058128
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/cathode_thickness_v1/run_F3",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04324734845064492,
+            "film": 0.0460579856022004,
+            "substrate": 0.045528802712451154
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/cathode_thickness_v1/run_F4",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04479293849040047,
+            "film": 0.03705695770191342,
+            "substrate": 0.04550692384785638
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/constraint_test_v1/cathode_primary_f0.17",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04991916528197362,
+            "film": 0.040078005079480936,
+            "substrate": 0.0456261166413426
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/constraint_test_v1/cathode_primary_f0.34",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.047742568880991314,
+            "film": 0.04011739016961722,
+            "substrate": 0.04550967648709228
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/constraint_test_v1/cathode_primary_f0.50",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04906397552190202,
+            "film": 0.04009491382869154,
+            "substrate": 0.04551570577707985
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/constraint_test_v1/electrolyte_seed0_Cl_f0.17",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04802206528238868,
+            "film": 0.030042259684367953,
+            "substrate": 0.04117938256927367
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/constraint_test_v1/electrolyte_seed0_Cl_f0.34",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.03887080454365461,
+            "film": 0.030042959557412117,
+            "substrate": 0.04951636386778112
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/constraint_test_v1/electrolyte_seed0_Cl_f0.50",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.049841027107391155,
+            "film": 0.030041593532216297,
+            "substrate": 0.03673505959783514
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/cathode_f0.17",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04491231396425038,
+            "film": 0.03705998607427018,
+            "substrate": 0.04563025331375446
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/cathode_f0.50",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04480619830983209,
+            "film": 0.03705998607427018,
+            "substrate": 0.04551508381276805
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/cathode_reg_0.5_0",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.044787991615340375,
+            "film": 0.037053315774892535,
+            "substrate": 0.045510578903768084
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/cathode_reg_0.5_0.5",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04483201924220456,
+            "film": 0.03705574821701621,
+            "substrate": 0.045510578903768084
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/cathode_reg_0_0.5",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04481001429925458,
+            "film": 0.03705382911575267,
+            "substrate": 0.045510578903768084
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/electrolyte_d1.628801",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.0463333021748008,
+            "film": 0.04939381716617374,
+            "substrate": 0.04270078458553426
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/electrolyte_d6.515204",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.048583339094407665,
+            "film": 0.04939381716617374,
+            "substrate": 0.0436338714471258
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/electrolyte_reg_0.5_0",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.045884149087868024,
+            "film": 0.04939529589778565,
+            "substrate": 0.0496515089394975
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04949993125727045,
+            "film": 0.049395359952453026,
+            "substrate": 0.0496515089394975
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.03796611019745636,
+            "film": 0.049386253911429645,
+            "substrate": 0.0496515089394975
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/linbf6_cathode_pilot_v1",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.047225425773340574,
+            "film": 0.04627808410076091,
+            "substrate": 0.04505699362641164
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9"
+        },
+        {
+          "run": "data/petmad/linbf6_electrolyte_pilot_v1",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.046128021200518676,
+            "film": 0.04874137743656923,
+            "substrate": 0.04747469593967191
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9"
+        },
+        {
+          "run": "data/petmad/niflheim_batch1/cathode_ref",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04476745751951745,
+            "film": 0.03706066799924955,
+            "substrate": 0.0454930002769415
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/niflheim_batch1/cathode_reg_sixth_0",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.048393783043533596,
+            "film": 0.03705739165085557,
+            "substrate": 0.04551182594866855
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/niflheim_batch1/cathode_reg_third_third",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04968592517918731,
+            "film": 0.03705625223284999,
+            "substrate": 0.04549283266175783
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/niflheim_batch1/electrolyte_seed0_ref",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04753159230616727,
+            "film": 0.049395380264630015,
+            "substrate": 0.04962635711444978
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/niflheim_batch1/electrolyte_seed4",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.048097662850835075,
+            "film": 0.03638471388557288,
+            "substrate": 0.03527783284311694
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/niflheim_smoke_v1/smoke_cpu_F2",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {},
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9"
+        },
+        {
+          "run": "data/petmad/niflheim_smoke_v1/smoke_gpu_F2",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {},
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9"
+        },
+        {
+          "run": "data/petmad/thickness_gaps_v1/run_cathode_S3_F4",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04521121518885,
+            "film": 0.03706949497290326,
+            "substrate": 0.04547165970818307
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_gaps_v1/run_cathode_S4_F4",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04550590320853109,
+            "film": 0.03706110019410244,
+            "substrate": 0.045485732587674126
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F3",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.048648036426309126,
+            "film": 0.04448168248894032,
+            "substrate": 0.049634557856812825
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04720176095502582,
+            "film": 0.049394499042275955,
+            "substrate": 0.049621266184304486
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_v1/run_L2",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.03876974977859285,
+            "film": 0.030042343257519043,
+            "substrate": 0.04951636386778112
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_v1/run_L3",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.0494529750077192,
+            "film": 0.030043764154454748,
+            "substrate": 0.04698260367099827
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_v1/run_L4",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.04987571143724067,
+            "film": 0.030041761391617836,
+            "substrate": 0.04962697959164854
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_v1/run_L4_d1.628801",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.049740690396484245,
+            "film": 0.030040726277507007,
+            "substrate": 0.04269872263396412
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        },
+        {
+          "run": "data/petmad/thickness_v1/run_L4_d6.515204",
+          "valid": true,
+          "adhesion_error": 0.0,
+          "forces": {
+            "interface": 0.048872418105346496,
+            "film": 0.03004024943727332,
+            "substrate": 0.04313418275939513
+          },
+          "checkpoint": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+          "separation_sha_matches": true
+        }
+      ]
+    },
+    "legacy_convergence_probe": {
+      "old_helper_returns_energy": 0.5,
+      "old_final_force_eV_A": 1.0,
+      "target_eV_A": 0.01,
+      "new_helper_converged": false,
+      "steps": 0
+    },
+    "checkpoint_guard_probe": {
+      "scope": "Offline fake-calculator guard test, no MLIP inference",
+      "joined_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+      "provided_sha256": "7fed52129cd71ea6c685a57eb39f59e41c0def092e2efee24b67af66dbe2dfc8",
+      "mismatch_rejected": false,
+      "output_written": true,
+      "fake_calculator_calls": 2,
+      "copy_directory": "/private/tmp/interphaise-checkpoint-guard-1ooliisv"
+    },
+    "analysis_guard_probe": {
+      "test_copy": "/private/tmp/interphaise-analysis-guard-2_569he3",
+      "mutations": [
+        "Set every manifest temperature to 0.0 (production required 1.0)",
+        "Changed a sulfide upfront result from unacceptable to acceptable without changing hashes"
+      ],
+      "production_check": [],
+      "sulfide_upfront_successes_after_mutation": 1,
+      "original_successes": 0
+    },
+    "transport_accounting_probe": {
+      "scope": "Offline mocked HTTP 429 then successful response; no network",
+      "transport_attempts_observed_by_mock": 2,
+      "logical_calls": 1,
+      "recorded_metadata_fields": [
+        "max_tokens",
+        "requested_model",
+        "returned_model",
+        "stop_reason",
+        "temperature",
+        "usage"
+      ],
+      "transport_attempt_count_recorded": false
+    },
+    "geometry_identity": {
+      "relaxations_checked": 105,
+      "checks": [
+        "species/order",
+        "fixed masks",
+        "fixed positions",
+        "fixed cell"
+      ],
+      "issues": []
+    }
+  },
+  "scope_notes": [
+    "No live API/MLIP call or SSH/Slurm operation. HTTP and checkpoint mismatch probes use stubs only.",
+    "Six final structure files are not committed in two compact smoke archives; 35 other complete interface runs supply 105 independently checked final force/energy records.",
+    "The separate production analysis reproduced acceptance counts and all six Holm contrasts.",
+    "Findings are unfixed; existing immutable scientific archives were not edited.",
+    "All current result and rigid-separation checkpoint hashes checked match."
+  ]
+}

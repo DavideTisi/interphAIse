@@ -1,5 +1,91 @@
 # interphAIse — project report
 
+**Deadline plan refined — 2026-10-21:** The pilot now uses validated primary
+registry results for each decision; declared sensitivity checks can run in
+parallel or afterwards and remain explicitly pending until complete. LiNbF6's
+sensitivity is material-specific context, not a noise bound for new coatings.
+Require pre-energy W_adh ranges for both contacts and a weak-contact prediction.
+Disable/test the unsafe legacy F1 route for now; F2 remains mandatory. The
+execution plan sets Thursday 10:00/12:00 progress/fallback checkpoints, a 20:00
+slide/writeup freeze and Friday 00:30 submission target before the user-provided
+23 October 02:00 CEST deadline. A completed reviewed pilot gets one slide;
+otherwise report future work and only tests actually performed. See the updated
+[pilot plan](LLM_PETMAD_PILOT_PLAN.md) and recipient handoffs. These are plan
+changes, not implemented fixes, new calculations or scheduled automations.
+
+**LLM–PET-MAD pilot plan amended — 2026-10-21:** Davide clarified that the
+new coating exploration should exercise the LLM's hypothesis revision. The
+active plan uses the existing LiNbF6 evidence and two new coatings selected
+sequentially after validated physical feedback. Claude prepares a bounded
+feasible menu and owns calculations; Adem owns the resumable loop, validation,
+cost estimate and decision/comparison figures. Freeze thermodynamic/adhesion
+trade-off definitions and the protocol before new energies; retain the initial
+shortlist as a descriptive decision comparison. Three material slots cannot
+establish search superiority, and uncomputed alternatives have no measured
+counterfactual outcome. See [pilot plan](LLM_PETMAD_PILOT_PLAN.md),
+[Adem 12](SYNC_ADEM_12.md) and [Claude 9](SYNC_CLAUDE_9.md). This supersedes
+the fixed-cohort/no-new-LLM direction below. It is a planning amendment only:
+no pilot implementation, new live calls or calculations have been performed
+here. The completed 450-run experiment and scientific archives are unchanged.
+
+**Three-coating campaign directed — 2026-10-21:** Davide confirmed the
+three-coating comparison as the next deliverable. Start with LiNbF6, LiCaAlF6
+and LiZr2(PO4)3 at both contacts, with a bounded geometry gate and a declared
+LiF-then-LiTaF6 contingency before interface energies. Claude owns calculation
+safeguards, construction and the full bounded campaign; Adem owns discovery
+code safeguards plus the MLIP validator, table and figures; Davide/Codex owns
+scope, independent review, integration and the viewer. See
+[Claude's handoff](SYNC_CLAUDE_8.md), [Adem's handoff](SYNC_ADEM_11.md) and
+[the updated plan](MLIP_COMPARISON_PLAN.md). This is physical assessment of a
+shortlist, separate from the completed thermodynamic feedback experiment.
+The handoffs are written; fixes and new calculations have not been performed
+in this planning update. No external message was sent.
+
+**Joint code/evidence review — 2026-10-21:** Reviewed `davide:8975d4b` and
+Adem's freshly fetched `b8b1392`. Fresh replay matches all 450 runs, 4,500
+charged outcomes and 2,800 recorded proposal attempts; primary results are
+unchanged. Checked 37 PET-MAD result packages and 105 available final
+relaxations, with no force/energy inconsistency found. The two compact smoke
+packages omit their final structures. Offline suites pass 145 tests on davide,
+158 on Adem's branch and 159 on the combined committed-tree preview; the
+preview has one development-log conflict and is not an actual branch merge.
+Four open safeguards concern legacy relaxation convergence, matching model
+checkpoints, production-analysis integrity/settings, and HTTP retry accounting.
+They do not invalidate the independently replayed archive. See
+[review and assignments](JOINT_REVIEW_AND_HANDOFF.md) and
+[WORK_DIVISION.md](WORK_DIVISION.md). No implementation fix or new production
+calculation was made.
+
+**MLIP comparison feasibility — 2026-10-21:** The proposed three-coating
+follow-up is useful but not ready for an unchanged-protocol launch. Offline
+geometry checks find a shared LiCaAlF6(100) orientation with exposed Al
+coordination to review; LiZr2(PO4)3 has no electrolyte match in the tested
+low-index set under the existing 300 Å² cap. The bounded plan budgets a
+geometry gate first, then approximately 2–6 GPU-hours and 1–2 working days
+for three coatings, conditional on suitable cells. See
+[MLIP_COMPARISON_PLAN.md](MLIP_COMPARISON_PLAN.md) and its saved audit.
+No new MLIP production, API call or cluster job has started.
+
+**Goals versus results — 2026-10-21:** [GOALS_AND_RESULTS.md](GOALS_AND_RESULTS.md)
+compares the 20 October plan with the completed evidence. Feedback improves
+sulfide candidate selection, with environment-dependent limits; general search
+superiority, best-material discovery and actual compute savings are not shown.
+The 141-ID/three-environment benchmark exceeds the original scale, while the
+planned 3–5-coating MLIP comparison remains incomplete: physical follow-up covers
+one coating's two contacts. This synthesis changes no objective or result.
+
+**Structure viewer current — 2026-10-21:** The shareable offline export now
+opens the selected Niflheim cathode registry (1/3, 1/3) and GPU seed-0 electrolyte
+reference. Four named evidence comparisons include the completed seed-4 result
+with its combined construction-sensitivity caveat. Registry/device labels,
+areas, fixed counts and updated protocol limits distinguish the saved runs.
+Coverage is 339 geometries, 141 candidate IDs and 35 calculated interface runs.
+All twelve viewer tests pass; browser filters/comparisons and the downloaded
+cathode XYZ were checked. See [viewer update](VIEWER_UPDATE.md) and regenerate
+with `python scripts/build_structure_viewer.py`. No new scientific calculation
+was run. Earlier viewer-pending entries below are historical; presentation v4
+and the joint branch integration still require their final updates/review.
+
 **LLZO practical-chemistry caveat audited — 2026-10-21:** Five of the 17
 acceptable IDs (three LiIO3 polymorphs, LiClO4 and Li5IO6) form an oxyhalogen
 review set. Four have supplier oxidiser classifications; Li5IO6 is a periodate

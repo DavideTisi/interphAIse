@@ -21,6 +21,8 @@ header{padding:18px 28px 10px}header p{margin:6px 0}h1{font-size:24px}.catalog{m
 <label>State<select id="state"><option value="">All states</option><option value="mp">Original MP</option><option value="initial">Initial</option><option value="relaxed">Relaxed</option><option value="film">Separated coating</option><option value="substrate">Separated substrate</option></select></label>
 </div>
 <div class="catalog-actions"><button id="current">Current contacts</button><button id="clear">Clear filters</button><label>Contact<select id="contact"><option value="">All contacts</option></select></label><span id="count" class="small"></span></div>
+<div class="catalog-actions"><label>Evidence comparison<select id="evidence"><option value="">Choose a comparison…</option></select></label><span class="small">Paired saved runs · shared camera and scale</span></div>
+<div class="notice" id="comparison-note" role="status" hidden></div>
 <p class="notice" id="environment-note"></p>
 <details><summary class="small">Coverage, provenance and scientific limits</summary><div id="catalog-details" class="notice"></div></details>
 </section>
@@ -35,7 +37,7 @@ header{padding:18px 28px 10px}header p{margin:6px 0}h1{font-size:24px}.catalog{m
 <button id="side">Side x–z</button><button id="top">Top x–y</button><button id="oblique">Oblique</button><button id="reset">Fit</button>
 </div>
 <main id="panels"></main><div class="legend" id="legend"></div>
-<footer><p class="footer-note"><strong>Archived model results, not experimental adhesion.</strong> W<sub>adh</sub> uses independently relaxed separated slabs; W<sub>sep</sub> uses fixed geometries split from the relaxed contact. Neither validates coating transport or polar electrostatics. Energies appear only on their own relaxed contact. Original MP, PET-MAD references and historical pilots retain separate provenance. Both contacts are formally polar; remaining sensitivity checks are listed above.</p><p class="footer-note">Atomic radii are scaled for visibility; bonds are not inferred. Cell edges include vacuum. Repeat and wrap change the display only. XYZ downloads preserve the saved coordinates and verified state-local labels/constraints. A fixed mask on an initial interface is the planned mask recorded by that run. Candidate structures shared across environments are listed once per MP ID and geometry; polymorphs keep separate IDs. This catalogue contains no thermodynamic benchmark outcomes.</p></footer>
+<footer><p class="footer-note"><strong>Archived model results, not experimental adhesion.</strong> W<sub>adh</sub> uses independently relaxed separated slabs; W<sub>sep</sub> uses fixed geometries split from the relaxed contact. Neither validates coating transport or polar electrostatics. Energies appear only on their own relaxed contact. Original MP, PET-MAD references and historical pilots retain separate provenance. Both contacts are formally polar; completed checks and remaining limitations are listed above.</p><p class="footer-note">Atomic radii are scaled for visibility; bonds are not inferred. Cell edges include vacuum. Repeat and wrap change the display only. XYZ downloads preserve the saved coordinates and verified state-local labels/constraints. A fixed mask on an initial interface is the planned mask recorded by that run. Candidate structures shared across environments are listed once per MP ID and geometry; polymorphs keep separate IDs. This catalogue contains no thermodynamic benchmark outcomes.</p></footer>
 <script id="catalog" type="application/json">__CATALOG_JSON__</script>
 <script id="structures" type="application/json">__STRUCTURES_JSON__</script>
 <script>
@@ -47,12 +49,15 @@ const panels=[];
 const catalog=JSON.parse($('catalog').textContent);
 const summary=catalog.summary;
 const environmentNames=catalog.environments;
+const comparisons=catalog.comparisons||[];
 let filtered=structures.map((s,i)=>i);
 const filterIds=['search','environment','collection','study','state','contact'];
 const text=(tag,value,className)=>{const el=document.createElement(tag);el.textContent=value;if(className)el.className=className;return el;};
 for(const [id,label] of Object.entries(environmentNames))$('environment').append(new Option(label,id));
 for(const name of [...new Set(structures.map(s=>s.study))].filter(Boolean).sort())$('study').append(new Option(name,name));
 for(const name of [...new Set(structures.map(s=>s.contact))].filter(Boolean).sort())$('contact').append(new Option(name,name));
+for(const c of comparisons)$('evidence').append(new Option(c.label,c.id));
+$('evidence').disabled=!comparisons.length;
 $('coverage').textContent=`${summary.total} saved geometries · ${summary.candidate_ids} coating IDs · ${summary.calculated_runs} calculated interface runs`;
 for(const line of [...summary.limitations,...summary.warnings])$('catalog-details').append(text('p',line,summary.warnings.includes(line)?'warning':''));
 function matches(s){
@@ -81,16 +86,27 @@ function compareIndices(left,right){
  $('compare').checked=true;document.body.classList.remove('single');zoom=1;draw();
 }
 function currentContacts(){const indices=structures.map((s,i)=>({s,i})).filter(x=>x.s.featured).map(x=>x.i);if(indices.length)compareIndices(indices[0],indices[1]??indices[0]);}
+function renderComparison(){
+ const left=structures[panels[0]?.select.value],right=structures[panels[1]?.select.value];
+ const comparison=$('compare').checked&&filtered.length&&comparisons.find(c=>c.left===left?.id&&c.right===right?.id);
+ const note=$('comparison-note');note.replaceChildren();note.hidden=!comparison;
+ $('evidence').value=comparison?comparison.id:'';
+ if(!comparison)return;
+ note.append(text('strong',comparison.label),text('p',comparison.note));
+ const delta=Object.entries(comparison.delta_right_minus_left).map(([key,value])=>`${key==='W_adh_J_m2'?'W_adh':'W_sep'} ${value>=0?'+':''}${value.toFixed(3)} J/m²`).join(' · ');
+ note.append(text('p',`Right minus left: ${delta}. Descriptive differences between these saved runs; not an uncertainty interval.`,'small'));
+}
 function compareStates(index){const s=structures[index],first=structures.findIndex(x=>x.run===s.run&&x.state==='initial'),last=structures.findIndex(x=>x.run===s.run&&x.state==='relaxed');if(first>=0&&last>=0)compareIndices(first,last);}
 function compareThickness(index){
  const s=structures[index];
- const options=structures.map((x,i)=>({s:x,i})).filter(x=>x.s.contact===s.contact&&x.s.study===s.study&&x.s.state==='relaxed'&&x.s.layers&&Object.keys(x.s.layers).length&&x.s.seed===s.seed&&x.s.variant.split('frozen depth')[1]===s.variant.split('frozen depth')[1]);
+ const options=structures.map((x,i)=>({s:x,i})).filter(x=>x.s.contact===s.contact&&x.s.study===s.study&&x.s.state==='relaxed'&&x.s.results&&x.s.layers&&Object.keys(x.s.layers).length&&x.s.seed===s.seed&&x.s.fixed_depth_A===s.fixed_depth_A&&x.s.fixed_fraction===s.fixed_fraction);
  options.sort((a,b)=>(a.s.layers.film_layers+a.s.layers.substrate_layers)-(b.s.layers.film_layers+b.s.layers.substrate_layers));
  if(options.length>1)compareIndices(options[0].i,options.at(-1).i);
 }
 for(const id of filterIds)$(id).addEventListener('input',applyFilters);
 $('clear').onclick=()=>{clearFilters();applyFilters();};
 $('current').onclick=currentContacts;
+$('evidence').onchange=()=>{const c=comparisons.find(c=>c.id===$('evidence').value);if(c)compareIndices(structures.findIndex(s=>s.id===c.left),structures.findIndex(s=>s.id===c.right));};
 const add=(a,b)=>a.map((x,i)=>x+b[i]);
 const mul=(v,s)=>v.map(x=>x*s);
 function rotate(p){const [x,y,z]=p,c=Math.cos(yaw),s=Math.sin(yaw),u=c*x+s*y,v=-s*x+c*y;return [u,Math.cos(pitch)*v-Math.sin(pitch)*z,Math.sin(pitch)*v+Math.cos(pitch)*z];}
@@ -130,6 +146,7 @@ function geometry(s){
  return {atoms,corners,center:lo.map((x,i)=>(x+hi[i])/2),span:Math.max(1,Math.hypot(...hi.map((x,i)=>x-lo[i])))};
 }
 function draw(){
+ renderComparison();
  if(!filtered.length){for(const p of panels){p.canvas.width=p.canvas.clientWidth;p.canvas.height=p.canvas.clientHeight;const ctx=p.canvas.getContext('2d');ctx.fillStyle='#0d1725';ctx.fillRect(0,0,p.canvas.width,p.canvas.height);ctx.fillStyle='#b8c9dc';ctx.font='16px system-ui';ctx.fillText('No saved geometry matches these filters.',20,50);p.caption.replaceChildren(text('p','Clear a filter or search for a different material.','empty'));p.hits=[];p.article.querySelectorAll('button').forEach(b=>b.disabled=true);}$('legend').replaceChildren();return;}
  panels.forEach(p=>p.article.querySelectorAll('button').forEach(b=>b.disabled=false));
  const active=$('compare').checked?panels:panels.slice(0,1),geos=active.map(p=>geometry(structures[p.select.value]));
@@ -165,10 +182,13 @@ function renderCaption(p,s,g){
  const badges=text('div','','badges');
  for(const label of [s.featured?'Current working setting':null,s.historical?'Historical pilot':null,s.study,s.status,s.reference_role].filter(Boolean))badges.append(text('span',label,'badge'+(label==='Current working setting'?' current':'')));
  p.caption.append(badges,text('div',s.title,'panel-title'));
+ if(s.working_role)p.caption.append(text('p',s.working_role));
  p.caption.append(text('p',`${s.atoms.length} atoms in saved cell · ${g.atoms.length} displayed · ${s.n_fixed||0} fixed · PBC ${s.pbc.map(v=>v?'yes':'no').join('/')}`));
  if(s.material_id)p.caption.append(text('p',`Material ID: ${s.material_id}`));
  if(s.layers&&Object.keys(s.layers).length)p.caption.append(text('p',`Layers: ${s.layers.substrate_layers} substrate + ${s.layers.film_layers} coating${s.seed!==null?' · seed '+s.seed:''}`));
  if(s.candidate){const c=s.candidate,fmt=m=>'('+m.join(' ')+')';p.caption.append(text('p',`Facets: substrate ${fmt(c.substrate_miller)} | coating ${fmt(c.film_miller)} · strain ${(100*c.von_mises_strain).toFixed(2)}%`));}
+ if(s.registry?.offset)p.caption.append(text('p',`Starting registry: (${s.registry.offset.map(v=>Number(v.toFixed(4))).join(', ')}) in matched a/b fractions · initial gap ${s.registry.gap_A.toFixed(2)} Å`));
+ if(s.results?.area_A2)p.caption.append(text('p',`Contact area ${s.results.area_A2.toFixed(3)} Å²${s.device?' · device '+s.device:''}${s.fixed_depth_A!==null&&s.fixed_depth_A!==undefined?' · frozen depth '+s.fixed_depth_A.toFixed(3)+' Å':''}`));
  if(s.results){const metrics=text('div','','metrics');for(const [key,label,description] of [['W_adh_J_m2','W_adh','Relaxed separated slabs'],['W_sep_J_m2','W_sep','Fixed-geometry separation']]){const box=text('div','','metric'),value=s.results[key];box.append(text('span',label),text('strong',value===null?'Not archived':value.toFixed(3)+' J/m²'),text('span',description));metrics.append(box);}p.caption.append(metrics);p.caption.append(text('p','Provisional model result for this exact contact and protocol. Not a coating ranking.','warning'));}
  else if(s.kind==='interface')p.caption.append(text('p',s.state==='initial'?'Initial geometry: no relaxed energy is assigned.':'Separated reference slab: contact energies are shown on the matching relaxed interface.','small'));
  if(s.relaxation)p.caption.append(text('p',`This relaxation: ${s.relaxation.converged?'converged':'unconverged'} · ${s.relaxation.steps} steps · maximum free force ${s.relaxation.max_free_force_eV_A.toFixed(4)} eV/Å`));

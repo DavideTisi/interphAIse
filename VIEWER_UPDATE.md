@@ -1,5 +1,67 @@
 # Structure viewer update
 
+## Current update — selected registry and seed comparison
+
+21 October 2026 · branch `davide` · reviewed science archive through `f1861ef`.
+This checkpoint supersedes the earlier coverage and pending-check descriptions
+below; their original numbers are retained as history.
+
+The regenerated `runs/structure_viewer.html` contains **339 saved geometries**:
+141 coating candidates, four endpoints, 40 bulk references, and 154 interface
+or separated-slab states. The latter comprise 35 calculated runs with four
+states each and 14 build-only inputs. These remain two contact chemistries,
+not 35 different coatings. The export is about **23.3 MB**, self-contained and
+free of external libraries or network calls.
+
+**Current contacts** now opens the reviewed GPU archives:
+
+| Contact | Saved run | Atoms | W_adh / W_sep, J/m² |
+|---|---|---:|---:|
+| Cathode, registry (1/3, 1/3) | niflheim_batch1/cathode_reg_third_third | 696 | 3.61705 / 5.16762 |
+| Electrolyte, seed 0 at (0, 0) | niflheim_batch1/electrolyte_seed0_ref | 880 | 1.63339 / 2.96722 |
+| Electrolyte, seed 4 comparison | niflheim_batch1/electrolyte_seed4 | 880 | 1.51201 / 2.80536 |
+
+The new **Evidence comparison** selector pairs four explicitly identified sets:
+cathode reference versus selected registry, cathode alternative versus selected
+registry, electrolyte seed 0 versus seed 4, and the CPU seed-0 registry check.
+Each comparison shows right-minus-left energy differences computed from those
+exact archives and the corresponding interpretation limits. A comparison is
+omitted if either valid relaxed result is unavailable; another seed or cell
+is never silently substituted. Earlier current-contact fallbacks are labelled
+if the latest selected archive is absent in a partial checkout.
+
+Registry offsets and device distinguish the formerly identical run titles.
+Captions show the starting registry in matched-cell fractions, initial gap,
+contact area and frozen depth where archived. Seed 0 and seed 4 retain their
+different areas and fixed counts (38 and 36). The displayed seed differences
+(-0.121 / -0.162 J/m²) combine reference and interface-construction effects;
+they are not an isolated disorder effect or uncertainty interval. The cathode
+is the lowest of three sampled distinct registries, not a complete search.
+Both contacts remain formally polar and provisional. Coverage notes now
+describe completed final-geometry checks while identifying the cathode brackets
+as measurements at the earlier (0, 0) registry. No scientific result is changed.
+
+**Verification performed:** all twelve viewer tests pass, including every
+exported geometry/mask round trip, exact selected-run energies and identities,
+seed-comparison arithmetic and missing-archive handling. Existing ASE/NumPy
+deprecation warnings remain. In the in-app browser, verified current selections,
+cathode and seed comparisons, initial/relaxed energy separation, LLZO's empty
+interface filter, and four distinct LiAlSiO4 polymorphs. Browser error/warning
+logs were empty. Downloaded the selected cathode through **Save XYZ** and
+independently confirmed its 696 atoms, coordinates, cell and 104 fixed atoms.
+Visually inspected the narrow-panel layout and saved previews under `runs/`.
+No additional desktop viewport override or full project test suite was used.
+
+Rebuild from the repository root with
+`.venv/bin/python scripts/build_structure_viewer.py`, then refresh
+<http://127.0.0.1:8876/structure_viewer.html>. Share the generated HTML file
+itself; the localhost address is only useful on Davide's computer. The generated
+HTML/previews remain ignored build outputs; collaborators regenerate after
+pulling the committed source and archive. No MP, LLM, MLIP or cluster run was
+performed. The remaining presentation and joint-integration tasks are separate.
+
+## Earlier checkpoint — archive through d0bd1f3
+
 21 October 2026 · branch `davide` · science archive through `d0bd1f3`.
 
 The viewer now includes the expanded materials, all saved bulk references and the
