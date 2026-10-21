@@ -1,9 +1,16 @@
 # Environment production readiness and measured-cost review
 
 21 October 2026. Reviewed agent branch `710d346`, analysis commit `0072f3d`
-and smoke execution commit `26beb73`. **Scientific recommendation: proceed
-with the frozen production design once Davide explicitly approves spending.**
-This document is not that approval, and no production was launched here.
+and smoke execution commit `26beb73`.
+
+**Production approved — 21 October 2026.** After this cost review, Davide
+explicitly said **“i approve the production”** in the coordinating chat.
+Adem: proceed with the full frozen study using the production commands in
+your `SYNC_DAVIDE_4.md`. Scope is three environments, five arms, 30 repeats,
+budget 10, seeds 200–229, direct Anthropic `claude-haiku-5-5`, temperature 1.0,
+4096 output tokens and the unchanged prompt/tables. Record the actual execution
+commit and hashes. You remain the execution owner; no duplicate run has been
+launched from Davide's checkout. ENVIRONMENT_PROTOCOL.md now records both sign-offs.
 
 ## Shared package on `davide`
 
@@ -19,7 +26,8 @@ contacts. See VIEWER_UPDATE.md for details and tests.
 Presentation v4 is now available inside the repository under `presentations/`.
 Its README lists newer physics results that are not yet in that saved deck.
 Claude's ongoing final-constraint/registry code and outputs are not part of
-this publication. Publishing these files does not approve production spending.
+this publication. The earlier publication did not approve spending; the explicit
+approval above now authorizes the described production study.
 
 ## Verified
 
@@ -73,7 +81,7 @@ Any interruption is operational, never based on interim success rates.
 ## Small final-analysis safeguards
 
 These do not change sampling, prompts, the objective or the primary statistics,
-and need not prevent data collection once spending is approved. Finish them
+and do not prevent the now-approved data collection. Finish them
 before reporting production results:
 
 1. Add or explicitly execute a **production completeness check** for the three
@@ -98,10 +106,13 @@ completion commit separately from the unchanged workflow code.
 
 ## Approval state and coordination
 
-Davide's last explicit spending approval was **smoke only**. The measured-cost
-review is now complete; production still requires his go-ahead. Adem remains
-the execution owner to avoid duplicate batches. No external message, merge,
-commit, push, paid run or credential access occurred in this review.
+The measured-cost review is complete and **Davide has approved production**.
+Keep all declared runs and the normal retry accounting; report usage after each
+environment. The approval covers this fixed study, not another cohort, a model
+change or an outcome-driven extension. Cost scenarios above remain estimates;
+no separate hard dollar cap was specified. Adem remains the execution owner.
+This sign-off publication launches no run and accesses no credential. The
+original review made no external message, merge or paid call.
 
 Claude's PET-MAD checks and the completed viewer update are independent of
 the environment production study. Supporting audit:

@@ -1,5 +1,16 @@
 # interphAIse — project report
 
+**Environment production approved — 2026-10-21:** Following the measured-cost
+review, Davide explicitly said “i approve the production”. The approval covers
+the unchanged frozen study: three environments, five arms, 30 repeats, budget
+10, seeds 200–229, Haiku 5.5 via direct Anthropic, temperature 1.0 and 4096
+output tokens. That is 450 runs and approximately 2,790 LLM calls before
+retries. Adem owns execution and may use the commands on his branch in
+SYNC_DAVIDE_4.md. The [protocol](ENVIRONMENT_PROTOCOL.md) and
+[handoff](SYNC_ADEM_8.md) now record the sign-off. No production run was
+launched here; approval does not establish that a run has started. Earlier
+smoke-only/pending statements below describe their historical checkpoints.
+
 **Environment production readiness — 2026-10-21:** Reviewed Adem's `0072f3d`
 analysis at branch head `710d346` and the smoke archive from `26beb73`.
 Eleven relevant analysis tests pass in an isolated snapshot. Recounted 31

@@ -1,8 +1,8 @@
 # interphAIse
 
 **Latest team handoff (21 October):** [SYNC_ADEM_8.md](SYNC_ADEM_8.md) reviews
-the environment smoke cost and production analysis. Production spending still
-awaits Davide's explicit approval. [REPORT.md](REPORT.md) records the latest
+the environment smoke cost and production analysis. Davide has approved the
+full frozen production study; Adem owns execution. [REPORT.md](REPORT.md) records the latest
 physics and viewer status; [presentation v4](presentations/README.md) is a
 saved presentation checkpoint with its newer-result corrections listed.
 

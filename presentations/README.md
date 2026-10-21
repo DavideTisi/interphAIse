@@ -23,7 +23,8 @@ Both contacts remain formally polar and provisional. See CONTACT_PROTOCOL.md
 and the latest REPORT.md checkpoint for completed versus pending checks.
 
 The environment smoke batch and cost review also arrived after this deck;
-see [SYNC_ADEM_8.md](../SYNC_ADEM_8.md). Production approval remains pending.
+see [SYNC_ADEM_8.md](../SYNC_ADEM_8.md). Davide subsequently approved production
+on 21 October 2026; the deck's earlier smoke-only approval wording is historical.
 Some speaker notes refer to the author's original local source paths; the
 scientific source files themselves are in this repository. No deck content
 or embedded chart was changed during publication.

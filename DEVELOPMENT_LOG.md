@@ -1763,3 +1763,33 @@ changes and Niflheim scripts are intentionally left unstaged for Claude's
 own completed-work commit. No simulation, paid API call or merge of Adem's
 branch occurred. The commit and remote-push result will be reported in chat;
 no production sign-off box was changed.
+
+
+## 2026-10-21 — Explicit production approval recorded
+
+**Branch:** `davide`, parent `3ec7e9d`. Davide explicitly replied
+**“i approve the production”** after the measured smoke-cost review and the
+question requesting approval for the full frozen 2,790-call study. This is
+authorization for the existing full design: three environments, five arms,
+30 repeats per environment/arm, budget 10, seeds 200–229, direct Anthropic
+`claude-haiku-5-5`, temperature 1.0, 4096 output tokens and the frozen prompt,
+tables and six-comparison Holm analysis. Normal recorded retries are included;
+no extra cohort, different model or outcome-driven extension is authorized.
+
+**Changes:** checked the production sign-off in ENVIRONMENT_PROTOCOL.md and
+recorded Adem's already-published smoke verification from `c44d90c`. Updated
+SYNC_ADEM_8.md with an unambiguous go-ahead for Adem, the sole execution owner;
+aligned README.md, current WORK_DIVISION.md, REPORT.md and presentation README.
+Historical review entries and the cost-review JSON retain the approval state
+at their original review time; this later sign-off supersedes those pending
+statements. Costs remain the reviewed estimates, not an invented hard cap.
+
+**Verification:** sections 2–4 of ENVIRONMENT_PROTOCOL.md (frozen inputs,
+settings, outcomes and analysis) are byte-identical to the parent version.
+Documentation diff/whitespace checks pass. No code or scientific data changed,
+so tests were not rerun. No API call, credential access, simulation, paid run
+or duplicate production launch occurred here. Concurrent Claude changes in
+CONTACT_PROTOCOL.md, the PET-MAD runner, final880 vacuum evidence and Niflheim
+scripts are excluded. This sign-off is being committed and pushed for Adem
+under Davide's request to publish everything he needs; actual execution must
+be recorded by Adem's runner.
