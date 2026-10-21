@@ -540,3 +540,31 @@ Main remains unchanged, and independent preparation/inspection script edits rema
 local. The tested integration and archive are being committed/pushed on davide;
 publication outcome is reported in chat. Shuffled feedback and physically validated
 bulk/slab/transport work remain future scientific controls, not completed claims.
+
+## 2026-10-21 — Review Adem's 0889d0e and assign next work
+
+Fetched origin/work/agent-experiments through 0889d0e and inspected the diff from
+40e79c3. New work is an unrun shuffled-feedback arm, best-bin trajectory analysis
+and expanded sync interpretation. Wrote SYNC_ADEM_3.md with a shareable handoff:
+Adem owns merging the controls/analysis onto 703f4d9 and validating them; Davide
+keeps materials/MLIP validation. At the integrated 30-repeat setting each new
+sequential control costs roughly 300 calls, not the old estimate of 100.
+
+Noted source-inspection concerns: shuffled history changes prior assignments while
+retaining older rationales; products/errors may reveal source identities; a lookup
+on malformed IDs needs adaptation to our charged-query policy. These are review
+findings, not results from a new control run. Clarified that escaping anchoring may
+be a mechanism of feedback, and upfront also changes interaction/call structure.
+
+Checked the archived new batch's LiZr2(PO4)3 selections: sequential chooses it in
+10/30 runs (12 selections), upfront 25/30 (25), iterative 4/30 (7). This limits
+how broadly to present the earlier ten-run 'never chooses it' diagnosis; cohorts
+have different protocols and remain separate. Whitespace check performed. No
+merge, paid call, calculation, message to Adem, commit or push in this review.
+
+## 2026-10-21 — Publish the third sync handoff
+
+At the user's request, committing SYNC_ADEM_3.md and the corresponding review log
+on davide for publication to origin/davide. Scope is documentation only; existing
+preparation/inspection script edits remain local. Staged file and whitespace checks
+performed; no tests or paid calls needed. Push outcome is reported in chat.
