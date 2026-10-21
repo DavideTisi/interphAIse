@@ -92,3 +92,38 @@ one on CPU, differing by ≤ 5×10⁻⁴ J/m²).
 The registry representatives for LiTaF6/LiF (geometric equivalence classes, no energies) and
 the frozen manifest. Interface energies for a new coating will be computed only after Adem
 archives its selection.
+
+## Amendment: uniform 1,250-atom cap (SYNC_CLAUDE_10.md) and frozen manifest
+
+The cap was raised from 1,200 to **1,250 atoms for every candidate and job**, before any LLM selection
+or new interface energy. This is a construction-driven resource amendment. All other rules are
+unchanged, and the original 1,200-atom screen is retained in `screening/cap1200/`. The full re-screen
+of all five coatings at 1,250 is in `screening/cap1250/`.
+
+**Menu at 1,250: LiNbF6 reference plus three unevaluated options**, LiTaF6 (001), **LiCaAlF6 (100)**
+(cathode 720 atoms; electrolyte 1,212 atoms, 256.062 Å², 2.22 % strain, broken Al–F bonds on both
+contacts) and LiF (110). LiZr2(PO4)3 remains excluded: no facet/contact has an admissible build.
+
+**Frozen inputs** (`inputs/`, `manifest.json` + `.sha256`, initial `index.json`). Builds use
+`build_contact.py --rule screen`: the screen's gates and ordering over 60 candidates per termination.
+This reproduces the screen's choice everywhere except the **LiF cathode**, where the larger
+enumeration finds a cell with fewer broken Li–F bonds per area: 1,032 atoms (123 Å²) instead of 708.
+The frozen ordering decides, so 1,032 is used. LiNbF6 still selects its archived reference geometry.
+
+Primary registries are chosen by geometry only (`select_registries.py`, three per contact).
+Equivalence modulo the coating and substrate surface lattices was validated against the archived
+LiNbF6 energy grid: predicted-equivalent offsets agree within 5×10⁻⁴ eV. Exact symmetry
+equivalents are rejected with tight `StructureMatcher` tolerances. Default tolerances wrongly
+merged distinct LiCoO2 registries; that first selection is superseded.
+
+**Unavailable sensitivity slots**, recorded rather than rescued:
+- LiCaAlF6 electrolyte thickness increment, `not_run_resource_limit` (1,302 atoms);
+- LiCaAlF6 and LiF electrolyte seed-4 robustness, `not_run_no_admissible_construction` (no
+  admissible seed-4 build at 300 or 600 Å²).
+
+The seed-4 robustness builds use fractional registry (0,0): the seed-0 and seed-4 cells have
+different supercell bases, so they are not the same physical alignment.
+
+**LiNbF6 reference provenance:** its archived registries were chosen before the geometric rule.
+The rule would choose different cathode and electrolyte offsets. Four consistency jobs for those
+offsets are declared optional (not run unless approved) and never enter decisions.

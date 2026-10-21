@@ -1,0 +1,228 @@
+{
+  "label": "LiF_electrolyte",
+  "contact": "Li6PS5Cl(1, 1, 1) | LiF(1, 1, 0)",
+  "inputs": {
+    "substrate": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz",
+    "substrate_sha256": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+    "film": "data/petmad/coating_comparison_v1/bulk/LiF/stability_check/final.extxyz",
+    "film_sha256": "afdf9006d371b1c632c91cdcf7c97af6278cb546cea96ad4fbfef313741bb457",
+    "parent": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/symmetric/final.extxyz",
+    "parent_sha256": "3787779a5ed999d39e4ba2ef55fadfb0330b518e10ffb5981b75d936cb5148db"
+  },
+  "selection_rule": "screen",
+  "settings": {
+    "max_area_A2": 300.0,
+    "min_span_A": 40.0,
+    "max_atoms": 1250,
+    "max_length_tol": 0.05,
+    "max_angle_tol": 0.03,
+    "film_layers": 15,
+    "substrate_layers": 4,
+    "max_strain": 0.06,
+    "candidate_cap": 60
+  },
+  "enumeration": {
+    "terminations_available": [
+      [
+        "LiF_Pmmm_2",
+        "Li6Cl_P1_7"
+      ],
+      [
+        "LiF_Pmmm_2",
+        "LiS3_P1_8"
+      ],
+      [
+        "LiF_Pmmm_2",
+        "P_C2/m_2"
+      ],
+      [
+        "LiF_Pmmm_2",
+        "Li_P-1_2"
+      ],
+      [
+        "LiF_Pmmm_2",
+        "S_P2_1/m_2"
+      ],
+      [
+        "LiF_Pmmm_2",
+        "S_P-1_2"
+      ],
+      [
+        "LiF_Pmmm_2",
+        "Cl2_P2/m_1"
+      ]
+    ],
+    "zsl_matches": 16,
+    "truncated": false,
+    "termination_requested": [
+      "LiF_Pmmm_2",
+      "Li6Cl_P1_7"
+    ],
+    "valid_for_termination": 1
+  },
+  "termination": [
+    "LiF_Pmmm_2",
+    "Li6Cl_P1_7"
+  ],
+  "n_atoms": 1108,
+  "area_A2": 170.7082754049176,
+  "von_mises_strain": 0.01547409749330685,
+  "strain_tensor": [
+    [
+      -0.002093104092286857,
+      0.0020936532101365757,
+      0.008461566103859536
+    ],
+    [
+      0.0020936532101365757,
+      -0.002094202471874196,
+      -0.008463701338007376
+    ],
+    [
+      0.008461566103859536,
+      -0.008463701338007376,
+      0.007699718648369713
+    ]
+  ],
+  "film_transformation": [
+    [
+      1.0,
+      2.0
+    ],
+    [
+      0.0,
+      15.0
+    ]
+  ],
+  "substrate_transformation": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0
+    ]
+  ],
+  "cut_shifts": {
+    "film": 0.2429373995660309,
+    "substrate": 0.18500801542143464
+  },
+  "warnings": [
+    "substrate slab is polar: |p_z|/A = 0.347 e/\u00c5"
+  ],
+  "sides": {
+    "film": {
+      "formula": "Li450 F450",
+      "n_atoms": 900,
+      "formal_charge": 0.0,
+      "formal_dipole_per_area_e_per_A": 0.006249844987232752,
+      "cut_polyhedra": {},
+      "contact_side_layers": [
+        {
+          "F": 15,
+          "Li": 15
+        },
+        {
+          "F": 15,
+          "Li": 15
+        },
+        {
+          "F": 15,
+          "Li": 15
+        }
+      ],
+      "far_side_layers": [
+        {
+          "F": 15,
+          "Li": 15
+        },
+        {
+          "F": 15,
+          "Li": 15
+        },
+        {
+          "F": 15,
+          "Li": 15
+        }
+      ]
+    },
+    "substrate": {
+      "formula": "Li96 P16 S80 Cl16",
+      "n_atoms": 208,
+      "formal_charge": 0.0,
+      "formal_dipole_per_area_e_per_A": 0.3471466690035372,
+      "cut_polyhedra": {
+        "PS4": 0
+      },
+      "contact_side_layers": [
+        {
+          "Cl": 4,
+          "Li": 12,
+          "S": 4
+        },
+        {
+          "S": 4
+        },
+        {
+          "Li": 12,
+          "P": 4,
+          "S": 12
+        }
+      ],
+      "far_side_layers": [
+        {
+          "Li": 12,
+          "P": 4,
+          "S": 12
+        },
+        {
+          "S": 4
+        },
+        {
+          "Cl": 4,
+          "Li": 12,
+          "S": 4
+        }
+      ],
+      "contact_side_framework": [
+        {
+          "species": "Cl",
+          "parent_height": 0.0,
+          "count": 16
+        },
+        {
+          "species": "S",
+          "parent_height": 0.85,
+          "count": 16
+        },
+        {
+          "species": "S",
+          "parent_height": 0.75,
+          "count": 16
+        }
+      ],
+      "far_side_framework": [
+        {
+          "species": "S",
+          "parent_height": 0.38,
+          "count": 48
+        },
+        {
+          "species": "P",
+          "parent_height": 0.5,
+          "count": 16
+        },
+        {
+          "species": "S",
+          "parent_height": 0.75,
+          "count": 16
+        }
+      ]
+    }
+  },
+  "fixed_atoms": {
+    "rule": "bottom 34% of the substrate z span (energetics.bottom_fixed_indices)",
+    "count": 76
+  }
+}

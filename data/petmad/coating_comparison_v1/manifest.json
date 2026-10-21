@@ -1,0 +1,901 @@
+{
+ "schema": "coating-pilot-manifest-v1",
+ "frozen_before_new_interface_energies": true,
+ "protocol": {
+  "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+  "model": "PET-MAD S 1.6.0 (r2SCAN), upet 0.3.1",
+  "force_target_eV_A": 0.05,
+  "step_limit": 400,
+  "vacuum_A": 15.0,
+  "initial_gap_A": 2.0,
+  "optimizer": "FIRE; joined + film + substrate relaxations",
+  "separation": "rigid-fragment single points (W_sep), same device",
+  "device": "cuda (RTX 3090, sm3090el9_devel)",
+  "code": "immutable git-archive snapshot per batch, CODE=code_<commit>"
+ },
+ "construction": {
+  "substrates": {
+   "cathode": "LiCoO2(001) Li_P6/mmm_1, 2 layers (26.77 \u00c5), PET-MAD unconstrained bulk",
+   "electrolyte": "seed-0 Li6PS5Cl(111) mapped Cl cut Li6Cl_P1_7, 4 layers (21.28 \u00c5)"
+  },
+  "area_tiers_A2": [
+   300,
+   600
+  ],
+  "max_atoms": 1250,
+  "atom_cap_amendment": "1,200 -> 1,250 uniform, construction-driven, before selection and new energies (SYNC_CLAUDE_10.md); the original 1,200-atom screen is retained",
+  "zsl": {
+   "max_length_tol": 0.05,
+   "max_angle_tol": 0.03,
+   "max_area_ratio_tol": 0.1
+  },
+  "max_strain": 0.06,
+  "coating_min_span_A": 40.0,
+  "facets": "symmetry-distinct, index <= 1, same coating facet on both contacts",
+  "gates": "neutral, stoichiometric, no overlaps, no cut PS4/PO4",
+  "ordering": "fewest broken cation-ligand bonds per area, lower total formal polarity, fewer atoms, lower strain, termination",
+  "enumeration": "per termination, 60 candidates per build (12 in the screen)"
+ },
+ "fixed_rule": {
+  "cathode": {
+   "depth_A": 9.10044154
+  },
+  "electrolyte": {
+   "depth_A": 3.257602
+  }
+ },
+ "registry_rule": "(0,0); then farthest translation class modulo the coating/substrate surface lattices; no exact symmetry equivalents (scripts/select_registries.py, 12x12 grid); up to 3 per contact",
+ "selection_rule": "per contact, lowest relaxed joined energy among valid primary registries",
+ "sensitivity_slots": {
+  "thickness_increment": "+1 coating layer, same in-plane cell",
+  "fixed_depth_variation": {
+   "cathode_depth_A": 13.385,
+   "electrolyte_depth_A": 6.515204
+  },
+  "robustness_case": {
+   "cathode": "3 LiCoO2 layers, same in-plane cell",
+   "electrolyte": "seed-4 Li6PS5Cl, mapped Cl cut"
+  }
+ },
+ "budget": {
+  "max_full_jobs": 36,
+  "per_new_coating": "6 primary + up to 6 sensitivity",
+  "reference_new_jobs": 0
+ },
+ "failure_policy": "failed or unconverged jobs are terminal outcomes with null works; a failed contact consumes the material slot; no automatic replacement material, retry or extension; sensitivity never enters decisions",
+ "menu": [
+  {
+   "candidate_id": "mp-aaacjjwh",
+   "formula": "LiNbF6",
+   "sulfide_penalty_eV_per_non_Li_atom": 0.028772005147425617,
+   "penalty_components": {
+    "cathode_contact": 0.028772005147425617,
+    "coating_self": 0.0,
+    "electrolyte_contact": 0.02623066974828525
+   },
+   "acceptable": true,
+   "band_gap_eV": 4.788851973014669,
+   "thermo_table": "data/benchmarks/environment_v1/lco_lpscl_4v.json",
+   "thermo_table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+   "role": "reference",
+   "feasible": true,
+   "construction": "(001) F2_P-6_3, 4 layers (archived)"
+  },
+  {
+   "candidate_id": "mp-aaacjmqp",
+   "formula": "LiTaF6",
+   "sulfide_penalty_eV_per_non_Li_atom": 0.027074933496621156,
+   "penalty_components": {
+    "cathode_contact": 0.027074933496621156,
+    "coating_self": 0.004412038571429022,
+    "electrolyte_contact": 0.0006810681474558322
+   },
+   "acceptable": true,
+   "band_gap_eV": 5.917199104338054,
+   "thermo_table": "data/benchmarks/environment_v1/lco_lpscl_4v.json",
+   "thermo_table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+   "role": "option",
+   "feasible": true,
+   "construction": "(001) F2_P-6_3, 4 layers"
+  },
+  {
+   "candidate_id": "mp-aaaaajby",
+   "formula": "LiCaAlF6",
+   "sulfide_penalty_eV_per_non_Li_atom": 0.047719477710549185,
+   "penalty_components": {
+    "cathode_contact": 0.0,
+    "coating_self": 0.0,
+    "electrolyte_contact": 0.047719477710549185
+   },
+   "acceptable": true,
+   "band_gap_eV": 7.6448,
+   "thermo_table": "data/benchmarks/environment_v1/lco_lpscl_4v.json",
+   "thermo_table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+   "role": "option",
+   "feasible": true,
+   "construction": "(100) LiAlF4_P2_6, 10 layers"
+  },
+  {
+   "candidate_id": "mp-aaaaabru",
+   "formula": "LiF",
+   "sulfide_penalty_eV_per_non_Li_atom": 0.3104396521073731,
+   "penalty_components": {
+    "cathode_contact": 0.0,
+    "coating_self": 0.0,
+    "electrolyte_contact": 0.3104396521073731
+   },
+   "acceptable": false,
+   "band_gap_eV": 8.7161,
+   "thermo_table": "data/benchmarks/environment_v1/lco_lpscl_4v.json",
+   "thermo_table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+   "role": "option",
+   "feasible": true,
+   "construction": "(110) LiF_Pmmm_2, 15 layers"
+  },
+  {
+   "candidate_id": "mp-aaabevhd",
+   "formula": "LiZr2(PO4)3",
+   "sulfide_penalty_eV_per_non_Li_atom": 0.05632133261569905,
+   "penalty_components": {
+    "cathode_contact": 0.0,
+    "coating_self": 0.01886771176470603,
+    "electrolyte_contact": 0.05632133261569905
+   },
+   "acceptable": false,
+   "band_gap_eV": 4.1295,
+   "thermo_table": "data/benchmarks/environment_v1/lco_lpscl_4v.json",
+   "thermo_table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+   "role": "excluded",
+   "feasible": false,
+   "exclusion_reason": "no admissible two-contact construction within 600 \u00c5\u00b2 and 1,250 atoms (electrolyte: only (001), >= 2,456 atoms; cathode cells over the cap; most facets cut PO4)"
+  }
+ ],
+ "coatings": {
+  "mp-aaacjmqp": {
+   "formula": "LiTaF6",
+   "contacts": {
+    "cathode": {
+     "expected": {
+      "candidate": {
+       "pair": [
+        "LiCoO2",
+        "LiTaF6"
+       ],
+       "film_miller": [
+        0,
+        0,
+        1
+       ],
+       "substrate_miller": [
+        0,
+        0,
+        1
+       ],
+       "termination": [
+        "F2_P-6_3",
+        "Li_P6/mmm_1"
+       ]
+      },
+      "n_atoms": 696,
+      "area_A2": 88.8000146079959,
+      "formula": "Co78F288Li126O156Ta48",
+      "n_fixed": 104,
+      "fixed_species": {
+       "Co": 26,
+       "Li": 26,
+       "O": 52
+      },
+      "von_mises_strain": 0.01453933327117209,
+      "film_transformation": [
+       [
+        2.0,
+        0.0
+       ],
+       [
+        0.0,
+        2.0
+       ]
+      ],
+      "substrate_transformation": [
+       [
+        1.0,
+        4.0
+       ],
+       [
+        0.0,
+        13.0
+       ]
+      ],
+      "build_sha256": "bd0aebad76848c8eb0075ece1ceffa9956d429ccfadb493b9c3e035c5adb2920",
+      "build_json_sha256": "78f9c900f2cee144d8dfb9fa03fa189815069a3d7166181945ce94f22abc4a31",
+      "termination": [
+       "F2_P-6_3",
+       "Li_P6/mmm_1"
+      ],
+      "formal_polarity_e_per_A": {
+       "film": 1.2277290185928735,
+       "substrate": 2.058413554829965
+      },
+      "cut_polyhedra": {
+       "film": {},
+       "substrate": {
+        "CoO6": 0
+       }
+      }
+     },
+     "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+     "registries": [
+      {
+       "id": "R1",
+       "offset": [
+        0.0,
+        0.0
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R2",
+       "offset": [
+        0.25,
+        0.25
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R3",
+       "offset": [
+        0.08333333333333333,
+        0.25
+       ],
+       "gap_A": 2.0
+      }
+     ],
+     "sensitivity": {
+      "thickness_increment": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode_thickness_L5",
+       "build_sha256": "8cde4efca4e472c0dd8155d687f71bf27a918cf51b73433d422470dff3a8359c",
+       "depth_A": 9.10044154,
+       "registry": "selected primary registry"
+      },
+      "fixed_depth_variation": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+       "depth_A": 13.385,
+       "registry": "selected primary registry"
+      },
+      "robustness_case": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode_substrate3",
+       "build_sha256": "a50c1fed47cbdb1401c0f9d1a5312f927c7d0289ad871bd84ebd4e5b9dcc5d8d",
+       "depth_A": 9.10044154,
+       "registry": "selected primary registry"
+      }
+     }
+    },
+    "electrolyte": {
+     "expected": {
+      "candidate": {
+       "pair": [
+        "Li6PS5Cl",
+        "LiTaF6"
+       ],
+       "film_miller": [
+        0,
+        0,
+        1
+       ],
+       "substrate_miller": [
+        1,
+        1,
+        1
+       ],
+       "termination": [
+        "F2_P-6_3",
+        "Li6Cl_P1_7"
+       ]
+      },
+      "n_atoms": 880,
+      "area_A2": 170.70827540491757,
+      "formula": "Cl16F504Li180P16S80Ta84",
+      "n_fixed": 38,
+      "fixed_species": {
+       "Cl": 2,
+       "Li": 12,
+       "P": 4,
+       "S": 20
+      },
+      "von_mises_strain": 0.033170962442917146,
+      "film_transformation": [
+       [
+        1.0,
+        3.0
+       ],
+       [
+        0.0,
+        7.0
+       ]
+      ],
+      "substrate_transformation": [
+       [
+        2.0,
+        0.0
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "build_sha256": "b056cd3cd1aac959073ae2dfcebacb3a8bb7d7db74549b3edd67696efce6091c",
+      "build_json_sha256": "e00c8bdd51bc5e6ded60fdf7e452ea0f16cad02d4de6a8ff5463d8c8eba66a6c",
+      "termination": [
+       "F2_P-6_3",
+       "Li6Cl_P1_7"
+      ],
+      "formal_polarity_e_per_A": {
+       "film": 1.1176325249753751,
+       "substrate": 0.3471466690035354
+      },
+      "cut_polyhedra": {
+       "film": {},
+       "substrate": {
+        "PS4": 0
+       }
+      }
+     },
+     "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+     "registries": [
+      {
+       "id": "R1",
+       "offset": [
+        0.0,
+        0.0
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R2",
+       "offset": [
+        0.25,
+        0.5
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R3",
+       "offset": [
+        0.08333333333333333,
+        0.75
+       ],
+       "gap_A": 2.0
+      }
+     ],
+     "sensitivity": {
+      "thickness_increment": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte_thickness_L5",
+       "build_sha256": "faccffb6dbf525d29efca4c5ccff3a913f242907ad021900e12868d163454ff9",
+       "depth_A": 3.257602,
+       "registry": "selected primary registry"
+      },
+      "fixed_depth_variation": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+       "depth_A": 6.515204,
+       "registry": "selected primary registry"
+      },
+      "robustness_case": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte_seed4",
+       "build_sha256": "087fdacb19640dc189010f9b8c26a86432995646b718c91a4cc8b3fa996efef7",
+       "depth_A": 3.257602,
+       "registry": "fractional (0,0) and the selected primary offset are not physically comparable across bases; use (0,0)"
+      }
+     }
+    }
+   }
+  },
+  "mp-aaaaajby": {
+   "formula": "LiCaAlF6",
+   "contacts": {
+    "cathode": {
+     "expected": {
+      "candidate": {
+       "pair": [
+        "LiCoO2",
+        "LiCaAlF6"
+       ],
+       "film_miller": [
+        1,
+        0,
+        0
+       ],
+       "substrate_miller": [
+        0,
+        0,
+        1
+       ],
+       "termination": [
+        "LiAlF4_P2_6",
+        "Li_P6/mmm_1"
+       ]
+      },
+      "n_atoms": 720,
+      "area_A2": 102.46155531691838,
+      "formula": "Al40Ca40Co90F240Li130O180",
+      "n_fixed": 120,
+      "fixed_species": {
+       "Co": 30,
+       "Li": 30,
+       "O": 60
+      },
+      "von_mises_strain": 0.03639253914115424,
+      "film_transformation": [
+       [
+        2.0,
+        0.0
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "substrate_transformation": [
+       [
+        1.0,
+        12.0
+       ],
+       [
+        0.0,
+        15.0
+       ]
+      ],
+      "build_sha256": "b2fe7f23fb98338e1a2ff8227d542987146391c1d1bece8117138b8017421dd5",
+      "build_json_sha256": "e85d340017791864c059c569f408cf315b01525eae425414980fafe7b2a20a8d",
+      "termination": [
+       "LiAlF4_P2_6",
+       "Li_P6/mmm_1"
+      ],
+      "formal_polarity_e_per_A": {
+       "film": 0.001985821692298444,
+       "substrate": 2.058413554829961
+      },
+      "cut_polyhedra": {
+       "film": {
+        "AlF6": 4
+       },
+       "substrate": {
+        "CoO6": 0
+       }
+      }
+     },
+     "build": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode",
+     "registries": [
+      {
+       "id": "R1",
+       "offset": [
+        0.0,
+        0.0
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R2",
+       "offset": [
+        0.25,
+        0.16666666666666666
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R3",
+       "offset": [
+        0.08333333333333333,
+        0.16666666666666666
+       ],
+       "gap_A": 2.0
+      }
+     ],
+     "sensitivity": {
+      "thickness_increment": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode_thickness_L11",
+       "build_sha256": "21d1df645632ef0272160c06752e53709814d7c4732405a520a07fe764d75844",
+       "depth_A": 9.10044154,
+       "registry": "selected primary registry"
+      },
+      "fixed_depth_variation": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode",
+       "depth_A": 13.385,
+       "registry": "selected primary registry"
+      },
+      "robustness_case": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode_substrate3",
+       "build_sha256": "fe516545315fa62585ce611a72621849a3ec186bb6728badc224c3b29c92de60",
+       "depth_A": 9.10044154,
+       "registry": "selected primary registry"
+      }
+     }
+    },
+    "electrolyte": {
+     "expected": {
+      "candidate": {
+       "pair": [
+        "Li6PS5Cl",
+        "LiCaAlF6"
+       ],
+       "film_miller": [
+        1,
+        0,
+        0
+       ],
+       "substrate_miller": [
+        1,
+        1,
+        1
+       ],
+       "termination": [
+        "LiAlF4_P2_6",
+        "Li6Cl_P1_7"
+       ]
+      },
+      "n_atoms": 1212,
+      "area_A2": 256.0624131073764,
+      "formula": "Al100Ca100Cl24F600Li244P24S120",
+      "n_fixed": 57,
+      "fixed_species": {
+       "Cl": 3,
+       "Li": 18,
+       "P": 6,
+       "S": 30
+      },
+      "von_mises_strain": 0.022195801975390398,
+      "film_transformation": [
+       [
+        1.0,
+        2.0
+       ],
+       [
+        0.0,
+        5.0
+       ]
+      ],
+      "substrate_transformation": [
+       [
+        3.0,
+        0.0
+       ],
+       [
+        0.0,
+        1.0
+       ]
+      ],
+      "build_sha256": "b62e243f52de37089835d0c4a13d6932008606b2e5e1d88a503f456f693e9a05",
+      "build_json_sha256": "a9e2b368baa63db0e9d7a644ab9579fadbf1f03e0b99e1f9446309a4bd7bf7a3",
+      "termination": [
+       "LiAlF4_P2_6",
+       "Li6Cl_P1_7"
+      ],
+      "formal_polarity_e_per_A": {
+       "film": 0.001986531102961826,
+       "substrate": 0.34714666900353763
+      },
+      "cut_polyhedra": {
+       "film": {
+        "AlF6": 10
+       },
+       "substrate": {
+        "PS4": 0
+       }
+      }
+     },
+     "build": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_electrolyte",
+     "registries": [
+      {
+       "id": "R1",
+       "offset": [
+        0.0,
+        0.0
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R2",
+       "offset": [
+        0.16666666666666666,
+        0.5
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R3",
+       "offset": [
+        0.0,
+        0.5
+       ],
+       "gap_A": 2.0
+      }
+     ],
+     "sensitivity": {
+      "thickness_increment": {
+       "status": "not_run_resource_limit",
+       "reason": "not_run_resource_limit (1,302 atoms > 1,250)"
+      },
+      "fixed_depth_variation": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_electrolyte",
+       "depth_A": 6.515204,
+       "registry": "selected primary registry"
+      },
+      "robustness_case": {
+       "status": "not_run_no_admissible_construction",
+       "reason": "not_run_no_admissible_construction (seed-4 bulk, 300 and 600 \u00c5\u00b2)"
+      }
+     }
+    }
+   }
+  },
+  "mp-aaaaabru": {
+   "formula": "LiF",
+   "contacts": {
+    "cathode": {
+     "expected": {
+      "candidate": {
+       "pair": [
+        "LiCoO2",
+        "LiF"
+       ],
+       "film_miller": [
+        1,
+        1,
+        0
+       ],
+       "substrate_miller": [
+        0,
+        0,
+        1
+       ],
+       "termination": [
+        "LiF_Pmmm_2",
+        "Li_P6/mmm_1"
+       ]
+      },
+      "n_atoms": 1032,
+      "area_A2": 122.95386638030203,
+      "formula": "Co108F300Li408O216",
+      "n_fixed": 144,
+      "fixed_species": {
+       "Co": 36,
+       "Li": 36,
+       "O": 72
+      },
+      "von_mises_strain": 0.03091337974208473,
+      "film_transformation": [
+       [
+        1.0,
+        7.0
+       ],
+       [
+        0.0,
+        10.0
+       ]
+      ],
+      "substrate_transformation": [
+       [
+        1.0,
+        8.0
+       ],
+       [
+        0.0,
+        18.0
+       ]
+      ],
+      "build_sha256": "ec21f40bd13bfb154bb50fe05147b31b76cc25a46369301209ab1aafc8e9a9d5",
+      "build_json_sha256": "ab4f97d3179fa15085bfaadda010bbe149861ac1e722bcb35c424a91f1824b05",
+      "termination": [
+       "LiF_Pmmm_2",
+       "Li_P6/mmm_1"
+      ],
+      "formal_polarity_e_per_A": {
+       "film": 0.005784826947572769,
+       "substrate": 2.0584135548299627
+      },
+      "cut_polyhedra": {
+       "film": {},
+       "substrate": {
+        "CoO6": 0
+       }
+      }
+     },
+     "build": "data/petmad/coating_comparison_v1/inputs/LiF_cathode",
+     "registries": [
+      {
+       "id": "R1",
+       "offset": [
+        0.0,
+        0.0
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R2",
+       "offset": [
+        0.5,
+        0.08333333333333333
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R3",
+       "offset": [
+        0.25,
+        0.0
+       ],
+       "gap_A": 2.0
+      }
+     ],
+     "sensitivity": {
+      "thickness_increment": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiF_cathode_thickness_L16",
+       "build_sha256": "1ee48a4b12306664eafdfb502bbc5a39c7b584fec216485ef907c9eea04b6cd6",
+       "depth_A": 9.10044154,
+       "registry": "selected primary registry"
+      },
+      "fixed_depth_variation": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiF_cathode",
+       "depth_A": 13.385,
+       "registry": "selected primary registry"
+      },
+      "robustness_case": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiF_cathode_substrate3",
+       "build_sha256": "905d05a6a55565e7d2c03143c88f0a70faf072d4ef48aeab4aea219ff9004f2f",
+       "depth_A": 9.10044154,
+       "registry": "selected primary registry"
+      }
+     }
+    },
+    "electrolyte": {
+     "expected": {
+      "candidate": {
+       "pair": [
+        "Li6PS5Cl",
+        "LiF"
+       ],
+       "film_miller": [
+        1,
+        1,
+        0
+       ],
+       "substrate_miller": [
+        1,
+        1,
+        1
+       ],
+       "termination": [
+        "LiF_Pmmm_2",
+        "Li6Cl_P1_7"
+       ]
+      },
+      "n_atoms": 1108,
+      "area_A2": 170.7082754049176,
+      "formula": "Cl16F450Li546P16S80",
+      "n_fixed": 38,
+      "fixed_species": {
+       "Cl": 2,
+       "Li": 12,
+       "P": 4,
+       "S": 20
+      },
+      "von_mises_strain": 0.01547409749330685,
+      "film_transformation": [
+       [
+        1.0,
+        2.0
+       ],
+       [
+        0.0,
+        15.0
+       ]
+      ],
+      "substrate_transformation": [
+       [
+        1.0,
+        0.0
+       ],
+       [
+        0.0,
+        2.0
+       ]
+      ],
+      "build_sha256": "0e8733ea786d5a61d9e02738c13b992dce9983e951be02657ed742d7e2bfc6fe",
+      "build_json_sha256": "503f7474b9f34eb846f800a1add5c6a1a8b87d46419c14e3a70f581abb4175bc",
+      "termination": [
+       "LiF_Pmmm_2",
+       "Li6Cl_P1_7"
+      ],
+      "formal_polarity_e_per_A": {
+       "film": 0.006249844987232752,
+       "substrate": 0.3471466690035372
+      },
+      "cut_polyhedra": {
+       "film": {},
+       "substrate": {
+        "PS4": 0
+       }
+      }
+     },
+     "build": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte",
+     "registries": [
+      {
+       "id": "R1",
+       "offset": [
+        0.0,
+        0.0
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R2",
+       "offset": [
+        0.5,
+        0.08333333333333333
+       ],
+       "gap_A": 2.0
+      },
+      {
+       "id": "R3",
+       "offset": [
+        0.25,
+        0.0
+       ],
+       "gap_A": 2.0
+      }
+     ],
+     "sensitivity": {
+      "thickness_increment": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte_thickness_L16",
+       "build_sha256": "5cfcca2271aa050d2756b17f4f1e9fddaaa1e33281292ee7a73271c66ac38ffc",
+       "depth_A": 3.257602,
+       "registry": "selected primary registry"
+      },
+      "fixed_depth_variation": {
+       "status": "pending",
+       "build": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte",
+       "depth_A": 6.515204,
+       "registry": "selected primary registry"
+      },
+      "robustness_case": {
+       "status": "not_run_no_admissible_construction",
+       "reason": "not_run_no_admissible_construction (seed-4 bulk, 300 and 600 \u00c5\u00b2)"
+      }
+     }
+    }
+   }
+  }
+ },
+ "reference": {
+  "candidate_id": "mp-aaacjjwh",
+  "formula": "LiNbF6",
+  "status": "reused archive",
+  "primary_runs": {
+   "cathode": {
+    "R1": "data/petmad/niflheim_batch1/cathode_ref",
+    "R2": "data/petmad/niflheim_batch1/cathode_reg_sixth_0",
+    "R3": "data/petmad/niflheim_batch1/cathode_reg_third_third"
+   },
+   "electrolyte": {
+    "R1": "data/petmad/niflheim_batch1/electrolyte_seed0_ref",
+    "R2": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5"
+   }
+  },
+  "registry_provenance": "chosen before the geometric registry rule (cathode from an unrelaxed 6x6 energy diagnostic; electrolyte the two distinct classes of a 2x2 grid). The geometric rule would choose cathode (0,0),(1/4,1/4),(1/12,1/4) and electrolyte (0,0),(1/4,1/2),(1/12,3/4).",
+  "optional_consistency_jobs": "4 jobs (the geometric-rule registries not yet run); not run unless approved; never in decisions",
+  "sensitivity_context": "archived thickness, constraint, vacuum and seed-4 results are material-specific context, not an error bar"
+ }
+}
