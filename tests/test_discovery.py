@@ -80,15 +80,33 @@ def test_upfront_one_call_before_any_query():
     assert len(calls) == 1 and len(state["history"]) == 3
 
 
-def test_invalid_proposals_bounded_cost_no_budget_and_checkpointed(tmp_path):
+def test_malformed_messages_bounded_retries_without_evaluation(tmp_path):
     q = queries()
     out = tmp_path / "run.json"
     with pytest.raises(ValueError, match="exhausted"):
-        run_discovery(q, strategy="iterative", llm=lambda *_: {"proposals": [P("mp-not-in-pool")]},
+        run_discovery(q, strategy="iterative", llm=lambda *_: {"proposals": []},
                       output=out, max_proposal_attempts=2)
     saved = json.loads(out.read_text())
     assert saved["status"] == "failed" and len(saved["proposal_attempts"]) == 2
     assert q.remaining == 3
+
+
+@pytest.mark.parametrize('bad_id', ['mp-not-in-pool', None, ['invalid']])
+def test_invalid_id_is_charged_and_does_not_trigger_free_repair(bad_id):
+    q = queries(2)
+    state = run_discovery(q, strategy='iterative', llm=lambda *_: {'proposals': [P(bad_id)]})
+    assert q.remaining == 0
+    assert len(state['proposal_attempts']) == len(state['history']) == 2
+    assert all(h['result']['status'] == 'failed' for h in state['history'])
+
+
+def test_repeated_id_in_upfront_list_costs_an_evaluation():
+    q = queries(2)
+    cid = q.available()[0]['candidate_id']
+    state = run_discovery(q, strategy='upfront', llm=lambda *_: {'proposals': [P(cid), P(cid)]})
+    assert q.remaining == 0
+    assert state['history'][1]['result']['error'] == 'Candidate already queried'
+    assert len(state['proposal_attempts']) == 1
 
 
 def test_proposal_without_mode_or_repeat_is_repaired():

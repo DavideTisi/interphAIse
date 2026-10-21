@@ -479,3 +479,26 @@ Verification: read-only source comparison and whitespace check. No branch switch
 merge, test execution, paid calls, calculations, message to Adem, commit or push.
 Existing local preparation/inspection edits preserved. Next: obtain a sanitized
 run archive and settle accounting/analysis policy before integrating into main.
+
+## 2026-10-21 — Merge agent work and prepare integrated follow-up
+
+At the user's request to merge and try real discovery, committed the review reply
+as 8c82a10 and merged origin/work/agent-experiments at 40e79c3 into davide cleanly.
+Main was not changed. Preserved local preparation/inspection script edits.
+
+Corrected proposal accounting: once schema-valid proposals contain candidate IDs,
+invalid and repeated IDs reach BenchmarkQueries and consume evaluations. Malformed
+messages retain bounded retries. Versioned the prompt to v3-2026-10-21c-charged-ids.
+Prevented stale usage metadata from being attributed to subsequent failed calls.
+The experiment runner now supports independent clients, bounded concurrency, explicit
+seed ranges, portable in-repo paths and source/file hashes. Analysis now validates
+expected repeat files, statuses and settings, requires explicit duplicate replacement,
+combines disjoint seeds, verifies the analysis benchmark, and includes the chemical
+heuristic plus a machine-readable report. No frozen data/objective was modified.
+
+Verification: full suite passed 92 tests; four new analysis tests passed separately.
+An offline 30-run random batch completed with all expected files, seeds 100–129.
+The live pilot is recorded separately under runs/integration_smoke. Wrote
+INTEGRATED_DISCOVERY_PROTOCOL.md before production, fixing the 30-repeat follow-up,
+settings, exclusion policy, interpretation and relation to Adem's earlier results.
+No new MLIP or Materials Project calculation/request occurred.

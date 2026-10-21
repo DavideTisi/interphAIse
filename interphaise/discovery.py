@@ -14,7 +14,7 @@ from pathlib import Path
 from .discovery_evaluator import ranking_key
 from .tools.thermo_dataset import digest
 
-PROMPT_VERSION = "v3-2026-10-21b"
+PROMPT_VERSION = "v3-2026-10-21c-charged-ids"
 LLM_STRATEGIES = {"iterative", "sequential", "upfront"}
 STRATEGIES = LLM_STRATEGIES | {"random"}
 PROMPT = """You are a battery coating discovery scientist choosing which candidate coatings to evaluate.
@@ -25,7 +25,9 @@ Return {"proposals": [{"candidate_id": "exact available candidate_id", "hypothes
 "motivation": "the earlier observation that motivated this choice, or \\"none\\"", "mode": "explore" or "refine"}]}.
 "explore" means a chemically different family from earlier choices; "refine" means close to an earlier choice.
 Return exactly as many proposals as the "count" field of the request, no more and no fewer.
-Copy each candidate_id character for character from the available list."""
+Copy each candidate_id character for character from the available list. Select distinct IDs.
+Each submitted candidate_id costs one evaluation, including invalid or repeated IDs.
+Another polymorph of the same formula is a separate candidate and costs another evaluation."""
 
 # Outcome fields the iterative arm may see; provenance, timing and diagnostics stay out of prompts.
 FEEDBACK_FIELDS = ("candidate_id", "formula", "status", "error", "insulating", "band_gap_eV",
@@ -66,9 +68,9 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
         return [dict(proposal=h["proposal"]) for h in state["history"]]
 
     def propose(count):
-        queried = {h["proposal"]["candidate_id"] for h in state["history"]}
+        queried = {h["result"]["candidate_id"] for h in state["history"]
+                   if isinstance(h["result"].get("candidate_id"), str)}
         available = [c for c in pool if c["candidate_id"] not in queried]
-        ids = {c["candidate_id"] for c in available}
         feedback = ""
         for _ in range(max_proposal_attempts):
             user = json.dumps(dict(task=public_task, available=available, count=count,
@@ -82,17 +84,17 @@ def run_discovery(queries, *, strategy="iterative", llm=None, seed=0, output: Pa
                 if not isinstance(proposals, list) or len(proposals) != count:
                     raise ValueError(f"Return exactly {count} proposal(s); got "
                                      f"{len(proposals) if isinstance(proposals, list) else 'none'}")
-                chosen = [p["candidate_id"] for p in proposals]
-                if bad := [c for c in chosen if c not in ids]:
-                    raise ValueError(f"Not available candidate_ids (copy exactly from the list): {bad}")
-                if len(set(chosen)) != len(chosen):
-                    raise ValueError("Proposals must be distinct")
+                # Missing proposal fields are a message-format failure. Once a
+                # candidate_id is supplied, query() owns validation and charges it.
+                if any(not isinstance(p, dict) or "candidate_id" not in p for p in proposals):
+                    raise ValueError("Each proposal needs a candidate_id field")
                 if any(not isinstance(p.get("hypothesis"), str) or not p["hypothesis"].strip() for p in proposals):
                     raise ValueError("Each proposal needs a nonempty hypothesis")
                 if any(not isinstance(p.get("motivation"), str) or p.get("mode") not in {"explore", "refine"}
                        for p in proposals):
                     raise ValueError('Each proposal needs a motivation string and mode "explore" or "refine"')
             except Exception as exc:
+                attempt["llm_metadata"] = getattr(llm, "last_metadata", None)
                 feedback = f"{type(exc).__name__}: {exc}"
                 attempt["error"] = feedback
                 state["proposal_attempts"].append(attempt)

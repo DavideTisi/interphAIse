@@ -49,6 +49,7 @@ def make_llm(model: str, temperature: float | None = None, retries: int = 3,
         raise ValueError("max_tokens and retries must be positive")
 
     def _anthropic(system: str, user: str):
+        _anthropic.last_metadata = None  # Do not attribute a previous call's usage to a failure.
         payload = {"model": model_id, "max_tokens": max_tokens, "system": system,
                    "messages": [{"role": "user", "content": user}]}
         if temperature is not None:
