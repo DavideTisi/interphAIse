@@ -8,12 +8,16 @@ from interphaise.screen import ScreenConfig
 CFG = ScreenConfig("LiCoO2", "Li6PS5Cl", ["LiNbO3", "Li3PO4", "LiTaO3"])
 
 
+def P(coating):
+    return {"coating": coating, "hypothesis": "chemistry", "motivation": "none", "mode": "explore"}
+
+
 def test_iterative_feedback_and_no_future_outcomes(tmp_path):
     calls = []
     def llm(system, user):
         data = json.loads(user)
         calls.append(data)
-        return {"proposals": [{"coating": data["available"][0], "hypothesis": "test chemistry"}]}
+        return {"proposals": [P(data["available"][0])]}
     def evaluate(c):
         return Evaluation(c, "ok", -0.2 if c == "LiNbO3" else -0.1)
     out = tmp_path / "discovery.json"
@@ -31,7 +35,7 @@ def test_upfront_one_call_before_any_evaluation():
     def llm(system, user):
         events.append("proposal")
         assert json.loads(user)["evaluated"] == []
-        return {"proposals": [{"coating": c, "hypothesis": "chemistry"} for c in CFG.coatings[:2]]}
+        return {"proposals": [P(c) for c in CFG.coatings[:2]]}
     def evaluate(c):
         events.append(c)
         return Evaluation(c, "ok", -0.1)
@@ -53,7 +57,7 @@ def test_failures_consume_budget_and_do_not_win():
 
 def test_invalid_proposals_bounded_and_checkpointed(tmp_path):
     def llm(*_):
-        return {"proposals": [{"coating": "not in pool", "hypothesis": "test"}]}
+        return {"proposals": [P("not in pool")]}
     def evaluate(c):
         pytest.fail("Invalid proposal must not run a calculation")
     out = tmp_path / "discovery.json"
@@ -107,7 +111,7 @@ def test_full_adapter_rejects_partial_contact_failure(monkeypatch):
 def test_repeated_candidate_rejected_then_repaired():
     responses = iter(["LiNbO3", "LiNbO3", "Li3PO4"])
     def llm(*_):
-        return {"proposals": [{"coating": next(responses), "hypothesis": "chemistry"}]}
+        return {"proposals": [P(next(responses))]}
     state = run_discovery(CFG, lambda c: Evaluation(c, "ok", -0.1), budget=2, llm=llm)
     assert len(state["proposal_attempts"]) == 3
     assert len(state["history"]) == 2
@@ -119,7 +123,7 @@ def test_sequential_sees_choices_but_no_outcomes():
     def llm(system, user):
         data = json.loads(user)
         calls.append(user)
-        return {"proposals": [{"coating": data["available"][0], "hypothesis": "chemistry"}]}
+        return {"proposals": [P(data["available"][0])]}
     def evaluate(c):
         if c == CFG.coatings[0]:
             raise RuntimeError("calculation failed")
@@ -142,6 +146,23 @@ def test_synthetic_evaluator_deterministic_and_family_structured():
     assert ok and all(e.worst_reaction_energy <= 0 for e in ok)
     state = run_discovery(ScreenConfig("LiCoO2", "Li6PS5Cl", pool), a, strategy="random", budget=10, seed=1)
     assert len(state["history"]) == 10
+
+
+def test_proposal_without_mode_rejected_then_repaired():
+    responses = iter([{"coating": "LiNbO3", "hypothesis": "chemistry"}, P("LiNbO3")])
+    state = run_discovery(CFG, lambda c: Evaluation(c, "ok", -0.1), budget=1,
+                          llm=lambda *_: {"proposals": [next(responses)]})
+    assert "mode" in state["proposal_attempts"][0]["error"]
+    assert state["history"][0]["proposal"]["mode"] == "explore"
+
+
+def test_random_curve_matches_enumeration():
+    from itertools import permutations
+    from interphaise.discovery import random_success_curve
+    pool, acceptable = range(6), {1, 4}
+    orders = list(permutations(pool))
+    for k, p in enumerate(random_success_curve(6, 2, 6), start=1):
+        assert p == pytest.approx(sum(bool(acceptable & set(o[:k])) for o in orders) / len(orders))
 
 
 def test_budget_validation_precedes_evaluation():

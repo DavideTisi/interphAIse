@@ -14,7 +14,9 @@ OBJECTIVE = "valid first; maximise worst-contact reaction energy; then weakest a
 PROMPT = """You are a battery coating discovery scientist. Select only from available coatings.
 Use chemical hypotheses and observed calculation feedback to choose promising candidates.
 Do not invent computed outcomes. The fixed objective is supplied in the task.
-Return {"proposals": [{"coating": "exact available formula", "hypothesis": "chemical rationale and how feedback informed the choice"}]}.
+Return {"proposals": [{"coating": "exact available formula", "hypothesis": "concise chemical rationale",
+"motivation": "the earlier observation that motivated this choice, or \\"none\\"", "mode": "explore" or "refine"}]}.
+"explore" means a chemically different family from earlier choices; "refine" means close to an earlier choice.
 Return exactly the requested number of distinct candidates. No other candidates."""
 
 
@@ -78,6 +80,7 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
             try:
                 response = llm(PROMPT, user)
                 attempt["response"] = response
+                attempt["llm_metadata"] = getattr(llm, "last_metadata", None)
                 proposals = response["proposals"]
                 if not isinstance(proposals, list) or len(proposals) != count:
                     raise ValueError("Return exactly the requested number of proposals")
@@ -86,6 +89,9 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
                     raise ValueError("Use distinct available candidates only")
                 if any(not isinstance(p.get("hypothesis"), str) or not p["hypothesis"].strip() for p in proposals):
                     raise ValueError("Each proposal needs a nonempty hypothesis")
+                if any(not isinstance(p.get("motivation"), str) or p.get("mode") not in {"explore", "refine"}
+                       for p in proposals):
+                    raise ValueError('Each proposal needs a motivation string and mode "explore" or "refine"')
             except Exception as exc:
                 feedback = f"{type(exc).__name__}: {exc}"
                 attempt["error"] = feedback
@@ -136,6 +142,11 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
         raise
     save()
     return state
+
+
+def random_success_curve(n_pool, n_acceptable, budget):
+    """P(at least one acceptable in k uniform draws without replacement), k = 1..budget."""
+    return [1 - math.comb(n_pool - n_acceptable, k) / math.comb(n_pool, k) for k in range(1, budget + 1)]
 
 
 def synthetic_pool(families=5, per_family=10):
