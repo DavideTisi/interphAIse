@@ -1793,3 +1793,36 @@ CONTACT_PROTOCOL.md, the PET-MAD runner, final880 vacuum evidence and Niflheim
 scripts are excluded. This sign-off is being committed and pushed for Adem
 under Davide's request to publish everything he needs; actual execution must
 be recorded by Adem's runner.
+
+## 2026-10-21 — Final-geometry constraint endpoints, relaxed registry set, Niflheim setup
+
+**Branch:** `davide`; `d0bd1f3` was pushed first. Follows SYNC_CLAUDE_5.md; the design was
+declared in CONTACT_PROTOCOL.md before running.
+
+**Constraint endpoints** (registry (0,0,2 Å)). Cathode 696 atoms, fractions 0.17 / 0.34 /
+0.50: W_adh 3.6094 / 3.6001 / 3.5962, W_sep 5.1272 / 5.1275 / 5.1277 J/m². Electrolyte 880
+atoms, depths 1.6288 / 3.2576 / 6.5152 Å: W_adh 1.6083 / 1.6329 / 1.6565, W_sep 2.9552 /
+2.9669 / 2.9781 J/m². Both are insensitive within the bracket at 0.1 J/m².
+
+**Registry set.** The declared offsets (0,0), (0,0.5), (0.5,0), (0.5,0.5) are fractions of the
+matched supercell. For the cathode (film supercell 2×2) all four are the same structure:
+bit-identical unrelaxed energies and identical relaxed W_adh. Earlier cathode scans therefore
+sampled one registry. For the electrolyte (substrate 2×1), two distinct registries; B relaxes
+to within 0.018 eV of A. Lowest joined energy is A, so (0,0) is kept. W_adh is robust
+(±0.002); W_sep differs by about 0.1 J/m² between A and B (different joined arrangements at
+near-equal energy). A 6 × 6 unrelaxed cathode grid gives 9 distinct registries spanning
+0.008 J/m²; a relaxed follow-up is proposed, not run. Vacuum 15 vs 25 Å on the final
+880-atom electrolyte: identical works.
+
+Cost: 2,826 calls plus 20 separation and 36 + 10 diagnostic single points (PET-MAD S 1.6.0,
+checkpoint `3f52e97c…`, CPU). Evidence: `data/petmad/final_checks_v1/`,
+`data/petmad/vacuum_v1/electrolyte_final880.json`.
+
+**Niflheim** (user-authorised, `fjorm`/`thul`, Rocky Linux 9). Pinned code snapshot
+`code_d0bd1f3/` (git archive, no `.env`) and the checkpoint (SHA-256 verified) are in
+`/home/scratch12/davti/OSI_Hackathon`. New isolated conda env `envs/interphaise` from the
+user's miniforge (Python 3.12, pins as local: torch 2.14.1+cu130, upet 0.3.1, ASE 3.29.0,
+pymatgen 2026.9.24); freeze saved in `envs/interphaise_freeze.txt`. Existing user envs and
+unrelated pending jobs are untouched. `run_petmad_interface.py` gains `--device` (default
+cpu); `scripts/niflheim/run_interface.sbatch` added. No cluster job submitted yet; GPU
+driver/CUDA 13 compatibility is untested.

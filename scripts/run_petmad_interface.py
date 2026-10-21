@@ -34,6 +34,7 @@ def main():
     ap.add_argument('--registry',type=float,nargs=3,metavar=('X','Y','GAP'),
                     help='Use this registry instead of the scan optimum; the scan is still run and saved')
     ap.add_argument('--threads',type=int,default=2)
+    ap.add_argument('--device',default='cpu',help="Torch device, e.g. 'cpu' or 'cuda'")
     args=ap.parse_args()
     if args.output.exists():ap.error('Use a fresh calculation output directory')
     args.output.mkdir(parents=True)
@@ -49,9 +50,9 @@ def main():
             ap.error('Checkpoint filename must identify the pinned PET-MAD S 1.6.0 model')
         from upet.ase import UPETCalculator
         checkpoint_sha256=hashlib.sha256(args.checkpoint.read_bytes()).hexdigest()
-        inner=UPETCalculator(checkpoint_path=str(args.checkpoint),device='cpu')
+        inner=UPETCalculator(checkpoint_path=str(args.checkpoint),device=args.device)
     else:
-        inner=load_mlip(model,device='cpu')
+        inner=load_mlip(model,device=args.device)
     calc=CountedCalculator(inner)
     scan=[]
     for x in (0,.5):
@@ -95,7 +96,7 @@ def main():
     candidate_w=(records['film']['final_energy_eV']+records['substrate']['final_energy_eV']-
                  records['interface']['final_energy_eV'])/area*EV_PER_A2_TO_J_PER_M2
     valid=all(r['converged'] and not r['overlap_violations'] for r in records.values())
-    result={'model':model,'checkpoint_sha256':checkpoint_sha256,'device':'cpu','torch_threads':args.threads,'purpose':'one-contact finite-cell pilot',
+    result={'model':model,'checkpoint_sha256':checkpoint_sha256,'device':args.device,'torch_threads':args.threads,'purpose':'one-contact finite-cell pilot',
         'fixed_fraction':fraction,'fixed_depth_A':args.fixed_depth,'n_fixed':len(fixed),'fixed_indices':fixed,
         'slab_z_span_A':{k:float(np.ptp(v)) for k,v in zs.items()},
         'registry_fixed':args.registry,'registry_scan_optimum':scan_best,'registry_scan_optimum_used':best is scan_best,

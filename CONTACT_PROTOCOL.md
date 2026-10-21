@@ -375,3 +375,98 @@ relaxed checks of a small declared set of competing registries, then seed 4 at t
 working electrolyte protocol with the equivalent Cl cut.
 
 Evidence: `data/petmad/thickness_gaps_v1/`.
+
+## Final-geometry constraint endpoints and relaxed registry set (SYNC_CLAUDE_5.md; declared before running)
+
+**Scope note on vacuum.** The vacuum sweep above used the 544-atom electrolyte (4 + 2 layers).
+The final 880-atom interface has a 15.73 Å empty gap, but it has not been swept separately.
+A 15-vs-25 Å single-point confirmation on it follows below.
+
+**Reused references** (settings verified: checkpoint, registry (0,0,2 Å), constraint rule,
+FIRE 0.05 eV/Å, 400-step limit; only the thread count differs):
+`cathode_thickness_v1/run_F4` (696 atoms, 0.34 fraction = 104 atoms) and
+`thickness_gaps_v1/run_electrolyte_S4_F4` (880 atoms, depth 3.257602 Å = 38 atoms).
+
+**Constraint endpoints, four new runs.** Cathode 696 atoms: fractions 0.17 and 0.50 of the
+unchanged two-layer substrate. Electrolyte 880 atoms: depths 1.628801 and 6.515204 Å.
+Registry (0,0,2 Å) and all other working settings unchanged. Criterion: the full-bracket
+spread of W_adh and of W_sep, reported against 0.1 J/m². A failure is kept and reported
+before any registry gain is interpreted.
+
+**Relaxed registry set, six new runs.** For each final contact: fractional matched-cell
+in-plane offsets (0,0) [reused], (0,0.5), (0.5,0), (0.5,0.5), all at an initial gap of 2 Å,
+with the reference constraint (cathode 0.34 fraction; electrolyte depth 3.257602 Å). This is
+a coarse relaxed check on the existing lateral grid, not a search over translations, gaps,
+terminations or facets. Failed and converged outcomes are both kept, and we record whether
+distinct starts relax to the same arrangement.
+
+**Selection rule:** among converged runs with the same atom count, composition and cell,
+select the **lowest relaxed joined-interface energy**, not the largest W_adh. For every
+registry we report the joined energy relative to the lowest, W_adh, W_sep and both
+separated-reference energies. Reference policy: each run uses its own separated references,
+relaxed from its own starting geometry, as `run_petmad_interface.py` does. These are in-plane
+translations of the same slabs, so their energies should agree; any difference is reported
+as a reference-minimum difference.
+
+**Then seed 4:** same layer counts (4 + 4), mapped Cl cut, fixed-depth rule and the *same*
+selected fractional registry as seed 0, with cell, strain and fixed-count differences
+recorded.
+
+### Results
+
+All 30 new relaxations (10 runs) converged on free atoms, with no overlap violations; the
+accounting reconciles. Cost: 2,826 calculator calls plus 20 separation single points. One
+thread per run, ten runs concurrent.
+
+**Constraint endpoints at the final geometries** (energies in J/m²):
+
+| Contact | Setting | W_adh | W_sep |
+|---|---|---:|---:|
+| Cathode 696 | fraction 0.17 / **0.34** / 0.50 | 3.6094 / **3.6001** / 3.5962 | 5.1272 / **5.1275** / 5.1277 |
+| Electrolyte 880 | depth 1.6288 / **3.2576** / 6.5152 Å | 1.6083 / **1.6329** / 1.6565 | 2.9552 / **2.9669** / 2.9781 |
+
+Spreads: cathode 0.013 / 0.0005; electrolyte 0.048 / 0.023 J/m². Both contacts are
+**insensitive within the tested constraint bracket at the 0.1 J/m² tolerance**, now at
+their working geometries. A small monotonic trend remains on the electrolyte side.
+
+**Registry set: degenerate by construction.** The declared offsets are fractions of the
+matched supercell, and several of them are lattice translations of one slab:
+- **Cathode:** the film supercell is [[2,0],[0,2]] LiNbF6 cells, so (0,0), (0,0.5), (0.5,0)
+  and (0.5,0.5) are the same structure. The unrelaxed scan energies are bit-identical
+  (−4687.49561 eV) and all relaxed results coincide (W_adh 3.600136). **One physical registry
+  was sampled.** The same holds for every earlier cathode registry scan, which carried no
+  registry information.
+- **Electrolyte:** the substrate supercell is [[2,0],[0,1]], so (0.5,0) ≡ (0,0) and
+  (0.5,0.5) ≡ (0,0.5). **Two distinct registries were sampled**, each relaxed twice.
+
+| Electrolyte registry | Joined energy above lowest | W_adh | W_sep |
+|---|---:|---:|---:|
+| A (0,0) | +0.0010 eV | 1.6329 | 2.9669 |
+| A (0.5,0) | 0 (lowest) | 1.6331 | 2.9672 |
+| B (0,0.5) | +0.0151 eV (0.0014 J/m²) | 1.6316 | 3.0647 |
+| B (0.5,0.5) | +0.0181 eV (0.0017 J/m²) | 1.6313 | 3.0640 |
+
+Registry B starts 0.70 eV (0.066 J/m²) higher before relaxation, but relaxes to within
+0.018 eV of A. The two copies of each registry agree within 0.001 eV, which measures the
+relaxation noise. The separated references are identical across registries (within 4×10⁻⁴
+eV), as expected for translated copies. **Selection (lowest joined energy): registry A,
+i.e. (0,0) is kept.** W_adh is registry-robust (±0.002 J/m²). W_sep differs by about
+0.1 J/m² between A and B, because the two registries relax into different joined
+arrangements at nearly equal energy. Fixed-geometry W_sep is therefore the less robust
+observable.
+
+**Cathode registry diagnostic** (unrelaxed single points on a 6 × 6 offset grid at 2 Å; not
+part of the declared set): the 36 offsets fall into 9 distinct registries. Their energies
+span 0.045 eV = **0.008 J/m²**, with (0,0) the lowest. The cathode registry landscape is
+flat at this level. A relaxed follow-up could use the two most distinct classes, (1/3,1/3)
+and (1/6,0); it is proposed, not run.
+
+**Vacuum at the final electrolyte geometry** (880 atoms, 15 vs 25 Å, single points): W_adh
+1.632936 and W_sep 2.966905 J/m² at both; relaxed forces within target; stored energies
+reproduced. Evidence: `data/petmad/vacuum_v1/electrolyte_final880.json`.
+
+**Working values (unchanged):** cathode **3.60 / 5.13 J/m²** (696 atoms); electrolyte
+**1.63 / 2.97 J/m²** (880 atoms). Both are formally polar and provisional. **Next:** seed 4
+at 4 + 4 layers with the mapped Cl cut, depth rule and registry (0,0).
+
+Evidence: `data/petmad/final_checks_v1/`.
