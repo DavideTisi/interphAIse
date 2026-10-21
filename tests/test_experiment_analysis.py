@@ -55,3 +55,14 @@ def test_unfinished_run_cannot_be_analysed_as_failure(tmp_path):
     run=json.loads(path.read_text());run['status']='running';path.write_text(json.dumps(run))
     with pytest.raises(ValueError, match='unfinished'):
         load_experiments([directory])
+
+
+def test_exact_median_is_inf_when_eligible_candidates_are_sparse():
+    from scripts.analyse_discovery_experiment import exact_median_best_bin
+    ok = lambda b: {'status': 'ok', 'insulating': True, 'penalty_bin': b}
+    bad = {'status': 'failed'}
+    sparse = [ok(1), ok(4)] + [bad] * 8          # 2 of 10 eligible
+    # k=1,2: P(any eligible) = 0.2, 0.38 < 0.5; k=3: P(bin<=4) = 1 - C(8,3)/C(10,3) = 0.53;
+    # k=5: P(bin<=1) = 1 - C(9,5)/C(10,5) = 0.5
+    assert exact_median_best_bin(sparse, 5) == [float('inf'), float('inf'), 4, 4, 1]
+    assert exact_median_best_bin([bad] * 6, 3) == [float('inf')] * 3

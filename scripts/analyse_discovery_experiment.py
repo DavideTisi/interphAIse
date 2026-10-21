@@ -50,6 +50,13 @@ def best_bin(results):
     return min((-k[1] for k in keys if k[0]), default=math.inf)
 
 
+def exact_median_best_bin(table, budget):
+    """Exact random median of the best eligible bin after k draws; inf when below 50% eligible-hit."""
+    valid = sorted(-ranking_key(r)[1] for r in table if ranking_key(r)[0])
+    return [next((b for b in valid if random_success_curve(len(table), sum(v <= b for v in valid), k)[-1] >= 0.5),
+                 math.inf) for k in range(1, budget + 1)]
+
+
 def load_experiments(directories, *, benchmark=None, replace_duplicates=False, allow_setting_mismatch=False):
     exps = [(d, json.loads((d / 'experiment.json').read_text())) for d in directories]
     exp = exps[0][1]
@@ -145,9 +152,7 @@ def main():
         per_k = [sorted(best_bin([h["result"] for h in r["history"][:k]]) for r in arm_runs) for k in steps]
         n = len(arm_runs)
         bins[arm] = [(v[(n - 1) // 4], v[(n - 1) // 2], v[math.ceil(3 * (n - 1) / 4)]) for v in per_k]
-    valid = sorted(-ranking_key(r)[1] for r in table if ranking_key(r)[0])
-    exact_median = [next(b for b in valid if random_success_curve(len(table), sum(v <= b for v in valid), k)[-1] >= 0.5)
-                    for k in steps]
+    exact_median = exact_median_best_bin(table, budget)
     heuristic_bins = [best_bin(heuristic[:k]) for k in steps] if not exp['synthetic'] else None
     print(f"\nmedian best bin so far at k = 1..{budget} (inf = no valid candidate yet)")
     for arm, rows in bins.items():
@@ -167,7 +172,7 @@ def main():
                 usage[arm][token] = sum(((a.get('llm_metadata') or {}).get('usage') or {}).get(token,0) for a in attempts)
         finite = lambda x: None if x == math.inf else x
         best_bins = {arm: [[finite(x) for x in row] for row in rows] for arm, rows in bins.items()}
-        best_bins['random (exact median)'] = exact_median
+        best_bins['random (exact median)'] = [finite(x) for x in exact_median]
         if heuristic_bins:
             best_bins['fluorides first (post-hoc)'] = [finite(x) for x in heuristic_bins]
         summary = {'hashes':exp['hashes'], 'curves':curves, 'usage':usage, 'analysis_notes':exclusions,
@@ -204,12 +209,12 @@ def main():
         axes[1].sharey(axes[0])
         ax = axes[2]
         finite_values = [x for rows in bins.values() for row in rows for x in row if x != math.inf]
-        top = max(finite_values + exact_median) + 3
+        top = max(finite_values + [x for x in exact_median if x != math.inf], default=0) + 3
         for arm, rows in bins.items():
             lo, med, hi = ([min(x, top) for x in col] for col in zip(*rows))
             line, = ax.plot(steps, med, marker="o", lw=2, color=ARM_COLORS.get(arm), label=arm)
             ax.fill_between(steps, lo, hi, color=line.get_color(), alpha=0.15)
-        ax.plot(steps, exact_median, "k--")
+        ax.plot(steps, [min(x, top) for x in exact_median], "k--")
         if heuristic_bins:
             ax.plot(steps, [min(x, top) for x in heuristic_bins], ":", color="grey")
         ax.axhline(top, color="grey", lw=0.5)
