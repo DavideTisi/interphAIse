@@ -1,5 +1,11 @@
 # Code, evidence and work-division review
 
+**Current assignment amendment:** [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md)
+and notes [Adem 12](SYNC_ADEM_12.md) / [Claude 9](SYNC_CLAUDE_9.md) now govern
+selection for the three-coating follow-up. F1–F4 and the evidence checks below
+remain unchanged. The LLM will select two new coatings sequentially after the
+known reference, rather than evaluate a fully predetermined cohort.
+
 21 October 2026. Davide requested a review of Adem's branch and Claude's
 PET-MAD work before dividing the next tasks. Reviewed `davide:8975d4b` and
 the freshly fetched `work/agent-experiments:b8b1392`. No implementation fix,

@@ -1,5 +1,11 @@
 # Claude: deliver the three-coating PET-MAD comparison
 
+**Updated later on 21 October:** [SYNC_CLAUDE_9.md](SYNC_CLAUDE_9.md) replaces
+the fixed cohort/fallback order below with a frozen feasible menu and two
+sequential LLM selections after the known LiNbF6 reference. Keep the safeguards,
+physical construction rules and job caps. Prepare inputs before selection;
+calculate new interfaces only after their selection is archived.
+
 21 October 2026. Davide confirmed the three-coating expansion as the next
 deliverable. Your assignment covers the code safeguards, structure preparation,
 bounded calculations and archived results. Carry the work through to the

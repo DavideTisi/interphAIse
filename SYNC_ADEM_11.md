@@ -1,5 +1,9 @@
 # Adem: polish the experiment code and deliver the three-coating comparison analysis
 
+**Updated later on 21 October:** [SYNC_ADEM_12.md](SYNC_ADEM_12.md) replaces
+the fixed-cohort and no-new-LLM-call directions below with a bounded physical
+feedback pilot. Keep the safeguards and analysis infrastructure assignments.
+
 21 October 2026. Davide confirmed the three-coating PET-MAD expansion as the
 next deliverable. Claude owns the physical campaign through archived results;
 you own the analysis and figures that turn those results into a comparison,

@@ -1,5 +1,15 @@
 # Common-protocol coating comparison: feasibility and bounded plan
 
+**Selection amendment, later on 21 October:** the active scientific/selection
+plan is [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md), with assignments in
+[SYNC_ADEM_12.md](SYNC_ADEM_12.md) and [SYNC_CLAUDE_9.md](SYNC_CLAUDE_9.md).
+It uses LiNbF6 as the known reference and lets the LLM select two new coatings
+sequentially using validated PET-MAD feedback. The construction rules, audit
+and job cap below remain the engineering basis. The fixed cohort, automatic
+fallback order and no-paid-LLM wording below describe the previous design and
+are superseded. The final cohort is selected prospectively from a frozen menu;
+the objective, geometry rules and feedback schema are frozen first.
+
 21 October 2026, branch `davide`, assessment against `8975d4b`.
 **Active next deliverable, confirmed by Davide; new campaign calculations have
 not started in this planning work.**

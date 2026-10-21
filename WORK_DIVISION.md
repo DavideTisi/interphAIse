@@ -2,13 +2,14 @@
 
 OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
-## Current assignments: deliver the three-coating comparison — 21 October
+## Current assignments: LLM-guided three-coating pilot — 21 October
 
-Davide confirmed the three-coating PET-MAD expansion as the next deliverable.
-Code polishing supports that comparison. Start with LiNbF6, LiCaAlF6 and
-LiZr2(PO4)3 at both battery contacts, using the bounded construction and
-predeclared fallback policy in [MLIP_COMPARISON_PLAN.md](MLIP_COMPARISON_PLAN.md).
-The geometry checkpoint is the first milestone, not the end of Claude's task.
+Davide clarified that the LLM should choose new coatings using PET-MAD feedback.
+Use LiNbF6 as the known reference, then let the LLM select two new coatings
+sequentially from a frozen feasible menu. The current scope and scientific
+brief are in [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md). Code polishing
+supports this loop. The physical rules in MLIP_COMPARISON_PLAN.md remain;
+the previous fixed cohort and automatic fallback order are superseded.
 
 The review of `davide:8975d4b` and Adem's latest `b8b1392` reproduces the
 completed results and identifies four code safeguards to add. See
@@ -18,8 +19,8 @@ or new production calculation has been made in this review.
 
 | Owner | Next work | Done when |
 |---|---|---|
-| **Adem** | Fix F3 production validation and F4 retry accounting; build the manifest-driven MLIP reader/validator, comparison table and figures alongside Claude's work; update slides. | Old results reproduce; invalid new results are flagged; three-coating outcomes and sensitivity flags regenerate from committed inputs. See [SYNC_ADEM_11.md](SYNC_ADEM_11.md). |
-| **Claude** | Fix F1 convergence and F2 checkpoint/reference safeguards; prepare/freeze the three-coating cohort; execute the bounded two-contact campaign and archive results. | Safeguards pass; three selected coatings have two documented contact outcomes each and their declared sensitivity checks, with failures retained explicitly. See [SYNC_CLAUDE_8.md](SYNC_CLAUDE_8.md). |
+| **Adem** | Fix F3/F4; implement and mock-test the resumable selection/feedback loop and MLIP validator; estimate capped API cost; produce the comparison and decision timeline. | Old results reproduce; new choices precede their energies; prompts/feedback replay; failures and costs remain visible. See [SYNC_ADEM_12.md](SYNC_ADEM_12.md). |
+| **Claude** | Fix F1/F2; prepare a feasible menu and frozen physical protocol; evaluate the LLM's two successive choices at both contacts and archive the declared checks. | Safeguards pass; each selected slot has documented contact outcomes and costs, with failures retained. See [SYNC_CLAUDE_9.md](SYNC_CLAUDE_9.md). |
 | **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
 
 Adem keeps `work/agent-experiments`; give Claude an isolated physics
@@ -29,11 +30,13 @@ contributor. Adem owns `llm.py` and analysis; Claude owns energetics/relaxation
 and PET-MAD scripts. Davide consolidates the shared status files. Keep scoped
 handoff entries to avoid simultaneous edits to the same log paragraphs.
 
-The safeguards, geometry preparation and analysis infrastructure can proceed
-in parallel. Commit the manifest before new interface energies, then carry the
-bounded campaign through validation and comparison. Routine work inside the
-declared scope needs no repeated sign-off. No repeat of the 450-run LLM study
-is needed. Complete slides and release preparation alongside this work.
+Safeguards, geometry preparation and mocked loop/analysis development proceed
+in parallel. Freeze the feasible menu, objective and evaluation protocol first,
+then archive each new selection before its interface energies. Adem supplies
+the bounded API cost estimate before live pilot execution. No repeat of the
+450-run LLM study is needed. Three coating slots demonstrate the physical
+feedback loop; they do not establish statistically superior search. Complete
+slides and release preparation alongside this work.
 
 ## Previous production handoff — 21 October
 

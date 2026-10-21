@@ -2357,3 +2357,49 @@ checkpoints. No message is being sent directly to either collaborator.
 Next: Adem follows SYNC_ADEM_11.md for code polishing and comparison analysis;
 Claude follows SYNC_CLAUDE_8.md for safeguards and the bounded three-coating
 campaign. New scientific outputs remain pending.
+
+## 2026-10-21 — Amend the next campaign to use LLM–PET-MAD feedback
+
+**Branch:** `davide`, starting at published handoff commit `174993b`. Davide
+questioned the no-new-paid-LLM instruction and accepted planning a physical
+feedback pilot. Wrote `LLM_PETMAD_PILOT_PLAN.md`, `SYNC_ADEM_12.md` and
+`SYNC_CLAUDE_9.md`. Added supersession notices to the earlier plan, review and
+recipient handoffs; updated current WORK_DIVISION.md and REPORT.md. The earlier
+instructions described a fixed shortlist assessment, which did not itself
+expand the LLM's role.
+
+The new three material slots are the existing LiNbF6 reference plus two
+prospective selections by the LLM, with validated two-contact feedback between
+choices. Claude screens the five named formulas under the existing geometry
+and resource bounds. At least three unmeasured feasible alternatives are
+needed to leave a real choice in both rounds; a smaller pool must be reported
+before live calls. LiF/TaF6 become menu options, not automatic replacements.
+Freeze the menu, objective, per-candidate physical protocol and information
+boundary first; append selection records before each new material's energies.
+
+Declared a thermodynamic-penalty/weakest-contact-adhesion trade-off with the
+original acceptance labels retained, no weighted score, and explicit validity
+and sensitivity flags. The initial shortlist after reference feedback is a
+descriptive comparison of choices. An optional chemistry-only prior snapshot
+has less information and is not a matched baseline. Uncomputed candidates have
+no measured performance; three slots cannot support statistical superiority.
+Failures consume slots and remain visible. No retries until an interesting
+choice, hidden results in prompts or retrospective selection labels.
+
+Adem keeps F3/F4 and the validator/figures and adds a mocked resumable loop;
+Claude keeps F1/F2, builds and the bounded selected-coating calculations;
+Davide/Codex reviews and integrates. Proposed API scope is four scientific
+responses plus at most one smoke if needed, with 10 total HTTP attempts
+including retries. Adem is asked to supply the expected/conservative cost
+before live execution; the old production authorization does not authorize
+another large batch. The 36-full-job physical cap remains, with bulk/menu
+preparation and integration outside the earlier interface-only timing estimate.
+
+This session edits plans only. No new pilot code, API/LLM/MLIP call, cluster
+action or direct collaborator message occurred. README changes remain separate.
+Validation for this publication is document/link consistency, JSON-independent
+scope review, whitespace and credential checks; no project tests are required
+for prose. Publish the amendment with the handoffs under Davide's existing
+authorization to make them available to Adem, then verify the remote commit.
+Next deliverables are the feasible menu, shared feedback contract, mocked
+end-to-end trace and capped cost estimate; the new scientific work is pending.

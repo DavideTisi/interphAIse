@@ -1,5 +1,20 @@
 # interphAIse — project report
 
+**LLM–PET-MAD pilot plan amended — 2026-10-21:** Davide clarified that the
+new coating exploration should exercise the LLM's hypothesis revision. The
+active plan uses the existing LiNbF6 evidence and two new coatings selected
+sequentially after validated physical feedback. Claude prepares a bounded
+feasible menu and owns calculations; Adem owns the resumable loop, validation,
+cost estimate and decision/comparison figures. Freeze thermodynamic/adhesion
+trade-off definitions and the protocol before new energies; retain the initial
+shortlist as a descriptive decision comparison. Three material slots cannot
+establish search superiority, and uncomputed alternatives have no measured
+counterfactual outcome. See [pilot plan](LLM_PETMAD_PILOT_PLAN.md),
+[Adem 12](SYNC_ADEM_12.md) and [Claude 9](SYNC_CLAUDE_9.md). This supersedes
+the fixed-cohort/no-new-LLM direction below. It is a planning amendment only:
+no pilot implementation, new live calls or calculations have been performed
+here. The completed 450-run experiment and scientific archives are unchanged.
+
 **Three-coating campaign directed — 2026-10-21:** Davide confirmed the
 three-coating comparison as the next deliverable. Start with LiNbF6, LiCaAlF6
 and LiZr2(PO4)3 at both contacts, with a bounded geometry gate and a declared
