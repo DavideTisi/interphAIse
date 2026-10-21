@@ -173,8 +173,8 @@ LLM's stability labels. The existing screen/arm comparison remains separate.
 ```bash
 python scripts/run_discovery.py --strategy random --budget 3 --seed 42
 python scripts/run_discovery.py --strategy fixed --budget 3
-python scripts/run_discovery.py --strategy upfront --budget 3 --model openrouter/deepseek/deepseek-v3.2
-python scripts/run_discovery.py --strategy iterative --budget 3 --model openrouter/deepseek/deepseek-v3.2
+python scripts/run_discovery.py --strategy upfront --budget 3 --model anthropic/claude-haiku-5-5
+python scripts/run_discovery.py --strategy iterative --budget 3 --model anthropic/claude-haiku-5-5
 # Add --full for fixed-RulesPolicy interface construction and MLIP adhesion.
 ```
 
@@ -199,3 +199,14 @@ Run the real-model software check with `.venv/bin/python scripts/smoke_mlip.py`.
 It uses CPU, a slightly displaced two-atom Li crystal and at most five FIRE steps.
 Results are written to ignored `runs/petmad_smoke.json`. This is not an interface
 accuracy benchmark.
+
+### Project LLM access
+
+The configured model is `anthropic/claude-haiku-5-5` (Claude Haiku 5.5).
+`make_llm` calls Anthropic directly with the local `MY_ANTHROPIC_KEY` (or
+`ANTHROPIC_API_KEY`), bypassing HELLMM/OpenRouter routing. Other direct Claude
+models are rejected; no automatic model fallback is used. Credentials remain in
+ignored `.env`. Calls have a default 2048-output-token cap and may be given an
+explicit temperature; the direct client exposes response model and token usage
+in `last_metadata`. The small authentication/generation test does not establish
+scientific performance.

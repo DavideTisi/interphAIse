@@ -3,8 +3,8 @@
 from interphaise.context import InterfaceContext
 from interphaise.screen import ScreenConfig
 
-# LLM: a HELLMM alias if hellmm is installed, otherwise a litellm model string.
-LLM_MODEL = "deepseek-v3.2"            # or "openrouter/deepseek/deepseek-v3.2"
+# Collaborator credential: direct Anthropic, Haiku 5.5 only.
+LLM_MODEL = "anthropic/claude-haiku-5-5"
 
 # Explicit checkpoint for reproducible MLIP evaluations: PET-MAD S 1.6.0 (r2SCAN).
 # Keep MLIP energy differences separate from Materials Project thermodynamics.
