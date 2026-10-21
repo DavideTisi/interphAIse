@@ -149,7 +149,10 @@ Evidence: `data/petmad/constraint_test_v1/` (per run: result, relaxation records
 scan, inspection, fixed-geometry separation, initial/final structures and FIRE logs). The
 inspection replays identically from the archive.
 
-## Next (not run)
+## Original sequence before the thickness study
+
+Step 1 is now complete and reported below. The current next-step handoff is
+[SYNC_CLAUDE_3.md](SYNC_CLAUDE_3.md).
 
 1. Electrolyte substrate thickness (3 and 4 layers) at a fixed fixed-*thickness* rule rather
    than a fixed fraction, so the free region near the contact grows with thickness. Then
@@ -189,10 +192,12 @@ overlap violations, and the accounting reconciles. The 2-layer run reproduces th
   show a plateau.
 - **Registry:** at 3 layers the unrelaxed scan optimum moved to (0, 0.5). The gap from (0,0)
   is 0.1887 eV = 0.0177 J/m² at the single-point level. At 2 and 4 layers (0,0,2 Å) is the
-  optimum.
+  optimum. This supports holding the registry fixed for the controlled thickness test. It
+  does not show that competing registries relax to equivalent energies; relaxed registry
+  checks are still needed.
 - **Separated-slab rearrangement persists at every thickness:** Li RMS 0.57–0.65 Å and Cl
-  0.20–0.33 Å versus the joined substrate, P ≤ 0.08 Å. It is a free-surface effect, not a
-  thin-slab artefact.
+  0.20–0.33 Å versus the joined substrate, P ≤ 0.08 Å. This supports a free-surface
+  contribution. It does not prove that all remaining finite-thickness effects are absent.
 - **Formal polarity grows linearly with thickness** (0.174 → 0.260 → 0.347 e/Å): the two
   faces of this Cl cut are inequivalent (Cl/S contact face, S/P far face), so each (111)
   period adds a net formal dipole. This is a formal oxidation-state diagnostic, not a computed
@@ -219,9 +224,11 @@ accounting reconciles and the scan optimum was (0,0,2 Å) in each run.
 | 6.515204 (68) | 1.5549 | 2.8688 | 0.638 / 0.676 | 1.12 / 1.27 | 432 | 398 s |
 
 Energies are in J/m², forces in eV/Å. **Both bracket values are within 0.03 J/m² of the
-3.2576 Å reference.** Spreads: W_adh 0.048 J/m² (0.123 at two layers), W_sep 0.024 J/m². The
-criterion is met, so the constraint does not control the result at four layers within this
-bracket. A small monotonic trend with frozen depth remains. Li/Cl rearrangement of the
+3.2576 Å reference.** Spreads: W_adh 0.048 J/m² (0.123 at two layers), W_sep 0.024 J/m². At
+four layers the result is **insensitive within the tested constraint bracket at the 0.1 J/m²
+tolerance**, not independent of the constraint: a small monotonic trend with frozen depth
+remains. The 3.2576 Å reference run belongs to both tables; the five unique runs used 1,827
+calls. Li/Cl rearrangement of the
 separated slab is unchanged (Li RMS 0.57–0.59 Å).
 
 **Current electrolyte protocol:** four substrate layers (544 atoms), fixed depth 3.2576 Å,
@@ -233,3 +240,52 @@ experimental adhesion.
 1.49 J/m²), then vacuum and denser registry checks for both contacts. Then seed 4 with this
 protocol and the equivalent Cl cut, recording any seed-dependent fixed count. The polar
 cathode stays provisional.
+
+The bounded cathode plan in [SYNC_CLAUDE_3.md](SYNC_CLAUDE_3.md) uses two, three
+and four coating layers at unchanged substrate geometry and an 800-atom cap.
+Geometry-only checks give 504, 600 and 696 atoms. These are not additional
+relaxation results.
+
+## Cathode coating thickness (SYNC_CLAUDE_3.md)
+
+Only the number of LiNbF6 layers changes: LiCoO2(001) | LiNbF6(001), termination
+`F2_P-6_3`/`Li_P6/mmm_1`, two substrate layers (312 atoms), the same bulk inputs,
+transformations, strain (1.952 %), area (88.800 Å²) and 15 Å vacuum. Cap 800 atoms. Registry
+held at (0,0,2 Å); the scan is saved. The constraint is a 0.34 fraction of the unchanged
+substrate. It was checked by **substrate-relative** site correspondence, because global
+indices change when coating atoms are added: the same 104 substrate sites at every thickness,
+identical to the archived constraint-test mask. Substrate internal geometry is identical to
+10⁻⁸ Å; in the thicker cells the whole substrate is rigidly shifted along z (0.75 and 1.29 Å),
+which does not change the energy in a vacuum-padded periodic cell. All three cases were run
+with the same script. The 2-layer run reproduces the archived 0.34-fraction run (energies
+within 2.4×10⁻⁴ eV).
+
+| Coating layers | Atoms (film) | Formal \|p\|/A film / sub | W_adh relaxed | Δ | W_sep fixed geometry | Δ | Film / sub relaxation | Max force on fixed atoms | Calls | Wall |
+|---|---|---|---:|---:|---:|---:|---|---:|---:|---:|
+| 2 | 504 (192) | 0.613 / 2.058 | 3.4794 | — | 5.0551 | — | 1.486 / 0.090 | 2.446 | 144 | 138 s |
+| 3 | 600 (288) | 0.920 / 2.058 | 3.5855 | +0.106 | 5.1090 | +0.054 | 1.443 / 0.081 | 2.446 | 146 | 154 s |
+| 4 | 696 (384) | 1.226 / 2.058 | 3.6001 | **+0.015** | 5.1275 | **+0.019** | 1.441 / 0.086 | 2.446 | 136 | 166 s |
+
+Energies are in J/m², forces in eV/Å. All nine relaxations converged on free atoms, with no
+overlap violations; the accounting reconciles and the scan optimum was (0,0,2 Å) at every
+thickness. Cost: 426 calls plus 6 separation single points; 4 threads, 3 concurrent.
+
+- **Between the final two settings (3 → 4) both observables change by less than 0.1 J/m²**,
+  and the trend flattens (+0.106 → +0.015 for W_adh). **Four coating layers is chosen** by the
+  same rule as the electrolyte. Flattening across two increments is not proof of a plateau.
+- The separated LiNbF6 slab relaxes by about 1.44–1.49 J/m² at every thickness, moving
+  0.14–0.20 Å RMS (0.7 Å maximum) from its joined geometry. That is consistent with a
+  contribution from the freed F-terminated surface rather than from finite thickness.
+- Fixed-atom forces in the LiCoO2 substrate stay at 2.446 eV/Å. The coating's formal polarity
+  grows linearly with thickness. **Both contacts remain formally polar and provisional.** The
+  cathode statement stays "insensitive within the tested constraint bracket".
+
+**Current cathode protocol:** two substrate layers, four coating layers (696 atoms), 0.34
+fraction, registry (0,0,2 Å). Provisional values: W_adh 3.60, W_sep 5.13 J/m².
+
+**Next (not run):** vacuum, then **relaxed** registry checks for both contacts (relax a small
+declared set of competing registries; single-point ranking alone is insufficient), then
+seed 4 at the selected electrolyte protocol with the equivalent Cl cut. The cathode substrate
+thickness has not been varied.
+
+Evidence: `data/petmad/cathode_thickness_v1/` (builds and runs).

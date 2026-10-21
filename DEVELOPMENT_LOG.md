@@ -1286,3 +1286,27 @@ Credential scans and explicit staging precede the push; .env remains ignored.
 Next: Adem verifies the frozen runner and performs the single approved smoke
 batch; Codex continues the progress deck with the original feedback results,
 expanded landscape and current interface evidence separated clearly.
+
+## 2026-10-21 — Cathode coating thickness
+
+**Branch:** `davide`. Follows SYNC_CLAUDE_3.md. Details: [CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md).
+LiCoO2(001) | LiNbF6(001) with 2, 3 and 4 coating layers (504 / 600 / 696 atoms, cap 800).
+Everything else is unchanged: termination, substrate (2 layers, 312 atoms), transformations,
+strain, area, vacuum, PET-MAD S 1.6.0 (checkpoint `3f52e97c…`), FIRE 0.05 eV/Å. Registry held
+at (0,0,2 Å), scan saved. The 0.34-fraction constraint was verified to select the same
+104 substrate sites by substrate-relative correspondence, because global indices change with
+coating thickness. The substrate is identical up to a rigid z shift (0.75 / 1.29 Å).
+
+Results: W_adh 3.4794 / 3.5855 / 3.6001 J/m²; W_sep 5.0551 / 5.1090 / 5.1275 J/m². From 3 to
+4 layers the changes are +0.015 / +0.019 (< 0.1), so **four coating layers is chosen**. The
+2-layer run reproduces the archived run (≤ 2.4×10⁻⁴ eV). The separated LiNbF6 relaxes by
+1.44–1.49 J/m² at every thickness. Fixed-atom forces stay at 2.446 eV/Å. The coating's formal
+polarity grows 0.613 / 0.920 / 1.226 e/Å. All 9 relaxations converged, with no overlaps.
+426 calls plus 6 single points. Evidence: `data/petmad/cathode_thickness_v1/`; the inspection
+replays identically.
+
+Also reworded the electrolyte conclusions per the review: "insensitive within the tested
+constraint bracket at 0.1 J/m²"; the unrelaxed registry scan does not establish relaxed
+equivalence; the persistent surface rearrangement does not rule out other finite-thickness
+effects. No code changes; no LLM, MP or cluster calls. **Next:** vacuum and relaxed registry
+checks for both contacts, then seed 4. The cathode substrate thickness is still untested.
