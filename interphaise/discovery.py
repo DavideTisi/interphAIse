@@ -8,6 +8,8 @@ import time
 from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 
+LLM_STRATEGIES = {"iterative", "sequential", "upfront"}
+STRATEGIES = LLM_STRATEGIES | {"random", "fixed"}
 OBJECTIVE = "valid first; maximise worst-contact reaction energy; then weakest adhesion"
 PROMPT = """You are a battery coating discovery scientist. Select only from available coatings.
 Use chemical hypotheses and observed calculation feedback to choose promising candidates.
@@ -43,9 +45,9 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
         raise ValueError("Candidate pool must be nonempty and contain unique formulas")
     if not 1 <= budget <= len(pool) or max_proposal_attempts < 1:
         raise ValueError("Budget must be between 1 and pool size; proposal attempts must be positive")
-    if strategy not in {"iterative", "upfront", "random", "fixed"}:
+    if strategy not in STRATEGIES:
         raise ValueError("Unknown strategy")
-    if strategy in {"iterative", "upfront"} and llm is None:
+    if strategy in LLM_STRATEGIES and llm is None:
         raise ValueError("This strategy requires an LLM")
     state = dict(config=asdict(cfg), strategy=strategy, seed=seed, budget=budget,
                  objective=OBJECTIVE, require_adhesion=require_adhesion,
@@ -58,13 +60,20 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
             temp.write_text(json.dumps(state, indent=2, allow_nan=False))
             temp.replace(output)
 
+    def shown_history():
+        # Only the iterative arm sees outcomes; the sequential control sees its own
+        # earlier choices but no result, status or timing.
+        if strategy == "iterative":
+            return [dict(proposal=h["proposal"], result=h["result"]) for h in state["history"]]
+        return [dict(proposal=h["proposal"]) for h in state["history"]]
+
     def propose(available, count):
         feedback = ""
         for _ in range(max_proposal_attempts):
             user = json.dumps(dict(task={"electrode": cfg.electrode, "electrolyte": cfg.electrolyte,
                                         "voltage": cfg.voltage}, objective=OBJECTIVE,
                                    require_adhesion=require_adhesion, available=available, count=count,
-                                   evaluated=state["history"], validation_feedback=feedback))
+                                   evaluated=shown_history(), validation_feedback=feedback))
             attempt = {"prompt": user}
             try:
                 response = llm(PROMPT, user)
@@ -100,7 +109,7 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
             planned = [{"coating": c, "hypothesis": strategy + " baseline"} for c in available[:budget]]
         best = None
         for step in range(budget):
-            proposal = propose(available, 1)[0] if strategy == "iterative" else planned[step]
+            proposal = propose(available, 1)[0] if strategy in {"iterative", "sequential"} else planned[step]
             coating = proposal["coating"]
             started = time.monotonic()
             try:
@@ -127,6 +136,34 @@ def run_discovery(cfg, evaluator, *, strategy="iterative", budget=3, llm=None,
         raise
     save()
     return state
+
+
+def synthetic_pool(families=5, per_family=10):
+    return [f"F{f}-{i:02d}" for f in range(families) for i in range(per_family)]
+
+
+class SyntheticEvaluator:
+    """Deterministic fake outcomes for developing search arms; not chemistry.
+
+    Candidates named ``<family>-<id>`` share a family mean reaction energy, so
+    feedback is informative. ``table`` is the exhaustive answer key: give it to
+    the analysis, never to a proposer.
+    """
+
+    def __init__(self, pool, seed=0, fail_fraction=0.1):
+        rng = random.Random(seed)
+        means = {}
+        self.table = {}
+        for c in pool:
+            family = c.split("-")[0]
+            mean = means.setdefault(family, rng.uniform(-0.3, 0.0))
+            if rng.random() < fail_fraction:
+                self.table[c] = Evaluation(c, "failed", error="synthetic calculation failure")
+            else:
+                self.table[c] = Evaluation(c, "ok", min(0.0, mean + rng.gauss(0, 0.03)))
+
+    def __call__(self, coating):
+        return self.table[coating]
 
 
 class CoatingEvaluator:

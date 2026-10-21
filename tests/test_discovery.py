@@ -114,6 +114,36 @@ def test_repeated_candidate_rejected_then_repaired():
     assert "error" in state["proposal_attempts"][1]
 
 
+def test_sequential_sees_choices_but_no_outcomes():
+    calls = []
+    def llm(system, user):
+        data = json.loads(user)
+        calls.append(user)
+        return {"proposals": [{"coating": data["available"][0], "hypothesis": "chemistry"}]}
+    def evaluate(c):
+        if c == CFG.coatings[0]:
+            raise RuntimeError("calculation failed")
+        return Evaluation(c, "ok", -0.123456)
+    state = run_discovery(CFG, evaluate, budget=3, strategy="sequential", llm=llm)
+    assert len(state["history"]) == 3
+    later = json.loads(calls[2])
+    assert [h["proposal"]["coating"] for h in later["evaluated"]] == CFG.coatings[:2]
+    for user in calls:
+        for leak in ("result", "status", "failed", "elapsed", "0.123456", "calculation failed"):
+            assert leak not in user
+
+
+def test_synthetic_evaluator_deterministic_and_family_structured():
+    from interphaise.discovery import SyntheticEvaluator, synthetic_pool
+    pool = synthetic_pool()
+    a, b = SyntheticEvaluator(pool, seed=3), SyntheticEvaluator(pool, seed=3)
+    assert len(pool) == 50 and a.table == b.table
+    ok = [e for e in a.table.values() if e.status == "ok"]
+    assert ok and all(e.worst_reaction_energy <= 0 for e in ok)
+    state = run_discovery(ScreenConfig("LiCoO2", "Li6PS5Cl", pool), a, strategy="random", budget=10, seed=1)
+    assert len(state["history"]) == 10
+
+
 def test_budget_validation_precedes_evaluation():
     with pytest.raises(ValueError, match="Budget"):
         run_discovery(CFG, lambda c: pytest.fail("must not evaluate"), budget=4, strategy="random")
