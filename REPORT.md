@@ -1,5 +1,17 @@
 # interphAIse — project report
 
+**Structure viewer current — 2026-10-21:** The shareable offline export now
+opens the selected Niflheim cathode registry (1/3, 1/3) and GPU seed-0 electrolyte
+reference. Four named evidence comparisons include the completed seed-4 result
+with its combined construction-sensitivity caveat. Registry/device labels,
+areas, fixed counts and updated protocol limits distinguish the saved runs.
+Coverage is 339 geometries, 141 candidate IDs and 35 calculated interface runs.
+All twelve viewer tests pass; browser filters/comparisons and the downloaded
+cathode XYZ were checked. See [viewer update](VIEWER_UPDATE.md) and regenerate
+with `python scripts/build_structure_viewer.py`. No new scientific calculation
+was run. Earlier viewer-pending entries below are historical; presentation v4
+and the joint branch integration still require their final updates/review.
+
 **LLZO practical-chemistry caveat audited — 2026-10-21:** Five of the 17
 acceptable IDs (three LiIO3 polymorphs, LiClO4 and Li5IO6) form an oxyhalogen
 review set. Four have supplier oxidiser classifications; Li5IO6 is a periodate

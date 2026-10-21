@@ -6,7 +6,9 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 **Production is complete and reviewed:** Adem's `06a4271` has all 450 runs;
 independent replay and the six planned comparisons pass. The current work is
-slides, final viewer selection, joint branch review and a reproducible release.
+slides, joint branch review and a reproducible release. The viewer now opens
+the selected cathode registry and includes the completed seed-4 comparison;
+see [VIEWER_UPDATE.md](VIEWER_UPDATE.md).
 See [SYNC_ADEM_9.md](SYNC_ADEM_9.md). No additional runs are requested.
 The production approval below records the prior authorization, not pending work.
 
@@ -52,7 +54,7 @@ prioritize the environment experiment and release review. See
 | Owner | Action | Completion evidence |
 |---|---|---|
 | Adem | Present the completed environment study with its positive and negative results | Production reviewed at 06a4271; overview and six primary contrasts in SYNC_ADEM_9.md; retain LLZO random advantage |
-| Davide + Claude | Publish the completed bounded Niflheim batch and its review; stop additional simulations | Cathode registry selected; seed-4 sensitivity exceeds tolerance and is reported with construction confounders; see SYNC_CLAUDE_7.md |
+| Davide + Claude | Use the published bounded Niflheim batch and reviewed viewer in the demo | Selected cathode and seed-4 comparison are available with their limitations; see SYNC_CLAUDE_7.md and VIEWER_UPDATE.md; no additional simulations requested |
 | Adem + Davide | Prepare the presentation and reproducible demonstration alongside the calculations | Acceptance and best-bin curves with baselines, one successful and one failed trace, offline two-contact viewer, explicit scientific limits |
 | Together | Review the combined branch and publish a reproducible release | Tests and archive replay pass, reports match the results, both people review scope before merging to `main` |
 

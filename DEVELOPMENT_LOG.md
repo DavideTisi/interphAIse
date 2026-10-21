@@ -2100,3 +2100,64 @@ interpretation in the slides and complete the joint integration review.
 Prepare this bounded audit for publication under Davide's standing request
 to push what Adem needs, after configured-credential and whitespace checks;
 the actual commit/push outcome will be reported in chat.
+
+## 2026-10-21 — Viewer updated to the reviewed Niflheim results
+
+**Branch:** `davide`, parent `fa10a1a`. User requested the remaining structure
+viewer update. Read AGENTS.md, latest review/log and the viewer implementation,
+tests and archived result schemas. The working tree was clean at the start.
+
+**Changes:** current-contact shortcuts now select the 696-atom cathode at
+registry (1/3,1/3) and the 880-atom GPU seed-0 electrolyte. Retained earlier
+references as explicitly labelled fallbacks for partial checkouts. Added four
+named evidence comparisons, including the completed seed-4 electrolyte and
+distinct cathode registries. Differences are computed from each exact pair
+of valid archived relaxed results; a missing member removes that comparison.
+Run titles distinguish starting registry and device. Captions expose area,
+starting gap and recorded frozen depth. Seed-4's different fixed count and
+area are preserved. Updated coverage/limitations to describe the completed
+final-geometry checks, unquantified polarity and combined seed/construction
+sensitivity. No scientific archive or benchmark outcome changed.
+
+The catalogue now contains 339 geometries: 141 candidate IDs, four endpoints,
+40 bulk references and 154 interface/slab states (35 calculated runs and
+14 build-only inputs). These represent two contact chemistries. Automatic
+discovery already found the newer files; this update corrects the featured
+selections, labels, interpretation and navigation. Thickness comparison now
+uses explicit constraint fields instead of parsing a display label, so the
+new registry/device text cannot change which thicknesses it pairs.
+
+**Files:** updated `scripts/build_structure_viewer.py`,
+`scripts/viewer/template.html`, `tests/test_structure_viewer.py`,
+VIEWER_UPDATE.md, README.md, REPORT.md and WORK_DIVISION.md. Rebuilt
+`runs/structure_viewer.html` (23.3 MB, ignored). The file remains self-contained
+with no external libraries, network requests or credentials. The existing
+localhost server is reused; collaborators can regenerate from committed code
+or open the shared HTML directly. No new simulation or live API call occurred.
+
+**Verification:** `.venv/bin/python -m pytest tests/test_structure_viewer.py -q`
+passes all twelve tests, including round trips for every exported geometry,
+cell, atom label and fixed mask; exact selected energies; seed arithmetic;
+and absent-archive comparisons. ASE/NumPy deprecation warnings persist.
+Rebuilt using `.venv/bin/python scripts/build_structure_viewer.py` with no
+catalogue warnings. Browser checks confirmed the selected contacts, seed and
+cathode comparisons, initial/relaxed energy separation, thickness pairing,
+LLZO empty-interface state and four separately identified LiAlSiO4 polymorphs.
+Browser error/warning logs were empty. Downloaded the selected cathode via
+Save XYZ and independently verified its archived coordinates, cell/species,
+696 atoms and 104 fixed atoms. An exact-label browser locator did not resolve;
+the observed combobox role locator worked. The download tool returned slowly
+but the downloaded file is correct. No browser permission or scientific
+workflow settings were changed.
+
+Visually checked the existing narrow in-app-browser layout. Saved full-page
+and cathode-panel previews as ignored files under `runs/`. No desktop viewport
+override or full project suite was run. Whitespace checks pass. Complete the
+configured-credential scan before committing/pushing the explicit viewer/docs
+file list under the standing request to share work with Adem; report the actual
+publication outcome in chat. No external message was sent.
+
+**Remaining:** presentation update and joint branch integration/release review.
+The viewer is ready for the offline demo; both interfaces remain provisional,
+and no chloride/LLZO atomistic interface is claimed. The earlier viewer-pending
+entries are historical checkpoints, superseded by this one.
