@@ -11,6 +11,7 @@ dependencies = [
     "pymatgen>=2025.1.1",
     "ase>=3.23",
     "numpy",
+    "scipy",
     "pydantic>=2",
     "python-dotenv",
     "pyyaml",
@@ -18,7 +19,7 @@ dependencies = [
 
 [project.optional-dependencies]
 llm = ["litellm", "anthropic"]
-mp = ["mp-api"]
+mp = ["mp-api>=0.47.0"]
 mlip = ["torch", "mace-torch"]
 petmad = ["pet-mad"]
 upet = ["upet"]

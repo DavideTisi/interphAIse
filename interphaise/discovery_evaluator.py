@@ -1,7 +1,8 @@
 """Pinned-entry thermodynamic objective, independent of the agent/search loop.
 
 All energies are eV per non-Li atom at one imposed Li chemical potential.
-Contact driving forces include endpoint decomposition. No MLIP energies enter
+By default contact driving forces include endpoint decomposition; the explicit
+equilibrated-reference variant measures additional mixing reactivity instead. No MLIP energies enter
 this phase diagram. Pure-Li endpoints require a different normalization and
 are deliberately rejected by this cathode-coating evaluator.
 """
@@ -11,23 +12,25 @@ from dataclasses import asdict, dataclass
 import math
 
 import numpy as np
-from pymatgen.analysis.phase_diagram import GrandPotPDEntry, GrandPotentialPhaseDiagram, PhaseDiagram
+from pymatgen.analysis.phase_diagram import GrandPotPDEntry, GrandPotentialPhaseDiagram
 from pymatgen.core import Element
 
-from .tools.reactivity import li_chemical_potential
 
 
 @dataclass(frozen=True)
 class Objective:
     version: str = "v2-draft"
+    contact_reference: str = "pinned"
     min_band_gap_eV: float = 2.0
     bin_width_eV: float = 0.020
     acceptable_penalty_eV: float = 0.050
 
     def __post_init__(self):
         for name, value in asdict(self).items():
-            if name != "version" and (not math.isfinite(value) or value < 0):
+            if name not in {"version", "contact_reference"} and (not math.isfinite(value) or value < 0):
                 raise ValueError(f"Invalid objective setting: {name}")
+        if self.contact_reference not in {"pinned", "equilibrated"}:
+            raise ValueError("Unknown contact energy reference")
         if self.bin_width_eV == 0:
             raise ValueError("bin_width_eV must be positive")
 
@@ -61,8 +64,9 @@ def _project(entry, mu):
     return projected
 
 
-def _contact(gpd, first, second):
+def _contact(gpd, first, second, reference_energies=None):
     """Exact minimum along a piecewise-linear hull, including both endpoints."""
+    e1,e2 = reference_energies or (first.energy_per_atom,second.energy_per_atom)
     c1, c2 = first.composition.fractional_composition, second.composition.fractional_composition
     delta = np.array([c2[e] - c1[e] for e in gpd.elements])
     norm2 = float(delta @ delta)
@@ -77,17 +81,48 @@ def _contact(gpd, first, second):
             offset = np.array([comp[e] - c1[e] for e in gpd.elements])
             samples.append((comp, float(np.clip(offset @ delta / norm2, 0, 1))))
     for comp, x in samples:
-        reference = (1 - x) * first.energy_per_atom + x * second.energy_per_atom
+        reference = (1 - x) * e1 + x * e2
         energy = float(gpd.get_hull_energy_per_atom(comp) - reference)
         products = sorted({e.original_entry.composition.reduced_formula for e in gpd.get_decomposition(comp)})
         points.append({"second_non_Li_fraction": x, "reaction_energy": energy, "products": products})
     return min(points, key=lambda item: item["reaction_energy"])
 
 
+def _lp_contact(entries, mu, first, second, reference_energies=None):
+    """Exact convex-hull minimum with a variable reactant mixing fraction.
+
+    Minimize sum(y_i * grand_energy_i) - [(1-x)*e1 + x*e2],
+    subject to non-Li element conservation, y_i >= 0 and 0 <= x <= 1.
+    This is the same hull problem without constructing high-dimensional facets.
+    """
+    from scipy.optimize import linprog
+
+    e1,e2 = reference_energies or (first.energy_per_atom,second.energy_per_atom)
+    elements = sorted(set(first.composition.elements) | set(second.composition.elements))
+    allowed = set(elements) | {Element("Li")}
+    projected = [_project(e, mu) for e in entries
+                 if set(e.composition.elements) <= allowed
+                 and set(e.composition.elements) != {Element("Li")}]
+    c1 = np.array([first.composition.get_atomic_fraction(e) for e in elements])
+    c2 = np.array([second.composition.get_atomic_fraction(e) for e in elements])
+    matrix = np.array([[p.composition.get_atomic_fraction(e) for p in projected] for e in elements])
+    a_eq = np.column_stack((matrix, c1-c2))
+    energies = np.array([p.energy_per_atom for p in projected] +
+                        [e1-e2])
+    solution = linprog(energies, A_eq=a_eq, b_eq=c1,
+                      bounds=[(0,None)]*len(projected)+[(0,1)], method="highs")
+    if not solution.success or np.max(np.abs(a_eq @ solution.x - c1)) > 1e-7:
+        raise ValueError("Grand-potential optimization failed conservation/solver checks")
+    energy = float(solution.fun-e1)
+    return {"second_non_Li_fraction":float(solution.x[-1]), "reaction_energy":energy,
+            "products":sorted({p.original_entry.composition.reduced_formula
+                               for p,y in zip(projected,solution.x[:-1]) if y > 1e-8})}
+
+
 def evaluate_candidate(candidate_id: str, coating_entry, *, electrode_entry,
                        electrolyte_entry, entries, voltage: float,
                        band_gap_eV: float | None, energy_source: str,
-                       objective: Objective = Objective()) -> dict:
+                       objective: Objective = Objective(), backend: str = "linprog") -> dict:
     """Evaluate pinned, consistently corrected entries from ONE energy dataset.
 
     Caller must resolve IDs and ensure a common compatibility/functional scheme.
@@ -101,12 +136,32 @@ def evaluate_candidate(candidate_id: str, coating_entry, *, electrode_entry,
         if not any(e.composition == entry.composition and abs(e.energy - entry.energy) < 1e-9
                    and getattr(e, "entry_id", None) == getattr(entry, "entry_id", None) for e in entries):
             raise ValueError("Pinned entry missing from the phase-diagram dataset")
-    pd = PhaseDiagram(entries)
-    mu = li_chemical_potential(pd, voltage)
-    gpd = GrandPotentialPhaseDiagram(entries, {Element("Li"): mu})
+    needed = {e for item in (coating_entry,electrode_entry,electrolyte_entry)
+              for e in item.composition.elements} | {Element("Li")}
+    references = {e:min(item.energy_per_atom for item in entries
+                       if set(item.composition.elements)=={e}) for e in needed}
+    mu = references[Element("Li")] - voltage
     coat, electrode, electrolyte = [_project(e, mu) for e in (coating_entry, electrode_entry, electrolyte_entry)]
-    self_penalty = max(0.0, float(coat.energy_per_atom - gpd.get_hull_energy_per_atom(coat.composition)))
-    contacts = [_contact(gpd, electrode, coat), _contact(gpd, coat, electrolyte)]
+    if backend == "linprog":
+        contact = lambda first,second,refs=None: _lp_contact(entries,mu,first,second,refs)
+    elif backend == "qhull":
+        # Retained as an independent cross-check on small chemical systems.
+        gpd = GrandPotentialPhaseDiagram(entries, {Element("Li"): mu})
+        contact = lambda first,second,refs=None: _contact(gpd,first,second,refs)
+    else:
+        raise ValueError("Unknown thermodynamic backend")
+    self_penalty = max(0.0,-contact(coat,coat)["reaction_energy"])
+    endpoint_penalties = {role:max(0.0,-contact(entry,entry)["reaction_energy"])
+                          for role,entry in [("electrode",electrode),("electrolyte",electrolyte)]}
+    absolute_contacts = [contact(electrode,coat),contact(coat,electrolyte)]
+    contacts = absolute_contacts
+    if objective.contact_reference == "equilibrated":
+        # Extra reaction on mixing already equilibrated endpoint assemblages;
+        # coating self-instability remains an explicit separate penalty.
+        hc = coat.energy_per_atom-self_penalty
+        he = electrode.energy_per_atom-endpoint_penalties["electrode"]
+        hs = electrolyte.energy_per_atom-endpoint_penalties["electrolyte"]
+        contacts = [contact(electrode,coat,(he,hc)),contact(coat,electrolyte,(hc,hs))]
     penalty = max(self_penalty, *[max(0.0, -c["reaction_energy"]) for c in contacts])
     gap_known = band_gap_eV is not None and math.isfinite(band_gap_eV) and band_gap_eV >= 0
     insulating = bool(gap_known and band_gap_eV >= objective.min_band_gap_eV)
@@ -119,10 +174,12 @@ def evaluate_candidate(candidate_id: str, coating_entry, *, electrode_entry,
                            "energy_eV": float(entry.energy)}
                     for role, entry in [("coating", coating_entry), ("electrode", electrode_entry),
                                         ("electrolyte", electrolyte_entry)]},
-        "voltage_V": voltage, "mu_Li_eV": mu,
+        "voltage_V": voltage, "mu_Li_eV": mu, "backend": backend,
+        "endpoint_decomposition_penalties": endpoint_penalties,
         "band_gap_eV": float(band_gap_eV) if gap_known else None,
         "insulating": insulating, "self_decomposition_penalty": self_penalty,
-        "contacts": contacts,
+        "contacts": contacts, "contact_reference":objective.contact_reference,
+        "absolute_contact_reaction_energies": [c["reaction_energy"] for c in absolute_contacts],
         "contact_reaction_energies": [c["reaction_energy"] for c in contacts],
         "penalty": penalty, "penalty_bin": penalty_bin(penalty, objective.bin_width_eV),
         "acceptable": insulating and penalty <= objective.acceptable_penalty_eV,

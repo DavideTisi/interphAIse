@@ -1,0 +1,35 @@
+{
+  "status": "planned-not-run",
+  "benchmark_sha256": "d2718c20f0ca8c3cc25d2378011bc68736ad71a502d657312bfff1da15a4ecfa",
+  "selection_seed": 2026,
+  "candidates": [
+    {
+      "candidate_id": "mp-aaacjjwh",
+      "formula": "LiNbF6",
+      "reason": "top distinct formula by frozen bin, ID breaks selection ties only"
+    },
+    {
+      "candidate_id": "mp-aaaaajby",
+      "formula": "LiCaAlF6",
+      "reason": "top distinct formula by frozen bin, ID breaks selection ties only"
+    },
+    {
+      "candidate_id": "mp-aaabevhd",
+      "formula": "LiZr2(PO4)3",
+      "reason": "top distinct formula by frozen bin, ID breaks selection ties only"
+    },
+    {
+      "candidate_id": "mp-aaaaajby",
+      "formula": "LiCaAlF6",
+      "reason": "uniform random comparator, seed 2026; not selected for poor performance"
+    }
+  ],
+  "model": "upet:pet-mad-s@1.6.0",
+  "energy_model": "r2SCAN",
+  "requirements": [
+    "Use one identical interface/relaxation protocol across candidates.",
+    "Record termination, convergence, force calls, relaxation count and wall time per candidate.",
+    "Do not mix MLIP total energies into the Materials Project phase diagrams.",
+    "A failed or unconverged calculation is not a valid adhesion measurement."
+  ]
+}

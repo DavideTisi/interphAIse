@@ -1,5 +1,11 @@
 # interphAIse — implementation and experimental plan
 
+**Latest status — 21 October:** Thermodynamic retrieval and exhaustive validation
+are complete. The user selected the additional-contact-reaction objective, frozen
+as v3.0 before LLM experiments. This supersedes the draft absolute-contact objective
+below. See [BENCHMARK_VALIDATION.md](BENCHMARK_VALIDATION.md) and
+[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md) for the exact criterion and query contract.
+
 20 October 2026. Planning document; the work below is not yet implemented unless
 explicitly listed as existing. This plan supersedes the experimental design in
 `DISCOVERY_REPORT.md` where they differ, and incorporates `DISCOVERY_REVIEW.md`.

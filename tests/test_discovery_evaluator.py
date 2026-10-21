@@ -87,3 +87,48 @@ def test_formula_unit_scaling_does_not_change_penalty(toy_entries):
                                electrolyte_entry=entries[2],entries=entries,
                                voltage=4,band_gap_eV=3,energy_source='synthetic')
     assert result['penalty'] == pytest.approx(3.5)
+
+
+@pytest.mark.parametrize('voltage',[0,1,2,4])
+def test_linear_program_agrees_with_qhull(toy_entries,voltage):
+    entries=toy_entries([])
+    args=dict(electrode_entry=entries[2],electrolyte_entry=entries[3],entries=entries,
+              voltage=voltage,band_gap_eV=3,energy_source='synthetic')
+    lp=evaluate_candidate('toy',entries[2],**args)
+    hull=evaluate_candidate('toy',entries[2],backend='qhull',**args)
+    assert lp['contact_reaction_energies']==pytest.approx(hull['contact_reaction_energies'])
+    assert lp['self_decomposition_penalty']==pytest.approx(hull['self_decomposition_penalty'])
+
+
+def test_linear_program_multielement_contact():
+    # Two non-Li dimensions, a stable interior product, and a spectator element.
+    entries=[PDEntry('Li',0),PDEntry('S',0),PDEntry('O',0),PDEntry('P',0),
+             PDEntry('LiS',-1),PDEntry('LiO',-2),PDEntry('LiSO',-5),PDEntry('PS',-3)]
+    args=dict(electrode_entry=entries[4],electrolyte_entry=entries[5],entries=entries,
+              voltage=1,band_gap_eV=3,energy_source='synthetic')
+    lp=evaluate_candidate('toy',entries[4],**args)
+    hull=evaluate_candidate('toy',entries[4],backend='qhull',**args)
+    assert lp['contact_reaction_energies']==pytest.approx(hull['contact_reaction_energies'])
+    assert lp['penalty']==pytest.approx(hull['penalty'])
+
+
+def test_equilibrated_contact_does_not_hide_coating_instability(toy_entries):
+    entries=toy_entries([])
+    result=evaluate_candidate('toy',entries[2],electrode_entry=entries[2],
+        electrolyte_entry=entries[2],entries=entries,voltage=4,band_gap_eV=3,
+        energy_source='synthetic',objective=Objective(version='v3-draft',contact_reference='equilibrated'))
+    assert result['contact_reaction_energies']==pytest.approx([0,0])
+    assert result['absolute_contact_reaction_energies']==pytest.approx([-3.5,-3.5])
+    assert result['penalty']==pytest.approx(3.5)
+    assert not result['acceptable']
+
+
+def test_equilibrated_objective_excludes_unrelated_endpoint_floor():
+    entries=[PDEntry('Li',0),PDEntry('O',0),PDEntry('S',0),PDEntry('LiS',-1),PDEntry('LiO',-4)]
+    result=evaluate_candidate('oxide',entries[4],electrode_entry=entries[3],
+        electrolyte_entry=entries[3],entries=entries,voltage=2,band_gap_eV=3,
+        energy_source='synthetic',objective=Objective(version='v3-draft',contact_reference='equilibrated'))
+    assert result['endpoint_decomposition_penalties']['electrolyte']==pytest.approx(1)
+    assert result['absolute_contact_reaction_energies']==pytest.approx([-1,-1])
+    assert result['penalty']==pytest.approx(0)
+    assert result['acceptable'] # criterion passes; endpoints are still unstable

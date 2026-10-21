@@ -1,5 +1,11 @@
 # interphAIse
 
+**Discovery benchmark update (21 October):** Use the frozen v3.0 query API in
+[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md). The legacy discovery CLI below still
+uses the earlier objective. [BENCHMARK_VALIDATION.md](BENCHMARK_VALIDATION.md) records
+the exhaustive results and scientific change; [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md)
+records implementation history. No LLM performance result has been established.
+
 **Which buffer coating makes a solid-state cathode interface stable — and what atomistic model of each contact should be simulated?**
 
 OSI Hackathon 2026 (21–22 October). Built on the design principles of [HELLMM](../hellmm).

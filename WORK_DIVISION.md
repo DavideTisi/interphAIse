@@ -2,6 +2,14 @@
 
 OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
+## Current handoff — 21 October
+
+Davide's frozen v3.0 benchmark and budgeted query interface are ready. See
+[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md); its exact schema supersedes the
+illustrative schema below. Adem can integrate by candidate ID and run controls.
+Davide's remaining work is the PET-MAD interface protocol and compute accounting.
+The objective measures coating compatibility, not whole-stack stability.
+
 ## Shared objective
 
 Test whether computed feedback improves an LLM's selection of compatible battery
