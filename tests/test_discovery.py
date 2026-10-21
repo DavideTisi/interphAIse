@@ -200,3 +200,23 @@ def test_sequential_ids_sees_only_earlier_ids():
     assert calls[2]["evaluated"] == [{"proposal": {"candidate_id": h["proposal"]["candidate_id"]}}
                                      for h in state["history"][:2]]
     assert all("SECRET" not in json.dumps(c) for c in calls)
+
+
+ENV_DIR = ROOT / "data/exploration/environment_expansion_v2/evaluation"
+ENV_POOL = ROOT / "data/exploration/environment_expansion_v1/pool.json"
+
+
+@pytest.mark.parametrize("env", ["lpscl", "lic", "llzo"])
+def test_environment_tables_never_leak_diagnostics(env):
+    bench = ENV_DIR / f"lco_{env}_4v.json"
+    with pytest.raises(ValueError, match="Draft"):
+        BenchmarkQueries(ENV_POOL, bench, budget=3)  # unfrozen tables need an explicit override
+    calls = []
+    run_discovery(BenchmarkQueries(ENV_POOL, bench, budget=4, allow_draft=True),
+                  strategy="iterative", llm=first_available(calls))
+    electrolyte = json.loads(bench.read_text())["endpoints"]["electrolyte"]["formula"]
+    for user in calls:
+        assert electrolyte in user
+        for leak in ('"bin_regret"', '"component_analysis"', '"endpoint_decomposition_penalties"',
+                     '"evaluation_wall_seconds"', '"entries"', '"absolute_contact_reaction_energies"', '"mu_Li_eV"'):
+            assert leak not in user
