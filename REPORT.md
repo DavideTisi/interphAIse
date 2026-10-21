@@ -1,5 +1,50 @@
 # interphAIse — project report
 
+**Publication checkpoint — 2026-10-21:** Bulk calculations and audits are committed
+as `57774d6`; the audited environment expansion is committed as `81e4625`, both
+on `davide`. The full current suite passes 113 tests. The user requested publication
+to `origin/davide`; [SYNC_ADEM_6.md](SYNC_ADEM_6.md) is the short team handoff.
+Earlier entries saying the work was uncommitted describe their review checkpoints.
+The new agent-control commits remain on Adem's branch pending integration.
+
+**Shuffled control completed and reviewed — 2026-10-21:** Adem's `6e74e88`
+archives 30 matched shuffled runs: 6/30 acceptable versus iterative 19/30.
+Independent replay verified all 300 outcomes and all 300 prompt/source maps;
+the paired table gives exact McNemar p = 0.004425 (planned follow-up).
+Correctly associated feedback helps candidate selection here, but this control
+does not uniquely establish chemical reasoning. All 104 tests pass, including
+in a temporary merge with committed `b210db0`; real branches remain unchanged.
+Defer IDs-only and prepare the environment experiment. See
+[SYNC_ADEM_5.md](SYNC_ADEM_5.md) for evidence, limitations and integration scope.
+
+**Multistart and facet review — 2026-10-21:** Claude completed five additional
+starts per distorted material (7,216 added calculator calls). Saved forces/stresses
+confirm 6/6 converged Li6PS5Cl and 5/6 LiZr2(PO4)3 structures; seed 0 is lowest in
+both sampled sets. These are model references, not established phases. Recommend
+LiNbF6(001) for both primary contacts with LiCoO2(001), using existing unconstrained
+bulk references. Geometry-only rematching confirms 504-/440-atom feasibility.
+The electrolyte seed-0/seed-4 choices currently have different termination labels;
+map equivalent cuts before interpreting a bulk-only sensitivity. Explicit
+termination selection must also precede the scan's candidate cutoff. Polarity,
+constraints and numerical convergence remain open; no new interface relaxation
+has run here. See [SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md) for the concrete protocol,
+and [BULK_RELAXATION.md](BULK_RELAXATION.md) for Claude's evidence. The earlier
+[bulk review](BULK_REVIEW_AND_NEXT_STEPS.md) records the initial relaxation audit.
+
+**Environment expansion evaluated — 2026-10-21:** The delegated study completed
+all 423 combinations of 141 structures with LiCoO2 at 4 V and Li6PS5Cl, Li3InCl6
+or ordered tetragonal LLZO. Compatible MP retrieval added 36 batched entry calls;
+the final dataset has 7,420 entries. There are 414 computed outcomes and nine
+explicit missing-entry failures. Acceptable counts are 4/55/17, respectively.
+All sulfide acceptable structures contain fluorine; no LLZO acceptable structure
+does. Chloride acceptance is easy even for random search. All 50 original results
+reproduce exactly; 40 targeted tests and six independent solver checks pass.
+These are computational landscapes, not expanded LLM results or validated coatings.
+No new LLM experiment is frozen or launched. See
+[EXPANSION_PROGRESS.md](EXPANSION_PROGRESS.md) for audited evidence and the
+separate pre-run decisions, and [ENVIRONMENT_EXPANSION.md](ENVIRONMENT_EXPANSION.md)
+for the original plan. The implementation and data are committed in `81e4625`.
+
 **Integrated live experiment — 2026-10-21:** Merged Adem's agent branch into
 `davide`, corrected invalid-ID accounting and ran 30 repeats per arm. At budget 10,
 iterative succeeds 19/30 versus upfront 4/30, sequential 4/30 and random 10/30.
@@ -9,10 +54,19 @@ performance is close to random. The full sanitized archive, figures, costs and
 interpretation are in [INTEGRATED_DISCOVERY_RESULTS.md](INTEGRATED_DISCOVERY_RESULTS.md).
 The older checkpoint entries below are retained as history.
 
+**Next-work checkpoint — 2026-10-21:** The updated
+[WORK_DIVISION.md](WORK_DIVISION.md) assigns Adem the matched shuffled-feedback
+control, Davide the five-bulk and two-contact PET-MAD validation, and both the
+presentation and final integration. Bulk-relaxation code is being developed
+locally; this planning review has not validated it or launched new calculations.
+The four-arm archive remains the completed baseline.
+
 **Electrolyte-contact feasibility pilot — 2026-10-21:** Li6PS5Cl(111) | LiNbF6(101),
 216 atoms, converged on free atoms; provisional constrained W_adh 0.4275 J/m². Under the
-cathode pilot's 160 Å² matching cap no valid LiNbF6 | Li6PS5Cl interface exists on any
-facet, so a common two-contact protocol needs a cap of at least ~185 Å². Run before the
+cathode pilot's 160 Å² matching cap no valid LiNbF6 | Li6PS5Cl interface was found among
+the tested low-index facet pairs. Increasing the search cap to 300 Å² produced a
+selected interface of about 183 Å²; rematch after bulk relaxation before freezing
+a common two-contact area limit. Run before the
 amendment's protocol validation; not comparable with the cathode value for ranking.
 See the electrolyte section of [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md).
 

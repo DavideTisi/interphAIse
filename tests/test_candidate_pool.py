@@ -33,3 +33,9 @@ def test_reproducible_pool_preserves_unknown_and_metal():
 def test_small_pool_fails_instead_of_relaxing_filters():
     with pytest.raises(ValueError,match='Only 5'):
         pool_builder.select_pool(snapshot(),size=50)
+
+
+def test_all_eligible_keeps_filters_and_fixed_size_selection():
+    full = pool_builder.select_pool(snapshot(), size=None)
+    assert full == pool_builder.select_pool(snapshot(), size=5)
+    assert full['counts']['eligible_unselected'] == 0

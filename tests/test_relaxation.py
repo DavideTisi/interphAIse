@@ -43,3 +43,30 @@ def test_no_lattice_match_returns_empty(monkeypatch):
         def __init__(self,**kwargs):pass
     monkeypatch.setattr(matcher,'CoherentInterfaceBuilder',NoMatch)
     assert matcher.enumerate_interfaces(None,None,(0,0,1),(0,0,1),('a','b'))==[]
+
+
+def test_cell_relaxation_records_lattice_stress_and_symmetry(tmp_path):
+    from ase.build import bulk
+    from ase.calculators.emt import EMT
+    from interphaise.tools.relaxation import relax_cell_record
+    reference=bulk('Cu','fcc',a=3.6,cubic=True)
+    reference.calc=EMT()
+    _,ref=relax_cell_record(reference,CountedCalculator(EMT()),tmp_path/'ref',fmax=.001,smax_GPa=.01)
+    strained=reference.copy();strained.set_cell(strained.cell*1.03,scale_atoms=True)
+    final,r=relax_cell_record(strained,CountedCalculator(EMT()),tmp_path/'run',fmax=.001,smax_GPa=.01)
+    assert r['converged'] and r['final']['max_abs_stress_GPa']<=.01
+    assert abs(r['initial']['stress_GPa'][0])>1
+    assert np.isclose(final.cell.cellpar()[0],ref['final']['cellpar'][0],atol=1e-3)
+    assert r['initial']['space_group'][1e-3]==r['final']['space_group'][1e-3]=='Fm-3m (225)'
+    assert (tmp_path/'run'/'final.extxyz').exists() and r['calculator_calls']>0
+
+
+def test_cell_relaxation_exhaustion_and_stress_gate_are_explicit(tmp_path):
+    from ase.build import bulk
+    from ase.calculators.emt import EMT
+    from interphaise.tools.relaxation import relax_cell_record
+    strained=bulk('Cu','fcc',a=3.75,cubic=True)
+    _,r=relax_cell_record(strained,CountedCalculator(EMT()),tmp_path,steps=0)
+    # Forces vanish by symmetry, so only the stress criterion keeps this unconverged.
+    assert not r['converged'] and r['steps']==0
+    assert r['final']['max_force_eV_A']<1e-8 and r['final']['max_abs_stress_GPa']>.05

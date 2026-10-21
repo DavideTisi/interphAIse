@@ -1,0 +1,83 @@
+{
+  "reviewed_commit": "6e74e88",
+  "source_commit": "ea0326d5c5b4020ff04a12115adce4c67a16b107",
+  "archive_hash_mismatches": [],
+  "workflow_hash_matches": {
+    "scripts/run_discovery_experiment.py": true,
+    "interphaise/discovery.py": true,
+    "interphaise/llm.py": true,
+    "interphaise/benchmark.py": true
+  },
+  "verified_prompts": 300,
+  "verified_source_maps": 300,
+  "query_counts": {
+    "ok": 288,
+    "failed": 12,
+    "No GGA_GGA+U entry for pinned material mp-3346453": 10,
+    "Unknown candidate ID": 2
+  },
+  "usage": {
+    "input_tokens": 1594978,
+    "output_tokens": 259023
+  },
+  "paired_acceptance": {
+    "shuffled_only": 3,
+    "neither": 8,
+    "both": 3,
+    "iterative_only": 16
+  },
+  "exact_two_sided_mcnemar_p": 0.004425048828125,
+  "mean_displaced_after_query": [
+    0.0,
+    0.9333333333333333,
+    1.8333333333333333,
+    2.8333333333333335,
+    3.933333333333333,
+    5.0,
+    6.066666666666666,
+    7.033333333333333,
+    8.1,
+    9.233333333333333
+  ],
+  "mean_earlier_changes_after_query": [
+    0.0,
+    0.4666666666666667,
+    0.5333333333333333,
+    0.7,
+    0.8333333333333334,
+    0.9,
+    0.8666666666666667,
+    0.8666666666666667,
+    0.9,
+    0.9333333333333333
+  ],
+  "replayed_queries": 300,
+  "standalone_tests_passed": 104,
+  "temporary_merged_tests_passed": 104,
+  "temporary_merge_inputs": [
+    "b210db0",
+    "6e74e88"
+  ],
+  "temporary_merge_conflicts": 0,
+  "actual_branch_merge": false,
+  "live_llm_calls_in_review": 0,
+  "replay_report": {
+    "replayed_queries": 300,
+    "arms": {
+      "shuffled": {
+        "runs": 30,
+        "successes": 6,
+        "rate": 0.2,
+        "wilson_95": [
+          0.09504978102401235,
+          0.37306047381027446
+        ],
+        "failed_runs": 0,
+        "failed_queries": 12,
+        "proposal_attempts": 300
+      }
+    },
+    "paired_acceptance": {},
+    "note": "Paired tests are supplementary; the frozen primary outcome is acceptable found by budget 10."
+  }
+}

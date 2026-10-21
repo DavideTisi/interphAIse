@@ -79,6 +79,9 @@ def family(elements):
 
 
 def select_pool(snapshot, size=50, seed=2026):
+    """Select a fixed size, or every eligible record when size is None."""
+    if size is not None and (not isinstance(size, int) or isinstance(size, bool) or size < 1):
+        raise ValueError('Pool size must be a positive integer or None')
     groups = defaultdict(list)
     rejected = []
     for doc in sorted(snapshot['documents'],key=lambda d:d['material_id']):
@@ -113,11 +116,11 @@ def select_pool(snapshot, size=50, seed=2026):
     for kind in sorted(groups):
         rng.shuffle(groups[kind])
     selected = []
-    while len(selected)<size and any(groups.values()):
+    while (size is None or len(selected)<size) and any(groups.values()):
         for kind in sorted(groups):
-            if groups[kind] and len(selected)<size:
+            if groups[kind] and (size is None or len(selected)<size):
                 selected.append(groups[kind].pop())
-    if len(selected)<size:
+    if size is not None and len(selected)<size:
         raise ValueError(f'Only {len(selected)} eligible candidates; requested {size}')
     selected.sort(key=lambda d:d['candidate_id'])
     body = {
