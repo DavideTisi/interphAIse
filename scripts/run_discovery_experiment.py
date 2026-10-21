@@ -33,6 +33,8 @@ def main():
     parser.add_argument("--benchmark", type=Path, default=ROOT / "data/benchmarks/coating_v3.json")
     parser.add_argument("--synthetic", action="store_true", help="Fake pool and benchmark (development only)")
     parser.add_argument("--temperature", type=float, default=None)
+    parser.add_argument("--max-tokens", type=int, default=4096,
+                        help="Output cap per call; a 10-candidate upfront shortlist needs ~2000 tokens")
     parser.add_argument("--model", choices=[config.LLM_MODEL], default=config.LLM_MODEL)
     parser.add_argument("--out", type=Path, default=ROOT / "runs")
     args = parser.parse_args()
@@ -43,11 +45,12 @@ def main():
         args.pool, args.benchmark = write_synthetic_benchmark(root)
     new_queries = lambda: BenchmarkQueries(args.pool, args.benchmark, budget=args.budget, allow_draft=args.synthetic)
     task = new_queries().task()  # validates hashes and budget before any paid call
-    llm = make_llm(args.model, temperature=args.temperature) if set(args.arms) & LLM_STRATEGIES else None
+    llm = make_llm(args.model, temperature=args.temperature, max_tokens=args.max_tokens) if set(args.arms) & LLM_STRATEGIES else None
     experiment = dict(arms=args.arms, repeats=args.repeats, budget=args.budget, synthetic=args.synthetic,
                       pool=str(args.pool), benchmark=str(args.benchmark),
                       hashes={k: task[k] for k in ("objective_sha256", "pool_sha256", "benchmark_sha256")},
-                      prompt_version=PROMPT_VERSION, model=args.model if llm else None, temperature=args.temperature)
+                      prompt_version=PROMPT_VERSION, model=args.model if llm else None, temperature=args.temperature,
+                      max_tokens=args.max_tokens)
     (root / "experiment.json").write_text(json.dumps(experiment, indent=2))
 
     for r in range(args.repeats):
