@@ -1,5 +1,10 @@
 # Adem: amend the comparison into a small LLM–PET-MAD feedback pilot
 
+**22 October readiness update:** read [SYNC_ADEM_13.md](SYNC_ADEM_13.md) before
+live execution. Your `2d2cac3` passes 183 tests and reproduces production, but
+offline checks expose gaps in source validation on the live path, durable HTTP
+accounting and access to previous predictions. The scientific plan below stays.
+
 21 October 2026. This updates SYNC_ADEM_11.md after Davide clarified that the
 LLM should choose new coatings using the physical feedback. Please read
 [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md) as the current plan.

@@ -2497,3 +2497,64 @@ registry selection, revised manifest and live execution remain with their owners
 The unrelated README edit is preserved. Validate links, JSON, whitespace and
 credentials, then publish the handoffs under the existing sharing authorization
 and verify the remote head. The main checkout has not merged Claude's code.
+
+## 2026-10-22 — Independently review Adem's pilot and prepare readiness handoff
+
+**Branch:** `davide`, starting at `aa24d9d`. Fetched and inspected Adem's
+`work/agent-experiments:2d2cac35093e6f481048701fb216ab48a7d033f1` in a temporary
+Git archive with the pinned local Python. Claude's fetched comparison head
+remains `49daa7299a5cd36db6b5ac08c5192f74bce2b942`. No checkout switch, contributor
+worktree edit or code merge. Preserve the unrelated local README modification.
+
+Verification: `python -m pytest -q` on Adem's snapshot passes **183 tests in
+20.46 s**, including the new pilot and reader tests, with existing ASE/spglib
+deprecation warnings. Re-ran `scripts/analyse_environment_study.py` on the three
+archived environment directories with `--production --json <temporary-output>`:
+exit 0, all 450 runs and six Holm comparisons unchanged. Counts in arm order
+iterative/sequential/shuffled/upfront/random are sulfide 20/2/6/0/8, chloride
+30/30/30/30/29, and LLZO 12/0/4/1/24. The historical shorthand that every
+chloride arm succeeds means near-ceiling; sampled random is 29/30.
+
+Offline mutation/transport tests found three remaining integration issues:
+
+1. The live prompt builder accepts a reference index W_adh changed to 999,
+   although the independent comparison reader rejects it. Removing a pending
+   planned registry lets choose-2 advance. Share validation between consumption
+   and reporting, pin exact planned coverage and establish comparable build/cell/
+   mask identities beyond area and atom count.
+2. Mocking 429, 429, then malformed outer HTTP-response JSON loses transport
+   metadata. After two logical attempts and a resume, 12 mocked HTTP attempts
+   occur with only 4 recorded despite cap 10. A separate interruption test makes
+   11 mocked submissions with the disk counter still zero. Failed stages also
+   advance on resume. Reserve attempts durably before transport, finalize all
+   errors, and keep terminal failures stopped.
+3. The choose-3 prompt omits the earlier structured hypothesis, numeric forecast
+   and trigger. Give the model its recorded predictions alongside observations
+   so it can explicitly revise them; preserve first-revealed feedback snapshots.
+
+Smaller checks: copied successful-call metadata can be deleted without F3
+reporting a problem; the current range validator rejects negative predictions
+although the plan requires finite ordered intervals only. The draft contract
+still needs physical fixed-depth/mask identity, explicit unavailable sensitivity
+and the 1,250-atom amendment. The code checks declared thermodynamic hashes
+without recomputing content in these paths. These findings do not invalidate
+genuine archived results and are assigned to Adem/Claude, not fixed here.
+
+Using Adem's recorded rates and assumptions, expected cost arithmetic is
+USD 0.0054 and the ten-attempt/6k-input/4,096-output scenario is USD 0.02648.
+The input bound is not implemented, so this is not a demonstrated hard dollar
+cap or a billed amount. Current prices were not independently browsed. No new
+live-pilot approval is inferred from the earlier environment-production approval.
+
+Saved the reproduction outputs and compact production summary in
+`data/reviews/adem_pilot_review_20261022.json`, wrote `SYNC_ADEM_13.md`, and aligned
+the existing handoffs, pilot plan, WORK_DIVISION.md and REPORT.md. Next: Adem's
+focused patch/regressions and Claude's final amended menu/contract; review the
+concrete command/cost for approval once the path is ready. Existing-results
+slides and geometry preparation remain independent work.
+
+No real API/LLM request, MLIP calculation, SSH/Slurm action, external message or
+implementation fix occurred. Check JSON, document links, whitespace and staged
+credentials; commit/push the review handoff under Davide's standing sharing
+authorization and verify the remote head. The earlier tests are sufficient;
+documentation-only edits do not require another full suite.

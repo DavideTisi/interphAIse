@@ -2,7 +2,7 @@
 
 OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
-## Current assignments: LLM-guided three-coating pilot — 21 October
+## Current assignments: LLM-guided three-coating pilot — 22 October
 
 Davide clarified that the LLM should choose new coatings using PET-MAD feedback.
 Use LiNbF6 as the known reference, then let the LLM select two new coatings
@@ -31,12 +31,16 @@ The review of `davide:8975d4b` and Adem's latest `b8b1392` reproduces the
 completed results and identifies four code safeguards to add. See
 [JOINT_REVIEW_AND_HANDOFF.md](JOINT_REVIEW_AND_HANDOFF.md) for reproductions,
 scope and acceptance criteria. F1/F2 were subsequently implemented on Claude's
-branch as reviewed above; F3/F4 and the new feedback corrections retain their
-assigned owners. No new interface calculation was made in this review.
+branch as reviewed above. Adem's subsequent `2d2cac3` passes 183 tests and
+replays production unchanged. F3/F4 are substantially implemented, with missing
+successful-call metadata and exceptional/resumed HTTP accounting still to fix.
+The new pilot also needs source validation before prompting and the previous
+structured predictions in later prompts. See [SYNC_ADEM_13.md](SYNC_ADEM_13.md).
+No new interface calculation was made in these reviews.
 
 | Owner | Next work | Done when |
 |---|---|---|
-| **Adem** | Fix F3/F4; implement and mock-test the resumable selection/feedback loop and MLIP validator; estimate capped API cost; produce the comparison and decision timeline. | Old results reproduce; new choices precede their energies; prompts/feedback replay; failures and costs remain visible. See [SYNC_ADEM_12.md](SYNC_ADEM_12.md). |
+| **Adem** | Finish the focused readiness fixes: validate sources on the live path, persist attempt accounting before transport, include prior predictions, and agree the revised contract with Claude. | Reproduction regressions pass; genuine reference feedback completes the mocked loop; settings/snapshots remain frozen; bounded live command and cost are ready for approval. See [SYNC_ADEM_13.md](SYNC_ADEM_13.md). |
 | **Claude** | Retain tested F1/F2; revalidate the menu at 1,250; fix feedback gates and freeze builds/registries; evaluate each archived LLM choice. | Comparable complete primary feedback, validated arithmetic, explicit costs/failures and unavailable checks. See [SYNC_CLAUDE_10.md](SYNC_CLAUDE_10.md). |
 | **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
 

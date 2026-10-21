@@ -1,5 +1,13 @@
 # LLM-guided PET-MAD pilot: one known coating, two adaptive choices
 
+**Readiness review, 22 October:** Adem's `2d2cac3` passes 183 offline tests and
+reproduces the completed study. Live execution still needs source/manifest
+validation in the prompt path, a durable HTTP cap, and previous structured
+predictions in later prompts. See [SYNC_ADEM_13.md](SYNC_ADEM_13.md). The expected
+USD 0.0054 and conservative USD 0.02648 scenario use his recorded assumptions;
+the input-token bound is not enforced yet. No live-pilot approval is recorded.
+The scope and scientific brief below are unchanged.
+
 21 October 2026. Planning amendment following Davide's clarification that the
 LLM should participate in the new coating exploration. This supersedes the
 fixed-cohort selection and no-new-LLM-call instructions in SYNC_ADEM_11.md and

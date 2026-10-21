@@ -1,5 +1,19 @@
 # interphAIse — project report
 
+**Pilot readiness reviewed — 2026-10-22:** Adem's `2d2cac3` passes 183 offline
+tests; independent production replay preserves all 450 runs and planned
+comparisons. Three remaining pilot gaps were reproduced with temporary data
+and mocked transport: the prompt bypasses source validation, the 10-HTTP cap
+can be exceeded across errors/resumes, and later prompts omit earlier model
+predictions. Missing successful-call metadata also passes the new F3 check.
+These are implementation safeguards to finish, not evidence that the genuine
+scientific results changed. The intended amended menu is still LiNbF6 plus
+LiTaF6, LiF and LiCaAlF6, pending Claude's final manifest. The tiny API estimate
+is conditional on token assumptions; live-pilot approval remains pending.
+See [Adem's focused handoff](SYNC_ADEM_13.md) and
+[saved review evidence](data/reviews/adem_pilot_review_20261022.json).
+No live LLM/PET-MAD calculation, cluster action or code merge occurred here.
+
 **Construction screen reviewed; cap amended — 2026-10-21:** Reviewed Claude's
 `work/petmad-comparison:49daa72` and reproduced 157 passing tests. Independently
 rebuilt LiCaAlF6(100) against both contacts without a potential: its 1,212-atom

@@ -1,0 +1,162 @@
+{
+  "review_date_copenhagen": "2026-10-22",
+  "saved_at_utc": "2026-10-21T22:05:08.944045+00:00",
+  "reviewed_agent_commit": "2d2cac35093e6f481048701fb216ab48a7d033f1",
+  "reviewed_physics_commit": "49daa7299a5cd36db6b5ac08c5192f74bce2b942",
+  "davide_base_commit": "aa24d9dad5c3838f0e465d8b9f7edb232cfdd246",
+  "method": "Isolated git archive; pinned local Python; network mocked for all transport reproductions; original archives unchanged.",
+  "full_offline_suite": {
+    "passed": 183,
+    "elapsed_seconds": 20.46,
+    "command": "python -m pytest -q",
+    "warnings": "Existing ASE/spglib deprecations"
+  },
+  "production_replay": {
+    "command": "python scripts/analyse_environment_study.py data/experiments/environment_v1/lpscl data/experiments/environment_v1/lic data/experiments/environment_v1/llzo --production --json <output.json>",
+    "exit_code": 0,
+    "problems": [],
+    "holm_family_size": 6,
+    "counts": {
+      "Li3InCl6": {
+        "iterative": {
+          "runs": 30,
+          "acceptable": 30
+        },
+        "random": {
+          "runs": 30,
+          "acceptable": 29
+        },
+        "sequential": {
+          "runs": 30,
+          "acceptable": 30
+        },
+        "shuffled": {
+          "runs": 30,
+          "acceptable": 30
+        },
+        "upfront": {
+          "runs": 30,
+          "acceptable": 30
+        }
+      },
+      "Li6PS5Cl": {
+        "iterative": {
+          "runs": 30,
+          "acceptable": 20
+        },
+        "random": {
+          "runs": 30,
+          "acceptable": 8
+        },
+        "sequential": {
+          "runs": 30,
+          "acceptable": 2
+        },
+        "shuffled": {
+          "runs": 30,
+          "acceptable": 6
+        },
+        "upfront": {
+          "runs": 30,
+          "acceptable": 0
+        }
+      },
+      "Li7La3Zr2O12": {
+        "iterative": {
+          "runs": 30,
+          "acceptable": 12
+        },
+        "random": {
+          "runs": 30,
+          "acceptable": 24
+        },
+        "sequential": {
+          "runs": 30,
+          "acceptable": 0
+        },
+        "shuffled": {
+          "runs": 30,
+          "acceptable": 4
+        },
+        "upfront": {
+          "runs": 30,
+          "acceptable": 1
+        }
+      }
+    }
+  },
+  "offline_reproductions": {
+    "live_feedback_bypasses_reader": {
+      "W_adh_sent_to_model": 999.0,
+      "reader_rejects": [
+        {
+          "run_id": "ref-cathode",
+          "problems": [
+            "W_adh arithmetic mismatch (recomputed 3.600356)"
+          ]
+        }
+      ]
+    },
+    "previous_decision_absent": {
+      "stage": "choose_3",
+      "prior_hypothesis_present": false,
+      "prior_trigger_present": false
+    },
+    "deleted_planned_run": {
+      "stage_advanced": "choose_2",
+      "calls": 1
+    },
+    "http_cap_and_stopped_resume": {
+      "after_first": {
+        "status": "stopped: prior failed validation",
+        "http_recorded": 2,
+        "http_mock_actual": 6
+      },
+      "after_resume": {
+        "status": "stopped: choose_2 failed validation",
+        "http_recorded": 4,
+        "http_mock_actual": 12,
+        "cap": 10
+      },
+      "metadata_present": false
+    },
+    "interrupted_resume_cap": {
+      "mock_submissions": 11,
+      "recorded_attempts": 0,
+      "cap": 10
+    },
+    "negative_prediction_range": "predicted_W_adh_J_m2.electrolyte must be [low, high] in J/m2 with 0 <= low <= high <= 20",
+    "missing_success_metadata": {
+      "modified_copy": "upfront_r200.json",
+      "mutation": "removed metadata from one originally recorded successful proposal",
+      "validation_problems": []
+    }
+  },
+  "cost_arithmetic": {
+    "source": "Rates and token assumptions recorded by Adem; not independently verified current prices or billed cost",
+    "input_USD_per_million": 0.1,
+    "output_USD_per_million": 0.5,
+    "expected_input_tokens": 14000,
+    "expected_output_tokens": 8000,
+    "expected_USD": 0.0054,
+    "scenario_HTTP_attempts": 10,
+    "scenario_input_tokens_per_attempt": 6000,
+    "max_output_tokens_per_attempt": 4096,
+    "scenario_USD": 0.02648,
+    "input_bound_enforced": false,
+    "hard_dollar_cap_demonstrated": false
+  },
+  "limitations": [
+    "Mutation cases demonstrate missing safeguards; they do not establish corruption of genuine results.",
+    "The reader uses result/separation JSON and area/atom-count checks; it does not yet establish full source-structure and constraint-mask comparability.",
+    "Fixes remain assigned to the implementation owners; this review makes no implementation change."
+  ],
+  "actions": {
+    "live_LLM_calls": 0,
+    "MLIP_calculations": 0,
+    "cluster_jobs": 0,
+    "external_messages": 0,
+    "branch_merged": false
+  },
+  "next_handoff": "SYNC_ADEM_13.md"
+}

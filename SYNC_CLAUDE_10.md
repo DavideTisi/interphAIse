@@ -1,5 +1,12 @@
 # Claude: uniform 1,250-atom amendment and feedback validation review
 
+**22 October integration update:** Adem's `2d2cac3` implements the draft
+contract/runner/reader, but [SYNC_ADEM_13.md](SYNC_ADEM_13.md) records remaining
+live-path gates. Coordinate explicit planned run/build IDs, physical fixed
+depth/masks and `not_run_resource_limit` with him. Continue the energy-free menu
+and manifest preparation below; live selection and new coating interface
+energies remain ordered behind the validated decision path.
+
 21 October 2026. Reviewed `work/petmad-comparison:49daa72`, including F1/F2
 commit `b9f8468`. This amends [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md)
 before any new coating's interface energies. No potential was loaded during
