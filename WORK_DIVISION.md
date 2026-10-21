@@ -4,6 +4,12 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current handoff — 21 October
 
+**Production is complete and reviewed:** Adem's `06a4271` has all 450 runs;
+independent replay and the six planned comparisons pass. The current work is
+slides, final viewer selection, joint branch review and a reproducible release.
+See [SYNC_ADEM_9.md](SYNC_ADEM_9.md). No additional runs are requested.
+The production approval below records the prior authorization, not pending work.
+
 The expansion data are frozen in `data/benchmarks/environment_v1/`. The smoke
 batch, cost review and analysis review are complete. Davide explicitly approved
 **production** on 21 October 2026. **Adem owns execution** of the three-environment,
@@ -45,8 +51,8 @@ prioritize the environment experiment and release review. See
 
 | Owner | Action | Completion evidence |
 |---|---|---|
-| Adem | Run the approved full environment study, archive/replay it and complete final analysis | All three environments, five arms, 30 seeds each; six Holm contrasts; smoke excluded; usage and costs reported |
-| Davide, with Claude's current implementation | Complete final-geometry constraint, relaxed registry and seed-4 sensitivity checks | Current working contacts have 696/880 atoms; retain all outcomes and polar-surface limitations, report both W_adh and W_sep |
+| Adem | Present the completed environment study with its positive and negative results | Production reviewed at 06a4271; overview and six primary contrasts in SYNC_ADEM_9.md; retain LLZO random advantage |
+| Davide + Claude | Publish the completed bounded Niflheim batch and its review; stop additional simulations | Cathode registry selected; seed-4 sensitivity exceeds tolerance and is reported with construction confounders; see SYNC_CLAUDE_7.md |
 | Adem + Davide | Prepare the presentation and reproducible demonstration alongside the calculations | Acceptance and best-bin curves with baselines, one successful and one failed trace, offline two-contact viewer, explicit scientific limits |
 | Together | Review the combined branch and publish a reproducible release | Tests and archive replay pass, reports match the results, both people review scope before merging to `main` |
 

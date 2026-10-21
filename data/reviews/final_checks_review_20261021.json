@@ -1,0 +1,509 @@
+{
+  "review_date": "2026-10-21",
+  "source_commit": "dc62dfe",
+  "remote_tip_verified": "e5c745e885cc15962a8d29117155e4618b3b2756",
+  "new_calculations_run": false,
+  "archived_geometry_forces_energies_checked": true,
+  "new_runs": [
+    {
+      "run": "data/petmad/final_checks_v1/cathode_f0.17",
+      "atoms": 696,
+      "device": "cpu",
+      "W_adh_J_m2": 3.60943036169207,
+      "joined_eV": -4707.48095703125,
+      "film_eV": -2502.996337890625,
+      "substrate_eV": -2184.4794921875,
+      "calls": 136,
+      "steps": [
+        55,
+        39,
+        24
+      ],
+      "wall_seconds": 775.0658534159884,
+      "fixed_atoms": 52,
+      "area_A2": 88.8000146079959,
+      "W_sep_J_m2": 5.127231486560253
+    },
+    {
+      "run": "data/petmad/final_checks_v1/cathode_f0.50",
+      "atoms": 696,
+      "device": "cpu",
+      "W_adh_J_m2": 3.5961715713567153,
+      "joined_eV": -4707.3583984375,
+      "film_eV": -2502.996337890625,
+      "substrate_eV": -2184.430419921875,
+      "calls": 136,
+      "steps": [
+        55,
+        39,
+        24
+      ],
+      "wall_seconds": 783.8392230409663,
+      "fixed_atoms": 156,
+      "area_A2": 88.8000146079959,
+      "W_sep_J_m2": 5.127716027070846
+    },
+    {
+      "run": "data/petmad/final_checks_v1/cathode_reg_0.5_0",
+      "atoms": 696,
+      "device": "cpu",
+      "W_adh_J_m2": 3.600135993716124,
+      "joined_eV": -4707.38037109375,
+      "film_eV": -2502.996337890625,
+      "substrate_eV": -2184.430419921875,
+      "calls": 136,
+      "steps": [
+        55,
+        39,
+        24
+      ],
+      "wall_seconds": 786.1171317080152,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "W_sep_J_m2": 5.127539830521539
+    },
+    {
+      "run": "data/petmad/final_checks_v1/cathode_reg_0.5_0.5",
+      "atoms": 696,
+      "device": "cpu",
+      "W_adh_J_m2": 3.600135993716124,
+      "joined_eV": -4707.38037109375,
+      "film_eV": -2502.996337890625,
+      "substrate_eV": -2184.430419921875,
+      "calls": 136,
+      "steps": [
+        55,
+        39,
+        24
+      ],
+      "wall_seconds": 795.5091003749985,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "W_sep_J_m2": 5.127495781384213
+    },
+    {
+      "run": "data/petmad/final_checks_v1/cathode_reg_0_0.5",
+      "atoms": 696,
+      "device": "cpu",
+      "W_adh_J_m2": 3.600135993716124,
+      "joined_eV": -4707.38037109375,
+      "film_eV": -2502.996337890625,
+      "substrate_eV": -2184.430419921875,
+      "calls": 136,
+      "steps": [
+        55,
+        39,
+        24
+      ],
+      "wall_seconds": 792.3556586250197,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "W_sep_J_m2": 5.127539830521539
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_d1.628801",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.608269171801773,
+      "joined_eV": -5328.8515625,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -931.267578125,
+      "calls": 407,
+      "steps": [
+        246,
+        58,
+        85
+      ],
+      "wall_seconds": 1854.1911525829928,
+      "fixed_atoms": 26,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 2.955195748872465
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_d6.515204",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6564510262641623,
+      "joined_eV": -5328.34130859375,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -930.2439575195312,
+      "calls": 443,
+      "steps": [
+        263,
+        58,
+        104
+      ],
+      "wall_seconds": 1904.1541802500142,
+      "fixed_atoms": 68,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 2.9780808408445543
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_reg_0.5_0",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6330732890080677,
+      "joined_eV": -5328.59619140625,
+      "film_eV": -4380.44775390625,
+      "substrate_eV": -930.7484130859375,
+      "calls": 439,
+      "steps": [
+        276,
+        58,
+        87
+      ],
+      "wall_seconds": 1927.4851244169986,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 2.9671853602610967
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6313318452134458,
+      "joined_eV": -5328.578125,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -930.7484130859375,
+      "calls": 417,
+      "steps": [
+        254,
+        58,
+        87
+      ],
+      "wall_seconds": 1875.69275245897,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 3.0640245291692754
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6316068100231231,
+      "joined_eV": -5328.5810546875,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -930.7484130859375,
+      "calls": 440,
+      "steps": [
+        277,
+        58,
+        87
+      ],
+      "wall_seconds": 1927.9715955000138,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 3.064711941193468
+    }
+  ],
+  "new_relaxations": 30,
+  "new_calls": 2826,
+  "extra_separation_points": 20,
+  "working_references": {
+    "cathode": {
+      "run": "data/petmad/cathode_thickness_v1/run_F4",
+      "atoms": 696,
+      "device": "cpu",
+      "W_adh_J_m2": 3.600135993716124,
+      "joined_eV": -4707.38037109375,
+      "film_eV": -2502.996337890625,
+      "substrate_eV": -2184.430419921875,
+      "calls": 136,
+      "steps": [
+        55,
+        39,
+        24
+      ],
+      "wall_seconds": 165.79306120902766,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "W_sep_J_m2": 5.127539830521539
+    },
+    "electrolyte": {
+      "run": "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6329358066032293,
+      "joined_eV": -5328.59521484375,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -930.7484130859375,
+      "calls": 416,
+      "steps": [
+        253,
+        58,
+        87
+      ],
+      "wall_seconds": 752.9046736250166,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 2.9669046670178845
+    }
+  },
+  "constraints": {
+    "cathode": {
+      "W_adh_J_m2": [
+        3.60943036169207,
+        3.600135993716124,
+        3.5961715713567153
+      ],
+      "W_sep_J_m2": [
+        5.127231486560253,
+        5.127539830521539,
+        5.127716027070846
+      ],
+      "spreads_J_m2": {
+        "W_adh_J_m2": 0.01325879033535493,
+        "W_sep_J_m2": 0.00048454051059376724
+      }
+    },
+    "electrolyte": {
+      "W_adh_J_m2": [
+        1.608269171801773,
+        1.6329358066032293,
+        1.6564510262641623
+      ],
+      "W_sep_J_m2": [
+        2.955195748872465,
+        2.9669046670178845,
+        2.9780808408445543
+      ],
+      "spreads_J_m2": {
+        "W_adh_J_m2": 0.04818185446238932,
+        "W_sep_J_m2": 0.0228850919720891
+      }
+    }
+  },
+  "electrolyte_registry_rows": [
+    {
+      "run": "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6329358066032293,
+      "joined_eV": -5328.59521484375,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -930.7484130859375,
+      "calls": 416,
+      "steps": [
+        253,
+        58,
+        87
+      ],
+      "wall_seconds": 752.9046736250166,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 2.9669046670178845
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6316068100231231,
+      "joined_eV": -5328.5810546875,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -930.7484130859375,
+      "calls": 440,
+      "steps": [
+        277,
+        58,
+        87
+      ],
+      "wall_seconds": 1927.9715955000138,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 3.064711941193468
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_reg_0.5_0",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6330732890080677,
+      "joined_eV": -5328.59619140625,
+      "film_eV": -4380.44775390625,
+      "substrate_eV": -930.7484130859375,
+      "calls": 439,
+      "steps": [
+        276,
+        58,
+        87
+      ],
+      "wall_seconds": 1927.4851244169986,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 2.9671853602610967
+    },
+    {
+      "run": "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5",
+      "atoms": 880,
+      "device": "cpu",
+      "W_adh_J_m2": 1.6313318452134458,
+      "joined_eV": -5328.578125,
+      "film_eV": -4380.4482421875,
+      "substrate_eV": -930.7484130859375,
+      "calls": 417,
+      "steps": [
+        254,
+        58,
+        87
+      ],
+      "wall_seconds": 1875.69275245897,
+      "fixed_atoms": 38,
+      "area_A2": 170.70827540491757,
+      "W_sep_J_m2": 3.0640245291692754
+    }
+  ],
+  "registry_A_repeat_difference_eV": 0.0009765625,
+  "registry_B_repeat_difference_eV": 0.0029296875,
+  "electrolyte_registry_ranges_J_m2": {
+    "W_adh_J_m2": [
+      1.6313318452134458,
+      1.6330732890080677
+    ],
+    "W_sep_J_m2": [
+      2.9669046670178845,
+      3.064711941193468
+    ]
+  },
+  "cathode_grid_36_unrelaxed_range_J_m2": 0.008193139542777426,
+  "final880_vacuum_energies_identical": true,
+  "final880_vacuum_single_points": 10,
+  "niflheim_smokes": [
+    {
+      "run": "data/petmad/niflheim_smoke_v1/smoke_gpu_F2",
+      "atoms": 504,
+      "device": "cuda",
+      "W_adh_J_m2": 3.479507431146791,
+      "joined_eV": -3450.1962890625,
+      "film_eV": -1246.4808349609375,
+      "substrate_eV": -2184.430419921875,
+      "calls": 144,
+      "steps": [
+        59,
+        43,
+        24
+      ],
+      "wall_seconds": 37.195020757993916,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "W_adh_delta_vs_local_J_m2": 0.0001541719806441577
+    },
+    {
+      "run": "data/petmad/niflheim_smoke_v1/smoke_cpu_F2",
+      "atoms": 504,
+      "device": "cpu",
+      "W_adh_J_m2": 3.479287185460157,
+      "joined_eV": -3450.195556640625,
+      "film_eV": -1246.4810791015625,
+      "substrate_eV": -2184.4306640625,
+      "calls": 144,
+      "steps": [
+        59,
+        43,
+        24
+      ],
+      "wall_seconds": 89.98139773297589,
+      "fixed_atoms": 104,
+      "area_A2": 88.8000146079959,
+      "W_adh_delta_vs_local_J_m2": -6.607370599009954e-05
+    }
+  ],
+  "niflheim_W_sep_validated": false,
+  "source_sha256": {
+    "data/petmad/final_checks_v1/cathode_f0.17/result.json": "b19ed9dd75c682131154770b23c8ac87bb0c5c223368a96b356889ed6712ab88",
+    "data/petmad/final_checks_v1/cathode_f0.17/relaxation_records.json": "a37866ac4671370c2b12d5255f36d0608d0d71dde676eda9279431ef14a1c66e",
+    "data/petmad/final_checks_v1/cathode_f0.17/interface/final.extxyz": "a3c08079d92f4ae9e0d4bf0b9e40dc5c24b1c15ee31dd0435e26c990c95090d5",
+    "data/petmad/final_checks_v1/cathode_f0.17/film/final.extxyz": "206c1b5f495e56179aba8aa0282ef771ad2cafcee50d3205c3fb38475ab6115e",
+    "data/petmad/final_checks_v1/cathode_f0.17/substrate/final.extxyz": "5cb94967ff9d8a3eb13d3295bbf29a2caa6e8e536ee25537bbf71fecbddb5f40",
+    "data/petmad/final_checks_v1/cathode_f0.17/registry_scan.json": "8d074c8c3b58361a8aa30e43ad0e294750f0dd30e92af25e78da9db6ec4ff815",
+    "data/petmad/final_checks_v1/cathode_f0.17/fixed_geometry_separation.json": "282626790537a3728758c56e571858f5a27b0badc074ae72c03651f29a83b2df",
+    "data/petmad/final_checks_v1/cathode_f0.50/result.json": "1348f1532b062b97b2689b6089d5b6fc994dba09b62a4eb6ad70326bc124678a",
+    "data/petmad/final_checks_v1/cathode_f0.50/relaxation_records.json": "41de0f6d4a21d28bc02265118ad97e191cc0be89c6bc071cacd767fd07f809bd",
+    "data/petmad/final_checks_v1/cathode_f0.50/interface/final.extxyz": "b9cc0b484b93091c95375db9fbc74746b401affce2fd1b7eb0fe2a4a2d0e4e56",
+    "data/petmad/final_checks_v1/cathode_f0.50/film/final.extxyz": "91327ef3ee4a547c0095cbbfa817b57fbb2a35ff716c072abdebf14bcda70e44",
+    "data/petmad/final_checks_v1/cathode_f0.50/substrate/final.extxyz": "7c6d0683db8de970080d2a3b8dc5463451228b1115fc7ed6d27bc47a2bdf0072",
+    "data/petmad/final_checks_v1/cathode_f0.50/registry_scan.json": "8d074c8c3b58361a8aa30e43ad0e294750f0dd30e92af25e78da9db6ec4ff815",
+    "data/petmad/final_checks_v1/cathode_f0.50/fixed_geometry_separation.json": "b8aa8c3bbd496c7e845815c48a29af575813c1567efc94965756a382651dd3f0",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0/result.json": "cd8378e47426fb80cf69b7adcdd95ca77b34129b4f2429300315d67476a73cc6",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0/relaxation_records.json": "8750ebcd268bf1487269053e4bd0ec6d71aad5fa071ffaa1ebe578fa32bc6480",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0/interface/final.extxyz": "3a7d24855b522b27d34fdae4fe6e94c8123c8f9e4d320dbd0f9cf558c670d0ab",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0/film/final.extxyz": "5dfedb917646dc738d5fb4180fd812e98767c5437a54b27a1b93916b58a13761",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0/substrate/final.extxyz": "5f897280456a54f3875dc464d58515b8c9ca81e2873746e85a9424040389ab8a",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0/registry_scan.json": "8d074c8c3b58361a8aa30e43ad0e294750f0dd30e92af25e78da9db6ec4ff815",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0/fixed_geometry_separation.json": "43655f31756b680f63f88cea0aca3897ab1addda958fd60ef702a1f0d966ead8",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0.5/result.json": "9478b16eea3675aa3ab0853457fd9ee74b38bd796cdec52cd7a6579603f64588",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0.5/relaxation_records.json": "5399a26a6f6ee5f17dbb8aabe5a5af45cf68573fb7046a7c060478fa79f3add5",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0.5/interface/final.extxyz": "e7227829add6a7c9a5cf87219406af42b0337174277b9268e4d9e0b5cd143857",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0.5/film/final.extxyz": "ba421d155dff46fe1955fccbe466433410a0d559e41a563b420e7b8287b51aad",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0.5/substrate/final.extxyz": "bb6cde6cfa9570cf302fc911714f7fab40cc228e11ab17741cecc1876e60d9b2",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0.5/registry_scan.json": "8d074c8c3b58361a8aa30e43ad0e294750f0dd30e92af25e78da9db6ec4ff815",
+    "data/petmad/final_checks_v1/cathode_reg_0.5_0.5/fixed_geometry_separation.json": "705bdd3314d8408aab2b588625ecc30cb64415ce1ef01cc0ea397fcfbb43bfc7",
+    "data/petmad/final_checks_v1/cathode_reg_0_0.5/result.json": "89b8078d463931b84858fe9912b6b4b637bf5488f77b8a6a69b68a4ace043949",
+    "data/petmad/final_checks_v1/cathode_reg_0_0.5/relaxation_records.json": "5eaf397fbea8256d4ff751f820abe5f7bc0b9710d5b92750807df6e30e32c3b4",
+    "data/petmad/final_checks_v1/cathode_reg_0_0.5/interface/final.extxyz": "c856096b1ab145fd608dd0a5f906dad0897dcccf9569ee99884ac820aaec16ad",
+    "data/petmad/final_checks_v1/cathode_reg_0_0.5/film/final.extxyz": "521124f90b421f904c1970536130046e8aa04a6a31c12f6b5dfc543dff543994",
+    "data/petmad/final_checks_v1/cathode_reg_0_0.5/substrate/final.extxyz": "ae1a2c3907ccfb4e54c45ae5bdc67a35579fa33562ac2579d78ed3b47df86c3c",
+    "data/petmad/final_checks_v1/cathode_reg_0_0.5/registry_scan.json": "8d074c8c3b58361a8aa30e43ad0e294750f0dd30e92af25e78da9db6ec4ff815",
+    "data/petmad/final_checks_v1/cathode_reg_0_0.5/fixed_geometry_separation.json": "43655f31756b680f63f88cea0aca3897ab1addda958fd60ef702a1f0d966ead8",
+    "data/petmad/final_checks_v1/electrolyte_d1.628801/result.json": "ececa623dc13216a3224f1a0a595ad47399c2b472b519603d3e3417061c10cf7",
+    "data/petmad/final_checks_v1/electrolyte_d1.628801/relaxation_records.json": "9d2bc78b87717fdefe002f93c833240e3778339b65ce226fbc38087b0f3d78fd",
+    "data/petmad/final_checks_v1/electrolyte_d1.628801/interface/final.extxyz": "67397953ab0be9342a79fd804d68bbbd94422a5a9efb648e91f94d0d99eb4f59",
+    "data/petmad/final_checks_v1/electrolyte_d1.628801/film/final.extxyz": "87ad33d9db4996ed9ad4e15ab3c849f771908194c072b865f3ff76c78222f250",
+    "data/petmad/final_checks_v1/electrolyte_d1.628801/substrate/final.extxyz": "1122f1fcaac61ee24a0f6a20257e6e0e6f43e1f9b4caa31be1cea84312e9b5cd",
+    "data/petmad/final_checks_v1/electrolyte_d1.628801/registry_scan.json": "7289767552196d7c30e6d8ed0ac90372952d22edc9d04c185193b826201c4294",
+    "data/petmad/final_checks_v1/electrolyte_d1.628801/fixed_geometry_separation.json": "408fdc40c2acce703eb0ddbead735e265130c99b9bb34f39534c8e4d19a0cb7f",
+    "data/petmad/final_checks_v1/electrolyte_d6.515204/result.json": "97b7993cedd9bdca2ccb252f6fc47e906b2c0ce6eab6e962dd70d3ac20f01231",
+    "data/petmad/final_checks_v1/electrolyte_d6.515204/relaxation_records.json": "42b648a53e3761b623ee63916543c8d6a26704529cefaf870e8429fd8811028d",
+    "data/petmad/final_checks_v1/electrolyte_d6.515204/interface/final.extxyz": "411b2ed556b02a995c6aeea6cc9928c71b65f2dc8cd3af8067e41d2bf0bf9e6c",
+    "data/petmad/final_checks_v1/electrolyte_d6.515204/film/final.extxyz": "f4601c300b3ff3786cb337431f28eae6a85688165d192a1091b85a5a55fa11a2",
+    "data/petmad/final_checks_v1/electrolyte_d6.515204/substrate/final.extxyz": "2e02abedf331174b393e19763880b6efa32dbb6bd09e4177be86c167fa35fd9e",
+    "data/petmad/final_checks_v1/electrolyte_d6.515204/registry_scan.json": "7289767552196d7c30e6d8ed0ac90372952d22edc9d04c185193b826201c4294",
+    "data/petmad/final_checks_v1/electrolyte_d6.515204/fixed_geometry_separation.json": "a5728ec18c98c72826f18e28ab8456757fd02f4d3d29369f9954f533eaaf2b37",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0/result.json": "611f751c6e0e3d1118c23185b8360b27609b9a563d5e1e441219f07dec45d385",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0/relaxation_records.json": "f698f66657042718aa86579d0639c6976fda2c6132aff5d2c2e4253d527e428a",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0/interface/final.extxyz": "249c76dbcebb07300a61229a7d6622fc882ca46f80e46ffdd873481acc22222e",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0/film/final.extxyz": "bb5126501c8c8d66fc78394bcaaa515d0540ba838b220ae5c0281b48f3891f5e",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0/substrate/final.extxyz": "5e00bc32def987a9cfedfe1af357fe6c9c277273a70195f723c92487aa76c4e1",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0/registry_scan.json": "7289767552196d7c30e6d8ed0ac90372952d22edc9d04c185193b826201c4294",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0/fixed_geometry_separation.json": "2d443b0ab53f95aae67238821cc1ca2dc4fe0a34e1263ae3e273fd17644b7b33",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5/result.json": "ac2b2b4602885c6303be897d7f80ff43f2b46c53e4408ebca06395d2422c3bac",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5/relaxation_records.json": "d7c262c1d49d52dec31ce61618c1c53ef77f2ae9ab8d558c14ffd69435dfd45a",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5/interface/final.extxyz": "c7d8bef41cdf69c53772beb6fd94b836f10712441c62d0b44541882eec5d868e",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5/film/final.extxyz": "2c582d119169e6018c3e9463337b0e0da706b9be2d06e5576a4c27c0ebc4aa16",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5/substrate/final.extxyz": "6318964e63e4364cb5df0198850a9545710d7560ccec8b3092f155a86d3da5e3",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5/registry_scan.json": "7289767552196d7c30e6d8ed0ac90372952d22edc9d04c185193b826201c4294",
+    "data/petmad/final_checks_v1/electrolyte_reg_0.5_0.5/fixed_geometry_separation.json": "366e3290ef1a7f581e02cfcbabeee8973a4d8522815167442d47d178aa7fb92f",
+    "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/result.json": "45334c05277d5eb6db713cc681cdd505c9811e991465e1be3927b4cdc8db8dfd",
+    "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/relaxation_records.json": "ee939d897c11bdc862ff031f420a1f8a107e43d25fa1ac946307259384d5b4ef",
+    "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/interface/final.extxyz": "846eed3c9d3b8dfdca953635600c3b4546da47cca64bceeb33325feeb272218b",
+    "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/film/final.extxyz": "85619ab180df2ba04f2b600473df929c7b0e1da305580cdbd2c5ea18b5f804f4",
+    "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/substrate/final.extxyz": "db4b73dc27ee6b7724beac58ec4ae537cbb811d9cd4db67d7a42b6d74276328c",
+    "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/registry_scan.json": "7289767552196d7c30e6d8ed0ac90372952d22edc9d04c185193b826201c4294",
+    "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/fixed_geometry_separation.json": "3590b6afb454a582fd8f68506bb9fda325c584f220f349b351d939a797e6bb14",
+    "data/petmad/cathode_thickness_v1/run_F4/result.json": "ad97256762a84e738e01b793ed10a85c31a5efd830730bdb58a5d19af07d16b4",
+    "data/petmad/cathode_thickness_v1/run_F4/relaxation_records.json": "dd1caf6f3876be6a5b68446b78cacd98d399b89d62bbfceb0121f9e2bf3cbf58",
+    "data/petmad/cathode_thickness_v1/run_F4/interface/final.extxyz": "cb21e1bd61e1238c4453b60e8a87ec29f82509cb8a974f4c5a10ee58b0c5303f",
+    "data/petmad/cathode_thickness_v1/run_F4/film/final.extxyz": "7cf1354ec5378411ee354608c16cd8b05bdd5f44d67744e48cc4dd90c6c504e4",
+    "data/petmad/cathode_thickness_v1/run_F4/substrate/final.extxyz": "18ebc4f4ba0cdd9b8f9ea80d924d6ae765c8673bba9995dad5b8f64798326142",
+    "data/petmad/cathode_thickness_v1/run_F4/registry_scan.json": "8d074c8c3b58361a8aa30e43ad0e294750f0dd30e92af25e78da9db6ec4ff815",
+    "data/petmad/cathode_thickness_v1/run_F4/fixed_geometry_separation.json": "43655f31756b680f63f88cea0aca3897ab1addda958fd60ef702a1f0d966ead8",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/result.json": "c1ed197ddb05f32140b4543e740dd2c6d51e1e0dbc4c7e5250c74a93c3e57243",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/relaxation_records.json": "5df9458a1abaf5e3c9f7f151380a0b8fadd450c90ab72dd6ba7cef7cd723e174",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/interface/final.extxyz": "befdb41c3dbfd1b4335d005f0d57b383873b16feaef3fd18ba078a0b01203e7c",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/film/final.extxyz": "81fac817219fd52a7110adc674b85aaf68677c9fa8b768ccd330809f9b66ac6a",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/substrate/final.extxyz": "8d0584d3f084b7755f22f7fede2753f85914d4bdb0803af74de7519812a6466b",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/registry_scan.json": "7289767552196d7c30e6d8ed0ac90372952d22edc9d04c185193b826201c4294",
+    "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4/fixed_geometry_separation.json": "44e221fd36462640dfb0fe321778231255348eb4f31c723b6e77ea1c9a87d09e",
+    "data/petmad/final_checks_v1/cathode_registry_grid6.json": "5ff5c064b064e72c4ee3259c4f370160e13741894a292fac069d4e7f51ad9882",
+    "data/petmad/vacuum_v1/electrolyte_final880.json": "957cf238167713ae7752307d2375c1d9033c23ab8231b30b20e90314157055dd",
+    "data/petmad/niflheim_smoke_v1/smoke_gpu_F2/result.json": "be0a2e8f4df49b11d6b4f58054bea4608cd5c0d928532dec30b50f45d33a4b69",
+    "data/petmad/niflheim_smoke_v1/smoke_gpu_F2/relaxation_records.json": "02ec36e8430d4874c859ba8970b1d2df9065531cfeabd11eb771cb0bfccc7f23",
+    "data/petmad/niflheim_smoke_v1/smoke_cpu_F2/result.json": "de9113d6ec59b510c07decc2b8821889ddb1dfec3917224e7742a517b2038936",
+    "data/petmad/niflheim_smoke_v1/smoke_cpu_F2/relaxation_records.json": "845ab68a939c044b93cdb136a29d3bf4a98dd644ce6d73c9c755ff6ad054a3f8",
+    "data/petmad/cathode_thickness_v1/run_F2/result.json": "456cb3a942b000fc5c98b817c250f3b6f10be8e39533ce6dfbb7d686cd4a6b0f",
+    "data/petmad/cathode_thickness_v1/run_F2/relaxation_records.json": "899ac2411e23dec4e59488507b111c98c8ced0113fcd9d0b34b1926adfb7ba1b",
+    "data/petmad/cathode_thickness_v1/run_F2/interface/final.extxyz": "e120cde30de611511f49c75aca2b3ce1ca37dcae5ff02eacd2d24161359fe0b5",
+    "data/petmad/cathode_thickness_v1/run_F2/film/final.extxyz": "c4edb51fd66d65d7f68e38186dc32d955d5ca12396bf9857a3165aea06a6cf7d",
+    "data/petmad/cathode_thickness_v1/run_F2/substrate/final.extxyz": "ad9a24d1f586c461ccd1fa17f447ff1c1cde690e4c801c2ebd882d88eb308ce9",
+    "data/petmad/cathode_thickness_v1/run_F2/registry_scan.json": "b24c9c653c2e770f2fed2c54a5e01daf96273915b82b71b28d045f51e7346b7c",
+    "data/petmad/cathode_thickness_v1/run_F2/fixed_geometry_separation.json": "697a337fae4bced1b9717990a5a0381c5721719674de4d62959fc54b60ad3627"
+  }
+}

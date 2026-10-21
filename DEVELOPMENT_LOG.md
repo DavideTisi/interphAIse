@@ -1882,3 +1882,246 @@ Analysis-only changes committed separately in `abab0a2`: `--production` check an
 Correction to the earlier entry: the "USD 9.50 hard ceiling" is a high-output scenario, not an enforced limit.
 Not done: the archived figures were generated but not viewed (image viewing timed out on the host).
 Next: Davide reviews `SYNC_DAVIDE_5.md`; update slides; joint review before merging to main.
+## 2026-10-21 — Final-geometry constraint endpoints, relaxed registry set, Niflheim setup
+
+**Branch:** `davide`; `d0bd1f3` was pushed first. Follows SYNC_CLAUDE_5.md; the design was
+declared in CONTACT_PROTOCOL.md before running.
+
+**Constraint endpoints** (registry (0,0,2 Å)). Cathode 696 atoms, fractions 0.17 / 0.34 /
+0.50: W_adh 3.6094 / 3.6001 / 3.5962, W_sep 5.1272 / 5.1275 / 5.1277 J/m². Electrolyte 880
+atoms, depths 1.6288 / 3.2576 / 6.5152 Å: W_adh 1.6083 / 1.6329 / 1.6565, W_sep 2.9552 /
+2.9669 / 2.9781 J/m². Both are insensitive within the bracket at 0.1 J/m².
+
+**Registry set.** The declared offsets (0,0), (0,0.5), (0.5,0), (0.5,0.5) are fractions of the
+matched supercell. For the cathode (film supercell 2×2) all four are the same structure:
+bit-identical unrelaxed energies and identical relaxed W_adh. Earlier cathode scans therefore
+sampled one registry. For the electrolyte (substrate 2×1), two distinct registries; B relaxes
+to within 0.018 eV of A. Lowest joined energy is A, so (0,0) is kept. W_adh is robust
+(±0.002); W_sep differs by about 0.1 J/m² between A and B (different joined arrangements at
+near-equal energy). A 6 × 6 unrelaxed cathode grid gives 9 distinct registries spanning
+0.008 J/m²; a relaxed follow-up is proposed, not run. Vacuum 15 vs 25 Å on the final
+880-atom electrolyte: identical works.
+
+Cost: 2,826 calls plus 20 separation and 36 + 10 diagnostic single points (PET-MAD S 1.6.0,
+checkpoint `3f52e97c…`, CPU). Evidence: `data/petmad/final_checks_v1/`,
+`data/petmad/vacuum_v1/electrolyte_final880.json`.
+
+**Niflheim** (user-authorised, `fjorm`/`thul`, Rocky Linux 9). Pinned code snapshot
+`code_d0bd1f3/` (git archive, no `.env`) and the checkpoint (SHA-256 verified) are in
+`/home/scratch12/davti/OSI_Hackathon`. New isolated conda env `envs/interphaise` from the
+user's miniforge (Python 3.12, pins as local: torch 2.14.1+cu130, upet 0.3.1, ASE 3.29.0,
+pymatgen 2026.9.24); freeze saved in `envs/interphaise_freeze.txt`. Existing user envs and
+unrelated pending jobs are untouched. `run_petmad_interface.py` gains `--device` (default
+cpu); `scripts/niflheim/run_interface.sbatch` added. No cluster job submitted yet; GPU
+driver/CUDA 13 compatibility is untested.
+
+## 2026-10-21 — Niflheim smoke test
+
+The job script now passes runner arguments via `RUN_ARGS`, because Niflheim allows at most
+10 script arguments (`ea02e86`). Two jobs reproduced the archived 504-atom cathode run.
+GPU job 11013629 (RTX 3090, `sm3090el9_devel`): W_adh 3.479507 J/m², 37 s. CPU job 11013630
+(`xeon24el9`, exclusive, 24 cores): 3.479287 J/m², 90 s. Local reference: 3.479353 J/m²,
+138 s. Step counts and the 144 calls are identical. Package pins and checkpoint hash are
+confirmed on the cluster. Details and environment: NIFLHEIM.md; evidence:
+`data/petmad/niflheim_smoke_v1/`. Next: seed-4 electrolyte (880 atoms) on GPU.
+
+## 2026-10-21 — Independent final-contact review and off-grid registry fix
+
+**Branch:** `davide`, parent `dc62dfe`. Reviewed Claude's `97cf4af`, `ea02e86`
+and `dc62dfe`, which remain local above the last verified remote `e5c745e`.
+Purpose: assess the final-geometry checks and make the next bounded Niflheim
+batch executable. No new MLIP, LLM/API call, SSH job submission or push occurred.
+
+**Evidence:** independently recomputed the ten new runs' W_adh and W_sep,
+checked their 30 saved final force/energy records and recorded overlap status,
+and reconciled 2,826 calculator calls plus 20 rigid-fragment single points.
+Constraint spreads in W_adh / W_sep are cathode 0.013259 / 0.000485 and
+electrolyte 0.048182 / 0.022885 J/m². The final880 vacuum record has identical
+15/25 Å energies with relaxed forces below target. Recomputed the two archived
+Niflheim smoke differences: +0.000154 / -0.0000661 J/m² versus local W_adh,
+with matching step counts and 144 calls. The archived smoke does not validate
+GPU W_sep. Source hashes and derived quantities are saved in
+`data/reviews/final_checks_review_20261021.json`.
+
+**Scientific correction:** my previous handoff recommended half-supercell
+registry offsets without checking their translation redundancy. The cathode
+repeats sampled one registry. The finer unrelaxed diagnostic spans 0.008193
+J/m² but does not establish relaxed registry convergence. Electrolyte W_adh
+spans 1.63133–1.63307 and W_sep 2.96690–3.06471 J/m² across the four archived
+runs. Corrected CONTACT_PROTOCOL.md explicitly: repeat differences are
+0.000977 eV for A and 0.002930 for B, not below 0.001 in both cases. Both
+contacts remain formally polar and provisional; no independent geometry
+symmetry classification or new energy evaluation was performed in this audit.
+
+**Implementation:** `scripts/run_petmad_interface.py` formerly searched for an
+explicit `--registry` only within its fixed 12-point grid. The proposed
+thirds/sixths would fail with StopIteration. Now a requested off-grid point
+is appended once, evaluated and charged, checked for overlap and selected
+without fallback to the unrelaxed optimum. Historical default order and
+selection are unchanged. Invalid coordinates/gaps fail before model loading;
+scan evidence is saved before a rejected requested-point error.
+`scripts/fixed_geometry_separation.py` gains `--device` (default cpu) and
+records its own and the joined run's devices, enabling consistent CUDA
+fragment calculations in the proposed batch.
+
+**Verification actually run:**
+`.venv/bin/python -m pytest -q tests/test_petmad_registry.py` — **8 passed**.
+These cover the historical archived scan, both requested new offsets,
+explicit selection against a lower scan optimum, rejected-point failure and
+nonfinite/nonpositive inputs. Python compilation of both changed scripts,
+`fixed_geometry_separation.py --help`, Slurm-script `bash -n`, and
+`git diff --check` pass. Device CLI was inspected without loading PET-MAD;
+no new CUDA calculation has run. Full tests were not repeated for this
+isolated runner change. The audit read archived ASE results only.
+
+**Handoff and next step:** `SYNC_CLAUDE_6.md` recommends publication and at most
+five GPU runs: seed-4 electrolyte, two distinct cathode registries and matching
+current-geometry GPU references for both contacts. Use the same checkpoint,
+physical constraints, mapped cuts and predeclared selection rule; save failures
+and keep the study bounded. Claude owns that batch; nothing was submitted
+here. REPORT.md is aligned and NIFLHEIM.md's original setup notes are marked
+historical. Adem's independent environment production remains approved, with
+Adem the execution owner. The review, small fixes and handoff are uncommitted
+at this checkpoint; Claude's existing three commits are unchanged.
+
+## 2026-10-21 — Niflheim batch 1: distinct cathode registries and seed 4
+
+Pushed `97cf4af`, `ea02e86` and `dc62dfe`. Committed the review's runner fix (off-grid
+`--registry` points are evaluated and selected; `fixed_geometry_separation.py --device`) as
+`72353cd`; 144 tests passed. Built the seed-4 4 + 4 electrolyte (framework signature
+identical to seed 0; 36 fixed atoms vs 38; different supercell basis) and declared the batch
+in `279e2b1`. A first submission failed at SSH connect: both login nodes timed out
+(fail2ban-like); nothing reached the cluster. After the user reported access restored, all
+commands went through one shared ControlMaster connection.
+
+Jobs 11013920–11013924 (RTX 3090, code `279e2b1`): all converged; GPU matches CPU references
+to ≤ 5×10⁻⁴ J/m². Cathode registries (0,0) / (1/6,0) / (1/3,1/3): W_adh 3.6004 / 3.5970 /
+3.6171, W_sep 5.1277 / 5.0908 / 5.1676 J/m². The lowest relaxed joined energy is (1/3,1/3)
+(−0.093 eV), which was highest unrelaxed; it becomes the working cathode registry
+(3.62 / 5.17). Seed 4 vs seed 0 (electrolyte, registry (0,0)): W_adh 1.5120 vs 1.6334, W_sep
+2.8054 vs 2.9672 J/m². This combined bulk/strain/basis sensitivity of 0.12 / 0.16 J/m²
+exceeds the 0.1 tolerance and is reported, not extended. Cost: 1,216 calls plus 10 single
+points. Evidence: `data/petmad/niflheim_batch1/`; details in CONTACT_PROTOCOL.md.
+
+## 2026-10-21 — Niflheim batch 1 audited; recommend publication and stopping
+
+**Branch:** `davide`, parent `f1861ef`. Reviewed `72353cd` (the prior Codex
+runner fix), `279e2b1` (declared batch/build) and `f1861ef` (results). A fresh
+read-only remote check confirms `origin/davide` at `dc62dfe`; the three new
+commits remain local. Initial sandbox DNS lookup failed; the approved
+network-enabled read succeeded. No SSH, live API/MLIP evaluation, job
+submission, commit or push occurred in this review.
+
+**Verification:** independently read all five runs and 15 saved relaxed
+structures. Recomputed works, checked saved raw forces with masks, verified
+fixed physical positions and substrate mask correspondence, and reran overlap
+gates. All pass, including preserved cells/species within each run. Accounting
+reconciles to 1,216 calls plus ten separation single points; off-grid requests
+have 13 rather than 12 scan points. Joined and rigid calculations both record
+CUDA and the pinned checkpoint. Logs identify execution source `279e2b1`;
+all five scheduler records show completion. Source hashes and derived checks
+are saved in `data/reviews/niflheim_batch1_review_20261021.json`.
+
+**Findings:** lowest sampled cathode registry is (1/3,1/3), W_adh / W_sep
+3.61705 / 5.16762 J/m². GPU seed-0 electrolyte gives 1.63339 / 2.96722;
+seed 4 gives 1.51201 / 2.80536. Differences -0.121382 / -0.161856 exceed the
+0.1 tolerance. GPU–CPU differences in both works are below 0.0005 J/m².
+The earlier cathode constraint/thickness tests refer to (0,0). The seed
+comparison combines reference arrangement, cell/area/strain, basis/alignment
+and fixed-count differences; it does not isolate disorder or define an error
+bar. The largest measured sensitivity is not a bound on unknown polar-model
+error. Both contacts remain provisional.
+
+**Publication checks:** configured credential-value scan over all 81 changed
+paths in the three commits is clean; `.env` is ignored and untracked. The
+full commit diff still had trailing spaces on 696 lines in one file,
+`data/petmad/niflheim_batch1/cathode_reg_third_third/initial.extxyz`. Stripped
+only trailing whitespace and verified every ASE array, cell, PBC and metadata
+entry is identical before and after. Both hashes are recorded in the audit.
+This formatting correction is uncommitted and should be added without
+rewriting the science commits. Combined diff whitespace and Slurm shell
+syntax checks pass. No source-code changes were needed in this review, so
+unit tests were not repeated; Claude's reported 144-test result remains his
+recorded verification, not a newly run test count.
+
+**Handoff:** `SYNC_CLAUDE_7.md` recommends publishing and closing the bounded
+batch. Defer seed 4 at (0,0.5): it would add within-seed registry evidence but
+would not remove the cross-seed construction confounders. Updated REPORT.md,
+CONTACT_PROTOCOL.md qualifications, NIFLHEIM.md, WORK_DIVISION.md and the
+presentation README. Presentation v4 and the viewer's current-cathode pointer
+still need an artifact update; neither was changed here. Adem's approved
+production study and frozen tables remain unchanged. Earlier uncommitted
+Codex docs/audit are preserved. The new review, formatting fix and doc updates
+are also uncommitted at this handoff.
+
+## 2026-10-21 — Environment production independently replayed and reviewed
+
+**Branch:** `davide`, parent `f1861ef`. Fetched Adem's
+`origin/work/agent-experiments` at `06a4271`, and inspected an isolated tracked
+snapshot under `/private/tmp`. The shared checkout and experiment archives
+were not merged or modified. Purpose: verify the completed production study,
+fix the presentation interpretation and prepare the team handoff.
+
+**Verification actually run:** twelve tests pass in the isolated snapshot
+(`tests/test_environment_study.py`, `tests/test_experiment_analysis.py`). Ran
+`scripts/analyse_environment_study.py` on all three production directories
+with `--production`; the resulting JSON is identical to the archive. An
+independent audit checked archive/workflow hashes, frozen manifests, exact
+seed/arm coverage and all model/settings metadata. Replayed all 450 complete
+runs against the frozen query boundary using archived parsed responses:
+4,500 outcomes, 2,800 prompts, complete traces and shuffled-feedback source
+maps reproduce exactly. Two archived JSON parse failures were replayed as
+recorded RuntimeError exceptions, not by reparsing absent raw response text;
+the other eight format failures reproduce from their recorded response objects.
+The review mock initially did not reproduce that distinction, was corrected,
+and the final full replay passes. No live provider call was made.
+
+Recomputed paired exact McNemar probabilities with the binomial sum and Holm
+across all six planned tests. Sulfide iterative–sequential Holm p =
+0.0000457764; sulfide iterative–shuffled and LLZO iterative–sequential each
+0.00244141; LLZO iterative–shuffled 0.172119; chloride contrasts both 1.
+Counts (iterative/sequential/shuffled/upfront/random, n=30 each): sulfide
+20/2/6/0/8, chloride 30/30/30/30/29, LLZO 12/0/4/1/24. Corrected the shorthand
+“all arms succeed” to retain chloride random's 29/30. Cost recomputes from
+24,304,759 input and 2,399,805 output tokens to USD 3.6303784 using archived
+rates; 2,800 calls include ten retries. This is not a billed cost or fresh
+pricing verification. All requested completeness/secondary reporting additions
+are present; final analyser additions are distinguished from the primary
+analysis definitions fixed before production.
+
+**Interpretation:** correct feedback helps on sulfide; LLZO iterative improves
+over sequential but has no significant corrected contrast with shuffled and
+loses descriptively to random search. Keep environment heterogeneity and exact
+random references visible. Success means acceptable within budget, not finding
+the optimum: LLZO has zero LLM best-bin successes. Feedback corruption and
+sequential-history limitations remain. No universal LLM superiority, measured
+MLIP time-saving or experimentally validated new-material claim is supported.
+
+**Files:** `data/reviews/environment_results_review_20261021.json` stores the
+independent checks and source hashes. `SYNC_ADEM_9.md` records results, caveats,
+the LLM's candidate-selection/hypothesis-update role and slide/integration
+handoff. Updated REPORT.md, WORK_DIVISION.md and presentation README. Added
+`scripts/plot_environment_review.py` and PNG/SVG under `figures/` with all
+five arms, 95% Wilson intervals and exact random probabilities. Generated and
+visually inspected the figure, corrected a footer spacing issue and inspected
+the final rendering. V4 PowerPoint and the viewer current-cathode selection
+remain pending; no full deck or browser changes were made here.
+
+**Publication:** under Davide's earlier request to push what Adem needs,
+prepare one explicit review/docs/figure commit including the preserved earlier
+Codex final-check and Niflheim review notes. The reviewed three physics commits
+already precede it on `davide`. Preserve both authors' logs and the format-only
+structure correction; do not rewrite the scientific commits, merge Adem's
+branch or change `main`. Check whitespace and configured credential values
+before committing. Actual commit/push outcome is reported in chat. Next is
+presentation/demo updates and joint integration checks; no extra experiment
+or simulation is requested. No LLM/MLIP evaluation, cluster submission or
+external message occurred in this review.
+
+**Publication check update:** before staging, the fresh fetch showed
+`origin/davide` had already reached `f1861ef`; the three physics commits
+therefore became published during this review. Only the new review package
+needs pushing. The first staged whitespace check caught Matplotlib's SVG
+path-line trailing spaces. Normalized them and updated the figure generator
+to do the same on future exports; the SVG parses successfully and its plotted
+content is unchanged. Recheck the staged diff and credentials before commit.

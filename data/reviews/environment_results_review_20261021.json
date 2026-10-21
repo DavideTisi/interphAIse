@@ -1,0 +1,606 @@
+{
+  "review_date": "2026-10-21",
+  "reviewed_branch": "origin/work/agent-experiments",
+  "reviewed_commit": "06a4271",
+  "execution_commit": "710d34680eb12009b2cc56ac988b1a0453829235",
+  "live_calls_made_in_review": 0,
+  "complete_runs": 450,
+  "queries_replayed": 4500,
+  "recorded_response_prompts_replayed": 2800,
+  "full_run_replay_including_shuffled_source_maps": true,
+  "archived_and_recomputed_summary_identical": true,
+  "production_check": [],
+  "holm_family_size": 6,
+  "targeted_tests_passed": 12,
+  "usage": {
+    "calls": 2800,
+    "retries": 10,
+    "input_tokens": 24304759,
+    "output_tokens": 2399805,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "thinking_tokens": 1518160
+  },
+  "max_input_tokens": 12281,
+  "max_output_tokens": 2388,
+  "estimated_cost_USD_at_archived_rates": 3.6303784,
+  "rates_used_USD_per_million_tokens": {
+    "input": 0.1,
+    "output": 0.5
+  },
+  "pricing_note": "Arithmetic uses the protocol/archive rates; no fresh price verification or billed-account access.",
+  "environments": {
+    "Li6PS5Cl": {
+      "pool_size": 141,
+      "acceptable_candidates": 4,
+      "random_exact_by_10": 0.25736862604537747,
+      "arms": {
+        "iterative": {
+          "acceptable": 20,
+          "acceptable_rate": 0.6666666666666666,
+          "acceptable_wilson95": [
+            0.48779725813830266,
+            0.807697044731538
+          ],
+          "best_bin_found": 6,
+          "best_bin_wilson95": [
+            0.09504978102401235,
+            0.37306047381027446
+          ],
+          "first_acceptable_quartiles": [
+            7,
+            8,
+            11
+          ],
+          "fluoride_fraction_early": 0.2751677852348993,
+          "fluoride_fraction_late": 0.6533333333333333,
+          "fluoride_change_mean": 0.37833333333333335
+        },
+        "sequential": {
+          "acceptable": 2,
+          "acceptable_rate": 0.06666666666666667,
+          "acceptable_wilson95": [
+            0.01847663532769335,
+            0.21323817721072091
+          ],
+          "best_bin_found": 0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.18666666666666668,
+          "fluoride_fraction_late": 0.14189189189189189,
+          "fluoride_change_mean": -0.045
+        },
+        "shuffled": {
+          "acceptable": 6,
+          "acceptable_rate": 0.2,
+          "acceptable_wilson95": [
+            0.09504978102401235,
+            0.37306047381027446
+          ],
+          "best_bin_found": 2,
+          "best_bin_wilson95": [
+            0.01847663532769335,
+            0.21323817721072091
+          ],
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.2550335570469799,
+          "fluoride_fraction_late": 0.25333333333333335,
+          "fluoride_change_mean": -0.00166666666666667
+        },
+        "upfront": {
+          "acceptable": 0,
+          "acceptable_rate": 0.0,
+          "acceptable_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "best_bin_found": 0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.060810810810810814,
+          "fluoride_fraction_late": 0.2808219178082192,
+          "fluoride_change_mean": 0.21833333333333335
+        },
+        "random": {
+          "acceptable": 8,
+          "acceptable_rate": 0.26666666666666666,
+          "acceptable_wilson95": [
+            0.14182495553910618,
+            0.4444830204431169
+          ],
+          "best_bin_found": 5,
+          "best_bin_wilson95": [
+            0.07336434240351683,
+            0.33564705185680177
+          ],
+          "first_acceptable_quartiles": [
+            6,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.17333333333333334,
+          "fluoride_fraction_late": 0.12666666666666668,
+          "fluoride_change_mean": -0.04666666666666667
+        }
+      },
+      "best_bin_candidates": [
+        {
+          "candidate_id": "mp-aaacjjwh",
+          "formula": "LiNbF6"
+        },
+        {
+          "candidate_id": "mp-aaacjmqp",
+          "formula": "LiTaF6"
+        },
+        {
+          "candidate_id": "mp-aaacqrlq",
+          "formula": "LiTaF6"
+        }
+      ]
+    },
+    "Li3InCl6": {
+      "pool_size": 141,
+      "acceptable_candidates": 55,
+      "random_exact_by_10": 0.994265291024548,
+      "arms": {
+        "iterative": {
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "best_bin_found": 30,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            1
+          ],
+          "fluoride_fraction_early": 0.33557046979865773,
+          "fluoride_fraction_late": 0.6778523489932886,
+          "fluoride_change_mean": 0.3416666666666667
+        },
+        "sequential": {
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "best_bin_found": 30,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            1
+          ],
+          "fluoride_fraction_early": 0.24,
+          "fluoride_fraction_late": 0.26666666666666666,
+          "fluoride_change_mean": 0.026666666666666675
+        },
+        "shuffled": {
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "best_bin_found": 30,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            1
+          ],
+          "fluoride_fraction_early": 0.26666666666666666,
+          "fluoride_fraction_late": 0.1554054054054054,
+          "fluoride_change_mean": -0.11166666666666668
+        },
+        "upfront": {
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "best_bin_found": 30,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            1
+          ],
+          "fluoride_fraction_early": 0.08108108108108109,
+          "fluoride_fraction_late": 0.27972027972027974,
+          "fluoride_change_mean": 0.20666666666666667
+        },
+        "random": {
+          "acceptable": 29,
+          "acceptable_rate": 0.9666666666666667,
+          "acceptable_wilson95": [
+            0.8332924860304112,
+            0.9940915620051425
+          ],
+          "best_bin_found": 28,
+          "best_bin_wilson95": [
+            0.7867618227892791,
+            0.9815233646723066
+          ],
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            3
+          ],
+          "fluoride_fraction_early": 0.17333333333333334,
+          "fluoride_fraction_late": 0.12666666666666668,
+          "fluoride_change_mean": -0.04666666666666667
+        }
+      },
+      "best_bin_candidates": [
+        {
+          "candidate_id": "mp-aaaaabru",
+          "formula": "LiF"
+        },
+        {
+          "candidate_id": "mp-aaaaaegs",
+          "formula": "Li3PO4"
+        },
+        {
+          "candidate_id": "mp-aaaaafxy",
+          "formula": "Li2ZrF6"
+        },
+        {
+          "candidate_id": "mp-aaaaajby",
+          "formula": "LiCaAlF6"
+        },
+        {
+          "candidate_id": "mp-aaaaajnu",
+          "formula": "LiAl(Si2O5)2"
+        },
+        {
+          "candidate_id": "mp-aaaaajwm",
+          "formula": "LiTiPO5"
+        },
+        {
+          "candidate_id": "mp-aaaaalgl",
+          "formula": "Li2TiF6"
+        },
+        {
+          "candidate_id": "mp-aaaaalhu",
+          "formula": "LiTa3O8"
+        },
+        {
+          "candidate_id": "mp-aaaaaogf",
+          "formula": "LiMgPO4"
+        },
+        {
+          "candidate_id": "mp-aaaaauhx",
+          "formula": "Li3PO4"
+        },
+        {
+          "candidate_id": "mp-aaaabboy",
+          "formula": "LiTi2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaaabhyx",
+          "formula": "LiIO3"
+        },
+        {
+          "candidate_id": "mp-aaaabiak",
+          "formula": "LiIO3"
+        },
+        {
+          "candidate_id": "mp-aaaabipk",
+          "formula": "LiIO3"
+        },
+        {
+          "candidate_id": "mp-aaaabiqq",
+          "formula": "Li2ZnCl4"
+        },
+        {
+          "candidate_id": "mp-aaaabnua",
+          "formula": "LiTi2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaaabqcg",
+          "formula": "Li4P2O7"
+        },
+        {
+          "candidate_id": "mp-aaaabsvl",
+          "formula": "LiClO4"
+        },
+        {
+          "candidate_id": "mp-aaabevhd",
+          "formula": "LiZr2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaabewcp",
+          "formula": "Li2ZrF6"
+        },
+        {
+          "candidate_id": "mp-aaabfqnk",
+          "formula": "Li3AlF6"
+        },
+        {
+          "candidate_id": "mp-aaabfvoz",
+          "formula": "LiTiPO5"
+        },
+        {
+          "candidate_id": "mp-aaabfwvx",
+          "formula": "LiTaSiO5"
+        },
+        {
+          "candidate_id": "mp-aaabfxxj",
+          "formula": "Li2Ta2(OF2)3"
+        },
+        {
+          "candidate_id": "mp-aaabmubf",
+          "formula": "LiZr2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaabrbhn",
+          "formula": "Li2NbOF5"
+        },
+        {
+          "candidate_id": "mp-aaabrffc",
+          "formula": "LiZr2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaabrjsc",
+          "formula": "LiTi2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaabrubf",
+          "formula": "LiNb(OF)2"
+        },
+        {
+          "candidate_id": "mp-aaabrzpk",
+          "formula": "LiZr2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaabserm",
+          "formula": "LiTi2(PO4)3"
+        },
+        {
+          "candidate_id": "mp-aaacplkn",
+          "formula": "LiF"
+        },
+        {
+          "candidate_id": "mp-aaacpllf",
+          "formula": "LiCl"
+        },
+        {
+          "candidate_id": "mp-aaacpxde",
+          "formula": "LiMgAlF6"
+        },
+        {
+          "candidate_id": "mp-aaacqkph",
+          "formula": "LiAl(Si2O5)2"
+        },
+        {
+          "candidate_id": "mp-aaacrokb",
+          "formula": "LiAl(SiO3)2"
+        },
+        {
+          "candidate_id": "mp-aaacrovd",
+          "formula": "Li2MgTi9O20"
+        },
+        {
+          "candidate_id": "mp-aaacrovy",
+          "formula": "Li2Ti(IO3)6"
+        }
+      ]
+    },
+    "Li7La3Zr2O12": {
+      "pool_size": 141,
+      "acceptable_candidates": 17,
+      "random_exact_by_10": 0.7357230694047536,
+      "arms": {
+        "iterative": {
+          "acceptable": 12,
+          "acceptable_rate": 0.4,
+          "acceptable_wilson95": [
+            0.24590394326083403,
+            0.5767994750172616
+          ],
+          "best_bin_found": 0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "first_acceptable_quartiles": [
+            9,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.18,
+          "fluoride_fraction_late": 0.08666666666666667,
+          "fluoride_change_mean": -0.09333333333333334
+        },
+        "sequential": {
+          "acceptable": 0,
+          "acceptable_rate": 0.0,
+          "acceptable_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "best_bin_found": 0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.06040268456375839,
+          "fluoride_fraction_late": 0.12080536912751678,
+          "fluoride_change_mean": 0.06
+        },
+        "shuffled": {
+          "acceptable": 4,
+          "acceptable_rate": 0.13333333333333333,
+          "acceptable_wilson95": [
+            0.05309569424218104,
+            0.2968168394441695
+          ],
+          "best_bin_found": 0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.12080536912751678,
+          "fluoride_fraction_late": 0.174496644295302,
+          "fluoride_change_mean": 0.058333333333333334
+        },
+        "upfront": {
+          "acceptable": 1,
+          "acceptable_rate": 0.03333333333333333,
+          "acceptable_wilson95": [
+            0.0059084379948573795,
+            0.16670751396958874
+          ],
+          "best_bin_found": 0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "fluoride_fraction_early": 0.05333333333333334,
+          "fluoride_fraction_late": 0.1836734693877551,
+          "fluoride_change_mean": 0.13
+        },
+        "random": {
+          "acceptable": 24,
+          "acceptable_rate": 0.8,
+          "acceptable_wilson95": [
+            0.6269395261897256,
+            0.9049502189759876
+          ],
+          "best_bin_found": 2,
+          "best_bin_wilson95": [
+            0.01847663532769335,
+            0.21323817721072091
+          ],
+          "first_acceptable_quartiles": [
+            3,
+            6,
+            9
+          ],
+          "fluoride_fraction_early": 0.17333333333333334,
+          "fluoride_fraction_late": 0.12666666666666668,
+          "fluoride_change_mean": -0.04666666666666667
+        }
+      },
+      "best_bin_candidates": [
+        {
+          "candidate_id": "mp-aaaabsvl",
+          "formula": "LiClO4"
+        }
+      ]
+    }
+  },
+  "primary_contrasts": [
+    {
+      "environment": "Li6PS5Cl",
+      "comparison": "iterative-sequential",
+      "left_only": 18,
+      "right_only": 0,
+      "p": 7.62939453125e-06,
+      "p_holm": 4.57763671875e-05
+    },
+    {
+      "environment": "Li6PS5Cl",
+      "comparison": "iterative-shuffled",
+      "left_only": 15,
+      "right_only": 1,
+      "p": 0.000518798828125,
+      "p_holm": 0.00244140625
+    },
+    {
+      "environment": "Li3InCl6",
+      "comparison": "iterative-sequential",
+      "left_only": 0,
+      "right_only": 0,
+      "p": 1.0,
+      "p_holm": 1.0
+    },
+    {
+      "environment": "Li3InCl6",
+      "comparison": "iterative-shuffled",
+      "left_only": 0,
+      "right_only": 0,
+      "p": 1.0,
+      "p_holm": 1.0
+    },
+    {
+      "environment": "Li7La3Zr2O12",
+      "comparison": "iterative-sequential",
+      "left_only": 12,
+      "right_only": 0,
+      "p": 0.00048828125,
+      "p_holm": 0.00244140625
+    },
+    {
+      "environment": "Li7La3Zr2O12",
+      "comparison": "iterative-shuffled",
+      "left_only": 11,
+      "right_only": 3,
+      "p": 0.057373046875,
+      "p_holm": 0.172119140625
+    }
+  ],
+  "source_sha256": {
+    "data/experiments/environment_v1/lpscl/experiment.json": "cda45c436e0d559f2b5a2f27ee713a1a3986b96a4c2c9f6eb75ea7b4b94fa54d",
+    "data/experiments/environment_v1/lpscl/source_file_hashes.json": "109f445613f54f61e78ac65d8d1731d5fad32e16e8c9c07e6f28f935ec5f8248",
+    "data/benchmarks/environment_v1/lco_lpscl_4v.json": "d0c8c39b6d9785f325334a4bb2038359e5f6142e1fcbe93ee0a413dd9f75e460",
+    "data/experiments/environment_v1/lic/experiment.json": "51bc6b88bf30ec546baeef72bb202dbaff2ea1900c428898480d0ec3fbcd4c47",
+    "data/experiments/environment_v1/lic/source_file_hashes.json": "f6493cee6f53cae837e676b4b4cd0dd09f811761f49e76b65b505fe1ad5c5548",
+    "data/benchmarks/environment_v1/lco_lic_4v.json": "df5c5b0c05b0f5cf206e9dc027e13cd53353e40798abff3026351e6dea826c0e",
+    "data/experiments/environment_v1/llzo/experiment.json": "a724e43e88421668b9bd5b15b6de948681112d9359dfd86ae368dac3d342b661",
+    "data/experiments/environment_v1/llzo/source_file_hashes.json": "c4ebf3bd92d473a697f897ccfa0a1ab8065d86fa0fcba02df05a32a153526e68",
+    "data/benchmarks/environment_v1/lco_llzo_4v.json": "72c70d95bfe65f1a05e3951f566bdae49b8c5be5aa3a5ce3cf88f1d24a58a505",
+    "data/experiments/environment_v1/usage.json": "c1363587f40bb1ac288d21c070fdf3eab3ff2a1c9302c7d3c1036c652dd88c1f"
+  }
+}

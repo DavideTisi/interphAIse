@@ -20,16 +20,18 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('runs',type=Path,nargs='+');ap.add_argument('--checkpoint',type=Path,required=True)
     ap.add_argument('--threads',type=int,default=4)
+    ap.add_argument('--device',default='cpu',help="Use the joined run's device, e.g. 'cpu' or 'cuda'")
     args=ap.parse_args()
     import torch;torch.set_num_threads(args.threads)
     from upet.ase import UPETCalculator
     sha=hashlib.sha256(args.checkpoint.read_bytes()).hexdigest()
-    calc=UPETCalculator(checkpoint_path=str(args.checkpoint),device='cpu')
+    calc=UPETCalculator(checkpoint_path=str(args.checkpoint),device=args.device)
     for run in args.runs:
         r=json.loads((run/'result.json').read_text());R=r['relaxations']
         labels=read(run/'initial.extxyz').arrays['interface_label']
         joined=read(run/'interface/final.extxyz')
-        out={'checkpoint_sha256':sha,'area_A2':r['area_A2'],'E_interface_eV':R['interface']['final_energy_eV']}
+        out={'checkpoint_sha256':sha,'device':args.device,'joined_run_device':r.get('device','cpu'),
+             'area_A2':r['area_A2'],'E_interface_eV':R['interface']['final_energy_eV']}
         for part in ('film','substrate'):
             atoms=joined[np.where(labels==part)[0]];atoms.calc=calc
             out[f'E_{part}_rigid_eV']=float(atoms.get_potential_energy())

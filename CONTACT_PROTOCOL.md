@@ -375,3 +375,204 @@ relaxed checks of a small declared set of competing registries, then seed 4 at t
 working electrolyte protocol with the equivalent Cl cut.
 
 Evidence: `data/petmad/thickness_gaps_v1/`.
+
+## Final-geometry constraint endpoints and relaxed registry set (SYNC_CLAUDE_5.md; declared before running)
+
+**Scope note on vacuum.** The vacuum sweep above used the 544-atom electrolyte (4 + 2 layers).
+The final 880-atom interface has a 15.73 Å empty gap, but it has not been swept separately.
+A 15-vs-25 Å single-point confirmation on it follows below.
+
+**Reused references** (settings verified: checkpoint, registry (0,0,2 Å), constraint rule,
+FIRE 0.05 eV/Å, 400-step limit; only the thread count differs):
+`cathode_thickness_v1/run_F4` (696 atoms, 0.34 fraction = 104 atoms) and
+`thickness_gaps_v1/run_electrolyte_S4_F4` (880 atoms, depth 3.257602 Å = 38 atoms).
+
+**Constraint endpoints, four new runs.** Cathode 696 atoms: fractions 0.17 and 0.50 of the
+unchanged two-layer substrate. Electrolyte 880 atoms: depths 1.628801 and 6.515204 Å.
+Registry (0,0,2 Å) and all other working settings unchanged. Criterion: the full-bracket
+spread of W_adh and of W_sep, reported against 0.1 J/m². A failure is kept and reported
+before any registry gain is interpreted.
+
+**Relaxed registry set, six new runs.** For each final contact: fractional matched-cell
+in-plane offsets (0,0) [reused], (0,0.5), (0.5,0), (0.5,0.5), all at an initial gap of 2 Å,
+with the reference constraint (cathode 0.34 fraction; electrolyte depth 3.257602 Å). This is
+a coarse relaxed check on the existing lateral grid, not a search over translations, gaps,
+terminations or facets. Failed and converged outcomes are both kept, and we record whether
+distinct starts relax to the same arrangement.
+
+**Selection rule:** among converged runs with the same atom count, composition and cell,
+select the **lowest relaxed joined-interface energy**, not the largest W_adh. For every
+registry we report the joined energy relative to the lowest, W_adh, W_sep and both
+separated-reference energies. Reference policy: each run uses its own separated references,
+relaxed from its own starting geometry, as `run_petmad_interface.py` does. These are in-plane
+translations of the same slabs, so their energies should agree; any difference is reported
+as a reference-minimum difference.
+
+**Then seed 4:** same layer counts (4 + 4), mapped Cl cut, fixed-depth rule and the *same*
+selected fractional registry as seed 0, with cell, strain and fixed-count differences
+recorded.
+
+### Results
+
+All 30 new relaxations (10 runs) converged on free atoms, with no overlap violations; the
+accounting reconciles. Cost: 2,826 calculator calls plus 20 separation single points. One
+thread per run, ten runs concurrent.
+
+**Constraint endpoints at the final geometries** (energies in J/m²):
+
+| Contact | Setting | W_adh | W_sep |
+|---|---|---:|---:|
+| Cathode 696 | fraction 0.17 / **0.34** / 0.50 | 3.6094 / **3.6001** / 3.5962 | 5.1272 / **5.1275** / 5.1277 |
+| Electrolyte 880 | depth 1.6288 / **3.2576** / 6.5152 Å | 1.6083 / **1.6329** / 1.6565 | 2.9552 / **2.9669** / 2.9781 |
+
+Spreads: cathode 0.013 / 0.0005; electrolyte 0.048 / 0.023 J/m². Both contacts are
+**insensitive within the tested constraint bracket at the 0.1 J/m² tolerance**, now at
+their working geometries. A small monotonic trend remains on the electrolyte side.
+
+**Registry set: degenerate by construction.** The declared offsets are fractions of the
+matched supercell, and several of them are lattice translations of one slab:
+- **Cathode:** the film supercell is [[2,0],[0,2]] LiNbF6 cells, so (0,0), (0,0.5), (0.5,0)
+  and (0.5,0.5) are the same structure. The unrelaxed scan energies are bit-identical
+  (−4687.49561 eV) and all relaxed results coincide (W_adh 3.600136). **One physical registry
+  was sampled.** The same holds for every earlier cathode registry scan, which carried no
+  registry information.
+- **Electrolyte:** the substrate supercell is [[2,0],[0,1]], so (0.5,0) ≡ (0,0) and
+  (0.5,0.5) ≡ (0,0.5). **Two distinct registries were sampled**, each relaxed twice.
+
+| Electrolyte registry | Joined energy above lowest | W_adh | W_sep |
+|---|---:|---:|---:|
+| A (0,0) | +0.0010 eV | 1.6329 | 2.9669 |
+| A (0.5,0) | 0 (lowest) | 1.6331 | 2.9672 |
+| B (0,0.5) | +0.0151 eV (0.0014 J/m²) | 1.6316 | 3.0647 |
+| B (0.5,0.5) | +0.0181 eV (0.0017 J/m²) | 1.6313 | 3.0640 |
+
+Registry B starts 0.70 eV (0.066 J/m²) higher before relaxation, but relaxes to within
+0.018 eV of A. **Review correction:** the repeated A runs differ by 0.000977 eV;
+the repeated B runs differ by 0.002930 eV, not less than 0.001 eV. These are observed
+optimizer/numerical variations, not a general uncertainty bound. The separated references
+are identical across registries (within 4×10⁻⁴
+eV), as expected for translated copies. **Selection (lowest joined energy): registry A,
+i.e. (0,0) is kept.** W_adh is registry-robust (±0.002 J/m²). W_sep differs by about
+0.1 J/m² between A and B, because the two registries relax into different joined
+arrangements at nearly equal energy. Fixed-geometry W_sep is therefore the less robust
+observable.
+
+**Cathode registry diagnostic** (unrelaxed single points on a 6 × 6 offset grid at 2 Å; not
+part of the declared set): the 36 offsets fall into 9 distinct registries. Their energies
+span 0.045 eV = **0.008 J/m²**, with (0,0) the lowest. The cathode registry landscape is
+flat at this level. A relaxed follow-up could use the two most distinct classes, (1/3,1/3)
+and (1/6,0); it is proposed, not run.
+
+**Vacuum at the final electrolyte geometry** (880 atoms, 15 vs 25 Å, single points): W_adh
+1.632936 and W_sep 2.966905 J/m² at both; relaxed forces within target; stored energies
+reproduced. Evidence: `data/petmad/vacuum_v1/electrolyte_final880.json`.
+
+**Working values (unchanged):** cathode **3.60 / 5.13 J/m²** (696 atoms); electrolyte
+**1.63 / 2.97 J/m²** (880 atoms). Both are formally polar and provisional. **Next:** seed 4
+at 4 + 4 layers with the mapped Cl cut, depth rule and registry (0,0).
+
+Evidence: `data/petmad/final_checks_v1/`.
+
+## Niflheim batch 1: seed 4, distinct cathode registries, GPU references (SYNC_CLAUDE_6.md; declared before running)
+
+Five runs, no more. All on RTX 3090 (`sm3090el9_devel`, 1 GPU, 4 CPUs), using the isolated
+env, checkpoint `3f52e97c…` and one immutable code snapshot per job (`CODE=code_<commit>`).
+Runner plus rigid-fragment separation in the same job on CUDA. 15 Å vacuum, initial gap
+2 Å, FIRE 0.05 eV/Å, 400-step limit. Outputs go to
+`/home/scratch12/davti/OSI_Hackathon/runs/niflheim_batch1/<name>`.
+
+| # | Name | Input build | Constraint | Registry |
+|---|---|---|---|---|
+| 1 | `cathode_ref` | `cathode_thickness_v1/build_F4` (696) | fraction 0.34 = 104 atoms | (0, 0) |
+| 2 | `cathode_reg_third_third` | same | same | (1/3, 1/3) |
+| 3 | `cathode_reg_sixth_0` | same | same | (1/6, 0) |
+| 4 | `electrolyte_seed0_ref` | `thickness_gaps_v1/build_electrolyte_S4_F4` (880) | depth 3.257602 Å | (0, 0) |
+| 5 | `electrolyte_seed4` | `contact_v2_electrolyte_seed4_S4F4` (880) | depth 3.257602 Å | (0, 0) |
+
+The cathode offsets (1/3,1/3) and (1/6,0) are the most distinct registry classes in the 6 × 6
+unrelaxed diagnostic: +0.0081 and +0.0031 J/m² relative to (0,0), with no overlap
+violations. Runs 1 and 4 are GPU references, so each comparison uses one device.
+
+**Seed-4 input** (`scripts/build_contact.py`; seed-4 bulk, termination `Cl2_P-1_2`,
+4 + 4 layers). Its framework signature on both faces is identical to the seed-0 4 + 4 build
+(contact Cl(0.00)/S(0.85)/S(0.75); far S(0.38)/P(0.50)/S(0.75)). Same composition
+(Li96P16S80Cl16 + Li84Nb84F504), no cut PS4 or NbF6, no overlaps. Differences from seed 0:
+area 172.926 vs 170.708 Å²; strain 2.864 vs 3.006 %; formal substrate |p|/A 0.257 vs 0.347
+e/Å; fixed atoms at 3.2576 Å are 36 (Li12P4S20) vs 38 (Cl2Li12P4S20). The matcher chose
+different supercell bases (film [[1,5],[0,7]] / substrate identity vs [[1,3],[0,7]] /
+[[2,0],[0,1]]). The same fractional registry (0,0) is therefore not guaranteed to be the same
+physical lateral alignment. The seed comparison holds the cut, layer counts, depth rule and
+fractional registry fixed; it does not hold the supercell basis fixed.
+
+**Rules.** Cathode registries: compare relaxed joined energies only within the identical
+cell, composition and mask, keeping each run's own references. Seeds: compare both works at
+the same fractional registry, report every geometry difference, and do not rank seeds by
+total energy. 0.1 J/m² is the reporting tolerance, not a trigger for more settings.
+Failures and exhausted runs are kept and reported.
+
+### Batch 1 results
+
+Code `279e2b1`, checkpoint `3f52e97c…`. Jobs 11013920–11013924 on s001 (`sm3090el9_devel`,
+1 RTX 3090, 4 CPUs each), all COMPLETED in 2:43–2:57. Both the relaxations and the
+rigid-fragment separation ran on CUDA. All 15 relaxations converged on free atoms, with no
+overlap violations; the accounting reconciles. The off-grid registries added exactly one
+scan point each (13 instead of 12). Cost: 1,216 calculator calls plus 10 separation single
+points; runner wall time 61–85 s per run.
+
+**Device check.** GPU seed-0 electrolyte reference: W_adh 1.6334 / W_sep 2.9672, against
+1.6329 / 2.9669 J/m² from local CPU. GPU cathode reference: 3.6004 / 5.1277, against
+3.6001 / 5.1275. Differences ≤ 5×10⁻⁴ J/m².
+
+**Cathode registries** (same 696-atom cell, composition and 104-atom mask; all on GPU):
+
+| Registry | Unrelaxed rank (6 × 6 grid) | Relaxed joined energy vs (0,0) | W_adh | W_sep | Film / sub relaxation |
+|---|---|---:|---:|---:|---|
+| (0,0) | lowest | 0 | 3.6004 | 5.1277 | 1.441 / 0.086 |
+| (1/6,0) | +0.0031 J/m² | +0.0186 eV | 3.5970 | 5.0908 | 1.409 / 0.085 |
+| **(1/3,1/3)** | highest (+0.0081 J/m²) | **−0.0927 eV (−0.0167 J/m²)** | **3.6171** | **5.1676** | 1.443 / 0.107 |
+
+The separated references agree within 2×10⁻⁴ eV (in-plane translations). The relaxed order
+inverts the unrelaxed one: the highest-ranked unrelaxed registry relaxes to the lowest
+joined energy. **By the declared rule, (1/3,1/3) becomes the working cathode registry.**
+Across the three relaxed registries, W_adh spans 3.597–3.617 and W_sep 5.091–5.168 J/m²,
+both within 0.1 J/m². Three distinct relaxed registries out of nine classes is a coarse
+check, not a registry search.
+
+**Seed sensitivity** (both on GPU, same mapped Cl cut, 4 + 4 layers, depth 3.2576 Å,
+fractional registry (0,0)):
+
+| Bulk reference | Area Å² | Strain | Fixed atoms | W_adh | W_sep | Film / sub relaxation |
+|---|---:|---:|---:|---:|---:|---|
+| Seed 0 | 170.708 | 3.006 % | 38 | 1.6334 | 2.9672 | 0.616 / 0.717 |
+| Seed 4 | 172.926 | 2.864 % | 36 | **1.5120** | **2.8054** | 0.595 / 0.699 |
+
+Seed 4 is lower by **0.121 (W_adh) and 0.162 (W_sep) J/m², which exceeds the 0.1 J/m²
+reporting tolerance.** It is a combined sensitivity: bulk Li/Cl arrangement, strain, area,
+supercell basis and fixed count all differ. The fractional registry (0,0) is not
+guaranteed to be the same physical alignment in the two bases. Seed 4's unrelaxed scan
+preferred (0,0.5), and its registry was not explored, by design. Total energies of the two
+seeds are not compared.
+
+**Working values after batch 1** (provisional; formally polar contacts):
+- Cathode, registry (1/3,1/3): **W_adh 3.62, W_sep 5.17 J/m²**; registry range 3.60–3.62 /
+  5.09–5.17.
+- Electrolyte, seed 0, registry (0,0): **W_adh 1.63, W_sep 2.97 J/m²**; registry range of
+  W_sep 2.97–3.06. **Bulk-reference (seed) sensitivity is about 0.12 (W_adh) and 0.16 (W_sep)
+  J/m²**, which is now the largest documented uncertainty on the electrolyte side.
+
+Evidence: `data/petmad/niflheim_batch1/` (results, records, scans, separation, structures,
+FIRE logs, filtered job logs, `sacct`).
+
+### Independent batch review and scope qualification
+
+The archive review at `f1861ef` confirms the five runs, 15 relaxation force
+records, fixed masks, geometry gates, work arithmetic and call accounting.
+See [SYNC_CLAUDE_7.md](SYNC_CLAUDE_7.md). “Largest documented uncertainty” above
+should be read as **largest quantified sensitivity tested so far**: the
+polar-model error is unquantified. The seed difference is a combined
+bulk-reference/construction effect, not an isolated disorder effect or an
+ensemble error estimate. Earlier cathode constraint/thickness brackets were
+measured at (0,0), not the newly selected (1/3,1/3); retain that scope.
+Recommendation: publish the bounded study and defer further seed-4 registry
+runs. Numerical tolerance failure is a reportable outcome, not a trigger to
+extend the sample until it passes.

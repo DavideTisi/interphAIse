@@ -1,0 +1,65 @@
+{
+  "run": "data/petmad/thickness_gaps_v1/run_electrolyte_S4_F4",
+  "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+  "area_A2": 170.70827540491757,
+  "base_vacuum_A": 15,
+  "fmax_target_eV_A": 0.05,
+  "settings": {
+    "15.0": {
+      "energies_eV": {
+        "interface": -5328.59521484375,
+        "film": -4380.4482421875,
+        "substrate": -930.7484130859375,
+        "film_rigid": -4373.87939453125,
+        "substrate_rigid": -923.1041259765625
+      },
+      "max_free_force_eV_A": {
+        "interface": 0.04720152802543061,
+        "film": 0.04939404495285824,
+        "substrate": 0.049621006598466987,
+        "film_rigid": 3.945265472702692,
+        "substrate_rigid": 1.845535049839664
+      },
+      "empty_gap_A": {
+        "interface": 15.731474414781758,
+        "film": 38.95643828478177,
+        "substrate": 70.55814127478176,
+        "film_rigid": 38.68553372478176,
+        "substrate_rigid": 69.72974296478176
+      },
+      "W_adh_J_m2": 1.6329358066032293,
+      "W_sep_J_m2": 2.9669046670178845
+    },
+    "25.0": {
+      "energies_eV": {
+        "interface": -5328.59521484375,
+        "film": -4380.4482421875,
+        "substrate": -930.7484130859375,
+        "film_rigid": -4373.87939453125,
+        "substrate_rigid": -923.1041259765625
+      },
+      "max_free_force_eV_A": {
+        "interface": 0.047201778651256,
+        "film": 0.04939404495285824,
+        "substrate": 0.049621006598466987,
+        "film_rigid": 3.945265472702692,
+        "substrate_rigid": 1.845535049839664
+      },
+      "empty_gap_A": {
+        "interface": 25.731474414781758,
+        "film": 48.95643828478177,
+        "substrate": 80.55814127478176,
+        "film_rigid": 48.68553372478175,
+        "substrate_rigid": 79.72974296478176
+      },
+      "W_adh_J_m2": 1.6329358066032293,
+      "W_sep_J_m2": 2.9669046670178845
+    }
+  },
+  "stored_vs_recomputed_base_eV": {
+    "interface": 0.0,
+    "film": 0.0,
+    "substrate": 0.0
+  },
+  "note": "final 880-atom electrolyte geometry; single points on archived relaxed structures"
+}
