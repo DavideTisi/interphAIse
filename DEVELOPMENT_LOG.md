@@ -2197,3 +2197,14 @@ interpretation in the slides and complete the joint integration review.
 Prepare this bounded audit for publication under Davide's standing request
 to push what Adem needs, after configured-credential and whitespace checks;
 the actual commit/push outcome will be reported in chat.
+
+## 2026-10-21 — Agent side (Adem): final experiment slides, traces, integration
+
+Merged `davide` at `fa10a1a` (SYNC_ADEM_10, LLZO caveat audit). Added
+`scripts/plot_environment_curves.py` and figures `environment_success_vs_budget.png` and
+`trace_environment_pair.png`, plus the 5-slide deck
+`presentations/interphAIse_environment_experiment_2026-10-21.pptx` (pptxgenjs installed in a scratch
+folder; validator passed; not rendered or visually checked: no LibreOffice, and image viewing
+blocked). Selected traces by a fixed rule: sulfide iterative seed 202, LLZO iterative seed 207.
+Full suite: 154 passed, 4 failed (pre-existing pymatgen/matcher failures in the `agents` env).
+No paid runs; archive unchanged. Details: SYNC_DAVIDE_7.md.
