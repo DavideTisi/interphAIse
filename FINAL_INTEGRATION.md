@@ -1,5 +1,27 @@
 # Final integration and reproducibility review
 
+## Published to main and made public
+
+On 22 October 2026, following Davide's explicit instruction, `main` was
+fast-forwarded from `247e0dc` to the tested release `7ee0092`. Both `main` and
+`work/final-integration-20261022` were pushed atomically. All completed contributor
+histories are included; no branch was rebased, deleted or force-pushed. GitHub
+confirmed `visibility: PUBLIC` and default branch `main`.
+
+Anonymous requests returned HTTP 200 for the repository, README, full results
+synthesis, DeepSeek comparison, accessible v4 PPTX/PDF, public viewer and
+offline viewer ZIP. Downloaded artifacts matched their local bytes, and the
+viewer matched the previously verified release hash. The
+[publication receipt](data/reviews/public_release_20261022.json) records these
+checks and links the preflight evidence. No credentials were sent in the
+anonymous requests.
+
+The original davide checkout and its ongoing presentation edits remain intact.
+The completed decks are available as checkpoints; a newer deck covering both
+LLM configurations is still being prepared in the presentation chat. The public
+social post, final presentation update and event submission remain separate.
+No new paid experiment was launched.
+
 ## Public-release preflight, 22 October 2026
 
 The user explicitly requested merging and making the repository public. The
@@ -32,7 +54,7 @@ The receipt records scope rather than claiming an exhaustive security audit.
 
 The sections below record earlier checkpoints. Their statements that main had
 not advanced describe those earlier reviews, not the intended release outcome.
-Publication and anonymous-access verification are recorded after completion.
+Publication and anonymous-access verification are recorded above.
 
 ## Earlier integrated checkpoint
 

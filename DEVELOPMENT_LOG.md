@@ -3708,3 +3708,36 @@ rewriting experiment evidence. Updated the reproduction guide, README and
 integration report. No live API call, MLIP evaluation or cluster job occurred.
 Next action authorized by the user: fast-forward main, push the integrated
 release and make the repository public, then verify anonymous downloads.
+
+## 2026-10-22 — Main merged and repository made public
+
+Following the user's explicit publication instruction, fast-forwarded local
+`main` from `247e0dc` to tested release `7ee0092` and atomically pushed main and
+`work/final-integration-20261022`. The complete `davide`, final agent
+`550391b`, and physics `1b76eeb` histories are included. No contributor history
+was rewritten and no branch was deleted. Changed GitHub repository visibility
+to public with the authorized CLI action. GitHub confirms PUBLIC and main as
+the default branch.
+
+Verified eight URLs using unauthenticated HTTP requests: repository metadata,
+README, current results synthesis, DeepSeek comparison, completed accessible
+v4 PowerPoint and PDF, hosted viewer and offline ZIP. Every request returned
+200; downloaded artifacts exactly match local bytes, and the viewer retains
+its previously verified SHA-256. The published receipt is
+`data/reviews/public_release_20261022.json`; it identifies release `7ee0092`
+and records the exact URLs, sizes and hashes. No authentication header or
+collaborator credential was sent by those anonymous checks.
+
+Updated README, REPORT, FINAL_INTEGRATION, SHARE_VIEWER and SUBMISSION_PACKAGE
+to reflect actual publication, superseding the earlier deferred/private status.
+The submission draft now describes the 810-run two-configuration study and
+contains the public repository link; it remains unsent. The original davide
+checkout and the newer presentation being prepared in its separate chat remain
+untouched. Completed decks are public and explicitly labelled as pre-DeepSeek
+checkpoints. A new final deck, short-overview update, public social post and
+human event submission remain separate tasks.
+
+No new scientific run, paid LLM request, model download, cluster job, social
+message or event submission occurred. The final release-status follow-up is
+only documentation and receipts; source/evidence test results from the
+246-test preflight remain applicable. Local links and whitespace were checked.

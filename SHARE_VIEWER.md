@@ -33,15 +33,19 @@ distinguished from the primary evidence available during the live pilot.
 [download the offline ZIP](https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip).
 Both were fetched without authentication and matched the local SHA-256 values.
 The public page rendered the actual paired structures with no JavaScript errors.
-The source repository remains **private**; this website does not make its code
-or Git history public. The user will change repository visibility after the
-final merge, separately, to meet the hackathon submission requirement.
+The [source repository](https://github.com/DavideTisi/interphAIse) is now
+**public**, following the user's explicit 22 October request to merge and
+publish everything. The tested release is on `main`; the completed code,
+archives and Git history are publicly readable. This later repository release
+is separate from the original standalone viewer deployment.
 
 The standalone deployment is `gh-pages` commit `6853ef6`, built from integration
 source `a727582`. It contains only the five allowlisted files below. The API
 reported Pages as already enabled when creation was attempted; a subsequent
 read confirmed `status: built`, `public: true`, and `gh-pages` at `/` as source.
-No paid plan or repository visibility setting was changed.
+No paid plan or repository visibility setting was changed during that original
+viewer deployment. The later authorized repository publication is recorded in
+[FINAL_INTEGRATION.md](FINAL_INTEGRATION.md).
 
 The checked release ZIP is also stored in
 `presentations/results_2026-10-22/interphaise_referee_viewer_2026-10-22.zip`.

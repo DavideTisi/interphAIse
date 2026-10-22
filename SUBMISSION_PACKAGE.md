@@ -14,12 +14,12 @@ it must be no longer than four minutes. The interactive viewer is supplementary.
 
 | Item | Current deliverable or remaining action |
 |---|---|
-| Write-up | [Approved overview](presentations/source/interphaise_overview_2026-10-22.txt), [illustrated Word document](presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx), and [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) are ready. Adapt to the submission form if necessary. |
-| Public repository | The integrated branch is ready for joint review; the repository is still private. Davide explicitly chose to make it public himself after everything is merged. Check the final README/code links without signing in before submission. |
-| Public social post | Still required. No post has been published or authorized in this session. A draft is below. Add the final public repository link. |
+| Write-up | The [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) includes both LLM configurations and the completed physical pilot. The [short overview](presentations/source/interphaise_overview_2026-10-22.txt) and [illustrated Word document](presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx) predate DeepSeek and need that update before use as a complete final summary. |
+| Public repository | **Complete:** [DavideTisi/interphAIse](https://github.com/DavideTisi/interphAIse), tested release on `main`. Davide explicitly authorized merging/publication; the visibility change and anonymous downloads are verified in [the release record](FINAL_INTEGRATION.md). |
+| Public social post | Still required. No post has been published or authorized in this session. An updated draft with the public repository link is below. |
 | Rules confirmation | A human must read and confirm the rules at submission. The campaign's separate “How the hackathon works” link returned 404 during this check, so that link did not establish any additional eligibility conditions. |
 | Supporting demo | [Public six-interface viewer](https://davidetisi.github.io/interphAIse/) is verified without login; [offline download](https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip) is also verified. |
-| Slides | [Reviewed 24-slide deck](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx) and [PDF](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf) are supporting assets, not a substitute for the write-up. |
+| Slides | [Accessible checkpoint](presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx) and [detailed checkpoint](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx) are public. The newer deck covering both configurations remains in progress in its separate chat. Slides support the write-up rather than replace it. |
 | Optional video | Not recorded in this work. If useful, show the problem, controlled LLM results, one forecast success and one failure, then the viewer. Keep it under four minutes. |
 
 ## Fit to the judging criteria
@@ -44,23 +44,28 @@ and archived forecasts carry that part of the argument.
 ## Suggested public post draft
 
 We built interphAIse for the OSI Hackathon to test whether an LLM can guide the
-search for solid-state battery coatings. Across 450 controlled runs, numerical
-feedback helped in the sulfide setting, but random search won in LLZO. In an
-atomistic follow-up, the model's LiTaF6 adhesion forecasts held; its LiCaAlF6
-forecasts missed. The result is a reproducible way to test scientific intuition,
-with its failures visible—not a claim of an experimentally validated coating.
+search for solid-state battery coatings. Across 810 runs in three environments,
+we compared Haiku and DeepSeek configurations with shared random baselines.
+Correct feedback helped Haiku on sulfide. DeepSeek proposed useful LLZO
+candidates upfront, but both iterative configurations remained below random
+there. In a prospective Haiku atomistic pilot, LiTaF6 adhesion forecasts held
+and LiCaAlF6 forecasts missed. We make scientific choices testable while keeping
+the limitations of the LLM and physical models visible. These are computational
+results, not experimentally validated battery coatings.
 
 Explore the six computed interfaces: https://davidetisi.github.io/interphAIse/
 
-Code, evidence and write-up: **add the repository link after the final merge and
-public-visibility change**. No post should be sent with this placeholder.
+Code, evidence and write-up: https://github.com/DavideTisi/interphAIse
+
+This remains an unsent draft for the team to review and publish.
 
 ## Final sequence
 
-1. Jointly review and merge the integrated work into the submission branch/main.
-2. Davide makes the repository public as requested, then verifies anonymous access.
-3. Put the write-up, reproduction entry point, slides and viewer link near the top
-   of the final README. Preserve evidence hashes and leave LiF uncomputed.
-4. Publish the team's chosen social post and copy its public permalink.
-5. Complete the write-up and rules confirmation in the event form, add the public
+1. **Complete:** integrated histories merged into `main`, 246 tests passed,
+   repository public and anonymous links checked. The README links the write-up,
+   reproduction command, completed slides and viewer. LiF remains uncomputed.
+2. Finish and verify the newer presentation and short overview incorporating
+   DeepSeek, then add them to the public repository.
+3. Publish the team's chosen social post and copy its public permalink.
+4. Complete the write-up and rules confirmation in the event form, add the public
    links, and submit before the deadline. No submission was made by this agent.

@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-22",
+  "status": "published_and_anonymously_verified",
+  "repository": "https://github.com/DavideTisi/interphAIse",
+  "visibility": "PUBLIC",
+  "default_branch": "main",
+  "release_commit": "7ee00927edf2dfe4816d388d58cbcce520f2ab09",
+  "preflight_receipt": "data/reviews/public_release_preflight_20261022.json",
+  "anonymous_checks": {
+    "repository": {
+      "url": "https://api.github.com/repos/DavideTisi/interphAIse",
+      "http_status": 200,
+      "bytes": 5215,
+      "sha256": "34ca6e396ec6909ea33a817a6f7050755c25bd4a4911ad7c6ef8a4a7f1b1c1ad",
+      "local_bytes_matched": false,
+      "authentication_sent": false
+    },
+    "readme": {
+      "url": "https://raw.githubusercontent.com/DavideTisi/interphAIse/main/README.md",
+      "http_status": 200,
+      "bytes": 19256,
+      "sha256": "655a3ac57b8d32d97874ea198e652181e906da44321f24e2764aea628a4bb6bc",
+      "local_bytes_matched": true,
+      "authentication_sent": false
+    },
+    "synthesis": {
+      "url": "https://raw.githubusercontent.com/DavideTisi/interphAIse/main/RESULTS_SYNTHESIS_2026-10-22.md",
+      "http_status": 200,
+      "bytes": 35492,
+      "sha256": "088c116f8859b16dcaa475a040f44ee0d053017ba653e4898ed56099f54629c8",
+      "local_bytes_matched": true,
+      "authentication_sent": false
+    },
+    "deepseek_results": {
+      "url": "https://raw.githubusercontent.com/DavideTisi/interphAIse/main/data/experiments/deepseek_v1/model_comparison.md",
+      "http_status": 200,
+      "bytes": 3677,
+      "sha256": "90f6c8a2824162e9543b7b68d4dbbffb724f6087231334b082ed31da74784d8e",
+      "local_bytes_matched": true,
+      "authentication_sent": false
+    },
+    "slides": {
+      "url": "https://raw.githubusercontent.com/DavideTisi/interphAIse/main/presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx",
+      "http_status": 200,
+      "bytes": 2881435,
+      "sha256": "66f0d9011e0f290a3fd18677d658ecc610666acbaceb86022b725d14eac8180f",
+      "local_bytes_matched": true,
+      "authentication_sent": false
+    },
+    "slides_pdf": {
+      "url": "https://raw.githubusercontent.com/DavideTisi/interphAIse/main/presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pdf",
+      "http_status": 200,
+      "bytes": 5248627,
+      "sha256": "3f7775f7099a38b7468c63ca3622f966bb5a6ba54d80d3182d1487ab61b4d495",
+      "local_bytes_matched": true,
+      "authentication_sent": false
+    },
+    "viewer": {
+      "url": "https://davidetisi.github.io/interphAIse/",
+      "http_status": 200,
+      "bytes": 1451908,
+      "sha256": "893ae8839664d6834e79b6d32e1b3c3aaa6a10e9011e348f0efc3ba698b7a14d",
+      "local_bytes_matched": false,
+      "authentication_sent": false
+    },
+    "viewer_zip": {
+      "url": "https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip",
+      "http_status": 200,
+      "bytes": 271944,
+      "sha256": "88868e10ec3359050bd2eac4c5d2e2c6a956f4001377818657518939727d7e0d",
+      "local_bytes_matched": true,
+      "authentication_sent": false
+    }
+  },
+  "notes": [
+    "Checks cover release 7ee0092; subsequent release-status documentation does not change scientific evidence.",
+    "No paid LLM or materials calculation during publication.",
+    "New two-configuration presentation, public social post and event submission remain separate."
+  ]
+}

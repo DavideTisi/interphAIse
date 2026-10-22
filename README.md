@@ -1,5 +1,8 @@
 # interphAIse
 
+**Public release, 22 October 2026:** All completed agent, PET-MAD and integration
+work is merged into `main`. See [release verification](FINAL_INTEGRATION.md).
+
 An LLM proposes coating candidates, interprets calculation feedback and makes
 prospective predictions. Deterministic tools evaluate thermodynamics and
 PET-MAD interface energies. The project tests when feedback improves selection

@@ -1,5 +1,17 @@
 # interphAIse — project report
 
+**Public release complete — 22 October 2026:** The tested integrated release
+`7ee0092` is on `main`, including Adem's final DeepSeek work and Claude's final
+physics package. [The repository](https://github.com/DavideTisi/interphAIse) is
+now public. Anonymous checks passed for code, the results write-up, DeepSeek
+comparison, completed slides, viewer and offline ZIP. The
+[release record](FINAL_INTEGRATION.md) documents 246 passing tests, complete
+offline replay, the scoped credential scan and exact publication checks.
+Earlier statements below that publication is deferred are superseded by the
+user's explicit instruction and this release. The newer two-configuration
+presentation remains in progress in its own chat; no social post or event
+submission was made here.
+
 **Authorized public-release preparation — 22 October 2026:** Integrated
 DeepSeek `550391b` at merge `3a93e17`, preserving both contributors' histories
 and all frozen results. The final suite passes 246 tests. The expanded offline
