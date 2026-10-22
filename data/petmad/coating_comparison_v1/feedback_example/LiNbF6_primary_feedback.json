@@ -1,0 +1,472 @@
+{
+ "schema": "petmad-primary-feedback-v1",
+ "coating": {
+  "candidate_id": "mp-aaacjjwh",
+  "formula": "LiNbF6"
+ },
+ "protocol": {
+  "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+  "model": "PET-MAD S 1.6.0 (r2SCAN)",
+  "force_target_eV_A": 0.05,
+  "step_limit": 400,
+  "selection": "lowest relaxed joined energy among valid primary registries, per contact",
+  "gates": "F2 provenance + all relaxations converged/finite/no overlaps"
+ },
+ "contacts": {
+  "cathode": {
+   "build": {
+    "contact": "LiCoO2(0, 0, 1) | LiNbF6(0, 0, 1)",
+    "termination": [
+     "F2_P-6_3",
+     "Li_P6/mmm_1"
+    ],
+    "n_atoms": 696,
+    "area_A2": 88.8000146079959,
+    "von_mises_strain": 0.019520477463318392,
+    "film_transformation": [
+     [
+      2.0,
+      0.0
+     ],
+     [
+      0.0,
+      2.0
+     ]
+    ],
+    "substrate_transformation": [
+     [
+      1.0,
+      4.0
+     ],
+     [
+      0.0,
+      13.0
+     ]
+    ],
+    "inputs": {
+     "substrate": "data/petmad/bulk_relaxation_v1/LiCoO2/stability_check/final.extxyz",
+     "substrate_sha256": "fbc74ea9f3a0d0e8cffce48c842fa93ef9b206b10973f77737f7571598706cb2",
+     "film": "data/petmad/bulk_relaxation_v1/LiNbF6/stability_check/final.extxyz",
+     "film_sha256": "beaee7192431dd84b292d95935fc8c45151bc63162f64530ec18d739700508b8",
+     "parent": null,
+     "parent_sha256": null
+    },
+    "formal_polarity_e_per_A": {
+     "film": 1.2260161151712965,
+     "substrate": 2.058413554829967
+    },
+    "cut_polyhedra": {
+     "film": {
+      "NbF6": 0
+     },
+     "substrate": {
+      "CoO6": 0
+     }
+    }
+   },
+   "registries": [
+    {
+     "contact": "cathode",
+     "registry": "0,0",
+     "run": "data/petmad/niflheim_batch1/cathode_ref",
+     "status": "valid",
+     "failure": null,
+     "joined_energy_eV": -4707.380859375,
+     "W_adh_J_m2": 3.6003562394027577,
+     "W_sep_J_m2": 5.127716027070846,
+     "separation_status": "valid",
+     "separated_relaxation_J_m2": {
+      "film": 1.4410675276449652,
+      "substrate": 0.08629226002312354
+     },
+     "relaxations": {
+      "interface": {
+       "converged": true,
+       "steps": 55,
+       "max_free_force_eV_A": 0.04476745472751407,
+       "max_fixed_atom_force_eV_A": 2.4460118375269273
+      },
+      "film": {
+       "converged": true,
+       "steps": 39,
+       "max_free_force_eV_A": 0.03706067191108584,
+       "max_fixed_atom_force_eV_A": 0.03706067191108584
+      },
+      "substrate": {
+       "converged": true,
+       "steps": 24,
+       "max_free_force_eV_A": 0.045492996828167896,
+       "max_fixed_atom_force_eV_A": 2.445193823657818
+      }
+     },
+     "n_atoms": 696,
+     "area_A2": 88.8000146079959,
+     "n_fixed": 104,
+     "separated_minus_joined_rms_displacement_A": {
+      "film": {
+       "F": 0.154,
+       "Li": 0.136,
+       "Nb": 0.046
+      },
+      "substrate": {
+       "Co": 0.053,
+       "Li": 0.097,
+       "O": 0.048
+      }
+     },
+     "device": "cuda",
+     "calculator_calls": 136,
+     "wall_seconds": 61.33621682699999,
+     "joined_energy_above_lowest_eV": 0.0927734375
+    },
+    {
+     "contact": "cathode",
+     "registry": "1/6,0",
+     "run": "data/petmad/niflheim_batch1/cathode_reg_sixth_0",
+     "status": "valid",
+     "failure": null,
+     "joined_energy_eV": -4707.3623046875,
+     "W_adh_J_m2": 3.596964455828597,
+     "W_sep_J_m2": 5.090802849991021,
+     "separation_status": "valid",
+     "separated_relaxation_J_m2": {
+      "film": 1.4091759522203906,
+      "substrate": 0.0846624419420334
+     },
+     "relaxations": {
+      "interface": {
+       "converged": true,
+       "steps": 51,
+       "max_free_force_eV_A": 0.04839378147135079,
+       "max_fixed_atom_force_eV_A": 2.44593411844852
+      },
+      "film": {
+       "converged": true,
+       "steps": 39,
+       "max_free_force_eV_A": 0.037057388999560674,
+       "max_fixed_atom_force_eV_A": 0.037057388999560674
+      },
+      "substrate": {
+       "converged": true,
+       "steps": 24,
+       "max_free_force_eV_A": 0.04551182190667354,
+       "max_fixed_atom_force_eV_A": 2.445193348020349
+      }
+     },
+     "n_atoms": 696,
+     "area_A2": 88.8000146079959,
+     "n_fixed": 104,
+     "separated_minus_joined_rms_displacement_A": {
+      "film": {
+       "F": 0.148,
+       "Li": 0.137,
+       "Nb": 0.042
+      },
+      "substrate": {
+       "Co": 0.051,
+       "Li": 0.095,
+       "O": 0.046
+      }
+     },
+     "device": "cuda",
+     "calculator_calls": 132,
+     "wall_seconds": 60.68415441299999,
+     "joined_energy_above_lowest_eV": 0.111328125
+    },
+    {
+     "contact": "cathode",
+     "registry": "1/3,1/3",
+     "run": "data/petmad/niflheim_batch1/cathode_reg_third_third",
+     "status": "valid",
+     "failure": null,
+     "joined_energy_eV": -4707.4736328125,
+     "W_adh_J_m2": 3.6170508624496,
+     "W_sep_J_m2": 5.167624545488891,
+     "separation_status": "valid",
+     "separated_relaxation_J_m2": {
+      "film": 1.4434021319232833,
+      "substrate": 0.10717155111600794
+     },
+     "relaxations": {
+      "interface": {
+       "converged": true,
+       "steps": 51,
+       "max_free_force_eV_A": 0.04968592838602135,
+       "max_fixed_atom_force_eV_A": 2.4459224310666383
+      },
+      "film": {
+       "converged": true,
+       "steps": 39,
+       "max_free_force_eV_A": 0.03705625738793646,
+       "max_fixed_atom_force_eV_A": 0.03705625738793646
+      },
+      "substrate": {
+       "converged": true,
+       "steps": 24,
+       "max_free_force_eV_A": 0.04549283547758985,
+       "max_fixed_atom_force_eV_A": 2.445193585460431
+      }
+     },
+     "n_atoms": 696,
+     "area_A2": 88.8000146079959,
+     "n_fixed": 104,
+     "separated_minus_joined_rms_displacement_A": {
+      "film": {
+       "F": 0.156,
+       "Li": 0.136,
+       "Nb": 0.05
+      },
+      "substrate": {
+       "Co": 0.054,
+       "Li": 0.104,
+       "O": 0.048
+      }
+     },
+     "device": "cuda",
+     "calculator_calls": 132,
+     "wall_seconds": 60.63588191000002,
+     "joined_energy_above_lowest_eV": 0.0
+    }
+   ],
+   "selected": {
+    "registry": "1/3,1/3",
+    "W_adh_J_m2": 3.6170508624496,
+    "W_sep_J_m2": 5.167624545488891
+   },
+   "registry_range": {
+    "W_adh_J_m2": [
+     3.596964455828597,
+     3.6170508624496
+    ],
+    "W_sep_J_m2": [
+     5.090802849991021,
+     5.167624545488891
+    ]
+   },
+   "n_planned": 3,
+   "n_valid": 3
+  },
+  "electrolyte": {
+   "build": {
+    "contact": "Li6PS5Cl(1, 1, 1) | LiNbF6(0, 0, 1)",
+    "termination": [
+     "F2_P-6_3",
+     "Li6Cl_P1_7"
+    ],
+    "n_atoms": 880,
+    "area_A2": 170.70827540491757,
+    "von_mises_strain": 0.030056453923939012,
+    "film_transformation": [
+     [
+      1.0,
+      3.0
+     ],
+     [
+      0.0,
+      7.0
+     ]
+    ],
+    "substrate_transformation": [
+     [
+      2.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0
+     ]
+    ],
+    "inputs": {
+     "substrate": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz",
+     "substrate_sha256": "3f74a0c35829f8c37294fbcde6d199eb8ff12920574a57720a52337addb70913",
+     "film": "data/petmad/bulk_relaxation_v1/LiNbF6/stability_check/final.extxyz",
+     "film_sha256": "beaee7192431dd84b292d95935fc8c45151bc63162f64530ec18d739700508b8",
+     "parent": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/symmetric/final.extxyz",
+     "parent_sha256": "3787779a5ed999d39e4ba2ef55fadfb0330b518e10ffb5981b75d936cb5148db"
+    },
+    "formal_polarity_e_per_A": {
+     "film": 1.1160732260200457,
+     "substrate": 0.34714666900353625
+    },
+    "cut_polyhedra": {
+     "film": {
+      "NbF6": 0
+     },
+     "substrate": {
+      "PS4": 0
+     }
+    }
+   },
+   "registries": [
+    {
+     "contact": "electrolyte",
+     "registry": "0,0",
+     "run": "data/petmad/niflheim_batch1/electrolyte_seed0_ref",
+     "status": "valid",
+     "failure": null,
+     "joined_energy_eV": -5328.5966796875,
+     "W_adh_J_m2": 1.6333940812860246,
+     "W_sep_J_m2": 2.9672197308623063,
+     "separation_status": "valid",
+     "separated_relaxation_J_m2": {
+      "film": 0.6164252758279378,
+      "substrate": 0.7174003737483439
+     },
+     "relaxations": {
+      "interface": {
+       "converged": true,
+       "steps": 253,
+       "max_free_force_eV_A": 0.04753159056917303,
+       "max_fixed_atom_force_eV_A": 1.2792506547589948
+      },
+      "film": {
+       "converged": true,
+       "steps": 58,
+       "max_free_force_eV_A": 0.04939538487358627,
+       "max_fixed_atom_force_eV_A": 0.04939538487358627
+      },
+      "substrate": {
+       "converged": true,
+       "steps": 87,
+       "max_free_force_eV_A": 0.0496263544909947,
+       "max_fixed_atom_force_eV_A": 1.3897468530719372
+      }
+     },
+     "n_atoms": 880,
+     "area_A2": 170.70827540491757,
+     "n_fixed": 38,
+     "separated_minus_joined_rms_displacement_A": {
+      "film": {
+       "F": 0.105,
+       "Li": 0.173,
+       "Nb": 0.064
+      },
+      "substrate": {
+       "Cl": 0.307,
+       "Li": 0.575,
+       "P": 0.083,
+       "S": 0.137
+      }
+     },
+     "device": "cuda",
+     "calculator_calls": 416,
+     "wall_seconds": 85.48660626099999,
+     "joined_energy_above_lowest_eV": 0.0
+    },
+    {
+     "contact": "electrolyte",
+     "registry": "0,1/2",
+     "run": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5",
+     "status": "valid",
+     "failure": null,
+     "joined_energy_eV": -5328.5810546875,
+     "W_adh_J_m2": 1.6316068100231231,
+     "W_sep_J_m2": 3.064711941193468,
+     "separation_status": "valid",
+     "separated_relaxation_J_m2": {
+      "film": 0.6452965808440407,
+      "substrate": 0.7878085503263045
+     },
+     "relaxations": {
+      "interface": {
+       "converged": true,
+       "steps": 277,
+       "max_free_force_eV_A": 0.037966111153487525,
+       "max_fixed_atom_force_eV_A": 1.2742537540928571
+      },
+      "film": {
+       "converged": true,
+       "steps": 58,
+       "max_free_force_eV_A": 0.04938624864836574,
+       "max_fixed_atom_force_eV_A": 0.04938624864836574
+      },
+      "substrate": {
+       "converged": true,
+       "steps": 87,
+       "max_free_force_eV_A": 0.049651512753135355,
+       "max_fixed_atom_force_eV_A": 1.3897354652469749
+      }
+     },
+     "n_atoms": 880,
+     "area_A2": 170.70827540491757,
+     "n_fixed": 38,
+     "separated_minus_joined_rms_displacement_A": {
+      "film": {
+       "F": 0.099,
+       "Li": 0.18,
+       "Nb": 0.064
+      },
+      "substrate": {
+       "Cl": 0.333,
+       "Li": 0.605,
+       "P": 0.087,
+       "S": 0.142
+      }
+     },
+     "device": "cpu",
+     "calculator_calls": 440,
+     "wall_seconds": 1927.9715955000138,
+     "joined_energy_above_lowest_eV": 0.015625
+    }
+   ],
+   "selected": {
+    "registry": "0,0",
+    "W_adh_J_m2": 1.6333940812860246,
+    "W_sep_J_m2": 2.9672197308623063
+   },
+   "registry_range": {
+    "W_adh_J_m2": [
+     1.6316068100231231,
+     1.6333940812860246
+    ],
+    "W_sep_J_m2": [
+     2.9672197308623063,
+     3.064711941193468
+    ]
+   },
+   "n_planned": 2,
+   "n_valid": 2
+  }
+ },
+ "summary": {
+  "weaker_contact": "electrolyte",
+  "min_W_adh_J_m2": 1.6333940812860246,
+  "W_adh_gap_J_m2": 1.9836567811635755,
+  "tolerance_J_m2": 0.1
+ },
+ "sensitivity": {
+  "thickness_increment": {
+   "status": "pending",
+   "value": null
+  },
+  "fixed_depth_variation": {
+   "status": "pending",
+   "value": null
+  },
+  "robustness_case": {
+   "status": "pending",
+   "value": null
+  }
+ },
+ "observed_failures": [],
+ "model_limitations": [
+  "PET-MAD S 1.6.0 is a finite-range (8 \u00c5 neighbour list) MLIP: no explicit long-range electrostatics.",
+  "Both contacts use formally polar slabs; polar-surface energy errors are not quantified.",
+  "Neutral, fixed-stoichiometry cells: no applied voltage, electron reservoir or Li exchange.",
+  "Two separately matched strained contact cells, not one continuous coating film.",
+  "Ordered bulk approximants; no disorder ensemble. No Li transport or kinetics.",
+  "Primary registries are a coarse sample, not a global registry search."
+ ],
+ "costs": {
+  "jobs": 5,
+  "calculator_calls": 1256,
+  "wall_seconds": 2196.114454911014
+ },
+ "sources": [
+  "data/petmad/niflheim_batch1/cathode_ref",
+  "data/petmad/niflheim_batch1/cathode_reg_sixth_0",
+  "data/petmad/niflheim_batch1/cathode_reg_third_third",
+  "data/petmad/niflheim_batch1/electrolyte_seed0_ref",
+  "data/petmad/final_checks_v1/electrolyte_reg_0_0.5"
+ ]
+}

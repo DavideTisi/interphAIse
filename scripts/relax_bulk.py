@@ -31,6 +31,8 @@ def main():
     ap.add_argument('--output',type=Path,default=ROOT/'runs/bulk_relaxation')
     ap.add_argument('--checkpoint',type=Path,help='Optional cached pet-mad-s-v1.6.0.ckpt for fully offline loading')
     ap.add_argument('--only',nargs='+',help='Formulas to relax (default: all five)')
+    ap.add_argument('--dataset',type=Path,default=ROOT/'data/thermo/mp_gga_v2.json.gz',help='Pinned thermodynamic dataset')
+    ap.add_argument('--extra',nargs='+',default=[],metavar='FORMULA=ID',help='Additional pinned entries, e.g. LiF=mp-aaaaabru')
     ap.add_argument('--fmax',type=float,default=.01)
     ap.add_argument('--smax',type=float,default=.05,help='Stress target, GPa')
     ap.add_argument('--steps',type=int,default=1000)
@@ -41,9 +43,10 @@ def main():
     args.output.mkdir(parents=True)
     import torch
     torch.set_num_threads(args.threads)
-    dataset,entries=load_entries(ROOT/'data/thermo/mp_gga_v2.json.gz')
-    pinned={'LiCoO2':str(dataset['endpoints']['electrode']['material_id']),
-            'Li6PS5Cl':str(dataset['endpoints']['electrolyte']['material_id']),**COATINGS}
+    dataset,entries=load_entries(args.dataset)
+    endpoints=dataset.get('endpoints',{})
+    pinned={**({'LiCoO2':str(endpoints['electrode']['material_id']),'Li6PS5Cl':str(endpoints['electrolyte']['material_id'])}
+               if endpoints else {}),**COATINGS,**dict(e.split('=',1) for e in args.extra)}
     if args.only:pinned={k:v for k,v in pinned.items() if k in args.only}
     model='upet:pet-mad-s@1.6.0'
     checkpoint_sha256=None

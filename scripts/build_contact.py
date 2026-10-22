@@ -78,6 +78,11 @@ def main():
     ap.add_argument('--parent',type=Path,help='Symmetric parent bulk of the substrate (same atom order)')
     ap.add_argument('--max-area',type=float,default=300);ap.add_argument('--max-atoms',type=int,default=512)
     ap.add_argument('--film-layers',type=int,default=2);ap.add_argument('--substrate-layers',type=int,default=2)
+    ap.add_argument('--rule',choices=['smallest','screen'],default='smallest',
+                    help="'screen': coating-campaign gates and ordering (screen_coating_contacts.py)")
+    ap.add_argument('--min-span',type=float,default=40.0,help='Coating span gate for --rule screen, Å')
+    ap.add_argument('--match-build',type=Path,help='build.json whose film/substrate transformations must be kept '
+                    '(sensitivity builds change only the declared variable)')
     ap.add_argument('--label',required=True);ap.add_argument('--output',type=Path,required=True)
     args=ap.parse_args()
     if args.output.exists():ap.error('Use a fresh output directory')
@@ -94,13 +99,38 @@ def main():
     report={}
     pairs=enumerate_interfaces(s,f,tuple(args.substrate_miller),tuple(args.film_miller),(sname,fname),settings,
                                terminations=[tuple(args.termination)],report=report)
-    valid=[]
-    for c,i in pairs:
+    if args.match_build:
+        ref=json.loads(args.match_build.read_text())
+        same=lambda i:(np.allclose(i.interface_properties['film_transformation'],ref['film_transformation'])
+                       and np.allclose(i.interface_properties['substrate_transformation'],ref['substrate_transformation']))
+        pairs=[(c,i) for c,i in pairs if same(i)]
+        report['matched_to_build']=str(args.match_build)
+    if args.rule=='screen':
+        # Same gates and frozen ordering as the construction screen, over this (larger) enumeration.
+        from screen_coating_contacts import bulk_coordination,broken_bonds,stoichiometric,coordination,PROTECTED
+        from interphaise.tools.validation import _min_distance_violations
+        ligand='O' if 'O' in {x.specie.symbol for x in f} else 'F';bulk_cn=bulk_coordination(f,ligand)
+        ranked=[]
+        for c,i in pairs:
+            ok,reject,warn=validate(c,i,max_atoms=args.max_atoms,max_strain=.06,film_oxi=oxidation_map(f),substrate_oxi=oxidation_map(s),
+                                    film_formula=fname,substrate_formula=sname)
+            q=[slab_charge_and_dipole(sl,oxidation_map(fo)) for sl,fo in ((i.film,fname),(i.substrate,sname))]
+            groups=[(i.film,*g) for g in PROTECTED.get(fname,[])]+([(i.substrate,'P','S',2.4)] if sname=='Li6PS5Cl' else [])
+            protected=sum(k<4 for slab,a,b,r in groups for k in coordination(slab,a,b,r))   # cut PO4/PS4 units
+            if not(ok and float(np.ptp(i.film.cart_coords[:,2]))>=args.min_span and stoichiometric(i.film,f) and stoichiometric(i.substrate,s)
+                   and all(abs(x[0])<1e-6 for x in q) and not protected and not _min_distance_violations(i)):continue
+            bb=sum(broken_bonds(i.film,bulk_cn,ligand).values())/c.area
+            ranked.append(((bb,sum(abs(x[1])/c.area for x in q),c.n_atoms,c.von_mises_strain,tuple(c.termination)),c,i,warn))
+        if not ranked:raise SystemExit(f'No admissible interface under the screen rule; enumeration report {report}')
+        _,c,i,warn=min(ranked,key=lambda v:v[0]);valid=[(c,i,warn)]
+    else:valid=[]
+    for c,i in (pairs if args.rule=='smallest' else []):
         ok,reject,warn=validate(c,i,max_atoms=args.max_atoms,max_strain=.06,film_oxi=oxidation_map(f),substrate_oxi=oxidation_map(s),
                                 film_formula=fname,substrate_formula=sname)
         if ok:valid.append((c,i,warn))
     if not valid:raise SystemExit(f'No valid interface for {args.termination}; enumeration report {report}')
     c,i,warn=min(valid,key=lambda v:(v[0].n_atoms,v[0].von_mises_strain))
+    selection_rule=args.rule
     film=i.film;sub=i.substrate
     sides={}
     for name,slab,formula in (('film',film,fname),('substrate',sub,sname)):
@@ -119,7 +149,7 @@ def main():
         'inputs':{'substrate':str(args.substrate),'substrate_sha256':sha256(args.substrate),'film':str(args.film),
                   'film_sha256':sha256(args.film),'parent':str(args.parent) if args.parent else None,
                   'parent_sha256':sha256(args.parent) if args.parent else None},
-        'settings':{'max_area_A2':args.max_area,'max_atoms':args.max_atoms,'max_length_tol':.05,'max_angle_tol':.03,
+        'selection_rule':selection_rule,'settings':{'max_area_A2':args.max_area,'min_span_A':args.min_span if args.rule=='screen' else None,'max_atoms':args.max_atoms,'max_length_tol':.05,'max_angle_tol':.03,
                     'film_layers':args.film_layers,'substrate_layers':args.substrate_layers,'max_strain':.06,'candidate_cap':60},
         'enumeration':{**report,'termination_requested':list(args.termination),'valid_for_termination':len(valid)},
         'termination':list(c.termination),'n_atoms':c.n_atoms,'area_A2':c.area,'von_mises_strain':c.von_mises_strain,

@@ -109,7 +109,7 @@ def test_as_policy_wraps_bare_llm():
 
 def test_full_pipeline_with_rules(tmp_path, toy_bulk, toy_entries):
     m = MatchSettings(max_area=120, film_thickness=2, substrate_thickness=2, max_length_tol=0.05)
-    s = OrchestratorSettings(max_retries=1, top_k_candidates=1, registry_n_xy=2, registry_gaps=(2.0,), steps=10,
+    s = OrchestratorSettings(max_retries=1, top_k_candidates=1, registry_n_xy=2, registry_gaps=(2.0,), steps=300,
                              match=m)
     loose = RuleSettings(max_interface_displacement=99, max_cn_change=99, max_gap_opening=99,
                          max_penetration_fraction=1.0)  # LJ toy relaxes wildly; test the plumbing only

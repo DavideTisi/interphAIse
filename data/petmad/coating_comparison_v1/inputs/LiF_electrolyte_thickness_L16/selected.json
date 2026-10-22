@@ -1,0 +1,35 @@
+{
+  "candidate": {
+    "pair": [
+      "Li6PS5Cl",
+      "LiF"
+    ],
+    "film_miller": [
+      1,
+      1,
+      0
+    ],
+    "substrate_miller": [
+      1,
+      1,
+      1
+    ],
+    "termination": [
+      "LiF_Pmmm_2",
+      "Li6Cl_P1_7"
+    ],
+    "n_atoms": 1168,
+    "area": 170.7082754049176,
+    "von_mises_strain": 0.01547409749330685,
+    "index": 0,
+    "valid": true,
+    "reject_reasons": []
+  },
+  "warnings": [
+    "substrate slab is polar: |p_z|/A = 0.347 e/\u00c5"
+  ],
+  "contact": "LiF_electrolyte_thickness_L16",
+  "purpose": "explicit-termination contact build; not yet relaxed",
+  "substrate_file": "data/petmad/bulk_relaxation_v1/Li6PS5Cl/stability_check/final.extxyz",
+  "film_file": "data/petmad/coating_comparison_v1/bulk/LiF/stability_check/final.extxyz"
+}

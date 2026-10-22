@@ -1,0 +1,36 @@
+{
+  "candidate": {
+    "pair": [
+      "Li6PS5Cl",
+      "LiTaF6"
+    ],
+    "film_miller": [
+      0,
+      0,
+      1
+    ],
+    "substrate_miller": [
+      1,
+      1,
+      1
+    ],
+    "termination": [
+      "F2_P-6_3",
+      "Cl2_P-1_2"
+    ],
+    "n_atoms": 880,
+    "area": 172.9262508262677,
+    "von_mises_strain": 0.03253375148371178,
+    "index": 0,
+    "valid": true,
+    "reject_reasons": []
+  },
+  "warnings": [
+    "film slab is polar: |p_z|/A = 1.103 e/\u00c5",
+    "substrate slab is polar: |p_z|/A = 0.257 e/\u00c5"
+  ],
+  "contact": "LiTaF6_electrolyte_seed4",
+  "purpose": "explicit-termination contact build; not yet relaxed",
+  "substrate_file": "data/petmad/bulk_multistart_v1/Li6PS5Cl/seed_4/final.extxyz",
+  "film_file": "data/petmad/coating_comparison_v1/bulk/LiTaF6/stability_check/final.extxyz"
+}

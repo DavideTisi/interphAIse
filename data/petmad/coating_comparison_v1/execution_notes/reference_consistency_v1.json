@@ -1,0 +1,85 @@
+{
+ "schema": "coating-pilot-execution-note-v1",
+ "kind": "additive; the frozen manifest is not modified",
+ "extends_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+ "approval": {
+  "by": "Davide",
+  "date": "2026-10-22",
+  "text": "Run the four reference consistency checks at lower priority, without delaying selected-coating primaries or changing decision feedback."
+ },
+ "purpose": "Test the LiNbF6 reference under the geometry-only registry rule used for the new coatings.",
+ "inputs": {
+  "cathode": {
+   "build": "data/petmad/coating_comparison_v1/inputs/LiNbF6_cathode",
+   "build_sha256": "d84a0771d5d3f9f96b26190e71ed5ad100e112a5017576f6e50b7fe4b3972e34",
+   "identical_to_archived": "data/petmad/cathode_thickness_v1/build_F4"
+  },
+  "electrolyte": {
+   "build": "data/petmad/coating_comparison_v1/inputs/LiNbF6_electrolyte",
+   "build_sha256": "38850e82a233f37aea8d92fcffbec58563364ccf6b4ae7d528277083d22aa96a",
+   "identical_to_archived": "data/petmad/thickness_gaps_v1/build_electrolyte_S4_F4"
+  }
+ },
+ "jobs": [
+  {
+   "run_id": "mp-aaacjjwh:cathode:consistency:G2",
+   "contact": "cathode",
+   "registry_id": "G2",
+   "offset": [
+    0.25,
+    0.25
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   }
+  },
+  {
+   "run_id": "mp-aaacjjwh:cathode:consistency:G3",
+   "contact": "cathode",
+   "registry_id": "G3",
+   "offset": [
+    0.08333333333333333,
+    0.25
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   }
+  },
+  {
+   "run_id": "mp-aaacjjwh:electrolyte:consistency:G2",
+   "contact": "electrolyte",
+   "registry_id": "G2",
+   "offset": [
+    0.25,
+    0.5
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   }
+  },
+  {
+   "run_id": "mp-aaacjjwh:electrolyte:consistency:G3",
+   "contact": "electrolyte",
+   "registry_id": "G3",
+   "offset": [
+    0.08333333333333333,
+    0.75
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   }
+  }
+ ],
+ "reused_for_G1": "(0,0) is the archived R1 run for each contact",
+ "budget": {
+  "jobs": 4,
+  "within_ceiling": "36 full jobs: at most 24 for the two selected coatings + 4 here",
+  "estimate": "about 12-24 GPU-minutes, excluding queue/setup"
+ },
+ "priority": "lower than any selected-coating primary job; never delays them",
+ "information_boundary": "results go to a separately versioned robustness report; never in decision prompts or the frozen primary reference package"
+}

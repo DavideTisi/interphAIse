@@ -2945,3 +2945,35 @@ Final publication checks: all 20 local documentation links resolve and the
 staged credential scan passes; `.env` stays ignored/untracked. Added local
 artifact Git attributes so the ASCII85-encoded PDF is treated as binary rather
 than generating meaningless whitespace diffs. Final text whitespace check passes.
+## 2026-10-21/22 — Coating pilot preparation (branch `work/petmad-comparison`; scoped entry for integration)
+
+Claude, following SYNC_CLAUDE_8–11. **No interface energy was computed for any new coating.**
+- **F1/F2** (`b9f8468`): adhesion is gated on converged relaxations. Derived calculations (separation,
+  vacuum, multistart) require a matching checkpoint and valid, consistent sources before loading
+  the model. The toy end-to-end tests had passed only through the F1 route; they now use 300 FIRE steps.
+- **Screen** (`49daa72`, `38e4872`): five coatings, per-termination enumeration, 40 Å coating span.
+  Under the uniform 1,250-atom amendment the menu is LiNbF6 plus LiTaF6(001), LiCaAlF6(100) and
+  LiF(110); LiZr2(PO4)3 is excluded. New PET-MAD bulk references for LiF and LiTaF6 (389 calls).
+  Two earlier screening passes were superseded: a cap shared across terminations hid the
+  F-terminated LiNbF6 cut, and default StructureMatcher tolerances merged distinct registries.
+- **Frozen manifest** `99ef2dc1…` with inputs, geometric registries and sensitivity slots. Three
+  slots are unavailable: LiCaAlF6 electrolyte thickness (1,302 atoms) and seed-4 for LiCaAlF6/LiF.
+  The index lists every planned job as pending plus the five reused LiNbF6 runs.
+- **Feedback** (`4743120`, `ac6621d`): schema v2 enforces coverage, comparability and recomputed
+  works. `invalid_evidence` blocks consumption; genuine `failed` outcomes are reported. Contract
+  reply to Adem: `CONTRACT_RESPONSE.md`. 165 tests pass.
+- **Reference consistency** (approved; jobs 11014613–616, RTX 3090): the geometric registry rule would
+  select cathode (1/12,1/4) at W_adh 3.627 J/m² (+0.010 vs the frozen reference) and leave the
+  electrolyte at (0,0). Separate robustness report; not in decision feedback.
+- **Next:** Adem's loader fixes plus Davide's live-call approval, then the six primary jobs per
+  archived selection.
+
+## 2026-10-22 — Coating pilot execution and final package (branch `work/petmad-comparison`; scoped entry)
+
+Ran after Adem archived each live selection with forecasts. Receipts were committed before energies
+(`207f879` LiTaF6, `e4d5ab7` LiCaAlF6). Primary packages: LiTaF6 `d5ab477` (cathode 3.339, electrolyte
+1.577 J/m²) and LiCaAlF6 `668b5e3` (1.427 / 0.744; electrolyte registry range 0.524–0.744). Sensitivity
+jobs ran at `--nice` and were kept outside decisions (`fb27095` and earlier). After the summary
+(`c0a0546`), `index_final.json` added all robustness rows; decision-time indices and bundles are kept
+in `snapshots/`. 26 new RTX 3090 jobs, all converged. See
+`data/petmad/coating_comparison_v1/FINAL_COMPARISON.md`.

@@ -1,0 +1,35 @@
+{
+  "candidate": {
+    "pair": [
+      "LiCoO2",
+      "LiCaAlF6"
+    ],
+    "film_miller": [
+      1,
+      0,
+      0
+    ],
+    "substrate_miller": [
+      0,
+      0,
+      1
+    ],
+    "termination": [
+      "LiAlF4_P2_6",
+      "Li_P6/mmm_1"
+    ],
+    "n_atoms": 720,
+    "area": 102.46155531691838,
+    "von_mises_strain": 0.03639253914115424,
+    "index": 4,
+    "valid": true,
+    "reject_reasons": []
+  },
+  "warnings": [
+    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+  ],
+  "contact": "LiCaAlF6_cathode",
+  "purpose": "explicit-termination contact build; not yet relaxed",
+  "substrate_file": "data/petmad/bulk_relaxation_v1/LiCoO2/stability_check/final.extxyz",
+  "film_file": "data/petmad/bulk_relaxation_v1/LiCaAlF6/stability_check/final.extxyz"
+}

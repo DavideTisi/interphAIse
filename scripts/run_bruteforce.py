@@ -53,11 +53,12 @@ def main() -> None:
             row = {"candidate": cand}
             if calc is not None:
                 res, _, _ = energetics.work_of_adhesion(cand, iface, calc)
-                row["w_adh"] = res.w_adh
+                row.update(w_adh=res.w_adh, energetics_status=res.status, unconverged=res.unconverged)
             rows.append(row)
         log.record("bruteforce", "compute", {"facets": (sm, fm), "n_found": len(found), "n_valid": len(valid)})
 
-    best = max((r for r in rows if "w_adh" in r), key=lambda r: r["w_adh"], default=None)
+    # Only validated works compete; unconverged/unrelaxed rows stay in the log with their status.
+    best = max((r for r in rows if r.get("w_adh") is not None), key=lambda r: r["w_adh"], default=None)
     summary = {"case": ctx.name, "n_candidates_computed": len(rows), "best": best,
                "counters": {"single_points": energetics.Counter.single_points,
                             "relaxations": energetics.Counter.relaxations}}

@@ -23,7 +23,7 @@ from __future__ import annotations
 import dataclasses
 from dataclasses import dataclass, field
 
-from .context import Candidate, InterfaceContext, InterfaceTypeDecision
+from .context import Candidate, InterfaceContext, InterfaceTypeDecision, JudgeVerdict
 from .log import RunLog
 from .policies import Policy, as_policy
 from .tools import energetics
@@ -172,6 +172,13 @@ class Orchestrator:
                     fmax=self.s.fmax, steps=self.s.steps, do_relax=self.s.relax)
                 desc = interface_descriptors(start, relaxed, iface.film_indices, iface.substrate_indices)
                 self.log.record("energetics", "compute", {"result": res, "descriptors": desc}, warnings=warn)
+                if res.w_adh is None:
+                    # No validated adhesion (exhausted relaxation, unrelaxed or non-finite): never judged or ranked.
+                    verdict = JudgeVerdict("reject", "next_termination",
+                                           f"energetics not validated ({res.status}: {', '.join(res.unconverged) or 'n/a'})")
+                    self.log.record("judge", "gate", verdict, candidate=cand)
+                    verdicts.append(verdict)
+                    continue
                 verdict, agree = self.policy.judge(res, desc, warn)
                 self.log.record("judge", "decision", verdict, policy=self.policy.name, agreement=agree,
                                 candidate=cand)

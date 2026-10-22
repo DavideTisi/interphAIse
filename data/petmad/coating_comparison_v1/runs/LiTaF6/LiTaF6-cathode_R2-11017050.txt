@@ -1,0 +1,53 @@
+job=11017050 node=s001.nifl.fysik.dtu.dk partition=sm3090el9_devel cpus=4 gpus=0 code=207f879
+NVIDIA GeForce RTX 3090, 595.104.02
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /home/energy/davti/.cache/warp/1.18.0
+Module nvalchemiops.neighbors.base_dispatch c9ac13f load on device 'cuda:0' took 1155.70 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 842d06c load on device 'cuda:0' took 94.61 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 44c95cd load on device 'cuda:0' took 263.80 ms  (cached)
+Module _wrap_positions_single_kernel__f32_0f63232a 212475f load on device 'cuda:0' took 64.95 ms  (cached)
+Module naive_tile 7a30213 load on device 'cuda:0' took 60.83 ms  (cached)
+Registry 0.0,0.0, gap 2.0: -4745.779297 eV
+Registry 0.0,0.0, gap 2.5: -4743.223145 eV
+Registry 0.0,0.0, gap 3.0: -4740.561523 eV
+Registry 0.0,0.5, gap 2.0: -4745.780273 eV
+Registry 0.0,0.5, gap 2.5: -4743.224609 eV
+Registry 0.0,0.5, gap 3.0: -4740.560547 eV
+Registry 0.5,0.0, gap 2.0: -4745.780273 eV
+Registry 0.5,0.0, gap 2.5: -4743.224609 eV
+Registry 0.5,0.0, gap 3.0: -4740.561035 eV
+Registry 0.5,0.5, gap 2.0: -4745.780273 eV
+Registry 0.5,0.5, gap 2.5: -4743.224609 eV
+Registry 0.5,0.5, gap 3.0: -4740.561523 eV
+Registry 0.25,0.25, gap 2.0: -4745.778809 eV
+Registry fixed at [0.25, 0.25], 2.0 Å; scan optimum differs: [0.0, 0.5], 2.0 Å
+Relaxing interface: 696 atoms, 104 fixed
+interface: converged=True, steps=48, fmax=0.04852
+Relaxing film: 384 atoms, 0 fixed
+film: converged=True, steps=43, fmax=0.04913
+Relaxing substrate: 312 atoms, 104 fixed
+substrate: converged=True, steps=24, fmax=0.04553
+{
+  "status": "converged_pilot",
+  "work_of_adhesion_J_m2": 3.326811096603576,
+  "calculator_calls": 133,
+  "wall_seconds": 69.29400261799992
+}
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /home/energy/davti/.cache/warp/1.18.0
+Module nvalchemiops.neighbors.base_dispatch c9ac13f load on device 'cuda:0' took 1.22 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 842d06c load on device 'cuda:0' took 1.00 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 44c95cd load on device 'cuda:0' took 1.11 ms  (cached)
+Module _wrap_positions_single_kernel__f32_0f63232a 212475f load on device 'cuda:0' took 0.96 ms  (cached)
+Module naive_tile 7a30213 load on device 'cuda:0' took 1.00 ms  (cached)
+cathode_R2: W_sep(fixed) 4.7112  W_adh(relaxed) 3.3268  relaxation: film 1.3631 substrate 0.0213 J/m²
