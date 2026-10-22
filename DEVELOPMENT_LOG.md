@@ -3759,6 +3759,29 @@ No scientific evidence, executable code, presentation or credential changed,
 and no paid call or materials calculation occurred. The deleted notes remain
 recoverable in Git history; this is not a history purge.
 
+## 2026-10-22 — Project logo
+
+**Branch:** `main`. Davide requested a logo after inspecting the project in
+the hackathon folder. Read the project README, release handoff and existing
+presentation styling, then created a horizontal interphAIse logo with the
+built-in image generation tool. The crystal-layer emblem represents two
+materials joined by a protective interphase; the teal interface and uppercase
+AI connect the physical problem to the project's AI-guided decisions. The
+navy/teal palette follows the existing presentation source.
+
+Saved `assets/branding/interphaise-logo.png` and the exact generation prompt
+and usage notes in `assets/branding/interphaise-logo-prompt.txt`. Added the
+logo to the README. The asset is a transparent 2172 × 724 PNG intended for
+light backgrounds. Visually checked the symbol and exact interphAIse spelling;
+confirmed dimensions and alpha with `sips`, checked the README asset path and
+source whitespace. No software test suite was run for this asset/documentation
+change. No project LLM/API experiment, MLIP calculation or cluster job occurred;
+the only live generation was through the built-in image tool.
+
+The result is local and uncommitted. A vector master and dark-background
+variant are not included. The logo and prompt are available for reuse in slides
+or a future publication update; no scientific conclusion changed.
+
 ## 2026-10-22 — Reproduction dependencies and test-package imports
 
 **Branch:** `main`, starting at `ab8d757`. Addressed Adem's fresh-install
@@ -3791,6 +3814,25 @@ REPORT.md records the corrected reproduction status. No live LLM or Materials
 Project request, MLIP calculation or cluster job occurred. Concurrent logo,
 README and branding work is excluded from this commit. No further corrective
 work is required for these two reported issues.
+
+## 2026-10-22 — Clearer battery motif in the logo
+
+**Branch:** `main`. Davide asked for the symbol beside the name to communicate
+batteries more clearly. Used the built-in image editing tool to revise the
+left emblem into a battery cross-section with a top terminal, positive and
+negative signs, and the existing teal interface/lattice motif between material
+layers. Retained the interphAIse spelling, navy/teal identity and horizontal
+wordmark. Saved the revision as `assets/branding/interphaise-logo-battery-v2.png`
+and its exact prompt in `assets/branding/interphaise-logo-battery-v2-prompt.txt`.
+The initial logo remains available; the README now displays the battery version.
+
+Verification: visually inspected the generated logo and spelling, confirmed
+2172 × 724 dimensions and alpha with `sips`, and checked the README asset path
+and documentation whitespace. No software test suite was needed for this
+asset/documentation revision. The asset is a raster PNG for light backgrounds;
+no vector master was created. No project LLM/API experiment or MLIP run occurred;
+the only live generation was through the built-in image editing tool. Changes
+remain local and uncommitted, ready for use in presentations or publication.
 
 ## 2026-10-22 — One-page final submission report
 
@@ -3833,3 +3875,19 @@ applicable and the suite was not rerun for document production.
 The report and uploadable figure are ready for Davide to paste into the form.
 The event submission, social post and rules confirmation remain human actions.
 Concurrent logo/branding changes remain local and excluded from this commit.
+
+## 2026-10-22 — Publish the logo in the main README
+
+**Branch:** `main`, starting at `e54c589`. Davide requested that the existing
+logo appear on the repository's main GitHub page. Published the battery-motif
+version already selected in the README, together with the original logo and
+both generation prompts under assets/branding/. This supersedes the earlier
+local-only status of the two branding entries; their history is preserved.
+
+The README embeds assets/branding/interphaise-logo-battery-v2.png at 640 pixels
+wide with descriptive alternative text. Inspected the existing logo, confirmed
+its 2172 × 724 dimensions and alpha transparency, verified the relative asset
+path and reviewed the staged files and whitespace. No image regeneration,
+scientific change, API experiment or test-suite rerun was needed. The image is
+designed for light backgrounds, as documented in its provenance notes. The
+remaining publication check is the rendered README on GitHub after the push.

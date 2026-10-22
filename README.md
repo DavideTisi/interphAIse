@@ -1,5 +1,7 @@
 # interphAIse
 
+<img src="assets/branding/interphaise-logo-battery-v2.png" alt="interphAIse logo: battery cross-section with layered electrodes, a teal interface and AI highlighted in teal" width="640">
+
 **Public release, 22 October 2026:** All completed agent, PET-MAD and integration
 work is merged into `main`. See [release verification](FINAL_INTEGRATION.md).
 
