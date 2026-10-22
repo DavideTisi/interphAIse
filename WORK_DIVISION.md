@@ -4,13 +4,13 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current assignments: LLM-guided three-coating pilot — 22 October
 
-**Approved to start:** Davide approved Adem's initial live prior/choose-2 on
-22 October, under one total ten-HTTP-attempt cap and a USD 0.05 allowance.
-Adem's `f8abbc0` passes 188 tests and the initial package has an independent
-preflight. Adem archives the selection, then pauses for physics. See
-[SYNC_ADEM_14.md](SYNC_ADEM_14.md). Adem finishes manifest-derived source checks
-before choose-3; Claude evaluates only the archived selection; Davide reviews
-the resulting package. The earlier pending-fix status below is historical.
+**Live choice made:** `1875726` archives Haiku's LiTaF6 selection and numeric
+forecasts; three of ten HTTP attempts are charged. Claude now owns its six
+primary jobs. Adem reports the remaining manifest checks in `d1ec1b0` (77
+tests), which was not yet available on the shared branch at review; publish it
+for verification before choose-3. Validate the complete physical package and
+resume the same state under the existing approval and USD 0.05 allowance.
+See [SYNC_ADEM_14.md](SYNC_ADEM_14.md). Earlier pending statuses below are history.
 
 **Latest handoff:** Claude has frozen the four-member feasible menu and primary
 inputs in `38e4872`; hashes/counts and 163 offline tests reproduce. Read
@@ -55,8 +55,8 @@ No new interface calculation was made in these reviews.
 
 | Owner | Next work | Done when |
 |---|---|---|
-| **Adem** | Approved: run prior/choose-2 on the pinned package and archive the selection; finish manifest-derived coverage and real source-identity checks before choose-3. | First choice precedes its energies; the next package passes independent validation; all stages retain one state and total 10-attempt cap, within the USD 0.05 allowance. See [SYNC_ADEM_14.md](SYNC_ADEM_14.md). |
-| **Claude** | Keep the frozen menu/builds; finish the producer/consumer contract with Adem and block corrupt evidence; calculate six primary jobs for each archived approved selection. | Complete validated primary feedback; costs and failure types explicit; optional reference work separately approved and reported. See [SYNC_CLAUDE_11.md](SYNC_CLAUDE_11.md). |
+| **Adem** | Publish `d1ec1b0`; validate the six terminal LiTaF6 primary outcomes and sources; resume choose-3 only after the checks pass. | State and frozen feedback preserved; second choice has pre-energy predictions; all stages retain the total 10-attempt cap and USD 0.05 allowance. See [SYNC_ADEM_14.md](SYNC_ADEM_14.md). |
+| **Claude** | Complete the six frozen LiTaF6 primary jobs and hand over the full validated package with failures/costs; keep sensitivities separate. | Two contact packages cover all planned registries and preserve the selected inputs and provenance. See [SYNC_ADEM_14.md](SYNC_ADEM_14.md). |
 | **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
 
 Adem keeps `work/agent-experiments`; give Claude an isolated physics

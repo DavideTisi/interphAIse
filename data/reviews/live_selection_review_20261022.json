@@ -1,0 +1,54 @@
+{
+  "review_date_copenhagen": "2026-10-22",
+  "reviewed_archive_commit": "187572604a1c7cf4fa12aac2e9a426fb4d7b7239",
+  "reported_unavailable_fix_commit": "d1ec1b0",
+  "fix_tests_status": "77 passes reported by Adem; commit not available on shared branch at review",
+  "state_file_sha256": "fdc9816c1602325a64e211751d48504e0a81f608609e151ab3c29098ee71958c",
+  "record_and_feedback_hashes_verified": true,
+  "selected_id": "mp-aaacjmqp",
+  "formula": "LiTaF6",
+  "choose2_record_sha256": "010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01",
+  "predictions": {
+    "cathode": [
+      3.2,
+      3.9
+    ],
+    "electrolyte": [
+      1.4,
+      1.9
+    ]
+  },
+  "weaker_contact_prediction": "electrolyte",
+  "shortlist": [
+    "mp-aaacjmqp",
+    "mp-aaaaajby",
+    "mp-aaaaabru"
+  ],
+  "hypothesis": "LiTaF6 is the next coating to evaluate. It has the lowest frozen penalty among the unevaluated candidates (0.027, bin 1, acceptable) and a 5.9 eV gap. LiNbF6, the structural and chemical analogue (same fluoride framework, similar cation size), gave a weaker electrolyte contact of about 1.63 J/m2 and a cathode contact of about 3.6 J/m2. I expect LiTaF6 to show a similar pattern, with the electrolyte contact as the bottleneck. This is a prediction from one analogue, not a computed value. LiCaAlF6 has a higher penalty (bin 2) and is second. LiF is thermodynamically rejected (bin 15), so adhesion cannot rescue it and it stays last.",
+  "change_trigger": "Revisit the ranking if the validated LiTaF6 electrolyte W_adh falls below about 1.4 J/m2 or rises above about 1.9 J/m2, if the weaker contact flips to the cathode, or if the penalty bin or acceptance changes on re-evaluation. A LiCaAlF6 result with a higher min(W_adh) at its penalty bin 2 would also justify promoting it.",
+  "HTTP_attempts_used": 3,
+  "HTTP_cap": 10,
+  "HTTP_remaining": 7,
+  "unsettled_reservations": 0,
+  "tokens": {
+    "input": 4544,
+    "output": 2327
+  },
+  "cost_USD_estimate_at_recorded_rates": 0.0016179,
+  "cost_is_billed": false,
+  "next_step": "Six declared LiTaF6 primary registry jobs; validate complete package and fix commit before choose-3; continue same state and total attempt budget",
+  "scientific_status": "Live prospective prediction; shortlist unchanged from prior; no new LiTaF6 interface result or feedback-driven selection improvement demonstrated yet",
+  "actions_in_this_review": {
+    "live_API_calls": 0,
+    "MLIP_calculations": 0,
+    "cluster_jobs": 0,
+    "external_messages": 0,
+    "branch_merges": 0
+  },
+  "published_state_offline_resume": {
+    "code_commit": "1875726",
+    "result": "Pending: mp-aaacjmqp cathode primary runs not terminal",
+    "model_callable_invocations": 0,
+    "state_file_unchanged": true
+  }
+}

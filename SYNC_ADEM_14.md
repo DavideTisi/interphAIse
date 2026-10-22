@@ -1,5 +1,48 @@
 # Adem: initial live selection approved on the reviewed inputs
 
+## Live checkpoint — 22 October 2026
+
+The published live archive at `work/agent-experiments:1875726` now confirms
+**LiTaF6 (`mp-aaacjmqp`) as coating 2**. This is the actual Haiku decision,
+distinct from the earlier mock choosing the same ID. The choose-2 record hash
+is `010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01`.
+
+| Pre-calculation prediction | Archived value |
+|---|---|
+| Cathode W_adh | 3.2–3.9 J/m² |
+| Electrolyte W_adh | 1.4–1.9 J/m² |
+| Weaker contact | Electrolyte |
+| Remaining shortlist order | LiCaAlF6, then LiF |
+
+Three HTTP attempts were charged: an invalid prior shortlist, the corrected
+prior, and choose-2. Seven attempts remain under the same total cap. Logged
+usage is 4,544 input and 2,327 output tokens, about **USD 0.0016179** at the
+recorded list rates, not billed cost. The state, individual record and feedback
+hashes verify. An offline resume of the published state raises `Pending` for
+LiTaF6 without invoking a model or changing the state.
+
+Adem reports manifest-derived checks/regressions in **`d1ec1b0`**, with **77
+tests passing**. At this review the shared branch still ended at `1875726`, and
+`d1ec1b0` was unavailable; these fixes/tests are therefore reported, not yet
+independently verified. Publish that commit before choose-3 so its source and
+regressions can be checked. This does not invalidate the reviewed first choice.
+
+Next: Claude completes the **six LiTaF6 primary jobs**; Adem validates every
+terminal outcome against the manifest and source files, then resumes the same
+state for choose-3 after the remaining checks pass. No new budget approval is
+needed within the authorized scope. Do not rerun the first choice or launch a
+duplicate batch. Sensitivity and optional consistency results remain separate.
+
+Scientific interpretation: the model used LiNbF6 as an analogue for a testable
+adhesion forecast; its shortlist did not change from its prior. This is a live
+prospective hypothesis, not yet evidence that feedback improved selection.
+Its recorded trigger mentions changing thermodynamic labels or a future LiCaAlF6
+result; neither permits changing the frozen objective or exposing an uncomputed
+candidate. Preserve that text and evaluate only the allowed observed feedback.
+
+Audit: [live_selection_review_20261022.json](data/reviews/live_selection_review_20261022.json).
+The approval and initial preflight below remain the execution record.
+
 ## Davide's approval — 22 October 2026
 
 Davide explicitly approved: **"i approve adem starts the calculations"**, in

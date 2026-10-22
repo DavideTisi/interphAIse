@@ -2690,3 +2690,45 @@ README modification. Validate local links, scope and whitespace, scan staged
 files for credentials, and commit/push the approval under the standing handoff
 sharing authorization; verify the remote head. The prior 188-test review
 remains applicable; no new code tests are needed for this approval record.
+
+## 2026-10-22 — Verify the first live choice and physics pause
+
+**Branch:** `davide`, starting `53e7758`. Adem reported manifest checks at
+`d1ec1b0` and 77 passing tests. Fetched both collaborator branches; the published
+agent head was `187572604a1c7cf4fa12aac2e9a426fb4d7b7239`, physics head `b199608`.
+A separate remote-head check still returned `1875726`; `d1ec1b0` was unavailable
+locally. Do not call the reported new checks independently verified until that
+commit is published. The current execution archive is available and was checked.
+
+Inspected an isolated archive of `1875726`. The live prior and choose-2 were
+executed by Adem with code `f8abbc0`, physics snapshot `b199608`, and the approved
+settings. Verified the entire state-file checksum against EXECUTION_choose2,
+every stage-record and feedback-snapshot hash, the feedback hashes in the prompt,
+model IDs, and charged-attempt/token totals. Three attempts: one invalid prior
+shortlist, one corrected prior, one successful choose-2. There are no unsettled
+reservations; seven of the total ten attempts remain. Logged usage is 4,544 input
+and 2,327 output tokens; USD 0.0016179 at the previously recorded rates is an
+estimate, not a bill.
+
+The actual live choice is LiTaF6 (`mp-aaacjmqp`), record hash
+`010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01`. Forecasts are
+cathode 3.2–3.9 and electrolyte 1.4–1.9 J/m², electrolyte weaker. Haiku uses
+LiNbF6 as an analogue; the order LiTaF6, LiCaAlF6, LiF is unchanged from its
+prior. This is a prospective physical hypothesis, not yet a measured feedback
+advantage. Preserve the trigger text, but its mention of thermodynamic-label
+changes or future LiCaAlF6 results does not authorize a changed frozen objective
+or hidden/uncomputed feedback.
+
+Resumed only the temporary copy with a sentinel callable that would fail if a
+model invocation occurred. The published runner raises Pending for LiTaF6
+primary physics; no callable invocation occurred and the state checksum remains
+unchanged. This checks the available published code, not the unavailable new
+commit. No repeat of the full unchanged suite was necessary.
+
+Updated SYNC_ADEM_14, REPORT and WORK_DIVISION and saved
+`data/reviews/live_selection_review_20261022.json`. Next: publish/review `d1ec1b0`,
+complete Claude's six LiTaF6 primary jobs, validate the terminal package, then
+choose-3 under the existing approval and same state/budget. No duplicate API
+call, MLIP calculation, cluster job, external message or branch merge occurred.
+Preserve README; validate JSON/links/whitespace, scan staged credentials, and
+publish this checkpoint under the standing handoff-sharing authorization.

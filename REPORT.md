@@ -1,5 +1,19 @@
 # interphAIse — project report
 
+**First live choice archived — 2026-10-22:** Verified Adem's published
+`1875726`: Haiku selected **LiTaF6** after the LiNbF6 feedback and predicted
+W_adh ranges of **3.2–3.9 J/m²** (cathode) and **1.4–1.9 J/m²** (electrolyte),
+with electrolyte the weaker contact. Three of ten HTTP attempts are charged;
+logged usage gives about USD 0.00162 at the recorded list rates. State, record
+and feedback hashes verify; an offline resume stops at pending physics without
+calling a model. The shortlist is unchanged from the prior, so this is a
+prospective forecast, not yet a demonstrated feedback-driven selection gain.
+Six LiTaF6 primary jobs are the next dependency. Adem reports `d1ec1b0` and
+77 passing tests for the remaining manifest checks, but that commit was not
+yet available on the shared branch at review. See [live handoff](SYNC_ADEM_14.md)
+and [audit](data/reviews/live_selection_review_20261022.json). No new live calls
+or physical calculations were launched by Codex during this verification.
+
 **Live pilot approved — 2026-10-22:** Davide explicitly approved Adem starting
 the reviewed prior and first selection, with **ten HTTP attempts total** across
 the pilot and a **USD 0.05 allowance** at the reported rates. Adem owns the live
