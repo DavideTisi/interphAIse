@@ -30,6 +30,7 @@ flowchart TB
     H["Human setup<br/>Pools, rules, budgets"]
 
     subgraph B["Search benchmark — both models"]
+        direction TB
         L{{"LLM chooses<br/>and explains"}}
         Q["Validate ID<br/>Reveal frozen scores"]
         A["Compare controls<br/>and random search"]
@@ -39,6 +40,7 @@ flowchart TB
     end
 
     subgraph P["Physical pilot — Haiku"]
+        direction TB
         C{{"Haiku chooses<br/>and forecasts"}}
         D["Archive forecasts<br/>before calculations"]
         M["ASE + PET-MAD<br/>Frozen interfaces"]
@@ -49,8 +51,8 @@ flowchart TB
         V -- "Pilot complete" --> F
     end
 
-    H --> L
-    H -- "Reference data" --> C
+    H --> B
+    H -- "Reference data" --> P
 
     classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
     classDef tools fill:#eef1f4,stroke:#7a8794,color:#1b2733
