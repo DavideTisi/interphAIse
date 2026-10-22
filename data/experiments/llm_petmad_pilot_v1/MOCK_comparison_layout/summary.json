@@ -24,27 +24,20 @@
             3.6003562394027577,
             3.6170508624496
           ],
+          "comparability_problems": [],
           "primary": [
             {
               "run_id": "ref-cathode",
-              "registry": [
-                0,
-                0
-              ],
+              "registry_id": "cathode",
               "status": "valid",
-              "validated": true,
               "W_adh_J_m2": 3.6003562394027577,
               "problems": [],
               "failure_reason": null
             },
             {
               "run_id": "ref-cathode-third",
-              "registry": [
-                0,
-                0
-              ],
+              "registry_id": "third",
               "status": "valid",
-              "validated": true,
               "W_adh_J_m2": 3.6170508624496,
               "problems": [],
               "failure_reason": null
@@ -62,15 +55,12 @@
             1.6333940812860246,
             1.6333940812860246
           ],
+          "comparability_problems": [],
           "primary": [
             {
               "run_id": "ref-electrolyte",
-              "registry": [
-                0,
-                0
-              ],
+              "registry_id": "electrolyte",
               "status": "valid",
-              "validated": true,
               "W_adh_J_m2": 1.6333940812860246,
               "problems": [],
               "failure_reason": null
@@ -100,12 +90,12 @@
           "W_adh_J_m2": null,
           "W_sep_J_m2": null,
           "registry_range_J_m2": null,
+          "comparability_problems": [],
           "primary": [
             {
               "run_id": "caal-cathode-pending",
-              "registry": null,
+              "registry_id": null,
               "status": "pending",
-              "validated": false,
               "W_adh_J_m2": null,
               "problems": [],
               "failure_reason": null
@@ -120,12 +110,12 @@
           "W_adh_J_m2": null,
           "W_sep_J_m2": null,
           "registry_range_J_m2": null,
+          "comparability_problems": [],
           "primary": [
             {
               "run_id": "caal-electrolyte-pending",
-              "registry": null,
+              "registry_id": null,
               "status": "pending",
-              "validated": false,
               "W_adh_J_m2": null,
               "problems": [],
               "failure_reason": null
@@ -155,12 +145,12 @@
           "W_adh_J_m2": null,
           "W_sep_J_m2": null,
           "registry_range_J_m2": null,
+          "comparability_problems": [],
           "primary": [
             {
               "run_id": "lzp-cathode-failed",
-              "registry": null,
+              "registry_id": null,
               "status": "failed",
-              "validated": false,
               "W_adh_J_m2": null,
               "problems": [],
               "failure_reason": "FIXTURE: no lattice match within bounds"
@@ -175,12 +165,12 @@
           "W_adh_J_m2": null,
           "W_sep_J_m2": null,
           "registry_range_J_m2": null,
+          "comparability_problems": [],
           "primary": [
             {
               "run_id": "lzp-electrolyte-failed",
-              "registry": null,
+              "registry_id": null,
               "status": "failed",
-              "validated": false,
               "W_adh_J_m2": null,
               "problems": [],
               "failure_reason": "FIXTURE: no lattice match within bounds"
@@ -196,11 +186,13 @@
   "compute": {
     "new": {
       "calls": 0,
-      "wall_seconds": 0.0
+      "wall_seconds": 0.0,
+      "runs_with_unknown_cost": 2
     },
     "reused": {
       "calls": 684,
-      "wall_seconds": 207.458704998
+      "wall_seconds": 207.458704998,
+      "runs_with_unknown_cost": 0
     }
   },
   "invalid_runs": [],
