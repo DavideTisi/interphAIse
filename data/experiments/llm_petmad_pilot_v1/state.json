@@ -52,7 +52,7 @@
   "table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
   "http_cap": 10,
   "max_http_per_call": 3,
-  "http_attempts_used": 3,
+  "http_attempts_used": 4,
   "http_reserved_unsettled": 0,
   "stages": [
     {
@@ -255,6 +255,109 @@
       "http_attempts_charged": 1,
       "frozen_at": "2026-10-22T07:39:43+00:00",
       "record_sha256": "010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01"
+    },
+    {
+      "stage": "choose_3",
+      "attempt": 0,
+      "prompt": "{\"candidates\": [{\"candidate_id\": \"mp-aaacjjwh\", \"descriptors\": {}, \"formula\": \"LiNbF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaacjmqp\", \"descriptors\": {}, \"formula\": \"LiTaF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaaaajby\", \"descriptors\": {}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaaaabru\", \"descriptors\": {}, \"formula\": \"LiF\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 8.7161, \"insulating\": true, \"penalty\": 0.3104396521073731, \"penalty_bin\": 15}}], \"evaluated\": [\"mp-aaacjjwh\", \"mp-aaacjmqp\"], \"feedback\": [{\"candidate_id\": \"mp-aaacjjwh\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 3.6170508624496, \"W_sep_J_m2\": 5.167624545488891, \"registries\": [{\"W_adh_J_m2\": 3.6003562394027577, \"failure_reason\": null, \"registry\": [0, 0], \"registry_id\": \"R1\", \"run_id\": \"mp-aaacjjwh:cathode:primary:R1\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}, {\"W_adh_J_m2\": 3.596964455828597, \"failure_reason\": null, \"registry\": [0.16666666666666666, 0], \"registry_id\": \"R2\", \"run_id\": \"mp-aaacjjwh:cathode:primary:R2\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}, {\"W_adh_J_m2\": 3.6170508624496, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.3333333333333333], \"registry_id\": \"R3\", \"run_id\": \"mp-aaacjjwh:cathode:primary:R3\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}], \"registry_range_J_m2\": [3.596964455828597, 3.6170508624496], \"selected_run_id\": \"mp-aaacjjwh:cathode:primary:R3\", \"status\": \"valid\"}, \"electrolyte\": {\"W_adh_J_m2\": 1.6333940812860246, \"W_sep_J_m2\": 2.9672197308623063, \"registries\": [{\"W_adh_J_m2\": 1.6333940812860246, \"failure_reason\": null, \"registry\": [0, 0], \"registry_id\": \"R1\", \"run_id\": \"mp-aaacjjwh:electrolyte:primary:R1\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}, {\"W_adh_J_m2\": 1.6316068100231231, \"failure_reason\": null, \"registry\": [0, 0.5], \"registry_id\": \"R2\", \"run_id\": \"mp-aaacjjwh:electrolyte:primary:R2\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}], \"registry_range_J_m2\": [1.6316068100231231, 1.6333940812860246], \"selected_run_id\": \"mp-aaacjjwh:electrolyte:primary:R1\", \"status\": \"valid\"}}, \"formula\": \"LiNbF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"min_W_adh_J_m2\": 1.6333940812860246, \"primary_cost\": {\"calculator_calls\": 1256, \"runs_with_unknown_cost\": 0}, \"sensitivity\": [], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}, \"weaker_contact\": \"electrolyte\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 3.338748412819128, \"W_sep_J_m2\": 4.727749860143862, \"registries\": [{\"W_adh_J_m2\": 3.338748412819128, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"registry_id\": \"R1\", \"run_id\": \"mp-aaacjmqp:cathode:primary:R1\", \"status\": \"valid\", \"warnings\": [\"formal polarity film/substrate 1.228/2.058 e/\\u00c5\"]}, {\"W_adh_J_m2\": 3.326811096603576, \"failure_reason\": null, \"registry\": [0.25, 0.25], \"registry_id\": \"R2\", \"run_id\": \"mp-aaacjmqp:cathode:primary:R2\", \"status\": \"valid\", \"warnings\": [\"formal polarity film/substrate 1.228/2.058 e/\\u00c5\"]}, {\"W_adh_J_m2\": 3.3333303689279363, \"failure_reason\": null, \"registry\": [0.08333333333333333, 0.25], \"registry_id\": \"R3\", \"run_id\": \"mp-aaacjmqp:cathode:primary:R3\", \"status\": \"valid\", \"warnings\": [\"formal polarity film/substrate 1.228/2.058 e/\\u00c5\"]}], \"registry_range_J_m2\": [3.326811096603576, 3.338748412819128], \"selected_run_id\": \"mp-aaacjmqp:cathode:primary:R1\", \"status\": \"valid\"}, \"electrolyte\": {\"W_adh_J_m2\": 1.5773585444472311, \"W_sep_J_m2\": 2.910571251635274, \"registries\": [{\"W_adh_J_m2\": 1.5658959489438142, \"failure_reason\": null, \"registry\": [0.0, 0.0], \"registry_id\": \"R1\", \"run_id\": \"mp-aaacjmqp:electrolyte:primary:R1\", \"status\": \"valid\", \"warnings\": [\"formal polarity film/substrate 1.118/0.347 e/\\u00c5\"]}, {\"W_adh_J_m2\": 1.5773585444472311, \"failure_reason\": null, \"registry\": [0.25, 0.5], \"registry_id\": \"R2\", \"run_id\": \"mp-aaacjmqp:electrolyte:primary:R2\", \"status\": \"valid\", \"warnings\": [\"formal polarity film/substrate 1.118/0.347 e/\\u00c5\"]}, {\"W_adh_J_m2\": 1.534040130056007, \"failure_reason\": null, \"registry\": [0.08333333333333333, 0.75], \"registry_id\": \"R3\", \"run_id\": \"mp-aaacjmqp:electrolyte:primary:R3\", \"status\": \"valid\", \"warnings\": [\"formal polarity film/substrate 1.118/0.347 e/\\u00c5\"]}], \"registry_range_J_m2\": [1.534040130056007, 1.5773585444472311], \"selected_run_id\": \"mp-aaacjmqp:electrolyte:primary:R2\", \"status\": \"valid\"}}, \"formula\": \"LiTaF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"min_W_adh_J_m2\": 1.5773585444472311, \"primary_cost\": {\"calculator_calls\": 1502, \"runs_with_unknown_cost\": 0}, \"sensitivity\": [{\"availability\": \"planned; not part of this decision\", \"contact\": \"cathode\", \"kind\": \"fixed_depth_variation\", \"run_id\": \"mp-aaacjmqp:cathode:sensitivity:fixed_depth_variation\"}, {\"availability\": \"planned; not part of this decision\", \"contact\": \"cathode\", \"kind\": \"robustness_case\", \"run_id\": \"mp-aaacjmqp:cathode:sensitivity:robustness_case\"}, {\"availability\": \"planned; not part of this decision\", \"contact\": \"cathode\", \"kind\": \"thickness_increment\", \"run_id\": \"mp-aaacjmqp:cathode:sensitivity:thickness_increment\"}, {\"availability\": \"planned; not part of this decision\", \"contact\": \"electrolyte\", \"kind\": \"fixed_depth_variation\", \"run_id\": \"mp-aaacjmqp:electrolyte:sensitivity:fixed_depth_variation\"}, {\"availability\": \"planned; not part of this decision\", \"contact\": \"electrolyte\", \"kind\": \"robustness_case\", \"run_id\": \"mp-aaacjmqp:electrolyte:sensitivity:robustness_case\"}, {\"availability\": \"planned; not part of this decision\", \"contact\": \"electrolyte\", \"kind\": \"thickness_increment\", \"run_id\": \"mp-aaacjmqp:electrolyte:sensitivity:thickness_increment\"}], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}, \"weaker_contact\": \"electrolyte\"}], \"output_schema\": \"{\\\"ordered_shortlist\\\": [ids], \\\"selected_id\\\": first id, \\\"hypothesis\\\": str, \\\"predicted_weaker_contact\\\": \\\"cathode\\\"|\\\"electrolyte\\\"|\\\"unresolved\\\", \\\"predicted_W_adh_J_m2\\\": {\\\"cathode\\\": [low, high], \\\"electrolyte\\\": [low, high]}, \\\"change_trigger\\\": str, \\\"supporting_observations\\\": [str], \\\"prior_prediction_assessment\\\": str}\", \"previous_decisions\": [{\"hypothesis\": \"Ranking uses only the frozen thermodynamic penalty and acceptance flags, since no adhesion data exist yet for these candidates. LiTaF6 (mp-aaacjmqp) has the lowest penalty among the unevaluated set (0.027, bin 1), is acceptable, and is insulating with a 5.9 eV gap. LiCaAlF6 (mp-aaaaajby) is also acceptable and insulating with a 7.6 eV gap, but its penalty is higher (0.048, bin 2), so it ranks second. LiF (mp-aaaaabru) is thermodynamically rejected (penalty 0.31, bin 15, acceptable=false). Under the brief, strong adhesion cannot rescue a rejected coating, so it ranks last. The ordering should be checked against validated W_adh once the first two candidates are evaluated.\", \"ordered_shortlist\": [\"mp-aaacjmqp\", \"mp-aaaaajby\", \"mp-aaaaabru\"], \"stage\": \"prior\"}, {\"change_trigger\": \"Revisit the ranking if the validated LiTaF6 electrolyte W_adh falls below about 1.4 J/m2 or rises above about 1.9 J/m2, if the weaker contact flips to the cathode, or if the penalty bin or acceptance changes on re-evaluation. A LiCaAlF6 result with a higher min(W_adh) at its penalty bin 2 would also justify promoting it.\", \"hypothesis\": \"LiTaF6 is the next coating to evaluate. It has the lowest frozen penalty among the unevaluated candidates (0.027, bin 1, acceptable) and a 5.9 eV gap. LiNbF6, the structural and chemical analogue (same fluoride framework, similar cation size), gave a weaker electrolyte contact of about 1.63 J/m2 and a cathode contact of about 3.6 J/m2. I expect LiTaF6 to show a similar pattern, with the electrolyte contact as the bottleneck. This is a prediction from one analogue, not a computed value. LiCaAlF6 has a higher penalty (bin 2) and is second. LiF is thermodynamically rejected (bin 15), so adhesion cannot rescue it and it stays last.\", \"ordered_shortlist\": [\"mp-aaacjmqp\", \"mp-aaaaajby\", \"mp-aaaaabru\"], \"predicted_W_adh_J_m2\": {\"cathode\": [3.2, 3.9], \"electrolyte\": [1.4, 1.9]}, \"predicted_weaker_contact\": \"electrolyte\", \"selected_id\": \"mp-aaacjmqp\", \"stage\": \"choose_2\"}], \"question\": \"Compare the new feedback with your previous decision and prediction (previous_decisions). Say whether it supports or contradicts that prediction and whether your choice changes; then choose.\", \"stage\": \"choose_3\", \"unevaluated\": [\"mp-aaaaajby\", \"mp-aaaaabru\"], \"validation_feedback\": \"\"}",
+      "feedback_sha256": [
+        "db7306f24b27c2840a1d11936b9ed41dc6c4bf771733d2fd154c836244e4a5fe",
+        "dd72717b964ba0a250c382750e7861206af0c9b40b389bb19108fb966d826aa0"
+      ],
+      "started_at": "2026-10-22T08:03:41+00:00",
+      "parsed": {
+        "ordered_shortlist": [
+          "mp-aaaaajby",
+          "mp-aaaaabru"
+        ],
+        "selected_id": "mp-aaaaajby",
+        "hypothesis": "LiTaF6 came back as predicted: its weaker contact is the electrolyte (min W_adh 1.58 J/m2) and the cathode contact is 3.34 J/m2. Both values sit inside my earlier ranges, so the fluoride-framework analogy held. The remaining acceptable, unevaluated candidate is LiCaAlF6 (mp-aaaaajby). Its penalty is bin 2 (0.048), higher than the bin-1 LiTaF6 and LiNbF6, but it is acceptable and insulating with a 7.6 eV gap. It is the only acceptable candidate left, so it is the next evaluation. I expect the same pattern, with the electrolyte as the bottleneck, but the Ca/Al mixed-cation framework is less close to the Nb/Ta analogues, so the range is wider. LiF (bin 15, rejected) stays last. Adhesion cannot rescue it under the brief.",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            3.0,
+            3.8
+          ],
+          "electrolyte": [
+            1.4,
+            1.9
+          ]
+        },
+        "predicted_weaker_contact": "electrolyte",
+        "change_trigger": "Revisit the ranking if the LiCaAlF6 validated min W_adh exceeds about 1.63 J/m2 (the LiNbF6 electrolyte value), since that would make it the best adhesion option at its penalty bin. Also revisit if its penalty bin moves to 1 or lower, or if acceptance changes on re-evaluation. If the weaker contact flips to the cathode, or the electrolyte falls below about 1.4 J/m2, the bin-2 penalty is no longer justified and the shortlist should be reconsidered. If LiCaAlF6 is rejected, the shortlist is exhausted among acceptable candidates.",
+        "supporting_observations": [
+          "LiTaF6 (mp-aaacjmqp): penalty 0.0271, bin 1, acceptable, insulating, 5.92 eV gap. Cathode W_adh 3.34 J/m2 (registry range 3.33 to 3.34). Electrolyte W_adh 1.58 J/m2 (registry range 1.53 to 1.58). The electrolyte is the weaker contact, with min W_adh 1.58 J/m2.",
+          "LiNbF6 (mp-aaacjjwh): penalty 0.0288, bin 1, acceptable, insulating, 4.79 eV gap. Cathode W_adh 3.62 J/m2. Electrolyte W_adh 1.63 J/m2, which is the weaker contact and gives min W_adh 1.63 J/m2.",
+          "Among the two evaluated coatings, LiNbF6 has the higher min W_adh (1.63 vs 1.58 J/m2) and the higher cathode W_adh. LiTaF6 has a slightly lower penalty (0.0271 vs 0.0288), but that gap is small and within the same bin, so adhesion is the main differentiator.",
+          "LiCaAlF6 (mp-aaaaajby) is unevaluated: penalty 0.0477, bin 2, acceptable, insulating, 7.64 eV gap, with formal-polarity and finite-range MLIP limitations.",
+          "LiF (mp-aaaaabru) is unevaluated and thermodynamically rejected: penalty 0.310, bin 15, acceptable=false. It is not a valid choice under the brief regardless of adhesion."
+        ],
+        "prior_prediction_assessment": "The LiTaF6 prediction was supported. The predicted cathode range [3.2, 3.9] contains the validated 3.34 J/m2. The predicted electrolyte range [1.4, 1.9] contains the validated 1.58 J/m2, and the lower registry value 1.53 J/m2 also falls within it. The weaker contact was correctly predicted as the electrolyte. The penalty bin 1 and acceptance were unchanged on evaluation. The part of the prior prediction that was not borne out is the implicit preference for LiTaF6 over LiNbF6 as the leading coating. LiNbF6 has better adhesion, so the ranking among evaluated candidates should weight adhesion more than the small penalty difference. The LiCaAlF6 choice is driven by it being the only acceptable candidate left, not by a preference over evaluated options."
+      },
+      "response": {
+        "ordered_shortlist": [
+          "mp-aaaaajby",
+          "mp-aaaaabru"
+        ],
+        "selected_id": "mp-aaaaajby",
+        "hypothesis": "LiTaF6 came back as predicted: its weaker contact is the electrolyte (min W_adh 1.58 J/m2) and the cathode contact is 3.34 J/m2. Both values sit inside my earlier ranges, so the fluoride-framework analogy held. The remaining acceptable, unevaluated candidate is LiCaAlF6 (mp-aaaaajby). Its penalty is bin 2 (0.048), higher than the bin-1 LiTaF6 and LiNbF6, but it is acceptable and insulating with a 7.6 eV gap. It is the only acceptable candidate left, so it is the next evaluation. I expect the same pattern, with the electrolyte as the bottleneck, but the Ca/Al mixed-cation framework is less close to the Nb/Ta analogues, so the range is wider. LiF (bin 15, rejected) stays last. Adhesion cannot rescue it under the brief.",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            3.0,
+            3.8
+          ],
+          "electrolyte": [
+            1.4,
+            1.9
+          ]
+        },
+        "predicted_weaker_contact": "electrolyte",
+        "change_trigger": "Revisit the ranking if the LiCaAlF6 validated min W_adh exceeds about 1.63 J/m2 (the LiNbF6 electrolyte value), since that would make it the best adhesion option at its penalty bin. Also revisit if its penalty bin moves to 1 or lower, or if acceptance changes on re-evaluation. If the weaker contact flips to the cathode, or the electrolyte falls below about 1.4 J/m2, the bin-2 penalty is no longer justified and the shortlist should be reconsidered. If LiCaAlF6 is rejected, the shortlist is exhausted among acceptable candidates.",
+        "supporting_observations": [
+          "LiTaF6 (mp-aaacjmqp): penalty 0.0271, bin 1, acceptable, insulating, 5.92 eV gap. Cathode W_adh 3.34 J/m2 (registry range 3.33 to 3.34). Electrolyte W_adh 1.58 J/m2 (registry range 1.53 to 1.58). The electrolyte is the weaker contact, with min W_adh 1.58 J/m2.",
+          "LiNbF6 (mp-aaacjjwh): penalty 0.0288, bin 1, acceptable, insulating, 4.79 eV gap. Cathode W_adh 3.62 J/m2. Electrolyte W_adh 1.63 J/m2, which is the weaker contact and gives min W_adh 1.63 J/m2.",
+          "Among the two evaluated coatings, LiNbF6 has the higher min W_adh (1.63 vs 1.58 J/m2) and the higher cathode W_adh. LiTaF6 has a slightly lower penalty (0.0271 vs 0.0288), but that gap is small and within the same bin, so adhesion is the main differentiator.",
+          "LiCaAlF6 (mp-aaaaajby) is unevaluated: penalty 0.0477, bin 2, acceptable, insulating, 7.64 eV gap, with formal-polarity and finite-range MLIP limitations.",
+          "LiF (mp-aaaaabru) is unevaluated and thermodynamically rejected: penalty 0.310, bin 15, acceptable=false. It is not a valid choice under the brief regardless of adhesion."
+        ],
+        "prior_prediction_assessment": "The LiTaF6 prediction was supported. The predicted cathode range [3.2, 3.9] contains the validated 3.34 J/m2. The predicted electrolyte range [1.4, 1.9] contains the validated 1.58 J/m2, and the lower registry value 1.53 J/m2 also falls within it. The weaker contact was correctly predicted as the electrolyte. The penalty bin 1 and acceptance were unchanged on evaluation. The part of the prior prediction that was not borne out is the implicit preference for LiTaF6 over LiNbF6 as the leading coating. LiNbF6 has better adhesion, so the ranking among evaluated candidates should weight adhesion more than the small penalty difference. The LiCaAlF6 choice is driven by it being the only acceptable candidate left, not by a preference over evaluated options."
+      },
+      "llm_metadata": {
+        "requested_model": "claude-haiku-5-5",
+        "returned_model": "claude-haiku-5-5",
+        "response_id": "msg_011CgGvkg3XoLmChd29nhGMX",
+        "usage": {
+          "input_tokens": 4860,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "output_tokens": 2481,
+          "output_tokens_details": {
+            "thinking_tokens": 928
+          },
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "stop_reason": "end_turn",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "request_id": "req_011CgGvkex3LA4wREEVt1Saq",
+            "elapsed_s": 10.937
+          }
+        ],
+        "final_error": null
+      },
+      "http_attempts_charged": 1,
+      "frozen_at": "2026-10-22T08:03:52+00:00",
+      "record_sha256": "66ff7ea1abab1ac18f014da8b82b68119c79e402e934c4161a22df6ac58f0282"
     }
   ],
   "snapshots": {
@@ -380,13 +483,189 @@
       },
       "sha256": "db7306f24b27c2840a1d11936b9ed41dc6c4bf771733d2fd154c836244e4a5fe",
       "frozen_at": "2026-10-22T07:39:38+00:00"
+    },
+    "mp-aaacjmqp": {
+      "bundle": {
+        "candidate_id": "mp-aaacjmqp",
+        "formula": "LiTaF6",
+        "thermo": {
+          "penalty": 0.027074933496621156,
+          "penalty_bin": 1,
+          "acceptable": true,
+          "insulating": true,
+          "band_gap_eV": 5.917199104338054
+        },
+        "contacts": {
+          "cathode": {
+            "status": "valid",
+            "selected_run_id": "mp-aaacjmqp:cathode:primary:R1",
+            "W_adh_J_m2": 3.338748412819128,
+            "W_sep_J_m2": 4.727749860143862,
+            "registry_range_J_m2": [
+              3.326811096603576,
+              3.338748412819128
+            ],
+            "registries": [
+              {
+                "run_id": "mp-aaacjmqp:cathode:primary:R1",
+                "registry_id": "R1",
+                "registry": [
+                  0.0,
+                  0.0
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 3.338748412819128,
+                "failure_reason": null,
+                "warnings": [
+                  "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+                ]
+              },
+              {
+                "run_id": "mp-aaacjmqp:cathode:primary:R2",
+                "registry_id": "R2",
+                "registry": [
+                  0.25,
+                  0.25
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 3.326811096603576,
+                "failure_reason": null,
+                "warnings": [
+                  "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+                ]
+              },
+              {
+                "run_id": "mp-aaacjmqp:cathode:primary:R3",
+                "registry_id": "R3",
+                "registry": [
+                  0.08333333333333333,
+                  0.25
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 3.3333303689279363,
+                "failure_reason": null,
+                "warnings": [
+                  "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+                ]
+              }
+            ]
+          },
+          "electrolyte": {
+            "status": "valid",
+            "selected_run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+            "W_adh_J_m2": 1.5773585444472311,
+            "W_sep_J_m2": 2.910571251635274,
+            "registry_range_J_m2": [
+              1.534040130056007,
+              1.5773585444472311
+            ],
+            "registries": [
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+                "registry_id": "R1",
+                "registry": [
+                  0.0,
+                  0.0
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 1.5658959489438142,
+                "failure_reason": null,
+                "warnings": [
+                  "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+                ]
+              },
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+                "registry_id": "R2",
+                "registry": [
+                  0.25,
+                  0.5
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 1.5773585444472311,
+                "failure_reason": null,
+                "warnings": [
+                  "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+                ]
+              },
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+                "registry_id": "R3",
+                "registry": [
+                  0.08333333333333333,
+                  0.75
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 1.534040130056007,
+                "failure_reason": null,
+                "warnings": [
+                  "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+                ]
+              }
+            ]
+          }
+        },
+        "weaker_contact": "electrolyte",
+        "min_W_adh_J_m2": 1.5773585444472311,
+        "sensitivity": [
+          {
+            "run_id": "mp-aaacjmqp:cathode:sensitivity:fixed_depth_variation",
+            "contact": "cathode",
+            "kind": "fixed_depth_variation",
+            "availability": "planned; not part of this decision"
+          },
+          {
+            "run_id": "mp-aaacjmqp:cathode:sensitivity:robustness_case",
+            "contact": "cathode",
+            "kind": "robustness_case",
+            "availability": "planned; not part of this decision"
+          },
+          {
+            "run_id": "mp-aaacjmqp:cathode:sensitivity:thickness_increment",
+            "contact": "cathode",
+            "kind": "thickness_increment",
+            "availability": "planned; not part of this decision"
+          },
+          {
+            "run_id": "mp-aaacjmqp:electrolyte:sensitivity:fixed_depth_variation",
+            "contact": "electrolyte",
+            "kind": "fixed_depth_variation",
+            "availability": "planned; not part of this decision"
+          },
+          {
+            "run_id": "mp-aaacjmqp:electrolyte:sensitivity:robustness_case",
+            "contact": "electrolyte",
+            "kind": "robustness_case",
+            "availability": "planned; not part of this decision"
+          },
+          {
+            "run_id": "mp-aaacjmqp:electrolyte:sensitivity:thickness_increment",
+            "contact": "electrolyte",
+            "kind": "thickness_increment",
+            "availability": "planned; not part of this decision"
+          }
+        ],
+        "primary_cost": {
+          "calculator_calls": 1502,
+          "runs_with_unknown_cost": 0
+        },
+        "limitations": [
+          "formally polar slabs",
+          "finite-range MLIP",
+          "no Li transport"
+        ]
+      },
+      "sha256": "dd72717b964ba0a250c382750e7861206af0c9b40b389bb19108fb966d826aa0",
+      "frozen_at": "2026-10-22T08:03:41+00:00"
     }
   },
   "evaluated": [
-    "mp-aaacjjwh"
+    "mp-aaacjjwh",
+    "mp-aaacjmqp"
   ],
   "selected": [
-    "mp-aaacjmqp"
+    "mp-aaacjmqp",
+    "mp-aaaaajby"
   ],
   "plan": [
     "prior",

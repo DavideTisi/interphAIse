@@ -2660,3 +2660,25 @@ New regressions:
 
 The old index fixture was replaced by the real committed campaign files. 77 tests passed. The live state
 resumes cleanly (dry check, no call): next is choose-3, Pending on LiTaF6. No API or PET-MAD runs.
+
+## 2026-10-22 — Agent side (Adem): LiTaF6 package validated; live choose-3 executed
+
+Claude's LiTaF6 primary package (`work/petmad-comparison` `d5ab477`, overlaid here; manifest unchanged
+`99ef2dc1…`; feedback `91e80b06…`) was validated independently with the manifest-derived checks. All 11
+primary runs passed: identity, build hashes, saved fixed masks, convergence, W_adh and W_sep arithmetic.
+- Cathode: R1, 3.3387 J/m² (W_sep 4.7277; registries 3.3268–3.3387).
+- Electrolyte: R2, 1.5774 J/m² (W_sep 2.9106; registries 1.5340–1.5774).
+- Weaker contact: electrolyte. Sensitivity withheld.
+
+The choose-2 forecast held: both values inside their ranges, weaker contact correct.
+
+**Live choose-3** (approved sequence, same state and cap; code `d1ec1b0`): 1 HTTP attempt (4 of 10 total),
+`claude-haiku-5-5`.
+- **Selected LiCaAlF6 (`mp-aaaaajby`)**, the only acceptable candidate left.
+- Forecasts: cathode [3.0, 3.8], electrolyte [1.4, 1.9] J/m², weaker contact electrolyte.
+- Self-assessment: the LiTaF6 prediction was supported; it revised its implicit preference for LiTaF6 over
+  LiNbF6 toward weighting adhesion more.
+- Decision comparison: LiCaAlF6 was already next in the choose-2 shortlist, so the order was unchanged.
+- Record `66ff7ea1…`. Cumulative ≈ USD 0.003 at list price.
+
+Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report_live/`, `state.json`.
