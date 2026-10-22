@@ -2663,3 +2663,30 @@ Check JSON/links/whitespace and staged credentials, then publish under standing
 handoff-sharing authorization. Next: explicit approval for Adem's initial live
 selection, archive its ID/predictions/hash, bounded primary physics, and validated
 feedback before the next selection under the same total attempt budget.
+
+## 2026-10-22 — Record Davide's approval for Adem's live pilot
+
+**Branch:** `davide`, starting `956ea49`. Davide answered the concrete approval
+request with "i approve adem starts the calculations". Recorded authorization
+for Adem to run the reviewed prior and choose-2, under one total ten-HTTP-attempt
+cap across the bounded pilot and a USD 0.05 allowance at the reported rates.
+Keep direct Anthropic Haiku 5.5, temperature 1.0, maximum 4,096 output tokens;
+retries and resumes consume the same budget. No repeated permission request is
+needed for the same authorized scope. Increased caps or changed scope are not
+covered by this approval.
+
+Updated SYNC_ADEM_14 with the approval, approved command and execution ownership;
+aligned REPORT, WORK_DIVISION and LLM_PETMAD_PILOT_PLAN. The exact package and
+source validation evidence from the preceding review are unchanged. Adem must
+archive the actual selection, numeric predictions and record/feedback hashes
+before Claude calculates its six primary jobs. The physics pause and remaining
+manifest/source checks before choose-3 still apply. Approval is distinct from
+execution: no completed live call or new scientific result is claimed here.
+
+This is a documentation-only session. No live API call, cluster job, contributor
+message, implementation change or branch merge was made. Adem remains the sole
+live-run owner, so Codex does not launch a duplicate. Preserve the unrelated
+README modification. Validate local links, scope and whitespace, scan staged
+files for credentials, and commit/push the approval under the standing handoff
+sharing authorization; verify the remote head. The prior 188-test review
+remains applicable; no new code tests are needed for this approval record.

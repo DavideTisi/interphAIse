@@ -1,5 +1,14 @@
 # interphAIse — project report
 
+**Live pilot approved — 2026-10-22:** Davide explicitly approved Adem starting
+the reviewed prior and first selection, with **ten HTTP attempts total** across
+the pilot and a **USD 0.05 allowance** at the reported rates. Adem owns the live
+execution and archives the selected ID, predictions and hashes before Claude's
+six primary jobs. The normal physics pause and manifest/source validation
+requirements before choose-3 remain. Approval is recorded; live execution and
+its outcomes are not yet confirmed. See [approved handoff](SYNC_ADEM_14.md).
+Codex has not launched a duplicate run.
+
 **Initial live selection ready for approval — 2026-10-22:** Reviewed Adem's
 `f8abbc0`; 188 tests pass and the completed 450-run analysis is unchanged.
 The earlier cap/resume, invalid-value and prediction-history regressions pass.

@@ -1,4 +1,25 @@
-# Adem: initial live selection is ready for approval on the reviewed inputs
+# Adem: initial live selection approved on the reviewed inputs
+
+## Davide's approval — 22 October 2026
+
+Davide explicitly approved: **"i approve adem starts the calculations"**, in
+response to the reviewed proposal for the prior and first selection, ten HTTP
+attempts total across the pilot and a USD 0.05 allowance at the reported rates.
+**Adem may start the live prior and choose-2 now** on the pinned package below.
+Use direct Anthropic `claude-haiku-5-5`, temperature 1.0 and 4,096 maximum output
+tokens. All retries count toward the same total ten-attempt cap; retain one
+live state and never reset the budget when resuming. The allowance is approved;
+it does not turn the estimated list-price cost into a measured bill.
+
+Archive the selected ID, predictions, record hash and feedback hashes, then
+pause for Claude's six declared primary jobs. Finish the manifest/source checks
+and independently validate that complete physical package before choose-3.
+The approval covers the proposed bounded pilot sequence under those gates;
+reconfirming the same budget is unnecessary. A changed scope or increased cap
+is not covered. Adem owns execution; Codex has not launched a duplicate run.
+Approval is recorded here, but actual live execution is not yet confirmed.
+
+## Reviewed starting point
 
 22 October 2026. Reviewed `work/agent-experiments:f8abbc0`, including `3a2801b`,
 and Claude's current `work/petmad-comparison:b199608`. **188 tests pass in
@@ -9,8 +30,8 @@ The original retry/interrupt/resume, 999-value, deleted-after-start registry,
 negative forecast, missing successful-call metadata and prediction-history
 regressions now pass. The new report generator is covered. This is sufficient
 progress to recommend the **initial live prior and choose-2** on the exact
-reviewed inputs, subject to Davide's explicit approval. It is not approval by
-itself or a claim that all general-purpose validation is complete.
+reviewed inputs. Davide has now given the approval recorded above. The review
+does not claim that all general-purpose validation is complete.
 
 ## Exact starting package and command
 
@@ -34,7 +55,7 @@ rule, and free-atom forces from all saved final structures. The reference
 feedback remains cathode **3.6170509** and electrolyte **1.6333941 J/m²**.
 
 Use a fresh live state, separate from every mock. Preserve the planned menu and
-hashes; archive exact code/data identity alongside the state. Once approved:
+hashes; archive exact code/data identity alongside the state. Approved command:
 
 ```sh
 python scripts/run_llm_petmad_pilot.py \
@@ -78,7 +99,7 @@ Optional consistency and sensitivity results stay outside decision snapshots.
 Claude's additional reference checks are already archived separately; they
 have not replaced the frozen reference values used in this review.
 
-## Cost wording and proposed approval scope
+## Cost wording and approved scope
 
 The durable **10-HTTP-attempt cap** and **16,000-character user-prompt cap**
 are implemented. The estimate of **about USD 0.006** is plausible under your
@@ -87,16 +108,15 @@ USD 0.030 ceiling. The 642-byte system prompt and provider message overhead also
 count. A conservative scenario of 17k input and 4,096 output tokens per attempt
 would be **USD 0.03748** for ten attempts at those recorded rates.
 
-Recommend asking for **up to 10 HTTP attempts with a USD 0.05 budget allowance**,
-explicitly an allowance under the recorded pricing assumptions, not a new claim
-that the code enforces a dollar meter. If USD 0.030 is a strict requirement,
-implement a valid token/cost bound before live execution. No current pricing or
-actual account billing was independently verified in this code review.
+Davide approved **up to 10 HTTP attempts with a USD 0.05 budget allowance**,
+explicitly an allowance under the recorded pricing assumptions, not a claim
+that the code enforces a dollar meter. No current pricing or actual account
+billing was independently verified in this code review.
 
-Proposed execution scope: initial prior + choose-2 now, then a physics pause;
+Approved execution scope: initial prior + choose-2 now, then a physics pause;
 later calls remain within the same cap and require the completed package checks
-above. The estimate and this recommendation are **not** user approval. No live
-call, cluster calculation or external message was made by this review.
+above. No live call, cluster calculation or external message was made by this
+review or by recording the approval; Adem must archive the actual execution.
 
 Evidence: [live_pilot_review_20261022.json](data/reviews/live_pilot_review_20261022.json).
 The latest runner fixes supersede the broad hold in note 13 for this exact

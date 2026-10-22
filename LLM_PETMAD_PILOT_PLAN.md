@@ -1,5 +1,14 @@
 # LLM-guided PET-MAD pilot: one known coating, two adaptive choices
 
+**Approval, 22 October:** Davide explicitly approved Adem starting the live prior
+and first selection on the independently reviewed package. The pilot has one
+total **ten-HTTP-attempt cap**, including retries and resumes, and a **USD 0.05
+allowance** at the reported rates. After archiving the first choice/predictions,
+pause for physical calculations and complete the manifest/source validation
+before choose-3. Adem owns execution; no duplicate run was launched by Codex.
+See [SYNC_ADEM_14.md](SYNC_ADEM_14.md) for the approved command and exact package.
+This supersedes the pending-approval statements in the earlier reviews below.
+
 **Readiness review, 22 October:** Adem's `2d2cac3` passes 183 offline tests and
 reproduces the completed study. Live execution still needs source/manifest
 validation in the prompt path, a durable HTTP cap, and previous structured
