@@ -143,17 +143,50 @@ Deterministic tools already handle the mechanics. pymatgen's ZSL/`CoherentInterf
 | 3 | Which interphase phases, in which order from the electrode | `reasoners/interphase_reasoner.py` | `check_stack`: every adjacent pair must be mutually stable |
 | 4 | Is the relaxed model physical? (what you check in OVITO) | `reasoners/judge.py` | — its *action* drives the next transition |
 
-**Orchestration:** `orchestrator.py` is a state machine. The LLM chooses transitions at the branch points; numbers and gates are deterministic. Every decision is logged with its inputs and consensus agreement to `runs/<stamp>_<case>/decision_log.json`.
+**Orchestration:** `orchestrator.py` is a state machine. The decision policy (LLM, rules or human) chooses at the branch points, shown as decision nodes below. Every number and every gate is deterministic, shown as grey boxes. Every decision is logged with its inputs and consensus agreement to `runs/<stamp>_<case>/decision_log.json`.
 
+```mermaid
+flowchart TD
+    IN([electrode · electrolyte · voltage]) --> R[REACTIVITY<br/>convex-hull reaction energies]
+    R --> IT{{INTERFACE_TYPE<br/>sharp or interphase? which layers, in which order?}}
+    IT -- sharp --> S[stack = electrode, electrolyte]
+    IT -- interphase --> SC[STACK_CHECK<br/>adjacent layers mutually stable?]
+    SC -- yes --> S2[stack = electrode, layers, electrolyte]
+    SC -- "no: reacting pairs as feedback" --> IT
+    SC -. retries exhausted .-> S
+
+    S --> P
+    S2 --> P
+    subgraph P [for each adjacent pair in the stack]
+        F{{FACETS<br/>which facets are in contact?}} --> M[MATCH + VALIDATE<br/>lattice match within strain/size limits]
+        M -- "no valid match: feedback" --> F
+        M --> E[ENERGETICS<br/>MLIP relaxation, work of adhesion]
+        E --> J{{JUDGE<br/>is the relaxed model physical?}}
+        J -- "reject: thicker_slabs / larger_cell" --> M
+        J -- "reject: next_termination" --> E
+        J -- "reject: different_facets" --> F
+    end
+    J -- accept --> OUT([best structure per pair · ranking · decision log])
+
+    classDef det fill:#eef1f4,stroke:#7a8794,color:#1b2733
+    classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
+    class R,SC,M,E,S,S2 det
+    classDef io fill:#ffffff,stroke:#162b3a,color:#162b3a
+    class IT,F,J llm
+    class IN,OUT io
+    style P fill:#fafafa,stroke:#b8c2cc
 ```
-REACTIVITY ─▶ INTERFACE_TYPE ─▶ STACK_CHECK ─┐      reactive neighbours → feedback → INTERFACE_TYPE
-   [det]         [LLM 2+3]         [det]     ▼
-for each adjacent pair in the stack:
-   FACETS ─▶ MATCH+VALIDATE ─▶ ENERGETICS ─▶ JUDGE ─▶ next pair / DONE
-  [LLM 1]        [det]            [det]      [LLM 4]
-     ▲             │ no valid match              │ reject + action
-     └─────────────┴──────── feedback ◀──────────┘  thicker_slabs | next_termination | different_facets | larger_cell
-```
+
+How a run proceeds:
+
+1. **Reactivity (deterministic).** Convex-hull reaction energies between electrode and electrolyte at the given voltage.
+2. **Interface type (decision 2 + 3).** The policy chooses between a sharp interface and an interphase. For an interphase it also chooses which reaction-product layers form, and in which order. A deterministic stack check rejects any stack in which neighbouring layers react, and returns the reacting pairs as feedback. If retries run out, the run models the sharp interface.
+3. **For each adjacent pair in the stack:**
+   - **Facets (decision 1):** the policy proposes facet pairs.
+   - **Match and validate (deterministic):** lattice matching, plus structural gates. If nothing passes within the strain and size limits, the run returns to the facet choice with that feedback.
+   - **Energetics (deterministic):** MLIP relaxation and work of adhesion. Results without a validated work of adhesion are rejected automatically, before judging.
+   - **Judge (decision 4):** the policy accepts or rejects the relaxed model. A rejection names an action: thicker slabs, a larger cell, the next termination, or different facets. The action decides where the loop resumes.
+4. **Output.** The accepted structure with the highest work of adhesion for each pair, the ranking, and the full decision log.
 
 ### Principles carried over from HELLMM
 - **Generation separated from verification.** The LLM proposes; everything that produces a number is deterministic.
