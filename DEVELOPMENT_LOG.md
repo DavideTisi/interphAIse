@@ -2770,3 +2770,62 @@ perform document links, whitespace and staged credential checks before the
 scoped handoff commit/push. Documentation/metadata only: no full code suite is
 needed. Preserve unrelated README edits. The complete archive and scientific
 comparison remain pending with their existing owners.
+
+## 2026-10-22 — Review LiTaF6 feedback and live choose-3
+
+**Branch:** `davide`, starting `d306514`. Fetched collaborator branches and
+reviewed agent `9b59000`, validation fix `d1ec1b0` (now published), and physics
+`d5ab477` using isolated git archives. Claude's separate checkout also contains
+`e4d5ab7`, the prospective LiCaAlF6 selection receipt; it was not modified.
+
+Verified state checksum `701f6faa…`, every decision/feedback hash, index
+`4577b2ab…`, frozen manifest `99ef2dc1…`, and the primary feedback checksum.
+The consumer validates all eleven completed primary rows, and freshly rebuilt
+reference/LiTaF6 feedback matches the saved snapshots exactly. Independently
+loaded all six LiTaF6 source packages with the physics provenance checker,
+reconstructed fixed atoms from initial substrate coordinates and frozen depth,
+and recomputed all 18 free-force maxima from saved final forces. Masks and
+forces agree with records and targets. No calculator was loaded.
+
+LiTaF6 selected results are cathode 3.338748 (R1) and electrolyte 1.577359
+(R2) J/m². Both lie within the prospective ranges and electrolyte is correctly
+predicted as weaker. Choose-3 selects LiCaAlF6, record `66ff7ea1…`, forecasts
+3.0–3.8 / 1.4–1.9 J/m², electrolyte weaker. The choice was already next in the
+shortlist and is the only acceptable alternative left. The model's stated
+reassessment of its implicit preference is not an explicit reversal of an
+original ranking against the reference: that original shortlist excluded the
+reference. The 0.056 J/m² electrolyte difference from LiNbF6 is below the
+numerical tolerance and known reference bulk sensitivity; no robust winner.
+Frozen thermodynamic labels remain unchanged.
+
+Four attempts are charged, none unsettled. Logged usage is 9,404 input and
+4,808 output tokens, USD 0.0033444 at recorded rates (not billed). Offline
+resume of only the isolated state with a sentinel callable stops at pending
+LiCaAlF6; no invocation and identical state bytes. No paid call was made.
+
+The targeted pilot/comparison/loader tests on unmodified `9b59000` produced
+29 passes and two failures: the tests consume the evolving campaign index,
+which now includes completed LiTaF6. One loses its expected Pending pause;
+the other writes synthetic energies while retaining a real result checksum.
+Prepared `data/reviews/pilot_fixture_fix_20261022.patch`: preserve reference
+fixtures, reset prospective test rows to pending without result metadata, and
+hash each synthetic result. Applied only in the isolated archive; the same
+subset passes all 31 tests in 1.60 s (37 pre-existing ASE warnings), including
+the manifest coverage/identity/species regressions. Reverse application check
+passes. Runtime code and real data are untouched. Adem must apply the patch
+on his branch; no claim to rerun all 77 earlier tests.
+
+Read-only Niflheim checks through the existing shared SSH connection found
+Claude's LiCaAlF6 jobs 11017178–11017183 already running, then all COMPLETED
+with exit 0:0 at 08:12:09 UTC (10:12 CEST), elapsed 1:07–1:21. This review did
+not read LiCaAlF6 energies or establish its convergence. Package publication
+and validation precede the final model assessment. No duplicate job was
+submitted; no cluster or local physics output was edited.
+
+Wrote SYNC_ADEM_15 and the structured review JSON; aligned REPORT,
+WORK_DIVISION and the supersession link in SYNC_ADEM_14. Keep README edits
+separate. Check JSON, local links, patch applicability, whitespace and staged
+credentials, then publish this scoped handoff on davide under existing
+sharing authorization. No direct messages, merge or presentation edits.
+Next: Claude publishes LiCaAlF6, Adem applies the fixture patch and validates
+physics before final assessment, then prepares the three-coating comparison.

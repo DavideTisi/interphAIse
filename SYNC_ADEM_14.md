@@ -1,5 +1,9 @@
 # Adem: initial live selection approved on the reviewed inputs
 
+**Superseded status:** [SYNC_ADEM_15.md](SYNC_ADEM_15.md) verifies the published
+manifest fixes, LiTaF6 feedback and live choose-3, and records the next package
+and a test-fixture fix. The checkpoints below remain the historical record.
+
 ## Physics checkpoint — six LiTaF6 jobs complete
 
 Claude has already executed the archived choice using source `207f879`:

@@ -1,0 +1,384 @@
+{
+  "date_copenhagen": "2026-10-22",
+  "reviewed_agent_commit": "9b59000",
+  "reviewed_validation_fix": "d1ec1b0",
+  "reviewed_physics_commit": "d5ab477",
+  "state_sha256": "701f6faa412da3b89b8ba1f44a90eb37af0df77f0d69d676b4cbdfc73e1ecc62",
+  "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+  "index_sha256": "4577b2ab2e9331b7161aed14120246348ec730d8ca999724150538669e2fd808",
+  "choose3_record_sha256": "66ff7ea1abab1ac18f014da8b82b68119c79e402e934c4161a22df6ac58f0282",
+  "all_record_and_snapshot_hashes_valid": true,
+  "validated_primary_run_count": 11,
+  "fresh_bundles_match_archived_snapshots": true,
+  "assessment": {
+    "predictions": [
+      {
+        "stage": "choose_2",
+        "candidate_id": "mp-aaacjmqp",
+        "formula": "LiTaF6",
+        "status": "revealed",
+        "contacts": {
+          "cathode": {
+            "predicted": [
+              3.2,
+              3.9
+            ],
+            "width": 0.6999999999999997,
+            "observed": 3.338748412819128,
+            "in_range": true,
+            "miss": 0.0
+          },
+          "electrolyte": {
+            "predicted": [
+              1.4,
+              1.9
+            ],
+            "width": 0.5,
+            "observed": 1.5773585444472311,
+            "in_range": true,
+            "miss": 0.0
+          }
+        },
+        "weaker_predicted": "electrolyte",
+        "weaker_observed": "electrolyte",
+        "weaker_agrees": true
+      },
+      {
+        "stage": "choose_3",
+        "candidate_id": "mp-aaaaajby",
+        "status": "not yet revealed"
+      }
+    ],
+    "decision_comparison": {
+      "initial_next": "mp-aaaaajby",
+      "chosen": "mp-aaaaajby",
+      "changed": false,
+      "note": "Decision comparison at a common information state; the unchosen coating has no measured outcome."
+    },
+    "http_attempts_used": 4
+  },
+  "next_choice": {
+    "ordered_shortlist": [
+      "mp-aaaaajby",
+      "mp-aaaaabru"
+    ],
+    "selected_id": "mp-aaaaajby",
+    "hypothesis": "LiTaF6 came back as predicted: its weaker contact is the electrolyte (min W_adh 1.58 J/m2) and the cathode contact is 3.34 J/m2. Both values sit inside my earlier ranges, so the fluoride-framework analogy held. The remaining acceptable, unevaluated candidate is LiCaAlF6 (mp-aaaaajby). Its penalty is bin 2 (0.048), higher than the bin-1 LiTaF6 and LiNbF6, but it is acceptable and insulating with a 7.6 eV gap. It is the only acceptable candidate left, so it is the next evaluation. I expect the same pattern, with the electrolyte as the bottleneck, but the Ca/Al mixed-cation framework is less close to the Nb/Ta analogues, so the range is wider. LiF (bin 15, rejected) stays last. Adhesion cannot rescue it under the brief.",
+    "predicted_W_adh_J_m2": {
+      "cathode": [
+        3.0,
+        3.8
+      ],
+      "electrolyte": [
+        1.4,
+        1.9
+      ]
+    },
+    "predicted_weaker_contact": "electrolyte",
+    "change_trigger": "Revisit the ranking if the LiCaAlF6 validated min W_adh exceeds about 1.63 J/m2 (the LiNbF6 electrolyte value), since that would make it the best adhesion option at its penalty bin. Also revisit if its penalty bin moves to 1 or lower, or if acceptance changes on re-evaluation. If the weaker contact flips to the cathode, or the electrolyte falls below about 1.4 J/m2, the bin-2 penalty is no longer justified and the shortlist should be reconsidered. If LiCaAlF6 is rejected, the shortlist is exhausted among acceptable candidates.",
+    "supporting_observations": [
+      "LiTaF6 (mp-aaacjmqp): penalty 0.0271, bin 1, acceptable, insulating, 5.92 eV gap. Cathode W_adh 3.34 J/m2 (registry range 3.33 to 3.34). Electrolyte W_adh 1.58 J/m2 (registry range 1.53 to 1.58). The electrolyte is the weaker contact, with min W_adh 1.58 J/m2.",
+      "LiNbF6 (mp-aaacjjwh): penalty 0.0288, bin 1, acceptable, insulating, 4.79 eV gap. Cathode W_adh 3.62 J/m2. Electrolyte W_adh 1.63 J/m2, which is the weaker contact and gives min W_adh 1.63 J/m2.",
+      "Among the two evaluated coatings, LiNbF6 has the higher min W_adh (1.63 vs 1.58 J/m2) and the higher cathode W_adh. LiTaF6 has a slightly lower penalty (0.0271 vs 0.0288), but that gap is small and within the same bin, so adhesion is the main differentiator.",
+      "LiCaAlF6 (mp-aaaaajby) is unevaluated: penalty 0.0477, bin 2, acceptable, insulating, 7.64 eV gap, with formal-polarity and finite-range MLIP limitations.",
+      "LiF (mp-aaaaabru) is unevaluated and thermodynamically rejected: penalty 0.310, bin 15, acceptable=false. It is not a valid choice under the brief regardless of adhesion."
+    ],
+    "prior_prediction_assessment": "The LiTaF6 prediction was supported. The predicted cathode range [3.2, 3.9] contains the validated 3.34 J/m2. The predicted electrolyte range [1.4, 1.9] contains the validated 1.58 J/m2, and the lower registry value 1.53 J/m2 also falls within it. The weaker contact was correctly predicted as the electrolyte. The penalty bin 1 and acceptance were unchanged on evaluation. The part of the prior prediction that was not borne out is the implicit preference for LiTaF6 over LiNbF6 as the leading coating. LiNbF6 has better adhesion, so the ranking among evaluated candidates should weight adhesion more than the small penalty difference. The LiCaAlF6 choice is driven by it being the only acceptable candidate left, not by a preference over evaluated options."
+  },
+  "litaf6_contacts": {
+    "cathode": {
+      "status": "valid",
+      "selected_run_id": "mp-aaacjmqp:cathode:primary:R1",
+      "W_adh_J_m2": 3.338748412819128,
+      "W_sep_J_m2": 4.727749860143862,
+      "registry_range_J_m2": [
+        3.326811096603576,
+        3.338748412819128
+      ],
+      "registries": [
+        {
+          "run_id": "mp-aaacjmqp:cathode:primary:R1",
+          "registry_id": "R1",
+          "registry": [
+            0.0,
+            0.0
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 3.338748412819128,
+          "failure_reason": null,
+          "warnings": [
+            "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+          ]
+        },
+        {
+          "run_id": "mp-aaacjmqp:cathode:primary:R2",
+          "registry_id": "R2",
+          "registry": [
+            0.25,
+            0.25
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 3.326811096603576,
+          "failure_reason": null,
+          "warnings": [
+            "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+          ]
+        },
+        {
+          "run_id": "mp-aaacjmqp:cathode:primary:R3",
+          "registry_id": "R3",
+          "registry": [
+            0.08333333333333333,
+            0.25
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 3.3333303689279363,
+          "failure_reason": null,
+          "warnings": [
+            "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+          ]
+        }
+      ]
+    },
+    "electrolyte": {
+      "status": "valid",
+      "selected_run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+      "W_adh_J_m2": 1.5773585444472311,
+      "W_sep_J_m2": 2.910571251635274,
+      "registry_range_J_m2": [
+        1.534040130056007,
+        1.5773585444472311
+      ],
+      "registries": [
+        {
+          "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+          "registry_id": "R1",
+          "registry": [
+            0.0,
+            0.0
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 1.5658959489438142,
+          "failure_reason": null,
+          "warnings": [
+            "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+          ]
+        },
+        {
+          "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+          "registry_id": "R2",
+          "registry": [
+            0.25,
+            0.5
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 1.5773585444472311,
+          "failure_reason": null,
+          "warnings": [
+            "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+          ]
+        },
+        {
+          "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+          "registry_id": "R3",
+          "registry": [
+            0.08333333333333333,
+            0.75
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 1.534040130056007,
+          "failure_reason": null,
+          "warnings": [
+            "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+          ]
+        }
+      ]
+    }
+  },
+  "linbf6_contacts": {
+    "cathode": {
+      "status": "valid",
+      "selected_run_id": "mp-aaacjjwh:cathode:primary:R3",
+      "W_adh_J_m2": 3.6170508624496,
+      "W_sep_J_m2": 5.167624545488891,
+      "registry_range_J_m2": [
+        3.596964455828597,
+        3.6170508624496
+      ],
+      "registries": [
+        {
+          "run_id": "mp-aaacjjwh:cathode:primary:R1",
+          "registry_id": "R1",
+          "registry": [
+            0,
+            0
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 3.6003562394027577,
+          "failure_reason": null,
+          "warnings": [
+            "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+          ]
+        },
+        {
+          "run_id": "mp-aaacjjwh:cathode:primary:R2",
+          "registry_id": "R2",
+          "registry": [
+            0.16666666666666666,
+            0
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 3.596964455828597,
+          "failure_reason": null,
+          "warnings": [
+            "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+          ]
+        },
+        {
+          "run_id": "mp-aaacjjwh:cathode:primary:R3",
+          "registry_id": "R3",
+          "registry": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 3.6170508624496,
+          "failure_reason": null,
+          "warnings": [
+            "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+          ]
+        }
+      ]
+    },
+    "electrolyte": {
+      "status": "valid",
+      "selected_run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+      "W_adh_J_m2": 1.6333940812860246,
+      "W_sep_J_m2": 2.9672197308623063,
+      "registry_range_J_m2": [
+        1.6316068100231231,
+        1.6333940812860246
+      ],
+      "registries": [
+        {
+          "run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+          "registry_id": "R1",
+          "registry": [
+            0,
+            0
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 1.6333940812860246,
+          "failure_reason": null,
+          "warnings": [
+            "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+          ]
+        },
+        {
+          "run_id": "mp-aaacjjwh:electrolyte:primary:R2",
+          "registry_id": "R2",
+          "registry": [
+            0,
+            0.5
+          ],
+          "status": "valid",
+          "W_adh_J_m2": 1.6316068100231231,
+          "failure_reason": null,
+          "warnings": [
+            "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+          ]
+        }
+      ]
+    }
+  },
+  "electrolyte_adhesion_delta_Nb_minus_Ta_J_m2": 0.056035536838793476,
+  "http_used": 4,
+  "http_cap": 10,
+  "http_reserved_unsettled": 0,
+  "tokens": {
+    "input_tokens": 9404,
+    "output_tokens": 4808
+  },
+  "cost_USD_at_recorded_rates": 0.0033444,
+  "cost_is_billed": false,
+  "resume_check": {
+    "pending": "mp-aaaaajby cathode: primary runs not terminal",
+    "model_invocations": 0,
+    "state_bytes_unchanged": true
+  },
+  "tests_before_fixture_patch": {
+    "passed": 29,
+    "failed": 2,
+    "reason": "Mutable live index already includes completed LiTaF6; synthetic outcomes inherit obsolete hashes"
+  },
+  "tests_after_test_only_patch": {
+    "passed": 31,
+    "failed": 0,
+    "seconds": 1.6
+  },
+  "caveats": [
+    "Forecast ranges are broad, uncalibrated, and based on one analogous coating.",
+    "The order among unevaluated candidates is unchanged; LiCaAlF6 is the only acceptable option left.",
+    "The original shortlist excludes the evaluated reference, so the model's retrospective implicit LiTaF6-over-LiNbF6 preference is not an explicitly recorded initial ranking.",
+    "The 0.056 J/m2 electrolyte difference is smaller than the 0.1 J/m2 numerical tolerance and the approximately 0.12 J/m2 reference bulk-structure sensitivity; no robust materials superiority is established."
+  ],
+  "independent_physical_checks": [
+    {
+      "run_id": "mp-aaacjmqp:cathode:primary:R1",
+      "physical_fixed_mask_matches_depth_rule": true,
+      "saved_free_forces_eV_A": {
+        "interface": 0.02899728157766,
+        "film": 0.049113379154743564,
+        "substrate": 0.04552997652721886
+      }
+    },
+    {
+      "run_id": "mp-aaacjmqp:cathode:primary:R2",
+      "physical_fixed_mask_matches_depth_rule": true,
+      "saved_free_forces_eV_A": {
+        "interface": 0.048515763283456644,
+        "film": 0.04912959460674798,
+        "substrate": 0.04553017206984946
+      }
+    },
+    {
+      "run_id": "mp-aaacjmqp:cathode:primary:R3",
+      "physical_fixed_mask_matches_depth_rule": true,
+      "saved_free_forces_eV_A": {
+        "interface": 0.036466607208916486,
+        "film": 0.049117309541034514,
+        "substrate": 0.045530079106342436
+      }
+    },
+    {
+      "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+      "physical_fixed_mask_matches_depth_rule": true,
+      "saved_free_forces_eV_A": {
+        "interface": 0.041734650739169966,
+        "film": 0.0481595893241263,
+        "substrate": 0.04962206196360042
+      }
+    },
+    {
+      "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+      "physical_fixed_mask_matches_depth_rule": true,
+      "saved_free_forces_eV_A": {
+        "interface": 0.041706032685363395,
+        "film": 0.04815250981218009,
+        "substrate": 0.04961563454561778
+      }
+    },
+    {
+      "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+      "physical_fixed_mask_matches_depth_rule": true,
+      "saved_free_forces_eV_A": {
+        "interface": 0.04857051746956172,
+        "film": 0.04815968039723893,
+        "substrate": 0.04963434423466678
+      }
+    }
+  ],
+  "licaalf6_scheduler_snapshot": "2026-10-22T08:12:09Z\n11017178|LiCaAlF6-cathode_R1|COMPLETED|00:01:12|0:0\n11017179|LiCaAlF6-cathode_R2|COMPLETED|00:01:07|0:0\n11017180|LiCaAlF6-cathode_R3|COMPLETED|00:01:07|0:0\n11017181|LiCaAlF6-electrolyte_R1|COMPLETED|00:01:14|0:0\n11017182|LiCaAlF6-electrolyte_R2|COMPLETED|00:01:20|0:0\n11017183|LiCaAlF6-electrolyte_R3|COMPLETED|00:01:21|0:0\n",
+  "licaalf6_status_scope": "All six existing Claude jobs completed with exit 0:0. No LiCaAlF6 physical results inspected in this review; convergence and package validation remain pending.",
+  "patch": "data/reviews/pilot_fixture_fix_20261022.patch; tested only in isolated archive of 9b59000; apply on agent branch, not yet integrated there."
+}

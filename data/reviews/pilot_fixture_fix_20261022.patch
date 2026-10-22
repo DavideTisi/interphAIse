@@ -1,0 +1,27 @@
+--- a/tests/test_pilot.py
++++ b/tests/test_pilot.py
+@@ -6,2 +6,3 @@
+ """
++import hashlib
+ import io
+@@ -45,3 +46,4 @@
+     run.update(status="valid", W_adh_J_m2=w, joined_energy_eV=joined, result_path=str(d / "result.json"),
+-               W_sep_J_m2=None, calculator_calls=10, wall_seconds=1.0)
++               result_sha256=hashlib.sha256((d / "result.json").read_bytes()).hexdigest(),
++               separation_path=None, W_sep_J_m2=None, calculator_calls=10, wall_seconds=1.0)
+
+@@ -86,3 +88,13 @@
+     p = tmp_path / "index.json"
+-    p.write_text(REAL_INDEX.read_text())
++    data = json.loads(REAL_INDEX.read_text())
++    # Keep genuine reference evidence, but start every prospective run before its
++    # calculation. The campaign index gains real outcomes as the live pilot advances.
++    for row in data["runs"]:
++        if row["candidate_id"] != REF and not row["status"].startswith("not_run_"):
++            row["status"] = "pending"
++            for field in ("W_adh_J_m2", "W_sep_J_m2", "joined_energy_eV", "result_path",
++                          "result_sha256", "separation_path", "calculator_calls", "wall_seconds",
++                          "failure_reason"):
++                row.pop(field, None)
++    p.write_text(json.dumps(data))
+     (tmp_path / "manifest.json").write_bytes((CAMPAIGN / "manifest.json").read_bytes())

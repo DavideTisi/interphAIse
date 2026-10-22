@@ -1,5 +1,20 @@
 # interphAIse — project report
 
+**First prospective forecast checked; third coating selected — 2026-10-22:**
+Independently verified `9b59000`/`d5ab477`. LiTaF6 gives selected-primary W_adh
+**3.339 J/m²** at the cathode and **1.577 J/m²** at the electrolyte: both fall
+inside Haiku's recorded ranges, and the predicted weaker contact is correct.
+This supports one analogy-based forecast. Choose-3 selected **LiCaAlF6**, already
+next in the original shortlist and the only acceptable unevaluated candidate;
+the sequence did not change with feedback. Its forecasts are cathode 3.0–3.8,
+electrolyte 1.4–1.9 J/m², electrolyte weaker. Four of ten HTTP attempts are used,
+about USD 0.00334 at the recorded rates. LiNbF6's 0.056 J/m² weaker-contact
+advantage over LiTaF6 is below the numerical tolerance and known reference
+sensitivity, so it does not establish a robust winner. Claude's six LiCaAlF6
+jobs have completed in Slurm; their physical package awaits validation. A
+test-fixture regression found in this review has a tested patch for Adem.
+See [review and next steps](SYNC_ADEM_15.md) for evidence and limits.
+
 **LiTaF6 primary jobs completed — 2026-10-22:** Claude already submitted the
 six selected-coating runs as Niflheim jobs **11017049–11017054**, source
 `207f879`. All six completed with exit code zero in 2:44–2:57 each on RTX

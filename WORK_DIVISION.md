@@ -4,14 +4,13 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current assignments: LLM-guided three-coating pilot — 22 October
 
-**Live choice made:** `1875726` archives Haiku's LiTaF6 selection and numeric
-forecasts; three of ten HTTP attempts are charged. Claude's six primary jobs
-11017049–11017054 are now complete; he owns packaging their results. Adem
-reports the remaining manifest checks in `d1ec1b0` (77
-tests), which was not yet available on the shared branch at review; publish it
-for verification before choose-3. Validate the complete physical package and
-resume the same state under the existing approval and USD 0.05 allowance.
-See [SYNC_ADEM_14.md](SYNC_ADEM_14.md). Earlier pending statuses below are history.
+**Choose-3 verified:** `9b59000` archives validated LiTaF6 feedback and the
+LiCaAlF6 choice; four of ten HTTP attempts are charged. The published manifest
+fixes have been reviewed. Claude's LiCaAlF6 jobs 11017178–11017183 are complete
+in Slurm; their physical package still needs publication and validation. Adem
+then resumes the final assessment under the existing approval and USD 0.05
+allowance. A test-only fixture patch is ready for his branch. See
+[SYNC_ADEM_15.md](SYNC_ADEM_15.md). Earlier pending statuses below are history.
 
 **Latest handoff:** Claude has frozen the four-member feasible menu and primary
 inputs in `38e4872`; hashes/counts and 163 offline tests reproduce. Read
@@ -56,8 +55,8 @@ No new interface calculation was made in these reviews.
 
 | Owner | Next work | Done when |
 |---|---|---|
-| **Adem** | Publish `d1ec1b0`; validate the six terminal LiTaF6 primary outcomes and sources; resume choose-3 only after the checks pass. | State and frozen feedback preserved; second choice has pre-energy predictions; all stages retain the total 10-attempt cap and USD 0.05 allowance. See [SYNC_ADEM_14.md](SYNC_ADEM_14.md). |
-| **Claude** | Assemble and publish the six completed LiTaF6 primary results with sources, costs and provenance; keep sensitivities separate. | Two contact packages cover all planned registries and preserve the selected inputs and provenance. See [SYNC_ADEM_14.md](SYNC_ADEM_14.md). |
+| **Adem** | Apply the test-fixture patch; validate all six LiCaAlF6 primary outcomes and sources; resume the final assessment after validation and generate the comparison/report. | State and frozen feedback preserved; all stages retain the total 10-attempt cap and USD 0.05 allowance; forecast success and unchanged candidate sequence both reported. See [SYNC_ADEM_15.md](SYNC_ADEM_15.md). |
+| **Claude** | Assemble and publish the six completed LiCaAlF6 primary results with sources, costs and provenance; keep sensitivities separate. | Two contact packages cover all planned registries and preserve the selected inputs and provenance. See [SYNC_ADEM_15.md](SYNC_ADEM_15.md). |
 | **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
 
 Adem keeps `work/agent-experiments`; give Claude an isolated physics
