@@ -1370,7 +1370,7 @@ at `b51c14e` with the reviewed environment-freeze work present locally; concurre
 publication advanced HEAD to `40b80fa` while the deck was being prepared. This
 session did not commit, push, change scientific code, or launch project runs.
 
-**Deliverable:** [23-slide PowerPoint](../presentations/output/interphAIse_main_ideas_and_results_2026-10-21_v2.pptx),
+**Deliverable:** [23-slide PowerPoint](../../presentations/output/interphAIse_main_ideas_and_results_2026-10-21_v2.pptx),
 with 17 main slides for an approximately 15-minute talk and six technical backup
 slides. It includes HELLMM background, the original modelling workflow, the v2/v3
 objective correction, five-arm discovery evidence including the reviewed shuffled
@@ -1445,7 +1445,7 @@ HELLMM background/results slides and their remaining source reference, renumbere
 all retained slides, updated the main/backup division and clarified the source
 checkpoint in the notes. Scientific evidence and caveats are unchanged.
 
-**Deliverable:** [21-slide PowerPoint](../presentations/output/interphAIse_main_ideas_and_results_2026-10-21_v3.pptx),
+**Deliverable:** [21-slide PowerPoint](../../presentations/output/interphAIse_main_ideas_and_results_2026-10-21_v3.pptx),
 with 16 main slides and five technical backup slides. It retains three native
 editable charts, their original embedded workbooks, nine editable tables and
 source notes on all 21 slides. REPORT.md links this revised deck. The earlier
@@ -3895,3 +3895,46 @@ Published as `2243d3e` on `main`. The anonymous GitHub page shows that commit,
 and its README loads the logo at the intended 640-pixel width (natural size
 2172 × 724). Visually checked the rendered public README; the logo is visible
 above the release text and project description. Publication is complete.
+
+
+## 2026-10-22 — Organize the public repository documentation
+
+**Branch:** `main`, starting at `a3c5794`. Davide requested a clean repository
+root with the README and essential setup/content guidance. Moved 33 detailed
+reports, protocols and work-history documents into `docs/`, preserving their
+filenames and historical entries. Added `docs/README.md` as a complete index.
+The three remaining root Markdown files are README.md, REPRODUCE.md and
+AGENTS.md. Scientific code, archived evidence, figures, presentations and
+branding retain their existing folders.
+
+Reworked the main README around the completed two-model study, current physical
+results, setup/reproduction and public viewer. Preserved the former long
+modelling-screen description and orchestration diagram in docs/LEGACY_SCREEN.md,
+explicitly identified as historical design. Removed its sibling-checkout link
+to HELLMM, which would not resolve in a public clone. Updated relative links,
+current GitHub main-branch document links, agent instructions and maintained
+presentation/document-builder source paths. Pinned historical Git links and
+published artifact receipts retain their original build-time references and
+hashes; no archived presentation or Word document was rebuilt.
+
+Removed only the tracked empty runs/.gitkeep placeholder. Generated runs remain
+local and ignored, and their builders create the directory automatically. Added
+an ignore rule for Office session lock files. Concurrent new illustration and
+submission-source files are outside this cleanup and remain unstaged.
+
+Verification: complete offline reproduction passed, replaying 9,600 archived
+queries across all studies, rebuilding analyses and the viewer, and confirming
+all 1,861 evidence files checked by the wrapper unchanged. A separate SHA-256
+comparison of all 2,171 tracked data files found only the intended documentation
+link update in data/experiments/deepseek_v1/README.md; every other data file is
+byte-identical. The local Markdown-link check found no missing targets, and the
+documentation index covers all 33 relocated files. The submission builder loads
+its relocated Markdown source and resolves the same figure; changed JavaScript
+builders pass syntax checks. Whitespace and staged-scope checks pass; configured credential values are
+absent from the staged files and .env remains untracked and ignored. Receipts are in the ignored runs/docs_cleanup/ directory.
+
+No live LLM/API request, Materials Project fetch, MLIP calculation or cluster
+job occurred. The prior 246-test clean-install result remains applicable; the
+full unit suite was not rerun for a documentation reorganization. The next step
+is to commit and publish this cleanup, keeping concurrent document artwork
+separate.

@@ -100,7 +100,7 @@ The interface's maximum atomic displacement is 1.624 Å; RMS displacement is 0.3
 The coating z span contracts from 8.113 Å to 7.416 Å. The projected before/after
 structure and force histories were rendered and visually inspected.
 
-![Interface geometry and convergence](data/petmad/linbf6_cathode_pilot_v1/inspection.png)
+![Interface geometry and convergence](../data/petmad/linbf6_cathode_pilot_v1/inspection.png)
 
 Both initial slabs have nonzero formal dipoles: |p_z|/A is about 0.158 e/Å for the
 film and 2.021 e/Å for the substrate. Formal charges are neutral. Surface polarity,

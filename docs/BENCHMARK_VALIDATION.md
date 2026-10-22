@@ -91,7 +91,7 @@ V3's best-bin candidate is LiNbF6, with penalty 0.028772 eV/non-Li atom.
 LiCaAlF6 also meets the criterion, at 0.047719. These are outputs of a proxy
 benchmark, not experimentally validated recommendations.
 
-![Evaluator validation](data/benchmarks/validation.png)
+![Evaluator validation](../data/benchmarks/validation.png)
 
 This report and the benchmark file contain unqueried results. Keep both out of
 agent prompts; use the query interface in [EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md).

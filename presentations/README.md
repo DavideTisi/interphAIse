@@ -18,7 +18,7 @@ The original checkout, PowerPoint lock file and ongoing edits are preserved.
 **After the DeepSeek repeat:** The 24-slide consolidated presentation is the
 reviewed **Haiku and PET-MAD checkpoint**, not yet the complete two-configuration
 story. Its existing counts and physical values remain valid. The
-[updated synthesis](../RESULTS_SYNTHESIS_2026-10-22.md) reviews all results and
+[updated synthesis](../docs/RESULTS_SYNTHESIS_2026-10-22.md) reviews all results and
 maps the needed changes onto the existing slides, with a proposed nine-slide
 main narrative. The Word overview and graphical abstract need the same update.
 No PowerPoint, PDF, Word or image was edited during this analysis.
@@ -29,14 +29,14 @@ selected contacts and the four forecast outcomes. It now also replays the
 DeepSeek archive and regenerates the separate model comparison and LLZO audit.
 Those new results are not yet in the rendered deck. The integration does not rewrite the live pilot
 or its separate one-slide checkpoint. See
-[the integration record](../FINAL_INTEGRATION.md).
+[the integration record](../docs/FINAL_INTEGRATION.md).
 
 ## Short overview and graphical abstract
 
 [Public structure explorer](https://davidetisi.github.io/interphAIse/) and
 [offline ZIP](results_2026-10-22/interphaise_referee_viewer_2026-10-22.zip)
 provide a compact supporting demo of the six computed interfaces. The
-[submission checklist](../SUBMISSION_PACKAGE.md) separates these supporting
+[submission checklist](../docs/SUBMISSION_PACKAGE.md) separates these supporting
 assets from the required write-up, public repository and social post.
 
 [One-page Word document](results_2026-10-22/interphaise_project_overview_2026-10-22.docx)
@@ -69,7 +69,7 @@ The deck joins the original 50-structure benchmark, the 141-structure / three-
 environment production study, and the completed three-coating PET-MAD pilot.
 It makes the LLM's delegated scientific decisions explicit, compares the project
 with the original design and HELLMM, and retains the negative results and
-physical limitations. Read the [full assessment](../RESULTS_SYNTHESIS_2026-10-22.md)
+physical limitations. Read the [full assessment](../docs/RESULTS_SYNTHESIS_2026-10-22.md)
 for the distinction between acceptability, optimum-finding and useful coatings.
 
 Sources: `davide:750b382`, agent `800ba03`, physics `1b76eeb`. These branches

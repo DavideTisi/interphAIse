@@ -1,6 +1,6 @@
 # DeepSeek V3.2 repeat of the three-environment study, production
 
-22 October 2026, executed by Adem and approved by Davide. Protocol and pre-registration: [DEEPSEEK_PROTOCOL.md](../../../DEEPSEEK_PROTOCOL.md).
+22 October 2026, executed by Adem and approved by Davide. Protocol and pre-registration: [DEEPSEEK_PROTOCOL.md](../../../docs/DEEPSEEK_PROTOCOL.md).
 
 **Label:** a comparison of **model configurations**, not matched reasoning compute.
 

@@ -13,7 +13,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "SUBMISSION_WRITEUP.md"
+SOURCE = ROOT / "docs/SUBMISSION_WRITEUP.md"
 FIGURE = ROOT / "figures/submission_results_2026-10-22.png"
 OUT = ROOT / "presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx"
 HAIKU = ROOT / "data/experiments/environment_v1/environment_summary.json"
@@ -158,7 +158,7 @@ def main():
             p = doc.add_paragraph()
             p.paragraph_format.space_after = Pt(0)
             p.paragraph_format.keep_with_next = True
-            pic = p.add_run().add_picture(str(ROOT / match[2]), width=Inches(7.1))
+            pic = p.add_run().add_picture(str(SOURCE.parent / match[2]), width=Inches(7.1))
             pic._inline.docPr.set("descr", match[1])
         elif block.startswith("*") and block.endswith("*"):
             p = doc.add_paragraph()
@@ -171,7 +171,7 @@ def main():
     doc.core_properties.title = "interphAIse for battery coating discovery"
     doc.core_properties.subject = "One-page OSI Hackathon submission report"
     doc.core_properties.author = "interphAIse team"
-    doc.core_properties.comments = "Built from SUBMISSION_WRITEUP.md and archived experiment summaries."
+    doc.core_properties.comments = "Built from docs/SUBMISSION_WRITEUP.md and archived experiment summaries."
     doc.save(OUT)
     source_files = [SOURCE, HAIKU, DEEPSEEK, Path(__file__)]
     receipt = {"sources": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()

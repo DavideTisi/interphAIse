@@ -103,7 +103,7 @@ Illustrative lowest-ID polymorphs show the chemistry switch:
 These examples were selected after inspection for explanation, not as an
 independent test set or a new material-selection rule.
 
-![Expanded landscape](data/exploration/environment_expansion_v2/landscape.png)
+![Expanded landscape](../data/exploration/environment_expansion_v2/landscape.png)
 
 ## Scientific interpretation and next decision
 

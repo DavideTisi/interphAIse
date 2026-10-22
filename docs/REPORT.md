@@ -1,8 +1,16 @@
 # interphAIse — project report
 
+**Repository organisation — 22 October 2026:** Detailed reports, protocols and
+work history now live under [docs/](README.md). The repository root keeps the
+main README, offline reproduction guide and agent instructions. The earlier
+modelling screen is preserved in [LEGACY_SCREEN.md](LEGACY_SCREEN.md), while
+the main README presents the completed study and setup commands. Relative links
+and maintained document-builder paths were updated; scientific evidence and
+published document artifacts are unchanged.
+
 **One-page submission report — 22 October 2026:** The
 [submission text](SUBMISSION_WRITEUP.md) and
-[illustrated Word report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx)
+[illustrated Word report](../presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx)
 now combine the two-model environment study with the prospective Haiku/PET-MAD
 pilot. They explain the delegated scientific judgment, methods, contribution,
 potential users and limitations in one page, with a figure read directly from
@@ -67,7 +75,7 @@ or paid calls occurred.
 incoming client/analysis code. Independently recounted all 360 complete runs
 and 3,600 charged queries, recomputed the six exact paired McNemar tests and
 Holm adjustments, and reproduced the LLZO successful-formula counts and
-cross-run diversity statistics. The [review receipt](data/reviews/deepseek_results_review_20261022.json)
+cross-run diversity statistics. The [review receipt](../data/reviews/deepseek_results_review_20261022.json)
 records every inspected run's SHA-256 and the calculated results. This check
 agrees with Adem's final numbers; it is not a second execution of his full
 production validator.
@@ -140,7 +148,7 @@ record, and Claude's `1b76eeb` physics release. Adem reports 200 passing tests
 on his branch; our integrated tree previously passed 227. The original
 presentation data agree with the regenerated analyses. The viewer now selects
 all six contacts for the three computed coatings and separates primary evidence
-from later robustness; LiF remains uncomputed. [REPRODUCE.md](REPRODUCE.md)
+from later robustness; LiF remains uncomputed. [REPRODUCE.md](../REPRODUCE.md)
 provides one offline command, and [FINAL_INTEGRATION.md](FINAL_INTEGRATION.md)
 records tests, provenance and remaining release steps. This supersedes the
 integration-pending statements in the historical entries below. No new live
@@ -154,19 +162,19 @@ coating shortcuts load their archived contacts in the generated explorer;
 for the in-app browser. Scientific results and saved geometry are unchanged.
 
 **Short project overview — 22 October 2026:** Added a
-[half-page narrative](presentations/source/interphaise_overview_2026-10-22.txt)
+[half-page narrative](../presentations/source/interphaise_overview_2026-10-22.txt)
 covering coating motivation, interface modelling difficulty, computational
 tools, the LLM's delegated choices and the positive and negative results. Its
-[graphical abstract](presentations/results_2026-10-22/interphaise_graphical_abstract_2026-10-22_v1.png)
+[graphical abstract](../presentations/results_2026-10-22/interphaise_graphical_abstract_2026-10-22_v1.png)
 is a labelled conceptual illustration, not simulation output. A visually checked
-[one-page Word document](presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx)
+[one-page Word document](../presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx)
 combines both assets for sharing. No scientific
 evidence or presentation-deck content was changed.
 
 **Consolidated results and new presentation — 2026-10-22:** The
 [results synthesis](RESULTS_SYNTHESIS_2026-10-22.md) now joins the 50-structure
 benchmark, 450-run environment study and completed three-coating PET-MAD pilot.
-The [new deck](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
+The [new deck](../presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
 contains 18 main slides and six backups with source notes and editable evidence.
 The LLM's role is scientific selection, feedback interpretation and prospective
 prediction. Correct feedback helps on sulfide, but random wins on LLZO and
@@ -222,7 +230,7 @@ plus 12 rigid-separation single points. Claude assembles the package; Adem's
 full manifest/source validation must pass before choose-3. This is completion
 and metadata verification, not approval of the physical comparison. No duplicate
 jobs or model calls were launched. Evidence:
-[completion check](data/reviews/litaf6_primary_completion_20261022.json).
+[completion check](../data/reviews/litaf6_primary_completion_20261022.json).
 
 **First live choice archived — 2026-10-22:** Verified Adem's published
 `1875726`: Haiku selected **LiTaF6** after the LiNbF6 feedback and predicted
@@ -235,7 +243,7 @@ prospective forecast, not yet a demonstrated feedback-driven selection gain.
 Six LiTaF6 primary jobs are the next dependency. Adem reports `d1ec1b0` and
 77 passing tests for the remaining manifest checks, but that commit was not
 yet available on the shared branch at review. See [live handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_14.md)
-and [audit](data/reviews/live_selection_review_20261022.json). No new live calls
+and [audit](../data/reviews/live_selection_review_20261022.json). No new live calls
 or physical calculations were launched by Codex during this verification.
 
 **Live pilot approved — 2026-10-22:** Davide explicitly approved Adem starting
@@ -259,7 +267,7 @@ planned physics pause. Generic manifest-derived coverage and source-identity
 checks still need tightening before choose-3. The 10-attempt cap is enforced;
 the quoted USD 0.030 is an estimate, not a proven dollar ceiling. See
 [scoped readiness handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_14.md) and
-[audit](data/reviews/live_pilot_review_20261022.json). No live calls were made.
+[audit](../data/reviews/live_pilot_review_20261022.json). No live calls were made.
 
 **Frozen physical menu reviewed — 2026-10-22:** Claude's `38e4872` supplies
 LiNbF6 plus the three intended alternatives, frozen primary builds/registries
@@ -272,7 +280,7 @@ Four optional reference consistency jobs are recommended as separate,
 lower-priority robustness work after primary scheduling; they are not launched
 or approved by this review. Live-pilot approval is also pending. See
 [Claude 11](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_11.md) and the
-[saved audit](data/reviews/frozen_menu_review_20261022.json).
+[saved audit](../data/reviews/frozen_menu_review_20261022.json).
 
 **Pilot readiness reviewed — 2026-10-22:** Adem's `2d2cac3` passes 183 offline
 tests; independent production replay preserves all 450 runs and planned
@@ -285,7 +293,7 @@ scientific results changed. The intended amended menu is still LiNbF6 plus
 LiTaF6, LiF and LiCaAlF6, pending Claude's final manifest. The tiny API estimate
 is conditional on token assumptions; live-pilot approval remains pending.
 See [Adem's focused handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_13.md) and
-[saved review evidence](data/reviews/adem_pilot_review_20261022.json).
+[saved review evidence](../data/reviews/adem_pilot_review_20261022.json).
 No live LLM/PET-MAD calculation, cluster action or code merge occurred here.
 
 **Construction screen reviewed; cap amended — 2026-10-21:** Reviewed Claude's
@@ -301,7 +309,7 @@ values and hash check out. Offline mutation tests exposed remaining assembler
 gaps in coverage, comparable run identity and work arithmetic; failed-run cost
 accounting also needs correction before live use. See
 [decision and follow-up](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_10.md) and
-[saved audit](data/reviews/claude_screen_review_20261021.json).
+[saved audit](../data/reviews/claude_screen_review_20261021.json).
 F1/F2 are implemented on Claude's branch; it has not been merged here. No new
 interface energy, live LLM call or cluster action occurred in this review.
 **LLM–PET-MAD pilot complete — 2026-10-22:** live, Haiku 5.5. It used 5 of 10 HTTP attempts, about USD 0.006 at list price (not billed).
@@ -310,7 +318,7 @@ interface energy, live LLM call or cluster action occurred in this review.
 - **Correction:** `min_W_adh_J_m2` is the weaker of the two selected contact values, not the minimum across registries. Haiku's suspicion arose from misreading that definition. The field rename is kept for a future protocol version.
 - **Final ranking:** LiNbF₆ > LiTaF₆ > LiCaAlF₆ > LiF. This is the model's assessment: LiF was not physically evaluated, and the small LiNbF₆–LiTaF₆ difference does not establish a robust winner.
 - **Record:** the summary prompt first stopped, uncharged, at the 16,000-character bound. A hashed summary-only 20,000 bound was recorded, and the original prompts, responses and state are preserved.
-- **Links:** [interpretation](data/experiments/llm_petmad_pilot_v1/INTERPRETATION.md), [generated report](data/experiments/llm_petmad_pilot_v1/report_live/report.md), [slide](presentations/interphAIse_llm_petmad_pilot_2026-10-22.pptx). This supersedes the "no pilot implementation" status below.
+- **Links:** [interpretation](../data/experiments/llm_petmad_pilot_v1/INTERPRETATION.md), [generated report](../data/experiments/llm_petmad_pilot_v1/report_live/report.md), [slide](../presentations/interphAIse_llm_petmad_pilot_2026-10-22.pptx). This supersedes the "no pilot implementation" status below.
 
 **Deadline plan refined — 2026-10-21:** The pilot now uses validated primary
 registry results for each decision; declared sensitivity checks can run in
@@ -425,7 +433,7 @@ sequential, but not shuffled at the corrected threshold, and random search
 has the higher observed success rate. This is environment-dependent benefit,
 not universal search superiority. Usage recomputes to USD 3.6303784 at the
 archived rates, not billed cost. See [review and slide handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_9.md)
-and [overview figure](figures/environment_acceptance_review_20261021.png).
+and [overview figure](../figures/environment_acceptance_review_20261021.png).
 No new live calls or branch merge occurred. Stop data collection and proceed
 to presentation/demo updates and joint integration review. Earlier production
 pending/approved-only entries below describe their historical checkpoints.
@@ -523,7 +531,7 @@ formally polar and provisional. See [current Claude handoff](https://github.com/
 No new calculation or push occurred in this review. The v4 presentation below
 predates this cathode result and needs that update in its next revision.
 
-**Scientific presentation — 21 October 2026:** [Main ideas and results](presentations/interphAIse_main_ideas_and_results_2026-10-21_v4.pptx), 16 main slides plus five technical backup slides, focused exclusively on interphAIse, with editable charts and source notes. Reviewed against the archived results and updated with an explicit LLM decision role, published environment freeze and smoke-only approval, and the bounded cathode-thickness next step. Includes the shuffled control, expanded environment screen and provisional four-layer electrolyte result. This is a saved checkpoint; [presentation notes](presentations/README.md) list newer contact results that are not yet in the deck.
+**Scientific presentation — 21 October 2026:** [Main ideas and results](../presentations/interphAIse_main_ideas_and_results_2026-10-21_v4.pptx), 16 main slides plus five technical backup slides, focused exclusively on interphAIse, with editable charts and source notes. Reviewed against the archived results and updated with an explicit LLM decision role, published environment freeze and smoke-only approval, and the bounded cathode-thickness next step. Includes the shuffled control, expanded environment screen and provisional four-layer electrolyte result. This is a saved checkpoint; [presentation notes](../presentations/README.md) list newer contact results that are not yet in the deck.
 
 **Publication and smoke sign-off — 2026-10-21:** The frozen environment copies
 preserve every original result row and scientific field. ENVIRONMENT_PROTOCOL.md

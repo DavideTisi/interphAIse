@@ -30,6 +30,6 @@
 - This validates the package, data transcription and visual presentation.
   Microsoft PowerPoint was not used for an application-level opening check.
   Scientific evidence and its limits are in
-  [the synthesis](../../RESULTS_SYNTHESIS_2026-10-22.md).
+  [the synthesis](../../docs/RESULTS_SYNTHESIS_2026-10-22.md).
 
 No new live LLM, MLIP or cluster work was performed.

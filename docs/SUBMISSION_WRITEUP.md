@@ -8,7 +8,7 @@ We combined Materials Project structures, pymatgen thermodynamics and an auditab
 
 We completed 810 runs: 720 with Haiku 5.5 or DeepSeek V3.2 and 90 shared random runs, with 30 per policy/environment and ten queries each. Four LLM policies distinguish upfront knowledge, sequential selection without results, correct feedback and shuffled feedback. Haiku's sulfide feedback arm succeeded in 20/30 runs versus 2/30 without results and 6/30 with shuffled results; both paired comparisons survived Holm correction. DeepSeek showed the same direction without corrected significance. Chloride was at ceiling. In LLZO, DeepSeek's upfront shortlist succeeded in 20/30 versus Haiku's 1/30, yet both iterative policies lost to random. Useful starting knowledge and useful adaptation are different capabilities.
 
-![Successful runs out of 30 within ten queries for both LLM configurations in three electrolyte environments; dashed lines show the shared sampled random baselines.](figures/submission_results_2026-10-22.png)
+![Successful runs out of 30 within ten queries for both LLM configurations in three electrolyte environments; dashed lines show the shared sampled random baselines.](../figures/submission_results_2026-10-22.png)
 
 *Success means finding at least one candidate passing the frozen proxy. Model comparisons are descriptive; reasoning compute was not matched.*
 

@@ -104,7 +104,8 @@ wrapper verifies their scientific data without requiring the slide-design runtim
 - **New LLM runs:** require the authorised credential in a git-ignored `.env`,
   a defined protocol and spending approval. The default is direct Anthropic
   Haiku 5.5. The completed DeepSeek repeat used Adem's separate OpenRouter key
-  with SiliconFlow pinned and no fallback; see DEEPSEEK_PROTOCOL.md and AGENTS.md.
+  with SiliconFlow pinned and no fallback; see
+  [the DeepSeek protocol](docs/DEEPSEEK_PROTOCOL.md) and [AGENTS.md](AGENTS.md).
   Existing approval for completed experiments does not schedule new paid runs.
   Analysis does not require credentials. Do not rerun or overwrite the completed
   live pilot to regenerate its report.
@@ -112,8 +113,8 @@ wrapper verifies their scientific data without requiring the slide-design runtim
   and frozen tables already suffice for reproduction.
 - **New PET-MAD energies:** require UPET/PET-MAD, the recorded checkpoint and
   the construction protocol. CPU is possible; a GPU speeds up these cells.
-  See [CONTACT_PROTOCOL.md](CONTACT_PROTOCOL.md),
-  [the comparison plan](MLIP_COMPARISON_PLAN.md) and [NIFLHEIM.md](NIFLHEIM.md).
+  See [CONTACT_PROTOCOL.md](docs/CONTACT_PROTOCOL.md),
+  [the comparison plan](docs/MLIP_COMPARISON_PLAN.md) and [NIFLHEIM.md](docs/NIFLHEIM.md).
   Reading saved energies and geometries needs none of these resources.
 
-Interpretation and limitations: [results synthesis](RESULTS_SYNTHESIS_2026-10-22.md).
+Interpretation and limitations: [results synthesis](docs/RESULTS_SYNTHESIS_2026-10-22.md).

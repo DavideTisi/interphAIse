@@ -82,7 +82,7 @@ The published `c0a0546` reader rejects the 12 LiF rows marked
 leave consistency costs omitted from its compute total. This is an integration
 issue, not a defect in the saved primary values.
 
-Prepared [reader patch](data/reviews/final_comparison_reader_fix_20261022.patch)
+Prepared [reader patch](../data/reviews/final_comparison_reader_fix_20261022.patch)
 against `c0a0546`. It:
 
 - accepts the final schema only for explicitly requested offline analysis;
@@ -116,4 +116,4 @@ contributor's history, run integrated checks, then update the viewer and slides
 with this table and the explicit forecast success/failure. Those integration
 and presentation actions are still pending, not performed by this review.
 
-Detailed evidence: [final_pilot_review_20261022.json](data/reviews/final_pilot_review_20261022.json).
+Detailed evidence: [final_pilot_review_20261022.json](../data/reviews/final_pilot_review_20261022.json).

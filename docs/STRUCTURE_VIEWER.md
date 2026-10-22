@@ -72,4 +72,4 @@ geometries stop the export rather than silently receiving another run's energy.
 All interface values remain provisional results for formally polar models.
 Finite-range vacuum isolation does not establish electrostatic accuracy, and no
 lithium-transport conclusion follows. See [the final synthesis](RESULTS_SYNTHESIS_2026-10-22.md)
-and [offline reproduction](REPRODUCE.md).
+and [offline reproduction](../REPRODUCE.md).

@@ -19,17 +19,17 @@ judgment, general search acceleration or a superior functional battery coating.
 
 ## Deliverables and source boundary
 
-- [Haiku and PET-MAD presentation checkpoint](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx):
+- [Haiku and PET-MAD presentation checkpoint](../presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx):
   18 main slides plus six technical backup slides, editable charts/tables and
   source notes. The older 21 October presentation is preserved. A
-  [static PDF](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf)
+  [static PDF](../presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf)
   is included for sharing. These files predate the DeepSeek repeat and have
   **not** been rewritten in this analysis. The revision plan below applies to
   their narrative, not to the correctness of their archived Haiku numbers.
-- [Presentation evidence](presentations/source/results_synthesis_2026-10-22.json)
+- [Presentation evidence](../presentations/source/results_synthesis_2026-10-22.json)
   contains the exact plotted values, reconstructed success curves, contrasts,
   selected physical rows and immutable source references.
-- [Presentation builder](presentations/source/build_results_synthesis_2026-10-22.mjs)
+- [Presentation builder](../presentations/source/build_results_synthesis_2026-10-22.mjs)
   records the slide narrative and layout.
 
 The existing deck was built from `davide` at `750b382`, agent branch at
@@ -46,7 +46,7 @@ initially read as immutable Git objects. Its code/archive was subsequently
 merged at `3a93e17` for the user-authorized public release, and the offline
 reproduction entry point now includes both configurations.
 
-The [independent review receipt](data/reviews/deepseek_results_review_20261022.json)
+The [independent review receipt](../data/reviews/deepseek_results_review_20261022.json)
 records all 360 DeepSeek run hashes and reproduces counts, paired tests and
 selected LLZO audit statistics. It is a results recount, not a second execution
 of Adem's complete production validator. This update also reads the existing

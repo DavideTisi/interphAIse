@@ -14,12 +14,12 @@ it must be no longer than four minutes. The interactive viewer is supplementary.
 
 | Item | Current deliverable or remaining action |
 |---|---|
-| Write-up | **Ready:** [submission text](SUBMISSION_WRITEUP.md) and [one-page illustrated Word report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx) include both LLM configurations and the completed physical pilot. The opening paragraph is written for the gallery card. [Figure for direct upload](figures/submission_results_2026-10-22.png). The [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) remains the full scientific account; the older overview is a historical checkpoint. |
+| Write-up | **Ready:** [submission text](SUBMISSION_WRITEUP.md) and [one-page illustrated Word report](../presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx) include both LLM configurations and the completed physical pilot. The opening paragraph is written for the gallery card. [Figure for direct upload](../figures/submission_results_2026-10-22.png). The [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) remains the full scientific account; the older overview is a historical checkpoint. |
 | Public repository | **Complete:** [DavideTisi/interphAIse](https://github.com/DavideTisi/interphAIse), tested release on `main`. Davide explicitly authorized merging/publication; the visibility change and anonymous downloads are verified in [the release record](FINAL_INTEGRATION.md). |
 | Public social post | Still required. No post has been published or authorized in this session. An updated draft with the public repository link is below. |
 | Rules confirmation | A human must read and confirm the rules at submission. The campaign's separate “How the hackathon works” link returned 404 during this check, so that link did not establish any additional eligibility conditions. |
 | Supporting demo | [Public six-interface viewer](https://davidetisi.github.io/interphAIse/) is verified without login; [offline download](https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip) is also verified. |
-| Slides | [Accessible checkpoint](presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx) and [detailed checkpoint](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx) are public. The newer deck covering both configurations remains in progress in its separate chat. Slides support the write-up rather than replace it. |
+| Slides | [Accessible checkpoint](../presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx) and [detailed checkpoint](../presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx) are public. The newer deck covering both configurations remains in progress in its separate chat. Slides support the write-up rather than replace it. |
 | Optional video | Not recorded in this work. If useful, show the problem, controlled LLM results, one forecast success and one failure, then the viewer. Keep it under four minutes. |
 
 ## Fit to the judging criteria
@@ -44,9 +44,9 @@ and archived forecasts carry that part of the argument.
 ## One-page form text
 
 Use [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md), or copy the formatted text
-from the [Word report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx).
+from the [Word report](../presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx).
 Paste the opening two sentences first so they become the gallery-card paragraph.
-Insert [the comparison figure](figures/submission_results_2026-10-22.png) at the
+Insert [the comparison figure](../figures/submission_results_2026-10-22.png) at the
 marked position and retain its caption. The report fits one Letter page at
 11-point body text, including the figure and inline links.
 

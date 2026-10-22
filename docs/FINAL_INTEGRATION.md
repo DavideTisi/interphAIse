@@ -12,7 +12,7 @@ Anonymous requests returned HTTP 200 for the repository, README, full results
 synthesis, DeepSeek comparison, accessible v4 PPTX/PDF, public viewer and
 offline viewer ZIP. Downloaded artifacts matched their local bytes, and the
 viewer matched the previously verified release hash. The
-[publication receipt](data/reviews/public_release_20261022.json) records these
+[publication receipt](../data/reviews/public_release_20261022.json) records these
 checks and links the preflight evidence. No credentials were sent in the
 anonymous requests.
 
@@ -116,14 +116,14 @@ or generated figure changed. Both contributors' log entries were preserved.
   rebuilt. This is not a new Microsoft PowerPoint application-level check.
 
 Machine-readable receipt:
-[final_integration_20261022.json](data/reviews/final_integration_20261022.json).
+[final_integration_20261022.json](../data/reviews/final_integration_20261022.json).
 The suite used the existing Python 3.12 environment with the pinned packages;
 a separate clean installation was not performed. All analyses ran from this
 integration checkout, not from the original editable package path.
 
 ## What changed for the reader
 
-[REPRODUCE.md](REPRODUCE.md) is the short entry point; its offline command writes
+[REPRODUCE.md](../REPRODUCE.md) is the short entry point; its offline command writes
 to `runs/reproduced_results/`. A new `analysis` installation extra supplies
 Matplotlib. Five deliberate corruption regressions reject changed acceptance,
 physical energies, forecast ranges, choice order and compute accounting.

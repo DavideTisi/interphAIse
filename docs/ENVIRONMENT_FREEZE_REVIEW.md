@@ -58,7 +58,7 @@ to its source. Only freeze metadata, status and the table hash change.
 | Li3InCl6 | `a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2` |
 | Ordered tetragonal LLZO | `9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060` |
 
-The [freeze manifest](data/benchmarks/environment_v1/manifest.json) records original
+The [freeze manifest](../data/benchmarks/environment_v1/manifest.json) records original
 semantic/file hashes, new file hashes, pool/objective/dataset hashes, timestamp
 and freezer source hash. The pool remains the same 141 pinned structures in
 `data/exploration/environment_expansion_v1/pool.json`.
@@ -97,7 +97,7 @@ queries 3/1/40. Four scripted arms per environment exercise full ten-query runs:
 93 generated prompts contain none of the checked internal diagnostic fields
 and show the correct electrolyte. These are workflow checks, not LLM results.
 The numerical record and tested code hashes are in
-[environment_freeze_review_20261021.json](data/reviews/environment_freeze_review_20261021.json).
+[environment_freeze_review_20261021.json](../data/reviews/environment_freeze_review_20261021.json).
 Concurrent later Claude thickness edits are outside this tested snapshot.
 
 ## Smoke test and remaining steps

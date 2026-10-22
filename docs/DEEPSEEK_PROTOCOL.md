@@ -116,7 +116,7 @@ Archive to `data/experiments/deepseek_v1/{lpscl,lic,llzo}`. The Haiku archive `d
 
 - **Production:** ran 14:20–17:21 UTC from commit `70e1901`. All 360 runs completed with 0 failures.
 - **Spend:** 2,793 calls, USD 8.99 recorded by OpenRouter; the key's total spend was USD 9.19. Limit USD 12. 0 cap or provider violations.
-- **Analysis:** validated with `--production --policy deepseek_v1`. See [the archive README](data/experiments/deepseek_v1/README.md).
+- **Analysis:** validated with `--production --policy deepseek_v1`. See [the archive README](../data/experiments/deepseek_v1/README.md).
 - **Duplicate launch:** a second copy, started at 14:18 UTC from a command the user had rejected, was found and stopped after about 2 minutes. Its runs are in `runs/deepseek_v1_aborted_duplicate/`, outside the archive. Its cost, about USD 0.2, is included in the key spend.
 - **Timing:** results were ready about 15 minutes after the 19:15 CEST target. Davide accepted the delay.
-- **Added after validation, at Davide's request:** an exploratory LLZO audit ([llzo_audit.md](data/experiments/deepseek_v1/llzo_audit.md)), post-hoc.
+- **Added after validation, at Davide's request:** an exploratory LLZO audit ([llzo_audit.md](../data/experiments/deepseek_v1/llzo_audit.md)), post-hoc.

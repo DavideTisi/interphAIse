@@ -40,7 +40,7 @@ original preregistration or a pooled extension of the old accounting protocol.
 The heuristic uses composition plus ascending candidate ID, and was chosen after
 reviewing the exhaustive results. It is not a blind prior or an ensemble of 30 trials.
 
-![Discovery curves](data/experiments/integrated_v3_20261021_s100/curves.png)
+![Discovery curves](../data/experiments/integrated_v3_20261021_s100/curves.png)
 
 The iterative acceptance curve reaches 3/30 at query 6, 6/30 at query 7, 12/30 at
 query 8, 17/30 at query 9 and 19/30 at query 10. Its advantage appears late in this
@@ -100,7 +100,7 @@ excludes the seven-call pilot. Provider-internal charges for any HTTP retries ar
 not separately known, and no monetary estimate is inferred from call counts.
 
 The complete sanitized archive is
-[data/experiments/integrated_v3_20261021_s100](data/experiments/integrated_v3_20261021_s100).
+[data/experiments/integrated_v3_20261021_s100](../data/experiments/integrated_v3_20261021_s100).
 It includes 120 run JSON files with prompts, responses and metadata, experiment
 manifest, checksums of source files, summary, query-replay audit and plot. Configured
 credential values were checked and are absent. No credentials/HTTP headers were
