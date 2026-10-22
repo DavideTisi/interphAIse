@@ -24,18 +24,22 @@ tests to fail. Do not replace the pins when reproducing these constructions.
 The `analysis` extra installs the plotting dependency; no MLIP extra is needed.
 
 Open `runs/reproduced_results/structure_viewer.html` in a browser, or share that
-single HTML file. Outputs also include the original discovery curve, production
-environment statistics, final physical table/figure and pilot forecast report.
+single HTML file. Outputs also include the original discovery curve, both models'
+production environment statistics, their comparison table, the exploratory
+LLZO audit, final physical table/figure and pilot forecast report.
 `VERIFICATION.json` records package versions, source-code hashes, unchanged
 evidence and agreement with the presentation data. Each command has a log.
 Use `--skip-viewer` to omit the larger HTML export.
 
-The wrapper replays the original 1,500 and production 4,500 charged queries,
-checks production settings, validates physical runs against their saved sources,
+The wrapper replays the original 1,500, Haiku production 4,500 and DeepSeek
+production 3,600 charged queries, checks each production policy, validates
+physical runs against their saved sources,
 checks preserved decision snapshots and compares all selected contact values
 and forecast outcomes with the presentation source. It writes only under `runs/`;
 archived experiment outputs stay unchanged. The full test suite is a separate
-command above, not implicitly rerun by the wrapper.
+command above, not implicitly rerun by the wrapper. DeepSeek's counts and six
+corrected contrasts must also match the independently archived review. The
+810 distinct environment runs include only one shared set of 90 random runs.
 
 ## Evidence and outputs
 
@@ -45,6 +49,8 @@ command above, not implicitly rerun by the wrapper.
 | Original 120 runs and 30 shuffled runs | `data/experiments/integrated_v3_20261021_s100/`, `data/experiments/shuffled_v3_20261021_s100/` |
 | Frozen three-environment tables | `data/benchmarks/environment_v1/` |
 | Production 450 runs, settings and usage | `data/experiments/environment_v1/` |
+| DeepSeek 360 additional runs, settings and usage | `data/experiments/deepseek_v1/` |
+| Independent DeepSeek recount and input hashes | `data/reviews/deepseek_results_review_20261022.json` |
 | Live physical-pilot prompts, responses and amendment | `data/experiments/llm_petmad_pilot_v1/state.json` |
 | Decision-time physical indices and bundles | `data/petmad/coating_comparison_v1/snapshots/` |
 | Summary-time index, preserved | `data/petmad/coating_comparison_v1/index.json` |
@@ -68,6 +74,12 @@ python scripts/analyse_environment_study.py \
   data/experiments/environment_v1/llzo --production \
   --json runs/environment_summary.json
 
+python scripts/analyse_environment_study.py \
+  data/experiments/deepseek_v1/lpscl \
+  data/experiments/deepseek_v1/lic \
+  data/experiments/deepseek_v1/llzo --production --policy deepseek_v1 \
+  --json runs/deepseek_summary.json
+
 python scripts/analyse_mlip_comparison.py \
   --index data/petmad/coating_comparison_v1/index_final.json \
   --out runs/final_comparison
@@ -86,8 +98,11 @@ wrapper verifies their scientific data without requiring the slide-design runtim
 
 ## New experiments are separate
 
-- **New LLM runs:** require the authorised Anthropic credential in a git-ignored
-  `.env`, the configured Haiku 5.5 model, a defined protocol and spending approval.
+- **New LLM runs:** require the authorised credential in a git-ignored `.env`,
+  a defined protocol and spending approval. The default is direct Anthropic
+  Haiku 5.5. The completed DeepSeek repeat used Adem's separate OpenRouter key
+  with SiliconFlow pinned and no fallback; see DEEPSEEK_PROTOCOL.md and AGENTS.md.
+  Existing approval for completed experiments does not schedule new paid runs.
   Analysis does not require credentials. Do not rerun or overwrite the completed
   live pilot to regenerate its report.
 - **New database queries:** require a Materials Project key; the saved structures

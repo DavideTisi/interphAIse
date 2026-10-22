@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.reproduce_results import read, verify_agreement
+from scripts.reproduce_results import read, verify_agreement, verify_deepseek
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,3 +38,23 @@ def test_changed_scientific_claim_stops_reproduction(evidence, edit):
         physical['compute']['new']['calls'] -= 1
     with pytest.raises(ValueError):
         verify_agreement(env, original, physical, forecast)
+
+
+def test_deepseek_matches_independent_review():
+    verify_deepseek(read(ROOT / 'data/experiments/deepseek_v1/environment_summary.json'))
+
+
+@pytest.mark.parametrize('edit', ['acceptance', 'random', 'holm', 'policy'])
+def test_deepseek_changed_result_or_double_counted_random_is_rejected(edit):
+    summary = read(ROOT / 'data/experiments/deepseek_v1/environment_summary.json')
+    llzo = summary['environments']['Li7La3Zr2O12']
+    if edit == 'acceptance':
+        llzo['arms']['upfront']['acceptable'] = 29
+    elif edit == 'random':
+        llzo['arms']['random'] = {'acceptable': 24, 'runs': 30}
+    elif edit == 'holm':
+        llzo['contrasts']['iterative-shuffled']['p_holm'] = .001
+    else:
+        summary['policy'] = 'environment_v1'
+    with pytest.raises(ValueError):
+        verify_deepseek(summary)

@@ -1,5 +1,41 @@
 # Final integration and reproducibility review
 
+## Public-release preflight, 22 October 2026
+
+The user explicitly requested merging and making the repository public. The
+completed DeepSeek branch at `550391b` is now integrated in merge `3a93e17`,
+following synthesis commit `3410f9b`. The earlier Haiku and PET-MAD work below
+is preserved. Only the append-only development log conflicted; both histories
+were retained. All contributor heads are ancestors of the release branch.
+
+The final integrated suite passed **246 tests in 38.25 s** with the pinned
+dependencies. The offline reproduction wrapper now replays **9,600 queries**:
+1,500 from the original benchmark, 4,500 Haiku environment queries and 3,600
+DeepSeek queries. It regenerates the model comparison and exploratory LLZO
+audit, validates the physics/pilot and exports the full viewer. All checks
+passed and **1,859 evidence files remained unchanged**. The original independent
+DeepSeek recount is also checked; corruption regressions reject changed scores,
+corrected p values, policy and duplicate random accounting.
+
+Completed mixed-audience v3/v4 decks, their builders and illustration were
+copied from the original checkout. All four PPTX/PDF hashes match that chat's
+recorded validation. The new two-configuration presentation is still in progress
+there; no unfinished deck or PowerPoint lock file is included. No original
+checkout file was modified. Existing rendered decks remain clearly labelled
+as Haiku/PET-MAD checkpoints.
+
+The release performs a credential scan over reachable Git history and tracked
+contents, including gzip/ZIP members. A literal fake token in a rejection test
+is narrowly classified as a fixture. No `.env` or private-key filename is tracked
+or present in reachable history; `.env` and its local backup variants are ignored.
+The receipt records scope rather than claiming an exhaustive security audit.
+
+The sections below record earlier checkpoints. Their statements that main had
+not advanced describe those earlier reviews, not the intended release outcome.
+Publication and anonymous-access verification are recorded after completion.
+
+## Earlier integrated checkpoint
+
 22 October 2026. The completed agent, physics and presentation work is combined
 on `work/final-integration-20261022`. This branch preserves both collaborators'
 Git histories. `main` and `davide` have not been advanced by this integration;

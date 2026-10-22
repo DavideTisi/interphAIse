@@ -3668,3 +3668,43 @@ and tracked contents for credentials, then publish main and change visibility.
 The history scan found only a deliberately fake token in the viewer rejection
 test; it was reviewed and narrowly classified as a fixture. Publication is not
 yet complete at this checkpoint. The original davide worktree remains untouched.
+
+## 2026-10-22 — Public-release preflight completed
+
+**Branch:** `work/final-integration-20261022`, after merge `3a93e17`. Extended
+`scripts/reproduce_results.py` to replay DeepSeek under its frozen policy,
+regenerate the two-model comparison and LLZO audit, and check against the
+independent review. Added regressions for altered acceptance, corrected
+statistics, policy and duplicate random accounting. The final full suite passes
+**246 tests in 38.25 s**, with upstream ASE/NumPy and spglib warnings only.
+
+The complete offline command passed. It replayed **9,600 queries**, checked
+both environment configurations (810 distinct runs, including 90 shared random
+runs), validated physical/pilot evidence and rebuilt the full structure viewer.
+All **1,859 evidence files** hashed before/after remained unchanged. The source
+hashes, package versions, results and exact scope are in
+`data/reviews/public_release_preflight_20261022.json`.
+
+The original checkout contains completed mixed-audience v3/v4 decks and an
+active newer presentation task. Copied only the 13 explicitly selected completed
+artifacts, source builders and assets; all four output hashes match that chat's
+recorded validation. Included its validation handoff and clearly marked these
+as Haiku/PET-MAD checkpoints. Did not modify the original worktree, open-file
+lock or ongoing work. The new two-configuration presentation can be added when
+its own verification is complete.
+
+Scanned all reachable history from local/fetched refs (139 commits, 2,794 blobs)
+and 2,408 tracked files, including 1,130 expanded gzip/ZIP members. No configured
+credential value or unresolved credential pattern was found. The only two
+matches were historical/current copies of one literal fake key in a viewer
+rejection test. No `.env` or private-key filename exists in reachable history.
+Local `.env` variants are ignored; `.env.example` stays tracked. This is a scoped
+scan, not a claim about deleted server-only Git objects or unrelated issue text.
+
+Marked PDF/PPTX/DOCX artifacts as binary to avoid treating unchanged PDF syntax
+as whitespace errors. Source/documentation whitespace checks pass. The incoming
+archived analysis stdout retains its original trailing spaces rather than
+rewriting experiment evidence. Updated the reproduction guide, README and
+integration report. No live API call, MLIP evaluation or cluster job occurred.
+Next action authorized by the user: fast-forward main, push the integrated
+release and make the repository public, then verify anonymous downloads.

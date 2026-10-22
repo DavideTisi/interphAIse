@@ -30,9 +30,20 @@ LiCaAlF6 forecasts missed; candidate order did not change.
 The [reviewed presentation checkpoint](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
 ([PDF](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf)),
 Word overview and illustration still cover Haiku and PET-MAD. The synthesis
-records their revision plan. DeepSeek results have been independently recounted
-from `550391b`; the incoming code/archive has not yet been merged into this
-integration branch or added to its one-command reproduction entry point.
+records their revision plan. DeepSeek's completed code/archive at `550391b` is
+now integrated alongside Claude's final physics package. The offline command
+replays both model configurations and reproduces the
+[model-comparison table](data/experiments/deepseek_v1/model_comparison.md) and
+[exploratory LLZO audit](data/experiments/deepseek_v1/llzo_audit.md).
+An [accessible presentation checkpoint](presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx)
+with [PDF](presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pdf)
+is also included. It predates DeepSeek; use the linked synthesis for the complete
+two-configuration conclusions while the new deck is being prepared.
+
+![DeepSeek success versus budget across the three environments](data/experiments/deepseek_v1/deepseek_success_vs_budget.png)
+
+This figure shows DeepSeek's four arms and the exact random reference; the
+linked comparison table includes Haiku. Cross-model differences are descriptive.
 
 | Selected primary W_adh, J/m² | Cathode | Electrolyte |
 |---|---:|---:|

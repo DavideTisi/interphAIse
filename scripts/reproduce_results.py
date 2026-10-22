@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT))
 CAMPAIGN = Path('data/petmad/coating_comparison_v1')
 PILOT = Path('data/experiments/llm_petmad_pilot_v1')
 ENV = Path('data/experiments/environment_v1')
+DEEPSEEK = Path('data/experiments/deepseek_v1')
 DECK = Path('presentations/source/results_synthesis_2026-10-22.json')
 
 
@@ -75,6 +76,29 @@ def verify_agreement(environment, original, physical, assessment, *, viewer=None
         require(viewer['campaign']['not_selected'] == ['LiF'], 'Viewer must keep LiF uncomputed')
 
 
+def verify_deepseek(summary, review=None):
+    """Check regenerated results against the separately archived independent recount."""
+    review = read(ROOT / 'data/reviews/deepseek_results_review_20261022.json') if review is None else review
+    require(summary.get('policy') == 'deepseek_v1', 'Wrong DeepSeek evidence policy')
+    require(summary.get('production_check') == [], 'DeepSeek production validation failed')
+    names = {'lpscl': 'Li6PS5Cl', 'lic': 'Li3InCl6', 'llzo': 'Li7La3Zr2O12'}
+    runs = 0
+    require(set(summary['environments']) == set(names.values()), 'DeepSeek environments changed')
+    for short, name in names.items():
+        arms = summary['environments'][name]['arms']
+        require(set(arms) == set(review['counts'][short]), 'DeepSeek must reuse, not duplicate, random')
+        for arm, expected in review['counts'][short].items():
+            require(arms[arm]['acceptable'] == expected, f'DeepSeek / review disagreement: {name} / {arm}')
+            require(arms[arm]['runs'] == 30, f'Incomplete DeepSeek arm: {name} / {arm}')
+            runs += arms[arm]['runs']
+    require(runs == review['reviewed_run_count'] == 360, 'DeepSeek run count changed')
+    for test in review['paired_exact_mcnemar_holm']:
+        key = test['contrast'].replace(' vs ', '-')
+        actual = summary['environments'][names[test['environment']]]['contrasts'][key]
+        require(math.isclose(actual['p_holm'], test['p_holm'], abs_tol=1e-12, rel_tol=0),
+                'DeepSeek / review corrected comparison changed')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('runs/reproduced_results'))
@@ -104,6 +128,17 @@ def main():
             '--output', out / f'replay_{name}.json')
     run('environment', 'scripts/analyse_environment_study.py', ENV / 'lpscl', ENV / 'lic', ENV / 'llzo',
         '--production', '--json', out / 'environment.json')
+    run('deepseek', 'scripts/analyse_environment_study.py',
+        DEEPSEEK / 'lpscl', DEEPSEEK / 'lic', DEEPSEEK / 'llzo',
+        '--production', '--policy', 'deepseek_v1', '--json', out / 'deepseek.json')
+    verify_deepseek(read(out / 'deepseek.json'))
+    run('model_comparison', 'scripts/compare_models_environment.py',
+        '--haiku', out / 'environment.json', '--deepseek', out / 'deepseek.json',
+        '--haiku-usage', ENV / 'usage.json', '--deepseek-usage', DEEPSEEK / 'usage.json',
+        '--out', out / 'model_comparison.md')
+    run('llzo_models', 'scripts/audit_llzo_models.py',
+        '--archive', f'Haiku 5.5={ENV / "llzo"}', '--archive', f'DeepSeek V3.2={DEEPSEEK / "llzo"}',
+        '--json', out / 'llzo_audit.json', '--md', out / 'llzo_audit.md')
     run('physical', 'scripts/analyse_mlip_comparison.py', '--index', CAMPAIGN / 'index_final.json',
         '--out', out / 'physical')
     run('pilot', 'scripts/report_llm_petmad_pilot.py', '--state', PILOT / 'state.json', '--out', out / 'pilot')
@@ -128,6 +163,8 @@ def main():
             'Presentation refers to a different final index')
     require(before == evidence_hashes(), 'A frozen evidence file changed during reproduction')
     receipt = dict(status='passed', offline=True, commands=executed, evidence_files_unchanged=len(before),
+                   environment_runs=810, deepseek_runs=360, shared_random_runs=90,
+                   replayed_queries=9600,
                    selected_contacts=6, evaluated_primary_rows=17, new_calculator_calls=6632,
                    viewer_checked=catalog is not None, final_index_sha256=sha(ROOT / CAMPAIGN / 'index_final.json'),
                    source_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),

@@ -42,7 +42,9 @@ The Haiku/physics code and final-index reader fix have since been integrated in
 `work/final-integration-20261022`; the [integration record](FINAL_INTEGRATION.md)
 supersedes earlier pending-integration statements. DeepSeek comes from
 [`550391b`](https://github.com/DavideTisi/interphAIse/tree/550391b86fa18aee72a4738838936066b388655a),
-read as immutable Git objects. Its code/archive merge remains separate.
+initially read as immutable Git objects. Its code/archive was subsequently
+merged at `3a93e17` for the user-authorized public release, and the offline
+reproduction entry point now includes both configurations.
 
 The [independent review receipt](data/reviews/deepseek_results_review_20261022.json)
 records all 360 DeepSeek run hashes and reproduces counts, paired tests and
@@ -427,8 +429,9 @@ are not part of the completed confirmatory results presented here. We should
 not imply that every proposed arm was run. The final-index reader compatibility
 patch and the completed Haiku/physics branches are now integrated. Earlier
 pending-patch statements are superseded by FINAL_INTEGRATION.md. The incoming
-DeepSeek archive has been independently recounted, but its provider/client and
-analysis changes still require the separate integration review.
+DeepSeek archive has been independently recounted and its provider/client and
+analysis changes have since been integrated. The public-release verification
+is recorded in FINAL_INTEGRATION.md.
 
 ## Revised project narrative and presentation plan
 
@@ -540,9 +543,10 @@ or the complete software test suite for documentation edits.
 
 Recommended next work, in order:
 
-1. Review and integrate DeepSeek's code/archive, then run the relevant integrated
-   checks under the pinned dependencies. The earlier Haiku/physics integration
-   is complete. No further paid calls or physics runs are required for this study.
+1. Complete the authorized public release after integrated verification. The
+   Haiku/physics and DeepSeek code/archive merges are complete, and the offline
+   wrapper covers both. No further paid calls or physics runs are required for
+   this study.
 2. Revise the main presentation, overview and write-up using the plan above.
    Preserve frozen scores and separate prospective decisions from later
    robustness. Keep the LLZO random advantage, failed forecasts and physical

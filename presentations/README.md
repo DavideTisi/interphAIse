@@ -1,5 +1,20 @@
 # Presentation checkpoint
 
+## Completed presentation for a mixed audience
+
+[Editable v4 PowerPoint](nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx)
+and [PDF](nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pdf)
+contain 18 main slides and six backups. They explain the coating problem,
+strategies, tools and sulfide candidate shortlist in more accessible language.
+These are completed **Haiku/PET-MAD checkpoints**; they do not yet include
+DeepSeek. A newer deck incorporating both configurations is being prepared
+in the separate presentation chat.
+
+The release copies the completed v3/v4 files and their source builders without
+changing their bytes. Their hashes match the presentation chat's recorded
+verification. See [the provenance record](nonexpert_2026-10-22/VALIDATION.md).
+The original checkout, PowerPoint lock file and ongoing edits are preserved.
+
 **After the DeepSeek repeat:** The 24-slide consolidated presentation is the
 reviewed **Haiku and PET-MAD checkpoint**, not yet the complete two-configuration
 story. Its existing counts and physical values remain valid. The
@@ -10,8 +25,9 @@ No PowerPoint, PDF, Word or image was edited during this analysis.
 
 **Completed Haiku/physics integration:** `scripts/reproduce_results.py` checks
 the checkpoint's evidence JSON against both merged branches, including all six
-selected contacts and the four forecast outcomes. It does not yet reproduce
-the incoming DeepSeek archive. The integration does not rewrite the live pilot
+selected contacts and the four forecast outcomes. It now also replays the
+DeepSeek archive and regenerates the separate model comparison and LLZO audit.
+Those new results are not yet in the rendered deck. The integration does not rewrite the live pilot
 or its separate one-slide checkpoint. See
 [the integration record](../FINAL_INTEGRATION.md).
 

@@ -1,5 +1,16 @@
 # interphAIse — project report
 
+**Authorized public-release preparation — 22 October 2026:** Integrated
+DeepSeek `550391b` at merge `3a93e17`, preserving both contributors' histories
+and all frozen results. The final suite passes 246 tests. The expanded offline
+entry point reproduces both model configurations, the LLZO audit, physical
+comparison, pilot report and viewer; all 9,600 queries replay and 1,859 evidence
+files remain unchanged. Completed accessible presentation checkpoints and
+their builders are included with matching validation hashes. The newer
+two-configuration deck remains in progress in its separate chat. The
+[integration record](FINAL_INTEGRATION.md) records the checks and release scope.
+No new paid call or materials calculation occurred.
+
 **Combined interpretation and presentation plan — 22 October 2026:** Updated
 [RESULTS_SYNTHESIS_2026-10-22.md](RESULTS_SYNTHESIS_2026-10-22.md) with the final
 DeepSeek comparison, the complete earlier search and PET-MAD results, and a
