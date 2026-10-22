@@ -28,17 +28,32 @@ distinguished from the primary evidence available during the live pilot.
 
 ## Hosting status and publication
 
-At inspection on 2026-10-22, `DavideTisi/interphAIse` is **private**, the authenticated
-user has repository admin rights, and `GET /repos/DavideTisi/interphAIse/pages`
-returns 404: no Pages site is configured. The account API did not expose a plan.
-There is **no verified public viewer URL yet**.
+**Live, verified on 22 October 2026:**
+[Open the referee explorer](https://davidetisi.github.io/interphAIse/) or
+[download the offline ZIP](https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip).
+Both were fetched without authentication and matched the local SHA-256 values.
+The public page rendered the actual paired structures with no JavaScript errors.
+The source repository remains **private**; this website does not make its code
+or Git history public. The user will change repository visibility after the
+final merge, separately, to meet the hackathon submission requirement.
+
+The standalone deployment is `gh-pages` commit `6853ef6`, built from integration
+source `a727582`. It contains only the five allowlisted files below. The API
+reported Pages as already enabled when creation was attempted; a subsequent
+read confirmed `status: built`, `public: true`, and `gh-pages` at `/` as source.
+No paid plan or repository visibility setting was changed.
+
+The checked release ZIP is also stored in
+`presentations/results_2026-10-22/interphaise_referee_viewer_2026-10-22.zip`.
+HTML SHA-256: `893ae8839664d6834e79b6d32e1b3c3aaa6a10e9011e348f0efc3ba698b7a14d`.
+ZIP SHA-256: `88868e10ec3359050bd2eac4c5d2e2c6a956f4001377818657518939727d7e0d`.
 
 [GitHub's documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
 states that Pages from private repositories requires Pro, Team or Enterprise.
 Do not make the source repository public merely to host the viewer.
 
-To publish after review, create a dedicated `gh-pages` branch with **only** these
-generated files at its root, using a separate empty checkout:
+For later updates, preserve the dedicated `gh-pages` branch and publish **only**
+these generated files at its root from a separate checkout:
 
 - `index.html`
 - `evidence.json`
@@ -46,25 +61,19 @@ generated files at its root, using a separate empty checkout:
 - `.nojekyll`
 - `interphaise-referee-viewer.zip`
 
-Check that the remote branch does not already exist before creating it; preserve
-any existing deployment. Do not copy a repository directory or use a broad
+The branch now exists; update its existing history instead of replacing it.
+Do not copy a repository directory or use a broad
 upload command. Keep `.env`, prompts, archives and unrelated project files out.
-Configure GitHub Pages to deploy that branch's root, keeping repository
-visibility private. The API request is:
+Pages already deploys that branch's root. Read its configuration with:
 
 ```bash
-gh api --method POST repos/DavideTisi/interphAIse/pages \
-  -f 'source[branch]=gh-pages' -f 'source[path]=/'
+gh api repos/DavideTisi/interphAIse/pages
 ```
 
-This request may be refused if the account plan does not support private-repo
-Pages. It must not trigger a paid upgrade or a repository-visibility change.
-If it succeeds, read the returned `html_url`, wait for the build, and verify that
-the page and ZIP load **without authentication** and that the delivered HTML
-matches the local hash. Until then, do not label the anticipated URL as live.
-If unavailable, the complete ZIP is already suitable as a hackathon attachment;
-a separate public results-only repository or another static host is an optional
-publishing decision, not a reason to expose the research repository.
+After an update, verify the page and ZIP again **without authentication** and
+compare their hashes with the local release. Do not use a paid upgrade or change
+repository visibility as part of a routine viewer deployment. The complete ZIP
+also works as a submission attachment and does not depend on hosting.
 
 ## Verification performed
 
@@ -81,4 +90,5 @@ python -m http.server 8879 --bind 127.0.0.1 --directory runs/referee-site
 python -m pytest tests/test_referee_viewer.py tests/test_structure_viewer.py -q
 ```
 
-No new API call, materials calculation, GPU job or paid service was used.
+No materials/LLM API call, new calculation, GPU job or paid service was used.
+GitHub API calls were used only to inspect/configure the static hosting.

@@ -9,6 +9,13 @@ and where chemical priors or the evaluator limit it.
 the analyses, checks the frozen evidence and exports the interactive viewer.
 No API credential, model download or GPU is needed for that command.
 
+**For reviewers:** [Open the public structure explorer](https://davidetisi.github.io/interphAIse/)
+or [download its offline copy](https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip).
+The [one-page illustrated overview](presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx)
+introduces the problem and results. See the [submission checklist](SUBMISSION_PACKAGE.md)
+for remaining release actions; the viewer is supporting evidence, separate from
+the required public source repository and write-up.
+
 **Final results, 22 October 2026:** the original 150-run benchmark, 450-run
 three-environment study and completed three-coating physical pilot are brought
 together in [the synthesis](RESULTS_SYNTHESIS_2026-10-22.md) and

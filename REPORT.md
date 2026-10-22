@@ -1,5 +1,14 @@
 # interphAIse — project report
 
+**Referee package — 22 October 2026:** The
+[public structure explorer](https://davidetisi.github.io/interphAIse/) is live,
+with six selected primary interfaces and an offline ZIP. Anonymous downloads
+match the validated local files. The Word overview is also complete. The
+[submission checklist](SUBMISSION_PACKAGE.md) maps the package to the official
+requirements and judging criteria. The code repository remains private; Davide
+will make it public after the final merge. A public social post and the event
+submission are still outstanding. No new scientific calculation occurred.
+
 **Final integration — 22 October 2026:** Both collaborators' completed branches
 are combined in `work/final-integration-20261022`, including Adem's `5b76988`
 final-index reader fix, his documentation-only `1f7bf11` fresh-environment test

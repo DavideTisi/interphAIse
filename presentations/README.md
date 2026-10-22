@@ -8,6 +8,12 @@ separate one-slide checkpoint. See [the integration record](../FINAL_INTEGRATION
 
 ## Short overview and graphical abstract
 
+[Public structure explorer](https://davidetisi.github.io/interphAIse/) and
+[offline ZIP](results_2026-10-22/interphaise_referee_viewer_2026-10-22.zip)
+provide a compact supporting demo of the six computed interfaces. The
+[submission checklist](../SUBMISSION_PACKAGE.md) separates these supporting
+assets from the required write-up, public repository and social post.
+
 [One-page Word document](results_2026-10-22/interphaise_project_overview_2026-10-22.docx)
 combines the approved overview and graphical abstract. It was rendered with the
 bundled document compiler and visually checked as one Letter-size page, with

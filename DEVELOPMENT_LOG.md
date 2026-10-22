@@ -3436,3 +3436,57 @@ rerun for this document-only change. A separately requested subagent is preparin
 a small referee edition of the structure viewer in an isolated worktree; its
 hosting and verification outcome will be logged separately. The scientific
 archives, current slide deck and original davide checkout are unchanged.
+
+## 2026-10-22 — Public referee explorer and submission requirements
+
+**Branch:** `work/final-integration-20261022`. The user explicitly requested a
+subagent to make the viewer shareable with hackathon referees. The subagent
+worked in isolated branch `work/shareable-viewer` and delivered `49e9e73`; it
+was integrated unchanged as `a727582`. Added a compact export with only the six
+selected primary contacts, three coating shortcuts, component colouring and
+an offline ZIP. The full 460-geometry catalogue remains an optional local build.
+The small export preserves coordinates, constraints, energies and provenance;
+it visibly separates decision-time evidence from later sensitivity information
+and keeps the polar-model, LiF and CaAl limitations explicit.
+
+The subagent reported **25 focused viewer/export tests passed** in 16.28 s.
+Tests reject missing/duplicate/invalid records, unrelated output files, private
+paths and remote assets, and verify exact ZIP/HTML equivalence. It visually
+checked all three coatings and reported no browser JavaScript errors. A browser
+download-event wait hung and was interrupted; no successful click-download
+verification is claimed. The parent rebuilt the package, checked its contents,
+then independently inspected the deployed page and paired Nb geometries with
+no browser warnings/errors. Public screenshot: `runs/referee_public_preview.png`.
+
+Published only the five export files on independent `gh-pages` commit `6853ef6`.
+GitHub initially reported no Pages configuration; after the branch push, the
+creation endpoint returned 409 (already enabled). A read confirmed a built,
+public site deploying `gh-pages` at `/`. No account upgrade or repository
+visibility change was requested. Verified anonymous GETs of
+`https://davidetisi.github.io/interphAIse/` and its ZIP against local hashes:
+
+- HTML: `893ae8839664d6834e79b6d32e1b3c3aaa6a10e9011e348f0efc3ba698b7a14d`.
+- ZIP: `88868e10ec3359050bd2eac4c5d2e2c6a956f4001377818657518939727d7e0d`.
+
+The 271,944-byte ZIP is retained in
+`presentations/results_2026-10-22/interphaise_referee_viewer_2026-10-22.zip`, so it
+can be included in the submission independently of hosting. SHARE_VIEWER.md
+records deployment/update instructions. A scan of the 1,970 tracked files found
+no configured credential values; `.env` is untracked. This is a current-snapshot
+check, not a claim that every historical Git object has been audited.
+
+The user then supplied the official campaign page. Its browser-visible
+submission requirements and four judging criteria are mapped to our package in
+SUBMISSION_PACKAGE.md. The generic web reader could not load the page; the
+browser did. The separate “How the hackathon works” link returned 404, so no
+additional eligibility/rules claim was inferred. Deadline: 23 October 2026 at
+02:00 CEST. The required public source repository and public social post are
+distinct from the optional viewer. Davide explicitly chose to make the
+repository public himself after all work is merged. No repository visibility
+change, social post, rules confirmation or submission was performed.
+
+Updated the README, REPORT.md and presentation index with the live viewer and
+the illustrated document. No new LLM/materials API call, database query, MLIP
+calculation or GPU job occurred. Remaining release work: joint merge/review,
+Davide's public-repository change and anonymous link check, public social post,
+then submission with the write-up and human rules confirmation.
