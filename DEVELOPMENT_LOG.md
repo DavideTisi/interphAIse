@@ -3490,3 +3490,41 @@ the illustrated document. No new LLM/materials API call, database query, MLIP
 calculation or GPU job occurred. Remaining release work: joint merge/review,
 Davide's public-repository change and anonymous link check, public social post,
 then submission with the write-up and human rules confirmation.
+
+## 2026-10-22 — Independent review of the completed DeepSeek repeat
+
+**Branch:** `work/final-integration-20261022`, starting at `39666fc`. The user
+reported Adem's completed, validated DeepSeek repeat at `550391b`. Fetched
+`work/agent-experiments` and read the protocol, archive README and
+SYNC_DAVIDE_10.md directly from that commit, without merging or checking out
+its code. Read all 360 production run JSON objects via `git cat-file --batch`.
+Confirmed complete status, ten charged queries per run and unique
+environment/arm/seed identities; recounted all twelve acceptance cells.
+
+Independently recomputed the exact two-sided paired McNemar p values and Holm
+correction across six tests. All agree with the incoming final report. DeepSeek
+sulfide adjusted p values are 0.07763671875 and 0.1123046875; LLZO values are
+0.4375 and 1; chloride values are 1. Also reproduced the LLZO upfront acceptable
+formulas (18 LiAlSiO4, 3 LiMgPO4, 1 LiAl(SiO3)2 picks), upfront/iterative distinct
+formula counts (38/45), and mean pairwise Jaccard similarities (0.46523/0.32296).
+These are post-hoc descriptive checks, not additional confirmatory tests.
+
+Saved `data/reviews/deepseek_results_review_20261022.json`, including source
+commit, all 360 input hashes, counts, p values, audit statistics and scope.
+Updated REPORT.md with the model comparison and interpretation corrections:
+absence of a significant DeepSeek feedback effect does not establish zero
+effect, and upfront-versus-iterative does not isolate causal feedback harm.
+The poor Haiku upfront result is configuration-specific; both iterative models
+remain below the shared random baseline on LLZO. Unflagged candidates are not
+thereby validated battery coatings. The review explicitly distinguishes 22
+acceptable upfront picks from 20 successful runs and avoids double-counting
+the reused random runs.
+
+No new paid call, materials evaluation, cluster job or provider-key access
+occurred. The full incoming production validator/client test suite was not
+rerun; this session independently recomputed results from the archived
+histories. Scientific inputs and outputs on both contributors' branches remain
+unchanged. The presentation, Word overview and graphical abstract are still the
+previous version, and the public viewer's PET-MAD data are unaffected. Remaining
+work: code/archive integration review and a concise DeepSeek presentation update;
+the repository's visibility remains for Davide to change after the final merge.

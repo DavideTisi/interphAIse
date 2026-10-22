@@ -1,5 +1,65 @@
 # interphAIse — project report
 
+**DeepSeek results review — 22 October 2026:** Reviewed Adem's final archive at
+`work/agent-experiments:550391b` as immutable Git objects, without merging the
+incoming client/analysis code. Independently recounted all 360 complete runs
+and 3,600 charged queries, recomputed the six exact paired McNemar tests and
+Holm adjustments, and reproduced the LLZO successful-formula counts and
+cross-run diversity statistics. The [review receipt](data/reviews/deepseek_results_review_20261022.json)
+records every inspected run's SHA-256 and the calculated results. This check
+agrees with Adem's final numbers; it is not a second execution of his full
+production validator.
+
+| Environment | Model | Iterative | Sequential | Shuffled | Upfront | Shared random |
+|---|---|---:|---:|---:|---:|---:|
+| Sulfide | Haiku | 20 | 2 | 6 | 0 | 8 |
+| Sulfide | DeepSeek | 12 | 2 | 3 | 2 | same 8 |
+| Chloride | Haiku | 30 | 30 | 30 | 30 | 29 |
+| Chloride | DeepSeek | 30 | 30 | 30 | 30 | same 29 |
+| LLZO | Haiku | 12 | 0 | 4 | 1 | 24 |
+| LLZO | DeepSeek | 10 | 4 | 12 | 20 | same 24 |
+
+All cells are successes within ten queries out of 30 runs. The repeat adds 360
+LLM runs to the existing 450-run environment study: 810 distinct runs in total,
+including the single reused set of 90 random runs. Model comparisons are
+descriptive comparisons of configurations, not matched reasoning compute.
+Adem reports 2,793 calls, USD 8.99 recorded by OpenRouter for production and
+USD 9.19 for the key including the stopped duplicate, within the USD 12 limit.
+
+The DeepSeek sulfide differences have the same direction as Haiku's, but neither
+survives Holm correction (p = 0.07764 and 0.11230). None of DeepSeek's six planned
+comparisons rejects at 0.05. For LLZO, the appropriate statement is **no clear
+benefit from correctly attributed feedback was demonstrated**, not proof that
+feedback has no effect. Iterative is 10/30 versus sequential 4/30 (Holm p =
+0.4375) and shuffled 12/30 (p = 1). Upfront versus iterative also changes the
+batch-versus-sequential selection policy, so 20 versus 10 does not isolate a
+causal harm from feedback.
+
+DeepSeek's 20 successful LLZO upfront runs use only candidates outside the
+predefined oxyhalogen review set: 18 acceptable LiAlSiO4 picks, three LiMgPO4
+picks and one LiAl(SiO3)2 pick. These are **22 successful picks across 20 runs**,
+not 22 independent successful runs. The result shows Haiku's poor upfront
+shortlist performance is not universal across the tested configurations; it
+does not make the shared iterative failure against random Haiku-specific.
+The audit weakens the suggestion that finding LLZO-acceptable candidates must
+depend on oxyhalogen loopholes. Unflagged still does not mean experimentally
+validated, safe in all settings or suitable for Li transport.
+
+The exploratory diversity figures describe variation across runs: DeepSeek's
+upfront lists cover 38 formulas (mean pairwise Jaccard 0.465), versus 45 and
+0.323 for iterative. These aggregates alone do not establish why trajectories
+succeed or fail. Our final scientific claim should remain that LLM priors and
+feedback can support testable scientific choices, with benefits depending on
+the configuration, selection policy and environment. Human-intuition equivalence
+has not been tested.
+
+The current Word overview, graphical abstract and presentation remain the
+previous Haiku-plus-PET-MAD version; they have not yet incorporated this repeat.
+The public structure viewer needs no numerical change because no new interface
+calculation occurred. Next: review/integrate the DeepSeek code and archive,
+then add a model-comparison slide and the exploratory LLZO audit as supporting
+material before release. No further paid runs are required for that update.
+
 **Referee package — 22 October 2026:** The
 [public structure explorer](https://davidetisi.github.io/interphAIse/) is live,
 with six selected primary interfaces and an offline ZIP. Anonymous downloads
