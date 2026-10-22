@@ -2682,3 +2682,27 @@ The choose-2 forecast held: both values inside their ranges, weaker contact corr
 - Record `66ff7ea1…`. Cumulative ≈ USD 0.003 at list price.
 
 Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report_live/`, `state.json`.
+
+## 2026-10-22 — Agent side (Adem): summary prompt bound amended; live pilot complete
+
+- **Branch:** `work/agent-experiments`. Base commit `9b59000`; the amendment and archive are committed on top (see git history).
+- **Why:** the live summary prompt (16,334 characters) exceeded `MAX_PROMPT_CHARS = 16000`. The pilot stopped before any request and nothing was charged. Adem approved a bound for the summary stage only.
+- **Changes:**
+  - `interphaise/pilot.py`: `SUMMARY_MAX_PROMPT_CHARS = 20000` (summary stage only).
+  - `Pilot.resume_stopped(reason, by)`: re-opens only a prompt-size stop and appends a hashed amendment to `state["amendments"]`. Any other stop stays terminal.
+  - `scripts/run_llm_petmad_pilot.py`: new `--resume-stopped REASON` option.
+  - Unchanged: prompt content, model, settings, and the 10-attempt HTTP cap.
+- **Tests:**
+  - `tests/test_pilot.py` has a new test for explicit resume only after a prompt-size stop. The `index` fixture now resets the options' executed rows to pending, so the tests no longer depend on campaign progress. The real LiTaF6 package had broken two tests.
+  - Result: 18/18 pilot tests pass. The full suite has 188 passed and 5 failed. Four are the known pymatgen-pin env failures; the fifth (the fixture's `not_run` rows) was fixed and rechecked.
+- **Live run:** one Anthropic HTTP attempt to `claude-haiku-5-5`.
+  - Status `complete`; 5/10 HTTP attempts used.
+  - Summary record `ecb1608f…98ae`; amendment `6ac89103…db3f`.
+  - Usage: 7,961 input and 3,655 output tokens. Cumulative pilot cost ≈ USD 0.006 at list price (estimate, not billed).
+  - Archive: `data/experiments/llm_petmad_pilot_v1/EXECUTION_summary.json` and the regenerated `report_live/`.
+- **Outcome:**
+  - LiTaF6 forecasts: both in range. LiCaAlF6 forecasts: both missed (cathode 1.43 against [3.0, 3.8]; electrolyte 0.74 against [1.4, 1.9]).
+  - The weaker contact was predicted correctly for both coatings. Choose-3 did not change the shortlist order.
+  - The summary ranks LiNbF6 > LiTaF6 > LiCaAlF6 > LiF and explicitly concedes the LiCaAlF6 miss.
+- **Limitation:** the prompt field `min_W_adh_J_m2` is the minimum over the two contacts (the weaker contact at its selected registry). Haiku misread it as a minimum over registries and flagged the LiCaAlF6 value as suspicious. The prompt stays frozen for this pilot. Proposed for any future version: rename it `weaker_contact_W_adh_J_m2`.
+- **Next:** Davide reviews `report_live/` for the pilot slide; Claude's sensitivity runs stay outside this decision record.

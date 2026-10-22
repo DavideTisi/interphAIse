@@ -44,6 +44,8 @@ def main():
     p.add_argument("--table", type=Path, default=ROOT / "data/benchmarks/environment_v1/lco_lpscl_4v.json")
     p.add_argument("--reference", default="mp-aaacjjwh")
     p.add_argument("--no-prior", action="store_true", help="Skip the optional chemistry-only prior snapshot")
+    p.add_argument("--resume-stopped", metavar="REASON",
+                   help="Re-open a pilot stopped only by the prompt-size bound, recording this reason")
     mode = p.add_mutually_exclusive_group(required=True)
     mode.add_argument("--mock", action="store_true")
     mode.add_argument("--live", action="store_true")
@@ -56,6 +58,9 @@ def main():
     settings = dict(model="claude-haiku-5-5", temperature=1.0, max_tokens=4096)
     with Pilot(args.state, args.index, args.table, reference_id=args.reference, mode="live" if args.live else "mock",
                settings=settings, root=ROOT, include_prior=not args.no_prior) as pilot:
+        if args.resume_stopped:
+            amendment = pilot.resume_stopped(args.resume_stopped, by="Adem")
+            print(f"resumed from {amendment['previous_status']!r} (amendment {amendment['sha256'][:12]})")
         try:
             while (record := pilot.run_stage(llm)) is not None:
                 print(f"{record['stage']}: {record['parsed'].get('selected_id', '')} "

@@ -1,0 +1,124 @@
+{
+ "primary_selected": {
+  "cathode": {
+   "registry_id": "R1",
+   "W_adh_J_m2": 3.338748412819128,
+   "W_sep_J_m2": 4.727749860143862
+  },
+  "electrolyte": {
+   "registry_id": "R2",
+   "W_adh_J_m2": 1.5773585444472311,
+   "W_sep_J_m2": 2.910571251635274
+  }
+ },
+ "runs": {
+  "cathode_thickness": {
+   "status": "valid",
+   "W_adh_J_m2": 3.3409949188227928,
+   "W_sep_J_m2": 4.728762990302378,
+   "dW_adh_vs_primary": 0.0022465060036647166,
+   "dW_sep_vs_primary": 0.0010131301585154517,
+   "n_atoms": 792,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 104,
+   "fixed_depth_A": 9.10044154,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "calls": 142,
+   "wall_s": 36.145046141999956
+  },
+  "cathode_fixed_depth": {
+   "status": "valid",
+   "W_adh_J_m2": 3.333682762026551,
+   "W_sep_J_m2": 4.724446174844355,
+   "dW_adh_vs_primary": -0.005065650792577259,
+   "dW_sep_vs_primary": -0.0033036852995067534,
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 156,
+   "fixed_depth_A": 13.385,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "calls": 139,
+   "wall_s": 34.705211325000164
+  },
+  "cathode_robustness": {
+   "status": "valid",
+   "W_adh_J_m2": 3.3391008059177425,
+   "W_sep_J_m2": 4.7266045825733665,
+   "dW_adh_vs_primary": 0.00035239309861445633,
+   "dW_sep_vs_primary": -0.0011452775704956508,
+   "n_atoms": 852,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 104,
+   "fixed_depth_A": 9.10044154,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "calls": 140,
+   "wall_s": 35.68180247200007
+  },
+  "electrolyte_thickness": {
+   "status": "valid",
+   "W_adh_J_m2": 1.572122756196295,
+   "W_sep_J_m2": 2.912856896615716,
+   "dW_adh_vs_primary": -0.00523578825093618,
+   "dW_sep_vs_primary": 0.0022856449804420365,
+   "n_atoms": 1048,
+   "area_A2": 170.70827540491757,
+   "n_fixed": 38,
+   "fixed_depth_A": 3.257602,
+   "registry": [
+    0.25,
+    0.5,
+    2.0
+   ],
+   "calls": 448,
+   "wall_s": 66.11207882999997
+  },
+  "electrolyte_fixed_depth": {
+   "status": "valid",
+   "W_adh_J_m2": 1.6014580643287282,
+   "W_sep_J_m2": 2.918831652792659,
+   "dW_adh_vs_primary": 0.024099519881497056,
+   "dW_sep_vs_primary": 0.008260401157385022,
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "n_fixed": 68,
+   "fixed_depth_A": 6.515204,
+   "registry": [
+    0.25,
+    0.5,
+    2.0
+   ],
+   "calls": 406,
+   "wall_s": 58.23650064799995
+  },
+  "electrolyte_robustness": {
+   "status": "valid",
+   "W_adh_J_m2": 1.4636845740138906,
+   "W_sep_J_m2": 2.7066447542398793,
+   "dW_adh_vs_primary": -0.11367397043334049,
+   "dW_sep_vs_primary": -0.2039264973953947,
+   "n_atoms": 880,
+   "area_A2": 172.9262508262677,
+   "n_fixed": 36,
+   "fixed_depth_A": 3.257602,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "calls": 565,
+   "wall_s": 71.36629911199998
+  }
+ }
+}

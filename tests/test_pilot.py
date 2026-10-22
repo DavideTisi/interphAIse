@@ -83,8 +83,17 @@ class Scripted:
 
 @pytest.fixture
 def index(tmp_path):
+    """Real index with every option reset to pending, so tests do not depend on campaign progress."""
+    data = json.loads(REAL_INDEX.read_text())
+    extra = ("calculator_calls", "device", "failure_reason", "job_id", "joined_energy_eV", "result_path",
+             "result_sha256", "separation_path", "separation_single_points", "source_commit", "wall_seconds", "warnings")
+    for r in data["runs"]:
+        if r["candidate_id"] != REF and not r["status"].startswith("not_run"):
+            for k in extra:
+                r.pop(k, None)
+            r.update(status="pending", W_adh_J_m2=None, W_sep_J_m2=None)
     p = tmp_path / "index.json"
-    p.write_text(REAL_INDEX.read_text())
+    p.write_text(json.dumps(data))
     (tmp_path / "manifest.json").write_bytes((CAMPAIGN / "manifest.json").read_bytes())
     return p
 
@@ -343,3 +352,21 @@ def test_manifest_must_match_index_pin(tmp_path, index):
     (tmp_path / "manifest.json").write_text("{}")
     with pytest.raises(ValueError, match="differs from the index pin"):
         pilot(tmp_path, index)
+
+
+def test_prompt_size_stop_can_be_resumed_explicitly_only(tmp_path, index, monkeypatch):
+    import interphaise.pilot as pilot_module
+    monkeypatch.setattr(pilot_module, "MAX_PROMPT_CHARS", 100)
+    with pilot(tmp_path, index) as p:
+        assert p.run_stage(Scripted()) is None and p.state["http_attempts_used"] == 0
+    monkeypatch.setattr(pilot_module, "MAX_PROMPT_CHARS", 16000)
+    with pilot(tmp_path, index) as p:
+        assert p.run_stage(Scripted()) is None                       # still stopped on plain resume
+        amendment = p.resume_stopped("bound too tight for this stage", by="test")
+        assert amendment["sha256"] and p.state["amendments"][0]["previous_status"].startswith("stopped: prior prompt")
+        assert p.run_stage(Scripted())["stage"] == "prior"
+    llm = _anthropic_sequence(monkeypatch, ["429", "429", "badjson"] * 2)
+    with Pilot(tmp_path / "other.json", index, TABLE, reference_id=REF, mode="mock", settings=SETTINGS, root=ROOT) as p:
+        p.run_stage(llm)                                              # stopped by validation, not by size
+        with pytest.raises(ValueError, match="Only a prompt-size stop"):
+            p.resume_stopped("try again", by="test")

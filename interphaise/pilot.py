@@ -37,6 +37,9 @@ HTTP_ATTEMPT_CAP = 10
 MAX_HTTP_PER_CALL = 3         # make_llm default retries: worst-case HTTP attempts inside one call
 MAX_FORMAT_ATTEMPTS = 2       # per stage; every attempt is charged against the HTTP cap
 MAX_PROMPT_CHARS = 16000      # ~8.6k input tokens at 1.86 chars/token: makes the cost ceiling enforceable
+# Amendment (22 Oct, approved by Adem, reported to Davide): the summary prompt carries three frozen feedback
+# packages plus all earlier decisions (~16.3k chars live), so it gets a separate bound. HTTP cap unchanged.
+SUMMARY_MAX_PROMPT_CHARS = 20000
 EV_A2_TO_J_M2 = 16.021766208
 TOL_J_M2 = 1e-6
 
@@ -517,8 +520,9 @@ class Pilot:
         feedback = ""
         for attempt in range(MAX_FORMAT_ATTEMPTS):
             prompt = json.dumps({**user, "validation_feedback": feedback}, sort_keys=True)
-            if len(prompt) > MAX_PROMPT_CHARS:
-                return self._stop(f"stopped: {stage} prompt exceeds {MAX_PROMPT_CHARS} characters")
+            limit = SUMMARY_MAX_PROMPT_CHARS if stage == "summary" else MAX_PROMPT_CHARS
+            if len(prompt) > limit:
+                return self._stop(f"stopped: {stage} prompt exceeds {limit} characters")
             worst = self.state["max_http_per_call"]
             if self.state["http_attempts_used"] + worst > self.state["http_cap"]:
                 return self._stop("stopped: HTTP attempt cap reached")
@@ -555,6 +559,24 @@ class Pilot:
                 return record
             self._save()
         return self._stop(f"stopped: {stage} failed validation")
+
+    def resume_stopped(self, reason, by):
+        """Explicitly re-open a pilot stopped only by the prompt-size bound (no request was made).
+
+        Any other stop stays terminal. The amendment is hashed into the state."""
+        status = self.state["status"]
+        if not (status.startswith("stopped: ") and "prompt exceeds" in status):
+            raise ValueError(f"Only a prompt-size stop can be resumed; status is {status!r}")
+        if not reason.strip():
+            raise ValueError("A recorded reason is required")
+        amendment = dict(at=_now(), by=by, previous_status=status, reason=reason,
+                         prompt_limits=dict(default=MAX_PROMPT_CHARS, summary=SUMMARY_MAX_PROMPT_CHARS),
+                         http_attempts_used=self.state["http_attempts_used"], http_cap=self.state["http_cap"])
+        amendment["sha256"] = digest(amendment)
+        self.state.setdefault("amendments", []).append(amendment)
+        self.state["status"] = "running"
+        self._save()
+        return amendment
 
     def _stop(self, reason):
         self.state["status"] = reason
