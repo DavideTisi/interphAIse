@@ -17,6 +17,104 @@ rules; the LLM's scientific selection judgment is what we test.
 [Interactive interfaces](https://davidetisi.github.io/interphAIse/) ·
 [Full results](docs/RESULTS_SYNTHESIS_2026-10-22.md)
 
+## How it works
+
+The LLM takes on the scientist's choice of **what to test next and why**. It
+uses chemical knowledge, interprets the feedback it receives and, in the physical
+pilot, predicts adhesion before the calculation. Humans fix the scientific
+question, candidate menu, scoring rules and budget. Code validates choices,
+runs or retrieves calculations, and preserves the evidence.
+
+```mermaid
+flowchart TB
+    H["Humans freeze the question, candidate menus,<br/>objectives, budgets and interface construction rules"]
+
+    subgraph B["Controlled discovery benchmark — Haiku and DeepSeek"]
+        L{{"LLM chooses a candidate<br/>and records its chemical hypothesis"}}
+        Q["Code validates the ID, charges the query<br/>and reveals its frozen thermodynamic scores"]
+        A["Compare success versus query budget<br/>across feedback controls and random search"]
+        L --> Q
+        Q -- "Iterative arm: use results for the next choice" --> L
+        Q -- "Completed runs" --> A
+    end
+
+    subgraph P["Separate prospective physical pilot — Haiku"]
+        C{{"Haiku chooses a coating and predicts<br/>adhesion at both contacts"}}
+        D["Archive the choice and forecasts<br/>before new interface energies are known"]
+        M["Evaluate the frozen interface structures<br/>ASE and PET-MAD supply energies and forces"]
+        V["Validate primary results and reveal<br/>the two contact adhesion values"]
+        F["Archive Haiku's final summary and forecast checks;<br/>then release withheld sensitivity results"]
+        C --> D --> M --> V
+        V -- "Next decision within the pilot budget" --> C
+        V -- "Pilot complete" --> F
+    end
+
+    H --> L
+    H -- "Buildable menu and LiNbF6 reference results" --> C
+
+    classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
+    classDef tools fill:#eef1f4,stroke:#7a8794,color:#1b2733
+    classDef human fill:#ffffff,stroke:#162b3a,color:#162b3a
+    class L,C llm
+    class Q,A,D,M,V,F tools
+    class H human
+    style B fill:#fafafa,stroke:#b8c2cc
+    style P fill:#fafafa,stroke:#b8c2cc
+```
+
+**Teal nodes are LLM decisions; grey nodes are computation, validation and
+analysis.** The feedback arrows show the iterative workflow. In the benchmark,
+upfront selects its entire shortlist before seeing results, sequential receives
+no numerical outcomes, and shuffled receives misassigned outcomes. Random
+selection provides the baseline. The benchmark retrieves precomputed scores;
+the physical pilot performs new calculations for the selected coatings.
+
+The two studies test complementary questions: does feedback improve the search,
+and do the LLM's prospective physical predictions hold? They do not establish
+that the LLM replaces a scientist's full judgment.
+
+<details>
+<summary>Original modelling-screen architecture</summary>
+
+The earlier design also lets a decision policy choose sharp contacts or reaction
+layers, facets and responses to structural validation. This is the historical
+screen architecture, not the protocol used for the completed discovery results.
+See [the original modelling screen](docs/LEGACY_SCREEN.md) for its detailed steps.
+
+```mermaid
+flowchart TD
+    IN([electrode · electrolyte · voltage]) --> R[REACTIVITY<br/>convex-hull reaction energies]
+    R --> IT{{INTERFACE_TYPE<br/>sharp or interphase? which layers, in which order?}}
+    IT -- sharp --> S[stack = electrode, electrolyte]
+    IT -- interphase --> SC[STACK_CHECK<br/>adjacent layers mutually stable?]
+    SC -- yes --> S2[stack = electrode, layers, electrolyte]
+    SC -- "no: reacting pairs as feedback" --> IT
+    SC -. retries exhausted .-> S
+
+    S --> P
+    S2 --> P
+    subgraph P [for each adjacent pair in the stack]
+        F{{FACETS<br/>which facets are in contact?}} --> M[MATCH + VALIDATE<br/>lattice match within strain/size limits]
+        M -- "no valid match: feedback" --> F
+        M --> E[ENERGETICS<br/>MLIP relaxation, work of adhesion]
+        E --> J{{JUDGE<br/>is the relaxed model physical?}}
+        J -- "reject: thicker_slabs / larger_cell" --> M
+        J -- "reject: next_termination" --> E
+        J -- "reject: different_facets" --> F
+    end
+    J -- accept --> OUT([best structure per pair · ranking · decision log])
+
+    classDef det fill:#eef1f4,stroke:#7a8794,color:#1b2733
+    classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
+    class R,SC,M,E,S,S2 det
+    classDef io fill:#ffffff,stroke:#162b3a,color:#162b3a
+    class IT,F,J llm
+    class IN,OUT io
+    style P fill:#fafafa,stroke:#b8c2cc
+```
+
+</details>
+
 ## Reproduce the results
 
 Use Python 3.12 and a full Git clone. From the repository root:

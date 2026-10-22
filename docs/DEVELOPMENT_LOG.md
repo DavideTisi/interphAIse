@@ -3962,3 +3962,32 @@ report zero findings. Updated the two visual-validation receipts and source
 hashes. No API/LLM request, MLIP calculation, numerical analysis or test-suite
 rerun occurred. The tracked submission correction is ready to commit and push;
 this does not publish the separate illustrated-report bundle.
+
+
+## 2026-10-22 — Restore the workflow diagrams in the README
+
+**Branch:** main, starting at `6052685`. Davide requested the model workflow
+schema removed during the documentation cleanup. Added a How it works section
+near the top of README.md with a Mermaid diagram for the completed studies:
+the controlled thermodynamic discovery benchmark and the separate prospective
+Haiku/PET-MAD pilot. Teal nodes identify the LLM's scientific selections and
+forecasts; grey nodes identify calculation, validation and analysis. The text
+explains the different feedback controls, fixed human-defined protocols and
+precomputed versus new calculations. The pilot diagram preserves the ordering
+of prospective predictions, primary feedback, final summary and later release
+of withheld sensitivity evidence.
+
+Also restored the original modelling-screen diagram verbatim in a collapsible
+section, explicitly labelled as the historical architecture. Its sharp-contact,
+reaction-layer, facet and validation decisions are not presented as the protocol
+of the completed discovery experiments. The detailed legacy explanation stays
+in docs/LEGACY_SCREEN.md.
+
+Verification: reviewed both workflows against interphaise/discovery.py and
+interphaise/pilot.py; confirmed that the restored diagram matches the preserved
+original exactly, both Mermaid fences and the details block are complete, and
+all README local links resolve. Whitespace and staged-scope checks precede
+publication. This is a README-only presentation change plus its log entry; no
+scientific data, numerical analysis, API/LLM/MLIP run or software test changed.
+Concurrent illustrated-document authoring remains unstaged. Publish the scoped
+change to main and check the diagrams on the public README.
