@@ -3938,3 +3938,27 @@ job occurred. The prior 246-test clean-install result remains applicable; the
 full unit suite was not rerun for a documentation reorganization. The next step
 is to commit and publish this cleanup, keeping concurrent document artwork
 separate.
+
+
+## 2026-10-22 — Name the coatings beside the pilot adhesion values
+
+**Branch:** main, starting at `714dd71`. Davide relayed Adem's review that the
+submission paragraph used three values with an ambiguous "respectively".
+Changed docs/SUBMISSION_WRITEUP.md to explicitly associate 1.63, 1.58 and
+0.74 J/m² with LiNbF6, LiTaF6 and LiCaAlF6, in that order. The values describe
+the electrolyte contact. No result, interpretation or limitation changed.
+
+Regenerated the existing submission Word document and its source hashes.
+Applied the same narrow correction to the newer local illustrated report's
+JSON source and Word output; its other authoring work and assets remain
+uncommitted and separate. Existing report files were checked against their
+validation hashes before replacement and backed up under the ignored
+runs/submission_mapping_fix/ directory.
+
+Verification: both Word files were rendered with the bundled LibreOffice
+renderer, confirmed to remain one page, and visually inspected. Their extracted
+prose differs only by the explicit coating mapping. Both accessibility audits
+report zero findings. Updated the two visual-validation receipts and source
+hashes. No API/LLM request, MLIP calculation, numerical analysis or test-suite
+rerun occurred. The tracked submission correction is ready to commit and push;
+this does not publish the separate illustrated-report bundle.
