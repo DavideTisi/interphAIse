@@ -1,5 +1,13 @@
 # interphAIse — project report
 
+**Fresh-install correction — 22 October 2026:** The reproduction command now
+includes the existing `mp` extra, supplying `emmet-core` for offline Materials
+Project ID normalization. Tests are an explicit Python package, and their shared
+helper imports use that package. A fresh Python 3.12.9 environment installed
+from the corrected command passes all 246 tests and the complete offline
+reproduction: 9,600 queries replayed, all 1,861 checked data files unchanged, and
+the viewer verified. Dependency pins and scientific results are unchanged.
+
 **Repository cleanup — 22 October 2026:** Removed the 36 `SYNC_*.md` handoff
 notes from the current tree at Davide's request. Existing Markdown links now
 point to their preserved versions at commit `7860291`, so historical protocols

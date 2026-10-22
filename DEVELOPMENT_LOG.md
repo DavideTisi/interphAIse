@@ -3758,3 +3758,36 @@ checks pass. No test-suite rerun is needed for this documentation-only change.
 No scientific evidence, executable code, presentation or credential changed,
 and no paid call or materials calculation occurred. The deleted notes remain
 recoverable in Git history; this is not a history purge.
+
+## 2026-10-22 — Reproduction dependencies and test-package imports
+
+**Branch:** `main`, starting at `ab8d757`. Addressed Adem's fresh-install
+review. The previous release checks used an environment that already had the
+Materials Project extra; they did not establish that the documented install
+command alone supplied every test dependency.
+
+Changed REPRODUCE.md to install `.[dev,analysis,mp]`, using the existing `mp`
+extra to supply `mp-api` and `emmet-core` for Materials Project ID normalization.
+No API key is needed for that offline operation. Added an empty
+`tests/__init__.py` so an installed package named `tests` cannot shadow the
+local suite. The first clean-suite attempt then exposed the bare
+`from test_orchestrator import facets` in tests/test_screen.py; changed it to
+`from tests.test_orchestrator import facets` to match the explicit package.
+No scientific implementation or dependency pin changed.
+
+Verification: created an isolated Python 3.12.9 venv with system site-packages
+disabled and installed the corrected command from scratch. Resolved versions
+include pymatgen 2026.9.24, pymatgen-core 2026.10.16, mp-api 0.47.0 and
+emmet-core 0.88.1. `python -m pip check` reports no broken requirements.
+Manually reproduced the external `tests` package collision before the fix
+and verified local resolution afterward. The full suite passes: **246 passed**
+(38.18 s; dependency warnings remain). Ran the complete offline reproduction
+wrapper in the new environment: all analyses and the viewer pass, all 9,600
+charged queries replay, and all 1,861 checked data files remain unchanged
+(including the two added publication receipts). Local logs and the verification
+receipt are under `runs/reproduction_fix/` (git-ignored). Whitespace checks pass.
+
+REPORT.md records the corrected reproduction status. No live LLM or Materials
+Project request, MLIP calculation or cluster job occurred. Concurrent logo,
+README and branding work is excluded from this commit. No further corrective
+work is required for these two reported issues.

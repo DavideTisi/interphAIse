@@ -12,7 +12,7 @@ from interphaise.ranker import CoatingRow, ContactResult, rank, to_markdown
 from interphaise.screen import ScreenConfig, run_screen
 from interphaise.tools.matcher import MatchSettings
 
-from test_orchestrator import facets
+from tests.test_orchestrator import facets
 
 
 def interphase_reasoner(system, user):

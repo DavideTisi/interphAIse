@@ -13,7 +13,7 @@ From the repository root, with Python 3.12 (the tested version):
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev,analysis]'
+python -m pip install -e '.[dev,analysis,mp]'
 python -m pytest -q
 python scripts/reproduce_results.py
 ```
@@ -21,7 +21,10 @@ python scripts/reproduce_results.py
 The matcher requires the pinned `pymatgen==2026.9.24` and
 `pymatgen-core==2026.10.16`. An older version previously caused four interface
 tests to fail. Do not replace the pins when reproducing these constructions.
-The `analysis` extra installs the plotting dependency; no MLIP extra is needed.
+The `analysis` extra installs the plotting dependency. The `mp` extra supplies
+`mp-api` and its `emmet-core` dependency, which the offline tests use to normalize
+Materials Project IDs. Installing these packages does not require an API key,
+and the tests do not query Materials Project. No MLIP extra is needed.
 
 Open `runs/reproduced_results/structure_viewer.html` in a browser, or share that
 single HTML file. Outputs also include the original discovery curve, both models'
