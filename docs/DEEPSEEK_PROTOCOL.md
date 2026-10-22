@@ -115,6 +115,8 @@ Archive to `data/experiments/deepseek_v1/{lpscl,lic,llzo}`. The Haiku archive `d
 ## Execution record (22 October 2026)
 
 - **Production:** ran 14:20–17:21 UTC from commit `70e1901`. All 360 runs completed with 0 failures.
+  Wall time was 3 h 1 min, against the 2.5 h projection. The last runs to start each needed a full
+  ten-query trajectory once fewer runs were in flight.
 - **Spend:** 2,793 calls, USD 8.99 recorded by OpenRouter; the key's total spend was USD 9.19. Limit USD 12. 0 cap or provider violations.
 - **Analysis:** validated with `--production --policy deepseek_v1`. See [the archive README](../data/experiments/deepseek_v1/README.md).
 - **Duplicate launch:** a second copy, started at 14:18 UTC from a command the user had rejected, was found and stopped after about 2 minutes. Its runs are in `runs/deepseek_v1_aborted_duplicate/`, outside the archive. Its cost, about USD 0.2, is included in the key spend.
