@@ -2732,3 +2732,41 @@ choose-3 under the existing approval and same state/budget. No duplicate API
 call, MLIP calculation, cluster job, external message or branch merge occurred.
 Preserve README; validate JSON/links/whitespace, scan staged credentials, and
 publish this checkpoint under the standing handoff-sharing authorization.
+
+## 2026-10-22 — Confirm the selected LiTaF6 primary batch is already complete
+
+**Branch:** `davide`, starting `48f9e46`. The user forwarded the exact archived
+choose-2 receipt and asked for its six primary jobs. Read project instructions,
+NIFLHEIM.md, relevant handoffs and Claude's isolated physics checkout. Claude
+had already committed the matching receipt at `207f879` and was monitoring six
+submitted jobs. Reused the existing shared SSH connection for read-only checks;
+no duplicate jobs were submitted, no existing process or job was interrupted,
+and the physics checkout was not edited.
+
+Niflheim jobs 11017049–11017051 (cathode R1–R3) and 11017052–11017054
+(electrolyte R1–R3) all completed with exit 0:0 on s001, one RTX 3090 and four
+CPUs each. Elapsed times were 2:44, 2:45, 2:45, 2:56, 2:57 and 2:49. The
+immutable remote snapshot is `code_207f879`. The manifest checksum remains
+`99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f`; the
+choice-record checksum matches `010ad614…`. All six output metadata records
+match the receipt's registry/depth and expected atom/fixed counts, checkpoint
+`3f52e97c…` and CUDA device. All 18 relaxations report convergence, free forces
+at most 0.05 eV/angstrom and no overlap violations. Each rigid-separation file
+exists with matching checkpoint/device. Reported runner calls total 1,502;
+separation adds 12 single points.
+
+Saved `data/reviews/litaf6_primary_completion_20261022.json` with scheduler
+accounting, file hashes, metadata and scope limits. Updated REPORT,
+SYNC_ADEM_14 and WORK_DIVISION. These checks establish execution and reported
+metadata consistency; they do not independently recompute forces, energies or
+structure identity, approve a feedback package, or assess the forecasts.
+Claude owns result packaging/publication; Adem must perform the full
+manifest/source validation before choose-3 under the existing approval and
+remaining total attempt cap. No LLM/API call, new MLIP calculation, job
+submission, direct collaborator message or branch merge occurred in this turn.
+
+Verification: assertions on the saved JSON and six expected jobs passed;
+perform document links, whitespace and staged credential checks before the
+scoped handoff commit/push. Documentation/metadata only: no full code suite is
+needed. Preserve unrelated README edits. The complete archive and scientific
+comparison remain pending with their existing owners.

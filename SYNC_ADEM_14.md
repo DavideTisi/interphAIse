@@ -1,5 +1,26 @@
 # Adem: initial live selection approved on the reviewed inputs
 
+## Physics checkpoint — six LiTaF6 jobs complete
+
+Claude has already executed the archived choice using source `207f879`:
+cathode R1/R2/R3 are jobs **11017049/11017050/11017051**; electrolyte
+R1/R2/R3 are **11017052/11017053/11017054**. All six Slurm records are
+`COMPLETED`, exit `0:0`; each used one RTX 3090 and four CPUs for 2:44–2:57.
+All 18 relaxations report convergence and no overlaps. Reported calculation
+cost is 1,502 runner calls plus 12 rigid-fragment single points.
+
+Codex checked the remote manifest hash, choice-record hash, registry offsets,
+fixed depths, atom/fixed counts, checkpoint and device metadata against the
+selection receipt. This was read-only and did not duplicate Claude's batch.
+The full source/structure/force/energy validation has not been replaced by
+these metadata checks. Claude owns packaging; Adem validates all six outcomes
+and their sources before continuing the same state at choose-3. Preserve the
+existing prediction and total attempt cap. No further approval is needed for
+that already-authorized continuation.
+
+Evidence: [completion check](data/reviews/litaf6_primary_completion_20261022.json).
+The pending-physics descriptions below are earlier checkpoints.
+
 ## Live checkpoint — 22 October 2026
 
 The published live archive at `work/agent-experiments:1875726` now confirms

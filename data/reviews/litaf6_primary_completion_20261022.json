@@ -1,0 +1,194 @@
+{
+  "checked_at_UTC": "2026-10-22T07:58:09.590925+00:00",
+  "source_commit": "207f879",
+  "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+  "choose2_record_sha256": "010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01",
+  "jobs": [
+    {
+      "job_id": 11017049,
+      "run_id": "mp-aaacjmqp:cathode:primary:R1",
+      "run_directory": "/home/scratch12/davti/OSI_Hackathon/runs/coating_pilot/LiTaF6/cathode_R1",
+      "result_sha256": "cfbc0aac72e9d971c3f6ce2838b423f0cbc9b5dc6d41425d5415c190ac8c3c2b",
+      "separation_sha256": "d9bbe84c0d02618491de9bcc64f669734b65d3e4413036d0f0bcdd41f9739e3d",
+      "metadata": {
+        "status": "converged_pilot",
+        "numerically_valid": true,
+        "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+        "device": "cuda",
+        "n_atoms": 696,
+        "n_fixed": 104,
+        "fixed_depth_A": 9.10044154,
+        "registry_fixed": [
+          0.0,
+          0.0,
+          2.0
+        ],
+        "calculator_calls": 140,
+        "wall_seconds": 69.50429558099995
+      },
+      "all_relaxations_report_converged": true,
+      "all_relaxations_report_no_overlaps": true,
+      "max_reported_free_force_eV_A": 0.04911337537628892,
+      "registry_matches_receipt": true,
+      "depth_matches_receipt": true,
+      "separation_checkpoint_matches": true,
+      "separation_device_matches": true
+    },
+    {
+      "job_id": 11017050,
+      "run_id": "mp-aaacjmqp:cathode:primary:R2",
+      "run_directory": "/home/scratch12/davti/OSI_Hackathon/runs/coating_pilot/LiTaF6/cathode_R2",
+      "result_sha256": "9314e2ef3dd89304fc58b2b7bcfc0b0132be0b3b43c30683dc526c991c281d52",
+      "separation_sha256": "79e8fff4ee2d49dd2dbc4f2f8e9fd42e457fd6cdb196424c774eddfb82b9041a",
+      "metadata": {
+        "status": "converged_pilot",
+        "numerically_valid": true,
+        "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+        "device": "cuda",
+        "n_atoms": 696,
+        "n_fixed": 104,
+        "fixed_depth_A": 9.10044154,
+        "registry_fixed": [
+          0.25,
+          0.25,
+          2.0
+        ],
+        "calculator_calls": 133,
+        "wall_seconds": 69.29400261799992
+      },
+      "all_relaxations_report_converged": true,
+      "all_relaxations_report_no_overlaps": true,
+      "max_reported_free_force_eV_A": 0.049129597581967464,
+      "registry_matches_receipt": true,
+      "depth_matches_receipt": true,
+      "separation_checkpoint_matches": true,
+      "separation_device_matches": true
+    },
+    {
+      "job_id": 11017051,
+      "run_id": "mp-aaacjmqp:cathode:primary:R3",
+      "run_directory": "/home/scratch12/davti/OSI_Hackathon/runs/coating_pilot/LiTaF6/cathode_R3",
+      "result_sha256": "949b347473a030bd09ba146b039769c27e601e0e87f13e94d83a3b0624a9e5f2",
+      "separation_sha256": "7424e1e9a03ba35d4935b80b71a372ba1b041fd5e0fbe34439a4db631b527736",
+      "metadata": {
+        "status": "converged_pilot",
+        "numerically_valid": true,
+        "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+        "device": "cuda",
+        "n_atoms": 696,
+        "n_fixed": 104,
+        "fixed_depth_A": 9.10044154,
+        "registry_fixed": [
+          0.08333333333333333,
+          0.25,
+          2.0
+        ],
+        "calculator_calls": 133,
+        "wall_seconds": 69.23535892200016
+      },
+      "all_relaxations_report_converged": true,
+      "all_relaxations_report_no_overlaps": true,
+      "max_reported_free_force_eV_A": 0.04911731395917121,
+      "registry_matches_receipt": true,
+      "depth_matches_receipt": true,
+      "separation_checkpoint_matches": true,
+      "separation_device_matches": true
+    },
+    {
+      "job_id": 11017052,
+      "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+      "run_directory": "/home/scratch12/davti/OSI_Hackathon/runs/coating_pilot/LiTaF6/electrolyte_R1",
+      "result_sha256": "7cdd08295c2175a11178fe28f84bbf063feebbabd342775b99df811ff47c2ace",
+      "separation_sha256": "7fb510e70cf825f011bfd12ae0f62959690759764642505cdf8e1347d5edcbd2",
+      "metadata": {
+        "status": "converged_pilot",
+        "numerically_valid": true,
+        "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+        "device": "cuda",
+        "n_atoms": 880,
+        "n_fixed": 38,
+        "fixed_depth_A": 3.257602,
+        "registry_fixed": [
+          0.0,
+          0.0,
+          2.0
+        ],
+        "calculator_calls": 379,
+        "wall_seconds": 92.8813890839997
+      },
+      "all_relaxations_report_converged": true,
+      "all_relaxations_report_no_overlaps": true,
+      "max_reported_free_force_eV_A": 0.049622058810400514,
+      "registry_matches_receipt": true,
+      "depth_matches_receipt": true,
+      "separation_checkpoint_matches": true,
+      "separation_device_matches": true
+    },
+    {
+      "job_id": 11017053,
+      "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+      "run_directory": "/home/scratch12/davti/OSI_Hackathon/runs/coating_pilot/LiTaF6/electrolyte_R2",
+      "result_sha256": "95e35ae4a50f902fd220381017983678070868334644f5bbc1c23350306c6f8e",
+      "separation_sha256": "c77aa36880d3e67cb917b64df89397f8a41a69fe99b8f8075d72afda4025095a",
+      "metadata": {
+        "status": "converged_pilot",
+        "numerically_valid": true,
+        "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+        "device": "cuda",
+        "n_atoms": 880,
+        "n_fixed": 38,
+        "fixed_depth_A": 3.257602,
+        "registry_fixed": [
+          0.25,
+          0.5,
+          2.0
+        ],
+        "calculator_calls": 394,
+        "wall_seconds": 93.53672744400001
+      },
+      "all_relaxations_report_converged": true,
+      "all_relaxations_report_no_overlaps": true,
+      "max_reported_free_force_eV_A": 0.0496156335836653,
+      "registry_matches_receipt": true,
+      "depth_matches_receipt": true,
+      "separation_checkpoint_matches": true,
+      "separation_device_matches": true
+    },
+    {
+      "job_id": 11017054,
+      "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+      "run_directory": "/home/scratch12/davti/OSI_Hackathon/runs/coating_pilot/LiTaF6/electrolyte_R3",
+      "result_sha256": "b4169e576925e38224999feaa83046d28fdf4de9bcd0358e822086468dc404af",
+      "separation_sha256": "562851a969fb5607f9db046f2fed5e59d712d2646bc06fad652d878eb42fa3ad",
+      "metadata": {
+        "status": "converged_pilot",
+        "numerically_valid": true,
+        "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+        "device": "cuda",
+        "n_atoms": 880,
+        "n_fixed": 38,
+        "fixed_depth_A": 3.257602,
+        "registry_fixed": [
+          0.08333333333333333,
+          0.75,
+          2.0
+        ],
+        "calculator_calls": 323,
+        "wall_seconds": 85.78857364199985
+      },
+      "all_relaxations_report_converged": true,
+      "all_relaxations_report_no_overlaps": true,
+      "max_reported_free_force_eV_A": 0.04963434220614674,
+      "registry_matches_receipt": true,
+      "depth_matches_receipt": true,
+      "separation_checkpoint_matches": true,
+      "separation_device_matches": true
+    }
+  ],
+  "slurm_accounting": "11017049|LiTaF6-cathode_R1|COMPLETED|00:02:44|0:0|s001|billing=16,cpu=4,gres/gpu:rtx3090=1,gres/gpu=1,mem=2400M,node=1\n11017050|LiTaF6-cathode_R2|COMPLETED|00:02:45|0:0|s001|billing=16,cpu=4,gres/gpu:rtx3090=1,gres/gpu=1,mem=2400M,node=1\n11017051|LiTaF6-cathode_R3|COMPLETED|00:02:45|0:0|s001|billing=16,cpu=4,gres/gpu:rtx3090=1,gres/gpu=1,mem=2400M,node=1\n11017052|LiTaF6-electrolyte_R1|COMPLETED|00:02:56|0:0|s001|billing=16,cpu=4,gres/gpu:rtx3090=1,gres/gpu=1,mem=2400M,node=1\n11017053|LiTaF6-electrolyte_R2|COMPLETED|00:02:57|0:0|s001|billing=16,cpu=4,gres/gpu:rtx3090=1,gres/gpu=1,mem=2400M,node=1\n11017054|LiTaF6-electrolyte_R3|COMPLETED|00:02:49|0:0|s001|billing=16,cpu=4,gres/gpu:rtx3090=1,gres/gpu=1,mem=2400M,node=1\n",
+  "scope": "Read-only completion and metadata check. Full manifest/source/force/energy validation and feedback assembly remain with Claude and Adem; no model calls, new jobs, results mutation or decision resumption.",
+  "metadata_assertions_passed": true,
+  "reported_relaxation_calculator_calls_total": 1502,
+  "rigid_separation_single_points": 12,
+  "limitations": "Convergence/overlap values here are runner-reported, not independently recomputed from structures. No physical comparison or feedback package approval is claimed."
+}

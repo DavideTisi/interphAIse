@@ -1,5 +1,17 @@
 # interphAIse — project report
 
+**LiTaF6 primary jobs completed — 2026-10-22:** Claude already submitted the
+six selected-coating runs as Niflheim jobs **11017049–11017054**, source
+`207f879`. All six completed with exit code zero in 2:44–2:57 each on RTX
+3090s; all 18 relaxations report convergence. A read-only check confirms the
+frozen manifest and choice hashes, recorded registries, depths, atom/fixed
+counts and checkpoint/device metadata. The runs report 1,502 calculator calls,
+plus 12 rigid-separation single points. Claude assembles the package; Adem's
+full manifest/source validation must pass before choose-3. This is completion
+and metadata verification, not approval of the physical comparison. No duplicate
+jobs or model calls were launched. Evidence:
+[completion check](data/reviews/litaf6_primary_completion_20261022.json).
+
 **First live choice archived — 2026-10-22:** Verified Adem's published
 `1875726`: Haiku selected **LiTaF6** after the LiNbF6 feedback and predicted
 W_adh ranges of **3.2–3.9 J/m²** (cathode) and **1.4–1.9 J/m²** (electrolyte),
