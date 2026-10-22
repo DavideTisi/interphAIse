@@ -18,6 +18,7 @@ def main():
     ap.add_argument('--index',type=Path,default=ROOT/'data/petmad/coating_comparison_v1/index.json')
     ap.add_argument('--bundle',type=Path,required=True);ap.add_argument('--sacct',type=Path)
     ap.add_argument('--source-commit',required=True)
+    ap.add_argument('--slot-reason',required=True,choices=['reference','llm_choice_2','llm_choice_3','fixed','fallback'])
     args=ap.parse_args()
     index=json.loads(args.index.read_text());bundle=json.loads(args.bundle.read_text())
     if bundle['manifest_sha256']!=index['manifest_sha256']:sys.exit('bundle and index were built from different manifests')
@@ -43,7 +44,7 @@ def main():
                           f"{spec['build']['formal_polarity_e_per_A']['substrate']:.3f} e/Å"])
             updated.append(run_id)
     index.setdefault('cohort',[])
-    if not any(c['candidate_id']==cid for c in index['cohort']):index['cohort'].append({'candidate_id':cid,'slot_reason':'llm_choice_2'})
+    if not any(c['candidate_id']==cid for c in index['cohort']):index['cohort'].append({'candidate_id':cid,'slot_reason':args.slot_reason})
     index['last_bundle']={'candidate_id':cid,'bundle':str(args.bundle),'bundle_sha256':sha(args.bundle),
                           'consumable_by_agent':bundle['consumable_by_agent']}
     args.index.write_text(json.dumps(index,indent=1)+'\n')
