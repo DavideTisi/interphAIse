@@ -1,0 +1,101 @@
+{
+ "schema": "coating-pilot-execution-note-v1",
+ "kind": "selection receipt; written before any LiTaF6 interface energy",
+ "extends_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+ "selection": {
+  "stage": "choose_2",
+  "selected_id": "mp-aaacjmqp",
+  "formula": "LiTaF6",
+  "archive": "origin/work/agent-experiments 1875726: data/experiments/llm_petmad_pilot_v1/EXECUTION_choose2.json",
+  "choose2_record_sha256": "010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01",
+  "recorded_at": "2026-10-22T07:40:15+00:00",
+  "approval": "Davide's live-call approval (SYNC_ADEM_14, 53e7758)",
+  "predicted_W_adh_J_m2": {
+   "cathode": [
+    3.2,
+    3.9
+   ],
+   "electrolyte": [
+    1.4,
+    1.9
+   ]
+  },
+  "predicted_weaker_contact": "electrolyte"
+ },
+ "prior_energies_for_selected_coating": "none: no LiTaF6 interface calculation existed when this note was written",
+ "jobs": [
+  {
+   "run_id": "mp-aaacjmqp:cathode:primary:R1",
+   "input": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   }
+  },
+  {
+   "run_id": "mp-aaacjmqp:cathode:primary:R2",
+   "input": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+   "offset": [
+    0.25,
+    0.25
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   }
+  },
+  {
+   "run_id": "mp-aaacjmqp:cathode:primary:R3",
+   "input": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+   "offset": [
+    0.08333333333333333,
+    0.25
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   }
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+   "input": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   }
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+   "input": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+   "offset": [
+    0.25,
+    0.5
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   }
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+   "input": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+   "offset": [
+    0.08333333333333333,
+    0.75
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   }
+  }
+ ],
+ "priority": "normal (ahead of any --nice robustness work)"
+}
