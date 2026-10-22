@@ -9,14 +9,19 @@ the unrelated uncommitted README in Davide's checkout remains untouched.
 
 - Davide `7bd5878`: reviewed 24-slide presentation, synthesis and earlier audits.
 - Claude `1b76eeb`: final physical index, source calculations and later robustness.
-- Adem `5b76988`: completed experiment archives, pilot, final-index reader patch
-  and generated comparison. This newer commit was fetched at integration time;
-  the reader fix did not need to be applied a second time.
+- Adem `1f7bf11`: completed experiment archives, pilot, final-index reader patch
+  and generated comparison from `5b76988`, plus the fresh-environment test
+  record. The reader fix was already present at the first integration and did
+  not need to be applied a second time.
 
 The physics merge is `70a33d8`; the agent merge is `4b5fca4`. Only the dated
 development logs and report conflicted, and both contributors' entries were
 retained. Current status is stated at the top of the report; earlier entries
 remain historical.
+
+Follow-up review of `1f7bf11` found only seven additional development-log lines.
+Those were merged after `fef1aab`; no code, dependency, frozen evidence, slide
+or generated figure changed. Both contributors' log entries were preserved.
 
 ## Verification
 
@@ -25,6 +30,12 @@ remain historical.
   not occur with these pins.
 - After viewer/reproduction changes: **227 tests passed in 31.61 s**.
   Warnings are upstream ASE/NumPy and spglib deprecations.
+- Adem independently reports **200 passed, 0 failed** at `5b76988`, using a fresh
+  environment installed from requirements.txt with the pinned pymatgen versions.
+  This checks his branch; the 227-test result above checks the integrated tree.
+  His new commit records that run without changing tested code. The suite was
+  not rerun for this documentation-only follow-up; the non-document tree and
+  whitespace were checked instead.
 - The offline wrapper replays **1,500 original and 4,500 production queries**,
   validates production settings, reproduces the analyses and verifies agreement
   with the presentation source. It checks the 17 evaluated primary rows remain

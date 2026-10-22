@@ -3314,3 +3314,31 @@ untracked. Frozen experiment, benchmark and decision/final-index files have no
 diff against the merged sources. The final figure caption was rendered and
 visually checked. Publish only the integration branch; the user's main checkout
 still has its original README edit.
+
+## 2026-10-22 — Agent side (Adem): pinned-dependency test run before merge
+
+- **Test run:** full suite at `5b76988`, in a fresh scratch venv built from `requirements.txt` (pymatgen 2026.9.24, pymatgen-core 2026.10.16, numpy 2.4.6, pytest 9.1.1).
+- **Result:** **200 passed, 0 failed.** The four failures seen in the `agents` conda env (pymatgen 2026.5.4 / pymatgen-core 2026.4.16) are environment-only.
+- **Command:** `python -m venv <venv> && <venv>/bin/pip install -r requirements.txt pytest && <venv>/bin/python -m pytest -q tests/`.
+- **Live archive:** unchanged since `c0a0546` (state.json, index.json, manifest.json and the report text). No live calls.
+
+## 2026-10-22 — Review and integrate Adem's final test record
+
+**Branch:** `work/final-integration-20261022`. Fetched and reviewed Adem's
+`1f7bf11`. Its sole change relative to the already integrated `5b76988` is the
+seven-line development-log entry documenting 200 passing tests in a fresh
+pinned environment. The final-index reader, comparison outputs and forecast
+figure correction were already included in integration commit `fef1aab`.
+
+Merged the latest agent history, preserving both sides of the append-only log
+conflict. Updated FINAL_INTEGRATION.md and the current REPORT.md status to
+distinguish Adem's reported fresh-environment check from our previously run
+227-test integrated suite. No code, evidence, image, slide or dependency changed;
+the suite was not rerun for this documentation-only update. Verification uses
+the incoming diff, unchanged non-document tree, merge-marker and whitespace
+checks. The existing offline replay and visual-review receipts remain valid.
+
+No paid call, database query, MLIP evaluation or cluster job occurred. The
+original Davide checkout's README edit and PowerPoint lock file are untouched.
+Next: publish this integration update, then jointly review the combined branch
+before the team's merge into main. Main and davide remain unchanged.

@@ -2,7 +2,9 @@
 
 **Final integration — 22 October 2026:** Both collaborators' completed branches
 are combined in `work/final-integration-20261022`, including Adem's `5b76988`
-final-index reader fix and Claude's `1b76eeb` physics release. The original
+final-index reader fix, his documentation-only `1f7bf11` fresh-environment test
+record, and Claude's `1b76eeb` physics release. Adem reports 200 passing tests
+on his branch; our integrated tree previously passed 227. The original
 presentation data agree with the regenerated analyses. The viewer now selects
 all six contacts for the three computed coatings and separates primary evidence
 from later robustness; LiF remains uncomputed. [REPRODUCE.md](REPRODUCE.md)
