@@ -1,0 +1,16 @@
+%% Thermodynamic discovery
+%% Does numerical feedback improve the next material choice?
+flowchart LR
+    H["Humans define<br/>Candidate pool, objective, information shown and evaluation budget"]
+    N1("LLM<br/>Propose a coating<br/>and a hypothesis<br/>Choose an untested ID")
+    N2["CODE<br/>Validate the choice<br/>and charge a query<br/>Save ID and rationale"]
+    N3["THERMODYNAMICS<br/>Reveal stability<br/>and reaction scores<br/>Frozen score table<br/>Check insulation too"]
+    N4("LLM<br/>Assess the evidence<br/>and choose again<br/>Keep or revise the idea")
+    H -. "Frozen protocol" .-> N1
+    N1 --> N2 --> N3 --> N4
+    N4 -- "Feedback: Stability, contact reactions and insulation inform the next hypothesis" --> N1
+    classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
+    classDef tools fill:#f1f4f7,stroke:#8a99a8,color:#172b3a
+    class N1,N4 llm
+    class N2,N3 tools
+%% Correct-feedback arm shown. Controls remove, shuffle or pre-empt feedback; random is the baseline.

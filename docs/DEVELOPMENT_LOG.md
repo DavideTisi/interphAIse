@@ -4030,3 +4030,41 @@ whitespace and scope. This documentation-only change requires no scientific
 rerun or unit-test run. No API/LLM call, MLIP calculation, archived result or
 numerical claim changed. Only README.md and this checkpoint are staged;
 concurrent illustrated-report work remains local and unstaged.
+
+
+## 2026-10-22 — Scientific workflow diagrams and explicit model provenance
+
+**Branch:** main, starting at `55bcabb`. Davide requested the diagram improvements
+and pointed out that the project uses more than Haiku. Replaced the current
+README Mermaid overview with two clear SVG diagrams: thermodynamic discovery
+and prospective interface tests. Both use generic LLM role labels. A separate
+provenance table names the configurations actually run: Haiku 5.5 and DeepSeek
+V3.2 for the thermodynamic study, and Haiku 5.5 for the archived PET-MAD decision
+pilot. Verified the latter directly against EXECUTION_summary.json, whose
+returned_model is claude-haiku-5-5. No DeepSeek physical pilot is implied.
+
+The diagrams now show the human-defined pool/protocol/budget, specific chemical
+choices, numerical checks and labelled feedback arrows. The physical diagram
+records forecasts before new energies are available and distinguishes primary
+feedback from later sensitivity release. LLM operations use teal rounded boxes;
+code and numerical tools use grey boxes, with consistent dimensions and legible
+labels. The README retains Why the LLM is central and the original historical
+architecture in its expandable section, unchanged. Its caption distinguishes
+the intended opportunity to revise from the observed unchanged pilot order.
+
+Added scripts/build_workflow_diagrams.py, a standard-library-only deterministic
+builder for assets/diagrams/discovery-workflow.svg and petmad-workflow.svg, plus
+their editable .mmd equivalents. SVGs contain their own accessible titles and
+descriptions, a white background and no external resources or scripts. This
+avoids GitHub's Mermaid layout wrapping and navigation-control overlap.
+
+Verification: rendered both final SVGs locally with the bundled Sharp runtime
+and visually inspected them at 1000 px and at the 838 px GitHub content width.
+Checked XML, local links, deterministic regeneration, model provenance and the
+preserved historical diagram. The initial rasterization import used Sharp's
+older lib/index.js path; retried successfully using the bundled package's actual
+dist/index.mjs entry point. Validation is recorded under the ignored
+runs/readme_diagrams_v2/ directory. No scientific archive, code for experiments,
+API restriction or numerical result changed; no paid call, simulation or full
+unit-test run was needed. Stage only the README, diagram sources/assets and this
+checkpoint, preserving concurrent illustrated-report work for its own task.

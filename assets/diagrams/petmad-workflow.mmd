@@ -1,0 +1,16 @@
+%% Prospective interface tests
+%% Do the LLM's adhesion forecasts survive a new physical calculation?
+flowchart LR
+    H["Humans define<br/>Buildable menu, reference results, contact geometries and calculation budget"]
+    N1("LLM<br/>Choose a coating<br/>and predict adhesion<br/>Two ranges + weaker contact")
+    N2["CODE<br/>Archive forecasts<br/>before calculations<br/>Save the decision-time evidence"]
+    N3["ATOMISTIC CALCULATION<br/>Calculate adhesion<br/>at both contacts<br/>ASE + PET-MAD<br/>Validate primary results"]
+    N4("LLM<br/>Assess predictions<br/>and revise the idea<br/>Read validated feedback")
+    H -. "Frozen protocol" .-> N1
+    N1 --> N2 --> N3 --> N4
+    N4 -- "Feedback: Validated adhesion and weaker-contact results inform the next choice" --> N1
+    classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
+    classDef tools fill:#f1f4f7,stroke:#8a99a8,color:#172b3a
+    class N1,N4 llm
+    class N2,N3 tools
+%% Predictions are saved first. Withheld sensitivity results are released only after the final summary.

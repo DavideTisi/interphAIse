@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="406" viewBox="0 0 1000 406" role="img" aria-labelledby="title description">
+<title id="title">Thermodynamic discovery</title>
+<desc id="description">Humans fix the candidate pool, objective, information and budget. The LLM proposes a coating and chemical hypothesis. Code validates and records the choice and charges the query. The evaluator reveals the selected candidate&#x27;s precomputed stability, contact-reaction and insulation scores. The LLM assesses this evidence to choose again within the budget. Controls and random search test the value of feedback.</desc>
+<defs>
+<marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#667786"/></marker>
+<marker id="feedback-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#087f8c"/></marker>
+</defs>
+<rect width="1000" height="406" rx="12" fill="#ffffff"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="28" y="39" font-size="26" font-weight="700" fill="#172b3a" text-anchor="start">Thermodynamic discovery</text>
+<text x="28" y="67" font-size="17" font-weight="400" fill="#526472" text-anchor="start">Does numerical feedback improve the next material choice?</text>
+<text x="28" y="106" font-size="15" font-weight="700" fill="#172b3a" text-anchor="start">Humans define</text>
+<text x="146" y="106" font-size="15" font-weight="400" fill="#526472" text-anchor="start">Candidate pool, objective, information shown and evaluation budget</text>
+<path d="M28 121 H972" stroke="#d9e0e5"/>
+<rect x="28" y="142" width="206" height="144" rx="12" fill="#e3f3f1" stroke="#087f8c" stroke-width="1.5"/>
+<text x="131" y="164" font-size="11.5" font-weight="700" fill="#0b5a63" text-anchor="middle">LLM</text>
+<text x="131" y="195" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">Propose a coating</text>
+<text x="131" y="219" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">and a hypothesis</text>
+<text x="131" y="247" font-size="13" font-weight="400" fill="#526472" text-anchor="middle">Choose an untested ID</text>
+<path d="M239 214 H267" fill="none" stroke="#667786" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="274" y="142" width="206" height="144" rx="12" fill="#f1f4f7" stroke="#8a99a8" stroke-width="1.5"/>
+<text x="377" y="164" font-size="11.5" font-weight="700" fill="#526472" text-anchor="middle">CODE</text>
+<text x="377" y="195" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">Validate the choice</text>
+<text x="377" y="219" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">and charge a query</text>
+<text x="377" y="247" font-size="13" font-weight="400" fill="#526472" text-anchor="middle">Save ID and rationale</text>
+<path d="M485 214 H513" fill="none" stroke="#667786" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="520" y="142" width="206" height="144" rx="12" fill="#f1f4f7" stroke="#8a99a8" stroke-width="1.5"/>
+<text x="623" y="164" font-size="11.5" font-weight="700" fill="#526472" text-anchor="middle">THERMODYNAMICS</text>
+<text x="623" y="195" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">Reveal stability</text>
+<text x="623" y="219" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">and reaction scores</text>
+<text x="623" y="247" font-size="13" font-weight="400" fill="#526472" text-anchor="middle">Frozen score table</text>
+<text x="623" y="266" font-size="13" font-weight="400" fill="#526472" text-anchor="middle">Check insulation too</text>
+<path d="M731 214 H759" fill="none" stroke="#667786" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="766" y="142" width="206" height="144" rx="12" fill="#e3f3f1" stroke="#087f8c" stroke-width="1.5"/>
+<text x="869" y="164" font-size="11.5" font-weight="700" fill="#0b5a63" text-anchor="middle">LLM</text>
+<text x="869" y="195" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">Assess the evidence</text>
+<text x="869" y="219" font-size="18" font-weight="600" fill="#172b3a" text-anchor="middle">and choose again</text>
+<text x="869" y="247" font-size="13" font-weight="400" fill="#526472" text-anchor="middle">Keep or revise the idea</text>
+<path d="M869 291 V320 H131 V291" fill="none" stroke="#087f8c" stroke-width="2" marker-end="url(#feedback-arrow)"/>
+<text x="500" y="347" font-size="16" font-weight="600" fill="#087f8c" text-anchor="middle">Feedback: Stability, contact reactions and insulation inform the next hypothesis</text>
+<text x="500" y="382" font-size="13.5" font-weight="400" fill="#526472" text-anchor="middle">Correct-feedback arm shown. Controls remove, shuffle or pre-empt feedback; random is the baseline.</text>
+</g>
+</svg>
