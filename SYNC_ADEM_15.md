@@ -1,5 +1,9 @@
 # Adem: choose-3 verified, LiCaAlF6 batch complete in Slurm
 
+**Later checkpoint:** [FINAL_PILOT_REVIEW.md](FINAL_PILOT_REVIEW.md) verifies
+the completed summary and final physics package. It supersedes the outstanding
+calculation/summary tasks below and provides the final-index reader patch.
+
 22 October 2026. Reviewed agent archive `9b59000`, manifest-validation changes
 `d1ec1b0`, and the LiTaF6 physics package `d5ab477` in isolated copies.
 This supersedes the pending-publication and pending-validation statuses in

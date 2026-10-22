@@ -4,13 +4,12 @@ OSI Hackathon, 21–22 October 2026. All scheduling below uses Copenhagen time.
 
 ## Current assignments: LLM-guided three-coating pilot — 22 October
 
-**Choose-3 verified:** `9b59000` archives validated LiTaF6 feedback and the
-LiCaAlF6 choice; four of ten HTTP attempts are charged. The published manifest
-fixes have been reviewed. Claude's LiCaAlF6 jobs 11017178–11017183 are complete
-in Slurm; their physical package still needs publication and validation. Adem
-then resumes the final assessment under the existing approval and USD 0.05
-allowance. A test-only fixture patch is ready for his branch. See
-[SYNC_ADEM_15.md](SYNC_ADEM_15.md). Earlier pending statuses below are history.
+**Pilot complete:** physics `1b76eeb` and agent `c0a0546` are independently
+reviewed; all planned calculations and the final live summary are archived.
+Five HTTP attempts were charged. The remaining work is final-index reader
+compatibility, joint branch integration and presentation. A tested reader
+patch is ready for Adem; Claude needs no further runs for this pilot. See
+[FINAL_PILOT_REVIEW.md](FINAL_PILOT_REVIEW.md). Earlier statuses below are history.
 
 **Latest handoff:** Claude has frozen the four-member feasible menu and primary
 inputs in `38e4872`; hashes/counts and 163 offline tests reproduce. Read
@@ -55,8 +54,8 @@ No new interface calculation was made in these reviews.
 
 | Owner | Next work | Done when |
 |---|---|---|
-| **Adem** | Apply the test-fixture patch; validate all six LiCaAlF6 primary outcomes and sources; resume the final assessment after validation and generate the comparison/report. | State and frozen feedback preserved; all stages retain the total 10-attempt cap and USD 0.05 allowance; forecast success and unchanged candidate sequence both reported. See [SYNC_ADEM_15.md](SYNC_ADEM_15.md). |
-| **Claude** | Assemble and publish the six completed LiCaAlF6 primary results with sources, costs and provenance; keep sensitivities separate. | Two contact packages cover all planned registries and preserve the selected inputs and provenance. See [SYNC_ADEM_15.md](SYNC_ADEM_15.md). |
+| **Adem** | Apply the final-index reader patch, run its regressions and generate the final comparison/report from index_final.json. No new calls. | Final status and compute accounting handled; snapshot/report history preserved; both successful and failed forecasts and unchanged selection order are visible. See [FINAL_PILOT_REVIEW.md](FINAL_PILOT_REVIEW.md). |
+| **Claude** | Physics complete at 1b76eeb; assist integration only if source questions arise. | No more calculations required; primary and later robustness packages remain distinct. See [FINAL_PILOT_REVIEW.md](FINAL_PILOT_REVIEW.md). |
 | **Davide, with Codex** | Own scientific comparability choices, independently review code/results, resolve integration/log history, maintain report, viewer and presentation narrative. | The comparison follows the frozen rules; combined tests/replay pass; structures and evidence are inspectable; both contributors' history is preserved in the release. |
 
 Adem keeps `work/agent-experiments`; give Claude an isolated physics

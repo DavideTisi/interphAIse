@@ -1,0 +1,147 @@
+--- a/interphaise/pilot.py
++++ b/interphaise/pilot.py
+@@ -75,3 +75,3 @@
+
+-def load_index(path):
++def load_index(path, *, allow_final=False):
+     """Structural validation of the campaign index written by the PET-MAD side."""
+@@ -79,2 +79,6 @@
+     problems, seen = [], set()
++    final = index.get("schema_version") == "coating_comparison_v1_final_robustness"
++    if final and not allow_final:
++        raise ValueError("Final robustness index is for offline analysis, not live pilot input")
++    cohort = {c["candidate_id"] for c in index.get("cohort", [])}
+     for key in ("schema_version", "checkpoint_sha256", "menu", "runs"):
+@@ -92,3 +96,9 @@
+             problems.append(f"{rid}: bad contact/role")
+-        if r.get("status") not in STATUSES:
++        not_selected = final and allow_final and r.get("status") == "not_run_not_selected"
++        if not_selected:
++            if r.get("candidate_id") in cohort or r.get("quantified") is not False:
++                problems.append(f"{rid}: not-selected row belongs to the cohort or is quantified")
++            if any(r.get(k) is not None for k in ("W_adh_J_m2", "W_sep_J_m2", "joined_energy_eV", "result_path")):
++                problems.append(f"{rid}: not-selected row carries a calculated outcome")
++        if r.get("status") not in STATUSES and not not_selected:
+             problems.append(f"{rid}: bad status {r.get('status')!r}")
+--- a/scripts/analyse_mlip_comparison.py
++++ b/scripts/analyse_mlip_comparison.py
+@@ -29,3 +29,3 @@
+ def analyse(index_path, table_path=SULFIDE_TABLE):
+-    index = load_index(index_path)
++    index = load_index(index_path, allow_final=True)
+     table = json.loads(Path(table_path).read_text())
+@@ -37,5 +37,6 @@
+     plan = None
+-    if (Path(index_path).parent / "manifest.json").exists():   # campaign indexes are checked against the manifest
++    if index.get("manifest_sha256") or (Path(index_path).parent / "manifest.json").exists():   # campaign indexes are checked against the manifest
+         plan = manifest_plan(load_manifest(index, index_path)[0])
+-    runs = {k: r for k, r in evaluate_runs(index, ROOT, plan).items() if r["role"] != "consistency"}
++    all_runs = evaluate_runs(index, ROOT, plan)
++    runs = {k: r for k, r in all_runs.items() if r["role"] != "consistency"}
+     for r in runs.values():
+@@ -43,3 +44,5 @@
+     rows, compute = [], {k: {"calls": 0, "wall_seconds": 0.0, "runs_with_unknown_cost": 0} for k in ("new", "reused")}
+-    for r in runs.values():
++    for r in all_runs.values():
++        if r["status"] == "not_run_not_selected":
++            continue
+         bucket = compute["reused" if r.get("reused_from") else "new"]
+@@ -60,3 +63,5 @@
+             noncomparable = comparable_problems(primary) if primary else []
+-            if not primary:
++            missing = sorted(rid for rid, expected in (plan or {}).items()
++                             if expected["candidate_id"] == cid and expected["contact"] == contact and rid not in runs)
++            if not primary or missing:
+                 status = "missing"
+@@ -71,3 +76,3 @@
+             summary = contact_summary(mine, contact) if status == "validated" else {}
+-            sens = [dict(run_id=r["run_id"], kind=r.get("sensitivity_kind"), status=r["evidence"],
++            sens = [dict(run_id=r["run_id"], kind=r.get("sensitivity_kind"), status=r["evidence"], quantified=r.get("quantified", r["validated"]),
+                          reason=r.get("failure_reason") if r["evidence"] == "unavailable" else None,
+@@ -79,3 +84,3 @@
+                 W_sep_J_m2=summary.get("W_sep_J_m2"), registry_range_J_m2=summary.get("registry_range_J_m2"),
+-                comparability_problems=noncomparable,
++                comparability_problems=noncomparable, missing_primary_run_ids=missing,
+                 primary=[dict(run_id=r["run_id"], registry_id=r.get("registry_id"), status=r["evidence"],
+@@ -89,3 +94,7 @@
+                 cohort=rows, compute=compute,
+-                invalid_runs=[dict(run_id=r["run_id"], problems=r["problems"]) for r in runs.values() if r["problems"]],
++                invalid_runs=[dict(run_id=r["run_id"], problems=r["problems"]) for r in all_runs.values() if r["problems"]],
++                not_selected_runs=[r["run_id"] for r in all_runs.values() if r["status"] == "not_run_not_selected"],
++                consistency=[dict(run_id=r["run_id"], status=r["evidence"],
++                                  W_adh_J_m2=r["W_adh_J_m2"] if r["evidence"] == "valid" else None)
++                             for r in all_runs.values() if r["role"] == "consistency"],
+                 notes=["Registry/sensitivity spreads are finite tested ranges, not confidence intervals.",
+--- a/tests/test_mlip_comparison.py
++++ b/tests/test_mlip_comparison.py
+@@ -110 +110,70 @@
+     assert any("W_adh arithmetic" in p for p in out["invalid_runs"][0]["problems"])
++
++
++def final_fixture(tmp_path):
++    campaign = ROOT / "data/petmad/coating_comparison_v1"
++    data = json.loads((campaign / "index.json").read_text())
++    data["schema_version"] = "coating_comparison_v1_final_robustness"
++    for row in data["runs"]:
++        if row["candidate_id"] == "mp-aaaaabru":
++            row.update(status="not_run_not_selected", quantified=False)
++    path = tmp_path / "index_final.json"
++    path.write_text(json.dumps(data))
++    shutil.copyfile(campaign / "manifest.json", tmp_path / "manifest.json")
++    return path
++
++
++def test_final_index_is_offline_only_and_unselected_is_not_unknown_cost(tmp_path):
++    from interphaise.pilot import load_index
++    path = final_fixture(tmp_path)
++    with pytest.raises(ValueError, match="offline analysis"):
++        load_index(path)
++    out = analyse(path)
++    assert len(out["not_selected_runs"]) == 12
++    assert out["compute"]["new"]["runs_with_unknown_cost"] == 0
++    assert out["invalid_runs"] == []
++    assert all(c["status"] == "validated" for row in out["cohort"] for c in row["contacts"].values())
++
++
++@pytest.mark.parametrize("edit", [
++    {"quantified": True}, {"W_sep_J_m2": 0.0}, {"candidate_id": REF},
++])
++def test_not_selected_cannot_hide_calculated_or_selected_results(tmp_path, edit):
++    path = final_fixture(tmp_path)
++    data = json.loads(path.read_text())
++    next(r for r in data["runs"] if r["status"] == "not_run_not_selected").update(edit)
++    path.write_text(json.dumps(data))
++    with pytest.raises(ValueError, match="not-selected"):
++        analyse(path)
++
++
++def test_campaign_manifest_cannot_be_silently_omitted(tmp_path):
++    path = final_fixture(tmp_path)
++    (tmp_path / "manifest.json").unlink()
++    with pytest.raises(FileNotFoundError):
++        analyse(path)
++
++
++def test_final_reader_keeps_missing_primary_registry_visible(tmp_path):
++    path = final_fixture(tmp_path)
++    data = json.loads(path.read_text())
++    missing = f"{REF}:cathode:primary:R2"
++    data["runs"] = [r for r in data["runs"] if r["run_id"] != missing]
++    path.write_text(json.dumps(data))
++    contact = next(r for r in analyse(path)["cohort"] if r["candidate_id"] == REF)["contacts"]["cathode"]
++    assert contact["status"] == "missing" and contact["W_adh_J_m2"] is None
++    assert contact["missing_primary_run_ids"] == [missing]
++
++
++def test_consistency_cost_is_counted_without_changing_primary_selection(tmp_path):
++    path = final_fixture(tmp_path)
++    before = analyse(path)
++    data = json.loads(path.read_text())
++    row = dict(next(r for r in data["runs"] if r["candidate_id"] == REF and r["role"] == "primary"))
++    row.update(run_id="fixture-consistency", role="consistency", reused_from=None)
++    data["runs"].append(row)
++    path.write_text(json.dumps(data))
++    after = analyse(path)
++    assert after["compute"]["new"]["calls"] == before["compute"]["new"]["calls"] + row["calculator_calls"]
++    assert after["cohort"] == before["cohort"]
++    assert len(after["consistency"]) == 1

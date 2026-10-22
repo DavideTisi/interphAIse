@@ -2829,3 +2829,59 @@ credentials, then publish this scoped handoff on davide under existing
 sharing authorization. No direct messages, merge or presentation edits.
 Next: Claude publishes LiCaAlF6, Adem applies the fixture patch and validates
 physics before final assessment, then prepares the three-coating comparison.
+
+## 2026-10-22 — Verify the final physics release and completed pilot
+
+**Branch:** `davide`, starting `942bfe0`. Independently reviewed physics
+`1b76eeb` and agent `c0a0546` from isolated archives. Final index SHA-256
+`47d69f7dd75dff89e1d2e5191f2f1d31fad002581521c39eeee7593c90d83c41` matches.
+All decision-index snapshots match the execution records; producer bundles,
+model-stage hashes, amendment hash, final-state hash and executed-code hash
+verify. Fresh primary feedback equals all three frozen model snapshots.
+No sensitivity values occur in their sensitivity entries. All 17 evaluated
+primary rows are identical; LiF's unrun rows intentionally become not selected.
+
+Revalidated all 32 stored runs (26 new plus five reused reference primaries
+and one reused reference seed-4), recomputed W_adh/W_sep arithmetic, checked
+checkpoint/structure/cell provenance and independently recomputed 96 saved
+free-force maxima. All pass. No calculator loaded. New accounting reproduces:
+26 jobs, 6,632 runner calls, 52 separation points. Runner wall time sums to
+1,525.1 s (25.4 min); the 26 completed Slurm accounting rows sum to 2,850 s
+(47.5 min). Distinguish runner time from allocation elapsed time; exclude
+queue delay and separately acknowledge bulk preparation and reused work.
+
+The final state is complete, five attempts charged and none unsettled.
+Logged totals are 17,365 input and 8,463 output tokens (USD 0.005968 at the
+recorded rates, not a bill). Offline complete-state resume invokes no callable
+and leaves state bytes unchanged. The summary-only bound amendment is hashed.
+Actual sent summary is 16,285 characters; the stopped prompt's claimed 16,334
+cannot be independently checked because its text was not archived. Retain the
+amendment and disclose this distinction rather than claiming exact equivalence.
+LiTaF6 forecasts held, LiCaAlF6's both missed, weak contact was correct twice,
+and choice order stayed unchanged. The model misread the weak-contact field;
+correct the narrative without rewriting its archived output.
+
+Physics full suite: 165 passed in 24.30 s. Agent targeted pilot/comparison/
+loader suite: 32 passed in 1.65 s; the prior fixture regression is fixed.
+However the published reader rejects all 12 LiF not_run_not_selected rows in
+index_final.json. Prepared a three-file patch against c0a0546 for offline
+final-index loading while default live loading still rejects that schema.
+The patch validates unselected/null outcomes, requires the pinned manifest,
+keeps missing primary registries visible, includes consistency costs without
+changing primary selections, and preserves unquantified sensitivity flags.
+Seven integration regressions added in the isolated archive; targeted suite
+now 39 passed in 2.14 s. The actual final index yields the three correct
+contact pairs, no invalid rows, all 6,632 new calls, four consistency entries
+and twelve unselected entries with no invented unknown costs. Reverse patch
+application check passes. Patch has not been applied to either collaborator's
+branch and no runtime/state history has been rewritten.
+
+Saved data/reviews/final_pilot_review_20261022.json and the tested patch;
+wrote FINAL_PILOT_REVIEW.md and aligned REPORT, WORK_DIVISION and the earlier
+handoff supersession link. Next: Adem applies the reader fix and generates
+final figures; Davide/Codex reviews and integrates both branches then updates
+the viewer/slides. Claude's physics deliverable needs no further calculations.
+No paid call, live MLIP run, SSH/Slurm action, direct message or merge occurred
+in this review. Preserve unrelated README changes. Validate documentation
+links, JSON, whitespace and staged credentials, then publish the scoped review
+under the standing collaborator-handoff authorization.

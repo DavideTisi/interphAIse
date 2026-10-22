@@ -1,5 +1,22 @@
 # interphAIse — project report
 
+**Pilot complete and independently reviewed — 2026-10-22:** Physics `1b76eeb`
+and agent `c0a0546` preserve the decision snapshots and evaluated primary rows.
+W_adh cathode/electrolyte is **3.617/1.633** for LiNbF6, **3.339/1.577** for
+LiTaF6 and **1.427/0.744 J/m²** for LiCaAlF6. Both LiTaF6 forecasts held;
+both LiCaAlF6 forecasts missed; weaker contact was correct twice. Candidate
+order did not change with feedback. The summary misread the weaker-contact
+field as a registry minimum; retain that response with an explanatory correction.
+Nb/Ta seed sensitivities exceed their small primary difference; Ca's electrolyte
+thickness and bulk sensitivity remain unquantified. All cells remain formally
+polar. Verified 26 new jobs, 6,632 runner calls plus 52 separation points,
+25.4 min runner time versus 47.5 min summed Slurm elapsed time; the pilot used
+5 HTTP attempts, about USD 0.00597 at recorded rates. The summary-only prompt
+limit amendment is archived. Reader compatibility with the final index needs
+the tested patch in [FINAL_PILOT_REVIEW.md](FINAL_PILOT_REVIEW.md); branch
+integration and final viewer/slide updates remain pending. No further physics
+or paid LLM run is needed for this bounded pilot.
+
 **First prospective forecast checked; third coating selected — 2026-10-22:**
 Independently verified `9b59000`/`d5ab477`. LiTaF6 gives selected-primary W_adh
 **3.339 J/m²** at the cathode and **1.577 J/m²** at the electrolyte: both fall

@@ -1,0 +1,1035 @@
+{
+  "date_copenhagen": "2026-10-22",
+  "physics": {
+    "physics_commit": "1b76eeb",
+    "final_index_sha256": "47d69f7dd75dff89e1d2e5191f2f1d31fad002581521c39eeee7593c90d83c41",
+    "validated_saved_runs": 32,
+    "saved_force_checks": 96,
+    "selected_primary_rows_unchanged": 17,
+    "snapshots": [
+      {
+        "path": "data/petmad/coating_comparison_v1/snapshots/index_choose_2_b02750feffeefb0d.json",
+        "sha256": "b02750feffeefb0d3e7875d18bc693a3b2e4e6a5294091a21d59aee6501aa937"
+      },
+      {
+        "path": "data/petmad/coating_comparison_v1/snapshots/index_choose_3_4577b2ab2e9331b7.json",
+        "sha256": "4577b2ab2e9331b7161aed14120246348ec730d8ca999724150538669e2fd808"
+      },
+      {
+        "path": "data/petmad/coating_comparison_v1/snapshots/index_summary_7ba8cc4a7ed01301.json",
+        "sha256": "7ba8cc4a7ed013017651dc7d7031a2ce9846ffae01d6f73ca81841dbdcdaf024"
+      },
+      {
+        "path": "data/petmad/coating_comparison_v1/snapshots/LiTaF6_primary_feedback_91e80b064d3a15d3.json",
+        "sha256": "91e80b064d3a15d305cd33640cc5838b21222852ca16cca4dc1e2459f4026da2"
+      },
+      {
+        "path": "data/petmad/coating_comparison_v1/snapshots/LiCaAlF6_primary_feedback_2f274f1140ba447c.json",
+        "sha256": "2f274f1140ba447c314efd8f4d7e9433443e6a6612219f3c0d994c49460e68cf"
+      }
+    ],
+    "checks": [
+      {
+        "run_id": "mp-aaacjmqp:cathode:primary:R1",
+        "W_adh_J_m2": 3.338748412819128,
+        "W_sep_J_m2": 4.727749860143862,
+        "max_free_forces_eV_A": {
+          "interface": 0.02899728157766,
+          "film": 0.049113379154743564,
+          "substrate": 0.04552997652721886
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:cathode:primary:R2",
+        "W_adh_J_m2": 3.326811096603576,
+        "W_sep_J_m2": 4.7112314336463275,
+        "max_free_forces_eV_A": {
+          "interface": 0.048515763283456644,
+          "film": 0.04912959460674798,
+          "substrate": 0.04553017206984946
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:cathode:primary:R3",
+        "W_adh_J_m2": 3.3333303689279363,
+        "W_sep_J_m2": 4.724049732608415,
+        "max_free_forces_eV_A": {
+          "interface": 0.036466607208916486,
+          "film": 0.049117309541034514,
+          "substrate": 0.045530079106342436
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:cathode:sensitivity:thickness_increment",
+        "W_adh_J_m2": 3.3409949188227928,
+        "W_sep_J_m2": 4.728762990302378,
+        "max_free_forces_eV_A": {
+          "interface": 0.025774071987278224,
+          "film": 0.04945621968260918,
+          "substrate": 0.04553006721970658
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:cathode:sensitivity:fixed_depth_variation",
+        "W_adh_J_m2": 3.333682762026551,
+        "W_sep_J_m2": 4.724446174844355,
+        "max_free_forces_eV_A": {
+          "interface": 0.04133439351782726,
+          "film": 0.0491117620217642,
+          "substrate": 0.045515902500907306
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:cathode:sensitivity:robustness_case",
+        "W_adh_J_m2": 3.3391008059177425,
+        "W_sep_J_m2": 4.7266045825733665,
+        "max_free_forces_eV_A": {
+          "interface": 0.02882643119046477,
+          "film": 0.049106136471888114,
+          "substrate": 0.0455293953653527
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+        "W_adh_J_m2": 1.5658959489438142,
+        "W_sep_J_m2": 2.876023068986045,
+        "max_free_forces_eV_A": {
+          "interface": 0.041734650739169966,
+          "film": 0.0481595893241263,
+          "substrate": 0.04962206196360042
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+        "W_adh_J_m2": 1.5773585444472311,
+        "W_sep_J_m2": 2.910571251635274,
+        "max_free_forces_eV_A": {
+          "interface": 0.041706032685363395,
+          "film": 0.04815250981218009,
+          "substrate": 0.04961563454561778
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+        "W_adh_J_m2": 1.534040130056007,
+        "W_sep_J_m2": 2.815702663863115,
+        "max_free_forces_eV_A": {
+          "interface": 0.04857051746956172,
+          "film": 0.04815968039723893,
+          "substrate": 0.04963434423466678
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:electrolyte:sensitivity:thickness_increment",
+        "W_adh_J_m2": 1.572122756196295,
+        "W_sep_J_m2": 2.912856896615716,
+        "max_free_forces_eV_A": {
+          "interface": 0.04057899603452998,
+          "film": 0.04021498005789758,
+          "substrate": 0.04964584870280797
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:electrolyte:sensitivity:fixed_depth_variation",
+        "W_adh_J_m2": 1.6014580643287282,
+        "W_sep_J_m2": 2.918831652792659,
+        "max_free_forces_eV_A": {
+          "interface": 0.045960810902869194,
+          "film": 0.048159378520248784,
+          "substrate": 0.04320634429474912
+        }
+      },
+      {
+        "run_id": "mp-aaacjmqp:electrolyte:sensitivity:robustness_case",
+        "W_adh_J_m2": 1.4636845740138906,
+        "W_sep_J_m2": 2.7066447542398793,
+        "max_free_forces_eV_A": {
+          "interface": 0.04978284639066151,
+          "film": 0.049921401939289525,
+          "substrate": 0.035291855105208055
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:cathode:primary:R1",
+        "W_adh_J_m2": 1.4237327238023068,
+        "W_sep_J_m2": 4.3954989637247275,
+        "max_free_forces_eV_A": {
+          "interface": 0.04923616030325476,
+          "film": 0.0471484095957711,
+          "substrate": 0.045472798624361134
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:cathode:primary:R2",
+        "W_adh_J_m2": 1.426710445485596,
+        "W_sep_J_m2": 4.321819440022834,
+        "max_free_forces_eV_A": {
+          "interface": 0.04666711430467177,
+          "film": 0.047149808568419445,
+          "substrate": 0.04547182946218021
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:cathode:primary:R3",
+        "W_adh_J_m2": 1.34173084975481,
+        "W_sep_J_m2": 3.5313488608666543,
+        "max_free_forces_eV_A": {
+          "interface": 0.04691112341994593,
+          "film": 0.04713936471830948,
+          "substrate": 0.0454732372085054
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:cathode:sensitivity:thickness_increment",
+        "W_adh_J_m2": 1.4332385276374218,
+        "W_sep_J_m2": 4.2799022809426885,
+        "max_free_forces_eV_A": {
+          "interface": 0.027028104994329512,
+          "film": 0.047257930953696015,
+          "substrate": 0.04547235661956943
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:cathode:sensitivity:fixed_depth_variation",
+        "W_adh_J_m2": 1.4257560475101827,
+        "W_sep_J_m2": 4.323422828621528,
+        "max_free_forces_eV_A": {
+          "interface": 0.03230831031851867,
+          "film": 0.04714771345460032,
+          "substrate": 0.04547449040054215
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:cathode:sensitivity:robustness_case",
+        "W_adh_J_m2": 1.435376379102347,
+        "W_sep_J_m2": 4.296623333471927,
+        "max_free_forces_eV_A": {
+          "interface": 0.02166924884459542,
+          "film": 0.047142152853968174,
+          "substrate": 0.04548007461157248
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:electrolyte:primary:R1",
+        "W_adh_J_m2": 0.5234871701570539,
+        "W_sep_J_m2": 1.2171011783904773,
+        "max_free_forces_eV_A": {
+          "interface": 0.04875672458615939,
+          "film": 0.03851381818478921,
+          "substrate": 0.043965420277743285
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:electrolyte:primary:R2",
+        "W_adh_J_m2": 0.6775514806014488,
+        "W_sep_J_m2": 1.4540062756615,
+        "max_free_forces_eV_A": {
+          "interface": 0.04912048918107086,
+          "film": 0.038523794044264384,
+          "substrate": 0.044031011182524525
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:electrolyte:primary:R3",
+        "W_adh_J_m2": 0.7435735865694895,
+        "W_sep_J_m2": 1.4902710788933669,
+        "max_free_forces_eV_A": {
+          "interface": 0.049276238920892695,
+          "film": 0.03850789041673407,
+          "substrate": 0.04410857527851245
+        }
+      },
+      {
+        "run_id": "mp-aaaaajby:electrolyte:sensitivity:fixed_depth_variation",
+        "W_adh_J_m2": 0.7577571880020035,
+        "W_sep_J_m2": 1.5000094159027666,
+        "max_free_forces_eV_A": {
+          "interface": 0.04060402726046272,
+          "film": 0.038521033990073526,
+          "substrate": 0.047943547265888654
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:cathode:primary:R1",
+        "W_adh_J_m2": 3.6003562394027577,
+        "W_sep_J_m2": 5.127716027070846,
+        "max_free_forces_eV_A": {
+          "interface": 0.04476745751951745,
+          "film": 0.03706066799924955,
+          "substrate": 0.0454930002769415
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:cathode:primary:R2",
+        "W_adh_J_m2": 3.596964455828597,
+        "W_sep_J_m2": 5.090802849991021,
+        "max_free_forces_eV_A": {
+          "interface": 0.048393783043533596,
+          "film": 0.03705739165085557,
+          "substrate": 0.04551182594866855
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:cathode:primary:R3",
+        "W_adh_J_m2": 3.6170508624496,
+        "W_sep_J_m2": 5.167624545488891,
+        "max_free_forces_eV_A": {
+          "interface": 0.04968592517918731,
+          "film": 0.03705625223284999,
+          "substrate": 0.04549283266175783
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+        "W_adh_J_m2": 1.6333940812860246,
+        "W_sep_J_m2": 2.9672197308623063,
+        "max_free_forces_eV_A": {
+          "interface": 0.04753159230616727,
+          "film": 0.049395380264630015,
+          "substrate": 0.04962635711444978
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:electrolyte:primary:R2",
+        "W_adh_J_m2": 1.6316068100231231,
+        "W_sep_J_m2": 3.064711941193468,
+        "max_free_forces_eV_A": {
+          "interface": 0.03796611019745636,
+          "film": 0.049386253911429645,
+          "substrate": 0.0496515089394975
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:cathode:consistency:G2",
+        "W_adh_J_m2": 3.602558696269096,
+        "W_sep_J_m2": 5.108290357509745,
+        "max_free_forces_eV_A": {
+          "interface": 0.04979858668238989,
+          "film": 0.03706247157031085,
+          "substrate": 0.04551113830359114
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:cathode:consistency:G3",
+        "W_adh_J_m2": 3.627050016622775,
+        "W_sep_J_m2": 5.1633958283055215,
+        "max_free_forces_eV_A": {
+          "interface": 0.04101664445004857,
+          "film": 0.0370639460210337,
+          "substrate": 0.045494466016842094
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:electrolyte:consistency:G2",
+        "W_adh_J_m2": 1.6233693225998778,
+        "W_sep_J_m2": 2.9881170563977713,
+        "max_free_forces_eV_A": {
+          "interface": 0.0487412877049817,
+          "film": 0.049390750314609516,
+          "substrate": 0.04963193736172909
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:electrolyte:consistency:G3",
+        "W_adh_J_m2": 1.6318474042315905,
+        "W_sep_J_m2": 3.055981808486218,
+        "max_free_forces_eV_A": {
+          "interface": 0.04928711351972846,
+          "film": 0.049394804789268075,
+          "substrate": 0.04963109820559988
+        }
+      },
+      {
+        "run_id": "mp-aaacjjwh:electrolyte:sensitivity:robustness_case",
+        "W_adh_J_m2": 1.5120118610940148,
+        "W_sep_J_m2": 2.8053633887540066,
+        "max_free_forces_eV_A": {
+          "interface": 0.048097662850835075,
+          "film": 0.03638471388557288,
+          "substrate": 0.03527783284311694
+        }
+      }
+    ],
+    "new_job_count": 26,
+    "calculator_calls": 6632,
+    "separation_single_points": 52,
+    "runner_wall_seconds": 1525.1056585929991,
+    "slurm_elapsed_seconds_sum": 2850,
+    "jobs": [
+      {
+        "job_id": "11014613",
+        "name": "refc-cathode_G2",
+        "elapsed_seconds": 157
+      },
+      {
+        "job_id": "11014614",
+        "name": "refc-cathode_G3",
+        "elapsed_seconds": 156
+      },
+      {
+        "job_id": "11014615",
+        "name": "refc-electrolyte_G2",
+        "elapsed_seconds": 155
+      },
+      {
+        "job_id": "11014616",
+        "name": "refc-electrolyte_G3",
+        "elapsed_seconds": 155
+      },
+      {
+        "job_id": "11017102",
+        "name": "LiTaF6s-cathode_thickness",
+        "elapsed_seconds": 67
+      },
+      {
+        "job_id": "11017103",
+        "name": "LiTaF6s-electrolyte_thickness",
+        "elapsed_seconds": 94
+      },
+      {
+        "job_id": "11017104",
+        "name": "LiTaF6s-cathode_fixed_depth",
+        "elapsed_seconds": 67
+      },
+      {
+        "job_id": "11017105",
+        "name": "LiTaF6s-electrolyte_fixed_dep+",
+        "elapsed_seconds": 87
+      },
+      {
+        "job_id": "11017107",
+        "name": "LiTaF6s-cathode_robustness",
+        "elapsed_seconds": 64
+      },
+      {
+        "job_id": "11017108",
+        "name": "LiTaF6s-electrolyte_robustness",
+        "elapsed_seconds": 96
+      },
+      {
+        "job_id": "11017275",
+        "name": "LiCaAlF6s-cathode_thickness",
+        "elapsed_seconds": 69
+      },
+      {
+        "job_id": "11017276",
+        "name": "LiCaAlF6s-cathode_fixed_depth",
+        "elapsed_seconds": 71
+      },
+      {
+        "job_id": "11017277",
+        "name": "LiCaAlF6s-cathode_robustness",
+        "elapsed_seconds": 73
+      },
+      {
+        "job_id": "11017278",
+        "name": "LiCaAlF6s-electrolyte_fixed_d+",
+        "elapsed_seconds": 82
+      },
+      {
+        "job_id": "11017178",
+        "name": "LiCaAlF6-cathode_R1",
+        "elapsed_seconds": 72
+      },
+      {
+        "job_id": "11017179",
+        "name": "LiCaAlF6-cathode_R2",
+        "elapsed_seconds": 67
+      },
+      {
+        "job_id": "11017180",
+        "name": "LiCaAlF6-cathode_R3",
+        "elapsed_seconds": 67
+      },
+      {
+        "job_id": "11017181",
+        "name": "LiCaAlF6-electrolyte_R1",
+        "elapsed_seconds": 74
+      },
+      {
+        "job_id": "11017182",
+        "name": "LiCaAlF6-electrolyte_R2",
+        "elapsed_seconds": 80
+      },
+      {
+        "job_id": "11017183",
+        "name": "LiCaAlF6-electrolyte_R3",
+        "elapsed_seconds": 81
+      },
+      {
+        "job_id": "11017049",
+        "name": "LiTaF6-cathode_R1",
+        "elapsed_seconds": 164
+      },
+      {
+        "job_id": "11017050",
+        "name": "LiTaF6-cathode_R2",
+        "elapsed_seconds": 165
+      },
+      {
+        "job_id": "11017051",
+        "name": "LiTaF6-cathode_R3",
+        "elapsed_seconds": 165
+      },
+      {
+        "job_id": "11017052",
+        "name": "LiTaF6-electrolyte_R1",
+        "elapsed_seconds": 176
+      },
+      {
+        "job_id": "11017053",
+        "name": "LiTaF6-electrolyte_R2",
+        "elapsed_seconds": 177
+      },
+      {
+        "job_id": "11017054",
+        "name": "LiTaF6-electrolyte_R3",
+        "elapsed_seconds": 169
+      }
+    ],
+    "new_calculations": 0
+  },
+  "agent": {
+    "agent_commit": "c0a0546",
+    "state_sha256": "51947f2b3615da4efe27c9d2760c813c29c62abd2f221283bd040df2a00bd4b5",
+    "all_record_amendment_and_snapshot_hashes_valid": true,
+    "original_pilot_code_hash_matches_execution": true,
+    "summary_prompt_chars": 16285,
+    "reported_stopped_prompt_chars": 16334,
+    "stopped_prompt_limitation": "Unsent prompt text is not archived, so the earlier reported size and unchanged-content claim cannot be independently compared to the sent prompt.",
+    "http_attempts": 5,
+    "http_cap": 10,
+    "tokens": {
+      "input_tokens": 17365,
+      "output_tokens": 8463
+    },
+    "usd_estimate_at_recorded_rates": 0.005968,
+    "billed_cost": false,
+    "fresh_feedback_matches_all_three_snapshots": true,
+    "sensitivity_values_absent_from_frozen_bundles": true,
+    "assessment": {
+      "predictions": [
+        {
+          "stage": "choose_2",
+          "candidate_id": "mp-aaacjmqp",
+          "formula": "LiTaF6",
+          "status": "revealed",
+          "contacts": {
+            "cathode": {
+              "predicted": [
+                3.2,
+                3.9
+              ],
+              "width": 0.6999999999999997,
+              "observed": 3.338748412819128,
+              "in_range": true,
+              "miss": 0.0
+            },
+            "electrolyte": {
+              "predicted": [
+                1.4,
+                1.9
+              ],
+              "width": 0.5,
+              "observed": 1.5773585444472311,
+              "in_range": true,
+              "miss": 0.0
+            }
+          },
+          "weaker_predicted": "electrolyte",
+          "weaker_observed": "electrolyte",
+          "weaker_agrees": true
+        },
+        {
+          "stage": "choose_3",
+          "candidate_id": "mp-aaaaajby",
+          "formula": "LiCaAlF6",
+          "status": "revealed",
+          "contacts": {
+            "cathode": {
+              "predicted": [
+                3.0,
+                3.8
+              ],
+              "width": 0.7999999999999998,
+              "observed": 1.426710445485596,
+              "in_range": false,
+              "miss": 1.573289554514404
+            },
+            "electrolyte": {
+              "predicted": [
+                1.4,
+                1.9
+              ],
+              "width": 0.5,
+              "observed": 0.7435735865694895,
+              "in_range": false,
+              "miss": 0.6564264134305104
+            }
+          },
+          "weaker_predicted": "electrolyte",
+          "weaker_observed": "electrolyte",
+          "weaker_agrees": true
+        }
+      ],
+      "decision_comparison": {
+        "initial_next": "mp-aaaaajby",
+        "chosen": "mp-aaaaajby",
+        "changed": false,
+        "note": "Decision comparison at a common information state; the unchosen coating has no measured outcome."
+      },
+      "http_attempts_used": 5
+    },
+    "complete_resume_model_calls": 0,
+    "complete_state_unchanged": true,
+    "test_fixture_fix_in_c0a0546_verified": true
+  },
+  "tests": {
+    "physics_full": {
+      "passed": 165,
+      "seconds": 24.3
+    },
+    "agent_targeted_before_patch": {
+      "passed": 32,
+      "seconds": 1.65
+    },
+    "agent_targeted_after_patch": {
+      "passed": 39,
+      "seconds": 2.14
+    }
+  },
+  "reader_original_failure": "c0a0546 rejects all 12 LiF rows with not_run_not_selected in 1b76eeb index_final.json",
+  "reader_patch_status": "Tested in isolated c0a0546 archive against actual 1b76eeb data; not applied to collaborator branch",
+  "reader_patch_results": {
+    "invalid_runs": [],
+    "new_calls": 6632,
+    "unknown_cost_new_runs": 0,
+    "unselected_rows": 12,
+    "consistency_rows": 4,
+    "cohort": [
+      {
+        "candidate_id": "mp-aaacjjwh",
+        "formula": "LiNbF6",
+        "slot_reason": "reference",
+        "thermo": {
+          "penalty": 0.028772005147425617,
+          "penalty_bin": 1,
+          "acceptable": true,
+          "insulating": true,
+          "band_gap_eV": 4.788851973014669
+        },
+        "contacts": {
+          "cathode": {
+            "status": "validated",
+            "selected_run_id": "mp-aaacjjwh:cathode:primary:R3",
+            "W_adh_J_m2": 3.6170508624496,
+            "W_sep_J_m2": 5.167624545488891,
+            "registry_range_J_m2": [
+              3.596964455828597,
+              3.6170508624496
+            ],
+            "comparability_problems": [],
+            "missing_primary_run_ids": [],
+            "primary": [
+              {
+                "run_id": "mp-aaacjjwh:cathode:primary:R1",
+                "registry_id": "R1",
+                "status": "valid",
+                "W_adh_J_m2": 3.6003562394027577,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaacjjwh:cathode:primary:R2",
+                "registry_id": "R2",
+                "status": "valid",
+                "W_adh_J_m2": 3.596964455828597,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaacjjwh:cathode:primary:R3",
+                "registry_id": "R3",
+                "status": "valid",
+                "W_adh_J_m2": 3.6170508624496,
+                "problems": [],
+                "failure_reason": null
+              }
+            ],
+            "sensitivity": [],
+            "warnings": [
+              "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+            ]
+          },
+          "electrolyte": {
+            "status": "validated",
+            "selected_run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+            "W_adh_J_m2": 1.6333940812860246,
+            "W_sep_J_m2": 2.9672197308623063,
+            "registry_range_J_m2": [
+              1.6316068100231231,
+              1.6333940812860246
+            ],
+            "comparability_problems": [],
+            "missing_primary_run_ids": [],
+            "primary": [
+              {
+                "run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+                "registry_id": "R1",
+                "status": "valid",
+                "W_adh_J_m2": 1.6333940812860246,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaacjjwh:electrolyte:primary:R2",
+                "registry_id": "R2",
+                "status": "valid",
+                "W_adh_J_m2": 1.6316068100231231,
+                "problems": [],
+                "failure_reason": null
+              }
+            ],
+            "sensitivity": [
+              {
+                "run_id": "mp-aaacjjwh:electrolyte:sensitivity:robustness_case",
+                "kind": "robustness_case",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 1.5120118610940148,
+                "delta_vs_selected": -0.12138222019200984
+              }
+            ],
+            "warnings": [
+              "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+            ]
+          }
+        },
+        "weaker_W_adh_J_m2": 1.6333940812860246
+      },
+      {
+        "candidate_id": "mp-aaacjmqp",
+        "formula": "LiTaF6",
+        "slot_reason": "llm_choice_2",
+        "thermo": {
+          "penalty": 0.027074933496621156,
+          "penalty_bin": 1,
+          "acceptable": true,
+          "insulating": true,
+          "band_gap_eV": 5.917199104338054
+        },
+        "contacts": {
+          "cathode": {
+            "status": "validated",
+            "selected_run_id": "mp-aaacjmqp:cathode:primary:R1",
+            "W_adh_J_m2": 3.338748412819128,
+            "W_sep_J_m2": 4.727749860143862,
+            "registry_range_J_m2": [
+              3.326811096603576,
+              3.338748412819128
+            ],
+            "comparability_problems": [],
+            "missing_primary_run_ids": [],
+            "primary": [
+              {
+                "run_id": "mp-aaacjmqp:cathode:primary:R1",
+                "registry_id": "R1",
+                "status": "valid",
+                "W_adh_J_m2": 3.338748412819128,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaacjmqp:cathode:primary:R2",
+                "registry_id": "R2",
+                "status": "valid",
+                "W_adh_J_m2": 3.326811096603576,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaacjmqp:cathode:primary:R3",
+                "registry_id": "R3",
+                "status": "valid",
+                "W_adh_J_m2": 3.3333303689279363,
+                "problems": [],
+                "failure_reason": null
+              }
+            ],
+            "sensitivity": [
+              {
+                "run_id": "mp-aaacjmqp:cathode:sensitivity:thickness_increment",
+                "kind": "thickness_increment",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 3.3409949188227928,
+                "delta_vs_selected": 0.0022465060036647166
+              },
+              {
+                "run_id": "mp-aaacjmqp:cathode:sensitivity:fixed_depth_variation",
+                "kind": "fixed_depth_variation",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 3.333682762026551,
+                "delta_vs_selected": -0.005065650792577259
+              },
+              {
+                "run_id": "mp-aaacjmqp:cathode:sensitivity:robustness_case",
+                "kind": "robustness_case",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 3.3391008059177425,
+                "delta_vs_selected": 0.00035239309861445633
+              }
+            ],
+            "warnings": [
+              "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+            ]
+          },
+          "electrolyte": {
+            "status": "validated",
+            "selected_run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+            "W_adh_J_m2": 1.5773585444472311,
+            "W_sep_J_m2": 2.910571251635274,
+            "registry_range_J_m2": [
+              1.534040130056007,
+              1.5773585444472311
+            ],
+            "comparability_problems": [],
+            "missing_primary_run_ids": [],
+            "primary": [
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+                "registry_id": "R1",
+                "status": "valid",
+                "W_adh_J_m2": 1.5658959489438142,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+                "registry_id": "R2",
+                "status": "valid",
+                "W_adh_J_m2": 1.5773585444472311,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+                "registry_id": "R3",
+                "status": "valid",
+                "W_adh_J_m2": 1.534040130056007,
+                "problems": [],
+                "failure_reason": null
+              }
+            ],
+            "sensitivity": [
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:sensitivity:thickness_increment",
+                "kind": "thickness_increment",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 1.572122756196295,
+                "delta_vs_selected": -0.00523578825093618
+              },
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:sensitivity:fixed_depth_variation",
+                "kind": "fixed_depth_variation",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 1.6014580643287282,
+                "delta_vs_selected": 0.024099519881497056
+              },
+              {
+                "run_id": "mp-aaacjmqp:electrolyte:sensitivity:robustness_case",
+                "kind": "robustness_case",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 1.4636845740138906,
+                "delta_vs_selected": -0.11367397043334049
+              }
+            ],
+            "warnings": [
+              "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+            ]
+          }
+        },
+        "weaker_W_adh_J_m2": 1.5773585444472311
+      },
+      {
+        "candidate_id": "mp-aaaaajby",
+        "formula": "LiCaAlF6",
+        "slot_reason": "llm_choice_3",
+        "thermo": {
+          "penalty": 0.047719477710549185,
+          "penalty_bin": 2,
+          "acceptable": true,
+          "insulating": true,
+          "band_gap_eV": 7.6448
+        },
+        "contacts": {
+          "cathode": {
+            "status": "validated",
+            "selected_run_id": "mp-aaaaajby:cathode:primary:R2",
+            "W_adh_J_m2": 1.426710445485596,
+            "W_sep_J_m2": 4.321819440022834,
+            "registry_range_J_m2": [
+              1.34173084975481,
+              1.426710445485596
+            ],
+            "comparability_problems": [],
+            "missing_primary_run_ids": [],
+            "primary": [
+              {
+                "run_id": "mp-aaaaajby:cathode:primary:R1",
+                "registry_id": "R1",
+                "status": "valid",
+                "W_adh_J_m2": 1.4237327238023068,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaaaajby:cathode:primary:R2",
+                "registry_id": "R2",
+                "status": "valid",
+                "W_adh_J_m2": 1.426710445485596,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaaaajby:cathode:primary:R3",
+                "registry_id": "R3",
+                "status": "valid",
+                "W_adh_J_m2": 1.34173084975481,
+                "problems": [],
+                "failure_reason": null
+              }
+            ],
+            "sensitivity": [
+              {
+                "run_id": "mp-aaaaajby:cathode:sensitivity:thickness_increment",
+                "kind": "thickness_increment",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 1.4332385276374218,
+                "delta_vs_selected": 0.006528082151825876
+              },
+              {
+                "run_id": "mp-aaaaajby:cathode:sensitivity:fixed_depth_variation",
+                "kind": "fixed_depth_variation",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 1.4257560475101827,
+                "delta_vs_selected": -0.0009543979754131904
+              },
+              {
+                "run_id": "mp-aaaaajby:cathode:sensitivity:robustness_case",
+                "kind": "robustness_case",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 1.435376379102347,
+                "delta_vs_selected": 0.008665933616751165
+              }
+            ],
+            "warnings": [
+              "formal polarity film/substrate 0.002/2.058 e/\u00c5"
+            ]
+          },
+          "electrolyte": {
+            "status": "validated",
+            "selected_run_id": "mp-aaaaajby:electrolyte:primary:R3",
+            "W_adh_J_m2": 0.7435735865694895,
+            "W_sep_J_m2": 1.4902710788933669,
+            "registry_range_J_m2": [
+              0.5234871701570539,
+              0.7435735865694895
+            ],
+            "comparability_problems": [],
+            "missing_primary_run_ids": [],
+            "primary": [
+              {
+                "run_id": "mp-aaaaajby:electrolyte:primary:R1",
+                "registry_id": "R1",
+                "status": "valid",
+                "W_adh_J_m2": 0.5234871701570539,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaaaajby:electrolyte:primary:R2",
+                "registry_id": "R2",
+                "status": "valid",
+                "W_adh_J_m2": 0.6775514806014488,
+                "problems": [],
+                "failure_reason": null
+              },
+              {
+                "run_id": "mp-aaaaajby:electrolyte:primary:R3",
+                "registry_id": "R3",
+                "status": "valid",
+                "W_adh_J_m2": 0.7435735865694895,
+                "problems": [],
+                "failure_reason": null
+              }
+            ],
+            "sensitivity": [
+              {
+                "run_id": "mp-aaaaajby:electrolyte:sensitivity:thickness_increment",
+                "kind": "thickness_increment",
+                "status": "unavailable",
+                "quantified": false,
+                "reason": "not_run_resource_limit (1,302 atoms > 1,250)",
+                "W_adh_J_m2": null,
+                "delta_vs_selected": null
+              },
+              {
+                "run_id": "mp-aaaaajby:electrolyte:sensitivity:fixed_depth_variation",
+                "kind": "fixed_depth_variation",
+                "status": "valid",
+                "quantified": true,
+                "reason": null,
+                "W_adh_J_m2": 0.7577571880020035,
+                "delta_vs_selected": 0.01418360143251407
+              },
+              {
+                "run_id": "mp-aaaaajby:electrolyte:sensitivity:robustness_case",
+                "kind": "robustness_case",
+                "status": "unavailable",
+                "quantified": false,
+                "reason": "not_run_no_admissible_construction (seed-4 bulk, 300 and 600 \u00c5\u00b2)",
+                "W_adh_J_m2": null,
+                "delta_vs_selected": null
+              }
+            ],
+            "warnings": [
+              "formal polarity film/substrate 0.002/0.347 e/\u00c5"
+            ]
+          }
+        },
+        "weaker_W_adh_J_m2": 0.7435735865694895
+      }
+    ]
+  },
+  "actions": {
+    "live_model_calls": 0,
+    "new_MLIP_calculations": 0,
+    "cluster_submissions": 0,
+    "branch_merges": 0
+  },
+  "limits": [
+    "Primary forecasts and decisions are preserved; final robustness never becomes live-pilot input.",
+    "LiNbF6-LiTaF6 weak-contact difference does not establish robust superiority.",
+    "LiCaAlF6 electrolyte thickness and bulk-structure sensitivities remain unquantified.",
+    "Both contacts are formally polar and the model does not establish experimental adhesion or Li transport."
+  ]
+}
