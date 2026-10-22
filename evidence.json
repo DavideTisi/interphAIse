@@ -1,0 +1,223 @@
+{
+  "edition": "referee",
+  "source_revision": "a7275820cbe170c08511dc1db35b7362a7842923",
+  "source_revision_note": "Checkout revision at export; exact exporter/template hashes are recorded below.",
+  "final_index": {
+    "path": "data/petmad/coating_comparison_v1/index_final.json",
+    "sha256": "47d69f7dd75dff89e1d2e5191f2f1d31fad002581521c39eeee7593c90d83c41"
+  },
+  "html_sha256": "893ae8839664d6834e79b6d32e1b3c3aaa6a10e9011e348f0efc3ba698b7a14d",
+  "builder_sha256": "9a013368c3ceb6aafa88cbc181e0851cbd36b6355516154204e3321021cfc844",
+  "template_sha256": "4299570f0bc53516d9db846fed6b747145914670db0522c78a6c329c609de40e",
+  "published_geometry_count": 6,
+  "contacts": [
+    {
+      "formula": "LiNbF6",
+      "contact": "cathode",
+      "record_id": "interface:niflheim_batch1/cathode_reg_third_third:relaxed",
+      "W_adh_J_m2": 3.6170508624496,
+      "W_sep_J_m2": 5.167624545488891,
+      "sensitivity": [],
+      "source_geometry": {
+        "path": "data/petmad/niflheim_batch1/cathode_reg_third_third/interface/final.extxyz",
+        "sha256": "17fc8675d696ee926de84a820ba8664c241df77b5619666cef726b69f6827b79"
+      }
+    },
+    {
+      "formula": "LiNbF6",
+      "contact": "electrolyte",
+      "record_id": "interface:niflheim_batch1/electrolyte_seed0_ref:relaxed",
+      "W_adh_J_m2": 1.6333940812860246,
+      "W_sep_J_m2": 2.9672197308623063,
+      "sensitivity": [
+        {
+          "run_id": "mp-aaacjjwh:electrolyte:sensitivity:robustness_case",
+          "kind": "robustness_case",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 1.5120118610940148,
+          "delta_vs_selected": -0.12138222019200984
+        }
+      ],
+      "source_geometry": {
+        "path": "data/petmad/niflheim_batch1/electrolyte_seed0_ref/interface/final.extxyz",
+        "sha256": "2c28aeff6c35d21f8a0276c9b85e7317dfeb24a9732f7202071778b06534fcd9"
+      }
+    },
+    {
+      "formula": "LiTaF6",
+      "contact": "cathode",
+      "record_id": "interface:coating_comparison_v1/runs/LiTaF6/cathode_R1:relaxed",
+      "W_adh_J_m2": 3.338748412819128,
+      "W_sep_J_m2": 4.727749860143862,
+      "sensitivity": [
+        {
+          "run_id": "mp-aaacjmqp:cathode:sensitivity:thickness_increment",
+          "kind": "thickness_increment",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 3.3409949188227928,
+          "delta_vs_selected": 0.0022465060036647166
+        },
+        {
+          "run_id": "mp-aaacjmqp:cathode:sensitivity:fixed_depth_variation",
+          "kind": "fixed_depth_variation",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 3.333682762026551,
+          "delta_vs_selected": -0.005065650792577259
+        },
+        {
+          "run_id": "mp-aaacjmqp:cathode:sensitivity:robustness_case",
+          "kind": "robustness_case",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 3.3391008059177425,
+          "delta_vs_selected": 0.00035239309861445633
+        }
+      ],
+      "source_geometry": {
+        "path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R1/interface/final.extxyz",
+        "sha256": "b17b624d55fa4b4f63bf096d1296231cd99dfe9fd71d6110e060c046fadb6037"
+      }
+    },
+    {
+      "formula": "LiTaF6",
+      "contact": "electrolyte",
+      "record_id": "interface:coating_comparison_v1/runs/LiTaF6/electrolyte_R2:relaxed",
+      "W_adh_J_m2": 1.5773585444472311,
+      "W_sep_J_m2": 2.910571251635274,
+      "sensitivity": [
+        {
+          "run_id": "mp-aaacjmqp:electrolyte:sensitivity:thickness_increment",
+          "kind": "thickness_increment",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 1.572122756196295,
+          "delta_vs_selected": -0.00523578825093618
+        },
+        {
+          "run_id": "mp-aaacjmqp:electrolyte:sensitivity:fixed_depth_variation",
+          "kind": "fixed_depth_variation",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 1.6014580643287282,
+          "delta_vs_selected": 0.024099519881497056
+        },
+        {
+          "run_id": "mp-aaacjmqp:electrolyte:sensitivity:robustness_case",
+          "kind": "robustness_case",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 1.4636845740138906,
+          "delta_vs_selected": -0.11367397043334049
+        }
+      ],
+      "source_geometry": {
+        "path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R2/interface/final.extxyz",
+        "sha256": "41f623798bad0c6e5c90486fde1ff513ef2a4c092e652bd1ff585aac8240ab8a"
+      }
+    },
+    {
+      "formula": "LiCaAlF6",
+      "contact": "cathode",
+      "record_id": "interface:coating_comparison_v1/runs/LiCaAlF6/cathode_R2:relaxed",
+      "W_adh_J_m2": 1.426710445485596,
+      "W_sep_J_m2": 4.321819440022834,
+      "sensitivity": [
+        {
+          "run_id": "mp-aaaaajby:cathode:sensitivity:thickness_increment",
+          "kind": "thickness_increment",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 1.4332385276374218,
+          "delta_vs_selected": 0.006528082151825876
+        },
+        {
+          "run_id": "mp-aaaaajby:cathode:sensitivity:fixed_depth_variation",
+          "kind": "fixed_depth_variation",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 1.4257560475101827,
+          "delta_vs_selected": -0.0009543979754131904
+        },
+        {
+          "run_id": "mp-aaaaajby:cathode:sensitivity:robustness_case",
+          "kind": "robustness_case",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 1.435376379102347,
+          "delta_vs_selected": 0.008665933616751165
+        }
+      ],
+      "source_geometry": {
+        "path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R2/interface/final.extxyz",
+        "sha256": "bdf0fe1bae04e209f6868f996b3f9266221138753189e153162340f9d48bb245"
+      }
+    },
+    {
+      "formula": "LiCaAlF6",
+      "contact": "electrolyte",
+      "record_id": "interface:coating_comparison_v1/runs/LiCaAlF6/electrolyte_R3:relaxed",
+      "W_adh_J_m2": 0.7435735865694895,
+      "W_sep_J_m2": 1.4902710788933669,
+      "sensitivity": [
+        {
+          "run_id": "mp-aaaaajby:electrolyte:sensitivity:thickness_increment",
+          "kind": "thickness_increment",
+          "status": "unavailable",
+          "quantified": false,
+          "reason": "not_run_resource_limit (1,302 atoms > 1,250)",
+          "W_adh_J_m2": null,
+          "delta_vs_selected": null
+        },
+        {
+          "run_id": "mp-aaaaajby:electrolyte:sensitivity:fixed_depth_variation",
+          "kind": "fixed_depth_variation",
+          "status": "valid",
+          "quantified": true,
+          "reason": null,
+          "W_adh_J_m2": 0.7577571880020035,
+          "delta_vs_selected": 0.01418360143251407
+        },
+        {
+          "run_id": "mp-aaaaajby:electrolyte:sensitivity:robustness_case",
+          "kind": "robustness_case",
+          "status": "unavailable",
+          "quantified": false,
+          "reason": "not_run_no_admissible_construction (seed-4 bulk, 300 and 600 \u00c5\u00b2)",
+          "W_adh_J_m2": null,
+          "delta_vs_selected": null
+        }
+      ],
+      "source_geometry": {
+        "path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R3/interface/final.extxyz",
+        "sha256": "638e925c43868c5ff467b4d2eac6c1e451c7f0898eaf2776ad62c228205ec2dc"
+      }
+    }
+  ],
+  "not_computed": [
+    "LiF interface energies"
+  ],
+  "limits": [
+    "This compact export contains six selected primary interfaces: three coatings, each contacting LiCoO2 and Li6PS5Cl separately. It is not a complete three-layer cell or battery simulation.",
+    "The geometries and primary values were available to the live LLM pilot. Sensitivity information was released afterwards and did not enter its choices.",
+    "LiF was not selected and has no computed interface energy. It is not ranked by these calculations.",
+    "All interfaces are formally polar and provisional. Lithium transport, reaction kinetics and battery cycling were not tested.",
+    "The LiNbF6\u2013LiTaF6 weaker-contact difference is smaller than documented construction sensitivities. These numbers do not establish a robust materials ranking.",
+    "LiCaAlF6 electrolyte thickness and bulk-structure sensitivity remain unquantified. Its sampled electrolyte registries span approximately 0.52\u20130.74 J/m\u00b2.",
+    "The post-decision alternative-bulk electrolyte shifts are \u22120.121 J/m\u00b2 for LiNbF6 and \u22120.114 J/m\u00b2 for LiTaF6. They combine construction effects and are not statistical error bars.",
+    "Contact registry selection follows the lowest relaxed joined energy, not maximum adhesion. Sphere sizes are illustrative; displayed bonds are not inferred."
+  ],
+  "new_calculations": false
+}
