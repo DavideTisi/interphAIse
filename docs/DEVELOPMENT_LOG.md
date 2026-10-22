@@ -4007,3 +4007,26 @@ the chronological barrier between primary feedback and sensitivity release.
 A redundant analysis box was removed to avoid overlap with GitHub's diagram
 navigation controls. The scientific workflow and all archived evidence remain
 unchanged; concurrent document files remain outside these commits.
+
+
+## 2026-10-22 — Restore Why the LLM is central in the README
+
+**Branch:** main, starting at `d137651`. Davide requested the explicit
+Why the LLM is central section on the repository's main page. Restored it
+before How it works, describing chemical hypotheses, interpretation of prior
+results, allocation of a finite evaluation budget, and prospective adhesion
+forecasts in the physical pilot. It distinguishes the LLM decision policy,
+Python orchestration, numerical evaluators and human-defined protocols.
+
+The section reflects the final results synthesis: useful priors and useful
+adaptation are separate capabilities, benefits depend on model/environment,
+and the study does not establish human equivalence or an internal reasoning
+mechanism. Replaced the duplicated introductory paragraph under How it works
+with a short transition. Both published diagrams remain byte-identical.
+
+Verification: checked the wording against the results synthesis, confirmed its
+section link and all README local links resolve, and checked the diff for
+whitespace and scope. This documentation-only change requires no scientific
+rerun or unit-test run. No API/LLM call, MLIP calculation, archived result or
+numerical claim changed. Only README.md and this checkpoint are staged;
+concurrent illustrated-report work remains local and unstaged.

@@ -17,13 +17,37 @@ rules; the LLM's scientific selection judgment is what we test.
 [Interactive interfaces](https://davidetisi.github.io/interphAIse/) ·
 [Full results](docs/RESULTS_SYNTHESIS_2026-10-22.md)
 
+## Why the LLM is central
+
+The scientific question is **what is worth calculating next, and why**. We
+ask the LLM to take on specific parts of a researcher's scientific judgment:
+
+- **Propose a chemical hypothesis:** connect knowledge of material families to
+  a promising coating in the candidate pool.
+- **Respond to evidence:** interpret previous results and decide whether to
+  pursue the same idea or change direction.
+- **Allocate limited evaluations:** choose which untested material deserves
+  the next query.
+- **Make testable predictions:** in the physical pilot, forecast adhesion at
+  both contacts before the new calculations reveal the answer.
+
+The LLM is the **scientific decision policy being tested**. Python code handles
+orchestration, ID validation, budget accounting and evidence logging. Materials
+Project thermodynamics and PET-MAD supply the numerical results. Humans define
+the candidate space, objective and construction rules, and assess the scientific
+meaning of the outcome.
+
+The controls distinguish useful starting knowledge from useful adaptation to
+feedback. The results show that their value depends on the model and battery
+environment; the physical pilot also exposes failed predictions. This tests
+delegated scientific judgment. It does not establish equivalence to human
+intuition or reveal the model's internal reasoning mechanism; no matched human
+expert comparison was run. See the [full interpretation](docs/RESULTS_SYNTHESIS_2026-10-22.md#why-the-llm-is-central).
+
 ## How it works
 
-The LLM takes on the scientist's choice of **what to test next and why**. It
-uses chemical knowledge, interprets the feedback it receives and, in the physical
-pilot, predicts adhesion before the calculation. Humans fix the scientific
-question, candidate menu, scoring rules and budget. Code validates choices,
-runs or retrieves calculations, and preserves the evidence.
+The two studies use the following decision-and-feedback loop. Each protocol
+fixes the evaluator, budget and information available to the model.
 
 ```mermaid
 flowchart LR
