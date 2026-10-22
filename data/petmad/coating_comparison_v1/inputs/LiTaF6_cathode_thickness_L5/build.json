@@ -1,0 +1,170 @@
+{
+  "label": "LiTaF6_cathode_thickness_L5",
+  "contact": "LiCoO2(0, 0, 1) | LiTaF6(0, 0, 1)",
+  "inputs": {
+    "substrate": "data/petmad/bulk_relaxation_v1/LiCoO2/stability_check/final.extxyz",
+    "substrate_sha256": "fbc74ea9f3a0d0e8cffce48c842fa93ef9b206b10973f77737f7571598706cb2",
+    "film": "data/petmad/coating_comparison_v1/bulk/LiTaF6/stability_check/final.extxyz",
+    "film_sha256": "63533cad7fe35d9cc8d038bde78a34be9ab2eaccb801ee90f55a6ad0421a1321",
+    "parent": null,
+    "parent_sha256": null
+  },
+  "selection_rule": "screen",
+  "settings": {
+    "max_area_A2": 300.0,
+    "min_span_A": 40.0,
+    "max_atoms": 1250,
+    "max_length_tol": 0.05,
+    "max_angle_tol": 0.03,
+    "film_layers": 5,
+    "substrate_layers": 2,
+    "max_strain": 0.06,
+    "candidate_cap": 60
+  },
+  "enumeration": {
+    "terminations_available": [
+      [
+        "Ta_P6/mmm_1",
+        "Li_P6/mmm_1"
+      ],
+      [
+        "Ta_P6/mmm_1",
+        "O2_P6/mmm_1"
+      ],
+      [
+        "F2_P-6_3",
+        "Li_P6/mmm_1"
+      ],
+      [
+        "F2_P-6_3",
+        "O2_P6/mmm_1"
+      ]
+    ],
+    "zsl_matches": 116,
+    "truncated": false,
+    "matched_to_build": "runs/coating_inputs_v2/LiTaF6_cathode/build.json",
+    "termination_requested": [
+      "F2_P-6_3",
+      "Li_P6/mmm_1"
+    ],
+    "valid_for_termination": 1
+  },
+  "termination": [
+    "F2_P-6_3",
+    "Li_P6/mmm_1"
+  ],
+  "n_atoms": 792,
+  "area_A2": 88.8000146079959,
+  "von_mises_strain": 0.01453933327117209,
+  "strain_tensor": [
+    [
+      -0.021987700904119833,
+      -0.0002618111413111732,
+      -6.928712872908435e-07
+    ],
+    [
+      -0.0002618111413111732,
+      -0.021616119359343933,
+      1.1214581093777214e-06
+    ],
+    [
+      -6.928712872908435e-07,
+      1.1214581093777214e-06,
+      -8.088307801301653e-11
+    ]
+  ],
+  "film_transformation": [
+    [
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0
+    ]
+  ],
+  "substrate_transformation": [
+    [
+      1.0,
+      4.0
+    ],
+    [
+      0.0,
+      13.0
+    ]
+  ],
+  "cut_shifts": {
+    "film": 0.12334605281912785,
+    "substrate": 0.046861718442432476
+  },
+  "warnings": [
+    "film slab is polar: |p_z|/A = 1.535 e/\u00c5",
+    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+  ],
+  "sides": {
+    "film": {
+      "formula": "Li60 Ta60 F360",
+      "n_atoms": 480,
+      "formal_charge": 0.0,
+      "formal_dipole_per_area_e_per_A": 1.5346612732411073,
+      "cut_polyhedra": {},
+      "contact_side_layers": [
+        {
+          "F": 12
+        },
+        {
+          "Ta": 4
+        },
+        {
+          "F": 12
+        }
+      ],
+      "far_side_layers": [
+        {
+          "Li": 4
+        },
+        {
+          "F": 12
+        },
+        {
+          "Ta": 4
+        }
+      ]
+    },
+    "substrate": {
+      "formula": "Li78 Co78 O156",
+      "n_atoms": 312,
+      "formal_charge": 0.0,
+      "formal_dipole_per_area_e_per_A": 2.0584135548299662,
+      "cut_polyhedra": {
+        "CoO6": 0
+      },
+      "contact_side_layers": [
+        {
+          "Li": 13
+        },
+        {
+          "O": 13
+        },
+        {
+          "Co": 13
+        }
+      ],
+      "far_side_layers": [
+        {
+          "O": 13
+        },
+        {
+          "Co": 13
+        },
+        {
+          "O": 13
+        }
+      ]
+    }
+  },
+  "fixed_atoms": {
+    "rule": "bottom 34% of the substrate z span (energetics.bottom_fixed_indices)",
+    "count": 104
+  }
+}

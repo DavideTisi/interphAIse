@@ -2609,3 +2609,30 @@ writes `report.md`, `assessment.json` and `predictions.png`:
 Mock states are labelled MOCK. Moved the assessment into a pure `assess(state)` in `interphaise/pilot.py`.
 Example: `data/experiments/llm_petmad_pilot_v1/MOCK_report/` (partial trace on the genuine LiNbF6
 feedback). 13 pilot tests passed. No API or PET-MAD runs.
+
+## 2026-10-22 — Agent side (Adem): live prior + choose-2 executed (approved)
+
+Davide's approval: SYNC_ADEM_14 / `53e7758` (10 HTTP attempts total, USD 0.05 allowance, direct Haiku 5.5,
+temperature 1.0, 4096 tokens). Execution identity:
+- code `f8abbc0`;
+- Claude's campaign directory overlaid from `b199608` (identical files, committed here);
+- index sha256 `b02750fe…`, matching Davide's pin;
+- manifest sha256 `99ef2dc1…`.
+
+Offline preflight before the call: 23 planned primary IDs; reference cathode 3.6170509 and electrolyte
+1.6333941 J/m², weaker contact electrolyte (matches Davide's independent check).
+
+**Live results (the only live LLM calls in this entry):** 3 HTTP attempts. The first prior response failed
+format validation and was retried, charged. Every returned model was `claude-haiku-5-5`. 4,544 input and
+2,327 output tokens, ≈ USD 0.0016 at list price (estimate, not billed).
+- Prior ranking: LiTaF6, then LiCaAlF6, then LiF.
+- **Choose-2: LiTaF6 (`mp-aaacjmqp`)**.
+- Forecast W_adh: cathode [3.2, 3.9], electrolyte [1.4, 1.9] J/m², weaker contact electrolyte.
+- Record `010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01`; LiNbF6 feedback seen
+  `db7306f2…`.
+
+Paused (exit 2) for Claude's six primary LiTaF6 jobs. Files: `data/experiments/llm_petmad_pilot_v1/state.json`,
+`EXECUTION_choose2.json`, `report_live/`.
+
+Next, before choose-3: manifest-derived coverage and identity checks with the two regressions from
+SYNC_ADEM_14, then validation of the returned package.

@@ -1,0 +1,67 @@
+{
+ "build": "runs/coating_inputs_v2/LiTaF6_cathode",
+ "grid": 12,
+ "gap_A": 2.0,
+ "group_order": 54,
+ "n_translation_classes_on_grid": 36,
+ "film_transformation": [
+  [
+   2.0,
+   0.0
+  ],
+  [
+   0.0,
+   2.0
+  ]
+ ],
+ "substrate_transformation": [
+  [
+   1.0,
+   4.0
+  ],
+  [
+   0.0,
+   13.0
+  ]
+ ],
+ "registries": [
+  {
+   "id": "R1",
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "class": [
+    0.0,
+    0.0
+   ],
+   "min_distance_to_previous_A": null
+  },
+  {
+   "id": "R2",
+   "offset": [
+    0.25,
+    0.25
+   ],
+   "class": [
+    0.25,
+    0.019231
+   ],
+   "min_distance_to_previous_A": 2.194881263014739
+  },
+  {
+   "id": "R3",
+   "offset": [
+    0.08333333333333333,
+    0.25
+   ],
+   "class": [
+    0.083333,
+    0.019231
+   ],
+   "min_distance_to_previous_A": 0.7487910973361364
+  }
+ ],
+ "rejected_as_symmetry_equivalent": [],
+ "rule": "(0,0) first; then farthest translation class (min Cartesian distance modulo H); not an exact symmetry equivalent (StructureMatcher ltol 1e-3, stol 1e-2, angle 0.1)"
+}

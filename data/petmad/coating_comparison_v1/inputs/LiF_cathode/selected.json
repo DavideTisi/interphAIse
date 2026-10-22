@@ -1,0 +1,35 @@
+{
+  "candidate": {
+    "pair": [
+      "LiCoO2",
+      "LiF"
+    ],
+    "film_miller": [
+      1,
+      1,
+      0
+    ],
+    "substrate_miller": [
+      0,
+      0,
+      1
+    ],
+    "termination": [
+      "LiF_Pmmm_2",
+      "Li_P6/mmm_1"
+    ],
+    "n_atoms": 1032,
+    "area": 122.95386638030203,
+    "von_mises_strain": 0.03091337974208473,
+    "index": 58,
+    "valid": true,
+    "reject_reasons": []
+  },
+  "warnings": [
+    "substrate slab is polar: |p_z|/A = 2.058 e/\u00c5"
+  ],
+  "contact": "LiF_cathode",
+  "purpose": "explicit-termination contact build; not yet relaxed",
+  "substrate_file": "data/petmad/bulk_relaxation_v1/LiCoO2/stability_check/final.extxyz",
+  "film_file": "data/petmad/coating_comparison_v1/bulk/LiF/stability_check/final.extxyz"
+}

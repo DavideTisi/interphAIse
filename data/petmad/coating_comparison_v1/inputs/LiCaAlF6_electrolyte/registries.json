@@ -1,0 +1,67 @@
+{
+ "build": "runs/coating_inputs_v2/LiCaAlF6_electrolyte",
+ "grid": 12,
+ "gap_A": 2.0,
+ "group_order": 15,
+ "n_translation_classes_on_grid": 48,
+ "film_transformation": [
+  [
+   1.0,
+   2.0
+  ],
+  [
+   0.0,
+   5.0
+  ]
+ ],
+ "substrate_transformation": [
+  [
+   3.0,
+   0.0
+  ],
+  [
+   0.0,
+   1.0
+  ]
+ ],
+ "registries": [
+  {
+   "id": "R1",
+   "offset": [
+    0.0,
+    0.0
+   ],
+   "class": [
+    0.0,
+    0.0
+   ],
+   "min_distance_to_previous_A": null
+  },
+  {
+   "id": "R2",
+   "offset": [
+    0.16666666666666666,
+    0.5
+   ],
+   "class": [
+    0.166667,
+    0.1
+   ],
+   "min_distance_to_previous_A": 2.6506973181015536
+  },
+  {
+   "id": "R3",
+   "offset": [
+    0.0,
+    0.5
+   ],
+   "class": [
+    0.0,
+    0.1
+   ],
+   "min_distance_to_previous_A": 1.8489645019817975
+  }
+ ],
+ "rejected_as_symmetry_equivalent": [],
+ "rule": "(0,0) first; then farthest translation class (min Cartesian distance modulo H); not an exact symmetry equivalent (StructureMatcher ltol 1e-3, stol 1e-2, angle 0.1)"
+}
