@@ -16,15 +16,23 @@ introduces the problem and results. See the [submission checklist](SUBMISSION_PA
 for remaining release actions; the viewer is supporting evidence, separate from
 the required public source repository and write-up.
 
-**Final results, 22 October 2026:** the original 150-run benchmark, 450-run
-three-environment study and completed three-coating physical pilot are brought
-together in [the synthesis](RESULTS_SYNTHESIS_2026-10-22.md) and
-[the reviewed presentation](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
-([PDF](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf)).
-Correct feedback helps on sulfide; random wins on LLZO. In the physical pilot,
-both LiTaF6 forecasts held and both LiCaAlF6 forecasts missed; candidate order
-did not change. This demonstrates a bounded scientific decision workflow,
-not universal search superiority or a validated coating winner.
+**Results after the DeepSeek repeat, 22 October 2026:**
+[the synthesis](RESULTS_SYNTHESIS_2026-10-22.md) joins the original 150-run
+benchmark, 810 distinct environment-study runs across two LLM configurations
+(including 90 shared random runs), and the three-coating physical pilot.
+Useful prior knowledge and useful feedback are distinct strengths. Haiku shows
+a clear feedback benefit on sulfide. DeepSeek finds LLZO-acceptable candidates
+upfront in 20/30 runs, against Haiku's 1/30, but both iterative arms remain below
+random there. Cross-model comparisons are descriptive, not matched reasoning
+compute. In the Haiku physical pilot, both LiTaF6 forecasts held and both
+LiCaAlF6 forecasts missed; candidate order did not change.
+
+The [reviewed presentation checkpoint](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
+([PDF](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf)),
+Word overview and illustration still cover Haiku and PET-MAD. The synthesis
+records their revision plan. DeepSeek results have been independently recounted
+from `550391b`; the incoming code/archive has not yet been merged into this
+integration branch or added to its one-command reproduction entry point.
 
 | Selected primary W_adh, J/m² | Cathode | Electrolyte |
 |---|---:|---:|

@@ -3528,3 +3528,55 @@ unchanged. The presentation, Word overview and graphical abstract are still the
 previous version, and the public viewer's PET-MAD data are unaffected. Remaining
 work: code/archive integration review and a concise DeepSeek presentation update;
 the repository's visibility remains for Davide to change after the final merge.
+
+## 2026-10-22 — Combined interpretation after DeepSeek and presentation revision plan
+
+**Branch:** `work/final-integration-20261022`, starting at `005ee5b`. The user
+asked how all completed results, including the final DeepSeek repeat, change
+the scientific conclusions and presentation. Read the existing synthesis,
+integration status and actual text of all 24 slides, alongside DeepSeek's final
+comparison/audit at `550391b` and the independent review receipt. No contributor
+branch was merged and no frozen evidence was altered.
+
+Updated RESULTS_SYNTHESIS_2026-10-22.md to bring together the original benchmark,
+both environment configurations, the post-hoc LLZO annotation and the completed
+Haiku PET-MAD pilot. The main distinction is useful starting chemical knowledge
+versus productive use of feedback. Haiku's sulfide evidence remains strong;
+DeepSeek's same-direction sulfide trend does not survive its planned correction.
+DeepSeek upfront reaches LLZO candidates without the flagged oxyhalogens, but
+both iterative arms remain below random on the frozen primary criterion.
+Upfront-versus-iterative changes more than access to feedback, so the analysis
+does not claim a causal feedback penalty. Separate Holm families and unequal
+reasoning usage limit cross-model inference. Delegating a scientific task is
+not evidence of equivalence to human expertise.
+
+Added the full two-configuration acceptance table, the six adjusted comparisons
+for each configuration, the unflagged-hit annotation, original-design assessment
+and a concrete slide-by-slide revision map. Proposed nine main slides, with the
+old 50-structure benchmark and HELLMM comparison in backup and the physical
+forecast pilot as supporting evidence. Corrected obsolete claims that the
+final-index reader and Haiku/physics merge were still outstanding. The actual
+remaining code integration is DeepSeek's incoming work.
+
+Aligned README.md, REPORT.md and presentations/README.md. The current PowerPoint,
+PDF, Word overview and illustration remain the reviewed Haiku/PET-MAD checkpoint;
+this session did not edit those files or claim they include DeepSeek. The public
+viewer still contains the current physical results and needs no numerical
+update from the model repeat. The DeepSeek archive is not yet covered by the
+integration branch's one-command reproduction entry point.
+
+**Verification:** Documentation-only work. Checked every DeepSeek acceptance
+cell and all six Holm values in the new synthesis against the saved independent
+receipt, checked 450 + 360 = 810 distinct environment runs without duplicating
+random, and confirmed all 118 local links in the four edited narrative/index
+documents resolve. `git diff --check` passed. An initial one-off checker selected
+the earlier Haiku table because it reused the same row labels; restricting it
+to the new DeepSeek-comparison section resolved the checker, with no numerical
+report correction required. No software test suite or new statistical family
+was run for these documentation changes.
+
+No live LLM/API call, model download, materials evaluation, MLIP run, cluster
+submission or credential access occurred. Remaining work: review/merge DeepSeek,
+update and visually inspect the presentation and overview using the recorded
+plan, then complete the human-controlled publication/submission steps. No new
+experiment is needed to present the completed evidence.

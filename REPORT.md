@@ -1,5 +1,21 @@
 # interphAIse — project report
 
+**Combined interpretation and presentation plan — 22 October 2026:** Updated
+[RESULTS_SYNTHESIS_2026-10-22.md](RESULTS_SYNTHESIS_2026-10-22.md) with the final
+DeepSeek comparison, the complete earlier search and PET-MAD results, and a
+slide-by-slide revision plan. The central distinction is now useful chemical
+priors versus useful adaptation to feedback. Haiku's sulfide result remains
+strong; DeepSeek's corresponding trend does not survive the planned correction.
+DeepSeek's LLZO upfront success shows that Haiku's poor starting shortlist is
+not universal, while both iterative arms remain below random. The post-hoc
+unflagged-hit comparison qualifies practical interpretation without replacing
+the frozen primary score. The LLM delegates scientific selection and forecasting;
+human-level judgment and general discovery acceleration remain untested.
+The presentation, Word overview and illustration are unchanged checkpoints;
+their main narrative needs revision, not merely an appended model-comparison
+slide. The public viewer's physical data remain current. No new calculations
+or paid calls occurred.
+
 **DeepSeek results review — 22 October 2026:** Reviewed Adem's final archive at
 `work/agent-experiments:550391b` as immutable Git objects, without merging the
 incoming client/analysis code. Independently recounted all 360 complete runs
@@ -57,8 +73,10 @@ The current Word overview, graphical abstract and presentation remain the
 previous Haiku-plus-PET-MAD version; they have not yet incorporated this repeat.
 The public structure viewer needs no numerical change because no new interface
 calculation occurred. Next: review/integrate the DeepSeek code and archive,
-then add a model-comparison slide and the exploratory LLZO audit as supporting
-material before release. No further paid runs are required for that update.
+then revise the main narrative using the synthesis plan and retain the
+exploratory LLZO audit as supporting material before release. This supersedes
+the earlier suggestion to add only a model-comparison slide. No further paid
+runs are required for that update.
 
 **Referee package — 22 October 2026:** The
 [public structure explorer](https://davidetisi.github.io/interphAIse/) is live,
