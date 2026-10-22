@@ -3889,5 +3889,9 @@ wide with descriptive alternative text. Inspected the existing logo, confirmed
 its 2172 × 724 dimensions and alpha transparency, verified the relative asset
 path and reviewed the staged files and whitespace. No image regeneration,
 scientific change, API experiment or test-suite rerun was needed. The image is
-designed for light backgrounds, as documented in its provenance notes. The
-remaining publication check is the rendered README on GitHub after the push.
+designed for light backgrounds, as documented in its provenance notes.
+
+Published as `2243d3e` on `main`. The anonymous GitHub page shows that commit,
+and its README loads the logo at the intended 640-pixel width (natural size
+2172 × 724). Visually checked the rendered public README; the logo is visible
+above the release text and project description. Publication is complete.
