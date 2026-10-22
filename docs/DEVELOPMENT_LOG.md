@@ -3991,3 +3991,19 @@ publication. This is a README-only presentation change plus its log entry; no
 scientific data, numerical analysis, API/LLM/MLIP run or software test changed.
 Concurrent illustrated-document authoring remains unstaged. Publish the scoped
 change to main and check the diagrams on the public README.
+
+
+### README diagram publication and visual refinement
+
+The original architecture was restored at `547a675`. GitHub rendered both
+Mermaid diagrams successfully, including the expanded historical diagram.
+The first current-workflow layout wrapped into an unnecessarily tall figure,
+so successive presentation-only revisions shortened labels and replaced the
+two panels with one compact decision-feedback loop plus a two-row study table.
+The overview now shows LLM selection, code validation/recording, numerical
+evaluation and LLM interpretation, with a feedback arrow to the next choice.
+The table and surrounding prose retain the benchmark/pilot differences and
+the chronological barrier between primary feedback and sensitivity release.
+A redundant analysis box was removed to avoid overlap with GitHub's diagram
+navigation controls. The scientific workflow and all archived evidence remain
+unchanged; concurrent document files remain outside these commits.

@@ -31,20 +31,18 @@ flowchart LR
     V["Code<br/>Validate and record"]
     E["Physics tools<br/>Evaluate candidate"]
     F{{"LLM<br/>Interpret feedback"}}
-    A["Analysis<br/>Controls and forecasts"]
 
     L --> V --> E --> F
     F -- "Next choice" --> L
-    E -- "Recorded results" --> A
 
     classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
     classDef tools fill:#eef1f4,stroke:#7a8794,color:#1b2733
     class L,F llm
-    class V,E,A tools
+    class V,E tools
 ```
 
-**Teal nodes are LLM decisions; grey nodes are computation, validation and
-analysis.** The loop shows the iterative workflow; each study has a fixed budget.
+**Teal nodes are LLM decisions; grey nodes are validation and numerical
+evaluation.** The loop shows the iterative workflow; each study has a fixed budget.
 
 | Study | What the LLM decides | What the evaluator supplies |
 |---|---|---|
