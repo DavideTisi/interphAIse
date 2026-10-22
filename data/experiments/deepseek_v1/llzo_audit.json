@@ -1,0 +1,1580 @@
+{
+  "status": "post-hoc exploratory audit; primary results unchanged",
+  "flag_definition": [
+    "Li5IO6",
+    "LiClO4",
+    "LiIO3"
+  ],
+  "models": {
+    "Haiku 5.5": {
+      "upfront": {
+        "successful_runs": 1,
+        "unflagged_hit_runs": 1,
+        "flagged_only_successful_runs": 0,
+        "acceptable_formula_counts": {
+          "LiMgPO4": 1
+        },
+        "flagged_acceptable_picks": 0,
+        "distinct_formulas_per_run_mean": 9.433333333333334,
+        "distinct_formulas_all_runs": 22,
+        "mean_pairwise_jaccard": 0.5811633959909822,
+        "anion_class_counts": {
+          "O only": 248,
+          "F": 35
+        },
+        "runs_mentioning_hazard_keywords": 0,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 226,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [],
+            "flagged": []
+          }
+        ]
+      },
+      "iterative": {
+        "successful_runs": 12,
+        "unflagged_hit_runs": 12,
+        "flagged_only_successful_runs": 0,
+        "acceptable_formula_counts": {
+          "LiAlSiO4": 26,
+          "LiAl(SiO3)2": 1,
+          "LiAl(Si2O5)2": 1,
+          "LiMgPO4": 1
+        },
+        "flagged_acceptable_picks": 0,
+        "distinct_formulas_per_run_mean": 9,
+        "distinct_formulas_all_runs": 33,
+        "mean_pairwise_jaccard": 0.506516503930297,
+        "anion_class_counts": {
+          "O only": 230,
+          "F": 40
+        },
+        "runs_mentioning_hazard_keywords": 0,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAl(SiO3)2",
+              "LiAl(Si2O5)2"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 226,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          }
+        ]
+      },
+      "sequential": {
+        "successful_runs": 0,
+        "unflagged_hit_runs": 0,
+        "flagged_only_successful_runs": 0,
+        "acceptable_formula_counts": {},
+        "flagged_acceptable_picks": 0,
+        "distinct_formulas_per_run_mean": 6.866666666666666,
+        "distinct_formulas_all_runs": 19,
+        "mean_pairwise_jaccard": 0.4375496087565053,
+        "anion_class_counts": {
+          "O only": 188,
+          "F": 18
+        },
+        "runs_mentioning_hazard_keywords": 0,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 226,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [],
+            "flagged": []
+          }
+        ]
+      },
+      "shuffled": {
+        "successful_runs": 4,
+        "unflagged_hit_runs": 4,
+        "flagged_only_successful_runs": 0,
+        "acceptable_formula_counts": {
+          "LiAlSiO4": 4
+        },
+        "flagged_acceptable_picks": 0,
+        "distinct_formulas_per_run_mean": 9.8,
+        "distinct_formulas_all_runs": 44,
+        "mean_pairwise_jaccard": 0.37692320525991924,
+        "anion_class_counts": {
+          "O only": 247,
+          "F": 44,
+          "Cl": 3
+        },
+        "runs_mentioning_hazard_keywords": 0,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 226,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [],
+            "flagged": []
+          }
+        ]
+      }
+    },
+    "DeepSeek V3.2": {
+      "upfront": {
+        "successful_runs": 20,
+        "unflagged_hit_runs": 20,
+        "flagged_only_successful_runs": 0,
+        "acceptable_formula_counts": {
+          "LiAlSiO4": 18,
+          "LiMgPO4": 3,
+          "LiAl(SiO3)2": 1
+        },
+        "flagged_acceptable_picks": 0,
+        "distinct_formulas_per_run_mean": 10,
+        "distinct_formulas_all_runs": 38,
+        "mean_pairwise_jaccard": 0.46523185978187576,
+        "anion_class_counts": {
+          "O only": 255,
+          "F": 37,
+          "Cl": 7,
+          "F+O": 1
+        },
+        "runs_mentioning_hazard_keywords": 0,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [
+              "LiAl(SiO3)2"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 226,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          }
+        ]
+      },
+      "iterative": {
+        "successful_runs": 10,
+        "unflagged_hit_runs": 9,
+        "flagged_only_successful_runs": 1,
+        "acceptable_formula_counts": {
+          "LiAlSiO4": 21,
+          "LiAl(SiO3)2": 6,
+          "LiMgPO4": 3,
+          "LiIO3": 3,
+          "LiAl(Si2O5)2": 1,
+          "LiClO4": 1,
+          "Li5IO6": 1
+        },
+        "flagged_acceptable_picks": 5,
+        "distinct_formulas_per_run_mean": 8.7,
+        "distinct_formulas_all_runs": 45,
+        "mean_pairwise_jaccard": 0.32295940893303976,
+        "anion_class_counts": {
+          "O only": 224,
+          "F": 31,
+          "oxyhalogen (flagged)": 3,
+          "F+O": 1,
+          "Cl": 1,
+          "I+O": 1
+        },
+        "runs_mentioning_hazard_keywords": 1,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAl(Si2O5)2",
+              "LiAl(SiO3)2",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAl(SiO3)2",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAl(SiO3)2",
+              "LiAl(SiO3)2"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAl(SiO3)2",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [
+              "LiClO4",
+              "LiIO3",
+              "LiIO3",
+              "Li5IO6",
+              "LiIO3"
+            ],
+            "flagged": [
+              "LiClO4",
+              "LiIO3",
+              "LiIO3",
+              "Li5IO6",
+              "LiIO3"
+            ]
+          },
+          {
+            "seed": 226,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAl(SiO3)2"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [],
+            "flagged": []
+          }
+        ]
+      },
+      "sequential": {
+        "successful_runs": 4,
+        "unflagged_hit_runs": 4,
+        "flagged_only_successful_runs": 0,
+        "acceptable_formula_counts": {
+          "LiAlSiO4": 3,
+          "LiMgPO4": 1
+        },
+        "flagged_acceptable_picks": 0,
+        "distinct_formulas_per_run_mean": 5.7,
+        "distinct_formulas_all_runs": 28,
+        "mean_pairwise_jaccard": 0.34711225556053144,
+        "anion_class_counts": {
+          "O only": 149,
+          "F": 20,
+          "Cl": 2
+        },
+        "runs_mentioning_hazard_keywords": 0,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 226,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [],
+            "flagged": []
+          }
+        ]
+      },
+      "shuffled": {
+        "successful_runs": 12,
+        "unflagged_hit_runs": 12,
+        "flagged_only_successful_runs": 0,
+        "acceptable_formula_counts": {
+          "LiAlSiO4": 16,
+          "LiAl(Si2O5)2": 4,
+          "LiAl(SiO3)2": 4,
+          "LiMgPO4": 1
+        },
+        "flagged_acceptable_picks": 0,
+        "distinct_formulas_per_run_mean": 8.766666666666667,
+        "distinct_formulas_all_runs": 42,
+        "mean_pairwise_jaccard": 0.3184286720341487,
+        "anion_class_counts": {
+          "O only": 205,
+          "F": 45,
+          "Cl": 7,
+          "Br": 4,
+          "I": 2
+        },
+        "runs_mentioning_hazard_keywords": 0,
+        "per_run": [
+          {
+            "seed": 200,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 201,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 202,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 203,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiMgPO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 204,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 205,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 206,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 207,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 208,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 209,
+            "acceptable": [
+              "LiAl(Si2O5)2"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 210,
+            "acceptable": [
+              "LiAl(Si2O5)2"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 211,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 212,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 213,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 214,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 215,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 216,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 217,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 218,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 219,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 220,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 221,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 222,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 223,
+            "acceptable": [
+              "LiAl(SiO3)2",
+              "LiAl(SiO3)2",
+              "LiAlSiO4",
+              "LiAl(Si2O5)2",
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAl(Si2O5)2",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 224,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 225,
+            "acceptable": [],
+            "flagged": []
+          },
+          {
+            "seed": 226,
+            "acceptable": [
+              "LiAlSiO4",
+              "LiAlSiO4",
+              "LiAl(SiO3)2",
+              "LiAlSiO4",
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 227,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 228,
+            "acceptable": [
+              "LiAlSiO4"
+            ],
+            "flagged": []
+          },
+          {
+            "seed": 229,
+            "acceptable": [
+              "LiAl(SiO3)2"
+            ],
+            "flagged": []
+          }
+        ]
+      }
+    }
+  }
+}

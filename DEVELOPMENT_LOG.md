@@ -3580,3 +3580,91 @@ submission or credential access occurred. Remaining work: review/merge DeepSeek,
 update and visually inspect the presentation and overview using the recorded
 plan, then complete the human-controlled publication/submission steps. No new
 experiment is needed to present the completed evidence.
+
+## 2026-10-22 — Agent side (Adem): DeepSeek V3.2 route, smoke batches and pre-registration
+
+- **Purpose:** prepare Davide's proposed matched DeepSeek repeat of the three-environment study. See [DEEPSEEK_PROTOCOL.md](DEEPSEEK_PROTOCOL.md).
+- **AGENTS.md:** a narrow exception approved by Adem.
+  - Adem's own OpenRouter key, for `deepseek/deepseek-v3.2` only, in this repeat only.
+  - Pinned provider with fallbacks off. Production only after Davide reviews the smoke cost.
+  - The Anthropic key rules are unchanged.
+- **Code:**
+  - `interphaise/llm.py`: `_make_openrouter`, selected only by the exact id `deepseek/deepseek-v3.2` with a pinned provider tag. It sets `allow_fallbacks: false` and `require_parameters`, and accepts an optional `reasoning_max_tokens`.
+  - Metadata records provider requested and served, reasoning setting, tokens (including reasoning), latency, and the cost OpenRouter reports for each call.
+  - The client rejects responses from an unpinned provider and treats `finish_reason == "length"` as truncation.
+  - The Anthropic client is untouched, and the prefixed or bare DeepSeek names stay blocked (`tests/test_anthropic.py`).
+  - `scripts/run_discovery_experiment.py`: new `--provider` and `--reasoning-max-tokens` options (recorded in `experiment.json`); the parallel-run limit is raised from 4 to 64.
+  - `scripts/usage_report.py`: uses OpenRouter's reported cost when present.
+- **Live calls (OpenRouter, Adem's key, never printed):**
+  - Authentication checks on `gmicloud/fp8` and `atlas-cloud/fp8`: both passed.
+  - Reasoning-cap tests:
+    - GMICloud ignores `reasoning.max_tokens`, `effort` and the 4,096 output cap.
+    - AtlasCloud enforces only the total cap.
+    - SiliconFlow enforces the reasoning cap exactly.
+  - Concurrency tests on SiliconFlow: 20 and 60 parallel calls, all succeeded, no 429s.
+  - Two 51-call smoke batches, archived in `data/experiments/deepseek_v1/smoke/`:
+    - capped SiliconFlow (chosen): USD 0.156;
+    - uncapped GMICloud (reference): USD 0.224.
+  - Total spent is about USD 0.46, the cost OpenRouter reported. The results table is in the protocol, §5.
+  - The smoke batches ran from working-tree code on top of `1f7bf11`, with file hashes in each `experiment.json`.
+- **Corrections:**
+  - I first estimated USD 7–8 for production, assuming Haiku-like output. The measured projection is about USD 9 for the capped configuration.
+  - An interim status check briefly counted still-running runs as failed. They completed normally.
+- **Tests:** `test_anthropic.py`, `test_discovery.py` and `test_environment_study.py` pass (45).
+- **Next:**
+  - Davide reviews the smoke cost.
+  - Production command in the protocol, §6: about 2.5 h, about USD 9.
+  - Production analysis needs model-aware evidence validation; the current `--production` check is Haiku-specific.
+
+## 2026-10-22 — Agent side (Adem): DeepSeek production approved; guard added
+
+- **Approval:** Davide approved production with conditions: USD 12 spending limit including retries, fallbacks disabled, caps monitored, and the label "comparison of model configurations, not matched reasoning compute". Validated results are due by 19:15 CEST, otherwise DeepSeek becomes a separately labelled supplement.
+- **Protocol:** `DEEPSEEK_PROTOCOL.md` now records the approval, the smoke maxima (capped: reasoning max 3,072 with 6 calls at the cap, output max 3,210, 0 truncations), the spending limit and the monitor.
+- **Monitor:** `scripts/monitor_deepseek_production.py`. It reads the key's spend from OpenRouter (`/api/v1/key`) and stops production at USD 11 of new spend. It also stops production on any cap or provider violation. Its run-file scan was checked on the smoke archive: no violations in the capped batch, and every over-cap and wrong-provider call caught in the uncapped one.
+- **Launch:** an earlier attempt failed before making any call (empty Python path), so nothing was spent. Production starts from the commit that adds this entry.
+
+## 2026-10-22 — Agent side (Adem): DeepSeek production complete, validated, LLZO audit
+
+- **Production:** commit `70e1901`, 14:20–17:21 UTC. All 360 runs completed with 0 failures.
+  - 2,793 calls, including 3 charged format retries.
+  - USD 8.99 recorded by OpenRouter; the key's total spend was USD 9.19. Limit USD 12.
+  - 0 cap or provider violations (`monitor.jsonl`).
+- **Incident:** a duplicate launch at 14:18 UTC, from a command the user had rejected that nevertheless started, was found from the process list. It was stopped after about 2 minutes and moved to `runs/deepseek_v1_aborted_duplicate/`, outside the archive. It cost about USD 0.2.
+- **Watcher fix:** my first completion watchers matched their own shell command and could never fire. They were replaced with self-excluding patterns. The spending monitor was unaffected.
+- **Analysis code:**
+  - `analyse_environment_study.py`: new `--policy deepseek_v1`, a frozen spec for this run; the Haiku policy is unchanged and its tests pass.
+  - `compare_models_environment.py`: cross-model tables.
+  - `audit_llzo_models.py`: Davide's post-hoc LLZO audit, which reuses the oxyhalogen flags of `audit_llzo_chemistry.py` and reproduces the Haiku audit counts.
+  - `plot_environment_curves.py`: new `--title` option, skips arms a summary lacks, legend no longer overlaps the title.
+  - `usage_report.py`: uses OpenRouter's reported cost.
+  - Tests: `test_environment_study.py` now has 11, including the DeepSeek policy against the smoke metadata; `test_anthropic.py` has 13.
+- **Validation:** `--production --policy deepseek_v1` passed. That covers settings, call metadata, workflow hashes and a replay of every query. Results are in `data/experiments/deepseek_v1/README.md` and `SYNC_DAVIDE_10.md`.
+- **Results (descriptive across models):**
+  - Li₆PS₅Cl: DeepSeek iterative 12/30 against sequential 2 and shuffled 3. Holm p 0.078 and 0.11, not rejected; Haiku's were rejected.
+  - Li₃InCl₆: ceiling for both models.
+  - LLZO: DeepSeek upfront 20/30 against Haiku 1/30, iterative 10 against 12, random 24. For DeepSeek, none of the six contrasts survives Holm.
+  - Audit: DeepSeek's upfront successes are all unflagged (mostly LiAlSiO₄). DeepSeek's iterative picks include 5 flagged oxyhalogen picks, with 1 run succeeding only through a flagged compound.
+- **Timing:** results were ready about 15 minutes after the 19:15 CEST target; Davide accepted the delay.
+- **Not done:** presentation slides; Davide's side integrates them, using the suggested wording in SYNC_DAVIDE_10.
+
+## 2026-10-22 — Merge final DeepSeek work for the authorized public release
+
+Davide explicitly requested merging and making the project public, superseding
+his earlier preference to change visibility himself later. On
+`work/final-integration-20261022`, saved the completed results synthesis as
+`3410f9b` and merged `origin/work/agent-experiments` at `550391b`. The only
+conflict was the append-only development log; both sides were retained. Claude's
+`1b76eeb` and Adem's earlier final-index reader were already integrated.
+
+Reviewed the incoming provider route, production-policy validation, analysis
+and runner changes. The direct Anthropic route and credential remain separate
+from the explicitly authorized DeepSeek/OpenRouter exception. All **241 existing
+tests passed in 38.36 s** under the pinned local Python environment, with only
+upstream deprecation warnings. No paid calls or materials calculations occurred.
+
+Release preparation continues separately: include DeepSeek in the offline
+reproduction entry point, validate all archived results, scan reachable history
+and tracked contents for credentials, then publish main and change visibility.
+The history scan found only a deliberately fake token in the viewer rejection
+test; it was reviewed and narrowly classified as a fixture. Publication is not
+yet complete at this checkpoint. The original davide worktree remains untouched.

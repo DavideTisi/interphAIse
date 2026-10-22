@@ -11,6 +11,13 @@
 
 - All live project LLM calls are locked to the configured Haiku 5.5 model and the Anthropic credential. Do not use other providers or credentials even if they are available.
 
+- Exception (approved by Adem, 2026-10-22), for the matched DeepSeek repeat of the three-environment study:
+  - Adem's own OpenRouter credential (`MY_OPENROUTER_API_KEY`) is authorised only for `deepseek/deepseek-v3.2` in this repeat.
+  - Run a smoke batch first. Production follows only after the measured smoke cost has been reviewed.
+  - Pin one OpenRouter provider with fallbacks disabled. Record the provider, quantization and reasoning mode.
+  - Archive DeepSeek runs separately. Haiku archives stay unchanged.
+  - Never route the Anthropic credential through OpenRouter.
+
 # Development reporting
 
 - After every substantive work session, update `DEVELOPMENT_LOG.md` before handing the work back. This is an explicit user requirement: a human or another LLM must be able to follow the process and continue it.

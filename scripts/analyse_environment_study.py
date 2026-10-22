@@ -70,6 +70,23 @@ PRODUCTION = dict(
     call_metadata=dict(requested_model="claude-haiku-5-5", returned_model="claude-haiku-5-5",
                        temperature=1.0, max_tokens=4096))
 
+# Versioned evidence policy "deepseek_v1" (DEEPSEEK_PROTOCOL.md): the four LLM arms only; the random
+# baseline is reused from environment_v1 by the cross-model comparison, not rerun here.
+DEEPSEEK = dict(
+    PRODUCTION, arms={"upfront", "sequential", "iterative", "shuffled"},
+    settings=dict(model="deepseek/deepseek-v3.2", provider="siliconflow/fp8", reasoning={"max_tokens": 3072},
+                  temperature=1.0, max_tokens=4096, prompt_version="v3-2026-10-21c-charged-ids",
+                  pool="data/exploration/environment_expansion_v1/pool.json",
+                  source_commit="70e190141c0080541f44e5ad45ba45bfef3be748", allow_draft=False, budget=10),
+    workflow_sha256={"scripts/run_discovery_experiment.py": "8cf72ce02b703d106cfe0966185e405de9d79f1136efd0c16204f5926de1aa9d",
+                     "interphaise/discovery.py": "b83ecda178e23019756878d7a18359edc81e38974644a2ea7f0979c322dbdeee",
+                     "interphaise/llm.py": "841320f06c7a50a5195252ac69537aba28dd460757782937eb06a97565887e47",
+                     "interphaise/benchmark.py": "738347d89fa7f667d2ff89b14a16381d468def991943708e02644e55ba42d7fd"},
+    call_metadata=dict(requested_model="deepseek/deepseek-v3.2", returned_model="deepseek/deepseek-v3.2",
+                       provider_requested="siliconflow/fp8", provider_served="SiliconFlow",
+                       reasoning={"max_tokens": 3072}, temperature=1.0, max_tokens=4096))
+POLICIES = {"environment_v1": PRODUCTION, "deepseek_v1": DEEPSEEK}
+
 
 def replay_trace(history):
     """Best-so-far trace exactly as run_discovery derives it."""
@@ -84,17 +101,17 @@ def replay_trace(history):
     return trace
 
 
-def validate_production_evidence(directories):
+def validate_production_evidence(directories, policy=PRODUCTION):
     """Evidence problems (empty = valid): settings vs the frozen spec, per-call metadata, query replay."""
     import copy
     from interphaise.benchmark import BenchmarkQueries
-    problems, spec = [], PRODUCTION["settings"]
+    problems, spec = [], policy["settings"]
     for d in directories:
         exp = json.loads((d / "experiment.json").read_text())
         for key, value in spec.items():
             if exp.get(key) != value:
                 problems.append(f"{d.name}: manifest {key}={exp.get(key)!r}, expected {value!r}")
-        if exp.get("workflow_sha256") != PRODUCTION["workflow_sha256"]:
+        if exp.get("workflow_sha256") != policy["workflow_sha256"]:
             problems.append(f"{d.name}: workflow hashes differ from the archived execution")
         if exp.get("benchmark_status") != "frozen":
             problems.append(f"{d.name}: benchmark_status {exp.get('benchmark_status')!r}")
@@ -108,10 +125,10 @@ def validate_production_evidence(directories):
                 # A successful recorded call must carry its metadata. Narrow historical exception: failed
                 # attempts (format/parse errors) may lack it; that is documented, not inferred.
                 if "error" not in attempt:
-                    missing = [k for k in PRODUCTION["call_metadata"] if meta.get(k) is None]
+                    missing = [k for k in policy["call_metadata"] if meta.get(k) is None]
                     if missing:
                         problems.append(f"{d.name}/{path.name}: attempt {i} missing metadata {missing}")
-                for key, value in PRODUCTION["call_metadata"].items():
+                for key, value in policy["call_metadata"].items():
                     if key in meta and meta[key] is not None and meta[key] != value:
                         problems.append(f"{d.name}/{path.name}: attempt {i} {key}={meta[key]!r}")
             queries = copy.copy(template)
@@ -134,22 +151,22 @@ def quartiles(values):
     return [v[(n - 1) // 4], v[(n - 1) // 2], v[math.ceil(3 * (n - 1) / 4)]]
 
 
-def check_production(out):
+def check_production(out, policy=PRODUCTION):
     """Problems that stop this output from being the final frozen-study analysis (empty = complete)."""
     problems = []
-    if set(out["environments"]) != set(PRODUCTION["hashes"]):
-        problems.append(f"environments {sorted(out['environments'])} != {sorted(PRODUCTION['hashes'])}")
+    if set(out["environments"]) != set(policy["hashes"]):
+        problems.append(f"environments {sorted(out['environments'])} != {sorted(policy['hashes'])}")
     for env, e in out["environments"].items():
-        if e["hashes"]["benchmark_sha256"] != PRODUCTION["hashes"].get(env):
+        if e["hashes"]["benchmark_sha256"] != policy["hashes"].get(env):
             problems.append(f"{env}: benchmark hash is not the frozen one")
-        if e["budget"] != PRODUCTION["budget"]:
+        if e["budget"] != policy["budget"]:
             problems.append(f"{env}: budget {e['budget']}")
-        if set(e["arms"]) != PRODUCTION["arms"]:
+        if set(e["arms"]) != policy["arms"]:
             problems.append(f"{env}: arms {sorted(e['arms'])}")
         for arm, a in e["arms"].items():
-            if a["seeds"] != PRODUCTION["seeds"]:
+            if a["seeds"] != policy["seeds"]:
                 problems.append(f"{env}/{arm}: seeds are not exactly 200..229")
-    if out["holm_family_size"] != PRODUCTION["holm_family_size"]:
+    if out["holm_family_size"] != policy["holm_family_size"]:
         problems.append(f"Holm family size {out['holm_family_size']} != 6")
     return problems
 
@@ -256,11 +273,15 @@ def main():
     parser.add_argument("experiments", type=Path, nargs="+")
     parser.add_argument("--json", type=Path)
     parser.add_argument("--production", action="store_true", help="Require the complete frozen study (final analysis)")
+    parser.add_argument("--policy", choices=sorted(POLICIES), default="environment_v1",
+                        help="Frozen evidence policy: environment_v1 (Haiku) or deepseek_v1 (DEEPSEEK_PROTOCOL.md)")
     args = parser.parse_args()
     out = analyse(args.experiments)
-    out["production_check"] = check_production(out)
+    policy = POLICIES[args.policy]
+    out["policy"] = args.policy
+    out["production_check"] = check_production(out, policy)
     if args.production:
-        out["production_check"] += validate_production_evidence(args.experiments)
+        out["production_check"] += validate_production_evidence(args.experiments, policy)
     if args.production and out["production_check"]:
         raise SystemExit("Not the complete frozen study:\n  " + "\n  ".join(out["production_check"]))
     for env, e in out["environments"].items():

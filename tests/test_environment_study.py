@@ -137,3 +137,11 @@ def test_production_evidence_rejects_missing_call_metadata(llzo_copy):
     from scripts.analyse_environment_study import validate_production_evidence
     _edit(llzo_copy / "upfront_r200.json", lambda r: r["proposal_attempts"][-1].pop("llm_metadata"))
     assert any("missing metadata" in p for p in validate_production_evidence([llzo_copy]))
+
+
+def test_deepseek_policy_accepts_recorded_call_metadata():
+    from scripts.analyse_environment_study import DEEPSEEK, validate_production_evidence
+    dirs = sorted((ROOT / "data/experiments/deepseek_v1/smoke/capped_siliconflow").glob("*/*_experiment"))
+    problems = validate_production_evidence(dirs, DEEPSEEK)
+    # Smoke differs from production only in commit/workflow (and budget 3 for two arms); calls and replay match.
+    assert problems and all(("source_commit" in p or "workflow" in p or "budget" in p) for p in problems), problems

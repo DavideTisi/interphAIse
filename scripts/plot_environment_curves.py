@@ -27,12 +27,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--archive", type=Path, default=ROOT / "data/experiments/environment_v1")
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--title", default="Frozen environment study: 30 runs per arm, budget 10; error bars 95% Wilson")
     args = parser.parse_args()
     fig, axes = plt.subplots(1, 3, figsize=(16, 5), sharey=True)
     for ax, (env, title) in zip(axes, ENVS):
         curves = json.loads((args.archive / env / "summary.json").read_text())["curves"]["acceptable"]
         k = range(1, len(curves["iterative"][0]) + 1)
-        for arm in ARMS:
+        for arm in (a for a in ARMS if a in curves):   # DeepSeek archive has no random arm (exact curve shown)
             p, err, n, _ = curves[arm]
             ax.errorbar(k, p, yerr=err, marker="o", ms=4, lw=2, capsize=2, color=ARM_COLORS[arm], label=f"{arm} (n={n})")
             ax.annotate(f"{p[-1]:.0%}", (k[-1], p[-1]), xytext=(6, 0), textcoords="offset points",
@@ -46,8 +47,8 @@ def main():
         ax.grid(axis="y", color="#e4e3df", lw=0.6)
     axes[0].set_ylabel("P(acceptable coating found)")
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=7, fontsize=9, frameon=False)
-    fig.suptitle("Frozen environment study: 30 runs per arm, budget 10; error bars 95% Wilson", y=0.995, fontsize=11)
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 0.95), ncol=7, fontsize=9, frameon=False)
+    fig.suptitle(args.title, y=0.995, fontsize=11)
     fig.tight_layout(rect=(0, 0, 1, 0.9))
     fig.savefig(args.out, dpi=200)
     print(f"Saved {args.out}")
