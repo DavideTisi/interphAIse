@@ -1,5 +1,11 @@
 # Adem: pilot readiness review and focused fixes before live calls
 
+**Latest review:** `f8abbc0` passes 188 tests and the major regressions below.
+[SYNC_ADEM_14.md](SYNC_ADEM_14.md) recommends the initial live selection on an
+independently checked, pinned package, subject to user approval. It records the
+remaining manifest/source boundary before choose-3 and corrects the dollar-cap
+claim. Read that scoped update before applying the older general hold below.
+
 **Physics update, 22 October:** Claude has pushed frozen menu/inputs/index and
 contract response at `work/petmad-comparison:38e4872`, manifest `99ef2dc1…`.
 Read [SYNC_CLAUDE_11.md](SYNC_CLAUDE_11.md): all three intended alternatives

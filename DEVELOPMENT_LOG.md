@@ -2603,3 +2603,63 @@ merge. Preserve the unrelated README edit. Validate documentation/JSON/whitespac
 and staged credentials, then publish these handoff files under the standing
 sharing authorization. Next: focused integration fixes, reviewed real-reference
 mock, explicit live approval, first archived selection and bounded primary batch.
+
+## 2026-10-22 — Review hardened pilot and prepare the initial live decision
+
+**Branch:** `davide`, starting `a8dbb52`. Fetched Adem's `f8abbc08096f01eb8686fcb1845d226554813a9e`
+and Claude's `b199608b14b1131d01f3e85c9d23ee6d5f1491d3`. Used separate Git
+archives in `/private/tmp`, then copied only Claude's campaign directory into
+the isolated agent snapshot to exercise the command with real inputs. No
+contributor worktree or shared implementation change; no actual branch merge.
+
+Full offline suite: **188 passed in 20.80 s**, 1,687 existing ASE/spglib warnings.
+The prior failure-case tests now pass: malformed HTTP body after retries is
+counted, interrupted calls retain reservations, stopped stages stay stopped,
+altered adhesion and post-start deleted registries stop before their decision,
+previous structured predictions reach later prompts, negative intervals are
+allowed and missing successful-call metadata fails production validation.
+Re-ran the complete 450-run `--production` analysis; counts and six Holm tests
+are unchanged. The new report generator is covered by the suite.
+
+The real command with `--mock`, fresh state and Claude's actual index produced
+prior and choose-2, then exited 2 at pending coating-2 physics. Prompt lengths
+were 1,475 and 4,207 characters. Mock-selected LiTaF6 is a fixture output, not
+a live decision, recommendation or new material result. The live command must
+use a separate state and an execution checkout containing the actual campaign
+files, not only the fixture embedded in Adem's tests.
+
+Independently checked the exact initial package against the manifest rather
+than relying only on the runner: manifest SHA256 `99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f`,
+index file SHA256 `b02750feffeefb0d3e7875d18bc693a3b2e4e6a5294091a21d59aee6501aa937`.
+All 23 primary run IDs match the manifest; all six prospective build hashes,
+counts, masks' recorded properties and fixed rules agree. For the five reference
+packages, independently verified source hashes, F2 provenance, actual fixed-atom
+indices under the depth rule and free-force targets from every saved final
+structure. Genuine reference selection remains 3.6170509 / 1.6333941 J/m².
+
+Residual boundary tests: deleting a reference registry before a fresh state is
+initialized permits choose-2 with only four reference records. Uniform wrong
+build/hash/depth/species labels across cathode rows pass if the real fixed count
+is retained; changing the count itself correctly fails. The generic consumer
+still needs manifest-derived coverage and identity against real sources before
+choose-3. The independent exact-package preflight above allows recommending
+the initial decision without waiting for that general hardening. Keep the
+normal physics pause and independently check new packages before resuming.
+
+The 10-HTTP-attempt and 16,000-character guards are real. The USD 0.030 claim
+still uses an average characters/token ratio, not a strict bound; the system
+prompt is another 642 UTF-8 bytes plus provider overhead. At Adem's recorded
+rates, a conservative 17k-input/4,096-output ten-attempt scenario costs
+USD 0.03748. Recommend a USD 0.05 allowance and the same hard ten-attempt cap,
+with expected cost around USD 0.006; no current price or billed cost was
+independently verified. This recommendation is not the user's approval.
+
+Saved `SYNC_ADEM_14.md` and `data/reviews/live_pilot_review_20261022.json`; aligned
+REPORT, WORK_DIVISION and the preceding handoff. Claude's separately archived
+reference consistency work was noticed in the fetched branch but not injected
+into the decision package or independently re-reviewed here. No live API call,
+new MLIP energy, cluster job or external message occurred. Preserve README.
+Check JSON/links/whitespace and staged credentials, then publish under standing
+handoff-sharing authorization. Next: explicit approval for Adem's initial live
+selection, archive its ID/predictions/hash, bounded primary physics, and validated
+feedback before the next selection under the same total attempt budget.

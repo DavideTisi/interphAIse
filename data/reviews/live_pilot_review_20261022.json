@@ -1,0 +1,183 @@
+{
+  "review_date_copenhagen": "2026-10-22",
+  "agent_commit": "f8abbc0",
+  "physics_commit": "b199608",
+  "method": "Isolated archives; copied physics campaign into the agent snapshot only; no branch merge or live call.",
+  "full_offline_suite": {
+    "passed": 188,
+    "elapsed_seconds": 20.8,
+    "warnings": 1687,
+    "command": "python -m pytest -q -p no:cacheprovider"
+  },
+  "production_replay": {
+    "exit_code": 0,
+    "problems": [],
+    "holm_family_size": 6,
+    "counts": {
+      "Li3InCl6": {
+        "iterative": 30,
+        "random": 29,
+        "sequential": 30,
+        "shuffled": 30,
+        "upfront": 30
+      },
+      "Li6PS5Cl": {
+        "iterative": 20,
+        "random": 8,
+        "sequential": 2,
+        "shuffled": 6,
+        "upfront": 0
+      },
+      "Li7La3Zr2O12": {
+        "iterative": 12,
+        "random": 24,
+        "sequential": 0,
+        "shuffled": 4,
+        "upfront": 1
+      }
+    }
+  },
+  "exact_input_preflight": {
+    "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+    "index_file_sha256": "b02750feffeefb0d3e7875d18bc693a3b2e4e6a5294091a21d59aee6501aa937",
+    "planned_primary_count": 23,
+    "coverage_matches_manifest": true,
+    "new_build_index_checks": [
+      {
+        "candidate_id": "mp-aaacjmqp",
+        "contact": "cathode",
+        "primary_records": 3,
+        "expected_build_verified": true
+      },
+      {
+        "candidate_id": "mp-aaacjmqp",
+        "contact": "electrolyte",
+        "primary_records": 3,
+        "expected_build_verified": true
+      },
+      {
+        "candidate_id": "mp-aaaaajby",
+        "contact": "cathode",
+        "primary_records": 3,
+        "expected_build_verified": true
+      },
+      {
+        "candidate_id": "mp-aaaaajby",
+        "contact": "electrolyte",
+        "primary_records": 3,
+        "expected_build_verified": true
+      },
+      {
+        "candidate_id": "mp-aaaaabru",
+        "contact": "cathode",
+        "primary_records": 3,
+        "expected_build_verified": true
+      },
+      {
+        "candidate_id": "mp-aaaaabru",
+        "contact": "electrolyte",
+        "primary_records": 3,
+        "expected_build_verified": true
+      }
+    ],
+    "reference_preflight": [
+      {
+        "run_id": "mp-aaacjjwh:cathode:primary:R1",
+        "source_hash_verified": true,
+        "physical_fixed_mask_verified": true,
+        "free_forces_rechecked": true,
+        "W_adh_J_m2": 3.6003562394027577
+      },
+      {
+        "run_id": "mp-aaacjjwh:cathode:primary:R2",
+        "source_hash_verified": true,
+        "physical_fixed_mask_verified": true,
+        "free_forces_rechecked": true,
+        "W_adh_J_m2": 3.596964455828597
+      },
+      {
+        "run_id": "mp-aaacjjwh:cathode:primary:R3",
+        "source_hash_verified": true,
+        "physical_fixed_mask_verified": true,
+        "free_forces_rechecked": true,
+        "W_adh_J_m2": 3.6170508624496
+      },
+      {
+        "run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+        "source_hash_verified": true,
+        "physical_fixed_mask_verified": true,
+        "free_forces_rechecked": true,
+        "W_adh_J_m2": 1.6333940812860246
+      },
+      {
+        "run_id": "mp-aaacjjwh:electrolyte:primary:R2",
+        "source_hash_verified": true,
+        "physical_fixed_mask_verified": true,
+        "free_forces_rechecked": true,
+        "W_adh_J_m2": 1.6316068100231231
+      }
+    ]
+  },
+  "targeted_boundary_checks": {
+    "missing_before_initialization": {
+      "stage": "choose_2",
+      "registered_reference_runs": 4
+    },
+    "uniform_wrong_build_and_mask": {
+      "accepted": false,
+      "error": "mp-aaacjjwh: invalid evidence: ['mp-aaacjjwh:cathode:primary:R1: fixed-atom count differs from index', 'mp-aaacjjwh:cathode:primary:R2: fixed-atom count differs from index', 'mp-aaacjjwh:cathode:primary:R3: fixed-atom count differs from index']"
+    },
+    "genuine_mock": {
+      "status": "running",
+      "stages": [
+        "prior",
+        "choose_2"
+      ],
+      "selected": [
+        "mp-aaacjmqp"
+      ],
+      "prompt_chars": [
+        1475,
+        4207
+      ]
+    },
+    "cost": {
+      "max_user_chars": 16000,
+      "system_UTF8_bytes": 642,
+      "average_conversion_is_not_token_bound": true,
+      "per_attempt_17000_input_4096_output_at_recorded_rates_USD": 0.0037479999999999996
+    },
+    "uniform_wrong_identity_with_real_count": {
+      "accepted": true,
+      "W_adh": 3.6170508624496
+    }
+  },
+  "first_stage_cli": {
+    "mode": "mock",
+    "exit_code": 2,
+    "stages": [
+      "prior",
+      "choose_2"
+    ],
+    "mock_chosen_id": "mp-aaacjmqp",
+    "next_stage": "choose_3",
+    "next_stage_blocked_by": "pending coating-2 physics",
+    "note": "The mock choice is not a scientific result, recommendation or prospective live selection."
+  },
+  "recommendation": {
+    "status": "Ready for initial live selection on exact reviewed inputs, subject to user approval",
+    "remaining_before_choose_3": "Enforce independent frozen-manifest coverage/identity against real sources, not only matching index labels; independently review the complete selected-coating package.",
+    "HTTP_attempt_cap": 10,
+    "expected_USD_at_Adem_recorded_rates": 0.006,
+    "suggested_budget_margin_USD": 0.05,
+    "claimed_0_030_dollar_ceiling_verified": false,
+    "reason": "16,000 characters is enforced, but converting at average characters/token is not a guaranteed token bound. Pricing not independently verified."
+  },
+  "actions": {
+    "live_API_calls": 0,
+    "MLIP_evaluations": 0,
+    "cluster_jobs": 0,
+    "external_messages": 0,
+    "branch_merges": 0
+  }
+}

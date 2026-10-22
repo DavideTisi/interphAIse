@@ -1,5 +1,19 @@
 # interphAIse — project report
 
+**Initial live selection ready for approval — 2026-10-22:** Reviewed Adem's
+`f8abbc0`; 188 tests pass and the completed 450-run analysis is unchanged.
+The earlier cap/resume, invalid-value and prediction-history regressions pass.
+With Claude's real campaign files, the mocked command makes prior and choose-2,
+then exits at pending physics. An independent preflight checks the exact
+manifest/index coverage, all prospective build identities and the reference
+source hashes, physical fixed masks and free forces. Recommend starting only
+the initial live selection on that package after approval, followed by the
+planned physics pause. Generic manifest-derived coverage and source-identity
+checks still need tightening before choose-3. The 10-attempt cap is enforced;
+the quoted USD 0.030 is an estimate, not a proven dollar ceiling. See
+[scoped readiness handoff](SYNC_ADEM_14.md) and
+[audit](data/reviews/live_pilot_review_20261022.json). No live calls were made.
+
 **Frozen physical menu reviewed — 2026-10-22:** Claude's `38e4872` supplies
 LiNbF6 plus the three intended alternatives, frozen primary builds/registries
 and index. Independent checks confirm the manifest hash, all six primary input
