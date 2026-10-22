@@ -13,9 +13,9 @@ patch is ready for Adem; Claude needs no further runs for this pilot. See
 
 **Latest handoff:** Claude has frozen the four-member feasible menu and primary
 inputs in `38e4872`; hashes/counts and 163 offline tests reproduce. Read
-[SYNC_CLAUDE_11.md](SYNC_CLAUDE_11.md) for the final contract integration,
+[SYNC_CLAUDE_11.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_11.md) for the final contract integration,
 integrity-versus-calculation-failure distinction and recommended lower-priority
-reference checks. Adem remains at `2d2cac3`; [note 13](SYNC_ADEM_13.md) is pending.
+reference checks. Adem remains at `2d2cac3`; [note 13](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_13.md) is pending.
 No new calculation or live-call approval is implied by this status update.
 
 Davide clarified that the LLM should choose new coatings using PET-MAD feedback.
@@ -29,7 +29,7 @@ The construction review of Claude's `49daa72` supports a uniform 1,250-atom
 cap, with LiCaAlF6, LiTaF6 and LiF as intended alternatives after final menu
 validation. F1/F2 changes pass 157 tests on Claude's branch; retain the completed
 F1 fix. Remaining producer/consumer gates concern feedback completeness,
-comparable builds and recomputed work values; see [SYNC_CLAUDE_10.md](SYNC_CLAUDE_10.md).
+comparable builds and recomputed work values; see [SYNC_CLAUDE_10.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_10.md).
 The 1,302-atom LiCaAlF6 thickness increment stays unavailable under this cap.
 The main checkout has not merged Claude's code.
 
@@ -49,7 +49,7 @@ branch as reviewed above. Adem's subsequent `2d2cac3` passes 183 tests and
 replays production unchanged. F3/F4 are substantially implemented, with missing
 successful-call metadata and exceptional/resumed HTTP accounting still to fix.
 The new pilot also needs source validation before prompting and the previous
-structured predictions in later prompts. See [SYNC_ADEM_13.md](SYNC_ADEM_13.md).
+structured predictions in later prompts. See [SYNC_ADEM_13.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_13.md).
 No new interface calculation was made in these reviews.
 
 | Owner | Next work | Done when |
@@ -83,7 +83,7 @@ independent replay and the six planned comparisons pass. The current work is
 slides, joint branch review and a reproducible release. The viewer now opens
 the selected cathode registry and includes the completed seed-4 comparison;
 see [VIEWER_UPDATE.md](VIEWER_UPDATE.md).
-See [SYNC_ADEM_9.md](SYNC_ADEM_9.md). No additional runs are requested.
+See [SYNC_ADEM_9.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_9.md). No additional runs are requested.
 The production approval below records the prior authorization, not pending work.
 
 The expansion data are frozen in `data/benchmarks/environment_v1/`. The smoke
@@ -91,7 +91,7 @@ batch, cost review and analysis review are complete. Davide explicitly approved
 **production** on 21 October 2026. **Adem owns execution** of the three-environment,
 five-arm, 30-repeat study at budget 10, seeds 200–229, with six Holm-corrected
 contrasts and shuffled in every environment. Use the unchanged Haiku 5.5 settings
-and record the actual execution commit. See [SYNC_ADEM_8.md](SYNC_ADEM_8.md) and
+and record the actual execution commit. See [SYNC_ADEM_8.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_8.md) and
 [ENVIRONMENT_PROTOCOL.md](ENVIRONMENT_PROTOCOL.md). No duplicate batch has been
 launched from Davide's checkout; start/completion must be recorded by the runner.
 
@@ -108,20 +108,20 @@ succeeds at query 2; best-bin performance is close to random. See
 The publication batch on `davide` builds on `b210db0`, which includes the
 electrolyte-pilot preparation code and provenance. Bulk implementation/evidence
 and audits are committed as `57774d6`; the environment expansion as `81e4625`.
-That publication checkpoint passed 113 tests. See [SYNC_ADEM_6.md](SYNC_ADEM_6.md) for
+That publication checkpoint passed 113 tests. See [SYNC_ADEM_6.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_6.md) for
 the short handoff. Multistart is now complete: seed 0
 is retained for both distorted materials, with alternative seeds 4 and 1.
 Claude's subsequent `7249e7a` builds the common LiNbF6(001) contacts, fixes
 termination selection and maps equivalent electrolyte cuts. All 18 constraint
 relaxations and the current 114 tests pass. The next physics step is electrolyte
 thickness at a constant fixed depth, followed by cathode coating thickness and
-remaining convergence checks; see [SYNC_CLAUDE_2.md](SYNC_CLAUDE_2.md).
+remaining convergence checks; see [SYNC_CLAUDE_2.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_2.md).
 Adem's `6e74e88` adds the completed shuffled control: 6/30 versus iterative 19/30,
 with exact paired p = 0.004425. All 300 outcomes and prompt/source maps validate.
 A temporary merge of both committed branches passes 104 tests and preserves
 Claude's pilot provenance. No actual branch merge has occurred. Defer IDs-only;
 prioritize the environment experiment and release review. See
-[SYNC_ADEM_5.md](SYNC_ADEM_5.md).
+[SYNC_ADEM_5.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_5.md).
 
 **Next work, in priority order:**
 
@@ -134,7 +134,7 @@ prioritize the environment experiment and release review. See
 
 ### 1. Preserve the completed feedback evidence
 
-Follow [SYNC_ADEM_5.md](SYNC_ADEM_5.md). The 30 matched shuffled repeats are
+Follow [SYNC_ADEM_5.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_5.md). The 30 matched shuffled repeats are
 complete and independently verified; the sparse exact-median plotting bug is
 fixed. Use the five-arm figure and selected success/failure traces for the
 presentation. Describe the control as feedback corruption with partial identity
@@ -155,12 +155,12 @@ positions/cell relaxations and bounded multistart check are complete. Seed 0 is
 the reference for both distorted materials; alternatives are Li6PS5Cl seed 4 and
 LiZr2(PO4)3 seed 1. Completing an optimizer does not establish a physical phase.
 Use the existing unconstrained LiCoO2/LiNbF6 references for construction and
-follow [SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md): common coating (001) orientation,
+follow [SYNC_CLAUDE_1.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_1.md): common coating (001) orientation,
 explicit surface selection before truncation, and mapped electrolyte cuts for
 the bulk-configuration comparison. The 200-atom option remains secondary.
 
 LiNbF6 against both endpoints is built and the first constraint bracket is
-complete. Follow [SYNC_CLAUDE_2.md](SYNC_CLAUDE_2.md) for electrolyte thickness
+complete. Follow [SYNC_CLAUDE_2.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_2.md) for electrolyte thickness
 with a fixed 3.257602 Å bottom depth and unchanged in-plane matching cell.
 Then vary cathode film thickness, vacuum and registry and test the mapped seed 4.
 Use consistent strained cells and reference constraints in adhesion differences.

@@ -1,5 +1,11 @@
 # interphAIse — project report
 
+**Repository cleanup — 22 October 2026:** Removed the 36 `SYNC_*.md` handoff
+notes from the current tree at Davide's request. Existing Markdown links now
+point to their preserved versions at commit `7860291`, so historical protocols
+and decisions remain traceable. Scientific evidence, code and results are
+unchanged; use this report and the results synthesis as the current entry points.
+
 **Public release complete — 22 October 2026:** The tested integrated release
 `7ee0092` is on `main`, including Adem's final DeepSeek work and Claude's final
 physics package. [The repository](https://github.com/DavideTisi/interphAIse) is
@@ -187,7 +193,7 @@ advantage over LiTaF6 is below the numerical tolerance and known reference
 sensitivity, so it does not establish a robust winner. Claude's six LiCaAlF6
 jobs have completed in Slurm; their physical package awaits validation. A
 test-fixture regression found in this review has a tested patch for Adem.
-See [review and next steps](SYNC_ADEM_15.md) for evidence and limits.
+See [review and next steps](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_15.md) for evidence and limits.
 
 **LiTaF6 primary jobs completed — 2026-10-22:** Claude already submitted the
 six selected-coating runs as Niflheim jobs **11017049–11017054**, source
@@ -211,7 +217,7 @@ calling a model. The shortlist is unchanged from the prior, so this is a
 prospective forecast, not yet a demonstrated feedback-driven selection gain.
 Six LiTaF6 primary jobs are the next dependency. Adem reports `d1ec1b0` and
 77 passing tests for the remaining manifest checks, but that commit was not
-yet available on the shared branch at review. See [live handoff](SYNC_ADEM_14.md)
+yet available on the shared branch at review. See [live handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_14.md)
 and [audit](data/reviews/live_selection_review_20261022.json). No new live calls
 or physical calculations were launched by Codex during this verification.
 
@@ -221,7 +227,7 @@ the pilot and a **USD 0.05 allowance** at the reported rates. Adem owns the live
 execution and archives the selected ID, predictions and hashes before Claude's
 six primary jobs. The normal physics pause and manifest/source validation
 requirements before choose-3 remain. Approval is recorded; live execution and
-its outcomes are not yet confirmed. See [approved handoff](SYNC_ADEM_14.md).
+its outcomes are not yet confirmed. See [approved handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_14.md).
 Codex has not launched a duplicate run.
 
 **Initial live selection ready for approval — 2026-10-22:** Reviewed Adem's
@@ -235,7 +241,7 @@ the initial live selection on that package after approval, followed by the
 planned physics pause. Generic manifest-derived coverage and source-identity
 checks still need tightening before choose-3. The 10-attempt cap is enforced;
 the quoted USD 0.030 is an estimate, not a proven dollar ceiling. See
-[scoped readiness handoff](SYNC_ADEM_14.md) and
+[scoped readiness handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_14.md) and
 [audit](data/reviews/live_pilot_review_20261022.json). No live calls were made.
 
 **Frozen physical menu reviewed — 2026-10-22:** Claude's `38e4872` supplies
@@ -248,7 +254,7 @@ consumable; this must remain distinct from genuine failed calculations.
 Four optional reference consistency jobs are recommended as separate,
 lower-priority robustness work after primary scheduling; they are not launched
 or approved by this review. Live-pilot approval is also pending. See
-[Claude 11](SYNC_CLAUDE_11.md) and the
+[Claude 11](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_11.md) and the
 [saved audit](data/reviews/frozen_menu_review_20261022.json).
 
 **Pilot readiness reviewed — 2026-10-22:** Adem's `2d2cac3` passes 183 offline
@@ -261,7 +267,7 @@ These are implementation safeguards to finish, not evidence that the genuine
 scientific results changed. The intended amended menu is still LiNbF6 plus
 LiTaF6, LiF and LiCaAlF6, pending Claude's final manifest. The tiny API estimate
 is conditional on token assumptions; live-pilot approval remains pending.
-See [Adem's focused handoff](SYNC_ADEM_13.md) and
+See [Adem's focused handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_13.md) and
 [saved review evidence](data/reviews/adem_pilot_review_20261022.json).
 No live LLM/PET-MAD calculation, cluster action or code merge occurred here.
 
@@ -277,7 +283,7 @@ not a passed sensitivity test. The real LiNbF6 feedback example's five registry
 values and hash check out. Offline mutation tests exposed remaining assembler
 gaps in coverage, comparable run identity and work arithmetic; failed-run cost
 accounting also needs correction before live use. See
-[decision and follow-up](SYNC_CLAUDE_10.md) and
+[decision and follow-up](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_10.md) and
 [saved audit](data/reviews/claude_screen_review_20261021.json).
 F1/F2 are implemented on Claude's branch; it has not been merged here. No new
 interface energy, live LLM call or cluster action occurred in this review.
@@ -312,7 +318,7 @@ trade-off definitions and the protocol before new energies; retain the initial
 shortlist as a descriptive decision comparison. Three material slots cannot
 establish search superiority, and uncomputed alternatives have no measured
 counterfactual outcome. See [pilot plan](LLM_PETMAD_PILOT_PLAN.md),
-[Adem 12](SYNC_ADEM_12.md) and [Claude 9](SYNC_CLAUDE_9.md). This supersedes
+[Adem 12](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_12.md) and [Claude 9](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_9.md). This supersedes
 the fixed-cohort/no-new-LLM direction below. It is a planning amendment only:
 no pilot implementation, new live calls or calculations have been performed
 here. The completed 450-run experiment and scientific archives are unchanged.
@@ -324,7 +330,7 @@ LiF-then-LiTaF6 contingency before interface energies. Claude owns calculation
 safeguards, construction and the full bounded campaign; Adem owns discovery
 code safeguards plus the MLIP validator, table and figures; Davide/Codex owns
 scope, independent review, integration and the viewer. See
-[Claude's handoff](SYNC_CLAUDE_8.md), [Adem's handoff](SYNC_ADEM_11.md) and
+[Claude's handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_8.md), [Adem's handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_11.md) and
 [the updated plan](MLIP_COMPARISON_PLAN.md). This is physical assessment of a
 shortlist, separate from the completed thermodynamic feedback experiment.
 The handoffs are written; fixes and new calculations have not been performed
@@ -387,7 +393,7 @@ traces do not establish deliberate hazard avoidance. The evaluator already
 includes self-decomposition and O2 products, so “fully oxidised anions cannot
 react” is not the explanation. Benchmark acceptance does not qualify practical
 thermal, processing, safety or transport performance. See
-[chemistry audit and slide wording](SYNC_ADEM_10.md). Frozen inputs, primary
+[chemistry audit and slide wording](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_10.md). Frozen inputs, primary
 analysis and slides are unchanged; no new live calculation was run.
 
 **Environment production complete and reviewed — 2026-10-21:** Adem's
@@ -401,7 +407,7 @@ both planned controls in sulfide after Holm correction; in LLZO it beats
 sequential, but not shuffled at the corrected threshold, and random search
 has the higher observed success rate. This is environment-dependent benefit,
 not universal search superiority. Usage recomputes to USD 3.6303784 at the
-archived rates, not billed cost. See [review and slide handoff](SYNC_ADEM_9.md)
+archived rates, not billed cost. See [review and slide handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_9.md)
 and [overview figure](figures/environment_acceptance_review_20261021.png).
 No new live calls or branch merge occurred. Stop data collection and proceed
 to presentation/demo updates and joint integration review. Earlier production
@@ -417,7 +423,7 @@ W_adh / W_sep = **3.61705 / 5.16762 J/m²**. The GPU electrolyte reference is
 and interface-construction sensitivity, not an isolated disorder effect or
 statistical error bar. Both contacts remain formally polar and provisional.
 Recommend publishing the three commits plus the reviewed formatting/docs
-and stopping this batch; see [SYNC_CLAUDE_7.md](SYNC_CLAUDE_7.md).
+and stopping this batch; see [SYNC_CLAUDE_7.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_7.md).
 The viewer's current-cathode pointer and presentation v4 still need updating.
 No new MLIP/LLM run or push occurred in this review. Adem's environment
 production remains approved and independent.
@@ -432,7 +438,7 @@ with W_adh 1.631–1.633 but W_sep 2.967–3.065 J/m². Both contacts remain
 formally polar and provisional. The 504-atom Niflheim smoke reproduces local
 W_adh within 0.0002 J/m² on CPU and GPU. Recommend the bounded seed-4 and
 distinct-cathode-registry batch with matching GPU references in
-[SYNC_CLAUDE_6.md](SYNC_CLAUDE_6.md). Fixed a runner bug that would reject
+[SYNC_CLAUDE_6.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_6.md). Fixed a runner bug that would reject
 explicit off-grid offsets; eight regression tests pass. No new MLIP/API run
 or push occurred here. Earlier pending constraint/vacuum statements below
 are historical checkpoints. Adem's environment production remains approved.
@@ -446,7 +452,7 @@ the unchanged frozen study: three environments, five arms, 30 repeats, budget
 output tokens. That is 450 runs and approximately 2,790 LLM calls before
 retries. Adem owns execution and may use the commands on his branch in
 SYNC_DAVIDE_4.md. The [protocol](ENVIRONMENT_PROTOCOL.md) and
-[handoff](SYNC_ADEM_8.md) now record the sign-off. No production run was
+[handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_8.md) now record the sign-off. No production run was
 launched here; approval does not establish that a run has started. Earlier
 smoke-only/pending statements below describe their historical checkpoints.
 
@@ -458,7 +464,7 @@ current public list rates, not provider-billed cost. The full frozen study
 projects to USD 3.68 expected / 5.27 with contingency; USD 9.49 is a high-output
 scenario, not an enforced ceiling. Scientific recommendation is to proceed
 once Davide explicitly approves production; only smoke is currently approved.
-Adem owns execution. See [cost and analysis review](SYNC_ADEM_8.md) for the
+Adem owns execution. See [cost and analysis review](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_8.md) for the
 complete-study guard and secondary reporting details to finish before final
 analysis. No live calls or branch merge occurred in this review.
 
@@ -483,7 +489,7 @@ electrolyte 4+2 geometries. The final electrolyte has a 15.731 Å empty gap but
 no separately archived vacuum sweep. Final-geometry constraint brackets,
 relaxed registry comparisons and the seed-4 comparison remain pending;
 polarity remains unresolved. Recommend publishing the commit and the bounded
-plan in [SYNC_CLAUDE_5.md](SYNC_CLAUDE_5.md). GitHub was at `84f1c76` when
+plan in [SYNC_CLAUDE_5.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_5.md). GitHub was at `84f1c76` when
 checked; this audit ran no calculation and made no push. Presentation v4
 still predates the new contact results. Earlier checkpoints below are history.
 
@@ -496,7 +502,7 @@ atoms, and 426 calls plus six separation single points. GitHub still points to
 performing bounded vacuum checks, while explicitly addressing the still
 untested LiCoO2 substrate thickness and electrolyte-contact coating thickness
 before claiming whole-contact thickness convergence. Both contacts remain
-formally polar and provisional. See [current Claude handoff](SYNC_CLAUDE_4.md).
+formally polar and provisional. See [current Claude handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_4.md).
 No new calculation or push occurred in this review. The v4 presentation below
 predates this cathode result and needs that update in its next revision.
 
@@ -519,7 +525,7 @@ unique archived runs verify 15 converged relaxations, adhesion arithmetic and
 cathode coating-thickness test at two/three/four layers: geometry-only checks
 give 504/600/696 atoms in the same matching cell, with the same physical
 104-atom substrate constraint. Use an 800-atom study cap and preserve the
-surface cuts. No new MLIP run occurred. See [Claude handoff](SYNC_CLAUDE_3.md)
+surface cuts. No new MLIP run occurred. See [Claude handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_3.md)
 for the protocol and qualifications on constraint and registry sensitivity.
 
 **Environment tables frozen; paid study pending — 2026-10-21:** Reviewed Adem's
@@ -533,7 +539,7 @@ started here. A temporary
 integration with Claude's contact work and the new freezer/analysis guard passes
 136 tests. Both dependency files now pin the tested pymatgen/core versions.
 See [ENVIRONMENT_FREEZE_REVIEW.md](ENVIRONMENT_FREEZE_REVIEW.md) and the short
-[Adem handoff](SYNC_ADEM_7.md). Earlier “no freeze” entries are historical.
+[Adem handoff](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_7.md). Earlier “no freeze” entries are historical.
 
 **Primary contacts built and reviewed — 2026-10-21:** Claude's `7249e7a` fixes
 termination selection before truncation and maps equivalent, uncut Cl surfaces
@@ -545,13 +551,13 @@ cancellation of polar-surface energy errors, and the electrolyte is sensitive
 across the tested bracket. Recommend publishing the commit and testing electrolyte
 thickness at a fixed bottom depth of 3.257602 Å. Geometry-only checks give
 492/544 atoms for three/four substrate layers; no thickness relaxations were run
-in this review. See [SYNC_CLAUDE_2.md](SYNC_CLAUDE_2.md). The commit is still local
+in this review. See [SYNC_CLAUDE_2.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_2.md). The commit is still local
 at this review checkpoint; the earlier contact-build status below is historical.
 
 **Publication checkpoint — 2026-10-21:** Bulk calculations and audits are committed
 as `57774d6`; the audited environment expansion is committed as `81e4625`, both
 on `davide`. That publication checkpoint passed 113 tests. The user requested publication
-to `origin/davide`; [SYNC_ADEM_6.md](SYNC_ADEM_6.md) is the short team handoff.
+to `origin/davide`; [SYNC_ADEM_6.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_6.md) is the short team handoff.
 Earlier entries saying the work was uncommitted describe their review checkpoints.
 The new agent-control commits remain on Adem's branch pending integration.
 
@@ -563,7 +569,7 @@ Correctly associated feedback helps candidate selection here, but this control
 does not uniquely establish chemical reasoning. All 104 tests pass, including
 in a temporary merge with committed `b210db0`; real branches remain unchanged.
 Defer IDs-only and prepare the environment experiment. See
-[SYNC_ADEM_5.md](SYNC_ADEM_5.md) for evidence, limitations and integration scope.
+[SYNC_ADEM_5.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_5.md) for evidence, limitations and integration scope.
 
 **Multistart and facet review — 2026-10-21:** Claude completed five additional
 starts per distorted material (7,216 added calculator calls). Saved forces/stresses
@@ -575,7 +581,7 @@ The electrolyte seed-0/seed-4 choices currently have different termination label
 map equivalent cuts before interpreting a bulk-only sensitivity. Explicit
 termination selection must also precede the scan's candidate cutoff. Polarity,
 constraints and numerical convergence remain open; no new interface relaxation
-has run here. See [SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md) for the concrete protocol,
+has run here. See [SYNC_CLAUDE_1.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_1.md) for the concrete protocol,
 and [BULK_RELAXATION.md](BULK_RELAXATION.md) for Claude's evidence. The earlier
 [bulk review](BULK_REVIEW_AND_NEXT_STEPS.md) records the initial relaxation audit.
 

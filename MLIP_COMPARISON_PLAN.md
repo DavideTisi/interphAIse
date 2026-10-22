@@ -1,13 +1,13 @@
 # Common-protocol coating comparison: feasibility and bounded plan
 
 **Resource amendment:** the current pilot uses a uniform **1,250-atom cap**,
-recorded with energy-free verification in [SYNC_CLAUDE_10.md](SYNC_CLAUDE_10.md).
+recorded with energy-free verification in [SYNC_CLAUDE_10.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_10.md).
 The 1,200 limit below records the original assessment. Other physical rules
 remain unchanged; sensitivity inputs above 1,250 are explicitly unavailable.
 
 **Selection amendment, later on 21 October:** the active scientific/selection
 plan is [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md), with assignments in
-[SYNC_ADEM_12.md](SYNC_ADEM_12.md) and [SYNC_CLAUDE_9.md](SYNC_CLAUDE_9.md).
+[SYNC_ADEM_12.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_12.md) and [SYNC_CLAUDE_9.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_9.md).
 It uses LiNbF6 as the known reference and lets the LLM select two new coatings
 sequentially using validated PET-MAD feedback. The construction rules, audit
 and job cap below remain the engineering basis. The fixed cohort, automatic
@@ -30,8 +30,8 @@ work characterises only LiNbF6. Five final coatings are outside this campaign.
 Claude owns safeguards, construction and calculations through completion;
 Adem owns analysis validation, the campaign reader and comparison figures;
 Davide/Codex owns scientific scope, independent review, integration and the
-viewer. Detailed instructions are in [SYNC_CLAUDE_8.md](SYNC_CLAUDE_8.md) and
-[SYNC_ADEM_11.md](SYNC_ADEM_11.md).
+viewer. Detailed instructions are in [SYNC_CLAUDE_8.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_8.md) and
+[SYNC_ADEM_11.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_11.md).
 
 The useful question is whether thermodynamically promising coatings also give
 credible, mechanically attached interfaces under a consistently specified

@@ -1,6 +1,6 @@
 # Primary contacts — termination mapping, builds and constraint check
 
-21 October 2026, `davide`. Follows [SYNC_CLAUDE_1.md](SYNC_CLAUDE_1.md) and
+21 October 2026, `davide`. Follows [SYNC_CLAUDE_1.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_1.md) and
 [BULK_RELAXATION.md](BULK_RELAXATION.md). Two separate contact models with a common coating
 orientation, LiNbF6(001): **LiCoO2(001) | LiNbF6(001)** and **Li6PS5Cl(111) | LiNbF6(001)**.
 They are not one continuous film: each contact has its own matched supercell and strain.
@@ -152,7 +152,7 @@ inspection replays identically from the archive.
 ## Original sequence before the thickness study
 
 Step 1 is now complete and reported below. The current next-step handoff is
-[SYNC_CLAUDE_3.md](SYNC_CLAUDE_3.md).
+[SYNC_CLAUDE_3.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_3.md).
 
 1. Electrolyte substrate thickness (3 and 4 layers) at a fixed fixed-*thickness* rule rather
    than a fixed fraction, so the free region near the contact grows with thickness. Then
@@ -241,7 +241,7 @@ experimental adhesion.
 protocol and the equivalent Cl cut, recording any seed-dependent fixed count. The polar
 cathode stays provisional.
 
-The bounded cathode plan in [SYNC_CLAUDE_3.md](SYNC_CLAUDE_3.md) uses two, three
+The bounded cathode plan in [SYNC_CLAUDE_3.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_3.md) uses two, three
 and four coating layers at unchanged substrate geometry and an 800-atom cap.
 Geometry-only checks give 504, 600 and 696 atoms. These are not additional
 relaxation results.
@@ -294,7 +294,7 @@ Evidence: `data/petmad/cathode_thickness_v1/` (builds and runs).
 
 The independent review at `84f1c76` confirms the archived coating-thickness
 energies, nine converged relaxations, accounting and physical fixed-mask
-correspondence. See [SYNC_CLAUDE_4.md](SYNC_CLAUDE_4.md) for the bounded vacuum
+correspondence. See [SYNC_CLAUDE_4.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_4.md) for the bounded vacuum
 check and remaining thickness gaps: LiCoO2 substrate thickness and the coating
 thickness at the electrolyte contact have not been varied independently.
 The cathode constraint bracket belongs to the original two-coating-layer
@@ -567,7 +567,7 @@ FIRE logs, filtered job logs, `sacct`).
 
 The archive review at `f1861ef` confirms the five runs, 15 relaxation force
 records, fixed masks, geometry gates, work arithmetic and call accounting.
-See [SYNC_CLAUDE_7.md](SYNC_CLAUDE_7.md). “Largest documented uncertainty” above
+See [SYNC_CLAUDE_7.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_7.md). “Largest documented uncertainty” above
 should be read as **largest quantified sensitivity tested so far**: the
 polar-model error is unquantified. The seed difference is a combined
 bulk-reference/construction effect, not an isolated disorder effect or an

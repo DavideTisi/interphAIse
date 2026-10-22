@@ -130,7 +130,7 @@ Both contacts remain formally polar and provisional. See CONTACT_PROTOCOL.md
 and the latest REPORT.md checkpoint for completed versus pending checks.
 
 The environment smoke batch and cost review also arrived after this deck;
-see [SYNC_ADEM_8.md](../SYNC_ADEM_8.md). Davide subsequently approved production
+see [SYNC_ADEM_8.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_8.md). Davide subsequently approved production
 on 21 October 2026; the deck's earlier smoke-only approval wording is historical.
 Some speaker notes refer to the author's original local source paths; the
 scientific source files themselves are in this repository. No deck content
@@ -142,7 +142,7 @@ as combined bulk-reference/interface-construction sensitivity, separately
 from seed-0 registry variation (W_sep 2.97–3.06). Neither is a statistical
 confidence interval or a bound on the unquantified polar-model error. The
 cathode's earlier constraint/thickness brackets used registry (0,0).
-See [batch review](../SYNC_CLAUDE_7.md). V4 itself has not been revised.
+See [batch review](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_7.md). V4 itself has not been revised.
 
 ## Environment production result, ready for the next revision
 
@@ -150,14 +150,14 @@ Production is complete at `work/agent-experiments:06a4271` and independently
 reviewed. Presentation v4 does not contain it. Use
 [the audited overview](../figures/environment_acceptance_review_20261021.png)
 ([editable SVG](../figures/environment_acceptance_review_20261021.svg)) and
-[SYNC_ADEM_9.md](../SYNC_ADEM_9.md): iterative benefits from correctly attributed
+[SYNC_ADEM_9.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_9.md): iterative benefits from correctly attributed
 feedback in sulfide; chloride is at ceiling; random search outperforms every
 LLM arm in LLZO. LLZO iterative versus shuffled is not significant after Holm.
 Do not describe the experiment as universal superiority to random search or
 as measured MLIP compute savings. The new figure was visually checked; no
 PowerPoint content was edited in this review.
 
-For the LLZO interpretation, also use [the chemistry audit](../SYNC_ADEM_10.md).
+For the LLZO interpretation, also use [the chemistry audit](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_10.md).
 Keep the frozen 24/30 random versus 12/30 iterative result. Five acceptable
 structure IDs belong to the explicitly defined oxyhalogen review set, with
 different evidence levels; six random successes found only flagged compounds,

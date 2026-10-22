@@ -6,13 +6,13 @@ total **ten-HTTP-attempt cap**, including retries and resumes, and a **USD 0.05
 allowance** at the reported rates. After archiving the first choice/predictions,
 pause for physical calculations and complete the manifest/source validation
 before choose-3. Adem owns execution; no duplicate run was launched by Codex.
-See [SYNC_ADEM_14.md](SYNC_ADEM_14.md) for the approved command and exact package.
+See [SYNC_ADEM_14.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_14.md) for the approved command and exact package.
 This supersedes the pending-approval statements in the earlier reviews below.
 
 **Readiness review, 22 October:** Adem's `2d2cac3` passes 183 offline tests and
 reproduces the completed study. Live execution still needs source/manifest
 validation in the prompt path, a durable HTTP cap, and previous structured
-predictions in later prompts. See [SYNC_ADEM_13.md](SYNC_ADEM_13.md). The expected
+predictions in later prompts. See [SYNC_ADEM_13.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_13.md). The expected
 USD 0.0054 and conservative USD 0.02648 scenario use his recorded assumptions;
 the input-token bound is not enforced yet. No live-pilot approval is recorded.
 The scope and scientific brief below are unchanged.
@@ -37,7 +37,7 @@ electrolyte build passes all other recorded gates and has been independently
 rebuilt. Intended alternatives are LiTaF6, LiF and LiCaAlF6, pending final menu
 validation/manifest. The original 1,200 rejection stays in the archive.
 LiCaAlF6's next thicker film is 1,302 atoms and cannot be tested within this cap;
-mark it unavailable, never passed. See [SYNC_CLAUDE_10.md](SYNC_CLAUDE_10.md) for
+mark it unavailable, never passed. See [SYNC_CLAUDE_10.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_10.md) for
 the decision and feedback completeness/identity/arithmetic fixes required before
 live agent use. This changes neither the two-new-material budget nor the
 thermodynamic objective and is not a new paid-call approval.

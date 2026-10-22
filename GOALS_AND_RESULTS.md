@@ -52,9 +52,9 @@ The benefit concerns finding an acceptable candidate, not clearly finding the
 best one. Expanded sulfide best-bin successes are 6/30 iterative versus 5/30
 random. In LLZO no LLM arm reaches the best bin; random does in 2/30 runs.
 
-Sources: [production review](SYNC_ADEM_9.md),
+Sources: [production review](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_9.md),
 [original results](INTEGRATED_DISCOVERY_RESULTS.md),
-[LLZO audit](SYNC_ADEM_10.md).
+[LLZO audit](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_10.md).
 
 ## What the LLM contributed
 
@@ -109,7 +109,7 @@ contacts. We have no MLIP-supported cross-coating ranking, no adaptive search
 driven by MLIP outcomes, and no measured computational acceleration from using
 the LLM. Cheap cached-query counts quantify benchmark sample efficiency only.
 Transport, synthesis, full-stack performance and experimental validation are
-also outside the established evidence. See [physics review](SYNC_CLAUDE_7.md).
+also outside the established evidence. See [physics review](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_7.md).
 
 ## Assessment against the plan
 

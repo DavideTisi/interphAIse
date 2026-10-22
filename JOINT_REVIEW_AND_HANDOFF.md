@@ -1,7 +1,7 @@
 # Code, evidence and work-division review
 
 **Current assignment amendment:** [LLM_PETMAD_PILOT_PLAN.md](LLM_PETMAD_PILOT_PLAN.md)
-and notes [Adem 12](SYNC_ADEM_12.md) / [Claude 9](SYNC_CLAUDE_9.md) now govern
+and notes [Adem 12](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_12.md) / [Claude 9](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_9.md) now govern
 selection for the three-coating follow-up. F1–F4 and the evidence checks below
 remain unchanged. The LLM will select two new coatings sequentially after the
 known reference, rather than evaluate a fully predetermined cohort.
@@ -197,7 +197,7 @@ Machine-readable evidence: `data/reviews/joint_code_review_20261021.json`.
 
 **Scope update, 21 October:** Davide confirmed that the three-coating
 comparison is the next deliverable. The recipient-specific instructions in
-[SYNC_CLAUDE_8.md](SYNC_CLAUDE_8.md) and [SYNC_ADEM_11.md](SYNC_ADEM_11.md)
+[SYNC_CLAUDE_8.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_CLAUDE_8.md) and [SYNC_ADEM_11.md](https://github.com/DavideTisi/interphAIse/blob/786029128ad234e34aaa880d2bff5250c79277ed/SYNC_ADEM_11.md)
 carry this review into implementation and the bounded campaign.
 
 | Owner | Owns next | Deliverable / acceptance evidence |

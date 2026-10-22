@@ -3741,3 +3741,20 @@ No new scientific run, paid LLM request, model download, cluster job, social
 message or event submission occurred. The final release-status follow-up is
 only documentation and receipts; source/evidence test results from the
 246-test preflight remain applicable. Local links and whitespace were checked.
+
+## 2026-10-22 — Remove completed synchronization notes
+
+**Branch:** `main`, starting at `7860291`. At Davide's explicit request,
+removed all 36 tracked files matching `SYNC_*.md`. Redirected 61 existing
+Markdown links in eight documents to immutable GitHub URLs at `7860291`,
+retaining access to the historical decisions without keeping the notes in
+the current tree. Plain historical mentions in code, archived evidence and
+older log entries remain unchanged. REPORT.md records the cleanup.
+
+Verification: every archived link target exists at the pinned commit; no
+tracked SYNC markdown file remains; no Markdown link still points locally to
+a removed note; all changed paths are Markdown documentation. Whitespace
+checks pass. No test-suite rerun is needed for this documentation-only change.
+No scientific evidence, executable code, presentation or credential changed,
+and no paid call or materials calculation occurred. The deleted notes remain
+recoverable in Git history; this is not a history purge.
