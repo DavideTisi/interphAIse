@@ -2636,3 +2636,27 @@ Paused (exit 2) for Claude's six primary LiTaF6 jobs. Files: `data/experiments/l
 
 Next, before choose-3: manifest-derived coverage and identity checks with the two regressions from
 SYNC_ADEM_14, then validation of the returned package.
+
+## 2026-10-22 — Agent side (Adem): manifest-derived coverage and identity (before choose-3)
+
+This closes the two SYNC_ADEM_14 boundary cases.
+- **Coverage from the manifest:** the pilot reads `manifest.json` next to the index, requires its file hash
+  to equal the index pin, and derives the planned primary run IDs from it, not from the index. Every index
+  row must reference the pinned manifest.
+- **Identity:** each primary run's identity (registry ID and offset, gap, build ID and hash, atoms, area,
+  fixed rule, count and species) must equal the manifest plan.
+- **Valid new-coating runs** also need the build `interface.json` hash, the result's fixed depth and count,
+  and the fixed-atom species counted from the saved final interface structure.
+- **Reference:** it keeps the declared historical exception. Its result must come from the archived
+  package the manifest names.
+
+The comparison reader applies the same plan when a manifest is present.
+
+New regressions:
+- a reference registry removed before a fresh state is still required (Pending);
+- consistent-but-wrong build, depth and species labels are Blocked;
+- a wrong fixed-atom species in the saved structure is Blocked;
+- a manifest that doesn't match the index pin is refused.
+
+The old index fixture was replaced by the real committed campaign files. 77 tests passed. The live state
+resumes cleanly (dry check, no call): next is choose-3, Pending on LiTaF6. No API or PET-MAD runs.

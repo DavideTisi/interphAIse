@@ -19,7 +19,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from interphaise.pilot import CONTACTS, comparable_problems, contact_summary, evaluate_runs, load_index, thermo_card
+from interphaise.pilot import (CONTACTS, comparable_problems, contact_summary, evaluate_runs, load_index, load_manifest,
+                              manifest_plan, thermo_card)
 
 SULFIDE_TABLE = ROOT / "data/benchmarks/environment_v1/lco_lpscl_4v.json"
 SULFIDE_SHA = "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
@@ -33,7 +34,10 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
     cohort = index.get("cohort") or []
     if not cohort:
         raise ValueError("Index declares no cohort")
-    runs = {k: r for k, r in evaluate_runs(index, ROOT).items() if r["role"] != "consistency"}
+    plan = None
+    if (Path(index_path).parent / "manifest.json").exists():   # campaign indexes are checked against the manifest
+        plan = manifest_plan(load_manifest(index, index_path)[0])
+    runs = {k: r for k, r in evaluate_runs(index, ROOT, plan).items() if r["role"] != "consistency"}
     for r in runs.values():
         r["validated"] = r["evidence"] == "valid"
     rows, compute = [], {k: {"calls": 0, "wall_seconds": 0.0, "runs_with_unknown_cost": 0} for k in ("new", "reused")}

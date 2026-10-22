@@ -1,7 +1,7 @@
 """Offline tests for the LLM-guided PET-MAD pilot (SYNC_ADEM_13 regressions included).
 
-LiNbF6 feedback comes from Claude's real index (fixture copied from work/petmad-comparison 38e4872) and the
-genuine archived packages. Other coatings use small synthetic result packages whose energies satisfy the
+LiNbF6 feedback comes from Claude's real index and manifest (data/petmad/coating_comparison_v1, from
+work/petmad-comparison b199608) and the genuine archived packages. Other coatings use small synthetic result packages whose energies satisfy the
 W_adh arithmetic; they are fixtures, not PET-MAD results.
 """
 import io
@@ -15,26 +15,35 @@ from interphaise.pilot import Blocked, Pending, Pilot, validate_decision, load_i
 
 ROOT = Path(__file__).resolve().parents[1]
 TABLE = ROOT / "data/benchmarks/environment_v1/lco_lpscl_4v.json"
-REAL_INDEX = ROOT / "tests/fixtures/coating_comparison_v1_index_38e4872.json"
+CAMPAIGN = ROOT / "data/petmad/coating_comparison_v1"
+REAL_INDEX = CAMPAIGN / "index.json"
 REF, TAF, CAAL, LIF = "mp-aaacjjwh", "mp-aaacjmqp", "mp-aaaaajby", "mp-aaaaabru"
 K = 16.021766208
 SETTINGS = dict(model="claude-haiku-5-5", temperature=1.0, max_tokens=4096)
 SENTINEL = "SENTINEL-HYPOTHESIS-7781"
 
 
-def package(tmp, run, w, joined, area=100.0, n_atoms=500):
-    """Write result.json + separation consistent with W_adh = (E_film + E_sub - E_int)/A."""
+def package(tmp, run, w, joined):
+    """Synthetic package matching the run's planned identity: W_adh arithmetic, fixed depth/count and a final
+    structure whose fixed atoms carry the planned species (the rest are placeholder H atoms)."""
+    import ase
+    import ase.io
     d = tmp / "pkg" / run["run_id"].replace(":", "_")
-    d.mkdir(parents=True)
+    (d / "interface").mkdir(parents=True)
+    area, n_atoms = run["area_A2"], run["n_atoms"]
+    fixed_symbols = [el for el, n in sorted(run["fixed_species"].items()) for _ in range(n)]
+    ase.io.write(d / "interface" / "final.extxyz",
+                 ase.Atoms(fixed_symbols + ["H"] * (n_atoms - len(fixed_symbols)), positions=[[0, 0, i] for i in range(n_atoms)]))
     e_sub = -400.0
     e_film = w * area / K + joined - e_sub
     rel = {p: dict(converged=True, finite=True, final_energy_eV=e, max_free_force_eV_A=0.01, fmax_target_eV_A=0.05)
            for p, e in (("interface", joined), ("film", e_film), ("substrate", e_sub))}
+    rel["interface"]["fixed_atom_indices"] = list(range(len(fixed_symbols)))
     (d / "result.json").write_text(json.dumps(dict(checkpoint_sha256=run["checkpoint_sha256"], numerically_valid=True,
                                                    relaxations=rel, area_A2=area, n_atoms=n_atoms, n_fixed=run["n_fixed"],
-                                                   work_of_adhesion_J_m2=w)))
-    run.update(status="valid", W_adh_J_m2=w, joined_energy_eV=joined, area_A2=area, n_atoms=n_atoms,
-               result_path=str(d / "result.json"), W_sep_J_m2=None, calculator_calls=10, wall_seconds=1.0)
+                                                   fixed_depth_A=run["fixed_rule"]["depth_A"], work_of_adhesion_J_m2=w)))
+    run.update(status="valid", W_adh_J_m2=w, joined_energy_eV=joined, result_path=str(d / "result.json"),
+               W_sep_J_m2=None, calculator_calls=10, wall_seconds=1.0)
 
 
 def complete(tmp, index_path, cid, w_cathode, w_electrolyte):
@@ -76,6 +85,7 @@ class Scripted:
 def index(tmp_path):
     p = tmp_path / "index.json"
     p.write_text(REAL_INDEX.read_text())
+    (tmp_path / "manifest.json").write_bytes((CAMPAIGN / "manifest.json").read_bytes())
     return p
 
 
@@ -284,3 +294,52 @@ def test_report_timeline_and_prediction_checks(tmp_path, index):
     partial = dict(state, stages=state["stages"][:2], snapshots={REF: state["snapshots"][REF]})
     text, a = report(partial)
     assert "not yet revealed" in text and "Not available" in text
+
+
+def test_reference_registry_removed_before_start_is_still_required(tmp_path, index):
+    data = json.loads(index.read_text())               # removed BEFORE a fresh state exists
+    data["runs"] = [r for r in data["runs"] if r["run_id"] != "mp-aaacjjwh:cathode:primary:R2"]
+    index.write_text(json.dumps(data))
+    with pilot(tmp_path, index) as p:                    # coverage comes from the manifest, not the index
+        assert "mp-aaacjjwh:cathode:primary:R2" in p.state["planned_primary"][REF]
+        p.run_stage(Scripted())
+        with pytest.raises(Pending, match="missing from index"):
+            p.run_stage(Scripted())
+
+
+def test_consistent_but_wrong_identity_is_blocked(tmp_path, index):
+    data = json.loads(index.read_text())               # all cathode rows of the selected coating agree, but are wrong
+    for r in data["runs"]:
+        if r["candidate_id"] == TAF and r["contact"] == "cathode" and r["role"] == "primary":
+            r.update(contact_build_id="wrong/build", build_sha256="0" * 64, fixed_rule={"depth_A": 5.0},
+                     fixed_species={"Co": 104})
+    index.write_text(json.dumps(data))
+    llm = Scripted()
+    with pilot(tmp_path, index) as p:
+        p.run_stage(llm), p.run_stage(llm)
+        assert p.state["selected"][0] == TAF
+        complete(tmp_path, index, TAF, 3.5, 1.6)
+        with pytest.raises(Blocked, match="differs from manifest"):
+            p.run_stage(llm)
+
+
+def test_saved_mask_species_must_match_manifest(tmp_path, index):
+    llm = Scripted()
+    with pilot(tmp_path, index) as p:
+        p.run_stage(llm), p.run_stage(llm)
+        complete(tmp_path, index, TAF, 3.5, 1.6)
+        data = json.loads(index.read_text())
+        row = next(r for r in data["runs"] if r["run_id"] == f"{TAF}:cathode:primary:R1")
+        import ase.io
+        final = Path(row["result_path"]).parent / "interface" / "final.extxyz"
+        atoms = ase.io.read(final)
+        atoms[0].symbol = "Ta"                            # one fixed atom of the wrong species
+        ase.io.write(final, atoms)
+        with pytest.raises(Blocked, match="fixed-atom species"):
+            p.run_stage(llm)
+
+
+def test_manifest_must_match_index_pin(tmp_path, index):
+    (tmp_path / "manifest.json").write_text("{}")
+    with pytest.raises(ValueError, match="differs from the index pin"):
+        pilot(tmp_path, index)

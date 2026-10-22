@@ -165,12 +165,95 @@ def source_problems(run, checkpoint, root):
     return problems
 
 
-def evaluate_runs(index, root):
-    """Run copies with `evidence` (valid/failed/pending/invalid_evidence/unavailable) and `problems`."""
+def load_manifest(index, index_path):
+    """The frozen campaign manifest next to the index; its file hash must equal the index pin."""
+    path = Path(index_path).parent / "manifest.json"
+    raw = path.read_bytes()
+    sha = hashlib.sha256(raw).hexdigest()
+    if sha != index.get("manifest_sha256"):
+        raise ValueError(f"manifest.json hash {sha[:12]} differs from the index pin {str(index.get('manifest_sha256'))[:12]}")
+    return json.loads(raw), sha
+
+
+def manifest_plan(manifest):
+    """Expected identity of every planned primary run, derived from the manifest (never from the index)."""
+    plan = {}
+    for cid, coating in manifest["coatings"].items():
+        for contact, spec in coating["contacts"].items():
+            exp = spec["expected"]
+            for reg in spec["registries"]:
+                plan[f"{cid}:{contact}:primary:{reg['id']}"] = dict(
+                    candidate_id=cid, contact=contact, registry_id=reg["id"], registry=reg["offset"], gap_A=reg["gap_A"],
+                    contact_build_id=spec["build"], build_sha256=exp["build_sha256"], n_atoms=exp["n_atoms"],
+                    area_A2=exp["area_A2"], n_fixed=exp["n_fixed"], fixed_species=exp["fixed_species"],
+                    fixed_rule={"depth_A": manifest["fixed_rule"][contact]["depth_A"]})
+    ref = manifest["reference"]
+    for contact, regs in ref["primary_runs"].items():
+        for rid, package in regs.items():
+            # Declared historical exception: archived reference packages predate the manifest builds, so only
+            # their identity (run ID, registry ID, archived package) is pinned; Davide verified their masks.
+            plan[f"{ref['candidate_id']}:{contact}:primary:{rid}"] = dict(
+                candidate_id=ref["candidate_id"], contact=contact, registry_id=rid, reference_package=package)
+    return plan
+
+
+def plan_problems(run, expected, root):
+    """Index identity and (for valid runs) build hash and saved physical mask against the manifest plan."""
+    problems = []
+    for key in ("candidate_id", "contact", "registry_id"):
+        if run.get(key) != expected[key]:
+            problems.append(f"{key} differs from manifest")
+    if "reference_package" in expected:
+        if run["status"] == "valid" and not str(run.get("result_path", "")).startswith(expected["reference_package"]):
+            problems.append("reference result is not from the declared archived package")
+        return problems
+    for key in ("gap_A", "contact_build_id", "build_sha256", "n_atoms", "n_fixed", "fixed_species", "fixed_rule"):
+        if run.get(key) != expected[key]:
+            problems.append(f"{key} differs from manifest")
+    if not (isinstance(run.get("registry"), list) and len(run["registry"]) == 2
+            and all(abs(a - b) < 1e-9 for a, b in zip(run["registry"], expected["registry"]))):
+        problems.append("registry offset differs from manifest")
+    if not (_finite(run.get("area_A2")) and abs(run["area_A2"] - expected["area_A2"]) < 1e-6):
+        problems.append("area differs from manifest")
+    if run["status"] != "valid" or problems:
+        return problems
+    build = _resolve(expected["contact_build_id"], root) / "interface.json"
+    if not build.exists() or hashlib.sha256(build.read_bytes()).hexdigest() != expected["build_sha256"]:
+        problems.append("build file hash differs from manifest")
+    result_path = _resolve(run.get("result_path", ""), root)
+    if not result_path.is_file():
+        return problems + ["result file missing"]
+    res = json.loads(result_path.read_text())
+    depth = res.get("fixed_depth_A")
+    if not (_finite(depth) and abs(depth - expected["fixed_rule"]["depth_A"]) < 1e-6):
+        problems.append("result fixed depth differs from manifest")
+    if res.get("n_fixed") != expected["n_fixed"]:
+        problems.append("result fixed count differs from manifest")
+    fixed = (res.get("relaxations", {}).get("interface", {}) or {}).get("fixed_atom_indices")
+    final = result_path.parent / "interface" / "final.extxyz"
+    if fixed is None or not final.exists():
+        return problems + ["saved fixed mask or final interface structure missing"]
+    import ase.io
+    from collections import Counter
+    symbols = ase.io.read(final).get_chemical_symbols()
+    if len(symbols) != expected["n_atoms"] or any(not 0 <= i < len(symbols) for i in fixed):
+        return problems + ["final structure does not match the planned atom count"]
+    if dict(Counter(symbols[i] for i in fixed)) != expected["fixed_species"]:
+        problems.append("saved fixed-atom species differ from manifest")
+    return problems
+
+
+def evaluate_runs(index, root, plan=None):
+    """Run copies with `evidence` (valid/failed/pending/invalid_evidence/unavailable) and `problems`.
+
+    With a manifest `plan`, every primary run is also checked against its planned identity and saved mask."""
     out = {}
     for r in index["runs"]:
         r = dict(r)
         r["problems"] = source_problems(r, index["checkpoint_sha256"], root) if r["status"] == "valid" else []
+        if plan is not None and r["role"] == "primary":
+            r["problems"] += (plan_problems(r, plan[r["run_id"]], root) if r["run_id"] in plan
+                              else ["primary run is not planned in the manifest"])
         r["evidence"] = ("invalid_evidence" if r["problems"] else
                          "unavailable" if r["status"] in NOT_RUN else r["status"])
         out[r["run_id"]] = r
@@ -213,10 +296,10 @@ def contact_summary(runs, contact):
                             for r in sorted(primary, key=lambda r: r["run_id"])])
 
 
-def feedback_bundle(index, table, candidate_id, root, planned=None):
+def feedback_bundle(index, table, candidate_id, root, planned=None, plan=None):
     """Consumable primary feedback for one coating, or raise Pending/Blocked. Sensitivity values withheld."""
     card = next(c for c in index["menu"] if c["candidate_id"] == candidate_id)
-    evaluated = evaluate_runs(index, root)
+    evaluated = evaluate_runs(index, root, plan)
     runs = [r for r in evaluated.values() if r["candidate_id"] == candidate_id and r["role"] != "consistency"]
     primary_ids = sorted(r["run_id"] for r in runs if r["role"] == "primary")
     if planned is not None and primary_ids != sorted(planned):
@@ -345,21 +428,26 @@ class Pilot:
             for cid, snap in self.state["snapshots"].items():
                 if digest(snap["bundle"]) != snap["sha256"]:
                     raise ValueError(f"Feedback snapshot hash mismatch ({cid})")
+            manifest, manifest_sha = load_manifest(load_index(self.index_path), self.index_path)
+            if manifest_sha != self.state["manifest_sha256"]:
+                raise ValueError("Manifest differs from the one pinned when the pilot started")
+            self.plan = manifest_plan(manifest)
             return
         index = load_index(self.index_path)
+        manifest, manifest_sha = load_manifest(index, self.index_path)
+        self.plan = manifest_plan(manifest)
         feasible = [c["candidate_id"] for c in index["menu"] if c.get("feasible")]
         if reference_id not in feasible:
             raise ValueError("Reference must be a feasible menu item")
         if len(feasible) - 1 < 3 and not allow_small_menu:
             raise ValueError(f"Only {len(feasible) - 1} unevaluated alternatives; report before live calls")
-        planned = {cid: sorted(r["run_id"] for r in index["runs"] if r["candidate_id"] == cid and r["role"] == "primary")
-                   for cid in feasible}
+        planned = {cid: sorted(rid for rid, e in self.plan.items() if e["candidate_id"] == cid) for cid in feasible}
         if any(not ids for ids in planned.values()):
-            raise ValueError("Every feasible candidate needs its planned primary runs listed (pending) in the index")
+            raise ValueError("Every feasible candidate needs planned primary runs in the manifest")
         self.state = dict(
             pilot_version=PILOT_VERSION, created_at=_now(), mode=mode, settings=settings, reference_id=reference_id,
             feasible=feasible, planned_primary=planned, menu_sha256=digest(index["menu"]),
-            manifest_sha256=index.get("manifest_sha256"), table_sha256=self.table["sha256"], http_cap=http_cap,
+            manifest_sha256=manifest_sha, table_sha256=self.table["sha256"], http_cap=http_cap,
             max_http_per_call=max_http_per_call, http_attempts_used=0, http_reserved_unsettled=0, stages=[],
             snapshots={}, evaluated=[reference_id], selected=[],
             plan=[s for s in STAGES if include_prior or s != "prior"], status="running")
@@ -394,7 +482,7 @@ class Pilot:
     def _snapshot(self, index, cid):
         """Frozen primary feedback: built once when first revealed, then reused verbatim."""
         if cid not in self.state["snapshots"]:
-            bundle = feedback_bundle(index, self.table, cid, self.root, self.state["planned_primary"][cid])
+            bundle = feedback_bundle(index, self.table, cid, self.root, self.state["planned_primary"][cid], self.plan)
             self.state["snapshots"][cid] = dict(bundle=bundle, sha256=digest(bundle), frozen_at=_now())
             self._save()
         return self.state["snapshots"][cid]["bundle"]
@@ -412,6 +500,9 @@ class Pilot:
         index = load_index(self.index_path)
         if digest(index["menu"]) != self.state["menu_sha256"]:
             raise ValueError("Menu changed after the pilot started")
+        if index.get("manifest_sha256") != self.state["manifest_sha256"] or any(
+                r.get("planned_in_manifest_sha256") not in (None, self.state["manifest_sha256"]) for r in index["runs"]):
+            raise Blocked("Index rows do not reference the manifest pinned when the pilot started")
         reveal = {"prior": [], "choose_2": [self.state["reference_id"]],
                   "choose_3": [self.state["reference_id"], *self.state["selected"][:1]],
                   "summary": [self.state["reference_id"], *self.state["selected"][:2]]}[stage]
