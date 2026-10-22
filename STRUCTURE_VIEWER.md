@@ -1,78 +1,62 @@
-# Local structure and interface viewer
+# Structure and interface viewer
 
-Build from the repository root:
-
-```bash
-.venv/bin/python scripts/build_structure_viewer.py
-open runs/structure_viewer.html
-```
-
-The generated HTML is self-contained: no server, credentials, external JavaScript,
-internet connection or calculations are required. It contains 50 frozen bulk
-structures plus the initial interface, relaxed interface and both separated slabs
-from each saved PET-MAD pilot. Currently there are 58 structures, covering both
-LiCoO2 | LiNbF6 and Li6PS5Cl | LiNbF6. Share the HTML itself to share
-the viewer. Generated output stays under ignored `runs/`; the generator and
-template are versioned.
-
-## Controls
-
-- Use Contact to load the initial and relaxed states of either contact together.
-- Use Compare contacts to show the relaxed cathode-side and electrolyte-side
-  interfaces together (or the available geometry if a relaxed one is absent).
-
-- Select each structure independently; formula and MP ID distinguish polymorphs.
-- Compare initial and relaxed states with a shared orientation and Å-to-pixel scale.
-  Each panel centres its geometry independently; this is not a displacement map.
-- Drag to rotate; scroll to zoom; use side, top or oblique presets and Fit to reset zoom.
-- Show the saved cell and translated 2×2 or 3×3 copies along lattice vectors a and b.
-- Colour by element, coating/cathode membership or stored fixed-atom constraints.
-  Filter coating or cathode atoms. Bulk structures have neither interface label;
-  select All atoms when inspecting bulk candidates.
-- Hover to see the original atom index (one-based), displayed coordinates in Å,
-  membership, constraint flag and replica offset.
-- Save PNG exports the selected canvas. Save XYZ exports the selected original
-  geometry in extended XYZ format with its cell, not the replicated display.
-
-The browser uses an orthographic sphere rendering with depth sorting. Sphere radii
-are scaled for readability, not a depiction of occupied volume. No chemical bonds
-are inferred. Wrap a/b (enabled by default) brings periodic in-plane coordinates into the cell
-for display only. Disable it to inspect the stored unwrapped positions. Downloads
-always preserve the original coordinates; wrapping is not an atomic relaxation. Fixed-atom colouring reads ASE FixAtoms constraints;
-the initial pilot file does not contain the constraints later used in relaxation.
-The browser is intended for these small structures, not large MD trajectories.
-
-## Add new calculations
+Build the current catalogue from the repository root:
 
 ```bash
-.venv/bin/python scripts/build_structure_viewer.py \
-  --structure path/to/new_structure.extxyz \
-  --structure path/to/bulk.cif \
-  --output runs/updated_viewer.html
+python scripts/build_structure_viewer.py
 ```
 
-Additional structures use ASE format detection; for multi-frame files the final
-frame is loaded. Use `--pilot path/to/pilot_directory` for another directory with
-`initial.extxyz`, `interface/final.extxyz`, `film/final.extxyz` and/or
-`substrate/final.extxyz`. Repeat `--pilot` to include multiple directories. By
-default, all directories with `data/petmad/*/selected.json` are discovered; material
-names come from their saved metadata. Only geometry files present are included. Use `--pool` to choose
-another pool in the existing JSON structure schema. Rebuild after data changes.
+Open or share `runs/structure_viewer.html`. This self-contained HTML works offline
+without credentials, external JavaScript or a server. The final catalogue has
+460 saved geometries and 141 distinct Materials Project candidate IDs, including
+polymorphs. It contains saved battery endpoints, bulk references, interface
+builds, relaxed contacts and separated slabs. Chloride and LLZO have bulk
+structures only; no atomistic contact energy was calculated for those environments.
 
-## Scientific scope and verification
+## Inspect the final comparison
 
-This is a geometry-inspection tool, not evidence that the pilot adhesion estimate
-is converged or that a coating is viable. See `PETMAD_INTERFACE_PILOT.md` and
-`EXPERIMENT_AMENDMENT.md` for the unresolved bulk/surface issues. The viewer does
-not embed the frozen benchmark's outcome table.
+The three coating buttons load the selected cathode and electrolyte contacts
+for LiNbF6, LiTaF6 or LiCaAlF6 with a shared camera and length scale. Their
+selected-primary W_adh values are 3.617 / 1.633, 3.339 / 1.577 and
+1.427 / 0.744 J/m², respectively. Selection follows the validated final index
+and lowest relaxed joined energy, not the maximum adhesion value.
 
-Verified the original 54 geometry exports by re-reading them with ASE and checking species,
-coordinates, cells and PBC. The relaxed interface contains 64 stored fixed atoms
-and 32 coating atoms. The multi-contact test additionally verifies all four
-electrolyte geometries against their source files and the two distinct contact labels. Browser checks covered desktop comparison, narrow layout,
-bulk selection, layer filtering, replication and view presets; no JavaScript
-errors were observed. The scientific data check is reproducible with:
+Selected primaries are labelled as evidence available to the live pilot.
+Sensitivity and consistency runs are labelled **Robustness only**, withheld
+from the live decisions. LiF inputs may be inspected but have no computed
+interface energy. LiCaAlF6 electrolyte thickness and bulk-structure sensitivity
+remain unquantified. The small LiNbF6–LiTaF6 gap is below the documented
+construction sensitivities; this is not a robust materials ranking.
+
+Use **Evidence comparison** for the original registry and bulk-reference pairs.
+Search, environment, collection, study, state and contact filters select other
+geometries. Initial builds and separated slabs do not inherit contact energies.
+Historical pilots remain identified separately and are not comparable with the
+final construction protocol.
+
+## Controls and downloads
+
+- Drag to rotate, scroll to zoom, or use side, top, oblique and Fit presets.
+- Colour by element, coating/substrate membership or fixed-atom constraints.
+- Show either component, the cell and periodic copies in a and b.
+- Wrap changes only the display. XYZ downloads preserve saved coordinates,
+  cell, species, verified atom labels and state-local fixed masks.
+- Each panel is independently centred; a side-by-side pair is not a displacement
+  map. Sphere sizes are illustrative and chemical bonds are not inferred.
+- Source paths and hashes are available in each geometry's details.
 
 ```bash
-.venv/bin/python -m pytest tests/test_structure_viewer.py -q
+python scripts/build_structure_viewer.py --structure path/to/structure.cif \
+  --output runs/custom_viewer.html
+python -m pytest tests/test_structure_viewer.py -q
 ```
+
+`--pool` overrides the pools, and repeated `--pilot` options restrict the contact
+folders. Default discovery is recursive. The final campaign additionally checks
+its manifest and saved source evidence; missing or inconsistent selected contact
+geometries stop the export rather than silently receiving another run's energy.
+
+All interface values remain provisional results for formally polar models.
+Finite-range vacuum isolation does not establish electrostatic accuracy, and no
+lithium-transport conclusion follows. See [the final synthesis](RESULTS_SYNTHESIS_2026-10-22.md)
+and [offline reproduction](REPRODUCE.md).

@@ -3259,3 +3259,58 @@ Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report
   - LiCaAlF₆ electrolyte: the thickness and robustness sensitivity cases are unavailable and stay unquantified.
 - **Figure fix:** `scripts/report_llm_petmad_pilot.py` placed the forecast figure's footnote off the bottom edge. It is now placed inside, and `report_live/predictions.png` was regenerated from the unchanged state. `report.md` and `assessment.json` are byte-identical. Both figures were checked visually.
 - No live calls.
+
+## 2026-10-22 — Final branch integration, consistent viewer and offline reproduction
+
+**Branch:** `work/final-integration-20261022`, isolated checkout based on `davide`
+`7bd5878`. The user asked to close integration, check deliverables together and
+provide one reproduction entry point. The app worktree helper could not find a
+repository from the parent workspace, so a regular Git worktree was created at
+`../interphAIse-integration`. The original checkout and its unrelated README
+edits were preserved. Fetched the newly published agent `5b76988`: Adem had
+already applied the reviewed final-index patch. Merged physics `1b76eeb` as
+`70a33d8`, then agent `5b76988` as `4b5fca4`. Both histories retained. Only
+DEVELOPMENT_LOG and REPORT conflicted; kept both sets of dated entries.
+
+The integrated baseline passes 220 tests with the pinned pymatgen versions.
+Added final-index-driven viewer selection for all six contacts, three coating
+shortcuts, decision-time versus later-robustness labels, and explicit LiF and
+unquantified Ca sensitivity status. Geometry/energy disagreement blocks export.
+The catalogue has 460 geometries, 141 IDs and 61 calculated interface runs
+(including historical and sensitivity work, not 61 new campaign jobs).
+Reused the comparison validator with an explicit root argument. Added a caption
+to the final comparison figure so its limitations travel with the image.
+
+Added scripts/reproduce_results.py and REPRODUCE.md; updated README,
+STRUCTURE_VIEWER, REPORT and presentation/review status. The wrapper uses only
+archived data, writes under runs/, replays all 6,000 charged queries, validates
+production settings and physical source evidence, checks preserved decision
+snapshots and verifies all headline values and forecasts against the slide
+source. Added an analysis extra for Matplotlib and regressions for mismatched
+claims. FINAL_INTEGRATION.md and data/reviews/final_integration_20261022.json
+record the source hashes, merge history, checks and remaining release action.
+
+Verification: 227 tests passed in 31.61 s (only upstream deprecations); targeted
+viewer/reproduction/comparison subset previously 33 passed. Full offline
+reproduction passes with 1,452 source evidence files unchanged, 17 primary rows
+unchanged between decision and final indices, no invalid runs, 12 unselected
+LiF rows, four consistency records and 6,632 new runner calls. PPTX/PDF hashes
+match the existing full visual review. Browser inspection confirmed Nb/Ta/Ca
+contacts and values, rendered geometries, and no JavaScript errors. Inspected
+both comparison and forecast figures. The existing pinned Python environment
+was reused; no fresh dependency installation was claimed.
+
+No paid call, new MLIP evaluation, database fetch, model download or cluster
+submission occurred. The 24-slide deck and all live/frozen evidence remain
+unchanged. New preview outputs are ignored under runs/. Next: credential and
+whitespace checks, publish this reviewable integration branch under the standing
+sharing authorization, then the team can review and merge it into the chosen
+shared branch. Main and davide are not moved by this work.
+
+Publication checks: all local links in the updated entry points resolve;
+text whitespace is clean. A full tracked/new-file scan against the configured
+credential values passed without printing any credential; `.env` remains
+untracked. Frozen experiment, benchmark and decision/final-index files have no
+diff against the merged sources. The final figure caption was rendered and
+visually checked. Publish only the integration branch; the user's main checkout
+still has its original README edit.

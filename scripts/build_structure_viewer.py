@@ -8,6 +8,7 @@ import hashlib
 from io import StringIO
 import json
 from pathlib import Path
+import sys
 
 import numpy as np
 from ase.constraints import FixAtoms
@@ -18,6 +19,7 @@ from pymatgen.core import Structure
 from pymatgen.io.ase import AseAtomsAdaptor
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 ENVIRONMENTS = {
     'lco_lpscl_4v': 'Sulfide · LiCoO2 / Li6PS5Cl',
     'lco_lic_4v': 'Chloride · LiCoO2 / Li3InCl6',
@@ -402,6 +404,56 @@ def build_records(pool, pilot, extra=()):
     return records
 
 
+def campaign_evidence(records, root=ROOT):
+    """Use the validated final index, keeping post-decision robustness separate."""
+    index_path = root / 'data/petmad/coating_comparison_v1/index_final.json'
+    if not index_path.exists():
+        return None, []
+    from scripts.analyse_mlip_comparison import analyse
+    analysis = analyse(index_path, root / 'data/benchmarks/environment_v1/lco_lpscl_4v.json', root=root)
+    if analysis['invalid_runs']:
+        raise ValueError('Final campaign has invalid source evidence; refusing to publish it')
+    index = load_json(index_path)
+    by_id = {r['run_id']: r for r in index['runs']}
+    by_source = {r['source_path']: r for r in records if r.get('results')}
+    contacts, comparisons = [], []
+    for order, coating in enumerate(analysis['cohort']):
+        pair = {}
+        for contact, result in coating['contacts'].items():
+            if result['status'] != 'validated':
+                raise ValueError(f"Final campaign contact is {result['status']}: {coating['formula']} / {contact}")
+            run = by_id[result['selected_run_id']]
+            geometry = str(Path(run['result_path']).parent / 'interface/final.extxyz')
+            if geometry not in by_source:
+                raise ValueError(f'Selected campaign geometry missing from viewer: {geometry}')
+            item = by_source[geometry]
+            for metric in ('W_adh_J_m2', 'W_sep_J_m2'):
+                if not np.isclose(item['results'][metric], result[metric], rtol=0, atol=1e-6):
+                    raise ValueError(f'Viewer and validated campaign disagree: {geometry} / {metric}')
+            item.update(featured=True, featured_order=2 * order + (contact == 'electrolyte'),
+                        working_role=f"{coating['formula']} · selected {contact} primary registry · decision-time result",
+                        campaign_role='Selected primary · available to the live pilot',
+                        study='Final comparison · selected primaries')
+            item['provenance'].append(provenance(index_path, root))
+            pair[contact] = item['id']
+            contacts.append(dict(formula=coating['formula'], contact=contact, record_id=item['id'],
+                                 W_adh_J_m2=result['W_adh_J_m2'], W_sep_J_m2=result['W_sep_J_m2'],
+                                 sensitivity=result['sensitivity']))
+        comparisons.append(dict(id=f"campaign:{coating['candidate_id']}", label=f"{coating['formula']} · selected cathode / electrolyte",
+                                left=pair['cathode'], right=pair['electrolyte'], delta_right_minus_left={},
+                                note='Primary results used by the live pilot. Registries were selected by lowest relaxed joined energy. Robustness results were released later and did not enter the decisions.'))
+    for run in index['runs']:
+        if not run.get('result_path') or run['role'] == 'primary':
+            continue
+        geometry = str(Path(run['result_path']).parent / 'interface/final.extxyz')
+        if geometry in by_source:
+            by_source[geometry].update(campaign_role='Robustness only · withheld from live decisions',
+                                      study='Final comparison · robustness')
+    return dict(index=provenance(index_path, root), contacts=contacts,
+                not_selected=['LiF'],
+                note='LiF was not selected: constructed inputs and bulk references may be viewed, but no interface energy was computed. LiCaAlF6 electrolyte thickness and bulk-structure sensitivity remain unquantified.'), comparisons
+
+
 def build_catalog(root=ROOT, pools=None, pilots=None, extra=()):
     petmad = root / 'data/petmad'
     warnings = []
@@ -459,6 +511,7 @@ def build_catalog(root=ROOT, pools=None, pilots=None, extra=()):
                                         else 'Electrolyte · seed-0 GPU reference'
                                         if selected['run'] == 'niflheim_batch1/electrolyte_seed0_ref'
                                         else 'Earlier reference · latest selected archive unavailable')
+    campaign, campaign_comparisons = campaign_evidence(records, root) if pilots is None else (None, [])
     records.sort(key=lambda r: (not r.get('featured', False), r.get('featured_order', 9), r.get('historical', False), r['kind'], r.get('study', ''), r['title']))
     summary = {
         'total': len(records), 'by_kind': dict(Counter(r['kind'] for r in records)),
@@ -469,7 +522,7 @@ def build_catalog(root=ROOT, pools=None, pilots=None, extra=()):
         'limitations': [
             'No saved atomistic chloride or LLZO contact is available. Their bulk endpoints and candidate structures can be viewed.',
             'Environment membership means inclusion in a thermodynamic benchmark, not an interface calculation or a performance claim.',
-            'Both contacts are formally polar and provisional. Current archived settings are the 696-atom cathode at registry (1/3, 1/3) and the 880-atom seed-0 electrolyte at (0, 0); partial checkouts may show a labelled earlier reference.',
+            'All compared contacts are formally polar and provisional. The final comparison selects two primary contacts each for LiNbF6, LiTaF6 and LiCaAlF6; partial checkouts may show only the earlier LiNbF6 references.',
             'Final-geometry constraint brackets passed at the reference registries. Cathode thickness and constraint checks used (0, 0), not the newly selected (1/3, 1/3). Three of nine distinct cathode registries were relaxed.',
             'Electrolyte seed-4 shifts exceed the 0.1 J/m² reporting tolerance and combine bulk-reference and interface-construction effects. They are not a statistical error bar or an isolated disorder effect.',
             'Vacuum checks isolate periodic images within the finite-range model; they do not address polar electrostatics. No explicit applied voltage is present in these atomistic calculations.',
@@ -478,7 +531,7 @@ def build_catalog(root=ROOT, pools=None, pilots=None, extra=()):
         ],
     }
     return {'records': records, 'summary': summary, 'environments': ENVIRONMENTS,
-            'comparisons': evidence_comparisons(records)}
+            'campaign': campaign, 'comparisons': campaign_comparisons + evidence_comparisons(records)}
 
 
 def write_viewer(catalog, output):

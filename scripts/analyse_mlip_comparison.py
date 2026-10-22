@@ -26,7 +26,7 @@ SULFIDE_TABLE = ROOT / "data/benchmarks/environment_v1/lco_lpscl_4v.json"
 SULFIDE_SHA = "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
 
 
-def analyse(index_path, table_path=SULFIDE_TABLE):
+def analyse(index_path, table_path=SULFIDE_TABLE, *, root=ROOT):
     index = load_index(index_path, allow_final=True)
     table = json.loads(Path(table_path).read_text())
     if table.get("sha256") != SULFIDE_SHA or table.get("status") != "frozen":
@@ -37,7 +37,7 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
     plan = None
     if index.get("manifest_sha256") or (Path(index_path).parent / "manifest.json").exists():   # campaign indexes are checked against the manifest
         plan = manifest_plan(load_manifest(index, index_path)[0])
-    all_runs = evaluate_runs(index, ROOT, plan)
+    all_runs = evaluate_runs(index, root, plan)
     runs = {k: r for k, r in all_runs.items() if r["role"] != "consistency"}
     for r in runs.values():
         r["validated"] = r["evidence"] == "valid"
@@ -122,7 +122,7 @@ def plot(out, path):
     import matplotlib.pyplot as plt
     rows = out["cohort"]
     labels = [f"{r['formula']}\npenalty {r['thermo']['penalty']:.3f}{' ✓' if r['thermo']['acceptable'] else ''}" for r in rows]
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5.1), sharey=True)
     for ax, contact in zip(axes, CONTACTS):
         for i, r in enumerate(rows):
             c = r["contacts"][contact]
@@ -145,7 +145,9 @@ def plot(out, path):
     axes[0].plot([], [], "x", color="#eb6834", label="sensitivity runs")
     axes[0].vlines([], 0, 0, color="#2a78d6", lw=6, alpha=0.3, label="registry range (tested, not a CI)")
     fig.legend(*axes[0].get_legend_handles_labels(), loc="upper center", ncol=4, fontsize=9, frameon=False)
-    fig.tight_layout(rect=(0, 0, 1, 0.9))
+    fig.text(0.5, 0.02, "Provisional polar models; LiF not run. LiCaAlF6 electrolyte thickness and bulk-structure sensitivity unquantified.",
+             ha="center", va="bottom", fontsize=8, color="#52514e")
+    fig.tight_layout(rect=(0, 0.06, 1, 0.9))
     fig.savefig(path, dpi=200)
 
 

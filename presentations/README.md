@@ -1,5 +1,11 @@
 # Presentation checkpoint
 
+**Final integration:** The 24-slide consolidated presentation remains the
+reviewed final deck. `scripts/reproduce_results.py` checks its evidence JSON
+against both merged branches, including all six selected contacts and the four
+forecast outcomes. The integration does not rewrite the live pilot or its
+separate one-slide checkpoint. See [the integration record](../FINAL_INTEGRATION.md).
+
 ## Current consolidated presentation: 22 October 2026
 
 [Editable PowerPoint](results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)

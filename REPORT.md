@@ -1,5 +1,16 @@
 # interphAIse — project report
 
+**Final integration — 22 October 2026:** Both collaborators' completed branches
+are combined in `work/final-integration-20261022`, including Adem's `5b76988`
+final-index reader fix and Claude's `1b76eeb` physics release. The original
+presentation data agree with the regenerated analyses. The viewer now selects
+all six contacts for the three computed coatings and separates primary evidence
+from later robustness; LiF remains uncomputed. [REPRODUCE.md](REPRODUCE.md)
+provides one offline command, and [FINAL_INTEGRATION.md](FINAL_INTEGRATION.md)
+records tests, provenance and remaining release steps. This supersedes the
+integration-pending statements in the historical entries below. No new live
+LLM, MLIP or cluster work was performed.
+
 **Consolidated results and new presentation — 2026-10-22:** The
 [results synthesis](RESULTS_SYNTHESIS_2026-10-22.md) now joins the 50-structure
 benchmark, 450-run environment study and completed three-coating PET-MAD pilot.

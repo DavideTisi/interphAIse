@@ -84,7 +84,7 @@ def test_nested_runs_use_exact_energies_and_layers_but_builds_have_none(catalog)
     assert electrolyte['n_fixed'] == 38
     assert electrolyte['results']['W_adh_J_m2'] == pytest.approx(1.5317258429078906)
     assert electrolyte['results']['W_sep_J_m2'] == pytest.approx(2.8578983052814912)
-    assert sum(r.get('featured', False) for r in items.values()) == 2
+    assert sum(r.get('featured', False) for r in items.values()) == 6
     assert all('results' not in r for r in items.values() if r['state'] != 'relaxed')
     built = items['interface:contact_v1_electrolyte_seed4_Cl:initial']
     assert built['seed'] == 4 and built['status'] == 'Built only · no calculation'
@@ -211,7 +211,7 @@ def test_selected_registry_and_seed_comparison_match_exact_archives(catalog):
     assert cathode['results']['W_adh_J_m2'] == pytest.approx(3.6170508624496)
     assert cathode['results']['W_sep_J_m2'] == pytest.approx(5.167624545488891)
     comparisons = {c['id']: c for c in catalog['comparisons']}
-    assert len(comparisons) == 4
+    assert len(comparisons) == 7
     seeds = comparisons['electrolyte_seeds']
     left, right = (items[seeds[k]] for k in ('left', 'right'))
     assert (left['seed'], right['seed']) == (0, 4)
@@ -224,3 +224,23 @@ def test_selected_registry_and_seed_comparison_match_exact_archives(catalog):
     # A partial catalogue must not substitute a different seed/cell for missing evidence.
     partial = [r for r in catalog['records'] if r['run'] != 'niflheim_batch1/electrolyte_seed4']
     assert 'electrolyte_seeds' not in {c['id'] for c in evidence_comparisons(partial)}
+
+
+def test_final_campaign_shows_six_selected_contacts_without_unrun_or_robustness_leakage(catalog):
+    campaign = catalog['campaign']
+    items = {r['id']: r for r in catalog['records']}
+    assert {r['formula'] for r in campaign['contacts']} == {'LiNbF6', 'LiTaF6', 'LiCaAlF6'}
+    assert len(campaign['contacts']) == 6
+    assert campaign['not_selected'] == ['LiF']
+    for selected in campaign['contacts']:
+        item = items[selected['record_id']]
+        assert item['featured'] and item['state'] == 'relaxed'
+        assert item['results']['W_adh_J_m2'] == pytest.approx(selected['W_adh_J_m2'])
+        assert item['results']['W_sep_J_m2'] == pytest.approx(selected['W_sep_J_m2'])
+        assert 'decision-time' in item['working_role']
+    ca = next(c for c in campaign['contacts'] if c['formula'] == 'LiCaAlF6' and c['contact'] == 'electrolyte')
+    assert sum(s['quantified'] is False for s in ca['sensitivity']) == 2
+    assert all('results' not in r for r in items.values() if r.get('materials') and 'LiF' in r['materials'])
+    later = [r for r in items.values() if r.get('campaign_role', '').startswith('Robustness only')]
+    assert later and all(not r['featured'] for r in later)
+    assert all('withheld' in r['campaign_role'] for r in later)

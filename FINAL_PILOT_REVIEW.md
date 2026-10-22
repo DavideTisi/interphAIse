@@ -1,5 +1,10 @@
 # Final pilot: independent review and integration handoff
 
+**Integration update, 22 October:** Adem applied the reader patch in `5b76988`.
+It is now included with the final physics release in the dedicated integration
+branch. See [FINAL_INTEGRATION.md](FINAL_INTEGRATION.md) for combined verification.
+The review below records the state before that integration.
+
 22 October 2026. Reviewed physics `1b76eeb` and agent `c0a0546` in isolated
 archives. The physical campaign and the live pilot are complete. No new model
 call, PET-MAD calculation or cluster submission was made in this review.

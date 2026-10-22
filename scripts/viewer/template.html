@@ -23,6 +23,7 @@ header{padding:18px 28px 10px}header p{margin:6px 0}h1{font-size:24px}.catalog{m
 <div class="catalog-actions"><button id="current">Current contacts</button><button id="clear">Clear filters</button><label>Contact<select id="contact"><option value="">All contacts</option></select></label><span id="count" class="small"></span></div>
 <div class="catalog-actions"><label>Evidence comparison<select id="evidence"><option value="">Choose a comparison…</option></select></label><span class="small">Paired saved runs · shared camera and scale</span></div>
 <div class="notice" id="comparison-note" role="status" hidden></div>
+<div id="campaign" hidden><p class="notice"><strong>Final three-coating comparison · primary results seen by the LLM</strong></p><div id="campaign-buttons" class="catalog-actions"></div><p id="campaign-note" class="notice warning"></p><p class="small">Select a coating to compare its two contacts. Later sensitivity and consistency runs are labelled “Robustness only”. Values are W_adh, J/m²; the small LiNbF6–LiTaF6 gap is below documented construction sensitivities.</p></div>
 <p class="notice" id="environment-note"></p>
 <details><summary class="small">Coverage, provenance and scientific limits</summary><div id="catalog-details" class="notice"></div></details>
 </section>
@@ -58,6 +59,16 @@ for(const name of [...new Set(structures.map(s=>s.study))].filter(Boolean).sort(
 for(const name of [...new Set(structures.map(s=>s.contact))].filter(Boolean).sort())$('contact').append(new Option(name,name));
 for(const c of comparisons)$('evidence').append(new Option(c.label,c.id));
 $('evidence').disabled=!comparisons.length;
+if(catalog.campaign){
+ $('campaign').hidden=false;
+ $('campaign-note').textContent=catalog.campaign.note;
+ for(const formula of [...new Set(catalog.campaign.contacts.map(c=>c.formula))]){
+  const pair=catalog.campaign.contacts.filter(c=>c.formula===formula),left=pair.find(c=>c.contact==='cathode'),right=pair.find(c=>c.contact==='electrolyte');
+  const button=text('button',`${formula} · cathode ${left.W_adh_J_m2.toFixed(3)} / electrolyte ${right.W_adh_J_m2.toFixed(3)}`);
+  button.onclick=()=>compareIndices(structures.findIndex(s=>s.id===left.record_id),structures.findIndex(s=>s.id===right.record_id));
+  $('campaign-buttons').append(button);
+ }
+}
 $('coverage').textContent=`${summary.total} saved geometries · ${summary.candidate_ids} coating IDs · ${summary.calculated_runs} calculated interface runs`;
 for(const line of [...summary.limitations,...summary.warnings])$('catalog-details').append(text('p',line,summary.warnings.includes(line)?'warning':''));
 function matches(s){
@@ -94,7 +105,7 @@ function renderComparison(){
  if(!comparison)return;
  note.append(text('strong',comparison.label),text('p',comparison.note));
  const delta=Object.entries(comparison.delta_right_minus_left).map(([key,value])=>`${key==='W_adh_J_m2'?'W_adh':'W_sep'} ${value>=0?'+':''}${value.toFixed(3)} J/m²`).join(' · ');
- note.append(text('p',`Right minus left: ${delta}. Descriptive differences between these saved runs; not an uncertainty interval.`,'small'));
+ if(delta)note.append(text('p',`Right minus left: ${delta}. Descriptive differences between these saved runs; not an uncertainty interval.`,'small'));
 }
 function compareStates(index){const s=structures[index],first=structures.findIndex(x=>x.run===s.run&&x.state==='initial'),last=structures.findIndex(x=>x.run===s.run&&x.state==='relaxed');if(first>=0&&last>=0)compareIndices(first,last);}
 function compareThickness(index){
@@ -183,6 +194,7 @@ function renderCaption(p,s,g){
  for(const label of [s.featured?'Current working setting':null,s.historical?'Historical pilot':null,s.study,s.status,s.reference_role].filter(Boolean))badges.append(text('span',label,'badge'+(label==='Current working setting'?' current':'')));
  p.caption.append(badges,text('div',s.title,'panel-title'));
  if(s.working_role)p.caption.append(text('p',s.working_role));
+ if(s.campaign_role)p.caption.append(text('p',s.campaign_role,'warning'));
  p.caption.append(text('p',`${s.atoms.length} atoms in saved cell · ${g.atoms.length} displayed · ${s.n_fixed||0} fixed · PBC ${s.pbc.map(v=>v?'yes':'no').join('/')}`));
  if(s.material_id)p.caption.append(text('p',`Material ID: ${s.material_id}`));
  if(s.layers&&Object.keys(s.layers).length)p.caption.append(text('p',`Layers: ${s.layers.substrate_layers} substrate + ${s.layers.film_layers} coating${s.seed!==null?' · seed '+s.seed:''}`));

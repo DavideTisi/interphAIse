@@ -1,39 +1,48 @@
 # interphAIse
 
-**Latest team handoff (21 October):** [SYNC_ADEM_8.md](SYNC_ADEM_8.md) reviews
-the environment smoke cost and production analysis. Davide has approved the
-full frozen production study; Adem owns execution. [REPORT.md](REPORT.md) records the latest
-physics and viewer status; [presentation v4](presentations/README.md) is a
-saved presentation checkpoint with its newer-result corrections listed.
+An LLM proposes coating candidates, interprets calculation feedback and makes
+prospective predictions. Deterministic tools evaluate thermodynamics and
+PET-MAD interface energies. The project tests when feedback improves selection
+and where chemical priors or the evaluator limit it.
 
-**Integrated discovery results:** The new 30-repeat v3 batch completed on `davide`:
-acceptable coating found in 19/30 iterative, 4/30 upfront, 4/30 sequential and
-10/30 random runs. All 1,200 query results replay exactly. A post-hoc fluoride-first
-heuristic succeeds earlier than the LLMs. See
-[INTEGRATED_DISCOVERY_RESULTS.md](INTEGRATED_DISCOVERY_RESULTS.md) for the archived
-evidence, uncertainty, limitations and offline reproduction commands.
+**Start here:** [Reproduce the results](REPRODUCE.md). One offline command rebuilds
+the analyses, checks the frozen evidence and exports the interactive viewer.
+No API credential, model download or GPU is needed for that command.
 
-**Interactive structures:** Run `.venv/bin/python scripts/build_structure_viewer.py`,
-then open `runs/structure_viewer.html` in a browser. Browse 141 candidate IDs,
-battery endpoints, relaxed bulk references and archived interfaces. Compare
-initial/relaxed and thickness cases, with search, filters, cell replication,
-fixed-atom colouring and geometry/image exports. Share the generated HTML file
-itself with a collaborator; it works offline. See [VIEWER_UPDATE.md](VIEWER_UPDATE.md)
-for the current 339-geometry catalogue, selected cathode registry, seed-4
-comparison and reproducibility checks. Use **Evidence comparison** to inspect
-paired archived runs and their scientific limitations.
+**Final results, 22 October 2026:** the original 150-run benchmark, 450-run
+three-environment study and completed three-coating physical pilot are brought
+together in [the synthesis](RESULTS_SYNTHESIS_2026-10-22.md) and
+[the reviewed presentation](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
+([PDF](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf)).
+Correct feedback helps on sulfide; random wins on LLZO. In the physical pilot,
+both LiTaF6 forecasts held and both LiCaAlF6 forecasts missed; candidate order
+did not change. This demonstrates a bounded scientific decision workflow,
+not universal search superiority or a validated coating winner.
 
-**PET-MAD pilot:** A real 224-atom interface and its separated slab references have
-been relaxed. See [PETMAD_INTERFACE_PILOT.md](PETMAD_INTERFACE_PILOT.md) for the
-provisional constrained adhesion estimate, convergence evidence and limitations.
+| Selected primary W_adh, J/m² | Cathode | Electrolyte |
+|---|---:|---:|
+| LiNbF6 | 3.617 | 1.633 |
+| LiTaF6 | 3.339 | 1.577 |
+| LiCaAlF6 | 1.427 | 0.744 |
 
-**Discovery benchmark update (21 October):** Use the frozen v3.0 query API in
-[EVALUATOR_HANDOFF.md](EVALUATOR_HANDOFF.md) and `scripts/run_discovery_experiment.py`.
-The original modelling screen below uses the earlier objective.
-[BENCHMARK_VALIDATION.md](BENCHMARK_VALIDATION.md) records
-the exhaustive results and scientific change; [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md)
-records implementation history. The integrated result above supersedes earlier
-pre-experiment status statements.
+All contacts are formally polar model constructions. The small Nb/Ta difference
+is below known construction sensitivities. LiCaAlF6 electrolyte thickness and
+bulk-structure sensitivity remain unquantified. **LiF has no computed interface
+energy.** Decision-time evidence and later robustness are kept separately.
+
+**Interactive structures:** `python scripts/build_structure_viewer.py`, then
+open `runs/structure_viewer.html`. The final catalogue contains 460 saved
+geometries and 141 candidate IDs. Use the coating buttons to compare the six
+selected contacts, or browse individual registries and later robustness runs.
+The generated HTML can be shared directly and works offline.
+[Viewer guide](STRUCTURE_VIEWER.md).
+
+**Integration:** [final integration record](FINAL_INTEGRATION.md),
+[project report](REPORT.md), [development history](DEVELOPMENT_LOG.md).
+The original screen below is retained as historical design and optional code;
+it is not the protocol used to produce the final discovery results.
+
+## Earlier modelling screen
 
 **Which buffer coating makes a solid-state cathode interface stable — and what atomistic model of each contact should be simulated?**
 
