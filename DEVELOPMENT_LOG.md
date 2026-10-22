@@ -2426,3 +2426,13 @@ Claude, following SYNC_CLAUDE_8–11. **No interface energy was computed for any
   electrolyte at (0,0). Separate robustness report; not in decision feedback.
 - **Next:** Adem's loader fixes plus Davide's live-call approval, then the six primary jobs per
   archived selection.
+
+## 2026-10-22 — Coating pilot execution and final package (branch `work/petmad-comparison`; scoped entry)
+
+Ran after Adem archived each live selection with forecasts. Receipts were committed before energies
+(`207f879` LiTaF6, `e4d5ab7` LiCaAlF6). Primary packages: LiTaF6 `d5ab477` (cathode 3.339, electrolyte
+1.577 J/m²) and LiCaAlF6 `668b5e3` (1.427 / 0.744; electrolyte registry range 0.524–0.744). Sensitivity
+jobs ran at `--nice` and were kept outside decisions (`fb27095` and earlier). After the summary
+(`c0a0546`), `index_final.json` added all robustness rows; decision-time indices and bundles are kept
+in `snapshots/`. 26 new RTX 3090 jobs, all converged. See
+`data/petmad/coating_comparison_v1/FINAL_COMPARISON.md`.
