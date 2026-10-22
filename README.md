@@ -26,50 +26,37 @@ question, candidate menu, scoring rules and budget. Code validates choices,
 runs or retrieves calculations, and preserves the evidence.
 
 ```mermaid
-flowchart TB
-    H["Human setup<br/>Pools, rules, budgets"]
+flowchart LR
+    L{{"LLM<br/>Choose and explain"}}
+    V["Code<br/>Validate and record"]
+    E["Physics tools<br/>Evaluate candidate"]
+    F{{"LLM<br/>Interpret feedback"}}
+    A["Analysis<br/>Controls and forecasts"]
 
-    subgraph B["Search benchmark — both models"]
-        direction TB
-        L{{"LLM chooses<br/>and explains"}}
-        Q["Validate ID<br/>Reveal frozen scores"]
-        A["Compare controls<br/>and random search"]
-        L --> Q
-        Q -- "Feedback" --> L
-        Q -- "Budget reached" --> A
-    end
-
-    subgraph P["Physical pilot — Haiku"]
-        direction TB
-        C{{"Haiku chooses<br/>and forecasts"}}
-        D["Archive forecasts<br/>before calculations"]
-        M["ASE + PET-MAD<br/>Frozen interfaces"]
-        V["Validate and reveal<br/>primary adhesion"]
-        F["Archive summary<br/>Release sensitivity checks"]
-        C --> D --> M --> V
-        V -- "Feedback" --> C
-        V -- "Pilot complete" --> F
-    end
-
-    H --> B
-    H -- "Reference data" --> P
+    L --> V --> E --> F
+    F -- "Next choice" --> L
+    E -- "Recorded results" --> A
 
     classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
     classDef tools fill:#eef1f4,stroke:#7a8794,color:#1b2733
-    classDef human fill:#ffffff,stroke:#162b3a,color:#162b3a
-    class L,C llm
-    class Q,A,D,M,V,F tools
-    class H human
-    style B fill:#fafafa,stroke:#b8c2cc
-    style P fill:#fafafa,stroke:#b8c2cc
+    class L,F llm
+    class V,E,A tools
 ```
 
 **Teal nodes are LLM decisions; grey nodes are computation, validation and
-analysis.** The feedback arrows show the iterative workflow. In the benchmark,
-upfront selects its entire shortlist before seeing results, sequential receives
-no numerical outcomes, and shuffled receives misassigned outcomes. Random
-selection provides the baseline. The benchmark retrieves precomputed scores;
-the physical pilot performs new calculations for the selected coatings.
+analysis.** The loop shows the iterative workflow; each study has a fixed budget.
+
+| Study | What the LLM decides | What the evaluator supplies |
+|---|---|---|
+| Discovery benchmark — Haiku and DeepSeek | Next candidate and chemical rationale | Selected candidate's precomputed thermodynamic scores |
+| Physical pilot — Haiku | Next coating and predicted adhesion at both contacts | New ASE/PET-MAD calculations on frozen interface structures |
+
+In the benchmark, upfront selects its entire shortlist before seeing results,
+sequential receives no numerical outcomes, and shuffled receives misassigned
+outcomes. Random selection provides the baseline. In the physical pilot,
+choices and forecasts are archived before new energies are known. Primary
+results inform the next decision; withheld sensitivity results are released
+only after the final summary.
 
 The two studies test complementary questions: does feedback improve the search,
 and do the LLM's prospective physical predictions hold? They do not establish
