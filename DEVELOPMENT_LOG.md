@@ -3407,3 +3407,32 @@ frozen archives and scientific results are unchanged. No collaborator API key
 was used and no discovery run or materials calculation was launched. One
 built-in image-generation request was made. Next: share these companion assets
 on the integration branch for the final review.
+
+## 2026-10-22 — Shareable one-page project overview document
+
+**Branch:** `work/final-integration-20261022`, starting at `c99be42`. The user
+approved the short overview and requested a document. Created
+`presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx`
+with the approved four paragraphs, the original illustration, a linked Xiao et
+al. background reference and a caption distinguishing the schematic from the
+computed structures. The LLM's delegated scientific decisions are emphasized;
+the negative LLZO result and physical/model limitations remain explicit.
+
+The reproducible builder is
+`presentations/source/build_project_overview_docx.py`. Authoring used python-docx
+from the Codex bundled runtime. Rendered with the document skill's packaged
+LibreOffice renderer and inspected the final single page at native resolution.
+An initial orphan reference page and inherited title border were corrected.
+The final page uses 11-point body text and preserves the approved prose exactly,
+apart from converting the Markdown background link to reference [1]. Confirmed
+the embedded PNG is byte-identical to the approved original, the four body
+paragraphs match the source, and no title borders remain. DOCX SHA-256:
+`496a65f42eb0f6980df91f3ea87ccb51c270b4043437cb9cb2df30cde8c452e8`.
+
+QA renders are ignored under `runs/overview_docx_qa_final/`. Only the requested
+Word artifact, its builder and documentation are release files. No new materials
+calculation, paid LLM call or image generation occurred; software tests were not
+rerun for this document-only change. A separately requested subagent is preparing
+a small referee edition of the structure viewer in an isolated worktree; its
+hosting and verification outcome will be logged separately. The scientific
+archives, current slide deck and original davide checkout are unchanged.

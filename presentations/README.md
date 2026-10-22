@@ -8,6 +8,13 @@ separate one-slide checkpoint. See [the integration record](../FINAL_INTEGRATION
 
 ## Short overview and graphical abstract
 
+[One-page Word document](results_2026-10-22/interphaise_project_overview_2026-10-22.docx)
+combines the approved overview and graphical abstract. It was rendered with the
+bundled document compiler and visually checked as one Letter-size page, with
+11-point body text, an embedded illustration and a linked background reference.
+The [builder](source/build_project_overview_docx.py) uses Python and python-docx;
+it reads the two committed source assets without any API access.
+
 [Half-page overview](source/interphaise_overview_2026-10-22.txt) and
 [companion illustration](results_2026-10-22/interphaise_graphical_abstract_2026-10-22_v1.png)
 explain the coating problem, simulation difficulty, tools, LLM role and results.
