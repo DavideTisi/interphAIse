@@ -1,0 +1,1531 @@
+{
+  "strategy": "sequential",
+  "seed": 217,
+  "budget": 10,
+  "prompt_version": "v3-2026-10-21c-charged-ids",
+  "hashes": {
+    "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+    "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+    "benchmark_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"
+  },
+  "objective": {
+    "acceptable_penalty_eV": 0.05,
+    "bin_width_eV": 0.02,
+    "contact_reference": "equilibrated",
+    "min_band_gap_eV": 2.0,
+    "version": "v3.0"
+  },
+  "metadata": {
+    "repeat": 217,
+    "model": "deepseek/deepseek-v3.2",
+    "temperature": 1.0
+  },
+  "proposal_attempts": [
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaegs\", \"formula\": \"Li3PO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagdw\", \"formula\": \"Li2ZrO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacplkn\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaauhx\", \"formula\": \"Li3PO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaaegs",
+            "hypothesis": "Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+            "motivation": "none",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792683404-vmKa8cT7aE5ayhfTboJ5",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 4819,
+          "output_tokens": 1629,
+          "cache_read_input_tokens": 4736,
+          "output_tokens_details": {
+            "thinking_tokens": 1528
+          },
+          "openrouter_cost_usd": 0.001987737
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 75.268
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagdw\", \"formula\": \"Li2ZrO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacplkn\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaauhx\", \"formula\": \"Li3PO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaauhx",
+            "hypothesis": "Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+            "motivation": "the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792683479-noy2QzaLHISnALWhGLLa",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 4879,
+          "output_tokens": 2974,
+          "cache_read_input_tokens": 0,
+          "output_tokens_details": {
+            "thinking_tokens": 2854
+          },
+          "openrouter_cost_usd": 0.003642861
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 138.71
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaagdw\", \"formula\": \"Li2ZrO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacplkn\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaagdw",
+            "hypothesis": "Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.",
+            "motivation": "none",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792683618-al9nGOcgtbpgc5ztzR6J",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 4958,
+          "output_tokens": 1393,
+          "cache_read_input_tokens": 4480,
+          "output_tokens_details": {
+            "thinking_tokens": 1302
+          },
+          "openrouter_cost_usd": 0.001865402
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 65.26
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacplkn\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaiak\", \"formula\": \"Li6Zr2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaagdw\", \"hypothesis\": \"Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaaiak",
+            "hypothesis": "Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.",
+            "motivation": "the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792683683-NRxinIkCJV4GxxzYqRO0",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 5005,
+          "output_tokens": 2562,
+          "cache_read_input_tokens": 2560,
+          "output_tokens_details": {
+            "thinking_tokens": 2456
+          },
+          "openrouter_cost_usd": 0.003041255
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 115.872
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaabru\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacplkn\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaagdw\", \"hypothesis\": \"Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaaiak\", \"hypothesis\": \"Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte\", \"mode\": \"refine\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaaaabru",
+            "hypothesis": "LiF has a very wide band gap (>10 eV) and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+            "motivation": "none",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792683799-yIbkFO3qL3ijJBvKPald",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 5077,
+          "output_tokens": 3055,
+          "cache_read_input_tokens": 3072,
+          "output_tokens_details": {
+            "thinking_tokens": 2961
+          },
+          "openrouter_cost_usd": 0.003393375
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 143.937
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacplkn\", \"formula\": \"LiF\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaagdw\", \"hypothesis\": \"Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaaiak\", \"hypothesis\": \"Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF has a very wide band gap (>10 eV) and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaacplkn",
+            "hypothesis": "LiF has a very wide band gap and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+            "motivation": "the earlier observation that LiF has a very wide band gap and high chemical stability",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792683943-J8anMwNZwhkVPEje7eUj",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 5131,
+          "output_tokens": 2784,
+          "cache_read_input_tokens": 3072,
+          "output_tokens_details": {
+            "thinking_tokens": 2689
+          },
+          "openrouter_cost_usd": 0.003190561
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 432.328
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabevhd\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaagdw\", \"hypothesis\": \"Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaaiak\", \"hypothesis\": \"Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF has a very wide band gap (>10 eV) and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacplkn\", \"hypothesis\": \"LiF has a very wide band gap and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that LiF has a very wide band gap and high chemical stability\", \"mode\": \"refine\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaabevhd",
+            "hypothesis": "LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap, providing insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+            "motivation": "none",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792684375-JnyS5fEg8DF0jrmfs3Sk",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 5196,
+          "output_tokens": 2381,
+          "cache_read_input_tokens": 2944,
+          "output_tokens_details": {
+            "thinking_tokens": 2288
+          },
+          "openrouter_cost_usd": 0.002900228
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 198.124
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabmubf\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaagdw\", \"hypothesis\": \"Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaaiak\", \"hypothesis\": \"Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF has a very wide band gap (>10 eV) and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacplkn\", \"hypothesis\": \"LiF has a very wide band gap and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that LiF has a very wide band gap and high chemical stability\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaabevhd\", \"hypothesis\": \"LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap, providing insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"refine\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaabmubf",
+            "hypothesis": "LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap (>2 eV); the presence of Zr may enhance chemical compatibility with the Zr-based Li7La3Zr2O12 electrolyte, providing effective insulation to reduce interfacial reactions at 4.0 V.",
+            "motivation": "the earlier observation that LiZr2(PO4)3 has high lithium-ion conductivity and wide band gap",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792684573-7clA1sb9fckqFEmDpAx8",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 5254,
+          "output_tokens": 3209,
+          "cache_read_input_tokens": 0,
+          "output_tokens_details": {
+            "thinking_tokens": 3072
+          },
+          "openrouter_cost_usd": 0.003927986
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 298.631
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrzpk\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaagdw\", \"hypothesis\": \"Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaaiak\", \"hypothesis\": \"Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF has a very wide band gap (>10 eV) and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacplkn\", \"hypothesis\": \"LiF has a very wide band gap and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that LiF has a very wide band gap and high chemical stability\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaabevhd\", \"hypothesis\": \"LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap, providing insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaabmubf\", \"hypothesis\": \"LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap (>2 eV); the presence of Zr may enhance chemical compatibility with the Zr-based Li7La3Zr2O12 electrolyte, providing effective insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that LiZr2(PO4)3 has high lithium-ion conductivity and wide band gap\", \"mode\": \"refine\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaabrzpk",
+            "hypothesis": "LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap (>2 eV), providing insulation and chemical compatibility with the Zr-based Li7La3Zr2O12 electrolyte to reduce interfacial reactions at 4.0 V.",
+            "motivation": "none",
+            "mode": "refine"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792684872-9R3OU1kvzbF1qQnSWAKP",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 5344,
+          "output_tokens": 3181,
+          "cache_read_input_tokens": 0,
+          "output_tokens_details": {
+            "thinking_tokens": 3072
+          },
+          "openrouter_cost_usd": 0.003928896
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 300.601
+          }
+        ],
+        "final_error": null
+      }
+    },
+    {
+      "prompt": "{\"task\": {\"endpoints\": {\"electrode\": {\"formula\": \"LiCoO2\", \"material_id\": \"mp-22526\"}, \"electrolyte\": {\"formula\": \"Li7La3Zr2O12\", \"material_id\": \"mp-942733\"}}, \"voltage_V\": 4.0, \"objective\": {\"acceptable_penalty_eV\": 0.05, \"bin_width_eV\": 0.02, \"contact_reference\": \"equilibrated\", \"min_band_gap_eV\": 2.0, \"version\": \"v3.0\"}, \"instructions\": \"Require status ok and insulation. Minimize nonnegative penalty_bin; candidates in the same bin tie. Penalty is measured in eV/non-Li atom. Acceptability describes the coating criterion, not whole-stack stability. Each query consumes one evaluation, including failed or repeated candidates.\"}, \"available\": [{\"candidate_id\": \"mp-aaaaajan\", \"formula\": \"Li3Al(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacrorg\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabewcp\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrycl\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshfd\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaacffw\", \"formula\": \"Li2MgCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrouo\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqhlx\", \"formula\": \"Li2B6O9F2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabrygd\", \"formula\": \"Li2Ti4O9\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrybm\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrwgd\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacroqc\", \"formula\": \"Li2MgZrO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaqoj\", \"formula\": \"Li2MgSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhwz\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacjjgb\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafjv\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacsdzb\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiqq\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaanou\", \"formula\": \"Li4TiO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafnn\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacqrlq\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabserm\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaabqgb\", \"formula\": \"Li8SiO6\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaazoy\", \"formula\": \"Li2ZnSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrbnl\", \"formula\": \"Li2Nb4ZnO12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfsrb\", \"formula\": \"Li4Ca(BO3)2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabqcg\", \"formula\": \"Li4P2O7\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacromz\", \"formula\": \"Li3Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaogf\", \"formula\": \"LiMgPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajjj\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaikc\", \"formula\": \"LiTi2O4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalvt\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalhu\", \"formula\": \"LiTa3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfvoz\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabgmpb\", \"formula\": \"LiI\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrokb\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfrlv\", \"formula\": \"Li2AlBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacshah\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaagcj\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrubf\", \"formula\": \"LiNb(OF)2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabart\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgl\", \"formula\": \"Li2TiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacqkph\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabrjsc\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabfyjw\", \"formula\": \"Li2Mg2Si4O11\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaacxk\", \"formula\": \"Li2O\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacshhs\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqywz\", \"formula\": \"Li5TaO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfuqq\", \"formula\": \"LiAl(SiO3)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacroks\", \"formula\": \"Li5Al(SiO4)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabnua\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaabrwaj\", \"formula\": \"Li5NbO5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafxy\", \"formula\": \"Li2ZrF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrffc\", \"formula\": \"LiZr2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacpsqh\", \"formula\": \"Li2CaTa2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafuy\", \"formula\": \"LiNbO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqqv\", \"formula\": \"Li2ZnBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajwm\", \"formula\": \"LiTiPO5\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaagbgdu\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrovy\", \"formula\": \"Li2Ti(IO3)6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaalgs\", \"formula\": \"Li2CaSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacsipj\", \"formula\": \"LiO8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaaldv\", \"formula\": \"Li5AlO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaafecfi\", \"formula\": \"Li2NbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrdjo\", \"formula\": \"Li5Ti8O16\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabqxs\", \"formula\": \"Li6MgBr8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacdofg\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacrogm\", \"formula\": \"LiZnBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaahku\", \"formula\": \"Li2SiO3\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabryuj\", \"formula\": \"Li8TiO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpsoi\", \"formula\": \"Li2Ti3O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajnu\", \"formula\": \"LiAl(Si2O5)2\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaerf\", \"formula\": \"Li3TaO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacrojc\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaabfxxj\", \"formula\": \"Li2Ta2(OF2)3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabiak\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxr\", \"formula\": \"Li3AlSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabhzd\", \"formula\": \"Li2ZnCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaahikjp\", \"formula\": \"Li6MgCl8\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrvsy\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwvx\", \"formula\": \"LiTaSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaaeit\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabupc\", \"formula\": \"Li3NbO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabboy\", \"formula\": \"LiTi2(PO4)3\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaabgj\", \"formula\": \"Li2O2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabqzfd\", \"formula\": \"Li8ZrO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaablpp\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabrbhn\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafgq\", \"formula\": \"Li2Si2O5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaahikjt\", \"formula\": \"LiMgCl3\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabikp\", \"formula\": \"LiBr\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavbk\", \"formula\": \"LiBO2\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaabqzpx\", \"formula\": \"Li2NbOF5\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpthh\", \"formula\": \"Li2Ti6O13\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfwhy\", \"formula\": \"LiZnPO4\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaacrovd\", \"formula\": \"Li2MgTi9O20\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacdaer\", \"formula\": \"LiCaBO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaabipk\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfrho\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabsvl\", \"formula\": \"LiClO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpxde\", \"formula\": \"LiMgAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaajby\", \"formula\": \"LiCaAlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabpbz\", \"formula\": \"Li6Si2O7\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaaasjb\", \"formula\": \"LiBF4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaavln\", \"formula\": \"Li6ZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaannr\", \"formula\": \"LiPF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaafku\", \"formula\": \"LiB3O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacozau\", \"formula\": \"Li6Ti2O7\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhyx\", \"formula\": \"LiIO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacjmqp\", \"formula\": \"LiTaF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaacpxez\", \"formula\": \"Li2SiF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfsdc\", \"formula\": \"LiAlB2O5\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaafbv\", \"formula\": \"LiAlO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaafla\", \"formula\": \"LiTaO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacpllf\", \"formula\": \"LiCl\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaaarjl\", \"formula\": \"Li4SiO4\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaacqxqk\", \"formula\": \"Li5IO6\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabsjbb\", \"formula\": \"Li7Ti5O12\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaacgaxq\", \"formula\": \"Li3B(PO4)2\", \"family\": \"phosphate\"}, {\"candidate_id\": \"mp-aaaaajck\", \"formula\": \"LiNbZnO4\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaajjo\", \"formula\": \"Li2TiSiO5\", \"family\": \"silicate\"}, {\"candidate_id\": \"mp-aaaabojb\", \"formula\": \"Li3BO3\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaacjjwh\", \"formula\": \"LiNbF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabnawv\", \"formula\": \"LiNbO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaabfqnk\", \"formula\": \"Li3AlF6\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabrbht\", \"formula\": \"Li5Ti3O8\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaandi\", \"formula\": \"LiSiBO4\", \"family\": \"borate\"}, {\"candidate_id\": \"mp-aaaaccnw\", \"formula\": \"Li2TiO3\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaaceqi\", \"formula\": \"LiTiO2\", \"family\": \"other_oxide\"}, {\"candidate_id\": \"mp-aaaabhzz\", \"formula\": \"LiAlCl4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaaabqxt\", \"formula\": \"Li2MgBr4\", \"family\": \"halide\"}, {\"candidate_id\": \"mp-aaabfumz\", \"formula\": \"LiAlSiO4\", \"family\": \"silicate\"}], \"count\": 1, \"evaluated\": [{\"proposal\": {\"candidate_id\": \"mp-aaaaaegs\", \"hypothesis\": \"Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaauhx\", \"hypothesis\": \"Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaagdw\", \"hypothesis\": \"Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaaiak\", \"hypothesis\": \"Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaaaabru\", \"hypothesis\": \"LiF has a very wide band gap (>10 eV) and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"explore\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaacplkn\", \"hypothesis\": \"LiF has a very wide band gap and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"the earlier observation that LiF has a very wide band gap and high chemical stability\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaabevhd\", \"hypothesis\": \"LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap, providing insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaabmubf\", \"hypothesis\": \"LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap (>2 eV); the presence of Zr may enhance chemical compatibility with the Zr-based Li7La3Zr2O12 electrolyte, providing effective insulation to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"the earlier observation that LiZr2(PO4)3 has high lithium-ion conductivity and wide band gap\", \"mode\": \"refine\"}}, {\"proposal\": {\"candidate_id\": \"mp-aaabrzpk\", \"hypothesis\": \"LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap (>2 eV), providing insulation and chemical compatibility with the Zr-based Li7La3Zr2O12 electrolyte to reduce interfacial reactions at 4.0 V.\", \"motivation\": \"none\", \"mode\": \"refine\"}}], \"validation_feedback\": \"\"}",
+      "response": {
+        "proposals": [
+          {
+            "candidate_id": "mp-aaacrouo",
+            "hypothesis": "Li2MgSiO4 is a silicate with a likely wide band gap and good lithium ion conductivity; exploring silicate family as a chemically different option from earlier phosphate, Zr-oxide, and halide coatings may offer insulation and compatibility at 4.0 V.",
+            "motivation": "none",
+            "mode": "explore"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "requested_model": "deepseek/deepseek-v3.2",
+        "returned_model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1792685173-3PWUF4QL6JDOHrczYTLP",
+        "provider_requested": "siliconflow/fp8",
+        "provider_served": "SiliconFlow",
+        "reasoning": {
+          "max_tokens": 3072
+        },
+        "usage": {
+          "input_tokens": 5407,
+          "output_tokens": 1228,
+          "cache_read_input_tokens": 3712,
+          "output_tokens_details": {
+            "thinking_tokens": 1126
+          },
+          "openrouter_cost_usd": 0.001941085
+        },
+        "stop_reason": "stop",
+        "temperature": 1.0,
+        "max_tokens": 4096,
+        "http_attempts": 1,
+        "transport_retries": 0,
+        "attempts": [
+          {
+            "status": 200,
+            "elapsed_s": 100.068
+          }
+        ],
+        "final_error": null
+      }
+    }
+  ],
+  "history": [
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaaegs",
+        "hypothesis": "Li3PO4 has a wide band gap (>5 eV) and good lithium ion conductivity, making it suitable as an insulating coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+        "motivation": "none",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.335836926017155
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 5.7279,
+        "bin_regret": 4,
+        "candidate_id": "mp-aaaaaegs",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.0016910970000001413,
+            "electrolyte_contact": 0.09917942263672064
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.09917942263672064
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li3PO4"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "LaPO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.09917942263672064,
+            "second_non_Li_fraction": 0.53125
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -211.80576048,
+            "entry_id": "mp-2878-GGA",
+            "formula": "Li3PO4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.14409062499180436,
+        "family": "phosphate",
+        "formula": "Li3PO4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.09917942263672064,
+        "penalty_bin": 4,
+        "self_decomposition_penalty": 0.0016910970000001413,
+        "status": "ok",
+        "thermo_entry_count": 983,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaauhx",
+        "hypothesis": "Li3PO4 is an insulating phosphate with a wide band gap (>4 eV) and good lithium ion conductivity, making it suitable as a coating to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+        "motivation": "the earlier observation that Li3PO4 has a wide band gap and good lithium ion conductivity",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.335836926017155
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 5.818099999999999,
+        "bin_regret": 4,
+        "candidate_id": "mp-aaaaauhx",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.0,
+            "electrolyte_contact": 0.09917942263672064
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.09917942263672064
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li3PO4"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "LaPO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.09917942263672064,
+            "second_non_Li_fraction": 0.53125
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -105.91979121,
+            "entry_id": "mp-13725-GGA",
+            "formula": "Li3PO4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.13729874999262393,
+        "family": "phosphate",
+        "formula": "Li3PO4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.09917942263672064,
+        "penalty_bin": 4,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 983,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaagdw",
+        "hypothesis": "Li2ZrO3 has a wide band gap and structural similarity to the Li7La3Zr2O12 electrolyte, offering potential chemical compatibility and insulation to reduce interfacial reactions at 4.0 V.",
+        "motivation": "none",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.29988935958333407,
+          -0.34685297202380916
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 3.7336,
+        "bin_regret": 14,
+        "candidate_id": "mp-aaaaagdw",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.29988935958333407,
+            "electrolyte_contact": 0.017863201517856808
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.017863201517856808
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": -0.0
+          },
+          {
+            "products": [
+              "La2Zr2O7",
+              "O2"
+            ],
+            "reaction_energy": -0.017863201517856808,
+            "second_non_Li_fraction": 0.8095238095238094
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -90.90145041,
+            "entry_id": "mp-4156-GGA",
+            "formula": "Li2ZrO3"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.1008337500388734,
+        "family": "other_oxide",
+        "formula": "Li2ZrO3",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.29988935958333407,
+        "penalty_bin": 14,
+        "self_decomposition_penalty": 0.29988935958333407,
+        "status": "ok",
+        "thermo_entry_count": 561,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaaiak",
+        "hypothesis": "Li6Zr2O7 is a zirconium oxide with likely wide band gap and structural similarity to Li7La3Zr2O12 electrolyte, providing insulation and chemical compatibility to reduce interfacial reactions at 4.0 V.",
+        "motivation": "the earlier observation that Li2ZrO3 has structural similarity to the Li7La3Zr2O12 electrolyte",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.43338439944444485,
+          -0.43338439944444485
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 3.9436,
+        "bin_regret": 21,
+        "candidate_id": "mp-aaaaaiak",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.43338439944444485,
+            "electrolyte_contact": 0.01744777822674415
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.01744777822674415
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "La2Zr2O7",
+              "O2"
+            ],
+            "reaction_energy": -0.01744777822674415,
+            "second_non_Li_fraction": 0.7906976744186046
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -212.33182485999998,
+            "entry_id": "mp-5418-GGA",
+            "formula": "Li6Zr2O7"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.10547024995321408,
+        "family": "other_oxide",
+        "formula": "Li6Zr2O7",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.43338439944444485,
+        "penalty_bin": 21,
+        "self_decomposition_penalty": 0.43338439944444485,
+        "status": "ok",
+        "thermo_entry_count": 561,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaabru",
+        "hypothesis": "LiF has a very wide band gap (>10 eV) and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+        "motivation": "none",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.36119413108333376
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 8.7161,
+        "bin_regret": 5,
+        "candidate_id": "mp-aaaaabru",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.0,
+            "electrolyte_contact": 0.11972936728365458
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.11972936728365458
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "LiF"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "LaF3",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.11972936728365458,
+            "second_non_Li_fraction": 0.6538461538461539
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -10.152291029999999,
+            "entry_id": "mp-1138-GGA",
+            "formula": "LiF"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.12196991598466411,
+        "family": "halide",
+        "formula": "LiF",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.11972936728365458,
+        "penalty_bin": 5,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 896,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaacplkn",
+        "hypothesis": "LiF has a very wide band gap and high chemical stability, providing excellent insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+        "motivation": "the earlier observation that LiF has a very wide band gap and high chemical stability",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.3631938943333335
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 8.758099999999999,
+        "bin_regret": 5,
+        "candidate_id": "mp-aaacplkn",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.01333175499999939,
+            "electrolyte_contact": 0.11972936728365458
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.11972936728365458
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "LiF"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "LaF3",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.11972936728365458,
+            "second_non_Li_fraction": 0.6538461538461539
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -20.27791855,
+            "entry_id": "mp-1185301-GGA",
+            "formula": "LiF"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.1204503329936415,
+        "family": "halide",
+        "formula": "LiF",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.11972936728365458,
+        "penalty_bin": 5,
+        "self_decomposition_penalty": 0.01333175499999939,
+        "status": "ok",
+        "thermo_entry_count": 896,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaabevhd",
+        "hypothesis": "LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap, providing insulation to reduce interfacial reactions between LiCoO2 and Li7La3Zr2O12 at 4.0 V.",
+        "motivation": "none",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.33650102416666705
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.1295,
+        "bin_regret": 4,
+        "candidate_id": "mp-aaabevhd",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.01886771176470603,
+            "electrolyte_contact": 0.08987644003063977
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.08987644003063977
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 0.0
+          },
+          {
+            "products": [
+              "LaPO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.08987644003063977,
+            "second_non_Li_fraction": 0.5000000000000001
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -302.76520627,
+            "entry_id": "mp-541661-GGA",
+            "formula": "LiZr2(PO4)3"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.15820324997184798,
+        "family": "phosphate",
+        "formula": "LiZr2(PO4)3",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.08987644003063977,
+        "penalty_bin": 4,
+        "self_decomposition_penalty": 0.01886771176470603,
+        "status": "ok",
+        "thermo_entry_count": 983,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaabmubf",
+        "hypothesis": "LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap (>2 eV); the presence of Zr may enhance chemical compatibility with the Zr-based Li7La3Zr2O12 electrolyte, providing effective insulation to reduce interfacial reactions at 4.0 V.",
+        "motivation": "the earlier observation that LiZr2(PO4)3 has high lithium-ion conductivity and wide band gap",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.3363348581372545
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.2314,
+        "bin_regret": 4,
+        "candidate_id": "mp-aaabmubf",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.016873719411766075,
+            "electrolyte_contact": 0.08987644003063977
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.08987644003063977
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 0.0
+          },
+          {
+            "products": [
+              "LaPO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.08987644003063977,
+            "second_non_Li_fraction": 0.5000000000000001
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -302.83300201,
+            "entry_id": "mp-681439-GGA",
+            "formula": "LiZr2(PO4)3"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.16873033402953297,
+        "family": "phosphate",
+        "formula": "LiZr2(PO4)3",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.08987644003063977,
+        "penalty_bin": 4,
+        "self_decomposition_penalty": 0.016873719411766075,
+        "status": "ok",
+        "thermo_entry_count": 983,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaabrzpk",
+        "hypothesis": "LiZr2(PO4)3 is a NASICON-type material with high lithium-ion conductivity and a likely wide band gap (>2 eV), providing insulation and chemical compatibility with the Zr-based Li7La3Zr2O12 electrolyte to reduce interfacial reactions at 4.0 V.",
+        "motivation": "none",
+        "mode": "refine"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.3359083325490193
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.2911,
+        "bin_regret": 4,
+        "candidate_id": "mp-aaabrzpk",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.011755412352940198,
+            "electrolyte_contact": 0.08987644003063977
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.08987644003063977
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 0.0
+          },
+          {
+            "products": [
+              "LaPO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.08987644003063977,
+            "second_non_Li_fraction": 0.5000000000000001
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -303.00702445,
+            "entry_id": "mp-773068-GGA",
+            "formula": "LiZr2(PO4)3"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.16529012500541285,
+        "family": "phosphate",
+        "formula": "LiZr2(PO4)3",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.08987644003063977,
+        "penalty_bin": 4,
+        "self_decomposition_penalty": 0.011755412352940198,
+        "status": "ok",
+        "thermo_entry_count": 983,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaacrouo",
+        "hypothesis": "Li2MgSiO4 is a silicate with a likely wide band gap and good lithium ion conductivity; exploring silicate family as a chemically different option from earlier phosphate, Zr-oxide, and halide coatings may offer insulation and compatibility at 4.0 V.",
+        "motivation": "none",
+        "mode": "explore"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.335836926017155
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.7565,
+        "bin_regret": 4,
+        "candidate_id": "mp-aaacrouo",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.0922952618055568,
+            "electrolyte_contact": 0.026589309799526895
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.026589309799526895
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": -0.0
+          },
+          {
+            "products": [
+              "La2Si2O7",
+              "Mg2SiO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.026589309799526895,
+            "second_non_Li_fraction": 0.32075471698113206
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -217.03368810999999,
+            "entry_id": "mp-1222742-GGA",
+            "formula": "Li2MgSiO4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.34142220800276846,
+        "family": "silicate",
+        "formula": "Li2MgSiO4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.0922952618055568,
+        "penalty_bin": 4,
+        "self_decomposition_penalty": 0.0922952618055568,
+        "status": "ok",
+        "thermo_entry_count": 2275,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    }
+  ],
+  "trace": [
+    {
+      "evaluations": 1,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 2,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 3,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 4,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 5,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 6,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 7,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 8,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 9,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    },
+    {
+      "evaluations": 10,
+      "best_candidate_id": "mp-aaaaaegs",
+      "best_rank": [
+        1,
+        -4,
+        0.0
+      ],
+      "any_acceptable": false
+    }
+  ],
+  "displayed_sources": [],
+  "status": "complete"
+}

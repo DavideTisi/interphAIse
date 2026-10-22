@@ -1,0 +1,22 @@
+environment   arm               runs     calls   retries      http transport      http     input    output  thinking     cache     cache      over   missing      USD
+Li3InCl6      iterative           30       300         0       300         0         0   1829795    737799    704493         0    537216         0         0   1.0002
+Li3InCl6      sequential          30       300         0       300         0         0   1518074    703865    674746         0    544128         0         0   0.8915
+Li3InCl6      shuffled            30       300         0       300         0         0   1829493    749410    716437         0    572416         0         0   1.0052
+Li3InCl6      upfront             30        30         0        30         0         0    144480     84047     66193         0     28416         0         0   0.1013
+Li6PS5Cl      iterative           30       301         1       300         0         1   1859685    703473    667414         0    506752         0         1   0.9841
+Li6PS5Cl      sequential          30       300         0       300         0         0   1519250    701001    671625         0    559104         0         0   0.8878
+Li6PS5Cl      shuffled            30       300         0       300         0         0   1856421    712034    677061         0    600064         0         0   0.9790
+Li6PS5Cl      upfront             30        30         0        30         0         0    144480     83731     65757         0     28416         0         0   0.1010
+Li7La3Zr2O12  iterative           30       300         0       300         0         0   1852141    764804    729113         0    527616         0         0   1.0288
+Li7La3Zr2O12  sequential          30       301         1       301         0         0   1527025    700033    669674         0    544256         0         0   0.8908
+Li7La3Zr2O12  shuffled            30       301         1       300         0         1   1848628    757170    723109         0    556288         0         1   1.0183
+Li7La3Zr2O12  upfront             30        30         0        30         0         0    144570     85617     67408         0     28416         0         0   0.1026
+TOTAL                            360      2793         3      2791         0         2  16074042   6782984   6433030         0   5033088         0         2   8.9906
+(columns: runs, calls = proposal attempts, retries = format retries, http = HTTP attempts, transport = transport retries, http_unknown = calls without HTTP records, input, output incl. thinking, thinking, cache write, cache read, prompts >100k, calls without usage; USD = list-price estimate, not billed)
+HTTP attempts unknown for 2 of 2793 calls (not recorded in those archives); http/transport columns cover only calls with records.
+
+mean prompt tokens by call index within a run (history growth):
+  iterative   0:9448 1:7614 2:6848 3:7117 4:7311 5:7569 6:7954 7:7889 8:8060 9:9196 10:10884
+  sequential  0:9343 1:6392 2:7096 3:6336 4:6842 5:6357 6:6600 7:6442 8:6835 9:6661 10:10559
+  shuffled    0:9448 1:7888 2:7250 3:7451 4:7445 5:8045 6:7701 7:7994 8:8684 9:8769 10:10586
+  upfront     0:5764

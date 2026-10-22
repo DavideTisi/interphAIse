@@ -1,0 +1,6419 @@
+{
+  "environments": {
+    "Li3InCl6": {
+      "directories": [
+        "data/experiments/deepseek_v1/lic"
+      ],
+      "budget": 10,
+      "hashes": {
+        "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+        "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+        "benchmark_sha256": "a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2"
+      },
+      "analysis_notes": [],
+      "arms": {
+        "iterative": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_mean": 1.3,
+          "first_acceptable_median": 1.0,
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            2
+          ],
+          "first_acceptable_counts": {
+            "1": 21,
+            "2": 9,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "best_bin_found": 30,
+          "best_bin_rate": 1.0,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "fluoride_fraction_early": 0.2866666666666667,
+          "fluoride_fraction_late": 0.30201342281879195,
+          "fluoride_change_mean": 0.013333333333333332,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 1,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                3,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.20000000000000007
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                3,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                4
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                4,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                5,
+                5
+              ],
+              "fluoride_late": [
+                5,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.19999999999999996
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                4,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            }
+          ]
+        },
+        "sequential": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_mean": 1.5,
+          "first_acceptable_median": 1.0,
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            2
+          ],
+          "first_acceptable_counts": {
+            "1": 21,
+            "2": 5,
+            "3": 2,
+            "4": 2,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "best_bin_found": 30,
+          "best_bin_rate": 1.0,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "fluoride_fraction_early": 0.3,
+          "fluoride_fraction_late": 0.22818791946308725,
+          "fluoride_change_mean": -0.07166666666666667,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 1,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                5,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": -0.6
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 4,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                4
+              ],
+              "fluoride_change": 0.04999999999999999
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                5,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": -0.6
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                3,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": -0.19999999999999996
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.6
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                4,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.8
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 4,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            }
+          ]
+        },
+        "shuffled": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_mean": 1.3,
+          "first_acceptable_median": 1.0,
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            2
+          ],
+          "first_acceptable_counts": {
+            "1": 21,
+            "2": 9,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "best_bin_found": 30,
+          "best_bin_rate": 1.0,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "fluoride_fraction_early": 0.20134228187919462,
+          "fluoride_fraction_late": 0.19463087248322147,
+          "fluoride_change_mean": -0.006666666666666664,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 2,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                3,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                4
+              ],
+              "fluoride_change": 0.04999999999999999
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                4,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                3,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.39999999999999997
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.55
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            }
+          ]
+        },
+        "upfront": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 30,
+          "acceptable_rate": 1.0,
+          "acceptable_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "first_acceptable_mean": 1.6333333333333333,
+          "first_acceptable_median": 1.0,
+          "first_acceptable_quartiles": [
+            1,
+            1,
+            2
+          ],
+          "first_acceptable_counts": {
+            "1": 18,
+            "2": 8,
+            "3": 2,
+            "4": 1,
+            "5": 1,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "best_bin_found": 30,
+          "best_bin_rate": 1.0,
+          "best_bin_wilson95": [
+            0.8864829086095221,
+            1.0
+          ],
+          "fluoride_fraction_early": 0.18243243243243243,
+          "fluoride_fraction_late": 0.12,
+          "fluoride_change_mean": -0.06166666666666667,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 2,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                4
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 4,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.25
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            }
+          ]
+        }
+      },
+      "contrasts": {
+        "iterative-sequential": {
+          "both": 30,
+          "left_only": 0,
+          "right_only": 0,
+          "neither": 0,
+          "p": 1.0,
+          "difference": 0.0,
+          "p_holm": 1.0,
+          "reject_holm_0_05": false
+        },
+        "iterative-shuffled": {
+          "both": 30,
+          "left_only": 0,
+          "right_only": 0,
+          "neither": 0,
+          "p": 1.0,
+          "difference": 0.0,
+          "p_holm": 1.0,
+          "reject_holm_0_05": false
+        }
+      }
+    },
+    "Li6PS5Cl": {
+      "directories": [
+        "data/experiments/deepseek_v1/lpscl"
+      ],
+      "budget": 10,
+      "hashes": {
+        "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+        "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+        "benchmark_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
+      },
+      "analysis_notes": [],
+      "arms": {
+        "iterative": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 12,
+          "acceptable_rate": 0.4,
+          "acceptable_wilson95": [
+            0.24590394326083403,
+            0.5767994750172616
+          ],
+          "first_acceptable_mean": 9.9,
+          "first_acceptable_median": 11.0,
+          "first_acceptable_quartiles": [
+            9,
+            11,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 2,
+            "7": 2,
+            "8": 1,
+            "9": 5,
+            "10": 2,
+            "11": 18
+          },
+          "best_bin_found": 11,
+          "best_bin_rate": 0.36666666666666664,
+          "best_bin_wilson95": [
+            0.21873702204017678,
+            0.5448675356639506
+          ],
+          "fluoride_fraction_early": 0.20270270270270271,
+          "fluoride_fraction_late": 0.44966442953020136,
+          "fluoride_change_mean": 0.24333333333333335,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 3,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 7,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                5,
+                5
+              ],
+              "fluoride_change": 1.0
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.25
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 6,
+              "accepted": true,
+              "fluoride_early": [
+                3,
+                5
+              ],
+              "fluoride_late": [
+                5,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                5,
+                5
+              ],
+              "fluoride_change": 0.8
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 6,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                5,
+                5
+              ],
+              "fluoride_change": 0.8
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 10,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.35
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 7,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                5,
+                5
+              ],
+              "fluoride_change": 0.8
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                4
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                5,
+                5
+              ],
+              "fluoride_change": 0.8
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 10,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            }
+          ]
+        },
+        "sequential": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 2,
+          "acceptable_rate": 0.06666666666666667,
+          "acceptable_wilson95": [
+            0.01847663532769335,
+            0.21323817721072091
+          ],
+          "first_acceptable_mean": 10.633333333333333,
+          "first_acceptable_median": 11.0,
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 1,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 1,
+            "9": 0,
+            "10": 0,
+            "11": 28
+          },
+          "best_bin_found": 2,
+          "best_bin_rate": 0.06666666666666667,
+          "best_bin_wilson95": [
+            0.01847663532769335,
+            0.21323817721072091
+          ],
+          "fluoride_fraction_early": 0.2080536912751678,
+          "fluoride_fraction_late": 0.18243243243243243,
+          "fluoride_change_mean": -0.025000000000000005,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 3,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                4
+              ],
+              "fluoride_change": 0.04999999999999999
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.6
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                4,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                1,
+                4
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            }
+          ]
+        },
+        "shuffled": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 3,
+          "acceptable_rate": 0.1,
+          "acceptable_wilson95": [
+            0.03459925995971615,
+            0.25621441315266624
+          ],
+          "first_acceptable_mean": 10.8,
+          "first_acceptable_median": 11.0,
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 1,
+            "9": 1,
+            "10": 1,
+            "11": 27
+          },
+          "best_bin_found": 3,
+          "best_bin_rate": 0.1,
+          "best_bin_wilson95": [
+            0.03459925995971615,
+            0.25621441315266624
+          ],
+          "fluoride_fraction_early": 0.20134228187919462,
+          "fluoride_fraction_late": 0.19333333333333333,
+          "fluoride_change_mean": -0.008333333333333335,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 1,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 10,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.04999999999999999
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            }
+          ]
+        },
+        "upfront": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 2,
+          "acceptable_rate": 0.06666666666666667,
+          "acceptable_wilson95": [
+            0.01847663532769335,
+            0.21323817721072091
+          ],
+          "first_acceptable_mean": 10.566666666666666,
+          "first_acceptable_median": 11.0,
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 1,
+            "9": 0,
+            "10": 0,
+            "11": 28
+          },
+          "best_bin_found": 1,
+          "best_bin_rate": 0.03333333333333333,
+          "best_bin_wilson95": [
+            0.0059084379948573795,
+            0.16670751396958874
+          ],
+          "fluoride_fraction_early": 0.1342281879194631,
+          "fluoride_fraction_late": 0.16666666666666666,
+          "fluoride_change_mean": 0.03333333333333333,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 1,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                4
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            }
+          ]
+        }
+      },
+      "contrasts": {
+        "iterative-sequential": {
+          "both": 0,
+          "left_only": 12,
+          "right_only": 2,
+          "neither": 16,
+          "p": 0.012939453125,
+          "difference": 0.3333333333333333,
+          "p_holm": 0.07763671875,
+          "reject_holm_0_05": false
+        },
+        "iterative-shuffled": {
+          "both": 1,
+          "left_only": 11,
+          "right_only": 2,
+          "neither": 16,
+          "p": 0.0224609375,
+          "difference": 0.3,
+          "p_holm": 0.1123046875,
+          "reject_holm_0_05": false
+        }
+      }
+    },
+    "Li7La3Zr2O12": {
+      "directories": [
+        "data/experiments/deepseek_v1/llzo"
+      ],
+      "budget": 10,
+      "hashes": {
+        "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+        "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+        "benchmark_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"
+      },
+      "analysis_notes": [],
+      "arms": {
+        "iterative": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 10,
+          "acceptable_rate": 0.3333333333333333,
+          "acceptable_wilson95": [
+            0.19230295526846194,
+            0.5122027418616973
+          ],
+          "first_acceptable_mean": 9.2,
+          "first_acceptable_median": 11.0,
+          "first_acceptable_quartiles": [
+            8,
+            11,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 0,
+            "2": 2,
+            "3": 1,
+            "4": 0,
+            "5": 2,
+            "6": 1,
+            "7": 1,
+            "8": 1,
+            "9": 2,
+            "10": 0,
+            "11": 20
+          },
+          "best_bin_found": 1,
+          "best_bin_rate": 0.03333333333333333,
+          "best_bin_wilson95": [
+            0.0059084379948573795,
+            0.16670751396958874
+          ],
+          "fluoride_fraction_early": 0.18120805369127516,
+          "fluoride_fraction_late": 0.03333333333333333,
+          "fluoride_change_mean": -0.14833333333333334,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 1,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 6,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.25
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 7,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            }
+          ]
+        },
+        "sequential": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 4,
+          "acceptable_rate": 0.13333333333333333,
+          "acceptable_wilson95": [
+            0.05309569424218104,
+            0.2968168394441695
+          ],
+          "first_acceptable_mean": 10.433333333333334,
+          "first_acceptable_median": 11.0,
+          "first_acceptable_quartiles": [
+            11,
+            11,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 1,
+            "4": 0,
+            "5": 0,
+            "6": 1,
+            "7": 0,
+            "8": 1,
+            "9": 0,
+            "10": 1,
+            "11": 26
+          },
+          "best_bin_found": 0,
+          "best_bin_rate": 0.0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "fluoride_fraction_early": 0.11333333333333333,
+          "fluoride_fraction_late": 0.12751677852348994,
+          "fluoride_change_mean": 0.013333333333333334,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 1,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 6,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                4
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 10,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            }
+          ]
+        },
+        "shuffled": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 12,
+          "acceptable_rate": 0.4,
+          "acceptable_wilson95": [
+            0.24590394326083403,
+            0.5767994750172616
+          ],
+          "first_acceptable_mean": 8.4,
+          "first_acceptable_median": 11.0,
+          "first_acceptable_quartiles": [
+            5,
+            11,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 1,
+            "2": 1,
+            "3": 1,
+            "4": 4,
+            "5": 2,
+            "6": 1,
+            "7": 1,
+            "8": 0,
+            "9": 1,
+            "10": 0,
+            "11": 18
+          },
+          "best_bin_found": 0,
+          "best_bin_rate": 0.0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "fluoride_fraction_early": 0.18791946308724833,
+          "fluoride_fraction_late": 0.14093959731543623,
+          "fluoride_change_mean": -0.04833333333333334,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 2,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 4,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.6
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                2,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.4
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 4,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 6,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 4,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                4,
+                5
+              ],
+              "fluoride_change": 0.6000000000000001
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                4
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.15000000000000002
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                4
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 1,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 7,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 4,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            }
+          ]
+        },
+        "upfront": {
+          "runs": 30,
+          "seeds": [
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229
+          ],
+          "failed_runs": 0,
+          "acceptable": 20,
+          "acceptable_rate": 0.6666666666666666,
+          "acceptable_wilson95": [
+            0.48779725813830266,
+            0.807697044731538
+          ],
+          "first_acceptable_mean": 8.366666666666667,
+          "first_acceptable_median": 9.0,
+          "first_acceptable_quartiles": [
+            7,
+            9,
+            11
+          ],
+          "first_acceptable_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 2,
+            "4": 0,
+            "5": 3,
+            "6": 1,
+            "7": 2,
+            "8": 3,
+            "9": 6,
+            "10": 2,
+            "11": 10
+          },
+          "best_bin_found": 0,
+          "best_bin_rate": 0.0,
+          "best_bin_wilson95": [
+            -1.3877787807814457e-17,
+            0.113517091390478
+          ],
+          "fluoride_fraction_early": 0.11333333333333333,
+          "fluoride_fraction_late": 0.14,
+          "fluoride_change_mean": 0.026666666666666665,
+          "fluoride_change_runs": 30,
+          "queries_without_formula": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 201,
+              "status": "complete",
+              "first_acceptable": 10,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 202,
+              "status": "complete",
+              "first_acceptable": 7,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 203,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.4
+            },
+            {
+              "seed": 204,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 205,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 206,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 207,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 208,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 209,
+              "status": "complete",
+              "first_acceptable": 2,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                3,
+                5
+              ],
+              "fluoride_change": 0.39999999999999997
+            },
+            {
+              "seed": 210,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 211,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 212,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                2,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 213,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 214,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 215,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 216,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 217,
+              "status": "complete",
+              "first_acceptable": 5,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 218,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 219,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.0
+            },
+            {
+              "seed": 220,
+              "status": "complete",
+              "first_acceptable": 10,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 221,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 222,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 223,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 224,
+              "status": "complete",
+              "first_acceptable": 3,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 225,
+              "status": "complete",
+              "first_acceptable": 8,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 226,
+              "status": "complete",
+              "first_acceptable": 7,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 227,
+              "status": "complete",
+              "first_acceptable": 6,
+              "accepted": true,
+              "fluoride_early": [
+                0,
+                5
+              ],
+              "fluoride_late": [
+                1,
+                5
+              ],
+              "fluoride_change": 0.2
+            },
+            {
+              "seed": 228,
+              "status": "complete",
+              "first_acceptable": 11,
+              "accepted": false,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            },
+            {
+              "seed": 229,
+              "status": "complete",
+              "first_acceptable": 9,
+              "accepted": true,
+              "fluoride_early": [
+                1,
+                5
+              ],
+              "fluoride_late": [
+                0,
+                5
+              ],
+              "fluoride_change": -0.2
+            }
+          ]
+        }
+      },
+      "contrasts": {
+        "iterative-sequential": {
+          "both": 2,
+          "left_only": 8,
+          "right_only": 2,
+          "neither": 18,
+          "p": 0.109375,
+          "difference": 0.2,
+          "p_holm": 0.4375,
+          "reject_holm_0_05": false
+        },
+        "iterative-shuffled": {
+          "both": 4,
+          "left_only": 6,
+          "right_only": 8,
+          "neither": 12,
+          "p": 0.79052734375,
+          "difference": -0.06666666666666667,
+          "p_holm": 1.0,
+          "reject_holm_0_05": false
+        }
+      }
+    }
+  },
+  "holm_family_size": 6,
+  "aggregate_equal_weight_difference": {
+    "iterative-shuffled": 0.07777777777777778,
+    "iterative-sequential": 0.17777777777777778
+  },
+  "policy": "deepseek_v1",
+  "production_check": []
+}

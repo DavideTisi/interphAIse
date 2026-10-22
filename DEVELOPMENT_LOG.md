@@ -2779,3 +2779,27 @@ Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report
 - **Protocol:** `DEEPSEEK_PROTOCOL.md` now records the approval, the smoke maxima (capped: reasoning max 3,072 with 6 calls at the cap, output max 3,210, 0 truncations), the spending limit and the monitor.
 - **Monitor:** `scripts/monitor_deepseek_production.py`. It reads the key's spend from OpenRouter (`/api/v1/key`) and stops production at USD 11 of new spend. It also stops production on any cap or provider violation. Its run-file scan was checked on the smoke archive: no violations in the capped batch, and every over-cap and wrong-provider call caught in the uncapped one.
 - **Launch:** an earlier attempt failed before making any call (empty Python path), so nothing was spent. Production starts from the commit that adds this entry.
+
+## 2026-10-22 — Agent side (Adem): DeepSeek production complete, validated, LLZO audit
+
+- **Production:** commit `70e1901`, 14:20–17:21 UTC. All 360 runs completed with 0 failures.
+  - 2,793 calls, including 3 charged format retries.
+  - USD 8.99 recorded by OpenRouter; the key's total spend was USD 9.19. Limit USD 12.
+  - 0 cap or provider violations (`monitor.jsonl`).
+- **Incident:** a duplicate launch at 14:18 UTC, from a command the user had rejected that nevertheless started, was found from the process list. It was stopped after about 2 minutes and moved to `runs/deepseek_v1_aborted_duplicate/`, outside the archive. It cost about USD 0.2.
+- **Watcher fix:** my first completion watchers matched their own shell command and could never fire. They were replaced with self-excluding patterns. The spending monitor was unaffected.
+- **Analysis code:**
+  - `analyse_environment_study.py`: new `--policy deepseek_v1`, a frozen spec for this run; the Haiku policy is unchanged and its tests pass.
+  - `compare_models_environment.py`: cross-model tables.
+  - `audit_llzo_models.py`: Davide's post-hoc LLZO audit, which reuses the oxyhalogen flags of `audit_llzo_chemistry.py` and reproduces the Haiku audit counts.
+  - `plot_environment_curves.py`: new `--title` option, skips arms a summary lacks, legend no longer overlaps the title.
+  - `usage_report.py`: uses OpenRouter's reported cost.
+  - Tests: `test_environment_study.py` now has 11, including the DeepSeek policy against the smoke metadata; `test_anthropic.py` has 13.
+- **Validation:** `--production --policy deepseek_v1` passed. That covers settings, call metadata, workflow hashes and a replay of every query. Results are in `data/experiments/deepseek_v1/README.md` and `SYNC_DAVIDE_10.md`.
+- **Results (descriptive across models):**
+  - Li₆PS₅Cl: DeepSeek iterative 12/30 against sequential 2 and shuffled 3. Holm p 0.078 and 0.11, not rejected; Haiku's were rejected.
+  - Li₃InCl₆: ceiling for both models.
+  - LLZO: DeepSeek upfront 20/30 against Haiku 1/30, iterative 10 against 12, random 24. For DeepSeek, none of the six contrasts survives Holm.
+  - Audit: DeepSeek's upfront successes are all unflagged (mostly LiAlSiO₄). DeepSeek's iterative picks include 5 flagged oxyhalogen picks, with 1 run succeeding only through a flagged compound.
+- **Timing:** results were ready about 15 minutes after the 19:15 CEST target; Davide accepted the delay.
+- **Not done:** presentation slides; Davide's side integrates them, using the suggested wording in SYNC_DAVIDE_10.
