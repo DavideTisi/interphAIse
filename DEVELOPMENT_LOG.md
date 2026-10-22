@@ -2772,3 +2772,10 @@ Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report
   - Davide reviews the smoke cost.
   - Production command in the protocol, §6: about 2.5 h, about USD 9.
   - Production analysis needs model-aware evidence validation; the current `--production` check is Haiku-specific.
+
+## 2026-10-22 — Agent side (Adem): DeepSeek production approved; guard added
+
+- **Approval:** Davide approved production with conditions: USD 12 spending limit including retries, fallbacks disabled, caps monitored, and the label "comparison of model configurations, not matched reasoning compute". Validated results are due by 19:15 CEST, otherwise DeepSeek becomes a separately labelled supplement.
+- **Protocol:** `DEEPSEEK_PROTOCOL.md` now records the approval, the smoke maxima (capped: reasoning max 3,072 with 6 calls at the cap, output max 3,210, 0 truncations), the spending limit and the monitor.
+- **Monitor:** `scripts/monitor_deepseek_production.py`. It reads the key's spend from OpenRouter (`/api/v1/key`) and stops production at USD 11 of new spend. It also stops production on any cap or provider violation. Its run-file scan was checked on the smoke archive: no violations in the capped batch, and every over-cap and wrong-provider call caught in the uncapped one.
+- **Launch:** an earlier attempt failed before making any call (empty Python path), so nothing was spent. Production starts from the commit that adds this entry.

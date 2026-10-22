@@ -9,7 +9,7 @@ Do the Haiku findings persist with a different LLM?
 - Is the LLZO failure (random 24/30 against iterative 12/30 for Haiku) specific to Haiku's chemical preferences, or shared by DeepSeek?
 - Does any advantage come from stronger initial knowledge or from better use of feedback? The upfront and shuffled arms separate these.
 
-This compares **model configurations** (model, provider, precision, reasoning setting), not model names.
+Label: **a comparison of model configurations** (model, provider, precision, reasoning setting), **not matched reasoning compute**. The caps make the output limits the same, but the two models use their reasoning budgets differently.
 
 ## 2. Frozen, identical to the Haiku study ([ENVIRONMENT_PROTOCOL.md](ENVIRONMENT_PROTOCOL.md))
 
@@ -71,15 +71,31 @@ Archived in `data/experiments/deepseek_v1/smoke/`. Per environment, seed 999: it
 | Ten-query trajectory | 33–36 min | 18–45 min |
 | Cost (charged, as reported by OpenRouter) | USD 0.156 (0.0031 per call) | USD 0.224 |
 
+**Observed maxima, capped configuration:** reasoning 3,072 tokens (6 of 51 calls at the cap), output 3,210 tokens, **0 truncations**, 0 format errors, all served by SiliconFlow.
+**Uncapped reference:** reasoning up to 34,329 tokens and output up to 34,486; 0 truncations.
+
 Provider and cap tests cost about USD 0.08 more. 20 and 60 parallel SiliconFlow calls all succeeded, with no 429s.
 
 **Projection:** production costs about **USD 9** (range 8–11). Wall time is about **2.5 h** with 60 calls in flight (20 workers per environment, three environments in parallel); the floor is one 35-minute trajectory.
 
 The smoke batch ran from working-tree code on top of `1f7bf11`, with hashes in each `experiment.json`. Production runs from the committed version. Between them, the runner's parallel-run limit was raised from 4 to 64 and the per-call client is unchanged.
 
-## 6. Production command (after approval)
+## 6. Production command, spending limit and monitoring
+
+- **Spending limit (Davide):** USD 12 including retries; pause if it would be exceeded.
+- **Monitor:** `scripts/monitor_deepseek_production.py` runs beside production and logs each check to `runs/deepseek_v1/monitor.jsonl`.
+  - It reads the key's cumulative OpenRouter usage, relative to the value at start, so retries and every other call are covered.
+  - It stops production at USD 11 of new spend, leaving a USD 1 margin for calls in flight.
+  - It also stops production if any call exceeds 3,072 reasoning or 4,096 output tokens, or is served by a provider other than SiliconFlow.
+- **Fallbacks:** stay disabled, and the client also rejects any response from another provider.
+- **Interrupted runs:** stay in the archive and are replaced only with a recorded technical reason.
+- **Backstop:** the key has a USD 20 hard limit set at OpenRouter.
+- **Schedule:** validated results are due by 19:15 CEST. If it slips, the existing presentation stays as it is and DeepSeek is added as a separately labelled supplement. It must not hold up submission.
+- **Priorities:** the acceptance table, the six Holm-corrected comparisons, the LLZO comparison, and the actual usage report.
+
 
 ```bash
+python scripts/monitor_deepseek_production.py runs/deepseek_v1 --budget 12 --margin 1.0 &
 for env in lpscl lic llzo; do
   python scripts/run_discovery_experiment.py --model deepseek/deepseek-v3.2 --provider siliconflow/fp8 \
     --reasoning-max-tokens 3072 --arms upfront sequential iterative shuffled --repeats 30 --start-seed 200 \
@@ -94,4 +110,4 @@ Archive to `data/experiments/deepseek_v1/{lpscl,lic,llzo}`. The Haiku archive `d
 ## Sign-off
 
 - [x] Adem: configuration fixed and smoke batch measured (this document).
-- [ ] Davide: smoke cost reviewed and production approved.
+- [x] Davide, 22 October 2026, relayed by Adem: production approved with the tested SiliconFlow configuration. Conditions: USD 12 spending limit including retries, with a pause if exceeded; fallbacks disabled; caps monitored; declared analysis, frozen criteria and reused random baseline kept; labelled a comparison of model configurations, not matched reasoning compute.
