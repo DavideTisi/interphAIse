@@ -2885,3 +2885,63 @@ No paid call, live MLIP run, SSH/Slurm action, direct message or merge occurred
 in this review. Preserve unrelated README changes. Validate documentation
 links, JSON, whitespace and staged credentials, then publish the scoped review
 under the standing collaborator-handoff authorization.
+
+## 2026-10-22 — Consolidate both days of results and create the final scientific presentation
+
+**Branch:** `davide`, starting `750b382`. User requested a new presentation
+combining yesterday's and today's results, explaining where the LLM substitutes
+human intuition and reviewing the outcome against the original design. Read the
+original plans, supplied HELLMM paper, archived benchmark/environment results,
+latest agent interpretation (`800ba03`) and final physics release (`1b76eeb`).
+Used immutable Git objects without merging either collaborator branch. Preserved
+the unrelated root README edits and the previous presentation.
+
+Created RESULTS_SYNTHESIS_2026-10-22.md and a new presentation with 18 main
+slides plus six technical backups. It covers the original 150-run benchmark,
+450-run environment study, controls/statistics, chemical traces and LLZO caveat,
+three-coating physical pilot, prospective forecast hits/misses, robustness and
+original-design comparison. The main claim is conditional feedback utility,
+not generic reasoning superiority, novel composition discovery, a validated
+coating winner or demonstrated expensive-compute savings. Corrected the chloride
+shorthand: sampled random is 29/30, all LLM arms 30/30. Explicitly retain unchanged
+physical choice order, unrun LiF, the weak-contact field misreading, Nb/Ta gap
+below known sensitivities, polar models and Ca electrolyte unquantified slots.
+
+Files: presentations/results_2026-10-22/ contains the v2 PPTX, static PDF and
+VALIDATION.md. presentations/source/ contains the reproducible evidence extractor,
+JSON, presentation builder and PDF render/package scripts. REPORT and the
+presentation README now point to the consolidated results. The editable deck has
+24 note parts, 16 native tables and five charts with five embedded workbooks.
+Literal chart values are rounded to ten significant digits for Excel packaging;
+the evidence JSON keeps source precision. No frozen dataset or result changed.
+
+Verification performed: evidence regeneration from pinned commits is byte-identical;
+primary counts and cumulative endpoints match; final-index SHA-256 matches the
+reviewed 47d69f7d…c41; selected physical rows reproduce minimum joined energies.
+Independent PPTX XML checks reproduce all chart series to 1e-9. Package integrity,
+font/layout requirements, native-chart/workbook portability and reimport pass.
+The layout heuristic has four nonblocking warnings, individually resolved by
+inspection of the actual renders. Every final slide was rendered and inspected
+at full size. Fixed first-pass crowded tables/title and removed default curve
+smoothing, which could imply a decline in a cumulative success curve.
+
+For sharing, direct PDF export failed on a bundled font module and LibreOffice
+substituted fonts. Kept both attempts private. The delivered PDF instead packages
+2560x1440 finalized slide renders losslessly with ReportLab. All 24 PDF pages
+were rendered and visually inspected; extracted embedded pixels equal the source
+renders exactly. It is a static companion; the PowerPoint remains editable.
+No Microsoft PowerPoint application-opening check was performed. Intermediate
+renders and validation receipts are in ignored presentations/.build/.
+
+No new paid LLM call, MLIP calculation, SSH/Slurm job, code merge or direct
+collaborator message occurred. This was results synthesis and artifact validation,
+not a rerun of the previously reported physics/agent test suites. Run documentation
+link/whitespace and staged credential checks before publishing this scoped update
+under the user's standing authorization to share work with Adem. Next: apply the
+final-index reader patch, review/integrate the code branches and synchronize the
+viewer. No additional experiment is required to close the bounded pilot.
+
+Final publication checks: all 20 local documentation links resolve and the
+staged credential scan passes; `.env` stays ignored/untracked. Added local
+artifact Git attributes so the ASCII85-encoded PDF is treated as binary rather
+than generating meaningless whitespace diffs. Final text whitespace check passes.

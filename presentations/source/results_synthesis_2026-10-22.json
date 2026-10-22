@@ -1,0 +1,948 @@
+{
+  "title": "interphAIse results synthesis, 22 October 2026",
+  "sources": {
+    "davide_commit": "750b382844fd64aaa46f96ce96be1871e992c0f1",
+    "agent_commit": "800ba0378779ce7df9038bc4857719a29c2fe0a7",
+    "physics_commit": "1b76eeb0330ae1ddee3720d76145c2b308725245",
+    "final_index_sha256": "47d69f7dd75dff89e1d2e5191f2f1d31fad002581521c39eeee7593c90d83c41"
+  },
+  "arm_order": [
+    "iterative",
+    "sequential",
+    "shuffled",
+    "upfront",
+    "random"
+  ],
+  "environment_order": [
+    "Li6PS5Cl",
+    "Li3InCl6",
+    "Li7La3Zr2O12"
+  ],
+  "environments": {
+    "Li6PS5Cl": {
+      "pool_size": 141,
+      "acceptable_candidates": 4,
+      "counts": {
+        "iterative": 20,
+        "sequential": 2,
+        "shuffled": 6,
+        "upfront": 0,
+        "random": 8
+      },
+      "curves": {
+        "iterative": [
+          0.0,
+          0.0,
+          0.0,
+          0.03333333333333333,
+          0.03333333333333333,
+          0.13333333333333333,
+          0.26666666666666666,
+          0.5333333333333333,
+          0.6333333333333333,
+          0.6666666666666666
+        ],
+        "sequential": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.03333333333333333,
+          0.03333333333333333,
+          0.03333333333333333,
+          0.06666666666666667,
+          0.06666666666666667
+        ],
+        "shuffled": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.03333333333333333,
+          0.06666666666666667,
+          0.13333333333333333,
+          0.2
+        ],
+        "upfront": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "random": [
+          0.1,
+          0.13333333333333333,
+          0.13333333333333333,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.26666666666666666,
+          0.26666666666666666,
+          0.26666666666666666,
+          0.26666666666666666,
+          0.26666666666666666
+        ]
+      },
+      "contrasts": {
+        "iterative-sequential": {
+          "both": 2,
+          "left_only": 18,
+          "right_only": 0,
+          "neither": 10,
+          "p": 7.62939453125e-06,
+          "difference": 0.6,
+          "p_holm": 4.57763671875e-05,
+          "reject_holm_0_05": true
+        },
+        "iterative-shuffled": {
+          "both": 5,
+          "left_only": 15,
+          "right_only": 1,
+          "neither": 9,
+          "p": 0.000518798828125,
+          "difference": 0.4666666666666667,
+          "p_holm": 0.00244140625,
+          "reject_holm_0_05": true
+        }
+      },
+      "hashes": {
+        "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+        "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+        "benchmark_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
+      },
+      "best_bin": {
+        "iterative": 6,
+        "sequential": 0,
+        "shuffled": 2,
+        "upfront": 0,
+        "random": 5
+      },
+      "first_hit_counts": {
+        "iterative": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 1,
+          "5": 0,
+          "6": 3,
+          "7": 4,
+          "8": 8,
+          "9": 3,
+          "10": 1,
+          "11": 10
+        },
+        "sequential": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 1,
+          "7": 0,
+          "8": 0,
+          "9": 1,
+          "10": 0,
+          "11": 28
+        },
+        "shuffled": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "10": 2,
+          "11": 24
+        },
+        "upfront": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 30
+        },
+        "random": {
+          "1": 3,
+          "2": 1,
+          "3": 0,
+          "4": 1,
+          "5": 0,
+          "6": 3,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 22
+        }
+      },
+      "random_exact_curve": [
+        0.028368794326241176,
+        0.056129685916919914,
+        0.08329142157398706,
+        0.10986268471676996,
+        0.13585209538197374,
+        0.16126821022368043,
+        0.18611952251334918,
+        0.2104144621398164,
+        0.2341613956092956,
+        0.25736862604537747
+      ]
+    },
+    "Li3InCl6": {
+      "pool_size": 141,
+      "acceptable_candidates": 55,
+      "counts": {
+        "iterative": 30,
+        "sequential": 30,
+        "shuffled": 30,
+        "upfront": 30,
+        "random": 29
+      },
+      "curves": {
+        "iterative": [
+          0.9666666666666667,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "sequential": [
+          0.9333333333333333,
+          0.9666666666666667,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "shuffled": [
+          0.9333333333333333,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "upfront": [
+          0.8666666666666667,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "random": [
+          0.5333333333333333,
+          0.7,
+          0.8333333333333334,
+          0.9,
+          0.9666666666666667,
+          0.9666666666666667,
+          0.9666666666666667,
+          0.9666666666666667,
+          0.9666666666666667,
+          0.9666666666666667
+        ]
+      },
+      "contrasts": {
+        "iterative-sequential": {
+          "both": 30,
+          "left_only": 0,
+          "right_only": 0,
+          "neither": 0,
+          "p": 1.0,
+          "difference": 0.0,
+          "p_holm": 1.0,
+          "reject_holm_0_05": false
+        },
+        "iterative-shuffled": {
+          "both": 30,
+          "left_only": 0,
+          "right_only": 0,
+          "neither": 0,
+          "p": 1.0,
+          "difference": 0.0,
+          "p_holm": 1.0,
+          "reject_holm_0_05": false
+        }
+      },
+      "hashes": {
+        "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+        "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+        "benchmark_sha256": "a95dc6fb78a0f295784ca004f77fc02a04005fe106f7fa35296cc51a424117e2"
+      },
+      "best_bin": {
+        "iterative": 30,
+        "sequential": 30,
+        "shuffled": 30,
+        "upfront": 30,
+        "random": 28
+      },
+      "first_hit_counts": {
+        "iterative": {
+          "1": 29,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0
+        },
+        "sequential": {
+          "1": 28,
+          "2": 1,
+          "3": 1,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0
+        },
+        "shuffled": {
+          "1": 28,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0
+        },
+        "upfront": {
+          "1": 26,
+          "2": 4,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0
+        },
+        "random": {
+          "1": 16,
+          "2": 5,
+          "3": 4,
+          "4": 2,
+          "5": 2,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 1
+        }
+      },
+      "random_exact_curve": [
+        0.3900709219858156,
+        0.6296859169199595,
+        0.776213072095515,
+        0.865403514376288,
+        0.9194385998456615,
+        0.9520185778492543,
+        0.9715665646514099,
+        0.9832370045332939,
+        0.9901690703277964,
+        0.994265291024548
+      ]
+    },
+    "Li7La3Zr2O12": {
+      "pool_size": 141,
+      "acceptable_candidates": 17,
+      "counts": {
+        "iterative": 12,
+        "sequential": 0,
+        "shuffled": 4,
+        "upfront": 1,
+        "random": 24
+      },
+      "curves": {
+        "iterative": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.03333333333333333,
+          0.03333333333333333,
+          0.06666666666666667,
+          0.16666666666666666,
+          0.3,
+          0.4
+        ],
+        "sequential": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "shuffled": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.03333333333333333,
+          0.06666666666666667,
+          0.06666666666666667,
+          0.13333333333333333
+        ],
+        "upfront": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.03333333333333333,
+          0.03333333333333333,
+          0.03333333333333333,
+          0.03333333333333333
+        ],
+        "random": [
+          0.1,
+          0.13333333333333333,
+          0.3,
+          0.36666666666666664,
+          0.43333333333333335,
+          0.5,
+          0.6333333333333333,
+          0.6666666666666666,
+          0.7666666666666667,
+          0.8
+        ]
+      },
+      "contrasts": {
+        "iterative-sequential": {
+          "both": 0,
+          "left_only": 12,
+          "right_only": 0,
+          "neither": 18,
+          "p": 0.00048828125,
+          "difference": 0.4,
+          "p_holm": 0.00244140625,
+          "reject_holm_0_05": true
+        },
+        "iterative-shuffled": {
+          "both": 1,
+          "left_only": 11,
+          "right_only": 3,
+          "neither": 15,
+          "p": 0.057373046875,
+          "difference": 0.26666666666666666,
+          "p_holm": 0.172119140625,
+          "reject_holm_0_05": false
+        }
+      },
+      "hashes": {
+        "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+        "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+        "benchmark_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"
+      },
+      "best_bin": {
+        "iterative": 0,
+        "sequential": 0,
+        "shuffled": 0,
+        "upfront": 0,
+        "random": 2
+      },
+      "first_hit_counts": {
+        "iterative": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 1,
+          "6": 0,
+          "7": 1,
+          "8": 3,
+          "9": 4,
+          "10": 3,
+          "11": 18
+        },
+        "sequential": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 30
+        },
+        "shuffled": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 1,
+          "9": 0,
+          "10": 2,
+          "11": 26
+        },
+        "upfront": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 29
+        },
+        "random": {
+          "1": 3,
+          "2": 1,
+          "3": 5,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 4,
+          "8": 1,
+          "9": 3,
+          "10": 1,
+          "11": 6
+        }
+      },
+      "random_exact_curve": [
+        0.12056737588652477,
+        0.227355623100304,
+        0.3218516979729287,
+        0.40539170619365483,
+        0.4791752171039312,
+        0.5442783149659398,
+        0.6016654901183771,
+        0.6522004652526128,
+        0.6966560448819781,
+        0.7357230694047536
+      ]
+    }
+  },
+  "original": {
+    "iterative": {
+      "count": 19,
+      "curve": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.03333333333333333,
+        0.1,
+        0.2,
+        0.4,
+        0.5666666666666667,
+        0.6333333333333333
+      ]
+    },
+    "sequential": {
+      "count": 4,
+      "curve": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.03333333333333333,
+        0.06666666666666667,
+        0.1,
+        0.1,
+        0.1,
+        0.13333333333333333
+      ]
+    },
+    "shuffled": {
+      "count": 6,
+      "curve": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.1,
+        0.13333333333333333,
+        0.16666666666666666,
+        0.2
+      ]
+    },
+    "upfront": {
+      "count": 4,
+      "curve": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.03333333333333333,
+        0.03333333333333333,
+        0.06666666666666667,
+        0.13333333333333333,
+        0.13333333333333333
+      ]
+    },
+    "random": {
+      "count": 10,
+      "curve": [
+        0.03333333333333333,
+        0.06666666666666667,
+        0.06666666666666667,
+        0.13333333333333333,
+        0.16666666666666666,
+        0.2,
+        0.23333333333333334,
+        0.23333333333333334,
+        0.3,
+        0.3333333333333333
+      ]
+    },
+    "random_exact_curve": [
+      0.040000000000000036,
+      0.0791836734693877,
+      0.11755102040816323,
+      0.1551020408163265,
+      0.19183673469387752,
+      0.22775510204081628,
+      0.2628571428571429,
+      0.29714285714285715,
+      0.33061224489795915,
+      0.363265306122449
+    ]
+  },
+  "physical": {
+    "LiNbF6": {
+      "candidate_id": "mp-aaacjjwh",
+      "contacts": {
+        "cathode": {
+          "W_adh_J_m2": 3.6170508624496,
+          "W_sep_J_m2": 5.167624545488891,
+          "registry_id": "R3",
+          "registry": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "n_atoms": 696,
+          "result_path": "data/petmad/niflheim_batch1/cathode_reg_third_third/result.json",
+          "joined_energy_eV": -4707.4736328125,
+          "registry_range": [
+            3.596964455828597,
+            3.6170508624496
+          ]
+        },
+        "electrolyte": {
+          "W_adh_J_m2": 1.6333940812860246,
+          "W_sep_J_m2": 2.9672197308623063,
+          "registry_id": "R1",
+          "registry": [
+            0,
+            0
+          ],
+          "n_atoms": 880,
+          "result_path": "data/petmad/niflheim_batch1/electrolyte_seed0_ref/result.json",
+          "joined_energy_eV": -5328.5966796875,
+          "registry_range": [
+            1.6316068100231231,
+            1.6333940812860246
+          ]
+        }
+      }
+    },
+    "LiTaF6": {
+      "candidate_id": "mp-aaacjmqp",
+      "contacts": {
+        "cathode": {
+          "W_adh_J_m2": 3.338748412819128,
+          "W_sep_J_m2": 4.727749860143862,
+          "registry_id": "R1",
+          "registry": [
+            0.0,
+            0.0
+          ],
+          "n_atoms": 696,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R1/result.json",
+          "joined_energy_eV": -4761.26904296875,
+          "registry_range": [
+            3.326811096603576,
+            3.338748412819128
+          ]
+        },
+        "electrolyte": {
+          "W_adh_J_m2": 1.5773585444472311,
+          "W_sep_J_m2": 2.910571251635274,
+          "registry_id": "R2",
+          "registry": [
+            0.25,
+            0.5
+          ],
+          "n_atoms": 880,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R2/result.json",
+          "joined_energy_eV": -5423.8935546875,
+          "registry_range": [
+            1.534040130056007,
+            1.5773585444472311
+          ]
+        }
+      }
+    },
+    "LiCaAlF6": {
+      "candidate_id": "mp-aaaaajby",
+      "contacts": {
+        "cathode": {
+          "W_adh_J_m2": 1.426710445485596,
+          "W_sep_J_m2": 4.321819440022834,
+          "registry_id": "R2",
+          "registry": [
+            0.25,
+            0.16666666666666666
+          ],
+          "n_atoms": 720,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R2/result.json",
+          "joined_energy_eV": -4755.00537109375,
+          "registry_range": [
+            1.34173084975481,
+            1.426710445485596
+          ]
+        },
+        "electrolyte": {
+          "W_adh_J_m2": 0.7435735865694895,
+          "W_sep_J_m2": 1.4902710788933669,
+          "registry_id": "R3",
+          "registry": [
+            0.0,
+            0.5
+          ],
+          "n_atoms": 1212,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R3/result.json",
+          "joined_energy_eV": -6973.59765625,
+          "registry_range": [
+            0.5234871701570539,
+            0.7435735865694895
+          ]
+        }
+      }
+    }
+  },
+  "forecast": [
+    {
+      "coating": "LiTaF6",
+      "contact": "cathode",
+      "range": [
+        3.2,
+        3.9
+      ],
+      "observed": 3.338748412819128
+    },
+    {
+      "coating": "LiTaF6",
+      "contact": "electrolyte",
+      "range": [
+        1.4,
+        1.9
+      ],
+      "observed": 1.5773585444472311
+    },
+    {
+      "coating": "LiCaAlF6",
+      "contact": "cathode",
+      "range": [
+        3.0,
+        3.8
+      ],
+      "observed": 1.426710445485596
+    },
+    {
+      "coating": "LiCaAlF6",
+      "contact": "electrolyte",
+      "range": [
+        1.4,
+        1.9
+      ],
+      "observed": 0.7435735865694895
+    }
+  ],
+  "job_accounting": {
+    "primary (selected coatings)": {
+      "jobs": 12,
+      "calculator_calls": 2882,
+      "separation_single_points": 24,
+      "runner_wall_seconds": 745.9
+    },
+    "sensitivity (selected coatings)": {
+      "jobs": 10,
+      "calculator_calls": 2767,
+      "separation_single_points": 20,
+      "runner_wall_seconds": 471.6
+    },
+    "consistency (LiNbF6 reference)": {
+      "jobs": 4,
+      "calculator_calls": 983,
+      "separation_single_points": 8,
+      "runner_wall_seconds": 307.6
+    },
+    "total": {
+      "jobs": 26,
+      "ceiling": 36,
+      "calculator_calls": 6632,
+      "separation_single_points": 52,
+      "runner_wall_seconds": 1525.1,
+      "device": "RTX 3090 (sm3090el9_devel)",
+      "excludes": "bulk preparation (LiF/LiTaF6: 389 CPU calls), queue/setup time, and the five reused LiNbF6 reference primaries"
+    }
+  },
+  "llzo_audit": {
+    "random": {
+      "distinct_formulas": 95,
+      "acceptable_picks": 33,
+      "successful_runs": 24,
+      "unflagged_hit_runs": 18,
+      "acceptable_picks_by_query_index": [
+        3,
+        2,
+        5,
+        3,
+        2,
+        2,
+        5,
+        2,
+        7,
+        2
+      ]
+    },
+    "upfront": {
+      "distinct_formulas": 22,
+      "acceptable_picks": 1,
+      "successful_runs": 1,
+      "unflagged_hit_runs": 1,
+      "acceptable_picks_by_query_index": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "sequential": {
+      "distinct_formulas": 19,
+      "acceptable_picks": 0,
+      "successful_runs": 0,
+      "unflagged_hit_runs": 0,
+      "acceptable_picks_by_query_index": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "iterative": {
+      "distinct_formulas": 33,
+      "acceptable_picks": 29,
+      "successful_runs": 12,
+      "unflagged_hit_runs": 12,
+      "acceptable_picks_by_query_index": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        5,
+        9,
+        11
+      ]
+    },
+    "shuffled": {
+      "distinct_formulas": 44,
+      "acceptable_picks": 4,
+      "successful_runs": 4,
+      "unflagged_hit_runs": 4,
+      "acceptable_picks_by_query_index": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2
+      ]
+    }
+  },
+  "source_file_sha256": {
+    "environment.json": "f2d1377a178e6380db8e06c1b2b161245f8c0732a9dbbcf79fe61dfcf0a1c01a",
+    "original.json": "0ff0a0a5f4a86d9bd0f9cb8bb9b033aaf7b88fd4630cb2601197f8701fe87441",
+    "shuffled.json": "b4eb567533c153348e7dbdd951fbc0cada2b66310826c5e8214f9de303902b4d",
+    "pilot_final.json": "47d69f7dd75dff89e1d2e5191f2f1d31fad002581521c39eeee7593c90d83c41"
+  }
+}

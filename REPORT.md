@@ -1,5 +1,21 @@
 # interphAIse — project report
 
+**Consolidated results and new presentation — 2026-10-22:** The
+[results synthesis](RESULTS_SYNTHESIS_2026-10-22.md) now joins the 50-structure
+benchmark, 450-run environment study and completed three-coating PET-MAD pilot.
+The [new deck](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
+contains 18 main slides and six backups with source notes and editable evidence.
+The LLM's role is scientific selection, feedback interpretation and prospective
+prediction. Correct feedback helps on sulfide, but random wins on LLZO and
+chloride is at ceiling (all LLM arms 30/30, sampled random **29/30**).
+The physical pilot validates both Ta forecast ranges and contradicts both Ca–Al
+ranges; candidate order stayed unchanged. We achieved a rigorous version of
+the agreed cheap benchmark plus three-coating follow-up, not general expensive
+search superiority or a validated materials winner. Branch integration, the
+final-index reader patch and viewer synchronization remain separate pending
+work. The older checkpoints below are historical. No new paid or physics run
+was made for the synthesis.
+
 **Pilot complete and independently reviewed — 2026-10-22:** Physics `1b76eeb`
 and agent `c0a0546` preserve the decision snapshots and evaluated primary rows.
 W_adh cathode/electrolyte is **3.617/1.633** for LiNbF6, **3.339/1.577** for
@@ -14,7 +30,8 @@ polar. Verified 26 new jobs, 6,632 runner calls plus 52 separation points,
 5 HTTP attempts, about USD 0.00597 at recorded rates. The summary-only prompt
 limit amendment is archived. Reader compatibility with the final index needs
 the tested patch in [FINAL_PILOT_REVIEW.md](FINAL_PILOT_REVIEW.md); branch
-integration and final viewer/slide updates remain pending. No further physics
+integration and final viewer updates remain pending; the consolidated deck above
+now incorporates these results. No further physics
 or paid LLM run is needed for this bounded pilot.
 
 **First prospective forecast checked; third coating selected — 2026-10-22:**
