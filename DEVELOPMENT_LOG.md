@@ -2586,3 +2586,13 @@ missing metadata on successful calls.
 Claude's real index (fixture at 38e4872) loads, and the genuine LiNbF6 feedback validates. Mocked trace on
 that genuine feedback: `MOCK_state_genuine_reference.json`. 72 tests passed. Cost ceiling ≈ USD 0.030
 (enforced), expected ≈ USD 0.006. No API or PET-MAD runs. Details: SYNC_DAVIDE_9.md.
+
+## 2026-10-22 — Agent side (Adem): pymatgen cause confirmed; note-6 correction
+
+The four interface-pipeline test failures seen in the `agents` conda env are explained by its pymatgen
+version. The env has 2026.4.16; the project pins pymatgen 2026.9.24 and pymatgen-core 2026.10.16
+(pyproject/requirements). With the pinned versions installed only in a scratch folder (`--no-deps`, shared
+env untouched) and put first on the path, `test_tools`, `test_orchestrator` and `test_screen` give 10 passed;
+without them, 4 fail. Not a code defect. Fix for this env: install the pinned versions (left to the user
+because the env is shared with other projects). Also appended a dated correction to SYNC_DAVIDE_6.md
+instead of rewriting it.

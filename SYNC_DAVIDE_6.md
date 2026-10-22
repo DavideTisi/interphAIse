@@ -25,3 +25,5 @@ The production archive `data/experiments/environment_v1/` is unchanged.
 
 Next on my side: slides following your suggested story, using
 `figures/environment_acceptance_review_20261021.png`.
+
+**Correction, 22 October:** the closing "Next on my side: slides" was superseded. Davide first took the slides, then asked me for the experiment slides, which were delivered in `SYNC_DAVIDE_7.md` (`3948797`).
