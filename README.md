@@ -27,30 +27,30 @@ runs or retrieves calculations, and preserves the evidence.
 
 ```mermaid
 flowchart TB
-    H["Humans freeze the question, candidate menus,<br/>objectives, budgets and interface construction rules"]
+    H["Human setup<br/>Pools, rules, budgets"]
 
-    subgraph B["Controlled discovery benchmark — Haiku and DeepSeek"]
-        L{{"LLM chooses a candidate<br/>and records its chemical hypothesis"}}
-        Q["Code validates the ID, charges the query<br/>and reveals its frozen thermodynamic scores"]
-        A["Compare success versus query budget<br/>across feedback controls and random search"]
+    subgraph B["Search benchmark — both models"]
+        L{{"LLM chooses<br/>and explains"}}
+        Q["Validate ID<br/>Reveal frozen scores"]
+        A["Compare controls<br/>and random search"]
         L --> Q
-        Q -- "Iterative arm: use results for the next choice" --> L
-        Q -- "Completed runs" --> A
+        Q -- "Feedback" --> L
+        Q -- "Budget reached" --> A
     end
 
-    subgraph P["Separate prospective physical pilot — Haiku"]
-        C{{"Haiku chooses a coating and predicts<br/>adhesion at both contacts"}}
-        D["Archive the choice and forecasts<br/>before new interface energies are known"]
-        M["Evaluate the frozen interface structures<br/>ASE and PET-MAD supply energies and forces"]
-        V["Validate primary results and reveal<br/>the two contact adhesion values"]
-        F["Archive Haiku's final summary and forecast checks;<br/>then release withheld sensitivity results"]
+    subgraph P["Physical pilot — Haiku"]
+        C{{"Haiku chooses<br/>and forecasts"}}
+        D["Archive forecasts<br/>before calculations"]
+        M["ASE + PET-MAD<br/>Frozen interfaces"]
+        V["Validate and reveal<br/>primary adhesion"]
+        F["Archive summary<br/>Release sensitivity checks"]
         C --> D --> M --> V
-        V -- "Next decision within the pilot budget" --> C
+        V -- "Feedback" --> C
         V -- "Pilot complete" --> F
     end
 
     H --> L
-    H -- "Buildable menu and LiNbF6 reference results" --> C
+    H -- "Reference data" --> C
 
     classDef llm fill:#e3f3f1,stroke:#087f8c,color:#0b3b40
     classDef tools fill:#eef1f4,stroke:#7a8794,color:#1b2733
