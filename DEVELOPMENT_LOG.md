@@ -2596,3 +2596,16 @@ env untouched) and put first on the path, `test_tools`, `test_orchestrator` and 
 without them, 4 fail. Not a code defect. Fix for this env: install the pinned versions (left to the user
 because the env is shared with other projects). Also appended a dated correction to SYNC_DAVIDE_6.md
 instead of rewriting it.
+
+## 2026-10-22 — Agent side (Adem): pilot report generator
+
+Added `scripts/report_llm_petmad_pilot.py`, which is read-only and takes no lock. From a saved state it
+writes `report.md`, `assessment.json` and `predictions.png`:
+- a decision timeline (every attempt: choice, shortlist, hypothesis, forecast ranges, weaker contact,
+  change trigger, prior-prediction self-assessment, feedback hashes seen, HTTP charged, record hash);
+- prediction checks (observed against forecast, width, miss, weak-contact agreement);
+- the decision comparison and the limitations.
+
+Mock states are labelled MOCK. Moved the assessment into a pure `assess(state)` in `interphaise/pilot.py`.
+Example: `data/experiments/llm_petmad_pilot_v1/MOCK_report/` (partial trace on the genuine LiNbF6
+feedback). 13 pilot tests passed. No API or PET-MAD runs.

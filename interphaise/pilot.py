@@ -471,35 +471,40 @@ class Pilot:
         return None
 
     def assessment(self):
-        """Deterministic prediction checks and the decision comparison (descriptive only)."""
-        decisions = {s["stage"]: s["parsed"] for s in self.state["stages"] if s.get("parsed")}
-        rows = []
-        for stage in ("choose_2", "choose_3"):
-            if stage not in decisions:
-                continue
-            d = decisions[stage]
-            snap = self.state["snapshots"].get(d["selected_id"])
-            if snap is None:
-                rows.append(dict(stage=stage, candidate_id=d["selected_id"], status="not yet revealed"))
-                continue
-            b, checks = snap["bundle"], {}
-            for c in CONTACTS:
-                lo, hi = d["predicted_W_adh_J_m2"][c]
-                obs = b["contacts"][c]["W_adh_J_m2"]
-                checks[c] = dict(predicted=[lo, hi], width=hi - lo, observed=obs,
-                                 in_range=None if obs is None else lo <= obs <= hi,
-                                 miss=None if obs is None else max(lo - obs, obs - hi, 0.0))
-            rows.append(dict(stage=stage, candidate_id=d["selected_id"], contacts=checks,
-                             weaker_predicted=d["predicted_weaker_contact"], weaker_observed=b["weaker_contact"],
-                             weaker_agrees=None if b["weaker_contact"] == "unresolved"
-                             else d["predicted_weaker_contact"] == b["weaker_contact"]))
-        comparison = None
-        if "choose_2" in decisions and "choose_3" in decisions:
-            initial = [c for c in decisions["choose_2"]["ordered_shortlist"] if c != decisions["choose_2"]["selected_id"]]
-            comparison = dict(initial_next=initial[0] if initial else None, chosen=decisions["choose_3"]["selected_id"],
-                              changed=bool(initial) and initial[0] != decisions["choose_3"]["selected_id"],
-                              note="Decision comparison at a common information state; the unchosen coating has no measured outcome.")
-        return dict(predictions=rows, decision_comparison=comparison, http_attempts_used=self.state["http_attempts_used"])
+        return assess(self.state)
+
+
+def assess(state):
+    """Deterministic prediction checks and the decision comparison from a saved state (read-only, descriptive)."""
+    decisions = {s["stage"]: s["parsed"] for s in state["stages"] if s.get("parsed")}
+    rows = []
+    for stage in ("choose_2", "choose_3"):
+        if stage not in decisions:
+            continue
+        d = decisions[stage]
+        snap = state["snapshots"].get(d["selected_id"])
+        if snap is None:
+            rows.append(dict(stage=stage, candidate_id=d["selected_id"], status="not yet revealed"))
+            continue
+        b, checks = snap["bundle"], {}
+        for c in CONTACTS:
+            lo, hi = d["predicted_W_adh_J_m2"][c]
+            obs = b["contacts"][c]["W_adh_J_m2"]
+            checks[c] = dict(predicted=[lo, hi], width=hi - lo, observed=obs,
+                             in_range=None if obs is None else lo <= obs <= hi,
+                             miss=None if obs is None else max(lo - obs, obs - hi, 0.0))
+        rows.append(dict(stage=stage, candidate_id=d["selected_id"], formula=b["formula"], status="revealed",
+                         contacts=checks, weaker_predicted=d["predicted_weaker_contact"],
+                         weaker_observed=b["weaker_contact"],
+                         weaker_agrees=None if b["weaker_contact"] == "unresolved"
+                         else d["predicted_weaker_contact"] == b["weaker_contact"]))
+    comparison = None
+    if "choose_2" in decisions and "choose_3" in decisions:
+        initial = [c for c in decisions["choose_2"]["ordered_shortlist"] if c != decisions["choose_2"]["selected_id"]]
+        comparison = dict(initial_next=initial[0] if initial else None, chosen=decisions["choose_3"]["selected_id"],
+                          changed=bool(initial) and initial[0] != decisions["choose_3"]["selected_id"],
+                          note="Decision comparison at a common information state; the unchosen coating has no measured outcome.")
+    return dict(predictions=rows, decision_comparison=comparison, http_attempts_used=state["http_attempts_used"])
 
 
 def _now():

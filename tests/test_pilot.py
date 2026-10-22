@@ -265,3 +265,22 @@ def test_prompt_size_bound(tmp_path, index, monkeypatch):
     with pilot(tmp_path, index) as p:
         assert p.run_stage(Scripted()) is None and "exceeds" in p.state["status"]
         assert p.state["http_attempts_used"] == 0
+
+
+def test_report_timeline_and_prediction_checks(tmp_path, index):
+    from scripts.report_llm_petmad_pilot import plot, report
+    llm = Scripted()
+    with pilot(tmp_path, index) as p:
+        p.run_stage(llm), p.run_stage(llm)
+        complete(tmp_path, index, p.state["selected"][0], 2.5, 0.9)
+        p.run_stage(llm)
+        complete(tmp_path, index, p.state["selected"][1], 3.0, 1.5)
+        p.run_stage(llm)
+        state = p.state
+    text, a = report(state)
+    assert "MOCK" in text and SENTINEL in text and "## Prediction checks" in text
+    assert "changed: **False**" in text and a["predictions"][0]["status"] == "revealed"
+    assert plot(state, a, tmp_path / "p.png") and (tmp_path / "p.png").stat().st_size > 0
+    partial = dict(state, stages=state["stages"][:2], snapshots={REF: state["snapshots"][REF]})
+    text, a = report(partial)
+    assert "not yet revealed" in text and "Not available" in text
