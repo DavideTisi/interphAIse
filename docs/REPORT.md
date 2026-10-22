@@ -4,9 +4,11 @@
 [illustrated v3 Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx)
 as the submission write-up. [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md) now
 contains its text, inline references and conceptual illustration, preceded by
-Davide's approved project-and-findings opening for the gallery card. The
-previously requested explicit coating-to-adhesion mapping is retained. The README
-shows the same illustration. This replaces the earlier submission wording;
+Davide's approved project-and-findings opening for the gallery card. It defines
+the 141-structure / 100-formula candidate pool, the frozen acceptance thresholds,
+and success as finding at least one qualifier within ten queries; repeated runs
+can identify the same material. The explicit coating-to-adhesion mapping is
+retained. The README shows the same illustration. This replaces the earlier submission wording;
 the earlier report remains a historical artifact. Scientific results and the
 Word source are unchanged. No event submission was made.
 

@@ -4128,3 +4128,37 @@ Verification: asserted that the submission diff is exactly the approved paragrap
 insertion, reviewed the companion documentation changes and checked whitespace.
 No API/LLM calls, MLIP calculations or unit-test run were needed for this text edit.
 Next: use the Markdown opening as the gallery-card paragraph when submitting.
+
+
+## 2026-10-22 — Define candidates, acceptance and successful search runs
+
+**Branch:** main, starting at `2b0f3fc`. Davide requested that the submission
+explain what a candidate is, what makes it acceptable, and what 20/30 successful
+runs means. Updated docs/SUBMISSION_WRITEUP.md and its figure caption.
+
+The text now identifies the fixed pool of 141 Materials Project structures / 100
+formulas, with distinct atomic arrangements counted separately. It describes
+selection from existing structures rather than generation of new compositions.
+Acceptance requires a calculated band gap of at least 2 eV and each of the coating
+self-decomposition / additional-contact-reaction driving forces to be at most
+50 meV per non-Li atom at 4 V. The equilibrated endpoint reference is explicit.
+Success means at least one acceptable candidate within ten charged queries; the
+same material may be found in several runs. This is a screening result, not
+established battery performance. Removed the background's repeated statement of
+the research question to make room for the definitions. The opening and all text
+from Main results onwards, including numerical findings and references, remain
+byte-identical. The illustration itself is unchanged; only its caption is clearer.
+
+Updated the report and submission/presentation guides to distinguish the latest
+Markdown from the earlier unchanged Word version. No claim of new Word layout
+validation is made. Existing concurrent log entries and v2 files remain unstaged.
+
+Verification: checked the pool's 141 entries and 100 unique formula strings;
+checked thresholds, 4 V and equilibrated-reference settings in all three frozen
+tables. Recomputed acceptance booleans from the stored component scores: all 414
+scored rows agree and the nine failed rows cannot pass. The initial inspection
+assumed every row had scores and stopped on a missing band-gap field; the repeated
+check handles those archived failure rows explicitly. Confirmed the opening,
+results, links and image URL are unchanged and checked whitespace. No API/LLM
+call, simulation or full unit-test run was needed. Use the updated Markdown for
+the submission; the Word document remains the earlier version.

@@ -5,11 +5,12 @@
 Use the [copyable Markdown](../docs/SUBMISSION_WRITEUP.md) or the
 [illustrated v3 Word report](results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx)
 selected by Davide. They cover both LLM configurations, the prospective pilot
-and all four judging criteria. The Markdown preserves the v3 text, links and
+and all four judging criteria. The Markdown builds on the v3 text, links and
 [illustration](results_2026-10-22/interphaise_graphical_abstract_810_runs_2026-10-22_v2.png),
 with an approved opening that summarizes the project and findings for the gallery
-card. It also names the coating corresponding to each of the three electrolyte
-adhesion values. The Word document is unchanged and retains its earlier opening.
+card. It defines candidates, numerical acceptance and success per search run,
+and names the coating corresponding to each electrolyte adhesion value. The Word
+document is unchanged and predates these Markdown clarifications.
 The Markdown image uses a public absolute URL so it can be copied into the form.
 
 The [v3 source](source/interphaise_submission_illustrated_2026-10-22_v3.json),
