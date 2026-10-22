@@ -2730,3 +2730,10 @@ Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report
   - LiCaAlF₆ electrolyte: the thickness and robustness sensitivity cases are unavailable and stay unquantified.
 - **Figure fix:** `scripts/report_llm_petmad_pilot.py` placed the forecast figure's footnote off the bottom edge. It is now placed inside, and `report_live/predictions.png` was regenerated from the unchanged state. `report.md` and `assessment.json` are byte-identical. Both figures were checked visually.
 - No live calls.
+
+## 2026-10-22 — Agent side (Adem): pinned-dependency test run before merge
+
+- **Test run:** full suite at `5b76988`, in a fresh scratch venv built from `requirements.txt` (pymatgen 2026.9.24, pymatgen-core 2026.10.16, numpy 2.4.6, pytest 9.1.1).
+- **Result:** **200 passed, 0 failed.** The four failures seen in the `agents` conda env (pymatgen 2026.5.4 / pymatgen-core 2026.4.16) are environment-only.
+- **Command:** `python -m venv <venv> && <venv>/bin/pip install -r requirements.txt pytest && <venv>/bin/python -m pytest -q tests/`.
+- **Live archive:** unchanged since `c0a0546` (state.json, index.json, manifest.json and the report text). No live calls.
