@@ -14,7 +14,7 @@ it must be no longer than four minutes. The interactive viewer is supplementary.
 
 | Item | Current deliverable or remaining action |
 |---|---|
-| Write-up | **Ready:** [submission text](SUBMISSION_WRITEUP.md) and [one-page illustrated Word report](../presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx) include both LLM configurations and the completed physical pilot. The opening paragraph is written for the gallery card. [Figure for direct upload](../figures/submission_results_2026-10-22.png). The [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) remains the full scientific account; the older overview is a historical checkpoint. |
+| Write-up | **Ready:** [submission text](SUBMISSION_WRITEUP.md) and [one-page illustrated Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx) include both LLM configurations and the completed physical pilot. The approved v3 text explicitly addresses the four judging criteria. [Figure for direct upload](../presentations/results_2026-10-22/interphaise_graphical_abstract_810_runs_2026-10-22_v2.png). The [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) remains the full scientific account; the older overview is a historical checkpoint. |
 | Public repository | **Complete:** [DavideTisi/interphAIse](https://github.com/DavideTisi/interphAIse), tested release on `main`. Davide explicitly authorized merging/publication; the visibility change and anonymous downloads are verified in [the release record](FINAL_INTEGRATION.md). |
 | Public social post | Still required. No post has been published or authorized in this session. An updated draft with the public repository link is below. |
 | Rules confirmation | A human must read and confirm the rules at submission. The campaign's separate “How the hackathon works” link returned 404 during this check, so that link did not establish any additional eligibility conditions. |
@@ -44,11 +44,14 @@ and archived forecasts carry that part of the argument.
 ## One-page form text
 
 Use [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md), or copy the formatted text
-from the [Word report](../presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx).
-Paste the opening two sentences first so they become the gallery-card paragraph.
-Insert [the comparison figure](../figures/submission_results_2026-10-22.png) at the
-marked position and retain its caption. The report fits one Letter page at
-11-point body text, including the figure and inline links.
+from the [Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx).
+The first paragraph becomes the gallery-card text. The Markdown includes a public
+image URL; if the form does not import it, insert
+[the illustration](../presentations/results_2026-10-22/interphaise_graphical_abstract_810_runs_2026-10-22_v2.png)
+after “How exploration is tested” and retain its caption. The Word version fits
+one Letter page at 11-point body text; the form controls its own layout. The
+Markdown carries forward the explicit coating names beside the three adhesion
+values. The selected Word source is otherwise preserved unchanged.
 
 Rechecked the public criteria on 22 October. The supplied submission URL redirects
 to sign-in in this browser; the form-specific length and gallery-card instructions

@@ -1,4 +1,7 @@
-"""Build the one-page submission from frozen results and its editable Markdown.
+"""Build the historical one-page submission from its preserved Markdown.
+
+The current approved submission is docs/SUBMISSION_WRITEUP.md, converted from
+the illustrated v3 report. This builder retains its original text and figure.
 
 First run --figure-only with the project analysis environment (matplotlib), then
 run without flags with the Codex bundled Python (python-docx). No network or live
@@ -13,7 +16,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "docs/SUBMISSION_WRITEUP.md"
+SOURCE = ROOT / "presentations/source/interphaise_submission_2026-10-22.md"
 FIGURE = ROOT / "figures/submission_results_2026-10-22.png"
 OUT = ROOT / "presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx"
 HAIKU = ROOT / "data/experiments/environment_v1/environment_summary.json"
@@ -171,7 +174,7 @@ def main():
     doc.core_properties.title = "interphAIse for battery coating discovery"
     doc.core_properties.subject = "One-page OSI Hackathon submission report"
     doc.core_properties.author = "interphAIse team"
-    doc.core_properties.comments = "Built from docs/SUBMISSION_WRITEUP.md and archived experiment summaries."
+    doc.core_properties.comments = "Built from presentations/source/interphaise_submission_2026-10-22.md and archived experiment summaries."
     doc.save(OUT)
     source_files = [SOURCE, HAIKU, DEEPSEEK, Path(__file__)]
     receipt = {"sources": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()

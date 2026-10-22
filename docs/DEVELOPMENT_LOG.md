@@ -4068,3 +4068,43 @@ runs/readme_diagrams_v2/ directory. No scientific archive, code for experiments,
 API restriction or numerical result changed; no paid call, simulation or full
 unit-test run was needed. Stage only the README, diagram sources/assets and this
 checkpoint, preserving concurrent illustrated-report work for its own task.
+
+
+## 2026-10-22 — Publish the approved illustrated v3 submission as Markdown
+
+**Branch:** main, starting at `5c78d9d`. Davide selected
+presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx
+as the submission text and requested copyable Markdown, replacement of the earlier
+write-up, and the same figure on the repository's main page.
+
+Replaced docs/SUBMISSION_WRITEUP.md with the nine v3 paragraphs, bold lead-ins,
+inline references, illustration, caption and footer links. Compared the JSON
+source with the actual Word XML before conversion; every paragraph and external
+reference matches. The single intentional text clarification carries forward
+Davide/Adem's earlier request to name LiNbF6, LiTaF6 and LiCaAlF6 next to their
+respective 1.63, 1.58 and 0.74 J/m² values. The selected DOCX is unchanged.
+The Markdown image uses a public raw GitHub URL for copying outside the repo.
+
+Added the exact embedded figure to the README near the reviewer links, retaining
+Why the LLM is central, both workflow diagrams and the detailed result plot.
+Updated the Word-report link, submission package, presentation guide and project
+status. Publishing the selected v3 DOCX, its source/builder/receipts, the reused
+v2-named figure and its generation prompt makes those links self-contained.
+The separate v2 document and its unfinished publication work remain unstaged.
+
+Preserved the previous Markdown under presentations/source/ and pointed the
+historical bar-chart report builder at that copy. Otherwise replacing the current
+submission would silently change the older document builder's input and break its
+relative figure path. No historical Word artifact or scientific archive changed.
+
+Verification: all six hashes in the v3 source receipt match; its embedded image
+is byte-identical to the published PNG. Asserted the 24 LLM and three random
+counts against the frozen summaries (810 distinct runs). Rendered the unchanged
+v3 document again with the bundled document runtime, confirmed one page and
+visually inspected the full page and standalone illustration. Checked 122 local
+Markdown links, caption placement, hyperlink preservation, coating mapping,
+builder syntax and whitespace. QA is in runs/submission_markdown_v3/ (ignored).
+No API call, scientific calculation or new unit-test run was needed; the reported
+246 tests and 9,600 replays remain the earlier release verification. No event form
+or social post was submitted. The next user action is to copy the new Markdown
+into the submission form, inserting the PNG directly if its editor requires it.

@@ -13,9 +13,14 @@ three-coating physical pilot. Humans define the objectives and construction
 rules; the LLM's scientific selection judgment is what we test.
 
 **For reviewers:** [One-page report](docs/SUBMISSION_WRITEUP.md) ·
-[Illustrated Word report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx) ·
+[Illustrated Word report](presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx) ·
 [Interactive interfaces](https://davidetisi.github.io/interphAIse/) ·
 [Full results](docs/RESULTS_SYNTHESIS_2026-10-22.md)
+
+![Battery coating schematic, the LLM decision loop, and correct-feedback results for Haiku and DeepSeek against random across three electrolytes.](presentations/results_2026-10-22/interphaise_graphical_abstract_810_runs_2026-10-22_v2.png)
+
+*Conceptual illustration; atoms are schematic. Screening success does not
+establish improved battery performance. The full policy comparison appears below.*
 
 ## Why the LLM is central
 

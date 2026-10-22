@@ -1,5 +1,14 @@
 # interphAIse — project report
 
+**Approved submission v3 — 22 October 2026:** Davide selected the
+[illustrated v3 Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx)
+as the submission write-up. [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md) now
+contains its text, inline references and conceptual illustration, with the
+previously requested explicit coating-to-adhesion mapping retained. The README
+shows the same illustration. This replaces the earlier submission wording;
+the earlier report remains a historical artifact. Scientific results and the
+Word source are unchanged. No event submission was made.
+
 **Repository organisation — 22 October 2026:** Detailed reports, protocols and
 work history now live under [docs/](README.md). The repository root keeps the
 main README, offline reproduction guide and agent instructions. The earlier

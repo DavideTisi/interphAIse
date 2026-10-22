@@ -1,5 +1,23 @@
 # Presentation checkpoint
 
+## Approved submission write-up
+
+Use the [copyable Markdown](../docs/SUBMISSION_WRITEUP.md) or the
+[illustrated v3 Word report](results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx)
+selected by Davide. They cover both LLM configurations, the prospective pilot
+and all four judging criteria. The Markdown preserves the v3 text, links and
+[illustration](results_2026-10-22/interphaise_graphical_abstract_810_runs_2026-10-22_v2.png),
+with one clarification carried forward: it names the coating corresponding to
+each of the three electrolyte adhesion values. The Word document is unchanged.
+The Markdown image uses a public absolute URL so it can be copied into the form.
+
+The [v3 source](source/interphaise_submission_illustrated_2026-10-22_v3.json),
+[builder](source/build_submission_illustrated_2026-10-22_v3.py) and validation
+receipts accompany the document. The earlier bar-chart report and its
+[preserved Markdown input](source/interphaise_submission_2026-10-22.md)
+remain historical artifacts; its builder no longer reads the current submission.
+The older overview and slide checkpoints below retain their original scope.
+
 ## Completed presentation for a mixed audience
 
 [Editable v4 PowerPoint](nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx)
