@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "pages": 1,
+  "words_including_title_and_caption": 477,
+  "body_font_pt": 11,
+  "figures": 1,
+  "figure_data": "figures/submission_results_2026-10-22.json",
+  "visual_review": "Inspected the final rendered page; no clipping, missing text, overlap or unreadable labels.",
+  "a11y_findings": {
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "evidence": "Figure counts read from both committed environment summaries and checked against the validated final counts.",
+  "files": {
+    "presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx": "8e281d03f6499c197c5311c7a9f8e8c7420e3930f252b970c0eb8ee10e4e7e02",
+    "SUBMISSION_WRITEUP.md": "01ff80fd2ed2aecad36adbe1b6af158d208ec26bd2569b07761629a227a08cae",
+    "figures/submission_results_2026-10-22.png": "d418739125d679055594ce5d8b68893ffad8bac996486fcfa953800d8d358bd7"
+  },
+  "submission_status": "Prepared only; no event submission, social post or rules acceptance.",
+  "reproduction": "Use project Python with --figure-only, then bundled document Python without flags; render with the bundled render_docx.py."
+}

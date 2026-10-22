@@ -3791,3 +3791,45 @@ REPORT.md records the corrected reproduction status. No live LLM or Materials
 Project request, MLIP calculation or cluster job occurred. Concurrent logo,
 README and branding work is excluded from this commit. No further corrective
 work is required for these two reported issues.
+
+## 2026-10-22 — One-page final submission report
+
+**Branch:** `main`, starting at `f71ad02`. Davide requested a one-page detailed
+write-up answering the judging criteria, with an opening paragraph suitable
+for the gallery card. Re-read the official public campaign page in the browser:
+impact, innovativeness, novelty and relevance to physical science/mathematics.
+The entry URL redirects to sign-in; form-specific instructions are taken from
+Davide's pasted text. No form was edited or submitted.
+
+Created SUBMISSION_WRITEUP.md and an illustrated Word version under
+presentations/results_2026-10-22/. The 477-word report (including title and
+caption) explains reaction-driven degradation, the two coating contacts, why
+interface construction matters, and the LLM's delegated scientific choices.
+It combines the 810-run environment study across both configurations with the
+prospective Haiku physical pilot. It retains the sulfide feedback result,
+DeepSeek's useful LLZO upfront prior, the LLZO random advantage, the failed
+LiCaAlF6 forecasts and unchanged choice order. It makes no claim of human-level
+judgment, practical coating validation or measured compute savings.
+
+Built the compact comparison figure directly from the committed Haiku and
+DeepSeek environment summaries; all 24 LLM counts and three shared random
+counts are asserted against the final validated values. The figure, vector
+version and numeric data are in figures/submission_results_2026-10-22.*.
+The reproducible builder is presentations/source/build_submission_report_2026-10-22.py.
+It uses the project plotting environment for --figure-only and the bundled
+document runtime for Word authoring. References link the Xiao coating-screening
+paper and PET-MAD/UPET; public links lead to code, offline reproduction and viewer.
+
+Verification: rendered the final DOCX using the bundled LibreOffice renderer,
+confirmed one Letter page with 11-point body text, inspected the whole page,
+and checked the image and labels. Accessibility audit reports zero high,
+medium or low findings. Source/output hashes and a visual-validation receipt
+accompany the DOCX. README, REPORT and SUBMISSION_PACKAGE now point to this
+report as the current submission text; the older overview remains a checkpoint.
+Whitespace and local-link checks pass. No scientific source, frozen archive,
+LLM call or PET-MAD calculation changed; the prior 246-test result remains
+applicable and the suite was not rerun for document production.
+
+The report and uploadable figure are ready for Davide to paste into the form.
+The event submission, social post and rules confirmation remain human actions.
+Concurrent logo/branding changes remain local and excluded from this commit.

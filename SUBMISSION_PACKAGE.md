@@ -14,7 +14,7 @@ it must be no longer than four minutes. The interactive viewer is supplementary.
 
 | Item | Current deliverable or remaining action |
 |---|---|
-| Write-up | The [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) includes both LLM configurations and the completed physical pilot. The [short overview](presentations/source/interphaise_overview_2026-10-22.txt) and [illustrated Word document](presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx) predate DeepSeek and need that update before use as a complete final summary. |
+| Write-up | **Ready:** [submission text](SUBMISSION_WRITEUP.md) and [one-page illustrated Word report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx) include both LLM configurations and the completed physical pilot. The opening paragraph is written for the gallery card. [Figure for direct upload](figures/submission_results_2026-10-22.png). The [detailed synthesis](RESULTS_SYNTHESIS_2026-10-22.md) remains the full scientific account; the older overview is a historical checkpoint. |
 | Public repository | **Complete:** [DavideTisi/interphAIse](https://github.com/DavideTisi/interphAIse), tested release on `main`. Davide explicitly authorized merging/publication; the visibility change and anonymous downloads are verified in [the release record](FINAL_INTEGRATION.md). |
 | Public social post | Still required. No post has been published or authorized in this session. An updated draft with the public repository link is below. |
 | Rules confirmation | A human must read and confirm the rules at submission. The campaign's separate “How the hackathon works” link returned 404 during this check, so that link did not establish any additional eligibility conditions. |
@@ -41,6 +41,20 @@ switch between the three coatings and see the two separately computed contacts.
 It does not demonstrate LLM reasoning by itself. The discovery curves, controls
 and archived forecasts carry that part of the argument.
 
+## One-page form text
+
+Use [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md), or copy the formatted text
+from the [Word report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx).
+Paste the opening two sentences first so they become the gallery-card paragraph.
+Insert [the comparison figure](figures/submission_results_2026-10-22.png) at the
+marked position and retain its caption. The report fits one Letter page at
+11-point body text, including the figure and inline links.
+
+Rechecked the public criteria on 22 October. The supplied submission URL redirects
+to sign-in in this browser; the form-specific length and gallery-card instructions
+come from Davide's pasted text. No form was filled or submitted, no social post was
+sent, and no event rules were accepted here.
+
 ## Suggested public post draft
 
 We built interphAIse for the OSI Hackathon to test whether an LLM can guide the
@@ -64,8 +78,9 @@ This remains an unsent draft for the team to review and publish.
 1. **Complete:** integrated histories merged into `main`, 246 tests passed,
    repository public and anonymous links checked. The README links the write-up,
    reproduction command, completed slides and viewer. LiF remains uncomputed.
-2. Finish and verify the newer presentation and short overview incorporating
-   DeepSeek, then add them to the public repository.
+2. **Write-up complete:** use the new one-page report incorporating DeepSeek.
+   Finish the newer presentation in its separate chat if it is to accompany
+   the entry; it is supporting material.
 3. Publish the team's chosen social post and copy its public permalink.
 4. Complete the write-up and rules confirmation in the event form, add the public
    links, and submit before the deadline. No submission was made by this agent.

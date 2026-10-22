@@ -1,5 +1,14 @@
 # interphAIse — project report
 
+**One-page submission report — 22 October 2026:** The
+[submission text](SUBMISSION_WRITEUP.md) and
+[illustrated Word report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx)
+now combine the two-model environment study with the prospective Haiku/PET-MAD
+pilot. They explain the delegated scientific judgment, methods, contribution,
+potential users and limitations in one page, with a figure read directly from
+the archived summaries. This supersedes the earlier short overview for final
+submission. The event form and social post remain unsent.
+
 **Fresh-install correction — 22 October 2026:** The reproduction command now
 includes the existing `mp` extra, supplying `emmet-core` for offline Materials
 Project ID normalization. Tests are an explicit Python package, and their shared

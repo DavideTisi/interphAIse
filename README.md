@@ -14,8 +14,9 @@ No API credential, model download or GPU is needed for that command.
 
 **For reviewers:** [Open the public structure explorer](https://davidetisi.github.io/interphAIse/)
 or [download its offline copy](https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip).
-The [one-page illustrated overview](presentations/results_2026-10-22/interphaise_project_overview_2026-10-22.docx)
-introduces the problem and results. See the [submission checklist](SUBMISSION_PACKAGE.md)
+The [one-page submission report](presentations/results_2026-10-22/interphaise_submission_2026-10-22.docx)
+and [copyable text](SUBMISSION_WRITEUP.md) cover both models, the physical pilot
+and the role of the LLM. See the [submission checklist](SUBMISSION_PACKAGE.md)
 for remaining release actions; the viewer is supporting evidence, separate from
 the required public source repository and write-up.
 
@@ -32,7 +33,7 @@ LiCaAlF6 forecasts missed; candidate order did not change.
 
 The [reviewed presentation checkpoint](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
 ([PDF](presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pdf)),
-Word overview and illustration still cover Haiku and PET-MAD. The synthesis
+earlier Word overview and illustration still cover Haiku and PET-MAD. The synthesis
 records their revision plan. DeepSeek's completed code/archive at `550391b` is
 now integrated alongside Claude's final physics package. The offline command
 replays both model configurations and reproduces the
