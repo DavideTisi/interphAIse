@@ -20,6 +20,14 @@ coating shortcuts load their archived contacts in the generated explorer;
 [STRUCTURE_VIEWER.md](STRUCTURE_VIEWER.md) includes the local HTTP launch option
 for the in-app browser. Scientific results and saved geometry are unchanged.
 
+**Short project overview — 22 October 2026:** Added a
+[half-page narrative](presentations/source/interphaise_overview_2026-10-22.txt)
+covering coating motivation, interface modelling difficulty, computational
+tools, the LLM's delegated choices and the positive and negative results. Its
+[graphical abstract](presentations/results_2026-10-22/interphaise_graphical_abstract_2026-10-22_v1.png)
+is a labelled conceptual illustration, not simulation output. No scientific
+evidence or presentation-deck content was changed.
+
 **Consolidated results and new presentation — 2026-10-22:** The
 [results synthesis](RESULTS_SYNTHESIS_2026-10-22.md) now joins the 50-structure
 benchmark, 450-run environment study and completed three-coating PET-MAD pilot.

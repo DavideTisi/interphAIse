@@ -3376,3 +3376,34 @@ paid calls or new calculations occurred. The generated HTML and screenshot
 remain ignored outputs. The local HTTP server must remain running for the
 preview URL; the exported HTML is also usable offline in an ordinary browser.
 Next: publish the small fix on the integration branch for the joint review.
+
+## 2026-10-22 — Half-page background, methods and results with companion image
+
+**Branch:** `work/final-integration-20261022`, starting at `91afca5`. The user
+requested a short project description with more battery background, reasons
+interfaces are difficult to simulate, the tools used, results and an image.
+Added `presentations/source/interphaise_overview_2026-10-22.txt` (309 words,
+including a link to Xiao et al. 2019 for the coating background). The wording
+keeps model acceptability distinct from experimental protection and retains
+the LLZO failure, unchanged pilot choice order, polar models and untested
+lithium transport/cycling.
+
+Used the built-in image_gen tool once to produce a 1536 × 1024 conceptual
+graphical abstract, saved in
+`presentations/results_2026-10-22/interphaise_graphical_abstract_2026-10-22_v1.png`.
+It shows a schematic protective layer, the propose/calculate/interpret loop,
+the sulfide and LLZO iterative-versus-random counts, and the Ta/Ca forecast
+outcomes. Atomic motifs are illustrative, not measured or simulated structures.
+The exact prompt and generation method are archived in
+`presentations/source/interphaise_graphical_abstract_prompt_2026-10-22.txt`.
+The project image is byte-identical to the original generated PNG (SHA-256
+`85ff0c3e791f86745fa55c48502a844fd43e6eb769d990312149d2562aaab62c`).
+
+Visually checked the generated illustration for labels, legibility and the
+reported counts; checked the prose against the existing results synthesis.
+Updated presentations/README.md and REPORT.md with links. This is an asset and
+documentation change; no software tests were rerun. The current slide deck,
+frozen archives and scientific results are unchanged. No collaborator API key
+was used and no discovery run or materials calculation was launched. One
+built-in image-generation request was made. Next: share these companion assets
+on the integration branch for the final review.

@@ -6,6 +6,19 @@ against both merged branches, including all six selected contacts and the four
 forecast outcomes. The integration does not rewrite the live pilot or its
 separate one-slide checkpoint. See [the integration record](../FINAL_INTEGRATION.md).
 
+## Short overview and graphical abstract
+
+[Half-page overview](source/interphaise_overview_2026-10-22.txt) and
+[companion illustration](results_2026-10-22/interphaise_graphical_abstract_2026-10-22_v1.png)
+explain the coating problem, simulation difficulty, tools, LLM role and results.
+The 1536 × 1024 PNG is an AI-generated conceptual illustration: its atoms are
+illustrative and are not the computed structures. The reported counts and
+forecast outcomes match the frozen evidence. The image shows the sulfide and
+LLZO contrasts; the text also covers the near-ceiling chloride condition.
+The [generation prompt](source/interphaise_graphical_abstract_prompt_2026-10-22.txt)
+records the built-in image-generation method and accuracy constraints. The
+PowerPoint/PDF deck is unchanged.
+
 ## Current consolidated presentation: 22 October 2026
 
 [Editable PowerPoint](results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx)
