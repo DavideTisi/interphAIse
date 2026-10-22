@@ -60,3 +60,10 @@ and descriptive. Do not claim that the evaluator excludes oxygen products or
 that Haiku demonstrably avoided these compounds for safety. Iterative's late,
 concentrated selection and the proxy's practical limitations belong in the
 interpretation. No deck file was changed by this annotation.
+
+## LLM–PET-MAD pilot slide (22 October 2026)
+
+`interphAIse_llm_petmad_pilot_2026-10-22.pptx` is one widescreen slide to insert into the main deck. It has speaker notes giving the sources, and its content follows [the pilot interpretation](../data/experiments/llm_petmad_pilot_v1/INTERPRETATION.md).
+- Programmatic checks passed: no off-slide shapes, and the required wording is present.
+- **Not visually checked:** no renderer was available here. Fonts are Arial, matching v4.
+- V4 itself is unchanged.

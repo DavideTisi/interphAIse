@@ -2706,3 +2706,13 @@ Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report
   - The summary ranks LiNbF6 > LiTaF6 > LiCaAlF6 > LiF and explicitly concedes the LiCaAlF6 miss.
 - **Limitation:** the prompt field `min_W_adh_J_m2` is the minimum over the two contacts (the weaker contact at its selected registry). Haiku misread it as a minimum over registries and flagged the LiCaAlF6 value as suspicious. The prompt stays frozen for this pilot. Proposed for any future version: rename it `weaker_contact_W_adh_J_m2`.
 - **Next:** Davide reviews `report_live/` for the pilot slide; Claude's sensitivity runs stay outside this decision record.
+
+## 2026-10-22 — Agent side (Adem): pilot report and slide finalized (Davide's review)
+
+- **Scope:** documentation and slide only. No live calls; `state.json`, the prompts, the responses and the amendment are unchanged.
+- **Added:**
+  - `data/experiments/llm_petmad_pilot_v1/INTERPRETATION.md` with Davide's reviewed wording: the forecast outcomes, order unchanged, the `min_W_adh_J_m2` correction (weaker of the two selected contact values; Haiku misread it), and the final ranking labelled as the model's assessment (LiF not physically evaluated; LiNbF₆–LiTaF₆ difference not a robust winner).
+  - `presentations/interphAIse_llm_petmad_pilot_2026-10-22.pptx`: one slide with speaker notes, sha256 `a957dec9…f9425`. Built with python-pptx from a scratch folder; the build script is not in the repo.
+  - Programmatic checks passed. The slide was not visually checked because no renderer was available.
+- **Updated:** the `REPORT.md` status entry and `presentations/README.md`.
+- **Deferred:** the field rename to `weaker_contact_W_adh_J_m2`, for a future protocol version. This pilot is not rewritten or rerun.

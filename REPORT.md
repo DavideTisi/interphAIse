@@ -1,5 +1,13 @@
 # interphAIse — project report
 
+**LLM–PET-MAD pilot complete — 2026-10-22:** live, Haiku 5.5. It used 5 of 10 HTTP attempts, about USD 0.006 at list price (not billed).
+- **Forecasts:** both LiTaF₆ W_adh ranges were supported; both LiCaAlF₆ ranges missed (cathode 1.43, electrolyte 0.74 J/m²). The weaker contact was correct for both.
+- **Order:** the candidate order was unchanged by feedback.
+- **Correction:** `min_W_adh_J_m2` is the weaker of the two selected contact values, not the minimum across registries. Haiku's suspicion arose from misreading that definition. The field rename is kept for a future protocol version.
+- **Final ranking:** LiNbF₆ > LiTaF₆ > LiCaAlF₆ > LiF. This is the model's assessment: LiF was not physically evaluated, and the small LiNbF₆–LiTaF₆ difference does not establish a robust winner.
+- **Record:** the summary prompt first stopped, uncharged, at the 16,000-character bound. A hashed summary-only 20,000 bound was recorded, and the original prompts, responses and state are preserved.
+- **Links:** [interpretation](data/experiments/llm_petmad_pilot_v1/INTERPRETATION.md), [generated report](data/experiments/llm_petmad_pilot_v1/report_live/report.md), [slide](presentations/interphAIse_llm_petmad_pilot_2026-10-22.pptx). This supersedes the "no pilot implementation" status below.
+
 **Deadline plan refined — 2026-10-21:** The pilot now uses validated primary
 registry results for each decision; declared sensitivity checks can run in
 parallel or afterwards and remain explicitly pending until complete. LiNbF6's
