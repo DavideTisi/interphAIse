@@ -1,5 +1,7 @@
 # interphAIse for battery coating discovery
 
+We built interphAIse to test whether LLMs can guide the search for protective battery coatings by choosing what to calculate next. Across 810 search runs and a prospective three-coating atomistic pilot, we found that useful chemical knowledge and useful adaptation to numerical feedback are distinct capabilities whose value depends on the model and battery environment.
+
 **Relevance to physical sciences.** Reactions between a cathode and a solid electrolyte can form resistive layers and degrade batteries. Protective coatings must suppress reactions, maintain contact and conduct lithium. Surface termination, strain and disorder complicate prediction. We test whether large language models (LLMs) can help scientists choose which coating to calculate next.
 
 **Where the LLM acts.** Haiku 5.5 and DeepSeek V3.2 choose candidates and revise choices from numerical feedback. Humans set objectives; code scores candidates and enforces budgets. Materials Project and pymatgen screen 141 structures against LiCoO₂ at 4 V in sulfide, chloride and LLZO electrolytes for coating stability, contact reactions and an electronic-insulation proxy.

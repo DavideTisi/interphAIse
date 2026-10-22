@@ -4108,3 +4108,23 @@ No API call, scientific calculation or new unit-test run was needed; the reporte
 246 tests and 9,600 replays remain the earlier release verification. No event form
 or social post was submitted. The next user action is to copy the new Markdown
 into the submission form, inserting the PNG directly if its editor requires it.
+
+
+## 2026-10-22 — Lead the submission with the project and findings
+
+**Branch:** main, starting at `4f78fbe`. Davide approved the proposed two-sentence
+opening for the submission's gallery card. Added that exact opening to
+`docs/SUBMISSION_WRITEUP.md`, before the existing battery background. It states
+what interphAIse tests, the 810 search runs and prospective three-coating pilot,
+and the distinction between useful chemical knowledge and useful adaptation.
+
+The entire earlier Markdown body, figure, references, numerical results and
+limitations are byte-identical. Updated the submission guide, presentation guide
+and project report to identify Markdown as the latest version and clarify that
+the selected v3 Word document retains its earlier opening. No Word file, scientific
+archive, diagram or calculation changed. Preserved concurrent unstaged work.
+
+Verification: asserted that the submission diff is exactly the approved paragraph
+insertion, reviewed the companion documentation changes and checked whitespace.
+No API/LLM calls, MLIP calculations or unit-test run were needed for this text edit.
+Next: use the Markdown opening as the gallery-card paragraph when submitting.

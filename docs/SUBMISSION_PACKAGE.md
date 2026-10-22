@@ -43,9 +43,11 @@ and archived forecasts carry that part of the argument.
 
 ## One-page form text
 
-Use [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md), or copy the formatted text
-from the [Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx).
-The first paragraph becomes the gallery-card text. The Markdown includes a public
+Use [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md) for the latest approved text,
+including its new opening for the gallery card. The
+[Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx)
+retains its earlier opening and layout. The first paragraph becomes the
+gallery-card text. The Markdown includes a public
 image URL; if the form does not import it, insert
 [the illustration](../presentations/results_2026-10-22/interphaise_graphical_abstract_810_runs_2026-10-22_v2.png)
 after “How exploration is tested” and retain its caption. The Word version fits

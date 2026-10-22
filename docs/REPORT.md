@@ -3,8 +3,9 @@
 **Approved submission v3 — 22 October 2026:** Davide selected the
 [illustrated v3 Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx)
 as the submission write-up. [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md) now
-contains its text, inline references and conceptual illustration, with the
-previously requested explicit coating-to-adhesion mapping retained. The README
+contains its text, inline references and conceptual illustration, preceded by
+Davide's approved project-and-findings opening for the gallery card. The
+previously requested explicit coating-to-adhesion mapping is retained. The README
 shows the same illustration. This replaces the earlier submission wording;
 the earlier report remains a historical artifact. Scientific results and the
 Word source are unchanged. No event submission was made.
