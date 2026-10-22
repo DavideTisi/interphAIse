@@ -1,0 +1,996 @@
+{
+  "strategy": "random",
+  "seed": 222,
+  "budget": 10,
+  "prompt_version": "v3-2026-10-21c-charged-ids",
+  "hashes": {
+    "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+    "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+    "benchmark_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"
+  },
+  "objective": {
+    "acceptable_penalty_eV": 0.05,
+    "bin_width_eV": 0.02,
+    "contact_reference": "equilibrated",
+    "min_band_gap_eV": 2.0,
+    "version": "v3.0"
+  },
+  "metadata": {
+    "repeat": 222,
+    "model": "anthropic/claude-haiku-5-5",
+    "temperature": 1.0
+  },
+  "proposal_attempts": [],
+  "history": [
+    {
+      "proposal": {
+        "candidate_id": "mp-aaabfuqq",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.335836926017155
+        ],
+        "acceptable": true,
+        "backend": "linprog",
+        "band_gap_eV": 4.9005,
+        "bin_regret": 2,
+        "candidate_id": "mp-aaabfuqq",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.026199046975312612,
+            "electrolyte_contact": 0.04140919294945178
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.04140919294945178
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "LiAl(Si2O5)2",
+              "LiAlSiO4"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "La2Si2O7",
+              "LiAl5O8",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.04140919294945178,
+            "second_non_Li_fraction": 0.5573770491803279
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -156.47881678,
+            "entry_id": "mp-558808-GGA",
+            "formula": "LiAl(SiO3)2"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.22029037500033155,
+        "family": "silicate",
+        "formula": "LiAl(SiO3)2",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.04140919294945178,
+        "penalty_bin": 2,
+        "self_decomposition_penalty": 0.026199046975312612,
+        "status": "ok",
+        "thermo_entry_count": 1504,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaaiak",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.43338439944444485,
+          -0.43338439944444485
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 3.9436,
+        "bin_regret": 21,
+        "candidate_id": "mp-aaaaaiak",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.43338439944444485,
+            "electrolyte_contact": 0.01744777822674415
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.01744777822674415
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "La2Zr2O7",
+              "O2"
+            ],
+            "reaction_energy": -0.01744777822674415,
+            "second_non_Li_fraction": 0.7906976744186046
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -212.33182485999998,
+            "entry_id": "mp-5418-GGA",
+            "formula": "Li6Zr2O7"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.10547024995321408,
+        "family": "other_oxide",
+        "formula": "Li6Zr2O7",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.43338439944444485,
+        "penalty_bin": 21,
+        "self_decomposition_penalty": 0.43338439944444485,
+        "status": "ok",
+        "thermo_entry_count": 561,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaahikjt",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "bin_regret": null,
+        "candidate_id": "mp-aaahikjt",
+        "error": "No GGA_GGA+U entry for pinned material mp-3346453",
+        "error_type": "ValueError",
+        "evaluation_wall_seconds": 0.0387275000102818,
+        "family": "halide",
+        "formula": "LiMgCl3",
+        "status": "failed"
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaacshfd",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.335836926017155
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 0.0,
+        "bin_regret": null,
+        "candidate_id": "mp-aaacshfd",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.025578998333333658,
+            "electrolyte_contact": 0.0
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          0.0
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "O2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "O2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": -0.0
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -45.28797891999999,
+            "entry_id": "mp-1235185-GGA",
+            "formula": "LiO8"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.09349829202983528,
+        "family": "other_oxide",
+        "formula": "LiO8",
+        "insulating": false,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.025578998333333658,
+        "penalty_bin": 1,
+        "self_decomposition_penalty": 0.025578998333333658,
+        "status": "ok",
+        "thermo_entry_count": 561,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaarjl",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.3455209133333339,
+          -0.3844148394270821
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.7841000000000005,
+        "bin_regret": 17,
+        "candidate_id": "mp-aaaaarjl",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.3455209133333339,
+            "electrolyte_contact": 0.044038544355467835
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.044038544355467835
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "O2",
+              "SiO2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "La2Si2O7",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.044038544355467835,
+            "second_non_Li_fraction": 0.53125
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -113.85360125999999,
+            "entry_id": "mp-11737-GGA",
+            "formula": "Li4SiO4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.16613112500635907,
+        "family": "silicate",
+        "formula": "Li4SiO4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.3455209133333339,
+        "penalty_bin": 17,
+        "self_decomposition_penalty": 0.3455209133333339,
+        "status": "ok",
+        "thermo_entry_count": 1153,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaaaavln",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -1.0361956230000002,
+          -1.0361956230000002
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 3.5116,
+        "bin_regret": 51,
+        "candidate_id": "mp-aaaaavln",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.013157661435466927,
+            "coating_self": 1.0361956230000002,
+            "electrolyte_contact": 0.0
+          }
+        },
+        "contact_reaction_energies": [
+          -0.013157661435466927,
+          0.0
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "O2",
+              "Zn5Co19O32"
+            ],
+            "reaction_energy": -0.013157661435466927,
+            "second_non_Li_fraction": 0.3048780487804878
+          },
+          {
+            "products": [
+              "O2",
+              "ZnO"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": -0.0
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -109.81188988,
+            "entry_id": "mp-14495-GGA",
+            "formula": "Li6ZnO4"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.11474220897071064,
+        "family": "other_oxide",
+        "formula": "Li6ZnO4",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 1.0361956230000002,
+        "penalty_bin": 51,
+        "self_decomposition_penalty": 1.0361956230000002,
+        "status": "ok",
+        "thermo_entry_count": 687,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaabfwvx",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.09667843006944565,
+          -0.335836926017155
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 3.7965,
+        "bin_regret": 2,
+        "candidate_id": "mp-aaabfwvx",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "electrolyte_contact"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.0,
+            "electrolyte_contact": 0.05760855724999914
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.05760855724999914
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": -0.0
+          },
+          {
+            "products": [
+              "La2Si2O7",
+              "LaTaO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.05760855724999914,
+            "second_non_Li_fraction": 0.6181818181818182
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -277.99068577,
+            "entry_id": "mp-560297-GGA",
+            "formula": "LiTaSiO5"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.19963537500007078,
+        "family": "silicate",
+        "formula": "LiTaSiO5",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.05760855724999914,
+        "penalty_bin": 2,
+        "self_decomposition_penalty": 0.0,
+        "status": "ok",
+        "thermo_entry_count": 1284,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaabryuj",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.8314700554761894,
+          -0.8314700554761894
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 3.9915999999999996,
+        "bin_regret": 41,
+        "candidate_id": "mp-aaabryuj",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.8314700554761894,
+            "electrolyte_contact": 0.029344370279605236
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.029344370279605236
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "O2",
+              "TiO2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": 1.0
+          },
+          {
+            "products": [
+              "La2Ti2O7",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.029344370279605236,
+            "second_non_Li_fraction": 0.4473684210526315
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -179.07852951,
+            "entry_id": "mp-772521-GGA",
+            "formula": "Li8TiO6"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.1550057910499163,
+        "family": "other_oxide",
+        "formula": "Li8TiO6",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.8314700554761894,
+        "penalty_bin": 41,
+        "self_decomposition_penalty": 0.8314700554761894,
+        "status": "ok",
+        "thermo_entry_count": 969,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaacgaxr",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.10375066642857078,
+          -0.335836926017155
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 4.7208000000000006,
+        "bin_regret": 5,
+        "candidate_id": "mp-aaacgaxr",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.10375066642857078,
+            "electrolyte_contact": 0.029969687075658058
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.029969687075658058
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": -0.0
+          },
+          {
+            "products": [
+              "La2Si2O7",
+              "LiAl5O8",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.029969687075658058,
+            "second_non_Li_fraction": 0.4473684210526315
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -277.53834632,
+            "entry_id": "mp-1020023-GGA",
+            "formula": "Li3AlSiO5"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.23682450002525002,
+        "family": "silicate",
+        "formula": "Li3AlSiO5",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.10375066642857078,
+        "penalty_bin": 5,
+        "self_decomposition_penalty": 0.10375066642857078,
+        "status": "ok",
+        "thermo_entry_count": 1504,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    },
+    {
+      "proposal": {
+        "candidate_id": "mp-aaabrwgd",
+        "hypothesis": "random baseline"
+      },
+      "result": {
+        "absolute_contact_reaction_energies": [
+          -0.4583052799603191,
+          -0.4667128826190474
+        ],
+        "acceptable": false,
+        "backend": "linprog",
+        "band_gap_eV": 3.9186,
+        "bin_regret": 22,
+        "candidate_id": "mp-aaabrwgd",
+        "component_analysis": {
+          "dominance_tolerance_eV_non_Li_atom": 1e-08,
+          "dominant_components": [
+            "coating_self"
+          ],
+          "penalties": {
+            "cathode_contact": 0.0,
+            "coating_self": 0.4583052799603191,
+            "electrolyte_contact": 0.06789223171683645
+          }
+        },
+        "contact_reaction_energies": [
+          0.0,
+          -0.06789223171683645
+        ],
+        "contact_reference": "equilibrated",
+        "contacts": [
+          {
+            "products": [
+              "Li(CoO2)2"
+            ],
+            "reaction_energy": 0.0,
+            "second_non_Li_fraction": -0.0
+          },
+          {
+            "products": [
+              "LaNbO4",
+              "O2",
+              "ZrO2"
+            ],
+            "reaction_energy": -0.06789223171683645,
+            "second_non_Li_fraction": 0.4857142857142857
+          }
+        ],
+        "endpoint_decomposition_penalties": {
+          "electrode": 0.09667843006944565,
+          "electrolyte": 0.335836926017155
+        },
+        "energy_source": "MP 2026.09.28 GGA_GGA+U; dataset fe7a0e815fd31d325095707b483f4a30be26e13f8c40e12eeef4d7f747d0a5ea",
+        "energy_units": "eV/non-Li atom",
+        "entries": {
+          "coating": {
+            "energy_eV": -144.51122236,
+            "entry_id": "mp-770799-GGA",
+            "formula": "Li5NbO5"
+          },
+          "electrode": {
+            "energy_eV": -25.92090068,
+            "entry_id": "mp-22526-GGA+U",
+            "formula": "LiCoO2"
+          },
+          "electrolyte": {
+            "energy_eV": -718.4808847,
+            "entry_id": "mp-942733-GGA",
+            "formula": "Li7La3Zr2O12"
+          }
+        },
+        "evaluation_wall_seconds": 0.12214225000934675,
+        "family": "other_oxide",
+        "formula": "Li5NbO5",
+        "insulating": true,
+        "mu_Li_eV": -5.908922866666667,
+        "objective": {
+          "acceptable_penalty_eV": 0.05,
+          "bin_width_eV": 0.02,
+          "contact_reference": "equilibrated",
+          "min_band_gap_eV": 2.0,
+          "version": "v3.0"
+        },
+        "objective_version": "v3.0",
+        "penalty": 0.4583052799603191,
+        "penalty_bin": 22,
+        "self_decomposition_penalty": 0.4583052799603191,
+        "status": "ok",
+        "thermo_entry_count": 724,
+        "voltage_V": 4.0,
+        "warnings": []
+      }
+    }
+  ],
+  "trace": [
+    {
+      "evaluations": 1,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 2,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 3,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 4,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 5,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 6,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 7,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 8,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 9,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    },
+    {
+      "evaluations": 10,
+      "best_candidate_id": "mp-aaabfuqq",
+      "best_rank": [
+        1,
+        -2,
+        0.0
+      ],
+      "any_acceptable": true
+    }
+  ],
+  "displayed_sources": [],
+  "status": "complete"
+}

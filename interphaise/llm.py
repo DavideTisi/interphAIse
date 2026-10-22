@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 ANTHROPIC_MODEL = "claude-haiku-5-5"
+MALFORMED_TEXT_LIMIT = 4000  # characters of malformed model output kept for replay
 
 LLM = Callable[[str, str], "dict | list"]
 
@@ -49,41 +50,73 @@ def make_llm(model: str, temperature: float | None = None, retries: int = 3,
         raise ValueError("max_tokens and retries must be positive")
 
     def _anthropic(system: str, user: str):
+        # Accounting per logical call: every HTTP attempt is listed with safe identifiers only
+        # (status, provider request-id, elapsed time); never credentials, headers or raw error bodies.
         _anthropic.last_metadata = None  # Do not attribute a previous call's usage to a failure.
         payload = {"model": model_id, "max_tokens": max_tokens, "system": system,
                    "messages": [{"role": "user", "content": user}]}
         if temperature is not None:
             payload["temperature"] = temperature
+        attempts = []
+
+        def finish(final_error=None, data=None, **extra):
+            data = data or {}
+            _anthropic.last_metadata = {
+                "requested_model": model_id, "returned_model": data.get("model"), "response_id": data.get("id"),
+                "usage": data.get("usage"), "stop_reason": data.get("stop_reason"),
+                "temperature": temperature, "max_tokens": max_tokens,
+                "http_attempts": len(attempts), "transport_retries": max(0, len(attempts) - 1),
+                "attempts": attempts, "final_error": final_error, **extra}
+
         for attempt in range(retries):
             request = urllib.request.Request(
                 "https://api.anthropic.com/v1/messages",
                 data=json.dumps(payload).encode(),
                 headers={"x-api-key": key, "anthropic-version": "2023-06-01",
                          "content-type": "application/json"}, method="POST")
+            started = time.monotonic()
             try:
                 with urllib.request.urlopen(request, timeout=90) as response:
-                    data = json.load(response)
+                    request_id = (getattr(response, "headers", None) or {}).get("request-id")
+                    try:
+                        data = json.load(response)
+                    except ValueError:
+                        attempts.append({"status": "invalid_response_json", "request_id": request_id,
+                                         "elapsed_s": round(time.monotonic() - started, 3)})
+                        finish("response body was not JSON")
+                        raise RuntimeError("Anthropic response body was not JSON") from None
+                attempts.append({"status": 200, "request_id": request_id,
+                                 "elapsed_s": round(time.monotonic() - started, 3)})
             except urllib.error.HTTPError as error:
                 # Never include raw provider responses or headers in logs.
-                code = error.code
+                code, request_id = error.code, (error.headers or {}).get("request-id")
                 error.close()
+                attempts.append({"status": code, "request_id": request_id,
+                                 "elapsed_s": round(time.monotonic() - started, 3)})
                 if code in (429, 500, 502, 503, 504, 529) and attempt + 1 < retries:
                     time.sleep(2 ** attempt)
                     continue
+                finish(f"HTTP {code}")
                 raise RuntimeError(f"Anthropic request failed (HTTP {code})") from None
-            except urllib.error.URLError:
+            except (urllib.error.URLError, OSError):   # includes timeouts; HTTPError is handled above
+                attempts.append({"status": "connection_error", "request_id": None,
+                                 "elapsed_s": round(time.monotonic() - started, 3)})
+                finish("connection failed")
                 raise RuntimeError("Anthropic connection failed") from None
-            _anthropic.last_metadata = {"requested_model": model_id, "returned_model": data.get("model"),
-                                        "usage": data.get("usage"), "stop_reason": data.get("stop_reason"),
-                                        "temperature": temperature, "max_tokens": max_tokens}
             if data.get("stop_reason") == "max_tokens":
+                finish("output-token limit", data)
                 raise RuntimeError("Anthropic response reached the output-token limit")
             text = "".join(block.get("text", "") for block in data.get("content", [])
                            if block.get("type") == "text")
             try:
-                return extract_json(text)
+                parsed = extract_json(text)
             except (ValueError, TypeError):
+                # Bounded copy of the malformed text, so future archives can replay the parse.
+                finish("response was not valid JSON", data, malformed_text=text[:MALFORMED_TEXT_LIMIT])
                 raise RuntimeError("Anthropic response was not valid JSON") from None
+            finish(None, data)
+            return parsed
+        finish("retries exhausted")
         raise RuntimeError("Anthropic retries exhausted")
 
     _anthropic.last_metadata = None

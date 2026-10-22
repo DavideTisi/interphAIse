@@ -141,6 +141,13 @@ accounting also needs correction before live use. See
 [saved audit](data/reviews/claude_screen_review_20261021.json).
 F1/F2 are implemented on Claude's branch; it has not been merged here. No new
 interface energy, live LLM call or cluster action occurred in this review.
+**LLM–PET-MAD pilot complete — 2026-10-22:** live, Haiku 5.5. It used 5 of 10 HTTP attempts, about USD 0.006 at list price (not billed).
+- **Forecasts:** both LiTaF₆ W_adh ranges were supported; both LiCaAlF₆ ranges missed (cathode 1.43, electrolyte 0.74 J/m²). The weaker contact was correct for both.
+- **Order:** the candidate order was unchanged by feedback.
+- **Correction:** `min_W_adh_J_m2` is the weaker of the two selected contact values, not the minimum across registries. Haiku's suspicion arose from misreading that definition. The field rename is kept for a future protocol version.
+- **Final ranking:** LiNbF₆ > LiTaF₆ > LiCaAlF₆ > LiF. This is the model's assessment: LiF was not physically evaluated, and the small LiNbF₆–LiTaF₆ difference does not establish a robust winner.
+- **Record:** the summary prompt first stopped, uncharged, at the 16,000-character bound. A hashed summary-only 20,000 bound was recorded, and the original prompts, responses and state are preserved.
+- **Links:** [interpretation](data/experiments/llm_petmad_pilot_v1/INTERPRETATION.md), [generated report](data/experiments/llm_petmad_pilot_v1/report_live/report.md), [slide](presentations/interphAIse_llm_petmad_pilot_2026-10-22.pptx). This supersedes the "no pilot implementation" status below.
 
 **Deadline plan refined — 2026-10-21:** The pilot now uses validated primary
 registry results for each decision; declared sensitivity checks can run in
@@ -289,6 +296,8 @@ distinct-cathode-registry batch with matching GPU references in
 explicit off-grid offsets; eight regression tests pass. No new MLIP/API run
 or push occurred here. Earlier pending constraint/vacuum statements below
 are historical checkpoints. Adem's environment production remains approved.
+
+**Environment production results — 2026-10-21:** All 450 frozen runs completed (execution commit `710d346`, 2,800 calls, ≈ USD 3.63 at list price, estimate). Acceptable within 10 queries (n = 30/arm), iterative / sequential / shuffled / upfront / random (exact): Li6PS5Cl 20/2/6/0/8 (25.7%); Li3InCl6 30/30/30/30/29 (ceiling, declared in advance); LLZO 12/0/4/1/24 (73.6%). Paired exact McNemar, Holm over six: iterative > sequential in Li6PS5Cl (Holm p 4.6e-5) and LLZO (0.0024); iterative > shuffled in Li6PS5Cl (0.0024), not in LLZO (0.17). In LLZO random search beats every LLM arm. Feedback consistently beats no feedback, but where Haiku's chemical prior is wrong (LLZO) it stays below random within 10 queries. Archive and README: `data/experiments/environment_v1/`; note: `SYNC_DAVIDE_5.md`.
 
 **Environment production approved — 2026-10-21:** Following the measured-cost
 review, Davide explicitly said “i approve the production”. The approval covers

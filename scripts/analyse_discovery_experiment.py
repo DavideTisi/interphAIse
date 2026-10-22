@@ -11,6 +11,12 @@ Two targets (EVALUATOR_HANDOFF.md / SYNC_ADEM.md section 6):
   best bin   : some queried candidate reaches the best ranking_key in the pool (ties count)
 Successes M are counted over the whole pool, failures included in N. Failed or short
 runs are kept; an observed success persists after a run stops. Error bars: 95% Wilson.
+
+Third panel: median best penalty bin found so far (lower is better); the band is the
+interquartile range over runs (spread, not a confidence interval), using order statistics
+v[(n-1)//4], v[(n-1)//2], v[ceil(3(n-1)/4)] of the sorted per-run values. A run with no valid
+candidate yet counts as worse than every bin, never as an invented value. The exact random
+median uses P(best bin <= b within k) = 1 - C(N - M_b, k)/C(N, k).
 """
 import argparse
 import json
@@ -24,6 +30,10 @@ from interphaise.discovery import random_success_curve
 from interphaise.discovery_evaluator import ranking_key
 from interphaise.tools.thermo_dataset import verify_hash
 
+# Fixed colour per arm (validated categorical order), so an arm keeps its colour in every figure.
+ARM_COLORS = {"iterative": "#2a78d6", "random": "#eb6834", "sequential": "#1baf7a", "upfront": "#eda100",
+              "shuffled": "#e87ba4", "sequential_ids": "#008300"}
+
 TARGETS = {"acceptable": lambda r, best: bool(r.get("acceptable")),
            "best bin": lambda r, best: ranking_key(r) == best}
 
@@ -33,6 +43,18 @@ def wilson(p, n, z=1.96):
     centre = (p + z * z / (2 * n)) / (1 + z * z / n)
     half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
     return max(0, p - (centre - half)), max(0, centre + half - p)
+
+
+def best_bin(results):
+    keys = [ranking_key(r) for r in results]
+    return min((-k[1] for k in keys if k[0]), default=math.inf)
+
+
+def exact_median_best_bin(table, budget):
+    """Exact random median of the best eligible bin after k draws; inf when below 50% eligible-hit."""
+    valid = sorted(-ranking_key(r)[1] for r in table if ranking_key(r)[0])
+    return [next((b for b in valid if random_success_curve(len(table), sum(v <= b for v in valid), k)[-1] >= 0.5),
+                 math.inf) for k in range(1, budget + 1)]
 
 
 def load_experiments(directories, *, benchmark=None, replace_duplicates=False, allow_setting_mismatch=False):
@@ -132,6 +154,20 @@ def main():
         for arm, (p, _, n, failed) in rows.items():
             print(f"{arm:<16}{str(n):>12}{failed:>8}  " + " ".join(f"{x:.2f}" for x in p))
 
+    bins = {}
+    for arm, arm_runs in runs.items():
+        per_k = [sorted(best_bin([h["result"] for h in r["history"][:k]]) for r in arm_runs) for k in steps]
+        n = len(arm_runs)
+        bins[arm] = [(v[(n - 1) // 4], v[(n - 1) // 2], v[math.ceil(3 * (n - 1) / 4)]) for v in per_k]
+    exact_median = exact_median_best_bin(table, budget)
+    heuristic_bins = [best_bin(heuristic[:k]) for k in steps] if not exp['synthetic'] else None
+    print(f"\nmedian best bin so far at k = 1..{budget} (inf = no valid candidate yet)")
+    for arm, rows in bins.items():
+        print(f"{arm:<16}" + " ".join(f"{m:>4}" for _, m, _ in rows))
+    print(f"{'random (exact)':<16}" + " ".join(f"{m:>4}" for m in exact_median))
+    if heuristic_bins:
+        print(f"{'fluorides first':<16}" + " ".join(f"{m:>4}" for m in heuristic_bins))
+
     if args.summary:
         usage = {}
         for arm, states in runs.items():
@@ -141,7 +177,13 @@ def main():
                           'missing_usage_records':sum(not (a.get('llm_metadata') or {}).get('usage') for a in attempts)}
             for token in ('input_tokens','output_tokens'):
                 usage[arm][token] = sum(((a.get('llm_metadata') or {}).get('usage') or {}).get(token,0) for a in attempts)
+        finite = lambda x: None if x == math.inf else x
+        best_bins = {arm: [[finite(x) for x in row] for row in rows] for arm, rows in bins.items()}
+        best_bins['random (exact median)'] = [finite(x) for x in exact_median]
+        if heuristic_bins:
+            best_bins['fluorides first (post-hoc)'] = [finite(x) for x in heuristic_bins]
         summary = {'hashes':exp['hashes'], 'curves':curves, 'usage':usage, 'analysis_notes':exclusions,
+                   'best_bin_quartiles_per_k':best_bins,
                    'settings':{k:exp.get(k) for k in ('prompt_version','model','temperature','max_tokens','budget')}}
         args.summary.parent.mkdir(parents=True, exist_ok=True)
         args.summary.write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')
@@ -150,21 +192,49 @@ def main():
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        fig, axes = plt.subplots(1, 2, figsize=(12, 5.5), sharey=True)
+        fig, axes = plt.subplots(1, 3, figsize=(18, 5.5))
         for ax, (target, rows) in zip(axes, curves.items()):
             for arm, (p, se, n, _) in rows.items():
                 if se is None:
-                    ax.plot(steps, p, linestyle='--', label=f"{arm} {n}")
+                    style = dict(color="k", ls="--") if arm.startswith("random") else dict(color="grey", ls=":")
+                    ax.plot(steps, p, **style, label=f"{arm} {n}")
                 else:
-                    ax.errorbar(steps, p, yerr=se, marker="o", capsize=3, label=f"{arm} (n={n})")
+                    ax.errorbar(steps, p, yerr=se, marker="o", capsize=3, lw=2, color=ARM_COLORS.get(arm),
+                                label=f"{arm} (n={n})")
             ax.set(xlabel="evaluations", title=f"P({target} found)", ylim=(0, 1.05))
         axes[0].set_ylabel("probability")
+        # Direct end labels (identity is not colour-alone), nudged apart to avoid collisions.
+        ends = sorted((rows[0][-1], arm) for arm, rows in curves["acceptable"].items() if rows[1] is not None)
+        placed = []
+        for y, arm in ends:
+            y_text = max(y, placed[-1] + 0.045) if placed else y
+            placed.append(y_text)
+            axes[0].annotate(f"{arm} {y:.0%}", (budget, y), xytext=(budget + 0.25, y_text), fontsize=8,
+                             color="#52514e", va="center", annotation_clip=False)
+        axes[0].set_xlim(0.5, budget + 2.2)
+        axes[0].set_xticks(range(2, budget + 1, 2))
+        axes[1].sharey(axes[0])
+        ax = axes[2]
+        finite_values = [x for rows in bins.values() for row in rows for x in row if x != math.inf]
+        top = max(finite_values + [x for x in exact_median if x != math.inf], default=0) + 3
+        for arm, rows in bins.items():
+            lo, med, hi = ([min(x, top) for x in col] for col in zip(*rows))
+            line, = ax.plot(steps, med, marker="o", lw=2, color=ARM_COLORS.get(arm), label=arm)
+            ax.fill_between(steps, lo, hi, color=line.get_color(), alpha=0.15)
+        ax.plot(steps, [min(x, top) for x in exact_median], "k--")
+        if heuristic_bins:
+            ax.plot(steps, [min(x, top) for x in heuristic_bins], ":", color="grey")
+        ax.axhline(top, color="grey", lw=0.5)
+        ax.text(1, top, " no valid candidate yet", va="bottom", fontsize=8, color="grey")
+        ax.set(xlabel="evaluations", ylabel="best penalty bin (lower is better)",
+               title="median best bin so far (band: interquartile range)", ylim=(0, top + 2))
         fig.suptitle(f"{'synthetic' if exp['synthetic'] else 'frozen v3'} benchmark, budget {budget}; error bars: 95% Wilson")
         handles, labels = axes[0].get_legend_handles_labels()
         # Shared legend outside the data region. M differs between targets.
         labels = ['random (exact)' if name.startswith('random (exact)') else name for name in labels]
-        fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5,.95), ncol=3, fontsize=9)
-        fig.tight_layout(rect=(0,0,1,.80))
+        fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5,.95), ncol=4, fontsize=9)
+        fig.tight_layout(rect=(0,0,1,.86))
+        fig.subplots_adjust(top=0.80)
         fig.savefig(args.plot, dpi=150)
         print(f"Saved {args.plot}")
 

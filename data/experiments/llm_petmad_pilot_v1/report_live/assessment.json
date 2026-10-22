@@ -1,0 +1,73 @@
+{
+  "predictions": [
+    {
+      "stage": "choose_2",
+      "candidate_id": "mp-aaacjmqp",
+      "formula": "LiTaF6",
+      "status": "revealed",
+      "contacts": {
+        "cathode": {
+          "predicted": [
+            3.2,
+            3.9
+          ],
+          "width": 0.6999999999999997,
+          "observed": 3.338748412819128,
+          "in_range": true,
+          "miss": 0.0
+        },
+        "electrolyte": {
+          "predicted": [
+            1.4,
+            1.9
+          ],
+          "width": 0.5,
+          "observed": 1.5773585444472311,
+          "in_range": true,
+          "miss": 0.0
+        }
+      },
+      "weaker_predicted": "electrolyte",
+      "weaker_observed": "electrolyte",
+      "weaker_agrees": true
+    },
+    {
+      "stage": "choose_3",
+      "candidate_id": "mp-aaaaajby",
+      "formula": "LiCaAlF6",
+      "status": "revealed",
+      "contacts": {
+        "cathode": {
+          "predicted": [
+            3.0,
+            3.8
+          ],
+          "width": 0.7999999999999998,
+          "observed": 1.426710445485596,
+          "in_range": false,
+          "miss": 1.573289554514404
+        },
+        "electrolyte": {
+          "predicted": [
+            1.4,
+            1.9
+          ],
+          "width": 0.5,
+          "observed": 0.7435735865694895,
+          "in_range": false,
+          "miss": 0.6564264134305104
+        }
+      },
+      "weaker_predicted": "electrolyte",
+      "weaker_observed": "electrolyte",
+      "weaker_agrees": true
+    }
+  ],
+  "decision_comparison": {
+    "initial_next": "mp-aaaaajby",
+    "chosen": "mp-aaaaajby",
+    "changed": false,
+    "note": "Decision comparison at a common information state; the unchosen coating has no measured outcome."
+  },
+  "http_attempts_used": 5
+}

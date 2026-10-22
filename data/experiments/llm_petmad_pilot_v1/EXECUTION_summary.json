@@ -1,0 +1,38 @@
+{
+  "purpose": "Live summary after the summary-only prompt bound amendment (approved by Adem, 2026-10-22)",
+  "executed_by": "Adem",
+  "recorded_at": "2026-10-22T08:54:01+00:00",
+  "agent_code_base_commit": "9b59000",
+  "agent_code_note": "Run from the working tree before the amendment commit; pilot.py sha256 recorded below",
+  "pilot_py_sha256": "d0a6a1159aea1bda0f4807b52b75cff67530738825277d516278c655057228df",
+  "physics_snapshot_commit": "668b5e3",
+  "index_sha256": "7ba8cc4a7ed013017651dc7d7031a2ce9846ffae01d6f73ca81841dbdcdaf024",
+  "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+  "amendment": {
+    "at": "2026-10-22T08:52:52+00:00",
+    "by": "Adem",
+    "previous_status": "stopped: summary prompt exceeds 16000 characters",
+    "reason": "Summary prompt (16,334 chars) exceeded the 16,000-char bound before any request. Adem approved a summary-only bound of 20,000 chars on 2026-10-22; prompt content, model, settings and the 10-attempt HTTP cap unchanged.",
+    "prompt_limits": {
+      "default": 16000,
+      "summary": 20000
+    },
+    "http_attempts_used": 4,
+    "http_cap": 10,
+    "sha256": "6ac891037de7b29dd09725944c6e26e5795e5c9f9797a6fbd7da9ac51ecdfb3f"
+  },
+  "state_sha256_after": "51947f2b3615da4efe27c9d2760c813c29c62abd2f221283bd040df2a00bd4b5",
+  "http_attempts_used": 5,
+  "http_cap": 10,
+  "status": "complete",
+  "summary_record_sha256": "ecb1608f663ca8b1978df7a3f65032446905b8bccfc5e9394fc82803d46098ae",
+  "prompt_chars": 16285,
+  "returned_model": "claude-haiku-5-5",
+  "tokens_this_call": {
+    "input": 7961,
+    "output": 3655
+  },
+  "usd_list_estimate_cumulative": 0.00597,
+  "limitation": "The prompt field min_W_adh_J_m2 is the minimum over the two contacts (weaker contact, selected registry); Haiku read it as a registry minimum. Prompt left frozen; rename proposed for a future version.",
+  "note": "Estimate at public list prices, not billed."
+}

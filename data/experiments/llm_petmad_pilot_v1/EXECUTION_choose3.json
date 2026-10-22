@@ -1,0 +1,44 @@
+{
+  "purpose": "Live choose-3 under Davide's approval (SYNC_ADEM_14) after independent validation of the LiTaF6 primary package",
+  "executed_by": "Adem",
+  "recorded_at": "2026-10-22T08:04:25+00:00",
+  "agent_code_commit": "d1ec1b0",
+  "physics_snapshot_commit": "d5ab477",
+  "index_sha256": "4577b2ab2e9331b7161aed14120246348ec730d8ca999724150538669e2fd808",
+  "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+  "claude_LiTaF6_feedback_sha256": "91e80b064d3a15d305cd33640cc5838b21222852ca16cca4dc1e2459f4026da2",
+  "validation": "All 11 primary runs passed manifest identity, build hash, saved fixed mask (species from final structures), convergence and W_adh/W_sep arithmetic; bundle values match Claude's package.",
+  "state_sha256_at_pause": "701f6faa412da3b89b8ba1f44a90eb37af0df77f0d69d676b4cbdfc73e1ecc62",
+  "http_attempts_used": 4,
+  "http_cap": 10,
+  "selected_id": "mp-aaaaajby",
+  "choose3_record_sha256": "66ff7ea1abab1ac18f014da8b82b68119c79e402e934c4161a22df6ac58f0282",
+  "feedback_sha256_seen": [
+    "db7306f24b27c2840a1d11936b9ed41dc6c4bf771733d2fd154c836244e4a5fe",
+    "dd72717b964ba0a250c382750e7861206af0c9b40b389bb19108fb966d826aa0"
+  ],
+  "predictions": {
+    "predicted_W_adh_J_m2": {
+      "cathode": [
+        3.0,
+        3.8
+      ],
+      "electrolyte": [
+        1.4,
+        1.9
+      ]
+    },
+    "predicted_weaker_contact": "electrolyte",
+    "ordered_shortlist": [
+      "mp-aaaaajby",
+      "mp-aaaaabru"
+    ]
+  },
+  "returned_model": "claude-haiku-5-5",
+  "tokens_this_call": {
+    "input": 4860,
+    "output": 2481
+  },
+  "usd_list_estimate_cumulative": 0.00334,
+  "note": "Estimate at public list prices, not billed. Paused for the six primary jobs of the selected coating."
+}

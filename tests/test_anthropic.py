@@ -45,3 +45,57 @@ def test_authentication_failure_has_no_fallback_or_raw_error(monkeypatch):
         make_llm('anthropic/claude-haiku-5-5')('test', 'test')
     assert 'sensitive' not in str(error.value)
     assert len(calls) == 1
+
+
+class _Response(io.BytesIO):
+    def __init__(self, body, request_id):
+        super().__init__(json.dumps(body).encode())
+        self.headers = {"request-id": request_id}
+
+
+def _ok(text='{"ok": true}'):
+    return {"id": "msg_test", "model": "claude-haiku-5-5", "stop_reason": "end_turn",
+            "usage": {"input_tokens": 3, "output_tokens": 5}, "content": [{"type": "text", "text": text}]}
+
+
+def test_429_then_success_counts_transport_retry(monkeypatch):
+    monkeypatch.setenv('MY_ANTHROPIC_KEY', 'dummy-test-key')
+    monkeypatch.setattr('time.sleep', lambda s: None)
+    replies = iter(['429', 'ok'])
+    def respond(request, timeout):
+        if next(replies) == '429':
+            raise urllib.error.HTTPError(request.full_url, 429, 'rate limited', {'request-id': 'req_1'},
+                                         io.BytesIO(b'body'))
+        return _Response(_ok(), 'req_2')
+    monkeypatch.setattr('urllib.request.urlopen', respond)
+    llm = make_llm('anthropic/claude-haiku-5-5', max_tokens=32)
+    assert llm('JSON only', 'test') == {'ok': True}
+    meta = llm.last_metadata
+    assert (meta['http_attempts'], meta['transport_retries'], meta['final_error']) == (2, 1, None)
+    assert [a['status'] for a in meta['attempts']] == [429, 200]
+    assert [a['request_id'] for a in meta['attempts']] == ['req_1', 'req_2'] and meta['response_id'] == 'msg_test'
+    assert 'dummy-test-key' not in json.dumps(meta)
+
+
+def test_exhausted_retries_leave_failure_metadata(monkeypatch):
+    monkeypatch.setenv('MY_ANTHROPIC_KEY', 'dummy-test-key')
+    monkeypatch.setattr('time.sleep', lambda s: None)
+    def fail(request, timeout):
+        raise urllib.error.HTTPError(request.full_url, 529, 'overloaded', {}, io.BytesIO(b'body'))
+    monkeypatch.setattr('urllib.request.urlopen', fail)
+    llm = make_llm('anthropic/claude-haiku-5-5', retries=3)
+    with pytest.raises(RuntimeError, match='HTTP 529'):
+        llm('test', 'test')
+    assert (llm.last_metadata['http_attempts'], llm.last_metadata['final_error']) == (3, 'HTTP 529')
+    assert llm.last_metadata['usage'] is None
+
+
+def test_malformed_output_is_kept_bounded(monkeypatch):
+    from interphaise.llm import MALFORMED_TEXT_LIMIT
+    monkeypatch.setenv('MY_ANTHROPIC_KEY', 'dummy-test-key')
+    monkeypatch.setattr('urllib.request.urlopen', lambda r, timeout: _Response(_ok('no json ' * 2000), 'req_x'))
+    llm = make_llm('anthropic/claude-haiku-5-5')
+    with pytest.raises(RuntimeError, match='not valid JSON'):
+        llm('test', 'test')
+    meta = llm.last_metadata
+    assert len(meta['malformed_text']) == MALFORMED_TEXT_LIMIT and meta['usage']['output_tokens'] == 5

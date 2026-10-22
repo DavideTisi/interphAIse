@@ -1287,6 +1287,80 @@ Next: Adem verifies the frozen runner and performs the single approved smoke
 batch; Codex continues the progress deck with the original feedback results,
 expanded landscape and current interface evidence separated clearly.
 
+## 2026-10-21 — Agent side (Adem): discovery arms, controls, analysis and environment smoke
+
+Branch `work/agent-experiments`, head `0072f3d` at the time of writing. This entry records the
+agent-side work of the day that was previously documented only in the SYNC notes and commit
+messages. Davide-side entries above are unchanged.
+
+**Implemented and tested (offline unless stated):**
+- `d380de0`, `072c941`: sequential no-feedback arm; synthetic evaluator; proposal fields
+  `motivation`/`mode`; per-attempt LLM metadata; repeated-run runner; exact random curve
+  `1 - C(N-M,k)/C(N,k)` (checked by enumeration). Also removed leftover lines in `llm.py` that
+  raised NameError on every live Haiku call.
+- `c312010`: arms run against `BenchmarkQueries` (frozen v3). Feedback whitelist
+  (`FEEDBACK_FIELDS`) keeps provenance, timing and diagnostics out of prompts.
+- `e66a12d`, `e3bab25`: shuffled-feedback arm (inside-out Fisher–Yates over real first queries;
+  charged invalid/repeated IDs stay in place; `displayed_sources` logged), `sequential_ids` arm
+  (implemented, not run), best-bin-so-far panel, `scripts/__init__.py` (an installed `scripts`
+  package shadowed the repo folder in the `agents` conda env).
+- `6e74e88`: exact random median returns inf when fewer than half the pool is eligible
+  (StopIteration fix, sparse and all-ineligible tests).
+- `07c48e7`: fixed per-arm colours and direct labels; `scripts/plot_trace_pair.py`; slide
+  figures in `figures/`.
+- `fc6a54c`: `--allow-draft` guard and manifest fields; tests on all three expansion tables
+  check that `bin_regret`, `component_analysis` and other diagnostics never reach a prompt.
+- `76c493b`: `scripts/usage_report.py` (tokens by arm and environment, list-price estimates).
+- `0072f3d`: `scripts/analyse_environment_study.py` implements ENVIRONMENT_PROTOCOL.md section 4
+  (McNemar contrasts, Holm across six, first-acceptable index, best-bin rate, fluoride fraction
+  early/late, equal-weight aggregate) before any production results.
+
+**Live LLM runs (Haiku 5.5 direct; credential never printed or committed):**
+- A 10-run pilot per arm on frozen v3 (prompt `v3-2026-10-21b`, 2048-token cap; upfront rerun at
+  4096). It is superseded by Davide's 30-run integrated batch and kept only in ignored `runs/`.
+  It is not cited as a result.
+- Shuffled control, 30 runs, seeds 100–129, settings matching
+  `integrated_v3_20261021_s100`, source `ea0326d`. Result: **6/30 against iterative 19/30**;
+  paired 16/3, exact McNemar p = 0.0044. All 300 queries replay. Archived at
+  `data/experiments/shuffled_v3_20261021_s100/` (README: chronology, displacement per turn,
+  limitations). Independently re-verified on Davide's side (SYNC_ADEM_5).
+- Environment smoke batch, approved by Davide (smoke only), on the frozen tables at execution
+  commit `26beb73`, seed 999. Per environment: upfront at budget 10; sequential, iterative and
+  shuffled at budget 3. 31 calls (1 format retry), 222,668 input and 27,416 output tokens,
+  ≈ USD 0.036 at list price. No truncation and no charged failures. Archived at
+  `data/experiments/environment_smoke_v1/`, excluded from results.
+
+**Verification performed:**
+- Tests: 41 discovery/analysis/benchmark/viewer tests after the integration merge; 34
+  discovery/analysis tests at `0072f3d`.
+- Full suite in the `agents` conda env: 100 passed, 4 failed (orchestrator/screen/matcher). The
+  same tests fail at `c92699a` in this env, and Davide's `.venv` passes them. Probable cause:
+  pymatgen 2026.4.16 here; not confirmed.
+- Exact reproduction of Davide's 30-run numbers (19/10/4/4).
+- Offline random runs on all three environment tables match the exact curves.
+- Frozen-table hashes match the protocol, and the frozen rows are identical to the exploratory
+  rows.
+
+**Decisions and reasons:**
+- Kept Davide's prompt version and analysis at every merge, so new arms stay comparable with
+  his archived cohort.
+- Invalid and repeated IDs are charged (his fix).
+- Secondary environment endpoints were defined in code before production results, to avoid
+  choosing them afterwards.
+- Cheaper designs (caching, Batch API) are not recommended: the conservative production
+  estimate is about USD 5, and a change would require re-freezing.
+
+**Unresolved:**
+- Production environment runs await Davide's approval (`SYNC_DAVIDE_4.md`: about 2,790 calls,
+  ≈ USD 3.70 expected, 5.30 conservative, 9.50 hard ceiling, list-price estimates).
+- Billed cost and contract pricing are unverified (account owner).
+- pymatgen/matcher test failures in the `agents` env.
+- IDs-only arm not run.
+- `REPORT.md` still describes v3 results without the environment study; align after production.
+
+**Next:** on approval, run the three commands at the end of `SYNC_DAVIDE_4.md`. Then
+`analyse_environment_study.py`, the per-environment curves and `usage_report.py`; archive like
+v3; update this log and `REPORT.md`.
 
 ## 2026-10-21 — Scientific overview presentation
 
@@ -1794,6 +1868,20 @@ scripts are excluded. This sign-off is being committed and pushed for Adem
 under Davide's request to publish everything he needs; actual execution must
 be recorded by Adem's runner.
 
+## 2026-10-21 — Agent side (Adem): environment production run and final analysis
+
+Branch `work/agent-experiments`. Davide approved production (`e5c745e`). Ran the three environments in
+sequence at execution commit `710d346` (workflow files identical to smoke `26beb73`), checking usage
+after each: Li6PS5Cl USD 1.21, Li3InCl6 1.19, LLZO 1.23 (list-price estimates; billing unverified).
+450/450 runs complete, 2,800 calls (10 format retries), 24.30M in / 2.40M out tokens. All 4,500 queries
+replay (audit). Final analysis `analyse_environment_study.py --production`: completeness check passed.
+Acceptable within 10 queries (n = 30/arm), iterative / sequential / shuffled / upfront / random (exact): Li6PS5Cl 20/2/6/0/8 (25.7%); Li3InCl6 30/30/30/30/29 (ceiling, declared in advance); LLZO 12/0/4/1/24 (73.6%). Paired exact McNemar, Holm over six: iterative > sequential in Li6PS5Cl (Holm p 4.6e-5) and LLZO (0.0024); iterative > shuffled in Li6PS5Cl (0.0024), not in LLZO (0.17). In LLZO random search beats every LLM arm.
+Archived in `data/experiments/environment_v1/` (runs, summaries, curves, replay audits, hashes, README).
+Analysis-only changes committed separately in `abab0a2`: `--production` check and secondary summaries
+(SYNC_ADEM_8), and a JSON fix (numpy p-value made the Holm flag non-serialisable; no values changed).
+Correction to the earlier entry: the "USD 9.50 hard ceiling" is a high-output scenario, not an enforced limit.
+Not done: the archived figures were generated but not viewed (image viewing timed out on the host).
+Next: Davide reviews `SYNC_DAVIDE_5.md`; update slides; joint review before merging to main.
 ## 2026-10-21 — Final-geometry constraint endpoints, relaxed registry set, Niflheim setup
 
 **Branch:** `davide`; `d0bd1f3` was pushed first. Follows SYNC_CLAUDE_5.md; the design was
@@ -2038,6 +2126,15 @@ path-line trailing spaces. Normalized them and updated the figure generator
 to do the same on future exports; the SVG parses successfully and its plotted
 content is unchanged. Recheck the staged diff and credentials before commit.
 
+## 2026-10-21 — Agent side (Adem): integrate production review
+
+Merged `davide` at `ad6b471` (SYNC_ADEM_9: production passes review; Niflheim PET-MAD batch). Conflicts
+in REPORT.md and DEVELOPMENT_LOG.md resolved by keeping both sides; the production archive is unchanged.
+Combined tests: 43 passed (discovery, experiment analysis, environment study, PET-MAD registry).
+SYNC_DAVIDE_6.md records the requested clarifications: primary analysis definitions fixed at `0072f3d`,
+with completeness and secondary-reporting additions in `abab0a2` (not byte-identical); chloride
+wording (LLM arms 30/30, random 29/30); and the LLZO oxidiser caveat question. No live calls.
+Next: slides.
 ## 2026-10-21 — LLZO chemistry caveat and selection concentration audited
 
 **Branch:** `davide`, parent `ad6b471`. Purpose: assess Adem's proposed
@@ -2101,6 +2198,16 @@ Prepare this bounded audit for publication under Davide's standing request
 to push what Adem needs, after configured-credential and whitespace checks;
 the actual commit/push outcome will be reported in chat.
 
+## 2026-10-21 — Agent side (Adem): final experiment slides, traces, integration
+
+Merged `davide` at `fa10a1a` (SYNC_ADEM_10, LLZO caveat audit). Added
+`scripts/plot_environment_curves.py` and figures `environment_success_vs_budget.png` and
+`trace_environment_pair.png`, plus the 5-slide deck
+`presentations/interphAIse_environment_experiment_2026-10-21.pptx` (pptxgenjs installed in a scratch
+folder; validator passed; not rendered or visually checked: no LibreOffice, and image viewing
+blocked). Selected traces by a fixed rule: sulfide iterative seed 202, LLZO iterative seed 207.
+Full suite: 154 passed, 4 failed (pre-existing pymatgen/matcher failures in the `agents` env).
+No paid runs; archive unchanged. Details: SYNC_DAVIDE_7.md.
 ## 2026-10-21 — Viewer updated to the reviewed Niflheim results
 
 **Branch:** `davide`, parent `fa10a1a`. User requested the remaining structure
@@ -2977,3 +3084,178 @@ jobs ran at `--nice` and were kept outside decisions (`fb27095` and earlier). Af
 (`c0a0546`), `index_final.json` added all robustness rows; decision-time indices and bundles are kept
 in `snapshots/`. 26 new RTX 3090 jobs, all converged. See
 `data/petmad/coating_comparison_v1/FINAL_COMPARISON.md`.
+## 2026-10-21 (late) — Agent side (Adem): F3/F4, pilot runner, contract, cost estimate
+
+Merged `davide` at `3cb606b` (joint review F1–F4, SYNC_ADEM_11/12, pilot plan). F3/F4 committed `352e6f6`:
+- the production analysis validates settings and per-call metadata against a versioned `environment_v1`
+  spec, replays all charged queries and recomputes traces (the real archive passes with identical results);
+- `llm.py` records per-attempt HTTP status, request IDs and final errors;
+- `usage_report.py` separates proposal, format, HTTP and transport counts (historical HTTP: unknown).
+
+Pilot: `interphaise/pilot.py`, `scripts/run_llm_petmad_pilot.py`, `tests/test_pilot.py` (9 passed); draft contract
+`data/experiments/llm_petmad_pilot_v1/CONTRACT.md`; mocked trace `MOCK_state.json` (synthetic fixture, not a
+result). Capped cost estimate ≈ USD 0.005 expected, 0.03 ceiling (list price). No paid calls, no PET-MAD
+runs. Next: the MLIP comparison reader and figure; Claude to confirm the contract; Davide to approve the cap.
+Addendum: added `scripts/analyse_mlip_comparison.py` and `tests/test_mlip_comparison.py` (7 passed: real LiNbF6
+archive, registry selection 3.617 J/m², incomplete/failed/duplicate/unconverged/checkpoint/area/arithmetic cases),
+contract fields for the reader, and a labelled layout preview (`MOCK_comparison_layout`). No new calculations.
+
+## 2026-10-22 — Agent side (Adem): live-path fixes from SYNC_ADEM_13 and contract v2
+
+Shared evidence interface in `interphaise/pilot.py`, used by both the pilot and the reader:
+- source re-checks, so `invalid_evidence` blocks and genuine `failed` results are reported;
+- frozen planned coverage, comparability by build and mask, and the new `not_run_*` and `consistency`
+  rows.
+
+Durable HTTP reservation (cap 10), lock, mode pin, stopped-stays-stopped, `previous_decisions`,
+`prior_prediction_assessment`, frozen feedback snapshots, hash re-verification on resume, a prompt cap,
+and negative intervals allowed. `llm.py` now records metadata for non-JSON bodies and timeouts. F3 rejects
+missing metadata on successful calls.
+
+Claude's real index (fixture at 38e4872) loads, and the genuine LiNbF6 feedback validates. Mocked trace on
+that genuine feedback: `MOCK_state_genuine_reference.json`. 72 tests passed. Cost ceiling ≈ USD 0.030
+(enforced), expected ≈ USD 0.006. No API or PET-MAD runs. Details: SYNC_DAVIDE_9.md.
+
+## 2026-10-22 — Agent side (Adem): pymatgen cause confirmed; note-6 correction
+
+The four interface-pipeline test failures seen in the `agents` conda env are explained by its pymatgen
+version. The env has 2026.4.16; the project pins pymatgen 2026.9.24 and pymatgen-core 2026.10.16
+(pyproject/requirements). With the pinned versions installed only in a scratch folder (`--no-deps`, shared
+env untouched) and put first on the path, `test_tools`, `test_orchestrator` and `test_screen` give 10 passed;
+without them, 4 fail. Not a code defect. Fix for this env: install the pinned versions (left to the user
+because the env is shared with other projects). Also appended a dated correction to SYNC_DAVIDE_6.md
+instead of rewriting it.
+
+## 2026-10-22 — Agent side (Adem): pilot report generator
+
+Added `scripts/report_llm_petmad_pilot.py`, which is read-only and takes no lock. From a saved state it
+writes `report.md`, `assessment.json` and `predictions.png`:
+- a decision timeline (every attempt: choice, shortlist, hypothesis, forecast ranges, weaker contact,
+  change trigger, prior-prediction self-assessment, feedback hashes seen, HTTP charged, record hash);
+- prediction checks (observed against forecast, width, miss, weak-contact agreement);
+- the decision comparison and the limitations.
+
+Mock states are labelled MOCK. Moved the assessment into a pure `assess(state)` in `interphaise/pilot.py`.
+Example: `data/experiments/llm_petmad_pilot_v1/MOCK_report/` (partial trace on the genuine LiNbF6
+feedback). 13 pilot tests passed. No API or PET-MAD runs.
+
+## 2026-10-22 — Agent side (Adem): live prior + choose-2 executed (approved)
+
+Davide's approval: SYNC_ADEM_14 / `53e7758` (10 HTTP attempts total, USD 0.05 allowance, direct Haiku 5.5,
+temperature 1.0, 4096 tokens). Execution identity:
+- code `f8abbc0`;
+- Claude's campaign directory overlaid from `b199608` (identical files, committed here);
+- index sha256 `b02750fe…`, matching Davide's pin;
+- manifest sha256 `99ef2dc1…`.
+
+Offline preflight before the call: 23 planned primary IDs; reference cathode 3.6170509 and electrolyte
+1.6333941 J/m², weaker contact electrolyte (matches Davide's independent check).
+
+**Live results (the only live LLM calls in this entry):** 3 HTTP attempts. The first prior response failed
+format validation and was retried, charged. Every returned model was `claude-haiku-5-5`. 4,544 input and
+2,327 output tokens, ≈ USD 0.0016 at list price (estimate, not billed).
+- Prior ranking: LiTaF6, then LiCaAlF6, then LiF.
+- **Choose-2: LiTaF6 (`mp-aaacjmqp`)**.
+- Forecast W_adh: cathode [3.2, 3.9], electrolyte [1.4, 1.9] J/m², weaker contact electrolyte.
+- Record `010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01`; LiNbF6 feedback seen
+  `db7306f2…`.
+
+Paused (exit 2) for Claude's six primary LiTaF6 jobs. Files: `data/experiments/llm_petmad_pilot_v1/state.json`,
+`EXECUTION_choose2.json`, `report_live/`.
+
+Next, before choose-3: manifest-derived coverage and identity checks with the two regressions from
+SYNC_ADEM_14, then validation of the returned package.
+
+## 2026-10-22 — Agent side (Adem): manifest-derived coverage and identity (before choose-3)
+
+This closes the two SYNC_ADEM_14 boundary cases.
+- **Coverage from the manifest:** the pilot reads `manifest.json` next to the index, requires its file hash
+  to equal the index pin, and derives the planned primary run IDs from it, not from the index. Every index
+  row must reference the pinned manifest.
+- **Identity:** each primary run's identity (registry ID and offset, gap, build ID and hash, atoms, area,
+  fixed rule, count and species) must equal the manifest plan.
+- **Valid new-coating runs** also need the build `interface.json` hash, the result's fixed depth and count,
+  and the fixed-atom species counted from the saved final interface structure.
+- **Reference:** it keeps the declared historical exception. Its result must come from the archived
+  package the manifest names.
+
+The comparison reader applies the same plan when a manifest is present.
+
+New regressions:
+- a reference registry removed before a fresh state is still required (Pending);
+- consistent-but-wrong build, depth and species labels are Blocked;
+- a wrong fixed-atom species in the saved structure is Blocked;
+- a manifest that doesn't match the index pin is refused.
+
+The old index fixture was replaced by the real committed campaign files. 77 tests passed. The live state
+resumes cleanly (dry check, no call): next is choose-3, Pending on LiTaF6. No API or PET-MAD runs.
+
+## 2026-10-22 — Agent side (Adem): LiTaF6 package validated; live choose-3 executed
+
+Claude's LiTaF6 primary package (`work/petmad-comparison` `d5ab477`, overlaid here; manifest unchanged
+`99ef2dc1…`; feedback `91e80b06…`) was validated independently with the manifest-derived checks. All 11
+primary runs passed: identity, build hashes, saved fixed masks, convergence, W_adh and W_sep arithmetic.
+- Cathode: R1, 3.3387 J/m² (W_sep 4.7277; registries 3.3268–3.3387).
+- Electrolyte: R2, 1.5774 J/m² (W_sep 2.9106; registries 1.5340–1.5774).
+- Weaker contact: electrolyte. Sensitivity withheld.
+
+The choose-2 forecast held: both values inside their ranges, weaker contact correct.
+
+**Live choose-3** (approved sequence, same state and cap; code `d1ec1b0`): 1 HTTP attempt (4 of 10 total),
+`claude-haiku-5-5`.
+- **Selected LiCaAlF6 (`mp-aaaaajby`)**, the only acceptable candidate left.
+- Forecasts: cathode [3.0, 3.8], electrolyte [1.4, 1.9] J/m², weaker contact electrolyte.
+- Self-assessment: the LiTaF6 prediction was supported; it revised its implicit preference for LiTaF6 over
+  LiNbF6 toward weighting adhesion more.
+- Decision comparison: LiCaAlF6 was already next in the choose-2 shortlist, so the order was unchanged.
+- Record `66ff7ea1…`. Cumulative ≈ USD 0.003 at list price.
+
+Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report_live/`, `state.json`.
+
+## 2026-10-22 — Agent side (Adem): summary prompt bound amended; live pilot complete
+
+- **Branch:** `work/agent-experiments`. Base commit `9b59000`; the amendment and archive are committed on top (see git history).
+- **Why:** the live summary prompt (16,334 characters) exceeded `MAX_PROMPT_CHARS = 16000`. The pilot stopped before any request and nothing was charged. Adem approved a bound for the summary stage only.
+- **Changes:**
+  - `interphaise/pilot.py`: `SUMMARY_MAX_PROMPT_CHARS = 20000` (summary stage only).
+  - `Pilot.resume_stopped(reason, by)`: re-opens only a prompt-size stop and appends a hashed amendment to `state["amendments"]`. Any other stop stays terminal.
+  - `scripts/run_llm_petmad_pilot.py`: new `--resume-stopped REASON` option.
+  - Unchanged: prompt content, model, settings, and the 10-attempt HTTP cap.
+- **Tests:**
+  - `tests/test_pilot.py` has a new test for explicit resume only after a prompt-size stop. The `index` fixture now resets the options' executed rows to pending, so the tests no longer depend on campaign progress. The real LiTaF6 package had broken two tests.
+  - Result: 18/18 pilot tests pass. The full suite has 188 passed and 5 failed. Four are the known pymatgen-pin env failures; the fifth (the fixture's `not_run` rows) was fixed and rechecked.
+- **Live run:** one Anthropic HTTP attempt to `claude-haiku-5-5`.
+  - Status `complete`; 5/10 HTTP attempts used.
+  - Summary record `ecb1608f…98ae`; amendment `6ac89103…db3f`.
+  - Usage: 7,961 input and 3,655 output tokens. Cumulative pilot cost ≈ USD 0.006 at list price (estimate, not billed).
+  - Archive: `data/experiments/llm_petmad_pilot_v1/EXECUTION_summary.json` and the regenerated `report_live/`.
+- **Outcome:**
+  - LiTaF6 forecasts: both in range. LiCaAlF6 forecasts: both missed (cathode 1.43 against [3.0, 3.8]; electrolyte 0.74 against [1.4, 1.9]).
+  - The weaker contact was predicted correctly for both coatings. Choose-3 did not change the shortlist order.
+  - The summary ranks LiNbF6 > LiTaF6 > LiCaAlF6 > LiF and explicitly concedes the LiCaAlF6 miss.
+- **Limitation:** the prompt field `min_W_adh_J_m2` is the minimum over the two contacts (the weaker contact at its selected registry). Haiku misread it as a minimum over registries and flagged the LiCaAlF6 value as suspicious. The prompt stays frozen for this pilot. Proposed for any future version: rename it `weaker_contact_W_adh_J_m2`.
+- **Next:** Davide reviews `report_live/` for the pilot slide; Claude's sensitivity runs stay outside this decision record.
+
+## 2026-10-22 — Agent side (Adem): pilot report and slide finalized (Davide's review)
+
+- **Scope:** documentation and slide only. No live calls; `state.json`, the prompts, the responses and the amendment are unchanged.
+- **Added:**
+  - `data/experiments/llm_petmad_pilot_v1/INTERPRETATION.md` with Davide's reviewed wording: the forecast outcomes, order unchanged, the `min_W_adh_J_m2` correction (weaker of the two selected contact values; Haiku misread it), and the final ranking labelled as the model's assessment (LiF not physically evaluated; LiNbF₆–LiTaF₆ difference not a robust winner).
+  - `presentations/interphAIse_llm_petmad_pilot_2026-10-22.pptx`: one slide with speaker notes, sha256 `a957dec9…f9425`. Built with python-pptx from a scratch folder; the build script is not in the repo.
+  - Programmatic checks passed. The slide was not visually checked because no renderer was available.
+- **Updated:** the `REPORT.md` status entry and `presentations/README.md`.
+- **Deferred:** the field rename to `weaker_contact_W_adh_J_m2`, for a future protocol version. This pilot is not rewritten or rerun.
+
+## 2026-10-22 — Agent side (Adem): final comparison reader patch and final figures
+
+- **Physics data:** `data/petmad/coating_comparison_v1` copied from Claude's `1b76eeb` (work/petmad-comparison). It only adds files; `index.json`, the live pilot input, is unchanged. The new `index_final.json` has sha256 `47d69f7dd75dff89…`.
+- **Reader patch:** Davide's `data/reviews/final_comparison_reader_fix_20261022.patch` (from `750b382`), applied unchanged to `interphaise/pilot.py`, `scripts/analyse_mlip_comparison.py` and `tests/test_mlip_comparison.py`.
+  - It accepts `not_run_not_selected` and the final schema for offline analysis only; the live pilot still rejects them.
+  - Consistency work now counts in compute.
+- **Tests:** the pilot/comparison/loader subset gives 39 passed, matching Davide's count.
+- **Final outputs:** `data/petmad/coating_comparison_v1/analysis_final/` (summary.json, table.md, comparison.png), from `python scripts/analyse_mlip_comparison.py --index data/petmad/coating_comparison_v1/index_final.json --out data/petmad/coating_comparison_v1/analysis_final`.
+  - No invalid runs; 12 LiF rows are not-selected; 4 consistency rows.
+  - 6,632 new runner calls. The 1,525.1 s (25.4 min) is **runner time**. The 26 Slurm jobs' elapsed times sum to 47.5 min (Davide's review), and queue delay is outside both.
+  - LiCaAlF₆ electrolyte: the thickness and robustness sensitivity cases are unavailable and stay unquantified.
+- **Figure fix:** `scripts/report_llm_petmad_pilot.py` placed the forecast figure's footnote off the bottom edge. It is now placed inside, and `report_live/predictions.png` was regenerated from the unchanged state. `report.md` and `assessment.json` are byte-identical. Both figures were checked visually.
+- No live calls.

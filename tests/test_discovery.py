@@ -149,3 +149,74 @@ def test_synthetic_benchmark_runs_through_real_query_boundary(tmp_path):
     state = run_discovery(BenchmarkQueries(pool, bench, budget=5, allow_draft=True), strategy="random", seed=1)
     assert len(state["history"]) == 5
     assert write_synthetic_benchmark(tmp_path / "again", seed=3)[1].read_text() == bench.read_text()
+
+
+def test_shuffled_shows_permutation_of_queried_outcomes_only():
+    calls = []
+    state = run_discovery(queries(6), strategy="shuffled", seed=4, llm=first_available(calls))
+    true = {h["proposal"]["candidate_id"]: h["result"] for h in state["history"]}
+    assert all(TABLE[c]["status"] == r["status"] for c, r in true.items())  # true outcomes kept
+    for turn, user in enumerate(calls):
+        shown = json.loads(user)["evaluated"]
+        sources = state["displayed_sources"][turn - 1] if turn else []
+        assert sorted(sources) == sorted(list(true)[:turn])  # only already-queried bundles
+        for h, src in zip(shown, sources):
+            assert h["result"]["candidate_id"] == h["proposal"]["candidate_id"]  # relabelled
+            assert h["result"].get("penalty") == true[src].get("penalty")
+    assert any(src != h["proposal"]["candidate_id"]
+               for src, h in zip(state["displayed_sources"][-1], state["history"]))
+    again = run_discovery(queries(6), strategy="shuffled", seed=4, llm=first_available([]))
+    assert again["displayed_sources"] == state["displayed_sources"]
+
+
+@pytest.mark.parametrize("bad_id", ["mp-not-in-pool", None, ["invalid"], "REPEAT"])
+def test_shuffled_survives_charged_invalid_ids_and_keeps_them_in_place(bad_id):
+    q = queries(6)
+    ids = [c["candidate_id"] for c in q.available()]
+    plan = iter([ids[0], ids[1], ids[0] if bad_id == "REPEAT" else bad_id, ids[2], ids[3], ids[4]])
+    calls = []
+    def llm(system, user):
+        calls.append(json.loads(user))
+        return {"proposals": [P(next(plan))]}
+    state = run_discovery(q, strategy="shuffled", seed=1, llm=llm)
+    assert q.remaining == 0 and len(state["history"]) == 6
+    bad = state["history"][2]["result"]
+    assert bad["status"] == "failed"
+    for later in calls[3:]:
+        shown = later["evaluated"][2]["result"]
+        assert shown.get("error") == bad["error"]  # charged error shown at its own slot, never moved
+    real = [s for i, s in enumerate(state["displayed_sources"][-1]) if i != 2]
+    assert sorted(real) == sorted(h["result"]["candidate_id"] for i, h in enumerate(state["history"]) if i != 2)
+
+
+def test_sequential_ids_sees_only_earlier_ids():
+    calls = []
+    def llm(system, user):
+        data = json.loads(user)
+        calls.append(data)
+        return {"proposals": [{"candidate_id": data["available"][0]["candidate_id"], "hypothesis": "SECRET-RATIONALE",
+                               "motivation": "SECRET-MOTIVE", "mode": "explore"}]}
+    state = run_discovery(queries(), strategy="sequential_ids", llm=llm)
+    assert calls[2]["evaluated"] == [{"proposal": {"candidate_id": h["proposal"]["candidate_id"]}}
+                                     for h in state["history"][:2]]
+    assert all("SECRET" not in json.dumps(c) for c in calls)
+
+
+ENV_DIR = ROOT / "data/exploration/environment_expansion_v2/evaluation"
+ENV_POOL = ROOT / "data/exploration/environment_expansion_v1/pool.json"
+
+
+@pytest.mark.parametrize("env", ["lpscl", "lic", "llzo"])
+def test_environment_tables_never_leak_diagnostics(env):
+    bench = ENV_DIR / f"lco_{env}_4v.json"
+    with pytest.raises(ValueError, match="Draft"):
+        BenchmarkQueries(ENV_POOL, bench, budget=3)  # unfrozen tables need an explicit override
+    calls = []
+    run_discovery(BenchmarkQueries(ENV_POOL, bench, budget=4, allow_draft=True),
+                  strategy="iterative", llm=first_available(calls))
+    electrolyte = json.loads(bench.read_text())["endpoints"]["electrolyte"]["formula"]
+    for user in calls:
+        assert electrolyte in user
+        for leak in ('"bin_regret"', '"component_analysis"', '"endpoint_decomposition_penalties"',
+                     '"evaluation_wall_seconds"', '"entries"', '"absolute_contact_reaction_energies"', '"mu_Li_eV"'):
+            assert leak not in user

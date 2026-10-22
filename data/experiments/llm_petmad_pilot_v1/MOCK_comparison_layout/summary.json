@@ -1,0 +1,204 @@
+{
+  "index": "data/experiments/llm_petmad_pilot_v1/MOCK_comparison_layout/index.json",
+  "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+  "thermo_table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+  "cohort": [
+    {
+      "candidate_id": "mp-aaacjjwh",
+      "formula": "LiNbF6",
+      "slot_reason": "fixture",
+      "thermo": {
+        "penalty": 0.028772005147425617,
+        "penalty_bin": 1,
+        "acceptable": true,
+        "insulating": true,
+        "band_gap_eV": 4.788851973014669
+      },
+      "contacts": {
+        "cathode": {
+          "status": "validated",
+          "selected_run_id": "ref-cathode-third",
+          "W_adh_J_m2": 3.6170508624496,
+          "W_sep_J_m2": 5.167624545488891,
+          "registry_range_J_m2": [
+            3.6003562394027577,
+            3.6170508624496
+          ],
+          "comparability_problems": [],
+          "primary": [
+            {
+              "run_id": "ref-cathode",
+              "registry_id": "cathode",
+              "status": "valid",
+              "W_adh_J_m2": 3.6003562394027577,
+              "problems": [],
+              "failure_reason": null
+            },
+            {
+              "run_id": "ref-cathode-third",
+              "registry_id": "third",
+              "status": "valid",
+              "W_adh_J_m2": 3.6170508624496,
+              "problems": [],
+              "failure_reason": null
+            }
+          ],
+          "sensitivity": [],
+          "warnings": []
+        },
+        "electrolyte": {
+          "status": "validated",
+          "selected_run_id": "ref-electrolyte",
+          "W_adh_J_m2": 1.6333940812860246,
+          "W_sep_J_m2": 2.9672197308623063,
+          "registry_range_J_m2": [
+            1.6333940812860246,
+            1.6333940812860246
+          ],
+          "comparability_problems": [],
+          "primary": [
+            {
+              "run_id": "ref-electrolyte",
+              "registry_id": "electrolyte",
+              "status": "valid",
+              "W_adh_J_m2": 1.6333940812860246,
+              "problems": [],
+              "failure_reason": null
+            }
+          ],
+          "sensitivity": [],
+          "warnings": []
+        }
+      },
+      "weaker_W_adh_J_m2": 1.6333940812860246
+    },
+    {
+      "candidate_id": "mp-aaaaajby",
+      "formula": "LiCaAlF6",
+      "slot_reason": "fixture",
+      "thermo": {
+        "penalty": 0.047719477710549185,
+        "penalty_bin": 2,
+        "acceptable": true,
+        "insulating": true,
+        "band_gap_eV": 7.6448
+      },
+      "contacts": {
+        "cathode": {
+          "status": "pending",
+          "selected_run_id": null,
+          "W_adh_J_m2": null,
+          "W_sep_J_m2": null,
+          "registry_range_J_m2": null,
+          "comparability_problems": [],
+          "primary": [
+            {
+              "run_id": "caal-cathode-pending",
+              "registry_id": null,
+              "status": "pending",
+              "W_adh_J_m2": null,
+              "problems": [],
+              "failure_reason": null
+            }
+          ],
+          "sensitivity": [],
+          "warnings": []
+        },
+        "electrolyte": {
+          "status": "pending",
+          "selected_run_id": null,
+          "W_adh_J_m2": null,
+          "W_sep_J_m2": null,
+          "registry_range_J_m2": null,
+          "comparability_problems": [],
+          "primary": [
+            {
+              "run_id": "caal-electrolyte-pending",
+              "registry_id": null,
+              "status": "pending",
+              "W_adh_J_m2": null,
+              "problems": [],
+              "failure_reason": null
+            }
+          ],
+          "sensitivity": [],
+          "warnings": []
+        }
+      },
+      "weaker_W_adh_J_m2": null
+    },
+    {
+      "candidate_id": "mp-aaabevhd",
+      "formula": "LiZr2(PO4)3",
+      "slot_reason": "fixture",
+      "thermo": {
+        "penalty": 0.05632133261569905,
+        "penalty_bin": 2,
+        "acceptable": false,
+        "insulating": true,
+        "band_gap_eV": 4.1295
+      },
+      "contacts": {
+        "cathode": {
+          "status": "failed",
+          "selected_run_id": null,
+          "W_adh_J_m2": null,
+          "W_sep_J_m2": null,
+          "registry_range_J_m2": null,
+          "comparability_problems": [],
+          "primary": [
+            {
+              "run_id": "lzp-cathode-failed",
+              "registry_id": null,
+              "status": "failed",
+              "W_adh_J_m2": null,
+              "problems": [],
+              "failure_reason": "FIXTURE: no lattice match within bounds"
+            }
+          ],
+          "sensitivity": [],
+          "warnings": []
+        },
+        "electrolyte": {
+          "status": "failed",
+          "selected_run_id": null,
+          "W_adh_J_m2": null,
+          "W_sep_J_m2": null,
+          "registry_range_J_m2": null,
+          "comparability_problems": [],
+          "primary": [
+            {
+              "run_id": "lzp-electrolyte-failed",
+              "registry_id": null,
+              "status": "failed",
+              "W_adh_J_m2": null,
+              "problems": [],
+              "failure_reason": "FIXTURE: no lattice match within bounds"
+            }
+          ],
+          "sensitivity": [],
+          "warnings": []
+        }
+      },
+      "weaker_W_adh_J_m2": null
+    }
+  ],
+  "compute": {
+    "new": {
+      "calls": 0,
+      "wall_seconds": 0.0,
+      "runs_with_unknown_cost": 2
+    },
+    "reused": {
+      "calls": 684,
+      "wall_seconds": 207.458704998,
+      "runs_with_unknown_cost": 0
+    }
+  },
+  "invalid_runs": [],
+  "notes": [
+    "Registry/sensitivity spreads are finite tested ranges, not confidence intervals.",
+    "Contact models are formally polar; Li transport is not tested.",
+    "No combined score or adhesion threshold; acceptance labels are the frozen thermodynamic ones."
+  ]
+}

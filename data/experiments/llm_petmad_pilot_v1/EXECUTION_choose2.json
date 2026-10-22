@@ -1,0 +1,50 @@
+{
+  "purpose": "Live prior + choose-2 under Davide's approval (SYNC_ADEM_14, 53e7758): 10 HTTP attempts total, USD 0.05 allowance",
+  "executed_by": "Adem",
+  "recorded_at": "2026-10-22T07:40:15+00:00",
+  "agent_code_commit": "f8abbc0",
+  "physics_snapshot_commit": "b199608",
+  "index_sha256": "b02750feffeefb0d3e7875d18bc693a3b2e4e6a5294091a21d59aee6501aa937",
+  "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+  "state_sha256_at_pause": "fdc9816c1602325a64e211751d48504e0a81f608609e151ab3c29098ee71958c",
+  "settings": {
+    "model": "claude-haiku-5-5",
+    "temperature": 1.0,
+    "max_tokens": 4096
+  },
+  "mode": "live",
+  "http_attempts_used": 3,
+  "http_cap": 10,
+  "selected_id": "mp-aaacjmqp",
+  "choose2_record_sha256": "010ad614ea26bd57b30fe9b085301b36001e630f162102813a38d060d6805c01",
+  "feedback_sha256_seen": [
+    "db7306f24b27c2840a1d11936b9ed41dc6c4bf771733d2fd154c836244e4a5fe"
+  ],
+  "predictions": {
+    "predicted_W_adh_J_m2": {
+      "cathode": [
+        3.2,
+        3.9
+      ],
+      "electrolyte": [
+        1.4,
+        1.9
+      ]
+    },
+    "predicted_weaker_contact": "electrolyte",
+    "ordered_shortlist": [
+      "mp-aaacjmqp",
+      "mp-aaaaajby",
+      "mp-aaaaabru"
+    ]
+  },
+  "returned_models": [
+    "claude-haiku-5-5"
+  ],
+  "tokens": {
+    "input": 4544,
+    "output": 2327
+  },
+  "usd_list_estimate": 0.00162,
+  "note": "Estimate at public list prices, not a billed amount. Paused for Claude's six primary jobs for the selected coating."
+}

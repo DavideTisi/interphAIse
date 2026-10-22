@@ -1,0 +1,28 @@
+{
+  "arms": [
+    "shuffled"
+  ],
+  "repeats": 30,
+  "budget": 10,
+  "synthetic": false,
+  "start_seed": 100,
+  "workers": 3,
+  "pool": "data/pools/mp_candidates_v2.json",
+  "benchmark": "data/benchmarks/coating_v3.json",
+  "hashes": {
+    "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+    "pool_sha256": "e850b4f1d77e12e895d6d5446ab80f3210184842b6c91ecf88577158c34a8758",
+    "benchmark_sha256": "d2718c20f0ca8c3cc25d2378011bc68736ad71a502d657312bfff1da15a4ecfa"
+  },
+  "prompt_version": "v3-2026-10-21c-charged-ids",
+  "model": "anthropic/claude-haiku-5-5",
+  "temperature": 1.0,
+  "max_tokens": 4096,
+  "source_commit": "ea0326d5c5b4020ff04a12115adce4c67a16b107",
+  "workflow_sha256": {
+    "scripts/run_discovery_experiment.py": "9ca9b5aedf0fc2edb19473d0fa7cdb2cabacc8b868493e0f28c07b0f0959b391",
+    "interphaise/discovery.py": "b83ecda178e23019756878d7a18359edc81e38974644a2ea7f0979c322dbdeee",
+    "interphaise/llm.py": "a54c38a3e9c5bad2b0c7d6a0b0b3318b30e15e3834d2a3ba1c0eac7a3c01892e",
+    "interphaise/benchmark.py": "738347d89fa7f667d2ff89b14a16381d468def991943708e02644e55ba42d7fd"
+  }
+}

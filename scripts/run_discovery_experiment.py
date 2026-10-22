@@ -37,6 +37,8 @@ def main():
     parser.add_argument("--pool", type=Path, default=ROOT / "data/pools/mp_candidates_v2.json")
     parser.add_argument("--benchmark", type=Path, default=ROOT / "data/benchmarks/coating_v3.json")
     parser.add_argument("--synthetic", action="store_true", help="Fake pool and benchmark (development only)")
+    parser.add_argument("--allow-draft", action="store_true",
+                        help="Accept an unfrozen benchmark (offline checks/smoke only; recorded in experiment.json)")
     parser.add_argument("--temperature", type=float, default=None)
     parser.add_argument("--max-tokens", type=int, default=4096,
                         help="Output cap per call; a 10-candidate upfront shortlist needs ~2000 tokens")
@@ -50,7 +52,7 @@ def main():
     root.mkdir(parents=True)
     if args.synthetic:
         args.pool, args.benchmark = write_synthetic_benchmark(root)
-    new_queries = lambda: BenchmarkQueries(args.pool, args.benchmark, budget=args.budget, allow_draft=args.synthetic)
+    new_queries = lambda: BenchmarkQueries(args.pool, args.benchmark, budget=args.budget, allow_draft=args.synthetic or args.allow_draft)
     task = new_queries().task()  # validates hashes and budget before any paid call
     uses_llm = bool(set(args.arms) & LLM_STRATEGIES)
     if uses_llm:
@@ -58,7 +60,9 @@ def main():
     def portable(path):
         path = path.resolve()
         return str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
+    benchmark_status = json.loads(Path(args.benchmark).read_text())["status"]
     experiment = dict(arms=args.arms, repeats=args.repeats, budget=args.budget, synthetic=args.synthetic,
+                      allow_draft=args.allow_draft, benchmark_status=benchmark_status,
                       start_seed=args.start_seed, workers=args.workers,
                       pool=portable(args.pool), benchmark=portable(args.benchmark),
                       hashes={k: task[k] for k in ("objective_sha256", "pool_sha256", "benchmark_sha256")},
