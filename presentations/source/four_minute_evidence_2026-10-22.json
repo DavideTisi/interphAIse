@@ -1,0 +1,2838 @@
+{
+  "scope": "Completed 141-structure production only. No 50-structure pilot, smoke or duplicate launch. Random reused once.",
+  "models": [
+    "Haiku 5.5",
+    "DeepSeek V3.2"
+  ],
+  "arms": [
+    "iterative",
+    "sequential",
+    "shuffled",
+    "upfront"
+  ],
+  "environments": [
+    "lpscl",
+    "lic",
+    "llzo"
+  ],
+  "counts": {
+    "Haiku 5.5": {
+      "lpscl": {
+        "iterative": 20,
+        "sequential": 2,
+        "shuffled": 6,
+        "upfront": 0,
+        "random": 8
+      },
+      "lic": {
+        "iterative": 30,
+        "sequential": 30,
+        "shuffled": 30,
+        "upfront": 30,
+        "random": 29
+      },
+      "llzo": {
+        "iterative": 12,
+        "sequential": 0,
+        "shuffled": 4,
+        "upfront": 1,
+        "random": 24
+      }
+    },
+    "DeepSeek V3.2": {
+      "lpscl": {
+        "iterative": 12,
+        "sequential": 2,
+        "shuffled": 3,
+        "upfront": 2
+      },
+      "lic": {
+        "iterative": 30,
+        "sequential": 30,
+        "shuffled": 30,
+        "upfront": 30
+      },
+      "llzo": {
+        "iterative": 10,
+        "sequential": 4,
+        "shuffled": 12,
+        "upfront": 20
+      }
+    }
+  },
+  "wilson_95": {
+    "Haiku 5.5": {
+      "lpscl": {
+        "iterative": [
+          0.4878005164454384,
+          0.8076950191632386
+        ],
+        "sequential": [
+          0.018477023791270378,
+          0.2132345836261692
+        ],
+        "shuffled": [
+          0.0950510717728987,
+          0.3730569641314825
+        ],
+        "upfront": [
+          0.0,
+          0.11351339317396876
+        ],
+        "random": [
+          0.14182663319596317,
+          0.4444796169518888
+        ]
+      },
+      "lic": {
+        "iterative": [
+          0.8864866068260312,
+          0.9999999999999999
+        ],
+        "sequential": [
+          0.8864866068260312,
+          0.9999999999999999
+        ],
+        "shuffled": [
+          0.8864866068260312,
+          0.9999999999999999
+        ],
+        "upfront": [
+          0.8864866068260312,
+          0.9999999999999999
+        ],
+        "random": [
+          0.8332960900859082,
+          0.9940914096183874
+        ]
+      },
+      "llzo": {
+        "iterative": [
+          0.24590628116801852,
+          0.5767963974667752
+        ],
+        "sequential": [
+          0.0,
+          0.11351339317396876
+        ],
+        "shuffled": [
+          0.053096554840547455,
+          0.296813266820363
+        ],
+        "upfront": [
+          0.005908590381612455,
+          0.16670390991409173
+        ],
+        "random": [
+          0.6269430358685175,
+          0.9049489282271013
+        ]
+      }
+    },
+    "DeepSeek V3.2": {
+      "lpscl": {
+        "iterative": [
+          0.24590628116801852,
+          0.5767963974667752
+        ],
+        "sequential": [
+          0.018477023791270378,
+          0.2132345836261692
+        ],
+        "shuffled": [
+          0.03459988874733419,
+          0.25621082579184085
+        ],
+        "upfront": [
+          0.018477023791270378,
+          0.2132345836261692
+        ]
+      },
+      "lic": {
+        "iterative": [
+          0.8864866068260312,
+          0.9999999999999999
+        ],
+        "sequential": [
+          0.8864866068260312,
+          0.9999999999999999
+        ],
+        "shuffled": [
+          0.8864866068260312,
+          0.9999999999999999
+        ],
+        "upfront": [
+          0.8864866068260312,
+          0.9999999999999999
+        ]
+      },
+      "llzo": {
+        "iterative": [
+          0.19230498083676134,
+          0.5121994835545616
+        ],
+        "sequential": [
+          0.053096554840547455,
+          0.296813266820363
+        ],
+        "shuffled": [
+          0.24590628116801852,
+          0.5767963974667752
+        ],
+        "upfront": [
+          0.4878005164454384,
+          0.8076950191632386
+        ]
+      }
+    }
+  },
+  "paired_mcnemar_holm": {
+    "Haiku 5.5": [
+      {
+        "environment": "lpscl",
+        "control": "sequential",
+        "iterative_only": 18,
+        "control_only": 0,
+        "p_raw": 7.62939453125e-06,
+        "p_holm": 4.57763671875e-05
+      },
+      {
+        "environment": "lpscl",
+        "control": "shuffled",
+        "iterative_only": 15,
+        "control_only": 1,
+        "p_raw": 0.000518798828125,
+        "p_holm": 0.00244140625
+      },
+      {
+        "environment": "lic",
+        "control": "sequential",
+        "iterative_only": 0,
+        "control_only": 0,
+        "p_raw": 1.0,
+        "p_holm": 1
+      },
+      {
+        "environment": "lic",
+        "control": "shuffled",
+        "iterative_only": 0,
+        "control_only": 0,
+        "p_raw": 1.0,
+        "p_holm": 1
+      },
+      {
+        "environment": "llzo",
+        "control": "sequential",
+        "iterative_only": 12,
+        "control_only": 0,
+        "p_raw": 0.00048828125,
+        "p_holm": 0.00244140625
+      },
+      {
+        "environment": "llzo",
+        "control": "shuffled",
+        "iterative_only": 11,
+        "control_only": 3,
+        "p_raw": 0.057373046875,
+        "p_holm": 0.172119140625
+      }
+    ],
+    "DeepSeek V3.2": [
+      {
+        "environment": "lpscl",
+        "control": "sequential",
+        "iterative_only": 12,
+        "control_only": 2,
+        "p_raw": 0.012939453125,
+        "p_holm": 0.07763671875
+      },
+      {
+        "environment": "lpscl",
+        "control": "shuffled",
+        "iterative_only": 11,
+        "control_only": 2,
+        "p_raw": 0.0224609375,
+        "p_holm": 0.1123046875
+      },
+      {
+        "environment": "lic",
+        "control": "sequential",
+        "iterative_only": 0,
+        "control_only": 0,
+        "p_raw": 1.0,
+        "p_holm": 1
+      },
+      {
+        "environment": "lic",
+        "control": "shuffled",
+        "iterative_only": 0,
+        "control_only": 0,
+        "p_raw": 1.0,
+        "p_holm": 1
+      },
+      {
+        "environment": "llzo",
+        "control": "sequential",
+        "iterative_only": 8,
+        "control_only": 2,
+        "p_raw": 0.109375,
+        "p_holm": 0.4375
+      },
+      {
+        "environment": "llzo",
+        "control": "shuffled",
+        "iterative_only": 6,
+        "control_only": 8,
+        "p_raw": 0.79052734375,
+        "p_holm": 1
+      }
+    ]
+  },
+  "unique_runs": 810,
+  "charged_queries": 8100,
+  "passing_sulfide": [
+    {
+      "candidate_id": "mp-aaaaajby",
+      "formula": "LiCaAlF6",
+      "penalty": 0.047719477710549185,
+      "penalty_bin": 2,
+      "band_gap_eV": 7.6448
+    },
+    {
+      "candidate_id": "mp-aaacjjwh",
+      "formula": "LiNbF6",
+      "penalty": 0.028772005147425617,
+      "penalty_bin": 1,
+      "band_gap_eV": 4.788851973014669
+    },
+    {
+      "candidate_id": "mp-aaacjmqp",
+      "formula": "LiTaF6",
+      "penalty": 0.027074933496621156,
+      "penalty_bin": 1,
+      "band_gap_eV": 5.917199104338054
+    },
+    {
+      "candidate_id": "mp-aaacqrlq",
+      "formula": "LiTaF6",
+      "penalty": 0.027074933496621156,
+      "penalty_bin": 1,
+      "band_gap_eV": 6.802300000000001
+    }
+  ],
+  "physical": {
+    "LiNbF6": {
+      "candidate_id": "mp-aaacjjwh",
+      "contacts": {
+        "cathode": {
+          "W_adh_J_m2": 3.6170508624496,
+          "W_sep_J_m2": 5.167624545488891,
+          "registry_id": "R3",
+          "registry": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "n_atoms": 696,
+          "result_path": "data/petmad/niflheim_batch1/cathode_reg_third_third/result.json",
+          "joined_energy_eV": -4707.4736328125,
+          "registry_range": [
+            3.596964455828597,
+            3.6170508624496
+          ]
+        },
+        "electrolyte": {
+          "W_adh_J_m2": 1.6333940812860246,
+          "W_sep_J_m2": 2.9672197308623063,
+          "registry_id": "R1",
+          "registry": [
+            0,
+            0
+          ],
+          "n_atoms": 880,
+          "result_path": "data/petmad/niflheim_batch1/electrolyte_seed0_ref/result.json",
+          "joined_energy_eV": -5328.5966796875,
+          "registry_range": [
+            1.6316068100231231,
+            1.6333940812860246
+          ]
+        }
+      }
+    },
+    "LiTaF6": {
+      "candidate_id": "mp-aaacjmqp",
+      "contacts": {
+        "cathode": {
+          "W_adh_J_m2": 3.338748412819128,
+          "W_sep_J_m2": 4.727749860143862,
+          "registry_id": "R1",
+          "registry": [
+            0.0,
+            0.0
+          ],
+          "n_atoms": 696,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R1/result.json",
+          "joined_energy_eV": -4761.26904296875,
+          "registry_range": [
+            3.326811096603576,
+            3.338748412819128
+          ]
+        },
+        "electrolyte": {
+          "W_adh_J_m2": 1.5773585444472311,
+          "W_sep_J_m2": 2.910571251635274,
+          "registry_id": "R2",
+          "registry": [
+            0.25,
+            0.5
+          ],
+          "n_atoms": 880,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R2/result.json",
+          "joined_energy_eV": -5423.8935546875,
+          "registry_range": [
+            1.534040130056007,
+            1.5773585444472311
+          ]
+        }
+      }
+    },
+    "LiCaAlF6": {
+      "candidate_id": "mp-aaaaajby",
+      "contacts": {
+        "cathode": {
+          "W_adh_J_m2": 1.426710445485596,
+          "W_sep_J_m2": 4.321819440022834,
+          "registry_id": "R2",
+          "registry": [
+            0.25,
+            0.16666666666666666
+          ],
+          "n_atoms": 720,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R2/result.json",
+          "joined_energy_eV": -4755.00537109375,
+          "registry_range": [
+            1.34173084975481,
+            1.426710445485596
+          ]
+        },
+        "electrolyte": {
+          "W_adh_J_m2": 0.7435735865694895,
+          "W_sep_J_m2": 1.4902710788933669,
+          "registry_id": "R3",
+          "registry": [
+            0.0,
+            0.5
+          ],
+          "n_atoms": 1212,
+          "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R3/result.json",
+          "joined_energy_eV": -6973.59765625,
+          "registry_range": [
+            0.5234871701570539,
+            0.7435735865694895
+          ]
+        }
+      }
+    }
+  },
+  "llzo_audit": {
+    "status": "post-hoc exploratory audit; primary results unchanged",
+    "flag_definition": [
+      "Li5IO6",
+      "LiClO4",
+      "LiIO3"
+    ],
+    "models": {
+      "Haiku 5.5": {
+        "upfront": {
+          "successful_runs": 1,
+          "unflagged_hit_runs": 1,
+          "flagged_only_successful_runs": 0,
+          "acceptable_formula_counts": {
+            "LiMgPO4": 1
+          },
+          "flagged_acceptable_picks": 0,
+          "distinct_formulas_per_run_mean": 9.433333333333334,
+          "distinct_formulas_all_runs": 22,
+          "mean_pairwise_jaccard": 0.5811633959909822,
+          "anion_class_counts": {
+            "O only": 248,
+            "F": 35
+          },
+          "runs_mentioning_hazard_keywords": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 226,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [],
+              "flagged": []
+            }
+          ]
+        },
+        "iterative": {
+          "successful_runs": 12,
+          "unflagged_hit_runs": 12,
+          "flagged_only_successful_runs": 0,
+          "acceptable_formula_counts": {
+            "LiAlSiO4": 26,
+            "LiAl(SiO3)2": 1,
+            "LiAl(Si2O5)2": 1,
+            "LiMgPO4": 1
+          },
+          "flagged_acceptable_picks": 0,
+          "distinct_formulas_per_run_mean": 9,
+          "distinct_formulas_all_runs": 33,
+          "mean_pairwise_jaccard": 0.506516503930297,
+          "anion_class_counts": {
+            "O only": 230,
+            "F": 40
+          },
+          "runs_mentioning_hazard_keywords": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAl(SiO3)2",
+                "LiAl(Si2O5)2"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 226,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            }
+          ]
+        },
+        "sequential": {
+          "successful_runs": 0,
+          "unflagged_hit_runs": 0,
+          "flagged_only_successful_runs": 0,
+          "acceptable_formula_counts": {},
+          "flagged_acceptable_picks": 0,
+          "distinct_formulas_per_run_mean": 6.866666666666666,
+          "distinct_formulas_all_runs": 19,
+          "mean_pairwise_jaccard": 0.4375496087565053,
+          "anion_class_counts": {
+            "O only": 188,
+            "F": 18
+          },
+          "runs_mentioning_hazard_keywords": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 226,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [],
+              "flagged": []
+            }
+          ]
+        },
+        "shuffled": {
+          "successful_runs": 4,
+          "unflagged_hit_runs": 4,
+          "flagged_only_successful_runs": 0,
+          "acceptable_formula_counts": {
+            "LiAlSiO4": 4
+          },
+          "flagged_acceptable_picks": 0,
+          "distinct_formulas_per_run_mean": 9.8,
+          "distinct_formulas_all_runs": 44,
+          "mean_pairwise_jaccard": 0.37692320525991924,
+          "anion_class_counts": {
+            "O only": 247,
+            "F": 44,
+            "Cl": 3
+          },
+          "runs_mentioning_hazard_keywords": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 226,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [],
+              "flagged": []
+            }
+          ]
+        }
+      },
+      "DeepSeek V3.2": {
+        "upfront": {
+          "successful_runs": 20,
+          "unflagged_hit_runs": 20,
+          "flagged_only_successful_runs": 0,
+          "acceptable_formula_counts": {
+            "LiAlSiO4": 18,
+            "LiMgPO4": 3,
+            "LiAl(SiO3)2": 1
+          },
+          "flagged_acceptable_picks": 0,
+          "distinct_formulas_per_run_mean": 10,
+          "distinct_formulas_all_runs": 38,
+          "mean_pairwise_jaccard": 0.46523185978187576,
+          "anion_class_counts": {
+            "O only": 255,
+            "F": 37,
+            "Cl": 7,
+            "F+O": 1
+          },
+          "runs_mentioning_hazard_keywords": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [
+                "LiAl(SiO3)2"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 226,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            }
+          ]
+        },
+        "iterative": {
+          "successful_runs": 10,
+          "unflagged_hit_runs": 9,
+          "flagged_only_successful_runs": 1,
+          "acceptable_formula_counts": {
+            "LiAlSiO4": 21,
+            "LiAl(SiO3)2": 6,
+            "LiMgPO4": 3,
+            "LiIO3": 3,
+            "LiAl(Si2O5)2": 1,
+            "LiClO4": 1,
+            "Li5IO6": 1
+          },
+          "flagged_acceptable_picks": 5,
+          "distinct_formulas_per_run_mean": 8.7,
+          "distinct_formulas_all_runs": 45,
+          "mean_pairwise_jaccard": 0.32295940893303976,
+          "anion_class_counts": {
+            "O only": 224,
+            "F": 31,
+            "oxyhalogen (flagged)": 3,
+            "F+O": 1,
+            "Cl": 1,
+            "I+O": 1
+          },
+          "runs_mentioning_hazard_keywords": 1,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAl(Si2O5)2",
+                "LiAl(SiO3)2",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAl(SiO3)2",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAl(SiO3)2",
+                "LiAl(SiO3)2"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAl(SiO3)2",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [
+                "LiClO4",
+                "LiIO3",
+                "LiIO3",
+                "Li5IO6",
+                "LiIO3"
+              ],
+              "flagged": [
+                "LiClO4",
+                "LiIO3",
+                "LiIO3",
+                "Li5IO6",
+                "LiIO3"
+              ]
+            },
+            {
+              "seed": 226,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAl(SiO3)2"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [],
+              "flagged": []
+            }
+          ]
+        },
+        "sequential": {
+          "successful_runs": 4,
+          "unflagged_hit_runs": 4,
+          "flagged_only_successful_runs": 0,
+          "acceptable_formula_counts": {
+            "LiAlSiO4": 3,
+            "LiMgPO4": 1
+          },
+          "flagged_acceptable_picks": 0,
+          "distinct_formulas_per_run_mean": 5.7,
+          "distinct_formulas_all_runs": 28,
+          "mean_pairwise_jaccard": 0.34711225556053144,
+          "anion_class_counts": {
+            "O only": 149,
+            "F": 20,
+            "Cl": 2
+          },
+          "runs_mentioning_hazard_keywords": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 226,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [],
+              "flagged": []
+            }
+          ]
+        },
+        "shuffled": {
+          "successful_runs": 12,
+          "unflagged_hit_runs": 12,
+          "flagged_only_successful_runs": 0,
+          "acceptable_formula_counts": {
+            "LiAlSiO4": 16,
+            "LiAl(Si2O5)2": 4,
+            "LiAl(SiO3)2": 4,
+            "LiMgPO4": 1
+          },
+          "flagged_acceptable_picks": 0,
+          "distinct_formulas_per_run_mean": 8.766666666666667,
+          "distinct_formulas_all_runs": 42,
+          "mean_pairwise_jaccard": 0.3184286720341487,
+          "anion_class_counts": {
+            "O only": 205,
+            "F": 45,
+            "Cl": 7,
+            "Br": 4,
+            "I": 2
+          },
+          "runs_mentioning_hazard_keywords": 0,
+          "per_run": [
+            {
+              "seed": 200,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 201,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 202,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 203,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiMgPO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 204,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 205,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 206,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 207,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 208,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 209,
+              "acceptable": [
+                "LiAl(Si2O5)2"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 210,
+              "acceptable": [
+                "LiAl(Si2O5)2"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 211,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 212,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 213,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 214,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 215,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 216,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 217,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 218,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 219,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 220,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 221,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 222,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 223,
+              "acceptable": [
+                "LiAl(SiO3)2",
+                "LiAl(SiO3)2",
+                "LiAlSiO4",
+                "LiAl(Si2O5)2",
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAl(Si2O5)2",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 224,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 225,
+              "acceptable": [],
+              "flagged": []
+            },
+            {
+              "seed": 226,
+              "acceptable": [
+                "LiAlSiO4",
+                "LiAlSiO4",
+                "LiAl(SiO3)2",
+                "LiAlSiO4",
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 227,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 228,
+              "acceptable": [
+                "LiAlSiO4"
+              ],
+              "flagged": []
+            },
+            {
+              "seed": 229,
+              "acceptable": [
+                "LiAl(SiO3)2"
+              ],
+              "flagged": []
+            }
+          ]
+        }
+      }
+    }
+  },
+  "source_commits": {
+    "davide_commit": "750b382844fd64aaa46f96ce96be1871e992c0f1",
+    "agent_commit": "800ba0378779ce7df9038bc4857719a29c2fe0a7",
+    "physics_commit": "1b76eeb0330ae1ddee3720d76145c2b308725245",
+    "final_index_sha256": "47d69f7dd75dff89e1d2e5191f2f1d31fad002581521c39eeee7593c90d83c41",
+    "deepseek": "550391b86fa18aee72a4738838936066b388655a",
+    "integrated_head": "7ee00927edf2dfe4816d388d58cbcce520f2ab09"
+  },
+  "run_sha256": {
+    "data/experiments/environment_v1/lpscl/iterative_r200.json": "04ed1afc7ca1dd36db4f692faee26fd0a974edf65ef422f62ebbaa9ce6b945a0",
+    "data/experiments/environment_v1/lpscl/iterative_r201.json": "379b065927c7ce1caa4d2d4f6a4e86b5adede28c1f6c2f1cf6d7b6a5ad8e9cbf",
+    "data/experiments/environment_v1/lpscl/iterative_r202.json": "7bf86dc43b2e3c546d6a2e6dc549d801d98a850dc871a0f14173dee02fc0ea9e",
+    "data/experiments/environment_v1/lpscl/iterative_r203.json": "ce9d3d6ce4f3f6cf274991762f24772474717e9e7555f2a7ba01963a0d1def65",
+    "data/experiments/environment_v1/lpscl/iterative_r204.json": "fa04cdb1cb1717fc37e6ff55a54f1ad798dfac8d1a001811050f53e8151dae60",
+    "data/experiments/environment_v1/lpscl/iterative_r205.json": "27c7dde5454c5d0c08e81dfb43b4b61e5ea0ebd6376643d5742e34ade1c0068d",
+    "data/experiments/environment_v1/lpscl/iterative_r206.json": "be632e5fa0e4cd923afa79afdb8abad4d3101cc5ac360254e573deb4d3b77027",
+    "data/experiments/environment_v1/lpscl/iterative_r207.json": "89790efef3afa9b21a28ceac2fcd9909be4dee55034191942b27bd15fcbaa962",
+    "data/experiments/environment_v1/lpscl/iterative_r208.json": "1553af1b7e25af29e546713b475a5f1bcf2ed030b8b1aea91147c38a8e816951",
+    "data/experiments/environment_v1/lpscl/iterative_r209.json": "cb16ed9fa10327819716d18e54edfb682e938a6e5d61ccbb34a8ec8285933c8d",
+    "data/experiments/environment_v1/lpscl/iterative_r210.json": "140fb19002357a9abbe578f55fa87c6e0e384bb0d39ecebe60fecccff6c77e9a",
+    "data/experiments/environment_v1/lpscl/iterative_r211.json": "737d56026f9b84ab08af424bfeb510004a5cf37273f1864d114b34172b44fcbb",
+    "data/experiments/environment_v1/lpscl/iterative_r212.json": "8c77608d4515ce4b2287b034059c3b74fbeec413a36253070eb7ec5c4fdde1e1",
+    "data/experiments/environment_v1/lpscl/iterative_r213.json": "68a188a6b0d8e8e677955bc67a53dc69389a6d2dff93c1bd64a276f124a196e3",
+    "data/experiments/environment_v1/lpscl/iterative_r214.json": "c07cd223cea59588a24cf4977445cc4a5d6509730e307371f53e811073010903",
+    "data/experiments/environment_v1/lpscl/iterative_r215.json": "d73043487ca540c9d95397cc54f3b978c58da35780f0c5f642680ba1e496df54",
+    "data/experiments/environment_v1/lpscl/iterative_r216.json": "b22323d8bc44953f689cc2e58e643253e4b01b308b0d8688a708f5e23953d44c",
+    "data/experiments/environment_v1/lpscl/iterative_r217.json": "e42421bb4a2cc968d8e33149ec233031d441f3a1886e6aa3370dce4b91720633",
+    "data/experiments/environment_v1/lpscl/iterative_r218.json": "6b1b5aca4470297e8a00bfa3e2a2a3f69ec06ee33a1e3692010268f5d83486b2",
+    "data/experiments/environment_v1/lpscl/iterative_r219.json": "76cda4f5c36a8fffb174253003db37f656317f58cbe08deab4526d888e1d6be9",
+    "data/experiments/environment_v1/lpscl/iterative_r220.json": "20c2bba48cf87f5b3604ef6b7b67d85b3566ae9a8035a4e3a032d29c86314882",
+    "data/experiments/environment_v1/lpscl/iterative_r221.json": "1ca5d6c7d8928e5bbcaac5b7528b810f311aa67c5ee033d7bd4d3eb41b5fd092",
+    "data/experiments/environment_v1/lpscl/iterative_r222.json": "0524e21619520bed353c5a879314ed33b74aef81b3a52685c218d08547b6f15c",
+    "data/experiments/environment_v1/lpscl/iterative_r223.json": "b53fb78313d4d1c5f1b53ff02032c15c77a17b846c4b502ab2ea361c29163649",
+    "data/experiments/environment_v1/lpscl/iterative_r224.json": "60d8deffc87f08aafb848fb80ad9afb98e6e2fbb50115fed5f481da5c67c1d8b",
+    "data/experiments/environment_v1/lpscl/iterative_r225.json": "cafd31db1279f7086b90f218ff64796d2f912ef1a0a6fe431b6ed7286eed78d3",
+    "data/experiments/environment_v1/lpscl/iterative_r226.json": "8f151acf9aa9d704da183d434cb6cc1259cefb17884c252cdd576f674b9e32e9",
+    "data/experiments/environment_v1/lpscl/iterative_r227.json": "6bf318e526daf3b7a5e43caccdb94cb503cd3029deb153b7cd0437985fc126be",
+    "data/experiments/environment_v1/lpscl/iterative_r228.json": "365c6c161de14c2e8a5f003d84ae7045e5f225b78c3f2d85eb75fd163bcfa35e",
+    "data/experiments/environment_v1/lpscl/iterative_r229.json": "be4ad709d170077b941d8154aada558c1cb69c2a90004496fe77084495192512",
+    "data/experiments/environment_v1/lpscl/sequential_r200.json": "7964fcb174b4fefde54e0bb9e9c3d55d01eab93eeae44ab5af0119756d60ee51",
+    "data/experiments/environment_v1/lpscl/sequential_r201.json": "f8a4058bac767a820521fc419334076f208abbaff743236459bd7b9aad28216c",
+    "data/experiments/environment_v1/lpscl/sequential_r202.json": "22e39901b88692198dc9406e984067981fd9d194a5ed7b16edab983a5af4f131",
+    "data/experiments/environment_v1/lpscl/sequential_r203.json": "cc35681ed95484683dc7fae299538715aacd1dcb87a246133e16a75af5e166d2",
+    "data/experiments/environment_v1/lpscl/sequential_r204.json": "faab500d602d95c0c898bac5dc071d9625af25e4e89e7fde38318166a93205e6",
+    "data/experiments/environment_v1/lpscl/sequential_r205.json": "5160234333bd6949d68dcaa0a42a8d1f09537b0f5a68f3b32f0263ba813d0ec8",
+    "data/experiments/environment_v1/lpscl/sequential_r206.json": "877479f8414bf638bb2b8b2cc69043ff743fde10ef7551fbab5ffeb56bdd9371",
+    "data/experiments/environment_v1/lpscl/sequential_r207.json": "1c040af5c9fd26e22f07457882e8886b67e1724839c32427b4dddf623a5394a1",
+    "data/experiments/environment_v1/lpscl/sequential_r208.json": "9a3dc048f6fe2e251a2d7cce9e27191936fb39b9def64787de9c35a4e2503ece",
+    "data/experiments/environment_v1/lpscl/sequential_r209.json": "66042764bc0560ce9b65d784519b94aa6e3193eaf2fe58442b5b8a803ac131f6",
+    "data/experiments/environment_v1/lpscl/sequential_r210.json": "22cd2cf4cae285db16ca08c10bba7f54679ae2884b893053c7480d88fed8a941",
+    "data/experiments/environment_v1/lpscl/sequential_r211.json": "e03e314684f71b81034c57d93b3c14fbdf5e7fcd718b68255d6fd5280302aaee",
+    "data/experiments/environment_v1/lpscl/sequential_r212.json": "dbd92fb26434a133f3fc8af0ae32078fbf168bde3cfd5d6a64c5ca6de4f97e6c",
+    "data/experiments/environment_v1/lpscl/sequential_r213.json": "0e64465d264f0160844d774459ca15a5b05cc1994f14978ac2874e38bd40bb17",
+    "data/experiments/environment_v1/lpscl/sequential_r214.json": "0348d03108044ef675612be069aad9db83c62d55bac84c30fd4614e0bc5bd96a",
+    "data/experiments/environment_v1/lpscl/sequential_r215.json": "7b2861e60eaad94006230e71f3cbc87f3866fe0e7ed1abd300efe8cb02bdad81",
+    "data/experiments/environment_v1/lpscl/sequential_r216.json": "861bc3f0ab9f1468c214ca698f06536a14755f8a920a4322b3bad2a47aaa2195",
+    "data/experiments/environment_v1/lpscl/sequential_r217.json": "30e68a23c12051c1a75f9eb3981f595157e1d34e04e5678d1348314c70a9f965",
+    "data/experiments/environment_v1/lpscl/sequential_r218.json": "8d53e461466af2de41ab8c58cad25cef83bd81ddc37f6ba4dfa6d36e0f7f8a5f",
+    "data/experiments/environment_v1/lpscl/sequential_r219.json": "1287c17bb70b92c4e48c1f1022e7dc5e4a9df3ebb98afa3cfb42ce56ed73e63f",
+    "data/experiments/environment_v1/lpscl/sequential_r220.json": "43a6acda4abe805b1b314cc95ba10918316431663f5975da36d2e540dcad0e37",
+    "data/experiments/environment_v1/lpscl/sequential_r221.json": "b7f20cb00ae0c36888cf4896666c07a6e2723011ecddf1e8c5715edcbeedaf77",
+    "data/experiments/environment_v1/lpscl/sequential_r222.json": "ba395fecdadaaa09309de823ba8614c82e7b1aed07133580bc22bd4c9cf0c9bf",
+    "data/experiments/environment_v1/lpscl/sequential_r223.json": "65caf76c3d4e6584fa228a3b394137c3e837468eb2e10b61afbe898dc37cb6a7",
+    "data/experiments/environment_v1/lpscl/sequential_r224.json": "8e1c89c697f1102897f3f6da3a31bc43469c060d919e769f02a2dcb1c36602df",
+    "data/experiments/environment_v1/lpscl/sequential_r225.json": "ec80d0f622d8d1c60a48e3e24369487fb26d9b4b3372eef92a9a73509667c037",
+    "data/experiments/environment_v1/lpscl/sequential_r226.json": "9fc8184fbe05580af9cd4025cc1186d94efe86818d0962dfd0990fd18a2af8b1",
+    "data/experiments/environment_v1/lpscl/sequential_r227.json": "d03442f1806ab410d898bd9faed366d18f8aa2733cec8f72c120f43d354d1352",
+    "data/experiments/environment_v1/lpscl/sequential_r228.json": "4bcefd260d992ff5aaf9418e6d9dd7bffc526e06ff0878d5843a491cc9d41cc6",
+    "data/experiments/environment_v1/lpscl/sequential_r229.json": "6510f9d3d742eba6ed15758d683e3a18703847e8031df38ab8f22a0e52529634",
+    "data/experiments/environment_v1/lpscl/shuffled_r200.json": "768bef3a1f23125a7a8db364af9ecd03810704d5243124d5bd6a7fd18682c68e",
+    "data/experiments/environment_v1/lpscl/shuffled_r201.json": "fef73e29f6edabb485f76afc753252daf27b1a90f4f04309dd03a6f9c7f907df",
+    "data/experiments/environment_v1/lpscl/shuffled_r202.json": "3a300bf33f8e88f6984b0515f61cf20d76c4363347b829bc4a3c4858bab2fbad",
+    "data/experiments/environment_v1/lpscl/shuffled_r203.json": "83377fc586355c1c3fdb4ecdf0b6cd804e237eb6def0b154f8a97a1a86e30531",
+    "data/experiments/environment_v1/lpscl/shuffled_r204.json": "9acfcd9db78acb679cd25d8065ab6b7371e341816783853deed30eeaf50a1875",
+    "data/experiments/environment_v1/lpscl/shuffled_r205.json": "5b2b0d37c6da408aa5bca18e4dd8fe91433703c3d90399a8cc1ba75609735e07",
+    "data/experiments/environment_v1/lpscl/shuffled_r206.json": "38e776a66fb50196f48c4cefcaa7bb1c062843752ce5bfd6045b9d88967a975f",
+    "data/experiments/environment_v1/lpscl/shuffled_r207.json": "80550a3daa1734d9f3217c52d1b298c4abcafd748adbfeb54fa863e332f8997b",
+    "data/experiments/environment_v1/lpscl/shuffled_r208.json": "3de122cffcd5f7aa259aad47abedc51c7a2e90097407e36417aed36efc29e4de",
+    "data/experiments/environment_v1/lpscl/shuffled_r209.json": "da0acafaeb92efe4da71d48693a7bc239a05d5d4b55218a6773110ce0d397996",
+    "data/experiments/environment_v1/lpscl/shuffled_r210.json": "b0c7d20bed0a35ff1414fc75cf9ac3cb98c79f78d9f2f076ebc8c760cff11388",
+    "data/experiments/environment_v1/lpscl/shuffled_r211.json": "16f4d27203de0dca0f1f4d27d4ff54cc8ce9a780f075bba0afbaf9f479ad675e",
+    "data/experiments/environment_v1/lpscl/shuffled_r212.json": "1634f692b68198d247e22c808f3dbebc79cc3d887137b0f4760495022482227f",
+    "data/experiments/environment_v1/lpscl/shuffled_r213.json": "2e031d945c91ed140206922df4e186efbe2474095bf6d66bd06c27bdcdb6a29d",
+    "data/experiments/environment_v1/lpscl/shuffled_r214.json": "c4788ede259f0952a608ee56d3dbb31e47d32d40632221203b3e8c01250669a8",
+    "data/experiments/environment_v1/lpscl/shuffled_r215.json": "2660815e329c959304762d989bd7837ec7f49356b6b7c3a5b1b4e485f697543f",
+    "data/experiments/environment_v1/lpscl/shuffled_r216.json": "5b4026c29ecdf52a7736571b176a30e3b034e15210aa2f0c059f34ee53da92a4",
+    "data/experiments/environment_v1/lpscl/shuffled_r217.json": "fb4ff56f450bed3f297e4cf62458e4fdad24fd85f2a1a368312cf216db6ba7cf",
+    "data/experiments/environment_v1/lpscl/shuffled_r218.json": "fa266f86d1d51ea589b2721614b00bf44a2b85a51303787863bbfaebac9a2bc3",
+    "data/experiments/environment_v1/lpscl/shuffled_r219.json": "b36d27afb8dcd06cb9f88ef31792f3c7cd7fc68c0dab6e8e6c3e8f6dde808a5a",
+    "data/experiments/environment_v1/lpscl/shuffled_r220.json": "d0f7e592fdad809d3e7a136f5fc858572b8a5f69d3884cd321bd4f8a30a86c8e",
+    "data/experiments/environment_v1/lpscl/shuffled_r221.json": "f078ae4ecd7243a07e5810753dca035ce4bc8a6658004c8439266f46dd832d34",
+    "data/experiments/environment_v1/lpscl/shuffled_r222.json": "273c4cbba3850d4a3c8819a296db1a461031704518809d535aab38314ca0935d",
+    "data/experiments/environment_v1/lpscl/shuffled_r223.json": "e685e161f6c643491a6678b981289054b6b9f037a15fe8d96a004621ca471390",
+    "data/experiments/environment_v1/lpscl/shuffled_r224.json": "57bd107aa86a2ccbf6741f6f89886d1209f0ded84d748012392e87f80dad7921",
+    "data/experiments/environment_v1/lpscl/shuffled_r225.json": "be1a80cd46fb434dff9ebffa545bbecdf25f9ac96054b350ed55e71376fa4ba0",
+    "data/experiments/environment_v1/lpscl/shuffled_r226.json": "2ed62a81bf7852a8bf6607d1e17a509db87ad3226b7116e8a9bcdd08095a5579",
+    "data/experiments/environment_v1/lpscl/shuffled_r227.json": "2c9db89dc3daa64d55ceb6aa8055c694d32b12f6546ce2ae620daa2847978412",
+    "data/experiments/environment_v1/lpscl/shuffled_r228.json": "8b6c00d86c32286890663656e40e90d51c0419fa7c754235ea6ca16470d3a22c",
+    "data/experiments/environment_v1/lpscl/shuffled_r229.json": "4b904673eb3ccf9dd28463a9e41d2cab53a0faf37f96d41880362790eaeb1da4",
+    "data/experiments/environment_v1/lpscl/upfront_r200.json": "a96c81fcc7a647bf6b006dba6689e171b7ab29615aa186637df96b430e87773a",
+    "data/experiments/environment_v1/lpscl/upfront_r201.json": "94335376115d796c2dcbdd6298fa7a704fd4989b1c89a55d6c5eb5d4a6e0b0cb",
+    "data/experiments/environment_v1/lpscl/upfront_r202.json": "47caf86f61286e97e75f38fc19b2910a4a0928a10c994905bd64fe83d48ea282",
+    "data/experiments/environment_v1/lpscl/upfront_r203.json": "517ef74928b2772a6a89704a7a2bc8accbebcac1b5be8aef4e4913528ec9eb2f",
+    "data/experiments/environment_v1/lpscl/upfront_r204.json": "99988fe02164cd49ddca967a4a31a68fbd8d9c9e73e6465af496df5a4be46d7d",
+    "data/experiments/environment_v1/lpscl/upfront_r205.json": "e20dbe9182ad29a4b58bf009b03db4f1ef32d9aa45bfb9aecff8c204f7aba867",
+    "data/experiments/environment_v1/lpscl/upfront_r206.json": "4932a086dd4343c234d430fd2299d2797ca83928a3378c7d8516653ad1ecc021",
+    "data/experiments/environment_v1/lpscl/upfront_r207.json": "2bd41463179b706e221dd919b2d353f55d6f344db4952276c7463f0d96533a88",
+    "data/experiments/environment_v1/lpscl/upfront_r208.json": "7c9a1b78a8177d2ed1a2e71caae3972c3d0984585ba859e288c4970dc77679af",
+    "data/experiments/environment_v1/lpscl/upfront_r209.json": "a508f8fc8e3bd8bf320aa26ec8ecef61c0ed1d3a14447b4b2ea890a9917d3de0",
+    "data/experiments/environment_v1/lpscl/upfront_r210.json": "7898ee3cddefe7588822c00175ec2c8f5f4f930d3f1030b59c10f345f31663ae",
+    "data/experiments/environment_v1/lpscl/upfront_r211.json": "f4f1f90ece212e5f26fec3635b24b7380d94487362695b79813a251f84fce0f3",
+    "data/experiments/environment_v1/lpscl/upfront_r212.json": "0af5bec86c940152b52b11ef02844146f13850686603897500b4df49844a1ffb",
+    "data/experiments/environment_v1/lpscl/upfront_r213.json": "12b9718879c64fa2daaeb0b347f8a6365d1b1b3f9b1b7f10eb177026979a183e",
+    "data/experiments/environment_v1/lpscl/upfront_r214.json": "fa49993435cde242bb1f9b7a45045b436e19d79f99b27634ed55c8fde943a805",
+    "data/experiments/environment_v1/lpscl/upfront_r215.json": "68f3a0598800d83d51da840ed2634a3279f3849e827bbf4068611ec0df0d91c3",
+    "data/experiments/environment_v1/lpscl/upfront_r216.json": "2b1658b0043d744643797a121b9b841bb33def9784ddb4453beb62f071abf7fc",
+    "data/experiments/environment_v1/lpscl/upfront_r217.json": "28b03c07746312f8025b6e4292e3b918f185564e59ee184ee36618220b9908bd",
+    "data/experiments/environment_v1/lpscl/upfront_r218.json": "05f2f7437f41cfa940075bed5a7987a7a7cae14770859425705c2c760a190de9",
+    "data/experiments/environment_v1/lpscl/upfront_r219.json": "629402fd9c897cf9b038765bef57bbaa470d662f93b83210e64d16015153223d",
+    "data/experiments/environment_v1/lpscl/upfront_r220.json": "82c601e9f14dd3c3e175ed61c5450565fe44a64d7d537c5db0459abb56c23312",
+    "data/experiments/environment_v1/lpscl/upfront_r221.json": "45cdead20cf5d6e4ff93bc489be46de584438b8968f3ba225c8b182b5e57443d",
+    "data/experiments/environment_v1/lpscl/upfront_r222.json": "c1dc7a39c57739210b3b5b71361762e6ae7ed1728d4efebe4728e1e58e17f601",
+    "data/experiments/environment_v1/lpscl/upfront_r223.json": "27a6ad1c5bdf9244ff3b993e3870f4bb372f84e8012915c1994d9d180e4730ee",
+    "data/experiments/environment_v1/lpscl/upfront_r224.json": "d78ae3a821ae769d6e4b6a3926d8d4ea535a197d6ffc69d4e6d292e9ba9550cc",
+    "data/experiments/environment_v1/lpscl/upfront_r225.json": "2088706ffcf23158c0489f72f61bd404fe18f2cc0e49fd479347d0a81c6b887c",
+    "data/experiments/environment_v1/lpscl/upfront_r226.json": "27b506d758d8d22ae45815666be69b80141d1e732837a7b3c7b6605ffea41057",
+    "data/experiments/environment_v1/lpscl/upfront_r227.json": "b88e2ebf4af54ae561b9e81a182ad814e72d6df23418b399739279ddc661e315",
+    "data/experiments/environment_v1/lpscl/upfront_r228.json": "4560144c2a4a4f800de08d22ab561b3f94fa6c0973dbd32c03c6ca43770a3658",
+    "data/experiments/environment_v1/lpscl/upfront_r229.json": "dd092b455c524d13559f30d455dd77d511480d9f1fe124db3b805ec3a8a3a857",
+    "data/experiments/environment_v1/lpscl/random_r200.json": "8765e86017654917abad37fd46164af5e0f410b5f3289317d9555ff408bef8fb",
+    "data/experiments/environment_v1/lpscl/random_r201.json": "ed30ba9b8bbe0fa4fa7b709a25b447c15a52df93c8bdf1fdc09d0142cff40d83",
+    "data/experiments/environment_v1/lpscl/random_r202.json": "6ca77c2ebef8c8ca18ecbd4292f9b222824e67aa86d184968e21907b5fc772e5",
+    "data/experiments/environment_v1/lpscl/random_r203.json": "feb58fb904cc2352570f483a0550f7d91365a3e9d3f7fe1b83a4e19b681704f2",
+    "data/experiments/environment_v1/lpscl/random_r204.json": "d0c135018026e6a325f3742c561371cf56e74c46f7f5bb9d2797edc78c2c8676",
+    "data/experiments/environment_v1/lpscl/random_r205.json": "8fb9cd13a0310d876c7cfc37af18605441e79b96151a497f581ce3e2efa8bf2b",
+    "data/experiments/environment_v1/lpscl/random_r206.json": "bb01f23e7203e2d743e98165da34444de588f7be4a5e3d588ff26864a8b7a5e3",
+    "data/experiments/environment_v1/lpscl/random_r207.json": "82401fd158dd6ad3d6ce5c62fb2ab2821d07807068e3d05e1c8452af04087bcb",
+    "data/experiments/environment_v1/lpscl/random_r208.json": "163bad3ffb638adb20b31da5bdd8d533ac4e0c669eb74975d312e0e1426e53ec",
+    "data/experiments/environment_v1/lpscl/random_r209.json": "963cf3834d683c59ed1826fab2511b4e9e8e10ba550fa24a4d09eff7cca0a10d",
+    "data/experiments/environment_v1/lpscl/random_r210.json": "5d17c052605fb3750d0b00889bacac7ac61be59dd6653cf93c7138390dea91aa",
+    "data/experiments/environment_v1/lpscl/random_r211.json": "30091ac13f11a1bd1e45e9f1f82896236328a818da0b6d3a6c901f5be8c02bf3",
+    "data/experiments/environment_v1/lpscl/random_r212.json": "3805635bbb0878ddcdc2f613c731264e483fdaa2e4020d66ff789f774f5950e9",
+    "data/experiments/environment_v1/lpscl/random_r213.json": "9ffa3a4e5390a1b9c39e19a94d5ba98c3243caa925064170b201e0a3acb53f29",
+    "data/experiments/environment_v1/lpscl/random_r214.json": "694de16f43be144f855422a1f3cf255068759334f07f43b5cab0bc94f5c26658",
+    "data/experiments/environment_v1/lpscl/random_r215.json": "16e822419791dd3d65782dd6ffbd905a8fcfd6664ae1ddaac1474874c1f685ab",
+    "data/experiments/environment_v1/lpscl/random_r216.json": "cd7f9a02b0b259661bbdbe1a45b4379b8ad171c7906aa70874d5e2391e5b826f",
+    "data/experiments/environment_v1/lpscl/random_r217.json": "773a3c6a8d8f413142f4ea8262caec0e08d4a329a8c685a954fcf8f358d7c42a",
+    "data/experiments/environment_v1/lpscl/random_r218.json": "dacd549cb7d30df89c0111adc1eb4dac74fe3a9b812f424f2a2f0d27b2773a8b",
+    "data/experiments/environment_v1/lpscl/random_r219.json": "d5aef4d22329b0a13a7e7ec03e7398303f83305f65a9bd5b7afe4067a949f26b",
+    "data/experiments/environment_v1/lpscl/random_r220.json": "6ad10d5c99b3744e32cb1b07ef9eb9a38dd65b2b2e4b8e21ea43496d231c8f23",
+    "data/experiments/environment_v1/lpscl/random_r221.json": "bca8e5d7986c76625ed1536acc18c7e566ca8091b3a73c020af66bc4068d421d",
+    "data/experiments/environment_v1/lpscl/random_r222.json": "a2466107db3901a7d6ee45f5741f2cd25e46854f27e2b1f4aae0fb2423e69d5f",
+    "data/experiments/environment_v1/lpscl/random_r223.json": "64489112ccbf7550ea4d5fcfa69162a729335d9b43ad61f596cec0ba31c07171",
+    "data/experiments/environment_v1/lpscl/random_r224.json": "a9e0de21cfe7c6279bbf5a7e1b0981a60537124da510d2dd4939baaece4c992b",
+    "data/experiments/environment_v1/lpscl/random_r225.json": "11b7e4c47393dbf3caf2a54b0f8aa496ec0bfcaf0121e95f8c644874a6bd3ccf",
+    "data/experiments/environment_v1/lpscl/random_r226.json": "c15bb12fabaca068863e73765081d40d88f4caf61167319483be88e83ada8d9f",
+    "data/experiments/environment_v1/lpscl/random_r227.json": "9d26c9a548ecb557cf71b124dfd0d05dee5c2fb8ee0a7b0970eaa162658427c0",
+    "data/experiments/environment_v1/lpscl/random_r228.json": "75d3e16077822b574d5c784ae1a1fba3f6b856ccbaed5e09ab57de0421fd05ef",
+    "data/experiments/environment_v1/lpscl/random_r229.json": "8d87915bb7b551ff8787a44a2fd2268b1a984ae58136a45c1c5ef33bade5289c",
+    "data/experiments/environment_v1/lic/iterative_r200.json": "fff5817b5c64c708846711d106a30e4111d862b22b8188b5703e7d89df70bbca",
+    "data/experiments/environment_v1/lic/iterative_r201.json": "e8bc726c4ab0a65f15b4aee901cdd1dc4372af326504e02ee227bc63428fb39c",
+    "data/experiments/environment_v1/lic/iterative_r202.json": "22fc08e5a1567d4568bbc3d72126b4ec7978cdb16491ecd29beb9b82f6cdd0a5",
+    "data/experiments/environment_v1/lic/iterative_r203.json": "c85b02989c0038501d78bf88d4301cadfeeb9ae063faf6ef0ee154c659e19acd",
+    "data/experiments/environment_v1/lic/iterative_r204.json": "6953efffcef228e7dfd670b1ef2346131c8221288f1a055efcb99e9655197f2c",
+    "data/experiments/environment_v1/lic/iterative_r205.json": "59bf77e479c19b4a6867eb9428b8555f585a0531b9e033123335eee95b2ca015",
+    "data/experiments/environment_v1/lic/iterative_r206.json": "bef90a6022b6b9d9b9ed6636fd4ffa13689c0e6a90d0632e9c862481795e335a",
+    "data/experiments/environment_v1/lic/iterative_r207.json": "08290e5c52b0be7e0b81994a2c0122745352f06030f097773a6fafc58442f754",
+    "data/experiments/environment_v1/lic/iterative_r208.json": "ea79890be6cad41d04fef90d213d204a3abfcf692ebc49ddcb14c12eb20028aa",
+    "data/experiments/environment_v1/lic/iterative_r209.json": "2a3e7b6e635092b85b2f55902e5c609b32b5043d83778de8aaee26910fc8bb7a",
+    "data/experiments/environment_v1/lic/iterative_r210.json": "26fbbe17d51a7a95b482681784c13da39c4f3a133280bce1dd7eac8f4b958afd",
+    "data/experiments/environment_v1/lic/iterative_r211.json": "c4335ac44000b8cff987b688d8e34452a6eb5c4ca302cd3d601791a83bcd555c",
+    "data/experiments/environment_v1/lic/iterative_r212.json": "d581f9bc572301d516d24abe4de63166dfb41b4947892f8b36fd7bfb05bd0e31",
+    "data/experiments/environment_v1/lic/iterative_r213.json": "b2ee10d3760c7710272ae6e4868cdaf5104e8da2ffe2ce8474547acea586580f",
+    "data/experiments/environment_v1/lic/iterative_r214.json": "95622a77379af918e193701bbb070e71fd41bc150c20b0d39f0dfa58aa5521e5",
+    "data/experiments/environment_v1/lic/iterative_r215.json": "8ca74aff51355fd8bef5dd515f55712fea1e67b91fc349ac8d6850ed7afa6a9f",
+    "data/experiments/environment_v1/lic/iterative_r216.json": "6214f4c5df07a4b6caa1d61c76f34da9030a09fb8c84f5c9cae021701ca3ce9b",
+    "data/experiments/environment_v1/lic/iterative_r217.json": "bdb2eca3788c6c6a646d0148ddd9836f0aae75728834d0c42348582af7058d59",
+    "data/experiments/environment_v1/lic/iterative_r218.json": "d5a18c508361a1ff7c172f726727963bbdd7c8f1b7518822420ad75208fc4061",
+    "data/experiments/environment_v1/lic/iterative_r219.json": "de89c5f491733905e69e4db36936f6da24607d3fd1414300317aa0621ac970f0",
+    "data/experiments/environment_v1/lic/iterative_r220.json": "93807eaa98db5433ac0c3410f41e1c661c55d3a6d6f70cebb83dc6164f41c2fd",
+    "data/experiments/environment_v1/lic/iterative_r221.json": "4c1adcb42f6043dda05b460538961f37a174eea61ee58f12c17574eb235e5a66",
+    "data/experiments/environment_v1/lic/iterative_r222.json": "f6a791782bb6f494bbbf12aa3aab43418a147c4fba473c03b87be725b5bdfb0d",
+    "data/experiments/environment_v1/lic/iterative_r223.json": "3d64d78bd05c7894d94c4421c97b1c6ecee44a72cdae193bf8040d2c3439f8e0",
+    "data/experiments/environment_v1/lic/iterative_r224.json": "70e37c6bca01c2997d330c22b235cad234b2d77850a3fa163200d491f0aec826",
+    "data/experiments/environment_v1/lic/iterative_r225.json": "38c3a056f9b5716a54802f436409bf0d92c324e8ae61f27f568cac189079d5d3",
+    "data/experiments/environment_v1/lic/iterative_r226.json": "32e70e3b26393f7f30fb515ff688291d5ca11993c1eea3f2cdf895ac9d6a6cbf",
+    "data/experiments/environment_v1/lic/iterative_r227.json": "a70d75964503e9fe8cea72c02d5c6a32334925062f289c8c3a0f5835e5959228",
+    "data/experiments/environment_v1/lic/iterative_r228.json": "9fb50b5aa032dca7e1d5b4aa7d01d9017e03fddb9c964dffeff06f934f726db4",
+    "data/experiments/environment_v1/lic/iterative_r229.json": "32bb29d41f029d102f9afc53edff4d37a35066ef1c0f899045abae404b6de4a2",
+    "data/experiments/environment_v1/lic/sequential_r200.json": "6928212c0704e10d66cb515024d9485f07df2fecc5083959e624cffbb2493b11",
+    "data/experiments/environment_v1/lic/sequential_r201.json": "6044fe07120c7efcf44828f4a66b6f75be751f896d5ffec5c70f880111029b7b",
+    "data/experiments/environment_v1/lic/sequential_r202.json": "b4f7a34de7f48df04202dd883d006d034f4a5b03cf9e019675874c3133108fe2",
+    "data/experiments/environment_v1/lic/sequential_r203.json": "109c3b7563ee56a8a41e80b5db3a78521939ac43947df74185cf3e9035d90fe4",
+    "data/experiments/environment_v1/lic/sequential_r204.json": "3c9f3e3f5c4258d492ce6cd73223a554247c2e96814a0b32ff3db5c94a3c2a68",
+    "data/experiments/environment_v1/lic/sequential_r205.json": "28daee9d55cea893addcf5477e07598c104395c3a3d7715e85b340172a19d72b",
+    "data/experiments/environment_v1/lic/sequential_r206.json": "c16d32ddeea613af3b7cd80cf1f531e730db0971f4d072c0103f14e968dd34f4",
+    "data/experiments/environment_v1/lic/sequential_r207.json": "80784fbf9f1cf9c7da8ea7c561639102ed316ca9d10762ea6d4703302fe668bf",
+    "data/experiments/environment_v1/lic/sequential_r208.json": "e6ac1a3b8e9fdd20318e3d232f26acb09a9bcec8ed481c08f7c4339efa391a17",
+    "data/experiments/environment_v1/lic/sequential_r209.json": "8cb445cb2034a738aaf4571372b6abd20f9ff6c613438085e205dde95a0292ac",
+    "data/experiments/environment_v1/lic/sequential_r210.json": "5af85ac02ca687a92c202d8641bfc941a99ccff852b9f53274eba68ad9ad61b8",
+    "data/experiments/environment_v1/lic/sequential_r211.json": "71ba3b55a582eadc7ecbe8de318a891d04e6ad05f592c1c2f8f8091e4cb70a1c",
+    "data/experiments/environment_v1/lic/sequential_r212.json": "a9ea37d04bd770437182cd52e82785f4108a717e29b1c5c6d74e6d840c07897f",
+    "data/experiments/environment_v1/lic/sequential_r213.json": "a94986aca5efb5472e85e3f1cd094bde0cb06651e48006639b51ac1a170e7065",
+    "data/experiments/environment_v1/lic/sequential_r214.json": "012b6962b3e34db7ef9c4aefe7fc00c33909de4bc8a75526d7410725c0b73a15",
+    "data/experiments/environment_v1/lic/sequential_r215.json": "43f9cb04ba41774b37c4e115f8cafe5d2d289818e54c47d762b65a752680a208",
+    "data/experiments/environment_v1/lic/sequential_r216.json": "7c8a80896e9508117bc49a7a71157c74534ff0465513a9dbcc15428e916aa49d",
+    "data/experiments/environment_v1/lic/sequential_r217.json": "172e5336911fecda0ae34ef42df57ab5fbad7256f00fff5e1f6174449fdd6fe2",
+    "data/experiments/environment_v1/lic/sequential_r218.json": "4fa662029dd4f77cb03ec75fb28a0e2d94306941241770b508dcf03fe5a2b6e5",
+    "data/experiments/environment_v1/lic/sequential_r219.json": "f38b3d28d67798f3f81e48c166cdf71cb14d737b86bb2568e0df947481fdddf0",
+    "data/experiments/environment_v1/lic/sequential_r220.json": "e3cc7388719e69afa72bcf057f0d4f0f89e7a67d80084b3bace3f5360e926b4e",
+    "data/experiments/environment_v1/lic/sequential_r221.json": "5e059392d002fa1110df5a184f819140e9a2e1c29c2ca47fa28d0057c377b8df",
+    "data/experiments/environment_v1/lic/sequential_r222.json": "2c69f5848e98817038b7f6c82e48007322209f42e3618b8b784317de7f3c073c",
+    "data/experiments/environment_v1/lic/sequential_r223.json": "a3f580ee0bfa06767f6a8dc92e850731d1042103601cbf3ba40330a8917c99d1",
+    "data/experiments/environment_v1/lic/sequential_r224.json": "a87646559047c7366ef2eeea81affd295faa3d2b83da08cbae64fab34613f9d7",
+    "data/experiments/environment_v1/lic/sequential_r225.json": "302833e6c8bebd2751b4c77eda4ed85e9643fa7c179d1695f8c66d9b09dc1ee7",
+    "data/experiments/environment_v1/lic/sequential_r226.json": "77d10187df97313f3a73eefdddae3e80db360b9179d540cb4dd4c131cc243998",
+    "data/experiments/environment_v1/lic/sequential_r227.json": "c743d8db77b5b3a16ee22df734b9136a2cb09ae2fa1a62e81fecc394d9d92f46",
+    "data/experiments/environment_v1/lic/sequential_r228.json": "33945d81f64f48a8ec6f0b0198b894c2f57e08b2b8aba867b049d1955eedd383",
+    "data/experiments/environment_v1/lic/sequential_r229.json": "7e3cba4dd173fe7fcc37c37ae868f9c96c9f0f0d9be31c2758f1c3dd96624314",
+    "data/experiments/environment_v1/lic/shuffled_r200.json": "3ee29c9326751af3bf3a9cefe351e49118ea9522bdab2538c9fc4244719d8324",
+    "data/experiments/environment_v1/lic/shuffled_r201.json": "c179c75ed64a22019aee108e56d7d581e44d389bc5f653c7c83173ee1bb79c6f",
+    "data/experiments/environment_v1/lic/shuffled_r202.json": "a3d8e62696ff7f35c2c4e099a68ef21f69dea12469f4c97887632d4df3f46c63",
+    "data/experiments/environment_v1/lic/shuffled_r203.json": "edd3a0c37fa3cd22056e1a2534ef4a64fc913bb8e5db782cb8e5e1d429febe1a",
+    "data/experiments/environment_v1/lic/shuffled_r204.json": "198a42dd4145f05d273f2fa2a3c139d39bcbbe46056bb87efff0baaec1d4d376",
+    "data/experiments/environment_v1/lic/shuffled_r205.json": "e1a84e6658a95dd73b280604c246231024794de627c62cf0b8ff9beb8a178c0d",
+    "data/experiments/environment_v1/lic/shuffled_r206.json": "5bd24faeffe0e81dbfef94163237a0af6579fc6183f77f7ba4b3e2efc6cf5d00",
+    "data/experiments/environment_v1/lic/shuffled_r207.json": "bbbf1d1b2e2b6ec8d548adaffbdf2ee583b4e35efad1849c9f34be462e3a7d5c",
+    "data/experiments/environment_v1/lic/shuffled_r208.json": "79c63cf6f0fdd936c02d39ed3ebada63e4938f9550a7c398e084f0b32a61c4ad",
+    "data/experiments/environment_v1/lic/shuffled_r209.json": "3f7a86b6df68ce35fb2c55f39613d3325879edb815e92bc341eb5037fecf2954",
+    "data/experiments/environment_v1/lic/shuffled_r210.json": "b3e72073349a7a06d5dbfbe01473c7340ff3243c14632c69f6d41b444d9ead26",
+    "data/experiments/environment_v1/lic/shuffled_r211.json": "8cc2cc8ed96cddcdd5df19ffccafc032c414ef4601f84496551a1726137bee2e",
+    "data/experiments/environment_v1/lic/shuffled_r212.json": "d29f1d12797cc02b7740a1071f94ca77b2929bb1d5b9083f3d9a6b17d670ea8d",
+    "data/experiments/environment_v1/lic/shuffled_r213.json": "636b2b532c8646afe6691b38b2cb1404cba8c5f24689a39335d03f6844214992",
+    "data/experiments/environment_v1/lic/shuffled_r214.json": "12e05e78b2d78ce5c96d9ba8d6f5bea709264767e497c27908a21a4d6c7b1b34",
+    "data/experiments/environment_v1/lic/shuffled_r215.json": "a479756ea7c149eff309577b6443310f609303c68c240b667c789c0a94faa353",
+    "data/experiments/environment_v1/lic/shuffled_r216.json": "114544eac6dde2fe4db83aa8cb10d852eedb3ec58e3df442837bc002a3052ccc",
+    "data/experiments/environment_v1/lic/shuffled_r217.json": "7c483cb54da5c91bad47359136d9dcc031c8efcabf61aacdb8795362fac6d261",
+    "data/experiments/environment_v1/lic/shuffled_r218.json": "d74eef85d56512a27ffcefded47a88b0f83d24a7818ab29a65e58bd32597a18a",
+    "data/experiments/environment_v1/lic/shuffled_r219.json": "84dc9719d7c322d3ec4f5c367dac7b7bb878e197b195a1cee54621afea8925cd",
+    "data/experiments/environment_v1/lic/shuffled_r220.json": "886fba55a96848c5cd69935d1285b00936b2475bb23d350e9311317bee3e353a",
+    "data/experiments/environment_v1/lic/shuffled_r221.json": "e5ee4d636c98544b20056f5c3717971466630b51c03192bff570f4f67454c672",
+    "data/experiments/environment_v1/lic/shuffled_r222.json": "07be6b49b16fe09d296a0927af21ab7b7bfe5d47d1539ee947c2768e6cf1b639",
+    "data/experiments/environment_v1/lic/shuffled_r223.json": "b8b2a3f3e4b89fa4ea39d0d9321a305951f0031b0bde169e314c52caef5320ae",
+    "data/experiments/environment_v1/lic/shuffled_r224.json": "551e12e5a044a1c14f64595d00ba025c9ffebaa1b9d4e3ed545a226387907b6f",
+    "data/experiments/environment_v1/lic/shuffled_r225.json": "77b880a975611babf8d57b11ba3e02ebe824d04857f64de5111e6d3865f457f8",
+    "data/experiments/environment_v1/lic/shuffled_r226.json": "6a8b4c3ba903c3064b568b052ca8534a3173f0d8d9c517c18c78c6f360388d77",
+    "data/experiments/environment_v1/lic/shuffled_r227.json": "8f8c8200821f0046e828cfa69dd031d63bb96609e6b9bc8722e53ac2f76f2517",
+    "data/experiments/environment_v1/lic/shuffled_r228.json": "1f836a59f0aa54727d4716195c3551c67b5c52fc724a95a12da839f07c50d9d3",
+    "data/experiments/environment_v1/lic/shuffled_r229.json": "c4c06704bea50ffa4a4a4a0b7e6e790722123e98731b00b902294350da5ceb2a",
+    "data/experiments/environment_v1/lic/upfront_r200.json": "0dd11eeef8bb8e6e619ed920648a7344e715606d0baeec52dbe14a4b3e64b809",
+    "data/experiments/environment_v1/lic/upfront_r201.json": "3c830fb37f323d3c08ff7791414997f5f938c651cc0319ebc3efe9368dcfa092",
+    "data/experiments/environment_v1/lic/upfront_r202.json": "e6a2c427a8ed590e440857174634fffd06952c0a0edc6c28a45b0aa146f6309d",
+    "data/experiments/environment_v1/lic/upfront_r203.json": "55192a9d2d761ef74a2c0b9c6d10330bf1800e17ec593b540b945f20141eff77",
+    "data/experiments/environment_v1/lic/upfront_r204.json": "1faed5c03097aac66063cabcf263910488aa61d59ec647800042fbc9dbdc7868",
+    "data/experiments/environment_v1/lic/upfront_r205.json": "8ddf4d9a9073e37dd7efc98815bbcd54fbba34a0dfbe39f5edf31a0324710fa5",
+    "data/experiments/environment_v1/lic/upfront_r206.json": "0d7ee78296428917ff9b2f1a066e61f4957ecd72ea4a2f0403d0eaaac329b390",
+    "data/experiments/environment_v1/lic/upfront_r207.json": "00105dcc86909d75ea261313e330e69ac404597aadf1539ab91fa9bec4c150ed",
+    "data/experiments/environment_v1/lic/upfront_r208.json": "7f35e00b417b9a7096a8992952ea3399a1666bf174f41bcd7eb085be8c172c0d",
+    "data/experiments/environment_v1/lic/upfront_r209.json": "cddeeb1a809e7ff124e293758521449e7728fe4cc1f4a5a03853e58d973ff7c3",
+    "data/experiments/environment_v1/lic/upfront_r210.json": "238cf5d7d1d2c12ec9663e9dbc8243ad7318455b0bf3042621d14873589a0a77",
+    "data/experiments/environment_v1/lic/upfront_r211.json": "c0e3298fd222950d2e50191056ea6c4978a1fad3f22377eed8f1ba5bd8da1556",
+    "data/experiments/environment_v1/lic/upfront_r212.json": "cb532f23e37906c41d171a96abd7775daf445296d540a2ea02598e584bb8fd0f",
+    "data/experiments/environment_v1/lic/upfront_r213.json": "973b44d011ec09de87c7ef92db256a0327cc0cf833024eab409d4bb4447f8e68",
+    "data/experiments/environment_v1/lic/upfront_r214.json": "9aa8ab63569ae9f1ca28c134ba6e554c91ab56fd2da2e11cdb14ecd0ac654855",
+    "data/experiments/environment_v1/lic/upfront_r215.json": "7c51b73a1ac49a9d87593e376d585e3ae3e766f5e99565cc3b474cea4144db65",
+    "data/experiments/environment_v1/lic/upfront_r216.json": "e34e9459b8b7b98edf1645e310c786ed36c602b3e80357c99111ebc6defebbfd",
+    "data/experiments/environment_v1/lic/upfront_r217.json": "23546c6c6c9f504b1711e25518f5c52cff80d4d163e3c07409784a4f27eaa11d",
+    "data/experiments/environment_v1/lic/upfront_r218.json": "242f1e0c60d7c9bbd9e202682190ce484956330e574b890d41ee058a624ddfa8",
+    "data/experiments/environment_v1/lic/upfront_r219.json": "1e278bb5460084def3bee797f5178460506fb165619b72b67a0510af9a814e34",
+    "data/experiments/environment_v1/lic/upfront_r220.json": "19d474abee9b8ecfccdfda5ab9abfbbbf78cd095fba9c966ef90c2bb87e7b72f",
+    "data/experiments/environment_v1/lic/upfront_r221.json": "64144e924eda2a73f021bc6d1269c85ed90f5d172aa40131f145fefe7f1c7b7d",
+    "data/experiments/environment_v1/lic/upfront_r222.json": "86e9d04a9461253bcf9920118c03970b4041e1b9f83eac73eee9d74dd61ec1a5",
+    "data/experiments/environment_v1/lic/upfront_r223.json": "628d6fe57436e59cb2297c00d1c5978e9c94aae15949879453b9c0bf276c3329",
+    "data/experiments/environment_v1/lic/upfront_r224.json": "a2608c23a1da4e5a57e09b5d5c1983616b1b5c30a31a64a095b57ccf3a76cc38",
+    "data/experiments/environment_v1/lic/upfront_r225.json": "59a216d7b9e1d70af2db9ca801bf233af76014d40655fdd8c78d64a0dd3dc40d",
+    "data/experiments/environment_v1/lic/upfront_r226.json": "4bb7c72b5849722bfd25968987460361c57b030cbb04a6f3f1d96a85bcf01b40",
+    "data/experiments/environment_v1/lic/upfront_r227.json": "dad16e0efd9090621f2a0ea56d9ea3a881991b7bbaffefe7f4757d2684113bd4",
+    "data/experiments/environment_v1/lic/upfront_r228.json": "598b13917b506f65b4e6caae623b52c951ac0a72327aaa83070e844c25f0203c",
+    "data/experiments/environment_v1/lic/upfront_r229.json": "0335ac275befd487e82a8a307f6d19ba66b86c3fb06e371e4fc90b5b01494795",
+    "data/experiments/environment_v1/lic/random_r200.json": "fb2b9a9ed0773dad08029fc3be8804fe395d32936074a3fec4a43257f3c438bf",
+    "data/experiments/environment_v1/lic/random_r201.json": "1cc243a4a796a5bdb67011b15cbfb60743a98062e57e81b38b54e19b29eb7c4b",
+    "data/experiments/environment_v1/lic/random_r202.json": "3450eeeff62c4571b6e54b345f2f847275ed59830fa815646bc0f8ea5fa342c6",
+    "data/experiments/environment_v1/lic/random_r203.json": "145fbc2674e364fbec3eb88d850ad4893913cf6e27ffd2ab2f633eec05e87698",
+    "data/experiments/environment_v1/lic/random_r204.json": "d82ed821e316166e1a34aaca26cda587d27104dc50faf293319e0ecc60545008",
+    "data/experiments/environment_v1/lic/random_r205.json": "1f01561690a4a74459bcf0db4bd89cb1d07049c532ae0dafc468096ecf3d6747",
+    "data/experiments/environment_v1/lic/random_r206.json": "7063ae2298fcb6db56c912bf79f658be027a8afd043d08520127bf04b9193977",
+    "data/experiments/environment_v1/lic/random_r207.json": "69e22bd7402ead8fedb21fb23f01dab6fb81d91912f254dbe24f55127f7a124a",
+    "data/experiments/environment_v1/lic/random_r208.json": "ff53b9ebbbcd0da2723aad86936627b7236d8e8dfd6e0d97fde2e199ff82cf06",
+    "data/experiments/environment_v1/lic/random_r209.json": "5b4cb44a8aa7bc27bc842a4652d05abad02b3391808c12d2b016232fb27ebca7",
+    "data/experiments/environment_v1/lic/random_r210.json": "9bd632ddafad06cc97015a887971b198a657aa4d453b77ed51905d02a0e4a83e",
+    "data/experiments/environment_v1/lic/random_r211.json": "42cf1837e252f9653b7b3a17606444344feab6122a8a1c069fc3530c03247457",
+    "data/experiments/environment_v1/lic/random_r212.json": "3674cedb3d4b587db3bb7f957c315d1a23658042f1c6cd90e4d08f3a01be0bd7",
+    "data/experiments/environment_v1/lic/random_r213.json": "a1024293abb969c0fa7a7227d79208300cc344e13ed57b90ef244c326c3418e1",
+    "data/experiments/environment_v1/lic/random_r214.json": "963049b6ec6e49b8182c5da62cbf0c23f01fd8dc2ed3665e9fce668abbeddda2",
+    "data/experiments/environment_v1/lic/random_r215.json": "16c405826332598fcc2844728d14c66896b31a89e21ab9f478167230017ee4fd",
+    "data/experiments/environment_v1/lic/random_r216.json": "9a01b659884f5a5ecfed81fbfa9877e6ba3c95042a876ce2144c9089c8ea67a7",
+    "data/experiments/environment_v1/lic/random_r217.json": "5c8741d6f8a256307ab29ea290a8e97d9f0d87a4f7c3ac90442049c326188623",
+    "data/experiments/environment_v1/lic/random_r218.json": "8fc576e6c999f50fe63158bdb3c76fcd0bbe84a8a08bd3e3616d91af91bd3bcb",
+    "data/experiments/environment_v1/lic/random_r219.json": "9866cf078d3b1bd14185f5ed708a566ccaaba4ffeddfa738fc94373bc42a4674",
+    "data/experiments/environment_v1/lic/random_r220.json": "6282029aec262de754106084638f974719793409ad1b5a3186959ca1d61ffeaa",
+    "data/experiments/environment_v1/lic/random_r221.json": "44aa28e90185cfd8bf07ffb203ab5b074e536f00a6f5cc717e06f018c5f7b4fc",
+    "data/experiments/environment_v1/lic/random_r222.json": "05d192092536c34f8d4c624b17e2b38f5dd44676b8fa316b599ff3aeb15851e0",
+    "data/experiments/environment_v1/lic/random_r223.json": "1dd2d50b4c4739a4e2e7cda2f18ed04b88c3d13a2693f90242cb9dad27bb2212",
+    "data/experiments/environment_v1/lic/random_r224.json": "f40fc15fd79a32acdcc835edddc0e26797d121b61cfcd958c432eadff51942c4",
+    "data/experiments/environment_v1/lic/random_r225.json": "79f176c455cf4a7e0f427bb121494453eb3f59ea6025b7fd348dcf482bbf0a85",
+    "data/experiments/environment_v1/lic/random_r226.json": "b4fe1285b286bdca1f7289388b378465f732a8d68eb6f8386660d2e7d2a4fce2",
+    "data/experiments/environment_v1/lic/random_r227.json": "09375ba697881993a37e16477fe58297127e4c6c11f4d190fb66a56111f6dae9",
+    "data/experiments/environment_v1/lic/random_r228.json": "1fccac41968efc6b5d11b4e4b2fef6e16cb9325bc08d28788be9d9dfc3ba3c52",
+    "data/experiments/environment_v1/lic/random_r229.json": "b2811838e27208a7dba145bcdd58218aab496fe3729ef5570c3bdfdecaad2423",
+    "data/experiments/environment_v1/llzo/iterative_r200.json": "d170e72f1232b960b90c9c166234f3878148451e50594d7cdfdff067b046c8ba",
+    "data/experiments/environment_v1/llzo/iterative_r201.json": "7b79368d1f185ab847e4468c672d7a2a643dbb5369a4fa5aac7fb1a2c0285189",
+    "data/experiments/environment_v1/llzo/iterative_r202.json": "d131bcc50a3f01470d22043331754845deb7035af7532aca9be66ab40f12f753",
+    "data/experiments/environment_v1/llzo/iterative_r203.json": "20337fad0381315c825168b35e04ed305daaaf7d51d35520642930f387567978",
+    "data/experiments/environment_v1/llzo/iterative_r204.json": "baf3ea8228b3015238799d6003e6c2fa9a86531470ae30f8fbbb4a1527a63cf5",
+    "data/experiments/environment_v1/llzo/iterative_r205.json": "77bcbcdb91b31bc89b03bcae776391c64e591c54562ffd6dfd245f0ce5aa088e",
+    "data/experiments/environment_v1/llzo/iterative_r206.json": "1e5c40ac3d2875415b1eb8e12c7612ea52ccfe74b2b7fc7668fdb2cdc6a67447",
+    "data/experiments/environment_v1/llzo/iterative_r207.json": "2f122e7658d07403f12d1135b299709335a6c38150c3b5ce5130d0a0f9bb4091",
+    "data/experiments/environment_v1/llzo/iterative_r208.json": "b2302f6e2059f92862bb0ee7072bd288a81205ada93a08a1722a4a6aa916f9f5",
+    "data/experiments/environment_v1/llzo/iterative_r209.json": "92c5c94e8670639a93494a662340f33ed6fe0441e4e17f3f6de7d81351b5b950",
+    "data/experiments/environment_v1/llzo/iterative_r210.json": "6a36be4afed9fd14952649514779cb7e1591b39bdf5b43199b7bd51f1cba14d6",
+    "data/experiments/environment_v1/llzo/iterative_r211.json": "dc1590ed1bdac6b0c5e2983c288814f6455596d4201827d9fe94b803ec7fc62e",
+    "data/experiments/environment_v1/llzo/iterative_r212.json": "f0662b7e3f111303c111c6b4653c9d68890546e0b6a5fbede555c77e405316c2",
+    "data/experiments/environment_v1/llzo/iterative_r213.json": "01fcc955089c7c9c13063c3ca955560652f805053000ba0d4cc9b424184d7d21",
+    "data/experiments/environment_v1/llzo/iterative_r214.json": "750e550358df2a41cb8fdb299bfdf465392aae0d54bf16d48d6e5f7b6167509c",
+    "data/experiments/environment_v1/llzo/iterative_r215.json": "f2be80b938751fc3ddbddb6737e52b3015a710931311e0a170afa708e2065908",
+    "data/experiments/environment_v1/llzo/iterative_r216.json": "9de0972901c5a5b0081efac93fab5df3f929f2c5f612dff4f9054c5508b6a507",
+    "data/experiments/environment_v1/llzo/iterative_r217.json": "4bc88ffb3fb79642d029f5fae6c26c4d4b62eb54ba5c21617116676d43e5fd9d",
+    "data/experiments/environment_v1/llzo/iterative_r218.json": "7098762dde9eec9bf5a3e0854d7770324548b87597fef43a691c95b3486f4cbf",
+    "data/experiments/environment_v1/llzo/iterative_r219.json": "649f4a665936bd9bd7a649acc2b85fb5702a2cf93e8055adcce8b8bcba0a1df1",
+    "data/experiments/environment_v1/llzo/iterative_r220.json": "849934f31071673a424c2a4152a199953b48487661b77ce15f6c85e3a4bbb136",
+    "data/experiments/environment_v1/llzo/iterative_r221.json": "084cb5f1dfa799c69ea1ac857295bb9511034c08c705ceb24f266de9ff957e93",
+    "data/experiments/environment_v1/llzo/iterative_r222.json": "61121bfdfcd14b2c625d6df5ba77cd12b47cd5039decc2585f31fc507bc91ad2",
+    "data/experiments/environment_v1/llzo/iterative_r223.json": "6744b5203e7ef18cec8b517e3c568994e4e69e80bd6c2ecc799c762da3c046c5",
+    "data/experiments/environment_v1/llzo/iterative_r224.json": "621c8c1d1574296c73c6d8af8e7c86d1fb132ee333604a7f1ae44a0bc6bf1eac",
+    "data/experiments/environment_v1/llzo/iterative_r225.json": "fe0c3c23edc315fc547edab58ef513999722f2237ff8641d94580a73d99e2d1d",
+    "data/experiments/environment_v1/llzo/iterative_r226.json": "678c032efd1dfd8da374ac8152d8d1f5dd85ae3ee0a989a6f241928630710d4a",
+    "data/experiments/environment_v1/llzo/iterative_r227.json": "3116cccc1b0a66952e26ba83a3d1fbef89d222b5f2ab85b10495af2c47caf83d",
+    "data/experiments/environment_v1/llzo/iterative_r228.json": "f3e4127ae50f8b8baa62062bee8aa1919cebb6c975284dd549b2e30a50ecbcd7",
+    "data/experiments/environment_v1/llzo/iterative_r229.json": "eb1bebbaeb6d6b455a9d42f8114e38481b813a55e612136acc479877f7b34dc0",
+    "data/experiments/environment_v1/llzo/sequential_r200.json": "1b42d3c532c4be47e959f7f19af4e114a3c987a0fe0767b155571744f7a1f4fa",
+    "data/experiments/environment_v1/llzo/sequential_r201.json": "3ba9bdfc41f59864ac43a111ac6f5277bc0da5b4775e5a49bf23e1a34b1abb61",
+    "data/experiments/environment_v1/llzo/sequential_r202.json": "2a6ae808122111f1b2f9143d5606ce2d0cb9dc23f1ae085febaa4580582fe4a5",
+    "data/experiments/environment_v1/llzo/sequential_r203.json": "dd702a6c47b9e03ec1a7dca7219e2890a1e425514a615b9dd97d150d454f35ec",
+    "data/experiments/environment_v1/llzo/sequential_r204.json": "160611b43a3cbebb2f12ffb76c36c0dfbc60fba303d7e0c5ff28fc0fdb7cd5e3",
+    "data/experiments/environment_v1/llzo/sequential_r205.json": "4998f8556382e85b47b36b21894eef95e51c1c7682d9f78ac3981a1895e80377",
+    "data/experiments/environment_v1/llzo/sequential_r206.json": "d52b6fd15bc76923086fe26b8fa82f8f7afceda8c3b676ad49961125ba6c80bd",
+    "data/experiments/environment_v1/llzo/sequential_r207.json": "9a4fa900cc50a431fd7092cdca1cea2d1c8dec61bc394c42ba9d81af5a13fd54",
+    "data/experiments/environment_v1/llzo/sequential_r208.json": "28234cd707f27240b33470669ef659775f339cb556c23bbcc5e20e9fcbc4574d",
+    "data/experiments/environment_v1/llzo/sequential_r209.json": "4ab1139f82d3b49793b54d0b4b76582778e78dc9da0e8682ee5777321c232e2b",
+    "data/experiments/environment_v1/llzo/sequential_r210.json": "2317ef39322b2648e6cc21649c25b9fe13d6b1a30465810887b5faa205c535d2",
+    "data/experiments/environment_v1/llzo/sequential_r211.json": "fffc4f7127cfde4075736db7d668de61c560d1cf398c51d122471961cb51ace5",
+    "data/experiments/environment_v1/llzo/sequential_r212.json": "d74079e436dfddfb629f7662df564031a690595324f8eca5c498733b872f5c18",
+    "data/experiments/environment_v1/llzo/sequential_r213.json": "aab73a71daba8106c2948fa7ba2ec99ea98f6f19b47042e4ad35b347a601f8f9",
+    "data/experiments/environment_v1/llzo/sequential_r214.json": "50e9905d7713299bedcf3c010d3eb82a809001871cfb2c169d4dd0ff21214cea",
+    "data/experiments/environment_v1/llzo/sequential_r215.json": "0ae52f8ac7712d68f179798a2d37a00f6489d8bfce3555a87d9a2c8cd578eaca",
+    "data/experiments/environment_v1/llzo/sequential_r216.json": "6e6b9d2ecaf0375aa9ddb14d7c4bf5bb04c5992aeb4c21146f58afd4fb6dc2ea",
+    "data/experiments/environment_v1/llzo/sequential_r217.json": "91ea29608c24971a554a6046764b2094f9e188e46ea68e4aacf4cbc4c64b3a65",
+    "data/experiments/environment_v1/llzo/sequential_r218.json": "4c8a35f28c37861b6a520a1efba32a9279c48dec7e94ba5705dc8940d3b4fcd4",
+    "data/experiments/environment_v1/llzo/sequential_r219.json": "7a867ce7c234325544a06af6aaa65199a9c19ecf6895e8fadd744ae68b99e103",
+    "data/experiments/environment_v1/llzo/sequential_r220.json": "e04dd2f5e502ab3848bdb4867870c054f7e19c3ce13ba843296c161b6fae9fb5",
+    "data/experiments/environment_v1/llzo/sequential_r221.json": "2ef1c9726a8906e0dc948cf7ae4763a91f23674cfb297699a6d30e6d6bd894dc",
+    "data/experiments/environment_v1/llzo/sequential_r222.json": "6ae9cff372503a756991d90591ccab94476d21acf4143037fbcddc3099f8fcb0",
+    "data/experiments/environment_v1/llzo/sequential_r223.json": "14d63655cc6d395a15199f984d6532bebe08f69933caa56086e65cdc2e6b07ae",
+    "data/experiments/environment_v1/llzo/sequential_r224.json": "f2138e39e659839766a108d45fc00c8195a75a9052e0d00562325f51ea6c3a8c",
+    "data/experiments/environment_v1/llzo/sequential_r225.json": "a3f53e2d5263afb03807f7a5113315b382baaa4c6a89bf955226335b76e60f34",
+    "data/experiments/environment_v1/llzo/sequential_r226.json": "abd06f17bc62d082a4a59c5cc6d5e5fdf01b52d6c7a59764235623b282d65e95",
+    "data/experiments/environment_v1/llzo/sequential_r227.json": "f7ca7ef35a84904947d713265f241c8650334cd1a917cf7cd97bf9ea081a6c53",
+    "data/experiments/environment_v1/llzo/sequential_r228.json": "fe31baf16621a43bf6bfbea1ac663336e8159eeb072cb8c1687e300101f91554",
+    "data/experiments/environment_v1/llzo/sequential_r229.json": "4b23725d957d3f0b0e71a7bf4dabbd27a0bdaee33a706862a1075aaa0ef484e3",
+    "data/experiments/environment_v1/llzo/shuffled_r200.json": "cd9460e5f0bd23203f2e70e1c14f06fb8512211d2e723fbd5096d622ef65364b",
+    "data/experiments/environment_v1/llzo/shuffled_r201.json": "3376991558a19307fff2f41f148dbd2b7ddf6204d35e50093d5621fe2e85b790",
+    "data/experiments/environment_v1/llzo/shuffled_r202.json": "10ac388502e53a0544f9308b79023881a2aed5d3cc369b10a208c76c24f9f530",
+    "data/experiments/environment_v1/llzo/shuffled_r203.json": "06383ad8bf7cf09acef03cca347486da559912bea6207cd4f4709725ad9a9d44",
+    "data/experiments/environment_v1/llzo/shuffled_r204.json": "9f8b21ae3d175540ee836262372481f82adf04850b4ddd8ee07fd3e9090cb8d9",
+    "data/experiments/environment_v1/llzo/shuffled_r205.json": "216c3199c0d17122f3db86630aaffa41091f94549933d05b65b7ee544f07406c",
+    "data/experiments/environment_v1/llzo/shuffled_r206.json": "52c92f666405277263a4ae0db934b134078028912e22a2a47ee7a25eb89a3825",
+    "data/experiments/environment_v1/llzo/shuffled_r207.json": "9916c92d58fb5a7bb2738e071ebc5a01b31fbfcbb657d20a356fa46fdc1f647d",
+    "data/experiments/environment_v1/llzo/shuffled_r208.json": "20f411b01f879ea3ef272dce891880ce5736e56fa0927cdaeb000deaa8cd6a69",
+    "data/experiments/environment_v1/llzo/shuffled_r209.json": "1bd3597351e71af5a3ecf948f6e74d4918568046a22bdd13253e6696ac537955",
+    "data/experiments/environment_v1/llzo/shuffled_r210.json": "a4630386a8c2f0c14e1db6d6d5237733bb7146235268d8526b2f3e53dffc62cf",
+    "data/experiments/environment_v1/llzo/shuffled_r211.json": "31f2436f4280a9e7c8ee0dd09c5476c42ce2521de8c8e38e4ff5fcb3c87c5f6c",
+    "data/experiments/environment_v1/llzo/shuffled_r212.json": "4070625a35060c857c950e40e70dc7327419c4d5078166cf070ea5f927392fb4",
+    "data/experiments/environment_v1/llzo/shuffled_r213.json": "dc0a3021259c2b6ce2af7c35d052544d6b7f5bfe3918d36e916e6778e8e00bf2",
+    "data/experiments/environment_v1/llzo/shuffled_r214.json": "2233a9aa9bcd93598d233653ee4ce2272f15c149a54b7d139348d8fcd150b1a5",
+    "data/experiments/environment_v1/llzo/shuffled_r215.json": "71c1cbc9f58cd4c50e31f62c6e819ef57adea1985b4baa92b1047a11c48a4e29",
+    "data/experiments/environment_v1/llzo/shuffled_r216.json": "5d6bb52d237ba14fd80d30d6ea00d3253cab2994e294034ab3d56f9f640f3a25",
+    "data/experiments/environment_v1/llzo/shuffled_r217.json": "0cd106afb4b04e68a2dc8d7722ef01190abdddc317f05a93ce83d5801301b542",
+    "data/experiments/environment_v1/llzo/shuffled_r218.json": "11c0aa24a1915dd60f31845f2af0cc6d33771d744365c23ff90706f92898f3c0",
+    "data/experiments/environment_v1/llzo/shuffled_r219.json": "e703bcd7ba373c238d0de0fb000790b5bacbd41b29ff8f3912c27a2af314d8b7",
+    "data/experiments/environment_v1/llzo/shuffled_r220.json": "73aeab07fe11170711eccd8eabe901ddce40269a66895660e3fa6f1699840db6",
+    "data/experiments/environment_v1/llzo/shuffled_r221.json": "44d3aebe780fff7b090bf159b9bc780719c2de3ef148bcd015df9c36f7cfa40e",
+    "data/experiments/environment_v1/llzo/shuffled_r222.json": "e5aa934dfe06e37afa3abd300b0c28f2b4f593cd0e92fed8b82a935d27a522a9",
+    "data/experiments/environment_v1/llzo/shuffled_r223.json": "665241a8bcd269370a55b202049c13ca9ac38389579517756fed6b72f9c911b9",
+    "data/experiments/environment_v1/llzo/shuffled_r224.json": "94227a608e2007ed9deee3ec996358ce8655d54aae5255e8717a74da0cf4829d",
+    "data/experiments/environment_v1/llzo/shuffled_r225.json": "8e7f832a5283131a5c23f52ea2d24ba52193d3a2a025606e7572a9ca135de0f7",
+    "data/experiments/environment_v1/llzo/shuffled_r226.json": "8dc761cf99d6502f3035708ba0401396056bcaa60347ec95a3ca7baeae1a34c2",
+    "data/experiments/environment_v1/llzo/shuffled_r227.json": "404cb3d0f2db9e76f5016a6401f682fcc14c69829dc768634696a2e264e6bf58",
+    "data/experiments/environment_v1/llzo/shuffled_r228.json": "090d60b2982b0ac9199be4b4d84667de11bdcc8c9b1562a58235a1a2bb236627",
+    "data/experiments/environment_v1/llzo/shuffled_r229.json": "04984a3a0d6e28dc4e0bad64b4fb63ca309dd43f657637c78e09f69ecdfea5bf",
+    "data/experiments/environment_v1/llzo/upfront_r200.json": "2096c890dfa37380887cb1703eccbbae3eb691ad18f13d4f0a9b586bcea13674",
+    "data/experiments/environment_v1/llzo/upfront_r201.json": "ee77adca0c6857e55e809e98ddae75654390901ce3762ace3f41ec54c81ac07e",
+    "data/experiments/environment_v1/llzo/upfront_r202.json": "a222ba2fb7bb8937e44bcd72eacdd8f90377e8c5e9bbb214d27f1ad4dc2f02ff",
+    "data/experiments/environment_v1/llzo/upfront_r203.json": "87e74dfee9a9d0517941c9ee4e60cdeed00cc976564e519a7ed448e7f5ac9bb8",
+    "data/experiments/environment_v1/llzo/upfront_r204.json": "d38168e1c465c6444dcd10115a67d92847b696c1be8f7355197b37b82b3224f3",
+    "data/experiments/environment_v1/llzo/upfront_r205.json": "6cb58ebcbbdbcee8dc4405ffa75254da9d6364a5885a07c212f8f7659f16fb1e",
+    "data/experiments/environment_v1/llzo/upfront_r206.json": "78b9e463b8c0627d3922e61c303b3fc6c0375ebea1bcae8753aee1d3da556dc2",
+    "data/experiments/environment_v1/llzo/upfront_r207.json": "4682a9422b5dcea6a455d6e82582affcb87ca117978b1582d944b2a74c44d6b7",
+    "data/experiments/environment_v1/llzo/upfront_r208.json": "4200cb6ab94098a11803e1fb66f0dcde0a7282732bbb901c4c616c8e5d4b398d",
+    "data/experiments/environment_v1/llzo/upfront_r209.json": "ad6b150acbd24fdd753b1760b1c635bbb944a8d60c85a8b5e3bdd2faaefba0bc",
+    "data/experiments/environment_v1/llzo/upfront_r210.json": "fc8494a27cdba12444a51d7eca0172dbf9aa902c234722069bc7d7d070d7596d",
+    "data/experiments/environment_v1/llzo/upfront_r211.json": "e031d14243f9532652eaae927cd6954f0d32dd24b9ac089baefefd8164b68f76",
+    "data/experiments/environment_v1/llzo/upfront_r212.json": "48b92ec143e66c16482466c58cc17a41fb0105e9f575bc391a82451a02c2002b",
+    "data/experiments/environment_v1/llzo/upfront_r213.json": "3027a71f047bee4c04c6193ed96ff62123e952e3b1519d5e1add73b4f0a8a748",
+    "data/experiments/environment_v1/llzo/upfront_r214.json": "02e80657c92da2589b10869560cf7ab972de282fc6f30adde702e62342d3549f",
+    "data/experiments/environment_v1/llzo/upfront_r215.json": "0041188c836565cce86decac06c5545e7e26da778cb1c6bd08adea6fe4cbaebf",
+    "data/experiments/environment_v1/llzo/upfront_r216.json": "4545dc3aaf99737663e738a3303ef70a583d3fe2a9367127bb2be560df89500d",
+    "data/experiments/environment_v1/llzo/upfront_r217.json": "332634595182521e26df2e617cd2e4a4ebf0662c5005ba1a1466c1b46332f8df",
+    "data/experiments/environment_v1/llzo/upfront_r218.json": "caec88d42e5d52224ecc636ef94c9f95b943599526526668f7cccbfa7475a4fc",
+    "data/experiments/environment_v1/llzo/upfront_r219.json": "8507274c28d54f16da685a14630730014deb11a4306beb391244122a0b6dafba",
+    "data/experiments/environment_v1/llzo/upfront_r220.json": "d9175b9a71152ff9531e0e38633d0177421eefae7e8a7dcfbe8fc0c5f116a54f",
+    "data/experiments/environment_v1/llzo/upfront_r221.json": "966a58c66ae64defe116470624918da18eb8bd4df906556334785b56e029e7fc",
+    "data/experiments/environment_v1/llzo/upfront_r222.json": "b8f6e4d4ff85176eb4993ba685af2f054f2ddcb7871d340ebac9fa046a3ed0b9",
+    "data/experiments/environment_v1/llzo/upfront_r223.json": "5c8e5f2cf1f042c168a994073ac288db42073e98f7d2fdb244b450cbc86819d8",
+    "data/experiments/environment_v1/llzo/upfront_r224.json": "08a078c6f90fed90971c9947d4b48d46796230ca8202bab11d5d0750c2da60e6",
+    "data/experiments/environment_v1/llzo/upfront_r225.json": "8d0463a80885f8871c2a90469c236c4018666db4dfd17eeb743677af13702edb",
+    "data/experiments/environment_v1/llzo/upfront_r226.json": "2c21b3ab7c89e1b19553e97374dc3a243e816540046b4e676691af63897e7d3b",
+    "data/experiments/environment_v1/llzo/upfront_r227.json": "d961f035cd3d2b6e80e58f5bbcf9667ad00bae040117f2f93d233a579c67830f",
+    "data/experiments/environment_v1/llzo/upfront_r228.json": "0f363da8984556b920f949e8f37c0661cb9dc935deb29356c62f57b901bbd155",
+    "data/experiments/environment_v1/llzo/upfront_r229.json": "3ea87c471d4d7e12ceb495d095b8c1af8d9085d6ffbe5eadd2b9433e8b24e543",
+    "data/experiments/environment_v1/llzo/random_r200.json": "d7d39e37545ea103d2f4384ba252f54d2afc3508f9e97e29dbc3c45300bee1fd",
+    "data/experiments/environment_v1/llzo/random_r201.json": "352e08d91c9c7f30315a056fd9bde045f713fcedc98ea3039a773de8d9a03b89",
+    "data/experiments/environment_v1/llzo/random_r202.json": "199d10a8c3d952536757b2d548608a133693a1ab4db1a1de5f04e819cdcf8895",
+    "data/experiments/environment_v1/llzo/random_r203.json": "b57c7f22ba1585882c38c7f51e926fbea20cd49988bc8cbcdb353b16ca291f7d",
+    "data/experiments/environment_v1/llzo/random_r204.json": "c50c2799aca2f000f05cbf077654c785ee7456e40dc8d41cb3c341aa5b8af216",
+    "data/experiments/environment_v1/llzo/random_r205.json": "fb7e3e5e793858000ea69ae31430deb98b53b451ad3d2db598e72167fe24bf61",
+    "data/experiments/environment_v1/llzo/random_r206.json": "dfe674afc648d7403003cd1cbeb867e863b8e9b505eb22b79d7ca28a626819c8",
+    "data/experiments/environment_v1/llzo/random_r207.json": "dbdd31767d26ca8e8739527776e6e4a89dabb6cce9beade9017cb22cd9ac3bc9",
+    "data/experiments/environment_v1/llzo/random_r208.json": "f6d7424e351b247beeaf3e4e450c91d594bc7e5c35a25451deecf7250de7723c",
+    "data/experiments/environment_v1/llzo/random_r209.json": "70bc2c7b5ff8e3d058fc8d65c5eaaec5e5f92d8ebfb94bb86f02543f204c12cc",
+    "data/experiments/environment_v1/llzo/random_r210.json": "afaedfa96d2a5e092710fadf1c4b87b4a937ccc2eeb2ef1ed62c017fdeaf0a85",
+    "data/experiments/environment_v1/llzo/random_r211.json": "b7cec6e59038a856efa949c5ec0b778e8208342b2c0e86c5fb717e6663866871",
+    "data/experiments/environment_v1/llzo/random_r212.json": "dd8bb993ca48be639b1cc17153546b33c84db6c7d92dd43f2da3d9f6ff5d2b98",
+    "data/experiments/environment_v1/llzo/random_r213.json": "7977916e53057ed1d6a92983f411a63955344cdddaa51cfec75999e5e8063d85",
+    "data/experiments/environment_v1/llzo/random_r214.json": "1114aa060cbebffa2e4c9b6f62930ecd3d1b384ac3ed6511ba6f56f413500f1f",
+    "data/experiments/environment_v1/llzo/random_r215.json": "1c6ca6acec7284213184f44f200afd7038f6c95e68e7d45aa18d1b917b5198d2",
+    "data/experiments/environment_v1/llzo/random_r216.json": "fa2509cebd6b4add70f077b8237a26d79ed744cc3288ea4e581e82a0276d706b",
+    "data/experiments/environment_v1/llzo/random_r217.json": "5161b809888ae9876c33be81fce0ca8db172e7f176c9a44f18979c2df59996fc",
+    "data/experiments/environment_v1/llzo/random_r218.json": "b5ddbfb652164576af2b7fa43d7cf3fe43224f7e950fcd0aebaa0e3823e9e562",
+    "data/experiments/environment_v1/llzo/random_r219.json": "19b13f269c9349d596953975ee2bb2c51a0ca237fc67d4c1148fc011478ef13b",
+    "data/experiments/environment_v1/llzo/random_r220.json": "d44c056766f0e45e7fa8883d4517613f74d1aeaabf16bb667a812e2455a60d7b",
+    "data/experiments/environment_v1/llzo/random_r221.json": "daeb5a502c3c986911866b96d9f79869e4e513118c80f6491f030fab825af92f",
+    "data/experiments/environment_v1/llzo/random_r222.json": "12b8b2cbef42bf2b78b63362d7b7f27307e4b04fba653ded85b532b29884a310",
+    "data/experiments/environment_v1/llzo/random_r223.json": "7d8fb21079554a4ea104fe8827833b6da73fcdbb76e2156318d5d92aa83c57e5",
+    "data/experiments/environment_v1/llzo/random_r224.json": "7d983991c8be1f7af54e12f4576d4e9058a76516c3cffc329491505211f50684",
+    "data/experiments/environment_v1/llzo/random_r225.json": "58a69ddb8f58626ccf3209fad5f0deb09a321be7126599806c2e19c8d0c12846",
+    "data/experiments/environment_v1/llzo/random_r226.json": "8fe59f0201ae5a4b02c1ec4e0a41ec9d2d0454ee49c8a62ad8f38736c1d99b4d",
+    "data/experiments/environment_v1/llzo/random_r227.json": "734f5d97dde7938e08a43be68dbafc11802ba451c8e23fd064b0160d8c81cf63",
+    "data/experiments/environment_v1/llzo/random_r228.json": "fef76a98c8e044d67ec32333af5bc379b567c2d3d944081d1acb69cface38eaa",
+    "data/experiments/environment_v1/llzo/random_r229.json": "e4a11fbbcdf5489f50b485bd9521a16fd920d3faf5614f063affd05652c5048f",
+    "data/experiments/deepseek_v1/lpscl/iterative_r200.json": "b742732f2594cdf567634064650d89883303dc9a912e9a19ba3082011c44f3d0",
+    "data/experiments/deepseek_v1/lpscl/iterative_r201.json": "f54170227ee2db1a1e611e777d03f5c2b3062367fc6b22a1a0103ff6d79d1f6c",
+    "data/experiments/deepseek_v1/lpscl/iterative_r202.json": "d61466465039b4e9dcd5edcb905615727ed84dd313b0518630a292d2e35c5c7c",
+    "data/experiments/deepseek_v1/lpscl/iterative_r203.json": "9d84347594d2f70f6fec2fe04a1e50c1143481903a750bd762acc1968d67dbc3",
+    "data/experiments/deepseek_v1/lpscl/iterative_r204.json": "45adcf03c2303b6cc1ae5c5bfd5f55fdb6469af265e3d14d2adc9dda7a9a63d4",
+    "data/experiments/deepseek_v1/lpscl/iterative_r205.json": "6d9c0e9b5728dd23f0f0197c0bed7daf17f4ed58d3d851bd26a8e4da635b85f5",
+    "data/experiments/deepseek_v1/lpscl/iterative_r206.json": "44f9cd1cea898760d9627b1d5e5074c25118b9e41cb582d24b0d34a8d8bd3dd5",
+    "data/experiments/deepseek_v1/lpscl/iterative_r207.json": "f54999bb76f4c00a5df492dde9da7bdfc4042203b489d9787734037017aecd41",
+    "data/experiments/deepseek_v1/lpscl/iterative_r208.json": "06389db1f9c15e0231e2aaddee2a9e2c4336af2e820267741f03c88cbc93011c",
+    "data/experiments/deepseek_v1/lpscl/iterative_r209.json": "8c1ad192db6854c20828640ef6e408f9594446134d8aff534585d0bc107245de",
+    "data/experiments/deepseek_v1/lpscl/iterative_r210.json": "25184440a0bc7f95c045a4893632eb8a7b482f458ccfd1284f9c60dbe20205be",
+    "data/experiments/deepseek_v1/lpscl/iterative_r211.json": "47e77126994e1a00d634e3c6ea3493959b0489542e8f37d2544dee686f1bb42f",
+    "data/experiments/deepseek_v1/lpscl/iterative_r212.json": "071374f9346e6bac5225e7a555bb66a9c86dcfd7b75e3d9054c1f584e3a6907f",
+    "data/experiments/deepseek_v1/lpscl/iterative_r213.json": "1910099e2d0db545a6d1a2b9da281cebcf8aba95f95bfd923fd5453a4869d0d3",
+    "data/experiments/deepseek_v1/lpscl/iterative_r214.json": "6c0a4f4571f869ecc13a39f6a093793be3a69ac55e7d2370004c57ad873e0d11",
+    "data/experiments/deepseek_v1/lpscl/iterative_r215.json": "7d8699efe7d4f8338a2e5ad39116b18ff30a91dc16389f4a8d23b501aa418a67",
+    "data/experiments/deepseek_v1/lpscl/iterative_r216.json": "a9590a7572287f6dd9501271722ed617553cd998bfb4613d647a022f976c273e",
+    "data/experiments/deepseek_v1/lpscl/iterative_r217.json": "0e7c721ffbb116aea06f27427411bb34c28330b41fa61bbcbda0ff17347fea7d",
+    "data/experiments/deepseek_v1/lpscl/iterative_r218.json": "a7a3ca4d2a223f9426708719cf46a2648a907c89330103fc3e53f1246d3afd0b",
+    "data/experiments/deepseek_v1/lpscl/iterative_r219.json": "273d3a4f8a51af05ce9afd2b6596462f89c071fb0da790c07abac071eb9e2cc6",
+    "data/experiments/deepseek_v1/lpscl/iterative_r220.json": "bd8da5ab30ea54457f2763b44d390ec5c672a6d5b4cae53c47be653f2997c3bf",
+    "data/experiments/deepseek_v1/lpscl/iterative_r221.json": "86302a0e678cd93097f2df2089824a6e8929c9104f1c2c94f37cbccfaa8ab60a",
+    "data/experiments/deepseek_v1/lpscl/iterative_r222.json": "3365a7ffa873a2b1c69ffce4dfc1465db89556cf2e5a376de4bfd91f4e43b28d",
+    "data/experiments/deepseek_v1/lpscl/iterative_r223.json": "013978a1d57a45faa53d505c5c19113d8d8dd9749803eb002ce5536bbf6cbcda",
+    "data/experiments/deepseek_v1/lpscl/iterative_r224.json": "384c2d37d2bcebf4d18e04afa78f4070640498f1064c4c00a21e47a94cc595a0",
+    "data/experiments/deepseek_v1/lpscl/iterative_r225.json": "b0c0917bf05dfaba26da5a6435dbe0f65a2e67054b05f9575178544d9b3c4d9a",
+    "data/experiments/deepseek_v1/lpscl/iterative_r226.json": "831acb19a240f8c82a7da1ae4886e85ca1db2d10cf8abd8c536bd26e8492fee3",
+    "data/experiments/deepseek_v1/lpscl/iterative_r227.json": "488684680f0cc7c07e6826a29b4fc796c22f6b676dccc18abd0d279f0e7bdd5d",
+    "data/experiments/deepseek_v1/lpscl/iterative_r228.json": "a1053a42fa7ad04aa75cd644b0c4e248b50c710e7d177edee8f5d154cc86732d",
+    "data/experiments/deepseek_v1/lpscl/iterative_r229.json": "9cdb107a305e5f6cb00cd3420cd54061f0a50b67f6d30bdeb7fa6fd96b36e9b5",
+    "data/experiments/deepseek_v1/lpscl/sequential_r200.json": "b209ac74f8ccfec116f5a2fd13003f40102eabd0a5aae8797a2bfc9301e5e27f",
+    "data/experiments/deepseek_v1/lpscl/sequential_r201.json": "68e18cddd96d382d1588ae22b1dd315566f3f3a191fb143d65a53a0b2d4ddb8e",
+    "data/experiments/deepseek_v1/lpscl/sequential_r202.json": "6a6dadec4f2c000a10aab4b40c087c2040475803461eb3523b9bbd1bcaa67b8c",
+    "data/experiments/deepseek_v1/lpscl/sequential_r203.json": "43e5ab2d87c0647d88cc8332aa43059bedfaecdeb10baaf512c9de1f79bd3edf",
+    "data/experiments/deepseek_v1/lpscl/sequential_r204.json": "5c556f9eb150cbb24029f48a5fed5d921310b7ac2f6833521887bbb9a23232cd",
+    "data/experiments/deepseek_v1/lpscl/sequential_r205.json": "858ce61388af0a4d68e7acd1492831482a06dc10fded693c3f7fbf217eb44d48",
+    "data/experiments/deepseek_v1/lpscl/sequential_r206.json": "c39cbc53cd6169ccd0490fb04b2a18e075a8e0e0653d59ca1dbe94372199b48d",
+    "data/experiments/deepseek_v1/lpscl/sequential_r207.json": "93269aa114d75197d47ccb154cf6f28bd8d216f90d6b6cfe5dc9cfb6ef050ff1",
+    "data/experiments/deepseek_v1/lpscl/sequential_r208.json": "3ecbc40c75480481224831a052b2900baa57f0639ca820499b82803dc4396410",
+    "data/experiments/deepseek_v1/lpscl/sequential_r209.json": "e7b3a72440f82646f2ba7e88307dab3b1f05764b9639024ce6655d4405163de1",
+    "data/experiments/deepseek_v1/lpscl/sequential_r210.json": "ade2811ab8d1b448a726907d7ee3f67ed900c3bfef48be3968638ef1dacab8fa",
+    "data/experiments/deepseek_v1/lpscl/sequential_r211.json": "2f8d9bbe308dfc9de3fb0ed8632da40eeba0e7708e7bc51301f3eca3d4ed7676",
+    "data/experiments/deepseek_v1/lpscl/sequential_r212.json": "6337299605bfe4c78bcba3d4fc00e790ac2a352fda5528235e755cb4992615c9",
+    "data/experiments/deepseek_v1/lpscl/sequential_r213.json": "7503868cd60398cd07fa0a4c0f8ac085134bde4908d36b3e8abab8eda14ed19f",
+    "data/experiments/deepseek_v1/lpscl/sequential_r214.json": "4c123f22292dfdec3fbc04e156e8c1512d510377eca050c1e20b6f11506e35e4",
+    "data/experiments/deepseek_v1/lpscl/sequential_r215.json": "1b35d0bd13ccbbfb473c1d9f43bc8b864fbc875445fe47a3bc09c85d04051f22",
+    "data/experiments/deepseek_v1/lpscl/sequential_r216.json": "6e8d82cf0f20d96ca36befc307efbda2ededd21fc4761be1cf9f99bfbc73978d",
+    "data/experiments/deepseek_v1/lpscl/sequential_r217.json": "59e46f914687a8cc5ffba4b8bd6d3e3a882a05f717b8c0ccd1be7ac168428ef9",
+    "data/experiments/deepseek_v1/lpscl/sequential_r218.json": "0c898f66d84198a355252152b7e906ab9de4c954f9c27b4ee19f0ad0bc1dbc6f",
+    "data/experiments/deepseek_v1/lpscl/sequential_r219.json": "9a5fe8a004dd6d074a6442ac33d2942d0c25cb02ba2c072e6e9a061a60226096",
+    "data/experiments/deepseek_v1/lpscl/sequential_r220.json": "54cf673c5cdd4a3e938a42ebf032622154942aa8a63214b122ff0827385f02ff",
+    "data/experiments/deepseek_v1/lpscl/sequential_r221.json": "3056f5114ce0cfc59c0f2b5a445fda56125e2937bc3f35ea87d2a43c714e74dc",
+    "data/experiments/deepseek_v1/lpscl/sequential_r222.json": "feaf9a4255c7b6e4c67f1f01923f8884730c8bdae0510928e1506e8e200b8419",
+    "data/experiments/deepseek_v1/lpscl/sequential_r223.json": "89e048cd1218f386b252ea77afbf3e0d539d16eee58e5b166300d8ade157150a",
+    "data/experiments/deepseek_v1/lpscl/sequential_r224.json": "fa4a9bf878fe01aecb199a43c5c268925582b7e5af78785c369d5f83e3d1df61",
+    "data/experiments/deepseek_v1/lpscl/sequential_r225.json": "78f4bd1773377e66f4fe3a1c43608e963692d2795e175eab0e04c2c68b75a42d",
+    "data/experiments/deepseek_v1/lpscl/sequential_r226.json": "a9c8b8889cabac5164a070b46468e65cf84e82cbe409b561a9a372fe64304623",
+    "data/experiments/deepseek_v1/lpscl/sequential_r227.json": "0e471c75e8f2e699c79fead7e29a0afba840ea39310e29d6428f1c89a2cd07ed",
+    "data/experiments/deepseek_v1/lpscl/sequential_r228.json": "4bd44b92b4debab33e6ff4ec55eae3e40b66c8a2f9a0c3661a15a2eb0a16a1cd",
+    "data/experiments/deepseek_v1/lpscl/sequential_r229.json": "0659f608167a30da013bc077987f163f46b425243dbfa407fb10473c85e7f9ea",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r200.json": "ba04bd3a1b6d35d75b0bffc2163bd34a17f6065cda22096660913b5cb39c6b84",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r201.json": "25637918347703ba9065816cc7cc0f75f31c7b081ce8be33f3c7cc3c2f458baa",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r202.json": "0f0c59cc10232cc3a69d9ab3dc4a9bf99c331524d64ac01fe2fde0d9c513bd85",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r203.json": "4cdb969e47aca010e5c3f103e065d5354d2f80fb2d85b1ad8adf678cb05abe10",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r204.json": "0a7581f3598a8fccfc3a82d277757b1f41fdd73350ef9517b9ff8123d1afb432",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r205.json": "ca269a967daed0068216d5808c6cafa0500741c5122598116d1ecbc7ca252de1",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r206.json": "e7c188ff760bba17f1756440e4cbc0157be4c73007908829ca9d00ab0937e89a",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r207.json": "728632533671c5a9ddb80a2ddee66f6abb5bcfd4f783149464a0165ff6c565c0",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r208.json": "9726184d044180a394a7c0fc55dae4bb92fef40dce6ef99f9147815c3b39eeb1",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r209.json": "562281413780263bdfb36178819ef6680b4e92fd3adacc0bb9b9df8c9bc96132",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r210.json": "9796858a2a0a60b4887649aa2861a9fb71cbba7a5fbe9ea4deb56a6586ab7f72",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r211.json": "8ae1ec43198aad68e4ec11c65c90016666da25c6463327912cd2a81c31f99a65",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r212.json": "61b8395a5da804e9e2d0c2a8fa48373f782d628934bbccb4ae45359b65bd5c81",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r213.json": "9ac0f84051d49aba1591ef5fa40e0b67453f8e6fcdb632a7638fe4413f6de90a",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r214.json": "a1e86752b63ef908f5c6ac907cd376dfca1ca6bd8321528684916e5a5b8732a5",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r215.json": "2878f73d1519cd20afb0bcb1135a9278aa81f18c2d8b821425ddf58c2105d4a6",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r216.json": "1db7f1a177ab74394a4f3fe345ddf2d03160e7bad5809b9e1a95aaaae1de9040",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r217.json": "6b31f84b19e43623966e9a2854c1df86a907163a0c7fe5d9cf96d7e6a854773e",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r218.json": "f318374acfcb0c9bd3867443002c6b73f74b9a52a284b1ad821eb8a47c7e2897",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r219.json": "369b58895d89f36bd7d13520104fb513b41b65baee0154e4f91f657fb4c9ff15",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r220.json": "8abfcd26daba6c90c4e5d4ac324c206abf060d2d9261851c7cb2baf4b218e004",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r221.json": "1ccc34368bee7afe6aa3d26a7d3cfa217114afd0711b2f45cf5a383b41e88f32",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r222.json": "c37fdb9f8622658070211e09709b9d914b4cc6f94efd215ae9c4039aeafcb163",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r223.json": "0e9c6876195c6306948589906c7803d0ee9d2ca699d634df928dc6bf24391a97",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r224.json": "9697873d6d79b9a70baa7f8eb3af2113fd616a5d404877a3d8dfc0321f441d40",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r225.json": "c9b73ca8f6c00a3af26aface8b8731b3faaccd7d6e887abc520f5a01f988520d",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r226.json": "0190888a6eadbd0afea06844a91d80b85831e4689d0fb797cefbccf0aed14941",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r227.json": "a1033be9a0077a65683bb3f61d4e5d5fd02dbb59a091cf0d3e1debcfa6cdf586",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r228.json": "dbea7688aa7cd91db207699ab79a900697dd355d0c9be4354b1c855074b4ac06",
+    "data/experiments/deepseek_v1/lpscl/shuffled_r229.json": "d81c6b65e6a1737fe89515e664cdf5d8a9bf74ee4f528b85377f37af87bd873d",
+    "data/experiments/deepseek_v1/lpscl/upfront_r200.json": "9b91728cab11dbfbf15e166d63fe26c0a57d62145c686e75b125ef5c2d4f3436",
+    "data/experiments/deepseek_v1/lpscl/upfront_r201.json": "054822e71065a729e1b51567832338ba5608d2c08bb1bc53a2d84cc885529468",
+    "data/experiments/deepseek_v1/lpscl/upfront_r202.json": "51b7f337d5505f7134ef023c693f2f562176b48b5406404c2167cb97aa3468e9",
+    "data/experiments/deepseek_v1/lpscl/upfront_r203.json": "22d94086d8510ace755cc326d2723da26eec0d3b5de312d855f69b37b0fe66fa",
+    "data/experiments/deepseek_v1/lpscl/upfront_r204.json": "eed30f5c136d210392b6802200251142e6e60b44eb067ccb8e4f780671d07c30",
+    "data/experiments/deepseek_v1/lpscl/upfront_r205.json": "dc65bf8b2ed6f68f0eb784ac9ea0953a2a8ad04b3870274de4a422f48555b139",
+    "data/experiments/deepseek_v1/lpscl/upfront_r206.json": "f3b5129997ef3cbfe2130cefe7a77b92d990b7ce2835a1b64c5ab43597f82162",
+    "data/experiments/deepseek_v1/lpscl/upfront_r207.json": "ec44cbcf6e9544e7f186a5406904e05cc7241b9210a710945ff4d81a7dd2be58",
+    "data/experiments/deepseek_v1/lpscl/upfront_r208.json": "1af6595894c76445db9c7e7e86615c404062db16735c749f0c334944d6190d76",
+    "data/experiments/deepseek_v1/lpscl/upfront_r209.json": "8704f99fa4e6675deccdf794cd6cdc8af9d7bb83edde778b9c625ecf54344135",
+    "data/experiments/deepseek_v1/lpscl/upfront_r210.json": "fa213d31e4efaf9664b510d553dca6c92c72685a615a70e5eb869ffa62b220e5",
+    "data/experiments/deepseek_v1/lpscl/upfront_r211.json": "356d49ee39b625085b55946fe91e9dec3c2ed1a22a3c56308b109b60ad39b622",
+    "data/experiments/deepseek_v1/lpscl/upfront_r212.json": "e9f929c5a31579fdfb819904cdbf3498dd57941cff20b55874188231da58f2f0",
+    "data/experiments/deepseek_v1/lpscl/upfront_r213.json": "18c9bc123864cf820feb9b0135b3ce32b20ef10e969795835eac0af8b1485529",
+    "data/experiments/deepseek_v1/lpscl/upfront_r214.json": "b50302a75dfb6b6e3d271bd8ba7f9ea037d884d4caa57fb900e161ab9a9c0996",
+    "data/experiments/deepseek_v1/lpscl/upfront_r215.json": "7ec1336d0f84dc6aa1c4915c5e06c8c35dd14b0b30877f66c616e0a66dc336f0",
+    "data/experiments/deepseek_v1/lpscl/upfront_r216.json": "a5d2e134ad0e3ab00c45510f3107654520055455b920cecfe227028e97fcb108",
+    "data/experiments/deepseek_v1/lpscl/upfront_r217.json": "2a903b3f21a0e2df301c23610eff7c503b99a796466a1669e6e8c0cdc5f5066a",
+    "data/experiments/deepseek_v1/lpscl/upfront_r218.json": "38f9aebeda58fa7fcd88ae0e3e3054be4e6fd301858b5abf7b277d5b3891b3ad",
+    "data/experiments/deepseek_v1/lpscl/upfront_r219.json": "b4c75e1c2b76c34ebf272c04820308b9e276a2d7b8ba96fc3e662d7d89dacb82",
+    "data/experiments/deepseek_v1/lpscl/upfront_r220.json": "6efef2a4ecfbb2cc45682f97e0fa8e2b4a6c53c0d2383f5a0abf9299c4be1d94",
+    "data/experiments/deepseek_v1/lpscl/upfront_r221.json": "94878137394a8044619a93bf01ffac741f6efa36fee34c5bce2eb26ea4070595",
+    "data/experiments/deepseek_v1/lpscl/upfront_r222.json": "3c02e84f90c916fad82c7c98dac6f573a23e80d11a0c2575fc353842ebeac662",
+    "data/experiments/deepseek_v1/lpscl/upfront_r223.json": "cbbe9e8ccc1ec270c00446697ffc9db9ffe7340d494da421652a976d682f3eb2",
+    "data/experiments/deepseek_v1/lpscl/upfront_r224.json": "b1e0ade28c65862b8159dfbd5512d9533bf4adac2429d7554a7949190bc8ca97",
+    "data/experiments/deepseek_v1/lpscl/upfront_r225.json": "2c6782c3371a3f7fc40feff2f6bf2cfa947c66c59c83c90945f8247d5c46cfa2",
+    "data/experiments/deepseek_v1/lpscl/upfront_r226.json": "e0ed06ab45f8587bd5f88fc22ca83bf4b9cd416dda8fbd34866a1c529b6fb9c4",
+    "data/experiments/deepseek_v1/lpscl/upfront_r227.json": "330ae9dc28b182eb73f1bcfb4368088e9654a167b80939b95259067e21916b9d",
+    "data/experiments/deepseek_v1/lpscl/upfront_r228.json": "f421305cd5bd15989603094b29dc798b6fbd996250613be0c8d7b97c1a3a7e04",
+    "data/experiments/deepseek_v1/lpscl/upfront_r229.json": "0c7d3723ab84c3a8455c0eef098dc5eea94c57d2606b9c4ec3b087183c33ea1d",
+    "data/experiments/deepseek_v1/lic/iterative_r200.json": "1f79633f254224b7f845fe75258717bcbd2b30eaeffd8016f4052e98949e2f3b",
+    "data/experiments/deepseek_v1/lic/iterative_r201.json": "e5a1e3124d7779c6b9b897acd6aa1ff433437eaab936f9a9b699f910382f461e",
+    "data/experiments/deepseek_v1/lic/iterative_r202.json": "c910edd595f0227bd052d3d21073d096bc700722ffb772cb029ee35a49e61f53",
+    "data/experiments/deepseek_v1/lic/iterative_r203.json": "6b3273cf761dac7d61a63436b31f1036a490fca9a7ff0ce33daa86b2074d2d65",
+    "data/experiments/deepseek_v1/lic/iterative_r204.json": "f397b8a945a1036cfe90ea5171a762f5fbde3648639805f6ec3963e0b68ba00a",
+    "data/experiments/deepseek_v1/lic/iterative_r205.json": "f6a18c2fa23458541e551be650ee7367ec8a6408c403a5191524b3e15882dc57",
+    "data/experiments/deepseek_v1/lic/iterative_r206.json": "53db96cf3efee6fe5ec6385eb2ac85371bc538e6f5e58011d2c5c87e4cdc3bde",
+    "data/experiments/deepseek_v1/lic/iterative_r207.json": "12188c17aefe95fe614af4eb1ab4ac7ea66a1615bce0e01343006f7bff863ad0",
+    "data/experiments/deepseek_v1/lic/iterative_r208.json": "651f778c654243f7f0e608b0c1e63cd1084340d4bdd7d6a8eb6f42fc7edbdab5",
+    "data/experiments/deepseek_v1/lic/iterative_r209.json": "834a54f4006f66908d7507d34c7f4600f219a38f4d527aadb3e003c28b73cdb3",
+    "data/experiments/deepseek_v1/lic/iterative_r210.json": "b9e343f647c2e5af5b963e3ac0b921e9ca8e4540434c458821f2d8db355821e6",
+    "data/experiments/deepseek_v1/lic/iterative_r211.json": "a9859099aa66eb666c56d4ef2d862d55a06f10cb7a0c2b544e53c29fd3af052d",
+    "data/experiments/deepseek_v1/lic/iterative_r212.json": "f149c8fda32520740485c4a9b8c8cf7bee5f68e571aa341e9613f1ab3b38b945",
+    "data/experiments/deepseek_v1/lic/iterative_r213.json": "df3184976bb80c2e4368e8a25c69b1450e55525c67ec2978c1a8daee3526d54a",
+    "data/experiments/deepseek_v1/lic/iterative_r214.json": "09574296a9aa9c77121de875701e086c443c77c8b9c49fcb443c9bb1cea597ab",
+    "data/experiments/deepseek_v1/lic/iterative_r215.json": "9fcfaa52a729032ca88706980b82b2a64e20e2058f7ac432695e0b04036adaa3",
+    "data/experiments/deepseek_v1/lic/iterative_r216.json": "69f679b2181cb34df10ad925303b6ad1f6ecd6e2905998479331b2f2281613a7",
+    "data/experiments/deepseek_v1/lic/iterative_r217.json": "0a74200e2eb27757be6aa3ee5b828a140414a6a4aa0c8f71c497089bd3fd126b",
+    "data/experiments/deepseek_v1/lic/iterative_r218.json": "08f0748a07df3e0f5724750c35dbef2f66d2e14dca59cfcdbb6c5e5cfc529a43",
+    "data/experiments/deepseek_v1/lic/iterative_r219.json": "e5410a88ae6e9a17e68e753815378b0f307b9459be1f7ff9091636765b9f4f56",
+    "data/experiments/deepseek_v1/lic/iterative_r220.json": "00c9c30d6149a1f62cdfc714a2da0aec65e9633b20cd54864950932f6f1c4de8",
+    "data/experiments/deepseek_v1/lic/iterative_r221.json": "7ccb6b03aa903dd59f6dc28d65e472b81b535ad38635b7c1d8645b619565184c",
+    "data/experiments/deepseek_v1/lic/iterative_r222.json": "d005cf19561c743bb3a7297ff3ba2788096595e0d36e82644c812906b0868add",
+    "data/experiments/deepseek_v1/lic/iterative_r223.json": "ee34ebcf0138b6ea78b8fb7cbaa72d78bb5c6bcac0fa14b850e651d8e7eeada1",
+    "data/experiments/deepseek_v1/lic/iterative_r224.json": "a07a7b8cd94ab4b1d865675992042b486c63058777d035344b401d9ac298fa6c",
+    "data/experiments/deepseek_v1/lic/iterative_r225.json": "695e3eb8c2dd403e706aa92fb5e8881e79317ac50822a2a023121f2af61a83c9",
+    "data/experiments/deepseek_v1/lic/iterative_r226.json": "7a6f636b89414431d61d5d2feb460c2aa1b4b1b740a84cc14eb68170e74edf39",
+    "data/experiments/deepseek_v1/lic/iterative_r227.json": "0ad6e65492c64c69c6c1a79a9bef242cfdd782f2b81476e8471dc5dff5c82adf",
+    "data/experiments/deepseek_v1/lic/iterative_r228.json": "f9c59ea1f96810d162f7811732028ccfa64e37cb2eee9e0a2156552bb969b5f1",
+    "data/experiments/deepseek_v1/lic/iterative_r229.json": "e9825c8ac73fb604672cd6cb1b0abad28dd2995cf8bf3c4381594905490c9db1",
+    "data/experiments/deepseek_v1/lic/sequential_r200.json": "0075e8c5f09f6b89faa07c63c0e3a5025a5d9badd8e2e7252ff73ecbe8f7a7da",
+    "data/experiments/deepseek_v1/lic/sequential_r201.json": "150996757c200d15675ecc65ae24bedee5acadfa064aa27a9611c5b568b2893e",
+    "data/experiments/deepseek_v1/lic/sequential_r202.json": "35dfa265a780a04d3483cdd5c668f4e998be9c65bf3ed36385977437aa631a05",
+    "data/experiments/deepseek_v1/lic/sequential_r203.json": "76daef2022f3a73e7c25c929e5ba5556d6ae0dd232652da2434712fae489a45d",
+    "data/experiments/deepseek_v1/lic/sequential_r204.json": "b98fd478017ebcaf8d7563f5d4e293e26ea340043bec1bdec315efc2eb1e5bdb",
+    "data/experiments/deepseek_v1/lic/sequential_r205.json": "ea100cfadc05c58435d123e9dbf1a8095ce803d91996e5dadd1dba13a4bd22bc",
+    "data/experiments/deepseek_v1/lic/sequential_r206.json": "48d20cb438e850883ef303acd87a462032a7ffc7701a59c152d8456885e0b561",
+    "data/experiments/deepseek_v1/lic/sequential_r207.json": "d15e648c0d2af89422027dd9cee7092c4ceed466cc2d1a32bdda660b3fbc06f6",
+    "data/experiments/deepseek_v1/lic/sequential_r208.json": "bcf05a1b252748e0590ab59c3713def7f312dbc94bf485d38cd6f0a06642b46f",
+    "data/experiments/deepseek_v1/lic/sequential_r209.json": "347e7def09632f16151004832125e892651606aee34a0a49b1e8b247568412f2",
+    "data/experiments/deepseek_v1/lic/sequential_r210.json": "02af27aa27131dd57f9a5ea1bd36269bf0385ff06e428193aa643654a3f50514",
+    "data/experiments/deepseek_v1/lic/sequential_r211.json": "51b3cca87d90da95c9db56f236f5386183292e8765fb3d5303bdba0694258af2",
+    "data/experiments/deepseek_v1/lic/sequential_r212.json": "4c27042f4f80bf7025591380a20b8a9ba73fcba65dfb9fd1cd81de6944a587c2",
+    "data/experiments/deepseek_v1/lic/sequential_r213.json": "fd9582ee8facdc67164a100cae5333df03d617d114ade4b596db2fd1c21154b4",
+    "data/experiments/deepseek_v1/lic/sequential_r214.json": "cbf0f2227e45609793bdcb75273fb8b4b7477e38ccc320f2dcaff0fea91bc1c7",
+    "data/experiments/deepseek_v1/lic/sequential_r215.json": "3abed60aac11d5cd3d53858594ef5d468fbd1e946d25a3efb1b88410e1087a8a",
+    "data/experiments/deepseek_v1/lic/sequential_r216.json": "c75d04cf2174ea271c4e8ace3709e8f719caf9c42d2ec9bcc7f034436c54d550",
+    "data/experiments/deepseek_v1/lic/sequential_r217.json": "54f83887e96bc1baebe7522b9343784d40ccc7dac80fd30b496bd29091d48df8",
+    "data/experiments/deepseek_v1/lic/sequential_r218.json": "64fb7d80ab6048c62a691d64c54e7ed7a27e71d056bbe703a95af93552e9736a",
+    "data/experiments/deepseek_v1/lic/sequential_r219.json": "99380e507bbbb6e96ae503484a203d7e67218bc33361360a3b4f53799f5bca6a",
+    "data/experiments/deepseek_v1/lic/sequential_r220.json": "ec285a895c3c8218ca3da42671a0b977832080b8a0dfdc349368f66bf24d6a87",
+    "data/experiments/deepseek_v1/lic/sequential_r221.json": "03d46e686c6e04e216ea04f3224e024e167627dd51b241eb6b742ebb29f92bf8",
+    "data/experiments/deepseek_v1/lic/sequential_r222.json": "bdd63097ae561e8776721373c713a3863edd49ffcf1bce909d331775690ace3d",
+    "data/experiments/deepseek_v1/lic/sequential_r223.json": "fcddb92c3276d82db86b6e7a738ad9d24cc28b1ab72cdce471d10741aadfdbba",
+    "data/experiments/deepseek_v1/lic/sequential_r224.json": "05d1338144af0ef2c8b3a36fa568f516c8ed1f83ffd27d533b6a2cd2986d80a8",
+    "data/experiments/deepseek_v1/lic/sequential_r225.json": "5b37aebe8fd6bb05416688561c5b727e78d3664ba44bc8ee65deba94819b5f12",
+    "data/experiments/deepseek_v1/lic/sequential_r226.json": "b2f23393d1eff9429f0a78bd5df5ae659c2df5b2cc5aa9dfb3cb685a592eb193",
+    "data/experiments/deepseek_v1/lic/sequential_r227.json": "eeb4262c1a78e56ef570f3e6a72baca25b80de97273e9c6745c64adb803acce2",
+    "data/experiments/deepseek_v1/lic/sequential_r228.json": "ff3fcf2a3412675fb5de71d509f9ef5b6958f3d5d7d7ae6c97eaa92b3571acc6",
+    "data/experiments/deepseek_v1/lic/sequential_r229.json": "551a12fede5e4ca188b9bbb028af983f7c8adda3d4d0d2ec9267028cdc396b48",
+    "data/experiments/deepseek_v1/lic/shuffled_r200.json": "b89ecb2ed7c6baad389bffb7bb97a33f93ed25b06988b19ee5774bc015b48f23",
+    "data/experiments/deepseek_v1/lic/shuffled_r201.json": "514b2719210592e5e719982145ecd5c01f3774f7d0377f60a48b6391456a95b3",
+    "data/experiments/deepseek_v1/lic/shuffled_r202.json": "9dccbb223729f14f52d27f9effab0aa427ec6926cd5ad74d0c303028ac6aa384",
+    "data/experiments/deepseek_v1/lic/shuffled_r203.json": "d2fe5c80ac3d28c56849abd078a1a233cb8efea90f28a3f53dda30192e9204d3",
+    "data/experiments/deepseek_v1/lic/shuffled_r204.json": "cb95fc98fd5e916892fa6d2949a168e12aebad26b556b80d05a8dda68ce3ac9a",
+    "data/experiments/deepseek_v1/lic/shuffled_r205.json": "1a8f2b9e15fc3c100c7a61eb7263112bd34b9be3717c82ec0cf4f008ce840014",
+    "data/experiments/deepseek_v1/lic/shuffled_r206.json": "051040030adde330ff25f10fb2b4b0e2c41b7f69960140c901ffb451c923dbad",
+    "data/experiments/deepseek_v1/lic/shuffled_r207.json": "8c2d08960760da01a3a1269d247841d457647b4485f96fb18a8fbd65eabd0b95",
+    "data/experiments/deepseek_v1/lic/shuffled_r208.json": "70fcda277b3a2d01a7e282e2baa8535a35c5f76d85be3210a06c65f335259c46",
+    "data/experiments/deepseek_v1/lic/shuffled_r209.json": "04efd40a86536094176cc4c81ab9c22ea0620017ae26bc56b95d91f257dd537d",
+    "data/experiments/deepseek_v1/lic/shuffled_r210.json": "9eac2b0cf31a2b41a3e9e408bcbd149d50bb03167d8b2e823ef208f5e014a0eb",
+    "data/experiments/deepseek_v1/lic/shuffled_r211.json": "3fd398a295bbbf03b99f005166297ce74c9260156d1911ccd69fff061d7a45c5",
+    "data/experiments/deepseek_v1/lic/shuffled_r212.json": "e26c3e66674a2c369a0485c47c0416525ed7be48614230826445cd175792290e",
+    "data/experiments/deepseek_v1/lic/shuffled_r213.json": "72f86772708b5cd4f97253c8b4c7729ea843ce13daf8a4653b40e08f927f6c82",
+    "data/experiments/deepseek_v1/lic/shuffled_r214.json": "48e682e419467e8ea7b045601be4c63f2e4832da234592425211d9504af0032b",
+    "data/experiments/deepseek_v1/lic/shuffled_r215.json": "f5c67a930e656f84608e37836d8cca91f80d89c1385b556041a27565f9c16d3b",
+    "data/experiments/deepseek_v1/lic/shuffled_r216.json": "046dcb16c5f448406066da5f60b9b2c4ae6f4ed2957f1efab215593ca5df82c0",
+    "data/experiments/deepseek_v1/lic/shuffled_r217.json": "b3f179a61ed1d9a2f891b24d58a2aaba5b70fe44ff7c121e0f87fab6a2648917",
+    "data/experiments/deepseek_v1/lic/shuffled_r218.json": "c1822694bf2c240ae92397eeb42433540523e512ea4502f2c64c3973e60a3273",
+    "data/experiments/deepseek_v1/lic/shuffled_r219.json": "33724561db53014980222fc2b76d27b626935b3109ddae989e8e4635b4ff62a1",
+    "data/experiments/deepseek_v1/lic/shuffled_r220.json": "d2141ef686ccf2a0cbc2c818ed75c69a6aa7c558f2b42caa1e5f715bcdacade2",
+    "data/experiments/deepseek_v1/lic/shuffled_r221.json": "1989fe9bf04067a14ade6c04de40b1d3ec62aa0bf14b416d5d5143357249634c",
+    "data/experiments/deepseek_v1/lic/shuffled_r222.json": "795659faef32605f0833ec884bf66b58c2f6f84ac9d14bbf85f292bb401cfbae",
+    "data/experiments/deepseek_v1/lic/shuffled_r223.json": "98ddcab775abc7671cad93a1fbd6c3533cb919fa68d66f63c470b1f4f6c81434",
+    "data/experiments/deepseek_v1/lic/shuffled_r224.json": "d18599566f0af4e582632e6ce7e31315056e8a72dae9d02db3a494348c3fc13f",
+    "data/experiments/deepseek_v1/lic/shuffled_r225.json": "2d2423dc8dc2ecf44b0084075e08e4d8ba4819b6422e0014a2e9e3cf4d8a7636",
+    "data/experiments/deepseek_v1/lic/shuffled_r226.json": "a99c8b3a92a4c24c087dbe952758930b9b229e4d9a3e6c4b97324f8f906ad4bb",
+    "data/experiments/deepseek_v1/lic/shuffled_r227.json": "aa9a907ca7377756aa6ee2a7011c2647490a8c2627c258031e88f15fec8e6d41",
+    "data/experiments/deepseek_v1/lic/shuffled_r228.json": "0772e897611d63f1b42c30fcafb07516bfd7cb557e1b03543a30e2e1a5ddf566",
+    "data/experiments/deepseek_v1/lic/shuffled_r229.json": "52b89b74eb48f1fbdd213fd3df84da92a5a7bf16f98c7dd8173de5fa4d374f95",
+    "data/experiments/deepseek_v1/lic/upfront_r200.json": "367b862f00c0846a21ce92ea41282f0d3dcc775c3271cb793bb241a2a1ba877f",
+    "data/experiments/deepseek_v1/lic/upfront_r201.json": "edebfd5401c171cb065677a4962ee8b9efc6e51d0c1280a969e63842c680e599",
+    "data/experiments/deepseek_v1/lic/upfront_r202.json": "e29539fe7af92928dbc54b9246c3fed6f3dae92c08e0634f3dc05cdd90d35522",
+    "data/experiments/deepseek_v1/lic/upfront_r203.json": "4dbf31db25294a4b6fd2616e48bb6e62aff82f4f434bacdd42aedd70cdcef708",
+    "data/experiments/deepseek_v1/lic/upfront_r204.json": "4f10132821a05bb72251aaf5e27fecb9c1e9630d7667ecf3276773f4f9be5a41",
+    "data/experiments/deepseek_v1/lic/upfront_r205.json": "7f45918051f09bb427557fc290f21102794730109137b0b36888bc43531603b6",
+    "data/experiments/deepseek_v1/lic/upfront_r206.json": "4c32026d36bfbbcb7311d809bee870944560db4c2e93e0ec0f7c952aab7ddafd",
+    "data/experiments/deepseek_v1/lic/upfront_r207.json": "08eb00f397e0e57c5fd0a7f2253ede3b15474aaaee5839d61138eec63f1e64a5",
+    "data/experiments/deepseek_v1/lic/upfront_r208.json": "5d1957bab981f743604217411183ad91ad4720094d346e0760f3d1dd22c060b4",
+    "data/experiments/deepseek_v1/lic/upfront_r209.json": "dd2ee774c88687cb1fe7c42b7f7a2390790f02a2728415a21ab65b11e551bcd3",
+    "data/experiments/deepseek_v1/lic/upfront_r210.json": "97382f3d78c67911a6b778310018ca6250da3314f1386adc7f3282f3b55abfb0",
+    "data/experiments/deepseek_v1/lic/upfront_r211.json": "0847d7971b144cb84c26e6d7b6c658d60e2f168ac6c047d545cf2108d9f9685d",
+    "data/experiments/deepseek_v1/lic/upfront_r212.json": "09072f47736e8ae43a67e406ecf2da57437346de6e1874d8ab42a02b379e5cdd",
+    "data/experiments/deepseek_v1/lic/upfront_r213.json": "fa1d9d9dd5e4584e16fda38f78b0392151f4c428a7231ff9df678ac16dc31465",
+    "data/experiments/deepseek_v1/lic/upfront_r214.json": "167ee27e36937cfc174a726ccfa9e94f0d8dc4520f65340c3ab5579e279c1e73",
+    "data/experiments/deepseek_v1/lic/upfront_r215.json": "dd6a532e0e1d9bec536037cc6e128371d789e132f43a4575acd1bce9fafb2a2d",
+    "data/experiments/deepseek_v1/lic/upfront_r216.json": "556a77b3fc03767692482ac69b194e5d338fb4aaf963e8eb33b45b399692967e",
+    "data/experiments/deepseek_v1/lic/upfront_r217.json": "2c43b9dc5bb5681301c8bbac726f042f8fafbcf9f12a41cb1cabf5907add547b",
+    "data/experiments/deepseek_v1/lic/upfront_r218.json": "b975b8d6f8859b54bc85309ac500c35dee1dbf989d69f0af10fcb6ae42775ad2",
+    "data/experiments/deepseek_v1/lic/upfront_r219.json": "15a775aec37f3a44e96de8509e37c173333d4b4e46b0d80a35439f6a81861ad7",
+    "data/experiments/deepseek_v1/lic/upfront_r220.json": "6b6f8fb326f8703e05b0bc1482bca56c63cf62deb91179cdc1beb9782c4e697e",
+    "data/experiments/deepseek_v1/lic/upfront_r221.json": "308e2c22964a471f365e15621db6c18dd84508f1ae615b2d488514e43352aca4",
+    "data/experiments/deepseek_v1/lic/upfront_r222.json": "35f44e2bfd5a03a1e37228979547fc81ed2a2b0ce74fb8a1247742b598fbfdb4",
+    "data/experiments/deepseek_v1/lic/upfront_r223.json": "b9f07b01fe1e1d494a0f0a2a22f06b28f6250e2ba9571218163fc45881d103fa",
+    "data/experiments/deepseek_v1/lic/upfront_r224.json": "0fd45c55cb1acc3630ec2d092bbfb53aa0066b9c1640a4bf3e0c156e61491fa3",
+    "data/experiments/deepseek_v1/lic/upfront_r225.json": "96302ccef75dc210aceb5d63dff61948f220cba130d85c54686bf78a44b3c3ae",
+    "data/experiments/deepseek_v1/lic/upfront_r226.json": "eb753f752249a26266d21a091125bd12a1d8a0dfec9ebf30f79acd1f3168debc",
+    "data/experiments/deepseek_v1/lic/upfront_r227.json": "0726609c5ef5efc5a18391daefec92947ac66bd537a48b12df466afb816589db",
+    "data/experiments/deepseek_v1/lic/upfront_r228.json": "72f5c47018610c997706ec6ac88714768892f0009aad1fd324dc1fe0a477f78b",
+    "data/experiments/deepseek_v1/lic/upfront_r229.json": "8014dca1c44060e9c86f4c10e438a4ec953c4516bd953a77bfb92fb7639bd61f",
+    "data/experiments/deepseek_v1/llzo/iterative_r200.json": "af94ed9824d9fe94346cc6fecafbd1eb56f35dcd775f21fa7706f96a4a2ab945",
+    "data/experiments/deepseek_v1/llzo/iterative_r201.json": "94602243fc33e3280b04515f94950a9a8953496ac7db010b72d21ce214746027",
+    "data/experiments/deepseek_v1/llzo/iterative_r202.json": "78a8f0111b1dab3210252fbdf7b5f8dcc86ab68d79cedf102f46487428a81fbe",
+    "data/experiments/deepseek_v1/llzo/iterative_r203.json": "c222050735522f42341f00cda69fbbc7fb4c9e912b399e84407bce847403f667",
+    "data/experiments/deepseek_v1/llzo/iterative_r204.json": "9eb436905518e182292d08212bbae9d527078ad6fce4c4f540c0cf6c01bdc945",
+    "data/experiments/deepseek_v1/llzo/iterative_r205.json": "07d9f9d3f336415bcfaa47e9a000bc1ec4ec9e488761c419ab385a467d60dba9",
+    "data/experiments/deepseek_v1/llzo/iterative_r206.json": "4ba86b83f4c87a05da5f7d4d23b9f48ac469397f9801c6a0d5759ce0b1609743",
+    "data/experiments/deepseek_v1/llzo/iterative_r207.json": "58cba742689d74712092d9625cf221c3bc90c2df9da8610bf30389f62420d7cc",
+    "data/experiments/deepseek_v1/llzo/iterative_r208.json": "135ccd3fb64f7c3989b387607593090281fcc891440e4b7b1752ec2c8541d15b",
+    "data/experiments/deepseek_v1/llzo/iterative_r209.json": "79846a39b56cbf90586619c976a956a403e5a35228ae2fe44d4764ff53d1b328",
+    "data/experiments/deepseek_v1/llzo/iterative_r210.json": "86a04f17567e19a03daafd6201083ff360062512a656f5dc8b3202fef01502f6",
+    "data/experiments/deepseek_v1/llzo/iterative_r211.json": "8e041517ebd5c425ae677faa026daf4daecdf410be0bbf8884247f9c91ab2739",
+    "data/experiments/deepseek_v1/llzo/iterative_r212.json": "2106020beda587919b002b9efb9c63d5082845370195671c6b2b20fa6c2b740f",
+    "data/experiments/deepseek_v1/llzo/iterative_r213.json": "3162febbda4eeba97863649934bdf7f5f59eaa50d1b35d815b493bc2702dfed1",
+    "data/experiments/deepseek_v1/llzo/iterative_r214.json": "bfaba733867860b7d789241f47cdb40e521b6a4b488a1689d239f977b186a7c8",
+    "data/experiments/deepseek_v1/llzo/iterative_r215.json": "e48cabd6a9a161816442f41ae1fc4959d632911a7548fb782a84c1242adac149",
+    "data/experiments/deepseek_v1/llzo/iterative_r216.json": "b28bda94747886e3c742c0cbd2c50c7f4324a1c2b8181e65685ddf75938c2a1a",
+    "data/experiments/deepseek_v1/llzo/iterative_r217.json": "86a50a0947b426733f6eb1aed4647b5ec94d3c9ad597c5086fc28dddc1855723",
+    "data/experiments/deepseek_v1/llzo/iterative_r218.json": "61b89c70a60b6799949042bd7ea93bbc6da725f5b05dc6a40dafc73d2b88b200",
+    "data/experiments/deepseek_v1/llzo/iterative_r219.json": "f7429f9e7d3265f8c2999c8fde1ac055bf52c3d0d0a8c7d00593ea314bed28bd",
+    "data/experiments/deepseek_v1/llzo/iterative_r220.json": "b9400e7ce5c7e54d51c31dc92200abee8207e4d43e9f27be7da7e57d031cb2a5",
+    "data/experiments/deepseek_v1/llzo/iterative_r221.json": "08a73f9b1f6d4f8cadc4d5ae39ac1a8228fd699fddbda8be41b0466be76243a0",
+    "data/experiments/deepseek_v1/llzo/iterative_r222.json": "58ebb6b4da4f0bd15a814b47e615c1d7609f11a9a01381752360cce1591eb184",
+    "data/experiments/deepseek_v1/llzo/iterative_r223.json": "024c0d1082a4c66f2defb3ee2af19ae625491c17a028d034bc3a4f6abeaa4faf",
+    "data/experiments/deepseek_v1/llzo/iterative_r224.json": "54a7d5e39c612c732c2c94c50059e3e08e1c6ed34dc6cf560497440fbfa582a6",
+    "data/experiments/deepseek_v1/llzo/iterative_r225.json": "23e5e99dae1ff1801eef1c4937be2eb721a1f82aab21dfd50e1aa9d72f3c4a9f",
+    "data/experiments/deepseek_v1/llzo/iterative_r226.json": "1198584f49e683454fb009a8324b9ae2e89ac71d49ec193d26abce386822e82f",
+    "data/experiments/deepseek_v1/llzo/iterative_r227.json": "5a1cdd41660ea7b527fe301ee577268c6a3f4f5b1209cfb2ec19f2917fb9b1b3",
+    "data/experiments/deepseek_v1/llzo/iterative_r228.json": "37d7ffa3ed138ccf4ce95caf377d60d6ede5955b807a5a155b520d5a16db9dc2",
+    "data/experiments/deepseek_v1/llzo/iterative_r229.json": "7f1bd0561b7005bbc1dd59e9ca1ceb186e2aae581176dd5017a7c07d4dd4c17d",
+    "data/experiments/deepseek_v1/llzo/sequential_r200.json": "6210e7560785a036b81e82823c4cfceb9a3eefecc9d7476e0add34d7094f8d2a",
+    "data/experiments/deepseek_v1/llzo/sequential_r201.json": "93947a83e0d5bc083517d4cf9689c954a430d89d13b27c3695a07480008a0f5e",
+    "data/experiments/deepseek_v1/llzo/sequential_r202.json": "369a2bb6229450f3890c91cc50bc6bb4af64695ead65c0ea70566dbb2ad6dc6f",
+    "data/experiments/deepseek_v1/llzo/sequential_r203.json": "18b99fe7aa6bf3b63119f47cf63de5a96416620349cd89ffdc87364f6296d35d",
+    "data/experiments/deepseek_v1/llzo/sequential_r204.json": "8a5142982dac896752f477faacf3f267a0694b920baf705f5b1a5199f94689ff",
+    "data/experiments/deepseek_v1/llzo/sequential_r205.json": "988acb7128ea69614d5bc1007bfcac7490005577a463681bfa7af228f610f49d",
+    "data/experiments/deepseek_v1/llzo/sequential_r206.json": "97b376be2f2524a13e96e683df66334cd7bf96df548f241f467c721115bdd67c",
+    "data/experiments/deepseek_v1/llzo/sequential_r207.json": "18e54cd4c8dca25bed7e9f01e29a0d287d52087d6ab9b8031dd22f7c8fd92421",
+    "data/experiments/deepseek_v1/llzo/sequential_r208.json": "624261717b3091ca52cf14d25ec11169423569526c4ab3ab1d04d93f7f81c88e",
+    "data/experiments/deepseek_v1/llzo/sequential_r209.json": "0f26f2a0d77080b9827e72dfce33ad5df00d44abc3d16d34d991e9b865bd9604",
+    "data/experiments/deepseek_v1/llzo/sequential_r210.json": "784c7be5dc31b7579fb2d6e07f1048673be886308fc424efecb61fcf4f2a75d9",
+    "data/experiments/deepseek_v1/llzo/sequential_r211.json": "667802c9fa721039a4e8e4d04c3ae98a769abf115e75eb2d662aaa553e7ccbce",
+    "data/experiments/deepseek_v1/llzo/sequential_r212.json": "c5f208af113b4d7dadf0eafbc608019609f0fc4de3ceadab74ad4e3485ff7a24",
+    "data/experiments/deepseek_v1/llzo/sequential_r213.json": "2d0cd1e095ff8bb833ba9c3364cb632ed65665b1744028ed0d184a351f84327e",
+    "data/experiments/deepseek_v1/llzo/sequential_r214.json": "c3e65997d4737f6aede9309a97099066d59e087ad697c1cb9153447fdb6bc5da",
+    "data/experiments/deepseek_v1/llzo/sequential_r215.json": "b085ef49d9f704996fa05e4b239a377d79bb2b9413d32516accfd561606db6c8",
+    "data/experiments/deepseek_v1/llzo/sequential_r216.json": "ef276282c8337c3a69f176da30947e724e23db29823f28040e81c45d294dabbf",
+    "data/experiments/deepseek_v1/llzo/sequential_r217.json": "f7cbe71376bccf20355b5132fa759a00bfdfc57e3329fae2d8ee8787a64fc123",
+    "data/experiments/deepseek_v1/llzo/sequential_r218.json": "599fa6af870fcedacedd5f3d46094088ce39ea906b2055bc24f59738dec65330",
+    "data/experiments/deepseek_v1/llzo/sequential_r219.json": "7763a28ce5ac4a7631f4dbcb5f76bfa9b47b0734204fac157fe26e54b3f39946",
+    "data/experiments/deepseek_v1/llzo/sequential_r220.json": "8131777535bf54d1f4cd9ae3a589937d644b06f1390351852e31fe3479a57ee8",
+    "data/experiments/deepseek_v1/llzo/sequential_r221.json": "81755cde36c5b37813255f7eb3b596ad4fd680acaefe91d52e80be498cc8000e",
+    "data/experiments/deepseek_v1/llzo/sequential_r222.json": "53293444a2f4eca5eb1e30b652cd4602969d9cb5fc2b0ad91d647ba685077bf7",
+    "data/experiments/deepseek_v1/llzo/sequential_r223.json": "bf3d2cb0b4adf092e543a9605b1dd3cf3be15777620058a40e32f0925553846d",
+    "data/experiments/deepseek_v1/llzo/sequential_r224.json": "b5537ebb29b2e239ab878fca0ec92f0f39c0de04511621e28049be2fb89639b2",
+    "data/experiments/deepseek_v1/llzo/sequential_r225.json": "808aa120b14c8236886ad80ea8a4ea6be35af7b277626442c07133f4da26c282",
+    "data/experiments/deepseek_v1/llzo/sequential_r226.json": "63dfbb1671681e0f71adf179bae2a2c2bc93392d61a55d57cee933fa0cc0b5e4",
+    "data/experiments/deepseek_v1/llzo/sequential_r227.json": "4047cb172def5944e43097213cb31a68f26ef4caa0128f96257aa287f8d3baac",
+    "data/experiments/deepseek_v1/llzo/sequential_r228.json": "920bc93b035f3cb5c23d8452461df40dbb6fc32bbf21f75bcd93c297f562848d",
+    "data/experiments/deepseek_v1/llzo/sequential_r229.json": "ff10c84857178dc08eade61907ed0f3742546dbe8eaee14fba2b52c264bd3049",
+    "data/experiments/deepseek_v1/llzo/shuffled_r200.json": "8d5dbb3a1aee626c8cf0a8d0543262a593b2f735f0e7a29573cd46beaf2614e8",
+    "data/experiments/deepseek_v1/llzo/shuffled_r201.json": "c6f982a323be3476a1d9716d48ac44a26c69f3ffa041b1be273888ce68a6a748",
+    "data/experiments/deepseek_v1/llzo/shuffled_r202.json": "d58b2422c80fca42ee300b4ffc878bf7ad6e32845aa7a3cfafdb309b204565d2",
+    "data/experiments/deepseek_v1/llzo/shuffled_r203.json": "b8a05ce0e42393038e47e4c6872ab59b7bc677c238757d44eedb65117c294bc4",
+    "data/experiments/deepseek_v1/llzo/shuffled_r204.json": "9dbe09dee6655d73a0690cc3fa66f60c8f45e41224983b68ad1c1467e8d973db",
+    "data/experiments/deepseek_v1/llzo/shuffled_r205.json": "9c29e504ac1bcd75d0fe5c46f12cb024d1c3f77870365eac82ab77352b65017e",
+    "data/experiments/deepseek_v1/llzo/shuffled_r206.json": "e48a8b2b828ade135b5ac1aed0f10bbdb3e5a881ed410396f7b301d069410c02",
+    "data/experiments/deepseek_v1/llzo/shuffled_r207.json": "9272b83f0b100d061940ed4d965caec760d937a7e62fdc5df51816ba8e2f5148",
+    "data/experiments/deepseek_v1/llzo/shuffled_r208.json": "aeea5ad9d214081a9064382bfe48301a719202f8c90faf7e280de8419c6ba178",
+    "data/experiments/deepseek_v1/llzo/shuffled_r209.json": "2524fa45b1269f074b00750de2a6b8d01550e06e320dfa87ee0b26959eee84a2",
+    "data/experiments/deepseek_v1/llzo/shuffled_r210.json": "bbfd894c16132194fcca0ba80455334218072b9962c795f2cf8673bb9b724ad6",
+    "data/experiments/deepseek_v1/llzo/shuffled_r211.json": "c41d20dcca5821c01770931795a7955e9f68c0da6005c5da52b2f33d221acdd9",
+    "data/experiments/deepseek_v1/llzo/shuffled_r212.json": "37efffc38463fb30cbdeac8536e7f37268ae7dd13bd820dd22c351943eaab074",
+    "data/experiments/deepseek_v1/llzo/shuffled_r213.json": "cf27f3cd8a391f4be98b591000e89afa644cb9113dabda910d6ee9a567456535",
+    "data/experiments/deepseek_v1/llzo/shuffled_r214.json": "f0f7efa4f84248cdcd87b38dbdbfc1b0e0c983caaf2a5ffa7501eee31aff3fd0",
+    "data/experiments/deepseek_v1/llzo/shuffled_r215.json": "fa0cc502451a3a86d68d7189f40b26b4a5ec11b9b2f511f4d996340ee2e96e9e",
+    "data/experiments/deepseek_v1/llzo/shuffled_r216.json": "d18d6d89926d822b458697581d6bda76fd6e3e5da2441944b752097f54e27299",
+    "data/experiments/deepseek_v1/llzo/shuffled_r217.json": "f523c1774141e0cf080f4cd6e38944f3d65f6cfd4d8de8959e783062f098fb8b",
+    "data/experiments/deepseek_v1/llzo/shuffled_r218.json": "0c85504fd33212a940a70dbe9a9a3110b52931fe4b30668ed917e994ce0cd487",
+    "data/experiments/deepseek_v1/llzo/shuffled_r219.json": "36f0a7ffb889edff2b32b28d29f6b675c1655b8ce2cb1df00e370bd63505f158",
+    "data/experiments/deepseek_v1/llzo/shuffled_r220.json": "60c4958ec6f2e95f8b50182ba5e315b93cfc0fc79366198e10e5bf66ecab6e50",
+    "data/experiments/deepseek_v1/llzo/shuffled_r221.json": "64de5f5d06363a273467bcb344905d77c971089e4f63672b4418d3d4c4d93d1b",
+    "data/experiments/deepseek_v1/llzo/shuffled_r222.json": "62235a7e84832d298fed44e1be35f604cf35eebe5c31504ede4697cf6e67c38f",
+    "data/experiments/deepseek_v1/llzo/shuffled_r223.json": "140fe14106660958f13eb8aaaafcdcde83dad15d18090f3fd6c0072bb4e3ccba",
+    "data/experiments/deepseek_v1/llzo/shuffled_r224.json": "8eefb7ba0554fb007c093fc26d745c0afaf562000441965652cd7f8f2c0fac9a",
+    "data/experiments/deepseek_v1/llzo/shuffled_r225.json": "25255905bcfb18ec0b60d26fbc76e800b737e8b85d30bd4f5bb5891f4d1d9126",
+    "data/experiments/deepseek_v1/llzo/shuffled_r226.json": "b1660a6f8950f982197029987ab0b043d4cb6c0ea98a2f978b1d6ee3c0b5d1cd",
+    "data/experiments/deepseek_v1/llzo/shuffled_r227.json": "bea032caa83db0f44b2f2cd265da9a686a6d52167fa9ef822542cef7512b67b4",
+    "data/experiments/deepseek_v1/llzo/shuffled_r228.json": "26d46ab3a857594cfd1648630a2b90a4129d8de08a603853ddb508f2379fdc51",
+    "data/experiments/deepseek_v1/llzo/shuffled_r229.json": "d45aa75f5b144102f8c9aaccf8f7c54add1de720b6a8717519e568d5733c8ad6",
+    "data/experiments/deepseek_v1/llzo/upfront_r200.json": "212ed9e7560691320b208705141d8c65fa3eb071e1fa3af9d84e18ef23a86f12",
+    "data/experiments/deepseek_v1/llzo/upfront_r201.json": "9133e7e154ac96770c5789e464fc5b96edb98b93b5c09fcb1734b9d35f27e725",
+    "data/experiments/deepseek_v1/llzo/upfront_r202.json": "b905dd8261f08db50b2b124f552f8f6e592cdfacafaec0809783aa1f8b2bc7cb",
+    "data/experiments/deepseek_v1/llzo/upfront_r203.json": "47a929fc3d1d1a60e44f1bae4f4e106a8a01deff43cbd703482aa28abc9e9d87",
+    "data/experiments/deepseek_v1/llzo/upfront_r204.json": "5d34b394a638ebfc7332562105c53a7fdffae527da4d1ee48e162ba702fb861a",
+    "data/experiments/deepseek_v1/llzo/upfront_r205.json": "dee0e0c4d63ae12f81910c63108c1e3e3d1da050040cb96bf50769fedeeccad1",
+    "data/experiments/deepseek_v1/llzo/upfront_r206.json": "1831eb8833c2d172a01c33f86bce95c2f13c63629705f00ee3b39ef38482a7af",
+    "data/experiments/deepseek_v1/llzo/upfront_r207.json": "3e7aa928ee11ca12398927351e58252a03b9ef3dcabf92c9c98a1a46f3cd90a5",
+    "data/experiments/deepseek_v1/llzo/upfront_r208.json": "0363e90c6f954237246ec651a3ae280fc9c985b57ed1b2f89b147988c053574f",
+    "data/experiments/deepseek_v1/llzo/upfront_r209.json": "7e05d6c1c9e16e657791db0a7794258ab569c93ff99622c2de31f74956795243",
+    "data/experiments/deepseek_v1/llzo/upfront_r210.json": "4eb0831f20dc82cb288c380c8416c2a858abc509cc828101144fbbb5c292d124",
+    "data/experiments/deepseek_v1/llzo/upfront_r211.json": "2ababd80655ff7263011d3f5bf20d008ff40a002ee3ebfeac4b008a64a299474",
+    "data/experiments/deepseek_v1/llzo/upfront_r212.json": "374b14b984119d282a2c47f30504ec47d3376abc637734f5fdda2bacf4fadaf4",
+    "data/experiments/deepseek_v1/llzo/upfront_r213.json": "98dc86973656b6a9edd9325ae1f0ab64036b0e79eaa74ebeaa8ce33a5a9045ae",
+    "data/experiments/deepseek_v1/llzo/upfront_r214.json": "79b608bc263fbfeffde4ba08e136a882202c8f9a9c9310b4802de9e397678c0f",
+    "data/experiments/deepseek_v1/llzo/upfront_r215.json": "071a6ce8bc623804f5a865f6cdd5df2b560155330ef0ab50981e40dcd49d54c3",
+    "data/experiments/deepseek_v1/llzo/upfront_r216.json": "c5c4490d6e7c9ad2d17d92452fd04448cdec87410449c8c1494fecaf942fb360",
+    "data/experiments/deepseek_v1/llzo/upfront_r217.json": "3fb725326d336e1c7b28de71b35f35ed25140390a8a8fecdacb121289f25cecb",
+    "data/experiments/deepseek_v1/llzo/upfront_r218.json": "6d27e15447d9ddad8be0f226a1f98ff2fd0582631d64cc7472b645423a99582b",
+    "data/experiments/deepseek_v1/llzo/upfront_r219.json": "32f8893ac0c20e3a005a1bcde0a1428195d1b6fbd1e376114f7531802d6f220a",
+    "data/experiments/deepseek_v1/llzo/upfront_r220.json": "3ecff36d129341f5b1a00ea828acff4349079a7e425d6359b44619a4e5c1d3d8",
+    "data/experiments/deepseek_v1/llzo/upfront_r221.json": "d783834813e7d7f10d0e1cd6b74413f52875725d1eed78742097c134c2d2c06e",
+    "data/experiments/deepseek_v1/llzo/upfront_r222.json": "89be94fbd2f99632f41e67d9483165f9b9b41b97c4325cb9184d93becc645703",
+    "data/experiments/deepseek_v1/llzo/upfront_r223.json": "4d5c3fe6b384da3a08eae7a7a51c6784aedc74c9d7c954f9db964b114674fc3d",
+    "data/experiments/deepseek_v1/llzo/upfront_r224.json": "3bd29dcfb5162be9a0119c26ebf8f404212761f2e2ade6e38ef0228b893cf12e",
+    "data/experiments/deepseek_v1/llzo/upfront_r225.json": "223ce33fdfc4e3acffc0ca7f64e75a431eaf7bd8f32758e1220aa01331eaf255",
+    "data/experiments/deepseek_v1/llzo/upfront_r226.json": "d04063aeb6bb52ac89009e57f5987816f7b93841c0323238c9bb1078dcdecc9d",
+    "data/experiments/deepseek_v1/llzo/upfront_r227.json": "0b87bd418aec27ff7ac06086c7c6c984e9c6b3d3e02e4deeea0a6d7d8ae81244",
+    "data/experiments/deepseek_v1/llzo/upfront_r228.json": "b474fef0a8eae004a7c0c3919d48a5508ac9f425aa7264501130658df7a7c6d2",
+    "data/experiments/deepseek_v1/llzo/upfront_r229.json": "82dcdc3ba1d5d10fe6437d2d03937f0ff7535f3a6d8faaf6ef8a5313dd2da04b"
+  },
+  "pinned_prior_evidence_sha256": "1a56555e6730a52461ffe51e3dd489f2e3c0c36532c1d0d1db9dfd3b1316f7a3",
+  "program_url": "https://scientificintelligence.org/campaigns/osi-hackathon-2026"
+}

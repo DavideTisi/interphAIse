@@ -19,7 +19,7 @@ it must be no longer than four minutes. The interactive viewer is supplementary.
 | Public social post | Still required. No post has been published or authorized in this session. An updated draft with the public repository link is below. |
 | Rules confirmation | A human must read and confirm the rules at submission. The campaign's separate “How the hackathon works” link returned 404 during this check, so that link did not establish any additional eligibility conditions. |
 | Supporting demo | [Public six-interface viewer](https://davidetisi.github.io/interphAIse/) is verified without login; [offline download](https://davidetisi.github.io/interphAIse/interphaise-referee-viewer.zip) is also verified. |
-| Slides | [Accessible checkpoint](../presentations/nonexpert_2026-10-22/interphAIse_the_idea_and_LLM_results_2026-10-22_v4.pptx) and [detailed checkpoint](../presentations/results_2026-10-22/interphAIse_results_synthesis_2026-10-22_v2.pptx) are public. The newer deck covering both configurations remains in progress in its separate chat. Slides support the write-up rather than replace it. |
+| Slides | **Ready:** [four-minute v9 pitch](../presentations/two_formats_2026-10-22/interphAIse_4_minute_pitch_2026-10-22_v9.pptx) and [fifteen-minute v9 talk](../presentations/two_formats_2026-10-22/interphAIse_15_minute_talk_2026-10-22_v9.pptx) cover both configurations and the Haiku physical pilot. [Matching PDFs and review record](../presentations/README.md#current-presentations-v9). Slides support the write-up rather than replace it. |
 | Optional video | Not recorded in this work. If useful, show the problem, controlled LLM results, one forecast success and one failure, then the viewer. Keep it under four minutes. |
 
 ## Fit to the judging criteria
@@ -85,8 +85,8 @@ This remains an unsent draft for the team to review and publish.
    repository public and anonymous links checked. The README links the write-up,
    reproduction command, completed slides and viewer. LiF remains uncomputed.
 2. **Write-up complete:** use the new one-page report incorporating DeepSeek.
-   Finish the newer presentation in its separate chat if it is to accompany
-   the entry; it is supporting material.
+   The reviewed v9 presentations and PDF companions are ready as supporting
+   material. Rehearse the four-minute pitch before recording an optional video.
 3. Publish the team's chosen social post and copy its public permalink.
 4. Complete the write-up and rules confirmation in the event form, add the public
    links, and submit before the deadline. No submission was made by this agent.

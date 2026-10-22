@@ -4162,3 +4162,88 @@ check handles those archived failure rows explicitly. Confirmed the opening,
 results, links and image URL are unchanged and checked whitespace. No API/LLM
 call, simulation or full unit-test run was needed. Use the updated Markdown for
 the submission; the Word document remains the earlier version.
+
+## 2026-10-22 — Review both latest v8 presentation decks
+
+Davide asked whether anything was missing from “v28”, then confirmed the latest
+v8 pair after no v28 file was found. Reviewed the 8-slide pitch and 24-slide talk
+(20 main, 4 backups) in the separate interphAIse authoring checkout. No PPTX/PDF
+was edited. This review does not imply publication of those currently untracked
+files. The integrated main tree still has the earlier deck checkpoints.
+
+Source hashes: pitch 17a0ad836d84af269b1b358ea9ff578baecd0d35719064f78858090b667dcd85;
+long talk dc50513addfc3421bde4baa81980c6349f5d54e44a3aa79b91b1e998d533315c.
+Read all slide text and notes in presentation order, checked the saved v8 contact
+sheets and selected full-size renders, and verified all 48 displayed chart values
+against the final Haiku/DeepSeek summaries. The six primary adhesion values,
+prospective forecasts and reported corrected comparisons match the final record.
+The source files remain byte-identical. Native PowerPoint was not opened in this
+review; the earlier authoring session's native-render checks are separate.
+
+The core evidence is complete: success definitions are visible on pitch slide 3
+and talk slide 7; the LLM's role is explicit, and the controls, negative LLZO
+result and failed Ca-Al forecasts are retained. Recommendations before delivery:
+
+- Pitch slide 5: replace “Only thermodynamics” because the table shows PET-MAD
+  adhesion. State that these are provisional polar model interfaces, with lithium
+  transport untested. Make the same physics caveat visible on talk slide 15/24;
+  polarity and unquantified Ca-Al electrolyte sensitivity are currently in notes.
+- Explain the menu early as 141 known crystal structures / 100 formulas. The long
+  talk's detailed menu slide 12 currently follows the first result. Pitch slide 2
+  can carry the short definition. Repeated searches can find the same material.
+- Bring a compact model-configuration / unmatched-reasoning caveat onto the main
+  comparison slides. Preserve the descriptive treatment of random and cross-model
+  contrasts. Keep the LLZO proxy/oxyhalogen caveat visible, not only in backup 23.
+- The pitch says forecasts held/missed without showing an actual forecast. One
+  Ca-Al example (electrolyte forecast 1.4–1.9, observed 0.744 J/m²) would make the
+  prospective test tangible. The long talk already gives the complete table.
+- Close with the main finding and public code/viewer links, alongside next steps.
+  Neither deck currently shows a public URL. No matched human-expert baseline or
+  general compute savings were demonstrated; those limits should be easy to see.
+- Before publishing, replace seven stale local source paths in each deck's notes
+  with current public repository links. Publish only the reviewed current PPTX/PDF
+  pair, rather than the entire authoring directory with previous versions/locks.
+
+Inspection output and check results: runs/presentation_v8_review/ (ignored).
+The first extraction assumed relative OOXML targets and stopped on an absolute
+package path; the corrected resolver handles both. No API/LLM/MLIP calls,
+simulations, collaborator messages, commits or pushes occurred for this review.
+No further experiment is needed to address these presentation findings.
+
+## 2026-10-22 — Create reviewed v9 pitch and talk
+
+On integrated main, Davide asked for new versions after the v8 review. Created
+an 8-slide four-minute pitch and 24-slide fifteen-minute talk (20 main + four
+backups), each as an editable PPTX and matching PDF under
+presentations/two_formats_2026-10-22/. Preserved the v8 files and original
+presentation checkout, and retained exact input copies under source/reference_v8.
+
+The edits define 141 structures / 100 compositions and repeated-run success,
+show the Ca–Al prospective forecast miss in the pitch, correct the erroneous
+“Only thermodynamics” caption, and expose the model-configuration, LLZO proxy
+and polar-interface limitations. The close states the finding about prior
+knowledge versus adaptation, retains transport as future work and links public
+code/evidence and the viewer. The physical pilot remains Haiku-only. Notes now
+use public sources. README, presentation index, REPORT and submission checklist
+point to the current pair. No scientific conclusion or frozen evidence changed.
+
+Used the presentation skill's Artifact Tool editor and finalizer. A restricted
+XML transplant applies only the authored text/geometry and notes, preserving
+native charts, workbooks, tables and media. Reviewed all 32 full-size slide
+renders across draft/final checks. Package, layout, reference-font, chart and
+reimport checks pass. Two inherited table-height heuristic warnings on long
+slides 8 and 21 were inspected and do not show clipping in the renders. Native
+PowerPoint was not opened. All 48 chart values match the final archives, all
+public source paths resolve locally, and both PPTX/PDF closing links validate.
+Every PDF page preserves the reviewed pixels; physical slides were also checked
+through Poppler rendering. The initial evidence script used the display name
+LLZO rather than the archive key Li7La3Zr2O12; corrected and rerun successfully.
+
+The detailed hashes, caveats and commands are in
+presentations/two_formats_2026-10-22/VALIDATION_v9.md. Builders and the offline
+verifier are in presentations/source/. Private receipts are under ignored
+runs/presentations_v9/. No API, LLM, MLIP, GPU job or scientific test run occurred.
+Unrelated uncommitted Word v2 work and earlier shared-log additions are preserved
+and excluded from this commit. Remaining user step: rehearse the pitch and check
+native PowerPoint timing before an optional recording; no event submission or
+social post was made. Publication follows the session's existing authorization.

@@ -1,5 +1,15 @@
 # interphAIse — project report
 
+**Reviewed presentations v9 — 22 October 2026:** The
+[four-minute pitch and fifteen-minute talk](../presentations/README.md#current-presentations-v9)
+now cover both completed LLM configurations and the prospective Haiku/PET-MAD
+pilot, with editable PowerPoints and matching PDFs. They define candidates and
+search success, show a numerical forecast miss, distinguish descriptive model
+comparisons from corrected feedback tests, and make the physical and LLZO proxy
+limitations visible. Public source links replace local paths in the notes.
+The v8 sources, numerical evidence and older checkpoints are preserved. No new
+experiments were run; the submission form and social post remain separate.
+
 **Approved submission v3 — 22 October 2026:** Davide selected the
 [illustrated v3 Word report](../presentations/results_2026-10-22/interphaise_submission_illustrated_2026-10-22_v3.docx)
 as the submission write-up. [SUBMISSION_WRITEUP.md](SUBMISSION_WRITEUP.md) now

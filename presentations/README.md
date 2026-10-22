@@ -1,5 +1,27 @@
 # Presentation checkpoint
 
+## Current presentations: v9
+
+These are the current decks incorporating the completed **Haiku and DeepSeek**
+environment study and the **Haiku-only** prospective PET-MAD pilot.
+
+| Format | Editable PowerPoint | PDF for sharing |
+|---|---|---|
+| Four-minute pitch, 8 slides | [PowerPoint](two_formats_2026-10-22/interphAIse_4_minute_pitch_2026-10-22_v9.pptx) | [PDF](two_formats_2026-10-22/interphAIse_4_minute_pitch_2026-10-22_v9.pdf) |
+| Fifteen-minute talk, 20 main slides + 4 backups | [PowerPoint](two_formats_2026-10-22/interphAIse_15_minute_talk_2026-10-22_v9.pptx) | [PDF](two_formats_2026-10-22/interphAIse_15_minute_talk_2026-10-22_v9.pdf) |
+
+V9 keeps the v8 layout and numerical evidence, with clearer candidate/success
+definitions, visible caveats and a concrete failed forecast in the pitch. The
+closing slides link to the public repository and viewer. The native charts,
+workbooks, tables and illustrations remain unchanged and editable where applicable.
+Speaker notes link to public sources. PDFs preserve the reviewed appearance as
+page images, with clickable closing links. Rehearse the scripts to confirm timing.
+
+The [review and reproduction record](two_formats_2026-10-22/VALIDATION_v9.md)
+documents checks and limitations. The exact v8 inputs are retained under
+[source/reference_v8](source/reference_v8/) for reproducibility. Earlier deck
+checkpoints below are historical and do not supersede this pair.
+
 ## Approved submission write-up
 
 Use the [copyable Markdown](../docs/SUBMISSION_WRITEUP.md) or the
