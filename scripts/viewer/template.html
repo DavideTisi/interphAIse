@@ -62,6 +62,24 @@ if([rawStructures,rawCatalog].some(value=>value.trim().startsWith('__'))){
 }
 const structures=JSON.parse(rawStructures),catalog=JSON.parse(rawCatalog);
 if(!Array.isArray(structures)||!structures.length||!catalog.summary||!catalog.environments)throw new Error('Missing structure catalogue');
+if(catalog.edition==='referee'){
+ document.body.classList.add('referee');
+ document.title='interphAIse · Referee structure explorer';
+ document.querySelector('h1').textContent='Three coatings · six interfaces';
+ document.querySelector('header p').textContent='Explore the actual relaxed atomic structures behind our LLM-guided coating pilot. Each coating was calculated against a LiCoO2 cathode and a Li6PS5Cl electrolyte separately. Choose a coating below; drag to rotate and scroll to zoom.';
+ document.querySelector('.filters').hidden=true;
+ for(const row of document.querySelectorAll('.catalog > .catalog-actions'))row.hidden=true;
+ const link=document.createElement('a');link.href='interphaise-referee-viewer.zip';link.download='interphaise-referee-viewer.zip';link.textContent='Download offline explorer (ZIP)';link.style.color='#6ee7c3';
+ const offline=document.createElement('p');
+ if(location.protocol==='file:')offline.textContent='Offline copy · all six structures are embedded in this file. No login, installation or API key required.';
+ else offline.append(link,document.createTextNode(' · No login, installation or API key required.'));
+ document.querySelector('header').append(offline);
+ const model=document.createElement('p');model.textContent='PET-MAD 1.6 r²SCAN · Primary results shown below; sensitivity information was released after the LLM decisions. These are provisional models, not experimental battery performance.';
+ document.querySelector('header').append(model);
+ document.querySelector('#campaign .small').textContent='Values are W_adh, J/m². The small LiNbF6–LiTaF6 gap is below documented construction sensitivities; this is not a robust materials ranking.';
+ document.querySelectorAll('footer .footer-note')[1].textContent='Atomic radii are scaled for visibility; bonds are not inferred. Cell edges include vacuum. Repeat and wrap change only the display. XYZ downloads preserve the saved coordinates, species and verified labels/constraints. The complete research catalogue is available as a separate repository build.';
+ const style=document.createElement('style');style.textContent='body.referee .panel-tools,body.referee #comparison-note,body.referee #environment-note{display:none}body.referee .catalog>[hidden]{display:none}body.referee .catalog .filters[hidden]{display:none}body.referee .panel-head select{min-width:140px}';document.head.append(style);
+}
 $('startup').hidden=true;$('explorer').hidden=false;
 let yaw=0,pitch=-Math.PI/2,zoom=1;
 const panels=[];
@@ -87,6 +105,7 @@ if(catalog.campaign){
  }
 }
 $('coverage').textContent=`${summary.total} saved geometries · ${summary.candidate_ids} coating IDs · ${summary.calculated_runs} calculated interface runs`;
+if(catalog.edition==='referee')$('coverage').textContent='6 selected primary interfaces · 3 coatings · no new calculations';
 for(const line of [...summary.limitations,...summary.warnings])$('catalog-details').append(text('p',line,summary.warnings.includes(line)?'warning':''));
 function matches(s){
  const q=$('search').value.toLowerCase().replace(/\s+/g,' ').trim();
@@ -242,6 +261,7 @@ $('top').onclick=()=>{yaw=0;pitch=0;draw();};
 $('oblique').onclick=()=>{yaw=.5;pitch=-1.1;draw();};
 $('reset').onclick=()=>{zoom=1;draw();};
 new ResizeObserver(draw).observe($('panels'));applyFilters();currentContacts();
+if(catalog.edition==='referee'){$('color').value='group';yaw=.5;pitch=-1.1;draw();}
 }
 try{initializeViewer();}catch(error){
  $('explorer').hidden=true;$('startup').hidden=false;
