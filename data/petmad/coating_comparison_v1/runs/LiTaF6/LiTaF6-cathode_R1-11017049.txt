@@ -1,0 +1,52 @@
+job=11017049 node=s001.nifl.fysik.dtu.dk partition=sm3090el9_devel cpus=4 gpus=0 code=207f879
+NVIDIA GeForce RTX 3090, 595.104.02
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /home/energy/davti/.cache/warp/1.18.0
+Module nvalchemiops.neighbors.base_dispatch c9ac13f load on device 'cuda:0' took 1155.80 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 842d06c load on device 'cuda:0' took 94.66 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 44c95cd load on device 'cuda:0' took 264.14 ms  (cached)
+Module _wrap_positions_single_kernel__f32_0f63232a 212475f load on device 'cuda:0' took 65.26 ms  (cached)
+Module naive_tile 7a30213 load on device 'cuda:0' took 1.47 ms  (cached)
+Registry 0.0,0.0, gap 2.0: -4745.778809 eV
+Registry 0.0,0.0, gap 2.5: -4743.223145 eV
+Registry 0.0,0.0, gap 3.0: -4740.561035 eV
+Registry 0.0,0.5, gap 2.0: -4745.780273 eV
+Registry 0.0,0.5, gap 2.5: -4743.224609 eV
+Registry 0.0,0.5, gap 3.0: -4740.561523 eV
+Registry 0.5,0.0, gap 2.0: -4745.780273 eV
+Registry 0.5,0.0, gap 2.5: -4743.224609 eV
+Registry 0.5,0.0, gap 3.0: -4740.561035 eV
+Registry 0.5,0.5, gap 2.0: -4745.778809 eV
+Registry 0.5,0.5, gap 2.5: -4743.224609 eV
+Registry 0.5,0.5, gap 3.0: -4740.561035 eV
+Registry fixed at [0.0, 0.0], 2.0 Å; scan optimum differs: [0.0, 0.5], 2.0 Å
+Relaxing interface: 696 atoms, 104 fixed
+interface: converged=True, steps=55, fmax=0.02900
+Relaxing film: 384 atoms, 0 fixed
+film: converged=True, steps=43, fmax=0.04911
+Relaxing substrate: 312 atoms, 104 fixed
+substrate: converged=True, steps=24, fmax=0.04553
+{
+  "status": "converged_pilot",
+  "work_of_adhesion_J_m2": 3.338748412819128,
+  "calculator_calls": 140,
+  "wall_seconds": 69.50429558099995
+}
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /home/energy/davti/.cache/warp/1.18.0
+Module nvalchemiops.neighbors.base_dispatch c9ac13f load on device 'cuda:0' took 1.78 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 842d06c load on device 'cuda:0' took 1.60 ms  (cached)
+Module nvalchemiops.neighbors.neighbor_utils 44c95cd load on device 'cuda:0' took 1.80 ms  (cached)
+Module _wrap_positions_single_kernel__f32_0f63232a 212475f load on device 'cuda:0' took 1.60 ms  (cached)
+Module naive_tile 7a30213 load on device 'cuda:0' took 1.75 ms  (cached)
+cathode_R1: W_sep(fixed) 4.7277  W_adh(relaxed) 3.3387  relaxation: film 1.3683 substrate 0.0207 J/m²
