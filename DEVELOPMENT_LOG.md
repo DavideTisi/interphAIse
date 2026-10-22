@@ -2570,3 +2570,19 @@ runs. Next: the MLIP comparison reader and figure; Claude to confirm the contrac
 Addendum: added `scripts/analyse_mlip_comparison.py` and `tests/test_mlip_comparison.py` (7 passed: real LiNbF6
 archive, registry selection 3.617 J/m², incomplete/failed/duplicate/unconverged/checkpoint/area/arithmetic cases),
 contract fields for the reader, and a labelled layout preview (`MOCK_comparison_layout`). No new calculations.
+
+## 2026-10-22 — Agent side (Adem): live-path fixes from SYNC_ADEM_13 and contract v2
+
+Shared evidence interface in `interphaise/pilot.py`, used by both the pilot and the reader:
+- source re-checks, so `invalid_evidence` blocks and genuine `failed` results are reported;
+- frozen planned coverage, comparability by build and mask, and the new `not_run_*` and `consistency`
+  rows.
+
+Durable HTTP reservation (cap 10), lock, mode pin, stopped-stays-stopped, `previous_decisions`,
+`prior_prediction_assessment`, frozen feedback snapshots, hash re-verification on resume, a prompt cap,
+and negative intervals allowed. `llm.py` now records metadata for non-JSON bodies and timeouts. F3 rejects
+missing metadata on successful calls.
+
+Claude's real index (fixture at 38e4872) loads, and the genuine LiNbF6 feedback validates. Mocked trace on
+that genuine feedback: `MOCK_state_genuine_reference.json`. 72 tests passed. Cost ceiling ≈ USD 0.030
+(enforced), expected ≈ USD 0.006. No API or PET-MAD runs. Details: SYNC_DAVIDE_9.md.

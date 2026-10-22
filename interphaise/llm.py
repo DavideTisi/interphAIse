@@ -78,7 +78,13 @@ def make_llm(model: str, temperature: float | None = None, retries: int = 3,
             try:
                 with urllib.request.urlopen(request, timeout=90) as response:
                     request_id = (getattr(response, "headers", None) or {}).get("request-id")
-                    data = json.load(response)
+                    try:
+                        data = json.load(response)
+                    except ValueError:
+                        attempts.append({"status": "invalid_response_json", "request_id": request_id,
+                                         "elapsed_s": round(time.monotonic() - started, 3)})
+                        finish("response body was not JSON")
+                        raise RuntimeError("Anthropic response body was not JSON") from None
                 attempts.append({"status": 200, "request_id": request_id,
                                  "elapsed_s": round(time.monotonic() - started, 3)})
             except urllib.error.HTTPError as error:
@@ -92,7 +98,7 @@ def make_llm(model: str, temperature: float | None = None, retries: int = 3,
                     continue
                 finish(f"HTTP {code}")
                 raise RuntimeError(f"Anthropic request failed (HTTP {code})") from None
-            except urllib.error.URLError:
+            except (urllib.error.URLError, OSError):   # includes timeouts; HTTPError is handled above
                 attempts.append({"status": "connection_error", "request_id": None,
                                  "elapsed_s": round(time.monotonic() - started, 3)})
                 finish("connection failed")

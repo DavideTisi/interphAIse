@@ -1,96 +1,81 @@
-# Field contract: PET-MAD campaign index ↔ LLM pilot runner (DRAFT, needs Claude's agreement)
+# Field contract v2: PET-MAD campaign index ↔ LLM pilot (agreed with Claude, CONTRACT_RESPONSE.md at 38e4872)
 
-21 October 2026, Adem. Implemented and tested in `interphaise/pilot.py` (`load_index`, `feedback_bundle`,
-`validate_decision`) and `tests/test_pilot.py`. Field names are proposals: change them here and in the code
-together, before Claude emits final records.
+22 October 2026, Adem. Implemented in `interphaise/pilot.py`, which provides the shared evidence interface
+used by both the pilot and `scripts/analyse_mlip_comparison.py`. Tested in `tests/test_pilot.py` (real index
+fixture `tests/fixtures/coating_comparison_v1_index_38e4872.json`) and `tests/test_mlip_comparison.py`.
 
-## 1. Campaign index (written by the PET-MAD side): `data/petmad/coating_comparison_v1/index.json`
+## Index: `data/petmad/coating_comparison_v1/index.json` (written by Claude)
 
-```json
-{"schema_version": "coating_comparison_v1",
- "checkpoint_sha256": "<PET-MAD S 1.6.0 checkpoint>",
- "menu": [{"candidate_id": "mp-aaacjjwh", "formula": "LiNbF6", "feasible": true,
-           "exclusion_reason": null, "descriptors": {"facets": "...", "n_atoms": 696}, "limitations": ["polar slab"]}],
- "runs": [{"run_id": "unique", "candidate_id": "mp-...", "contact": "cathode|electrolyte",
-           "role": "primary|sensitivity", "sensitivity_kind": null,
-           "registry": [x, y], "thickness_layers": 4, "fixed_fraction": 0.34, "bulk_seed": 0,
-           "status": "valid|failed|pending", "failure_reason": null,
-           "W_adh_J_m2": 3.6, "W_sep_J_m2": 5.17, "joined_energy_eV": -4687.49,
-           "checkpoint_sha256": "<same as top>", "result_path": "...", "result_sha256": "...",
-           "source_commit": "...", "job_id": "...", "device": "cuda",
-           "area_A2": 88.8, "n_atoms": 696, "separation_path": ".../fixed_geometry_separation.json",
-           "calculator_calls": 136, "wall_seconds": 61.3, "reused_from": null, "warnings": ["..."]}],
- "cohort": [{"candidate_id": "mp-aaacjjwh", "slot_reason": "reference|llm_choice_2|llm_choice_3|fixed|fallback"}]}
-```
+**Top level:** `schema_version`, `checkpoint_sha256`, `manifest_sha256`, `menu`, `runs` and `cohort`.
 
-Validation enforced by `load_index`:
-- unique `run_id`s;
-- every run's candidate is on the menu;
-- contact, role and status are from the allowed sets;
-- every run's checkpoint equals the campaign checkpoint;
-- `valid` runs need a finite `W_adh_J_m2` and `joined_energy_eV`;
-- `failed` runs need a `failure_reason`;
-- non-valid runs carry no `W_adh_J_m2`, so missing work is never treated as zero.
+**Fields of each run:**
+- identity: `run_id`, `candidate_id`, `contact`, `role`, `sensitivity_kind`, `registry_id`, `registry`, `gap_A`;
+- build and mask: `fixed_rule` (`{"fraction": f}` or `{"depth_A": d}`), `n_fixed`, `fixed_species`, `n_atoms`,
+  `area_A2`, `build_sha256`, `contact_build_id`, `planned_in_manifest_sha256`;
+- outcome: `status`, `failure_reason`, `W_adh_J_m2`, `W_sep_J_m2`, `joined_energy_eV`;
+- provenance: `checkpoint_sha256`, `result_path`, `result_sha256`, `separation_path`;
+- costs: `separation_single_points`, `calculator_calls` (null if unknown, never 0 for a failed run),
+  `wall_seconds`, `reused_from`, `device`;
+- `warnings`: observed notes for that run. Model-wide limitations stay in the menu entry.
 
-## 2. Primary-feedback bundle (built by `feedback_bundle`, hashed before each decision)
+**Roles:**
+- `primary`: decision feedback.
+- `sensitivity`: withheld from decisions.
+- `consistency`: ignored by the pilot and the reader.
 
-For each revealed coating, it contains:
-- the frozen sulfide thermodynamic card, joined by exact ID from `environment_v1/lco_lpscl_4v.json`;
-- per contact: status, the selected registry (lowest `joined_energy_eV` among valid primary runs of that
-  contact), W_adh, W_sep, every primary registry with its status and failure reason, and the warnings;
-- `weaker_contact`, which is `unresolved` if either contact is invalid or the gap is below 0.1 J/m²;
-- `min_W_adh_J_m2`, or null;
-- the sensitivity runs listed with `status: "pending"` (their values are never shown);
-- calculator calls and wall time;
-- limitations.
+| status | consumer action |
+|---|---|
+| `pending` | blocks the decision (`Pending`); every planned job is listed up front |
+| `valid` | source re-checked; a failed check → `invalid_evidence` |
+| `failed` | genuine calculation failure: reported as feedback, slot consumed, works null, cost and reason kept |
+| `invalid_evidence` | integrity problem: blocks consumption (`Blocked`), never shown as chemistry |
+| `not_run_resource_limit`, `not_run_no_admissible_construction` | sensitivity rows only, need a reason; shown as `unavailable: <reason>`, never pending or passed |
 
-A primary run that is still `pending` blocks the decision (`Pending`), and the loop resumes later.
+## Validation before a value can reach a prompt
 
-## 3. Decision records (written by the runner): `data/experiments/llm_petmad_pilot_v1/state.json`
+1. **Structure** (`load_index`): unique run IDs; known candidates, contacts, roles and statuses; `not_run_*`
+   only on sensitivity rows, with a reason; the checkpoint equals the campaign checkpoint; failed runs
+   have a reason; non-valid runs carry no W_adh.
+2. **Source re-check** of every `valid` run (`source_problems`):
+   - finite index values;
+   - the result hash;
+   - the checkpoint;
+   - `numerically_valid`;
+   - convergence, finite values and free force at or below the target for interface, film and substrate;
+   - area, atom count and fixed count against the index;
+   - W_adh = (E_film + E_sub − E_int)/A against both the index and `result.json`;
+   - W_sep against the separation file (checkpoint, area, interface energy and recomputed value).
+3. **Coverage:** the primary run IDs for each feasible candidate are frozen when the pilot starts. A
+   missing planned run → `Pending`; an unplanned primary run → `Blocked`.
+4. **Comparability within one contact:** registries must share candidate, contact, `contact_build_id`,
+   `build_sha256`, `n_atoms`, area, `fixed_rule`, `n_fixed`, `fixed_species` and checkpoint, with unique
+   `registry_id`s. Lateral shifts and raw geometry hashes are not required to match. Only then is the
+   lowest `joined_energy_eV` selected.
 
-Stages are `prior` (optional), `choose_2`, `choose_3` and `summary`. Each choice must include:
-- `ordered_shortlist`, which ranks every unevaluated feasible ID exactly once;
-- `selected_id`, which must equal the shortlist's first ID;
-- `hypothesis`;
-- `predicted_weaker_contact`: cathode, electrolyte or unresolved;
-- `predicted_W_adh_J_m2`, with cathode and electrolyte ranges given as `[low, high]`, where
-  0 ≤ low ≤ high ≤ 20;
-- `change_trigger`;
-- for `choose_3`, a non-empty `supporting_observations`.
+## Decision records: `state.json` (pilot v2)
 
-Each record stores the prompt, response, parsed decision, any error, `llm_metadata` (HTTP attempts and
-request IDs), the feedback hashes it saw, a timestamp, and `record_sha256`.
+**Stages** are `prior` (optional), `choose_2`, `choose_3` and `summary`.
+- Choices need an `ordered_shortlist` of the unevaluated feasible IDs, with `selected_id` first.
+- `predicted_W_adh_J_m2` must be finite ordered intervals; negative values are allowed.
+- Also required: `predicted_weaker_contact` and `change_trigger`.
+- `choose_3` additionally needs `supporting_observations` and `prior_prediction_assessment`; `summary`
+  needs `prior_prediction_assessment`.
+
+**Prompts:** later prompts contain `previous_decisions`, the structured earlier choices and predictions.
+Primary feedback is snapshotted once, when first revealed, and reused by hash; later changes to the
+index cannot rewrite it.
 
 **Accounting:**
 - The hard cap is 10 HTTP attempts.
-- A call is refused if its worst-case retries (3) could exceed the cap.
-- There are at most 2 format attempts per stage, all charged.
+- Worst-case attempts (3) are reserved on disk before every call and settled from `llm_metadata`.
+- An unknown outcome keeps its reservation.
+- Prompts are capped at 16,000 characters (about 9.2k tokens).
 
-**Rules:**
-- A failed contact still consumes its material slot.
-- The menu hash is fixed at start.
-- A menu with fewer than 3 alternatives is refused unless `allow_small_menu` is set.
+**Resume:**
+- One owner of the state file (`.lock`).
+- Mode and settings are pinned.
+- A stopped stage stays stopped.
+- Record, snapshot and frozen-table hashes are re-verified.
 
-`MOCK_*` files are an offline end-to-end trace with synthetic fixture energies. They are not results.
-
-## 4. Comparison reader (`scripts/analyse_mlip_comparison.py`)
-
-The reader reads the `cohort` slots (never globs runs). Each declared coating × contact is reported as
-`validated`, `pending`, `failed`, `missing` or `non-comparable cells`; missing work is never zero.
-
-Each `valid` run is re-checked against `result_path`:
-- the hash, when `result_sha256` is given;
-- the checkpoint;
-- convergence, finite values and free force at or below the target, for interface, film and substrate;
-- `area_A2` and `n_atoms`;
-- W_adh = (E_film + E_substrate − E_interface)/A, against both the index and `result.json`;
-- W_sep, against `separation_path`: checkpoint, area and interface energy must match.
-
-A failed check makes the run invalid; it is kept, with its reasons.
-
-Other rules:
-- The selected registry is the lowest `joined_energy_eV` among validated primary runs in one comparable
-  cell.
-- Sensitivity results are reported as differences from the selected run.
-- `reused_from` separates reused compute from new compute.
-- Thermodynamic values are joined by exact ID from the frozen sulfide table, with the hash verified.
+`MOCK_*` files are mocked LLM traces. `MOCK_state_genuine_reference.json` uses the genuine validated
+LiNbF6 feedback from the real index; no live API call was made.

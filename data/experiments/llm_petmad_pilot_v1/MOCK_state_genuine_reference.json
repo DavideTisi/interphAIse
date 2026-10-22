@@ -1,0 +1,295 @@
+{
+  "pilot_version": "llm_petmad_pilot_v2",
+  "created_at": "2026-10-22T06:11:39+00:00",
+  "mode": "mock",
+  "settings": {
+    "model": "claude-haiku-5-5",
+    "temperature": 1.0,
+    "max_tokens": 4096
+  },
+  "reference_id": "mp-aaacjjwh",
+  "feasible": [
+    "mp-aaacjjwh",
+    "mp-aaacjmqp",
+    "mp-aaaaajby",
+    "mp-aaaaabru"
+  ],
+  "planned_primary": {
+    "mp-aaacjjwh": [
+      "mp-aaacjjwh:cathode:primary:R1",
+      "mp-aaacjjwh:cathode:primary:R2",
+      "mp-aaacjjwh:cathode:primary:R3",
+      "mp-aaacjjwh:electrolyte:primary:R1",
+      "mp-aaacjjwh:electrolyte:primary:R2"
+    ],
+    "mp-aaacjmqp": [
+      "mp-aaacjmqp:cathode:primary:R1",
+      "mp-aaacjmqp:cathode:primary:R2",
+      "mp-aaacjmqp:cathode:primary:R3",
+      "mp-aaacjmqp:electrolyte:primary:R1",
+      "mp-aaacjmqp:electrolyte:primary:R2",
+      "mp-aaacjmqp:electrolyte:primary:R3"
+    ],
+    "mp-aaaaajby": [
+      "mp-aaaaajby:cathode:primary:R1",
+      "mp-aaaaajby:cathode:primary:R2",
+      "mp-aaaaajby:cathode:primary:R3",
+      "mp-aaaaajby:electrolyte:primary:R1",
+      "mp-aaaaajby:electrolyte:primary:R2",
+      "mp-aaaaajby:electrolyte:primary:R3"
+    ],
+    "mp-aaaaabru": [
+      "mp-aaaaabru:cathode:primary:R1",
+      "mp-aaaaabru:cathode:primary:R2",
+      "mp-aaaaabru:cathode:primary:R3",
+      "mp-aaaaabru:electrolyte:primary:R1",
+      "mp-aaaaabru:electrolyte:primary:R2",
+      "mp-aaaaabru:electrolyte:primary:R3"
+    ]
+  },
+  "menu_sha256": "0a83d472ab56e51fd9b9002330e3f9d9ae2225983cd65966458b689dcc930926",
+  "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+  "table_sha256": "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510",
+  "http_cap": 10,
+  "max_http_per_call": 3,
+  "http_attempts_used": 2,
+  "http_reserved_unsettled": 0,
+  "stages": [
+    {
+      "stage": "prior",
+      "attempt": 0,
+      "prompt": "{\"candidates\": [{\"candidate_id\": \"mp-aaacjjwh\", \"descriptors\": {}, \"formula\": \"LiNbF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaacjmqp\", \"descriptors\": {}, \"formula\": \"LiTaF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaaaajby\", \"descriptors\": {}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaaaabru\", \"descriptors\": {}, \"formula\": \"LiF\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 8.7161, \"insulating\": true, \"penalty\": 0.3104396521073731, \"penalty_bin\": 15}}], \"evaluated\": [\"mp-aaacjjwh\"], \"feedback\": [], \"output_schema\": \"{\\\"ordered_shortlist\\\": [ids], \\\"hypothesis\\\": str}\", \"previous_decisions\": [], \"question\": \"Rank the unevaluated coatings from chemistry alone.\", \"stage\": \"prior\", \"unevaluated\": [\"mp-aaacjmqp\", \"mp-aaaaajby\", \"mp-aaaaabru\"], \"validation_feedback\": \"\"}",
+      "feedback_sha256": [],
+      "started_at": "2026-10-22T06:11:39+00:00",
+      "parsed": {
+        "ordered_shortlist": [
+          "mp-aaacjmqp",
+          "mp-aaaaajby",
+          "mp-aaaaabru"
+        ],
+        "hypothesis": "mock hypothesis"
+      },
+      "response": {
+        "ordered_shortlist": [
+          "mp-aaacjmqp",
+          "mp-aaaaajby",
+          "mp-aaaaabru"
+        ],
+        "hypothesis": "mock hypothesis"
+      },
+      "llm_metadata": {
+        "http_attempts": 1,
+        "returned_model": "mock",
+        "usage": null
+      },
+      "http_attempts_charged": 1,
+      "frozen_at": "2026-10-22T06:11:39+00:00",
+      "record_sha256": "c08975a91eb4c56091c37969474809caba0bf638c8b01c472a575b4409c73368"
+    },
+    {
+      "stage": "choose_2",
+      "attempt": 0,
+      "prompt": "{\"candidates\": [{\"candidate_id\": \"mp-aaacjjwh\", \"descriptors\": {}, \"formula\": \"LiNbF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaacjmqp\", \"descriptors\": {}, \"formula\": \"LiTaF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 5.917199104338054, \"insulating\": true, \"penalty\": 0.027074933496621156, \"penalty_bin\": 1}}, {\"candidate_id\": \"mp-aaaaajby\", \"descriptors\": {}, \"formula\": \"LiCaAlF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 7.6448, \"insulating\": true, \"penalty\": 0.047719477710549185, \"penalty_bin\": 2}}, {\"candidate_id\": \"mp-aaaaabru\", \"descriptors\": {}, \"formula\": \"LiF\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"thermo\": {\"acceptable\": false, \"band_gap_eV\": 8.7161, \"insulating\": true, \"penalty\": 0.3104396521073731, \"penalty_bin\": 15}}], \"evaluated\": [\"mp-aaacjjwh\"], \"feedback\": [{\"candidate_id\": \"mp-aaacjjwh\", \"contacts\": {\"cathode\": {\"W_adh_J_m2\": 3.6170508624496, \"W_sep_J_m2\": 5.167624545488891, \"registries\": [{\"W_adh_J_m2\": 3.6003562394027577, \"failure_reason\": null, \"registry\": [0, 0], \"registry_id\": \"R1\", \"run_id\": \"mp-aaacjjwh:cathode:primary:R1\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}, {\"W_adh_J_m2\": 3.596964455828597, \"failure_reason\": null, \"registry\": [0.16666666666666666, 0], \"registry_id\": \"R2\", \"run_id\": \"mp-aaacjjwh:cathode:primary:R2\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}, {\"W_adh_J_m2\": 3.6170508624496, \"failure_reason\": null, \"registry\": [0.3333333333333333, 0.3333333333333333], \"registry_id\": \"R3\", \"run_id\": \"mp-aaacjjwh:cathode:primary:R3\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}], \"registry_range_J_m2\": [3.596964455828597, 3.6170508624496], \"selected_run_id\": \"mp-aaacjjwh:cathode:primary:R3\", \"status\": \"valid\"}, \"electrolyte\": {\"W_adh_J_m2\": 1.6333940812860246, \"W_sep_J_m2\": 2.9672197308623063, \"registries\": [{\"W_adh_J_m2\": 1.6333940812860246, \"failure_reason\": null, \"registry\": [0, 0], \"registry_id\": \"R1\", \"run_id\": \"mp-aaacjjwh:electrolyte:primary:R1\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}, {\"W_adh_J_m2\": 1.6316068100231231, \"failure_reason\": null, \"registry\": [0, 0.5], \"registry_id\": \"R2\", \"run_id\": \"mp-aaacjjwh:electrolyte:primary:R2\", \"status\": \"valid\", \"warnings\": [\"registry chosen before the geometric registry rule (see manifest reference.registry_provenance)\"]}], \"registry_range_J_m2\": [1.6316068100231231, 1.6333940812860246], \"selected_run_id\": \"mp-aaacjjwh:electrolyte:primary:R1\", \"status\": \"valid\"}}, \"formula\": \"LiNbF6\", \"limitations\": [\"formally polar slabs\", \"finite-range MLIP\", \"no Li transport\"], \"min_W_adh_J_m2\": 1.6333940812860246, \"primary_cost\": {\"calculator_calls\": 1256, \"runs_with_unknown_cost\": 0}, \"sensitivity\": [], \"thermo\": {\"acceptable\": true, \"band_gap_eV\": 4.788851973014669, \"insulating\": true, \"penalty\": 0.028772005147425617, \"penalty_bin\": 1}, \"weaker_contact\": \"electrolyte\"}], \"output_schema\": \"{\\\"ordered_shortlist\\\": [ids], \\\"selected_id\\\": first id, \\\"hypothesis\\\": str, \\\"predicted_weaker_contact\\\": \\\"cathode\\\"|\\\"electrolyte\\\"|\\\"unresolved\\\", \\\"predicted_W_adh_J_m2\\\": {\\\"cathode\\\": [low, high], \\\"electrolyte\\\": [low, high]}, \\\"change_trigger\\\": str}\", \"previous_decisions\": [{\"hypothesis\": \"mock hypothesis\", \"ordered_shortlist\": [\"mp-aaacjmqp\", \"mp-aaaaajby\", \"mp-aaaaabru\"], \"stage\": \"prior\"}], \"question\": \"Using the reference feedback, choose the next coating and predict its W_adh at both contacts.\", \"stage\": \"choose_2\", \"unevaluated\": [\"mp-aaacjmqp\", \"mp-aaaaajby\", \"mp-aaaaabru\"], \"validation_feedback\": \"\"}",
+      "feedback_sha256": [
+        "db7306f24b27c2840a1d11936b9ed41dc6c4bf771733d2fd154c836244e4a5fe"
+      ],
+      "started_at": "2026-10-22T06:11:39+00:00",
+      "parsed": {
+        "ordered_shortlist": [
+          "mp-aaacjmqp",
+          "mp-aaaaajby",
+          "mp-aaaaabru"
+        ],
+        "hypothesis": "mock hypothesis",
+        "selected_id": "mp-aaacjmqp",
+        "predicted_weaker_contact": "electrolyte",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            2.0,
+            4.0
+          ],
+          "electrolyte": [
+            1.0,
+            2.0
+          ]
+        },
+        "change_trigger": "mock trigger",
+        "supporting_observations": [
+          "mock observation"
+        ],
+        "prior_prediction_assessment": "mock assessment"
+      },
+      "response": {
+        "ordered_shortlist": [
+          "mp-aaacjmqp",
+          "mp-aaaaajby",
+          "mp-aaaaabru"
+        ],
+        "hypothesis": "mock hypothesis",
+        "selected_id": "mp-aaacjmqp",
+        "predicted_weaker_contact": "electrolyte",
+        "predicted_W_adh_J_m2": {
+          "cathode": [
+            2.0,
+            4.0
+          ],
+          "electrolyte": [
+            1.0,
+            2.0
+          ]
+        },
+        "change_trigger": "mock trigger",
+        "supporting_observations": [
+          "mock observation"
+        ],
+        "prior_prediction_assessment": "mock assessment"
+      },
+      "llm_metadata": {
+        "http_attempts": 1,
+        "returned_model": "mock",
+        "usage": null
+      },
+      "http_attempts_charged": 1,
+      "frozen_at": "2026-10-22T06:11:39+00:00",
+      "record_sha256": "b9c0b2aefed7fc1dc307d40b3ea47b011f8229389a1327c60755e4814db10043"
+    }
+  ],
+  "snapshots": {
+    "mp-aaacjjwh": {
+      "bundle": {
+        "candidate_id": "mp-aaacjjwh",
+        "formula": "LiNbF6",
+        "thermo": {
+          "penalty": 0.028772005147425617,
+          "penalty_bin": 1,
+          "acceptable": true,
+          "insulating": true,
+          "band_gap_eV": 4.788851973014669
+        },
+        "contacts": {
+          "cathode": {
+            "status": "valid",
+            "selected_run_id": "mp-aaacjjwh:cathode:primary:R3",
+            "W_adh_J_m2": 3.6170508624496,
+            "W_sep_J_m2": 5.167624545488891,
+            "registry_range_J_m2": [
+              3.596964455828597,
+              3.6170508624496
+            ],
+            "registries": [
+              {
+                "run_id": "mp-aaacjjwh:cathode:primary:R1",
+                "registry_id": "R1",
+                "registry": [
+                  0,
+                  0
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 3.6003562394027577,
+                "failure_reason": null,
+                "warnings": [
+                  "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+                ]
+              },
+              {
+                "run_id": "mp-aaacjjwh:cathode:primary:R2",
+                "registry_id": "R2",
+                "registry": [
+                  0.16666666666666666,
+                  0
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 3.596964455828597,
+                "failure_reason": null,
+                "warnings": [
+                  "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+                ]
+              },
+              {
+                "run_id": "mp-aaacjjwh:cathode:primary:R3",
+                "registry_id": "R3",
+                "registry": [
+                  0.3333333333333333,
+                  0.3333333333333333
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 3.6170508624496,
+                "failure_reason": null,
+                "warnings": [
+                  "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+                ]
+              }
+            ]
+          },
+          "electrolyte": {
+            "status": "valid",
+            "selected_run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+            "W_adh_J_m2": 1.6333940812860246,
+            "W_sep_J_m2": 2.9672197308623063,
+            "registry_range_J_m2": [
+              1.6316068100231231,
+              1.6333940812860246
+            ],
+            "registries": [
+              {
+                "run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+                "registry_id": "R1",
+                "registry": [
+                  0,
+                  0
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 1.6333940812860246,
+                "failure_reason": null,
+                "warnings": [
+                  "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+                ]
+              },
+              {
+                "run_id": "mp-aaacjjwh:electrolyte:primary:R2",
+                "registry_id": "R2",
+                "registry": [
+                  0,
+                  0.5
+                ],
+                "status": "valid",
+                "W_adh_J_m2": 1.6316068100231231,
+                "failure_reason": null,
+                "warnings": [
+                  "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+                ]
+              }
+            ]
+          }
+        },
+        "weaker_contact": "electrolyte",
+        "min_W_adh_J_m2": 1.6333940812860246,
+        "sensitivity": [],
+        "primary_cost": {
+          "calculator_calls": 1256,
+          "runs_with_unknown_cost": 0
+        },
+        "limitations": [
+          "formally polar slabs",
+          "finite-range MLIP",
+          "no Li transport"
+        ]
+      },
+      "sha256": "db7306f24b27c2840a1d11936b9ed41dc6c4bf771733d2fd154c836244e4a5fe",
+      "frozen_at": "2026-10-22T06:11:39+00:00"
+    }
+  },
+  "evaluated": [
+    "mp-aaacjjwh"
+  ],
+  "selected": [
+    "mp-aaacjmqp"
+  ],
+  "plan": [
+    "prior",
+    "choose_2",
+    "choose_3",
+    "summary"
+  ],
+  "status": "running"
+}

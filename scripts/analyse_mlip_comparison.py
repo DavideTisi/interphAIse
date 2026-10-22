@@ -13,75 +13,16 @@ are finite tested differences from the selected primary, not confidence interval
 are joined by exact material ID from the frozen sulfide table. No combined score, no adhesion threshold.
 """
 import argparse
-import hashlib
 import json
-import math
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from interphaise.pilot import CONTACTS, load_index, thermo_card
+from interphaise.pilot import CONTACTS, comparable_problems, contact_summary, evaluate_runs, load_index, thermo_card
 
-EV_A2_TO_J_M2 = 16.021766208
 SULFIDE_TABLE = ROOT / "data/benchmarks/environment_v1/lco_lpscl_4v.json"
 SULFIDE_SHA = "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
-TOL_J_M2 = 1e-6
-
-
-def _resolve(path):
-    p = Path(path)
-    return p if p.is_absolute() else ROOT / p
-
-
-def source_problems(run, checkpoint):
-    """Re-check one 'valid' run against its result package; [] means the work is validated."""
-    problems = []
-    if not run.get("result_path") or not _resolve(run["result_path"]).exists():
-        return ["result file missing"]
-    raw = _resolve(run["result_path"]).read_bytes()
-    if run.get("result_sha256") and hashlib.sha256(raw).hexdigest() != run["result_sha256"]:
-        problems.append("result file hash differs from index")
-    res = json.loads(raw)
-    if res.get("checkpoint_sha256") != checkpoint:
-        problems.append("result checkpoint differs from campaign")
-    if res.get("numerically_valid") is not True:
-        problems.append("result not numerically_valid")
-    rel = res.get("relaxations", {})
-    for part in ("interface", "film", "substrate"):
-        r = rel.get(part, {})
-        if not (r.get("converged") and r.get("finite") and math.isfinite(r.get("final_energy_eV", math.nan))):
-            problems.append(f"{part} relaxation not converged/finite")
-        elif not r.get("max_free_force_eV_A", math.inf) <= r.get("fmax_target_eV_A", -math.inf):
-            problems.append(f"{part} free force above target")
-    area = res.get("area_A2")
-    if not (isinstance(area, (int, float)) and area > 0):
-        return problems + ["invalid area"]
-    if run.get("area_A2") is not None and abs(run["area_A2"] - area) > 1e-6:
-        problems.append("area differs from index")
-    if run.get("n_atoms") is not None and run["n_atoms"] != res.get("n_atoms"):
-        problems.append("atom count differs from index")
-    if not problems:
-        e = {p: rel[p]["final_energy_eV"] for p in ("interface", "film", "substrate")}
-        w = (e["film"] + e["substrate"] - e["interface"]) / area * EV_A2_TO_J_M2
-        if abs(w - run["W_adh_J_m2"]) > TOL_J_M2 or abs(w - res.get("work_of_adhesion_J_m2", math.nan)) > TOL_J_M2:
-            problems.append(f"W_adh arithmetic mismatch (recomputed {w:.6f})")
-        if abs(e["interface"] - run["joined_energy_eV"]) > 1e-6:
-            problems.append("joined energy differs from interface final energy")
-        if run.get("W_sep_J_m2") is not None:
-            sep_path = run.get("separation_path")
-            if not sep_path or not _resolve(sep_path).exists():
-                problems.append("W_sep given without separation file")
-            else:
-                s = json.loads(_resolve(sep_path).read_text())
-                ws = (s["E_film_rigid_eV"] + s["E_substrate_rigid_eV"] - s["E_interface_eV"]) / s["area_A2"] * EV_A2_TO_J_M2
-                if s.get("checkpoint_sha256") != checkpoint:
-                    problems.append("separation checkpoint differs")
-                if abs(s["area_A2"] - area) > 1e-6 or abs(s["E_interface_eV"] - e["interface"]) > 1e-6:
-                    problems.append("separation cell/energy does not match the joined run")
-                if abs(ws - run["W_sep_J_m2"]) > TOL_J_M2:
-                    problems.append(f"W_sep arithmetic mismatch (recomputed {ws:.6f})")
-    return problems
 
 
 def analyse(index_path, table_path=SULFIDE_TABLE):
@@ -92,15 +33,17 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
     cohort = index.get("cohort") or []
     if not cohort:
         raise ValueError("Index declares no cohort")
-    runs = {r["run_id"]: dict(r) for r in index["runs"]}
+    runs = {k: r for k, r in evaluate_runs(index, ROOT).items() if r["role"] != "consistency"}
     for r in runs.values():
-        r["problems"] = source_problems(r, index["checkpoint_sha256"]) if r["status"] == "valid" else []
-        r["validated"] = r["status"] == "valid" and not r["problems"]
-    rows, compute = [], {"new": {"calls": 0, "wall_seconds": 0.0}, "reused": {"calls": 0, "wall_seconds": 0.0}}
+        r["validated"] = r["evidence"] == "valid"
+    rows, compute = [], {k: {"calls": 0, "wall_seconds": 0.0, "runs_with_unknown_cost": 0} for k in ("new", "reused")}
     for r in runs.values():
-        key = "reused" if r.get("reused_from") else "new"
-        compute[key]["calls"] += r.get("calculator_calls") or 0
-        compute[key]["wall_seconds"] += r.get("wall_seconds") or 0.0
+        bucket = compute["reused" if r.get("reused_from") else "new"]
+        if r.get("calculator_calls") is None:
+            bucket["runs_with_unknown_cost"] += r["status"] not in ("pending",) and r["evidence"] != "unavailable"
+        else:
+            bucket["calls"] += r["calculator_calls"]
+            bucket["wall_seconds"] += r.get("wall_seconds") or 0.0
     menu = {c["candidate_id"]: c for c in index["menu"]}
     for slot in cohort:
         cid = slot["candidate_id"]
@@ -110,29 +53,30 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
             mine = [r for r in runs.values() if r["candidate_id"] == cid and r["contact"] == contact]
             primary = [r for r in mine if r["role"] == "primary"]
             ok = [r for r in primary if r["validated"]]
-            cells = {(round(r.get("area_A2") or 0, 6), r.get("n_atoms")) for r in ok}
-            selected = min(ok, key=lambda r: r["joined_energy_eV"]) if ok and len(cells) == 1 else None
+            noncomparable = comparable_problems(primary) if primary else []
             if not primary:
                 status = "missing"
-            elif any(r["status"] == "pending" for r in primary):
+            elif any(r["evidence"] == "invalid_evidence" for r in primary):
+                status = "invalid evidence"
+            elif any(r["evidence"] == "pending" for r in primary):
                 status = "pending"
-            elif selected:
-                status = "validated"
-            elif ok:
-                status = "non-comparable cells"
+            elif noncomparable:
+                status = "non-comparable registries"
             else:
-                status = "failed"
-            sens = [dict(run_id=r["run_id"], kind=r.get("sensitivity_kind"), status=r["status"],
-                         validated=r["validated"], W_adh_J_m2=r.get("W_adh_J_m2") if r["validated"] else None,
-                         delta_vs_selected=(r["W_adh_J_m2"] - selected["W_adh_J_m2"]) if r["validated"] and selected else None)
+                status = "validated" if ok else "failed"
+            summary = contact_summary(mine, contact) if status == "validated" else {}
+            sens = [dict(run_id=r["run_id"], kind=r.get("sensitivity_kind"), status=r["evidence"],
+                         reason=r.get("failure_reason") if r["evidence"] == "unavailable" else None,
+                         W_adh_J_m2=r["W_adh_J_m2"] if r["validated"] else None,
+                         delta_vs_selected=(r["W_adh_J_m2"] - summary["W_adh_J_m2"]) if r["validated"] and summary else None)
                     for r in mine if r["role"] == "sensitivity"]
             row["contacts"][contact] = dict(
-                status=status, selected_run_id=selected and selected["run_id"],
-                W_adh_J_m2=selected and selected["W_adh_J_m2"], W_sep_J_m2=selected and selected.get("W_sep_J_m2"),
-                registry_range_J_m2=[min(r["W_adh_J_m2"] for r in ok), max(r["W_adh_J_m2"] for r in ok)] if ok else None,
-                primary=[dict(run_id=r["run_id"], registry=r.get("registry"), status=r["status"], validated=r["validated"],
-                              W_adh_J_m2=r.get("W_adh_J_m2") if r["validated"] else None,
-                              problems=r["problems"], failure_reason=r.get("failure_reason")) for r in primary],
+                status=status, selected_run_id=summary.get("selected_run_id"), W_adh_J_m2=summary.get("W_adh_J_m2"),
+                W_sep_J_m2=summary.get("W_sep_J_m2"), registry_range_J_m2=summary.get("registry_range_J_m2"),
+                comparability_problems=noncomparable,
+                primary=[dict(run_id=r["run_id"], registry_id=r.get("registry_id"), status=r["evidence"],
+                              W_adh_J_m2=r["W_adh_J_m2"] if r["validated"] else None, problems=r["problems"],
+                              failure_reason=r.get("failure_reason")) for r in primary],
                 sensitivity=sens, warnings=sorted({w for r in primary for w in r.get("warnings", [])}))
         w = [row["contacts"][c]["W_adh_J_m2"] for c in CONTACTS]
         row["weaker_W_adh_J_m2"] = min(w) if None not in w else None

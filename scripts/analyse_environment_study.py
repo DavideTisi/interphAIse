@@ -105,6 +105,12 @@ def validate_production_evidence(directories):
                 problems.append(f"{d.name}/{path.name}: run prompt version or budget differs")
             for i, attempt in enumerate(run["proposal_attempts"]):
                 meta = attempt.get("llm_metadata") or {}
+                # A successful recorded call must carry its metadata. Narrow historical exception: failed
+                # attempts (format/parse errors) may lack it; that is documented, not inferred.
+                if "error" not in attempt:
+                    missing = [k for k in PRODUCTION["call_metadata"] if meta.get(k) is None]
+                    if missing:
+                        problems.append(f"{d.name}/{path.name}: attempt {i} missing metadata {missing}")
                 for key, value in PRODUCTION["call_metadata"].items():
                     if key in meta and meta[key] is not None and meta[key] != value:
                         problems.append(f"{d.name}/{path.name}: attempt {i} {key}={meta[key]!r}")

@@ -131,3 +131,9 @@ def test_production_evidence_rejects_an_altered_trace(llzo_copy):
     from scripts.analyse_environment_study import validate_production_evidence
     _edit(llzo_copy / "random_r200.json", lambda r: r["trace"][-1].update(any_acceptable=not r["trace"][-1]["any_acceptable"]))
     assert any("trace differs" in p for p in validate_production_evidence([llzo_copy]))
+
+
+def test_production_evidence_rejects_missing_call_metadata(llzo_copy):
+    from scripts.analyse_environment_study import validate_production_evidence
+    _edit(llzo_copy / "upfront_r200.json", lambda r: r["proposal_attempts"][-1].pop("llm_metadata"))
+    assert any("missing metadata" in p for p in validate_production_evidence([llzo_copy]))

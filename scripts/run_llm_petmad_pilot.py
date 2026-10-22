@@ -4,7 +4,8 @@
     python scripts/run_llm_petmad_pilot.py --state STATE.json --index INDEX.json --live     # paid, capped
 
 Runs stages until the next one needs physics that is not yet terminal (exit 2, resume later), the
-pilot completes, or the HTTP cap would be exceeded. --live requires Davide's cost approval and uses
+evidence fails validation (exit 3, nothing is sent), the pilot completes, or the HTTP cap would be
+exceeded. Mode and settings are pinned in the state file; a mock state cannot be resumed live. --live requires Davide's cost approval and uses
 only direct Anthropic claude-haiku-5-5, temperature 1.0, max 4096 output tokens.
 """
 import argparse
@@ -14,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from interphaise.pilot import Pending, Pilot
+from interphaise.pilot import Blocked, Pending, Pilot
 
 
 class MockLLM:
@@ -26,12 +27,13 @@ class MockLLM:
         data = json.loads(user)
         self.last_metadata = {"http_attempts": 1, "returned_model": "mock", "usage": None}
         if data["stage"] == "summary":
-            return {"summary": "mock summary"}
+            return {"summary": "mock summary", "prior_prediction_assessment": "mock assessment"}
         out = {"ordered_shortlist": data["unevaluated"], "hypothesis": "mock hypothesis"}
         if data["stage"] != "prior":
             out.update(selected_id=data["unevaluated"][0], predicted_weaker_contact="electrolyte",
                        predicted_W_adh_J_m2={"cathode": [2.0, 4.0], "electrolyte": [1.0, 2.0]},
-                       change_trigger="mock trigger", supporting_observations=["mock observation"])
+                       change_trigger="mock trigger", supporting_observations=["mock observation"],
+                       prior_prediction_assessment="mock assessment")
         return out
 
 
@@ -51,15 +53,21 @@ def main():
         llm = make_llm("anthropic/claude-haiku-5-5", temperature=1.0, max_tokens=4096)
     else:
         llm = MockLLM()
-    pilot = Pilot(args.state, args.index, args.table, reference_id=args.reference, include_prior=not args.no_prior)
-    try:
-        while (record := pilot.run_stage(llm)) is not None:
-            print(f"{record['stage']}: {record['parsed'].get('selected_id', '')} (HTTP used {pilot.state['http_attempts_used']})")
-    except Pending as exc:
-        print(f"pending: {exc}; resume when the feedback is terminal")
-        sys.exit(2)
-    print(f"status: {pilot.state['status']}")
-    print(json.dumps(pilot.assessment(), indent=2))
+    settings = dict(model="claude-haiku-5-5", temperature=1.0, max_tokens=4096)
+    with Pilot(args.state, args.index, args.table, reference_id=args.reference, mode="live" if args.live else "mock",
+               settings=settings, root=ROOT, include_prior=not args.no_prior) as pilot:
+        try:
+            while (record := pilot.run_stage(llm)) is not None:
+                print(f"{record['stage']}: {record['parsed'].get('selected_id', '')} "
+                      f"(record {record['record_sha256'][:12]}, HTTP used {pilot.state['http_attempts_used']})")
+        except Pending as exc:
+            print(f"pending: {exc}; resume when the feedback is terminal")
+            sys.exit(2)
+        except Blocked as exc:
+            print(f"blocked, nothing sent: {exc}")
+            sys.exit(3)
+        print(f"status: {pilot.state['status']}")
+        print(json.dumps(pilot.assessment(), indent=2))
 
 
 if __name__ == "__main__":

@@ -24,6 +24,7 @@ def real_run(contact, folder, run_id=None, base=BATCH):
     sep_path = base / folder / "fixed_geometry_separation.json"
     sep = json.loads(sep_path.read_text()) if sep_path.exists() else None
     return dict(run_id=run_id or f"ref-{contact}", candidate_id=REF, contact=contact, role="primary", registry=[0, 0],
+                registry_id=(run_id or f"ref-{contact}").rsplit("-", 1)[-1], contact_build_id=f"ref-{contact}-build",
                 status="valid", W_adh_J_m2=res["work_of_adhesion_J_m2"], W_sep_J_m2=sep and sep["W_sep_fixed_geometry_J_m2"],
                 joined_energy_eV=res["relaxations"]["interface"]["final_energy_eV"], area_A2=res["area_A2"],
                 n_atoms=res["n_atoms"], checkpoint_sha256=res["checkpoint_sha256"],
@@ -98,7 +99,7 @@ def test_unconverged_wrong_checkpoint_and_area_mismatch_invalidate(tmp_path, edi
     runs = [real_run("cathode", "cathode_ref", base=BATCH), real_run("electrolyte", "electrolyte_seed0_ref")]
     runs[0]["result_path"] = str(base / "cathode_ref" / "result.json")
     out = analyse(write(tmp_path, runs, cohort=(REF,)))
-    assert out["cohort"][0]["contacts"]["cathode"]["status"] == "failed"
+    assert out["cohort"][0]["contacts"]["cathode"]["status"] == "invalid evidence"   # integrity, not a calculation failure
     assert any(expect in p for p in out["invalid_runs"][0]["problems"])
 
 
