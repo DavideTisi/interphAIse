@@ -99,3 +99,28 @@ def test_malformed_output_is_kept_bounded(monkeypatch):
         llm('test', 'test')
     meta = llm.last_metadata
     assert len(meta['malformed_text']) == MALFORMED_TEXT_LIMIT and meta['usage']['output_tokens'] == 5
+
+
+def test_deepseek_route_pins_provider_and_rejects_unpinned_server(monkeypatch):
+    monkeypatch.setenv('MY_OPENROUTER_API_KEY', 'dummy-test-key')
+    served, captured = ['SiliconFlow'], []
+    def respond(request, timeout):
+        captured.append(json.loads(request.data))
+        assert request.full_url == 'https://openrouter.ai/api/v1/chat/completions'
+        return io.BytesIO(json.dumps({'model': 'deepseek/deepseek-v3.2', 'provider': served[0],
+                                     'usage': {'prompt_tokens': 3, 'completion_tokens': 5, 'cost': 1e-6,
+                                               'completion_tokens_details': {'reasoning_tokens': 4}},
+                                     'choices': [{'finish_reason': 'stop', 'message': {'content': '{"ok": true}'}}]}).encode())
+    monkeypatch.setattr('urllib.request.urlopen', respond)
+    with pytest.raises(ValueError, match='pin one'):
+        make_llm('deepseek/deepseek-v3.2')
+    llm = make_llm('deepseek/deepseek-v3.2', temperature=1.0, max_tokens=4096, provider='siliconflow/fp8',
+                   reasoning_max_tokens=3072)
+    assert llm('JSON only', 'test') == {'ok': True}
+    p = captured[0]
+    assert p['provider'] == {'order': ['siliconflow/fp8'], 'allow_fallbacks': False, 'require_parameters': True}
+    assert p['reasoning'] == {'max_tokens': 3072} and p['max_tokens'] == 4096
+    assert llm.last_metadata['usage']['output_tokens_details']['thinking_tokens'] == 4
+    served[0] = 'GMICloud'
+    with pytest.raises(RuntimeError, match='unpinned'):
+        llm('JSON only', 'test')

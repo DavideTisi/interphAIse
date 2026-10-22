@@ -2,7 +2,7 @@
 
     python scripts/usage_report.py runs/<smoke_env1> runs/<smoke_env2> ... [--json out.json]
 
-Costs are ESTIMATES: logged `usage` x Anthropic public list prices for claude-haiku-5-5
+DeepSeek (OpenRouter) calls use the per-call cost OpenRouter reports in `usage.cost`; Haiku costs are ESTIMATES: logged `usage` x Anthropic public list prices for claude-haiku-5-5
 (https://platform.claude.com/docs/en/about-claude/pricing, fetched 2026-10-21), global routing,
 no batch discount. Billed amounts come only from the Anthropic Console. Thinking tokens are
 included in `output_tokens`. Prompts over 100k tokens use the higher tier and are flagged.
@@ -25,6 +25,8 @@ PRICES = {"<=100k": (0.10, 0.125, 0.20, 0.01, 0.50), ">100k": (0.50, 0.625, 1.00
 
 
 def call_cost(u):
+    if u.get("openrouter_cost_usd") is not None:   # DeepSeek repeat: OpenRouter's reported charge, not a list estimate
+        return u["openrouter_cost_usd"], "openrouter"
     cache_write = u.get("cache_creation_input_tokens") or 0
     cache_read = u.get("cache_read_input_tokens") or 0
     prompt = (u.get("input_tokens") or 0) + cache_write + cache_read

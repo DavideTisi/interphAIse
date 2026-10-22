@@ -2737,3 +2737,38 @@ Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report
 - **Result:** **200 passed, 0 failed.** The four failures seen in the `agents` conda env (pymatgen 2026.5.4 / pymatgen-core 2026.4.16) are environment-only.
 - **Command:** `python -m venv <venv> && <venv>/bin/pip install -r requirements.txt pytest && <venv>/bin/python -m pytest -q tests/`.
 - **Live archive:** unchanged since `c0a0546` (state.json, index.json, manifest.json and the report text). No live calls.
+
+## 2026-10-22 — Agent side (Adem): DeepSeek V3.2 route, smoke batches and pre-registration
+
+- **Purpose:** prepare Davide's proposed matched DeepSeek repeat of the three-environment study. See [DEEPSEEK_PROTOCOL.md](DEEPSEEK_PROTOCOL.md).
+- **AGENTS.md:** a narrow exception approved by Adem.
+  - Adem's own OpenRouter key, for `deepseek/deepseek-v3.2` only, in this repeat only.
+  - Pinned provider with fallbacks off. Production only after Davide reviews the smoke cost.
+  - The Anthropic key rules are unchanged.
+- **Code:**
+  - `interphaise/llm.py`: `_make_openrouter`, selected only by the exact id `deepseek/deepseek-v3.2` with a pinned provider tag. It sets `allow_fallbacks: false` and `require_parameters`, and accepts an optional `reasoning_max_tokens`.
+  - Metadata records provider requested and served, reasoning setting, tokens (including reasoning), latency, and the cost OpenRouter reports for each call.
+  - The client rejects responses from an unpinned provider and treats `finish_reason == "length"` as truncation.
+  - The Anthropic client is untouched, and the prefixed or bare DeepSeek names stay blocked (`tests/test_anthropic.py`).
+  - `scripts/run_discovery_experiment.py`: new `--provider` and `--reasoning-max-tokens` options (recorded in `experiment.json`); the parallel-run limit is raised from 4 to 64.
+  - `scripts/usage_report.py`: uses OpenRouter's reported cost when present.
+- **Live calls (OpenRouter, Adem's key, never printed):**
+  - Authentication checks on `gmicloud/fp8` and `atlas-cloud/fp8`: both passed.
+  - Reasoning-cap tests:
+    - GMICloud ignores `reasoning.max_tokens`, `effort` and the 4,096 output cap.
+    - AtlasCloud enforces only the total cap.
+    - SiliconFlow enforces the reasoning cap exactly.
+  - Concurrency tests on SiliconFlow: 20 and 60 parallel calls, all succeeded, no 429s.
+  - Two 51-call smoke batches, archived in `data/experiments/deepseek_v1/smoke/`:
+    - capped SiliconFlow (chosen): USD 0.156;
+    - uncapped GMICloud (reference): USD 0.224.
+  - Total spent is about USD 0.46, the cost OpenRouter reported. The results table is in the protocol, §5.
+  - The smoke batches ran from working-tree code on top of `1f7bf11`, with file hashes in each `experiment.json`.
+- **Corrections:**
+  - I first estimated USD 7–8 for production, assuming Haiku-like output. The measured projection is about USD 9 for the capped configuration.
+  - An interim status check briefly counted still-running runs as failed. They completed normally.
+- **Tests:** `test_anthropic.py`, `test_discovery.py` and `test_environment_study.py` pass (45).
+- **Next:**
+  - Davide reviews the smoke cost.
+  - Production command in the protocol, §6: about 2.5 h, about USD 9.
+  - Production analysis needs model-aware evidence validation; the current `--production` check is Haiku-specific.

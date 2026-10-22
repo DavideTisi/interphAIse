@@ -1,0 +1,35 @@
+{
+  "arms": [
+    "iterative",
+    "upfront"
+  ],
+  "repeats": 1,
+  "budget": 10,
+  "synthetic": false,
+  "allow_draft": false,
+  "benchmark_status": "frozen",
+  "start_seed": 999,
+  "workers": 3,
+  "pool": "data/exploration/environment_expansion_v1/pool.json",
+  "benchmark": "data/benchmarks/environment_v1/lco_llzo_4v.json",
+  "hashes": {
+    "objective_sha256": "a194076f6e3f671ed09e49baf3b65dccef436adcee4b9094d45577752cab6c0d",
+    "pool_sha256": "833d5a687d4413cab1ab7cdd9007b56b924e3b2d2802ae26170d9f6a7f82e71d",
+    "benchmark_sha256": "9bdef5811bafc0b24f6ae55140f74f0be592a0f4367ca253310e0544ebb8e060"
+  },
+  "prompt_version": "v3-2026-10-21c-charged-ids",
+  "model": "deepseek/deepseek-v3.2",
+  "temperature": 1.0,
+  "max_tokens": 4096,
+  "provider": "siliconflow/fp8",
+  "reasoning": {
+    "max_tokens": 3072
+  },
+  "source_commit": "1f7bf117d83c58778bd1c717b3f9c15f68d0c2c0",
+  "workflow_sha256": {
+    "scripts/run_discovery_experiment.py": "12d27963857d284515ac8365be8c23bd479150f6ec8a8bdb28267ffda167d9c7",
+    "interphaise/discovery.py": "b83ecda178e23019756878d7a18359edc81e38974644a2ea7f0979c322dbdeee",
+    "interphaise/llm.py": "841320f06c7a50a5195252ac69537aba28dd460757782937eb06a97565887e47",
+    "interphaise/benchmark.py": "738347d89fa7f667d2ff89b14a16381d468def991943708e02644e55ba42d7fd"
+  }
+}

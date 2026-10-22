@@ -23,7 +23,7 @@ sys.path.insert(0, str(ROOT))
 import config
 from interphaise.benchmark import BenchmarkQueries
 from interphaise.discovery import LLM_STRATEGIES, PROMPT_VERSION, STRATEGIES, run_discovery, write_synthetic_benchmark
-from interphaise.llm import make_llm
+from interphaise.llm import DEEPSEEK_MODEL, make_llm
 
 
 def main():
@@ -42,11 +42,15 @@ def main():
     parser.add_argument("--temperature", type=float, default=None)
     parser.add_argument("--max-tokens", type=int, default=4096,
                         help="Output cap per call; a 10-candidate upfront shortlist needs ~2000 tokens")
-    parser.add_argument("--model", choices=[config.LLM_MODEL], default=config.LLM_MODEL)
+    parser.add_argument("--model", choices=[config.LLM_MODEL, DEEPSEEK_MODEL], default=config.LLM_MODEL)
+    parser.add_argument("--reasoning-max-tokens", type=int, help="DeepSeek reasoning cap (needs a provider that honours it)")
+    parser.add_argument("--provider", help="Pinned OpenRouter provider tag, required for DeepSeek (e.g. gmicloud/fp8)")
     parser.add_argument("--out", type=Path, default=ROOT / "runs")
     args = parser.parse_args()
-    if args.repeats < 1 or not 1 <= args.workers <= 4 or len(set(args.arms)) != len(args.arms):
-        parser.error('Require positive repeats, 1–4 workers and distinct arms')
+    if args.repeats < 1 or not 1 <= args.workers <= 64 or len(set(args.arms)) != len(args.arms):
+        parser.error('Require positive repeats, 1–64 workers and distinct arms')
+    if (args.model == DEEPSEEK_MODEL) != bool(args.provider):
+        parser.error('--provider is required for DeepSeek and not accepted for Haiku')
 
     root = args.out / (datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f") + "_experiment")
     root.mkdir(parents=True)
@@ -56,7 +60,7 @@ def main():
     task = new_queries().task()  # validates hashes and budget before any paid call
     uses_llm = bool(set(args.arms) & LLM_STRATEGIES)
     if uses_llm:
-        make_llm(args.model, temperature=args.temperature, max_tokens=args.max_tokens)  # validate configuration
+        make_llm(args.model, temperature=args.temperature, max_tokens=args.max_tokens, provider=args.provider, reasoning_max_tokens=args.reasoning_max_tokens)  # validate configuration
     def portable(path):
         path = path.resolve()
         return str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
@@ -67,7 +71,9 @@ def main():
                       pool=portable(args.pool), benchmark=portable(args.benchmark),
                       hashes={k: task[k] for k in ("objective_sha256", "pool_sha256", "benchmark_sha256")},
                       prompt_version=PROMPT_VERSION, model=args.model if uses_llm else None, temperature=args.temperature,
-                      max_tokens=args.max_tokens,
+                      max_tokens=args.max_tokens, provider=args.provider,
+                      reasoning=(None if args.model != DEEPSEEK_MODEL else "enabled" if args.reasoning_max_tokens is None
+                                 else {"max_tokens": args.reasoning_max_tokens}),
                       source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
                       workflow_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                                        for p in [Path(__file__).resolve(), ROOT/'interphaise/discovery.py',
@@ -76,7 +82,7 @@ def main():
 
     print(f"Experiment {root}", flush=True)
     def run_one(r, arm):
-        llm = make_llm(args.model, temperature=args.temperature, max_tokens=args.max_tokens) if arm in LLM_STRATEGIES else None
+        llm = make_llm(args.model, temperature=args.temperature, max_tokens=args.max_tokens, provider=args.provider, reasoning_max_tokens=args.reasoning_max_tokens) if arm in LLM_STRATEGIES else None
         try:
             state = run_discovery(new_queries(), strategy=arm, seed=r, llm=llm,
                                   output=root / f"{arm}_r{r:02d}.json",

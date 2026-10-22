@@ -4,8 +4,8 @@ Every reasoner takes an ``llm`` callable ``(system, user) -> dict | list`` so
 that tests (and the human-baseline mode) can swap in something else without
 touching the reasoners. ``make_llm`` builds the real one.
 
-All live calls use the configured Claude Haiku 5.5 model and the Anthropic key.
-No other provider, router or model fallback is supported.
+Live calls use Claude Haiku 5.5 with the Anthropic key, or (DeepSeek repeat only, see AGENTS.md)
+DeepSeek V3.2 through OpenRouter with Adem's own key and one pinned provider. No fallbacks.
 """
 
 from __future__ import annotations
@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 ANTHROPIC_MODEL = "claude-haiku-5-5"
+DEEPSEEK_MODEL = "deepseek/deepseek-v3.2"   # OpenRouter id; reasoning on, one provider, fallbacks off
 MALFORMED_TEXT_LIMIT = 4000  # characters of malformed model output kept for replay
 
 LLM = Callable[[str, str], "dict | list"]
@@ -37,8 +38,10 @@ def extract_json(text: str):
 
 
 def make_llm(model: str, temperature: float | None = None, retries: int = 3,
-             max_tokens: int = 2048) -> LLM:
-    """Build a direct Haiku 5.5 client; reject every other live model/provider."""
+             max_tokens: int = 2048, provider: str | None = None, reasoning_max_tokens: int | None = None) -> LLM:
+    """Build a direct Haiku 5.5 client, or the pinned DeepSeek V3.2 client; reject everything else."""
+    if model == DEEPSEEK_MODEL:
+        return _make_openrouter(provider, temperature, retries, max_tokens, reasoning_max_tokens)
     # Never send the collaborator's Anthropic key through an external router.
     model_id = model.removeprefix("anthropic/")
     if model_id != ANTHROPIC_MODEL:
@@ -159,3 +162,97 @@ class ScriptedLLM:
             if tag in system:
                 return resp(system, user) if callable(resp) else resp
         raise KeyError(f"ScriptedLLM has no response for system prompt: {system[:80]}")
+
+
+def _make_openrouter(provider, temperature, retries, max_tokens, reasoning_max_tokens=None) -> LLM:
+    """DeepSeek V3.2 via OpenRouter: one pinned provider tag (e.g. "gmicloud/fp8"), no fallbacks, reasoning on.
+
+    ``reasoning_max_tokens`` caps reasoning (honoured by siliconflow/fp8, not by gmicloud/fp8; tested 2026-10-22).
+    Metadata mirrors the Anthropic client (safe identifiers only) plus the serving provider and
+    OpenRouter's reported cost. Usage is normalised to input/output/thinking token names."""
+    if not provider:
+        raise ValueError("DeepSeek runs must pin one OpenRouter provider (e.g. gmicloud/fp8)")
+    key = (os.environ.get("MY_OPENROUTER_API_KEY") or "").strip()
+    if not key:
+        raise EnvironmentError("OpenRouter credential is not configured in the local environment")
+    if max_tokens < 1 or retries < 1:
+        raise ValueError("max_tokens and retries must be positive")
+    reasoning = {"enabled": True} if reasoning_max_tokens is None else {"max_tokens": reasoning_max_tokens}
+
+    def _openrouter(system: str, user: str):
+        _openrouter.last_metadata = None
+        payload = {"model": DEEPSEEK_MODEL, "max_tokens": max_tokens, "reasoning": reasoning,
+                   "provider": {"order": [provider], "allow_fallbacks": False, "require_parameters": True},
+                   "usage": {"include": True},
+                   "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
+        if temperature is not None:
+            payload["temperature"] = temperature
+        attempts = []
+
+        def finish(final_error=None, data=None, **extra):
+            data = data or {}
+            u = data.get("usage") or {}
+            usage = {"input_tokens": u.get("prompt_tokens"), "output_tokens": u.get("completion_tokens"),
+                     "cache_read_input_tokens": (u.get("prompt_tokens_details") or {}).get("cached_tokens") or 0,
+                     "output_tokens_details": {"thinking_tokens":
+                                               (u.get("completion_tokens_details") or {}).get("reasoning_tokens")},
+                     "openrouter_cost_usd": u.get("cost")} if u else None
+            choice = (data.get("choices") or [{}])[0]
+            _openrouter.last_metadata = {
+                "requested_model": DEEPSEEK_MODEL, "returned_model": data.get("model"), "response_id": data.get("id"),
+                "provider_requested": provider, "provider_served": data.get("provider"), "reasoning": reasoning,
+                "usage": usage, "stop_reason": choice.get("finish_reason"),
+                "temperature": temperature, "max_tokens": max_tokens,
+                "http_attempts": len(attempts), "transport_retries": max(0, len(attempts) - 1),
+                "attempts": attempts, "final_error": final_error, **extra}
+
+        for attempt in range(retries):
+            request = urllib.request.Request(
+                "https://openrouter.ai/api/v1/chat/completions", data=json.dumps(payload).encode(),
+                headers={"authorization": f"Bearer {key}", "content-type": "application/json"}, method="POST")
+            started = time.monotonic()
+            try:
+                with urllib.request.urlopen(request, timeout=300) as response:
+                    try:
+                        data = json.load(response)
+                    except ValueError:
+                        attempts.append({"status": "invalid_response_json", "elapsed_s": round(time.monotonic() - started, 3)})
+                        finish("response body was not JSON")
+                        raise RuntimeError("OpenRouter response body was not JSON") from None
+            except urllib.error.HTTPError as error:
+                code = error.code
+                error.close()
+                attempts.append({"status": code, "elapsed_s": round(time.monotonic() - started, 3)})
+                if code in (429, 500, 502, 503, 504, 529) and attempt + 1 < retries:
+                    time.sleep(2 ** attempt)
+                    continue
+                finish(f"HTTP {code}")
+                raise RuntimeError(f"OpenRouter request failed (HTTP {code})") from None
+            except (urllib.error.URLError, OSError):
+                attempts.append({"status": "connection_error", "elapsed_s": round(time.monotonic() - started, 3)})
+                finish("connection failed")
+                raise RuntimeError("OpenRouter connection failed") from None
+            attempts.append({"status": 200, "elapsed_s": round(time.monotonic() - started, 3)})
+            if "error" in data:   # OpenRouter can return 200 with an upstream error body
+                finish(f"upstream error {(data['error'] or {}).get('code')}")
+                raise RuntimeError("OpenRouter upstream error")
+            if data.get("provider") and data["provider"].lower() != provider.split("/")[0].replace("-", "").lower():
+                finish(f"served by unexpected provider {data['provider']}", data)
+                raise RuntimeError("OpenRouter served the request from an unpinned provider")
+            choice = (data.get("choices") or [{}])[0]
+            if choice.get("finish_reason") == "length":
+                finish("output-token limit", data)
+                raise RuntimeError("OpenRouter response reached the output-token limit")
+            text = (choice.get("message") or {}).get("content") or ""
+            try:
+                parsed = extract_json(text)
+            except (ValueError, TypeError):
+                finish("response was not valid JSON", data, malformed_text=text[:MALFORMED_TEXT_LIMIT])
+                raise RuntimeError("OpenRouter response was not valid JSON") from None
+            finish(None, data)
+            return parsed
+        finish("retries exhausted")
+        raise RuntimeError("OpenRouter retries exhausted")
+
+    _openrouter.last_metadata = None
+    return _openrouter
