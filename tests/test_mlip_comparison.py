@@ -108,3 +108,72 @@ def test_energy_arithmetic_mismatch_invalidates(tmp_path):
     runs[0]["W_adh_J_m2"] += 0.1
     out = analyse(write(tmp_path, runs, cohort=(REF,)))
     assert any("W_adh arithmetic" in p for p in out["invalid_runs"][0]["problems"])
+
+
+def final_fixture(tmp_path):
+    campaign = ROOT / "data/petmad/coating_comparison_v1"
+    data = json.loads((campaign / "index.json").read_text())
+    data["schema_version"] = "coating_comparison_v1_final_robustness"
+    for row in data["runs"]:
+        if row["candidate_id"] == "mp-aaaaabru":
+            row.update(status="not_run_not_selected", quantified=False)
+    path = tmp_path / "index_final.json"
+    path.write_text(json.dumps(data))
+    shutil.copyfile(campaign / "manifest.json", tmp_path / "manifest.json")
+    return path
+
+
+def test_final_index_is_offline_only_and_unselected_is_not_unknown_cost(tmp_path):
+    from interphaise.pilot import load_index
+    path = final_fixture(tmp_path)
+    with pytest.raises(ValueError, match="offline analysis"):
+        load_index(path)
+    out = analyse(path)
+    assert len(out["not_selected_runs"]) == 12
+    assert out["compute"]["new"]["runs_with_unknown_cost"] == 0
+    assert out["invalid_runs"] == []
+    assert all(c["status"] == "validated" for row in out["cohort"] for c in row["contacts"].values())
+
+
+@pytest.mark.parametrize("edit", [
+    {"quantified": True}, {"W_sep_J_m2": 0.0}, {"candidate_id": REF},
+])
+def test_not_selected_cannot_hide_calculated_or_selected_results(tmp_path, edit):
+    path = final_fixture(tmp_path)
+    data = json.loads(path.read_text())
+    next(r for r in data["runs"] if r["status"] == "not_run_not_selected").update(edit)
+    path.write_text(json.dumps(data))
+    with pytest.raises(ValueError, match="not-selected"):
+        analyse(path)
+
+
+def test_campaign_manifest_cannot_be_silently_omitted(tmp_path):
+    path = final_fixture(tmp_path)
+    (tmp_path / "manifest.json").unlink()
+    with pytest.raises(FileNotFoundError):
+        analyse(path)
+
+
+def test_final_reader_keeps_missing_primary_registry_visible(tmp_path):
+    path = final_fixture(tmp_path)
+    data = json.loads(path.read_text())
+    missing = f"{REF}:cathode:primary:R2"
+    data["runs"] = [r for r in data["runs"] if r["run_id"] != missing]
+    path.write_text(json.dumps(data))
+    contact = next(r for r in analyse(path)["cohort"] if r["candidate_id"] == REF)["contacts"]["cathode"]
+    assert contact["status"] == "missing" and contact["W_adh_J_m2"] is None
+    assert contact["missing_primary_run_ids"] == [missing]
+
+
+def test_consistency_cost_is_counted_without_changing_primary_selection(tmp_path):
+    path = final_fixture(tmp_path)
+    before = analyse(path)
+    data = json.loads(path.read_text())
+    row = dict(next(r for r in data["runs"] if r["candidate_id"] == REF and r["role"] == "primary"))
+    row.update(run_id="fixture-consistency", role="consistency", reused_from=None)
+    data["runs"].append(row)
+    path.write_text(json.dumps(data))
+    after = analyse(path)
+    assert after["compute"]["new"]["calls"] == before["compute"]["new"]["calls"] + row["calculator_calls"]
+    assert after["cohort"] == before["cohort"]
+    assert len(after["consistency"]) == 1

@@ -1,0 +1,1771 @@
+{
+ "schema_version": "coating_comparison_v1_final_robustness",
+ "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+ "manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+ "menu": [
+  {
+   "candidate_id": "mp-aaacjjwh",
+   "formula": "LiNbF6",
+   "feasible": true,
+   "role": "reference",
+   "construction": "(001) F2_P-6_3, 4 layers (archived)",
+   "exclusion_reason": null,
+   "limitations": [
+    "formally polar slabs",
+    "finite-range MLIP",
+    "no Li transport"
+   ]
+  },
+  {
+   "candidate_id": "mp-aaacjmqp",
+   "formula": "LiTaF6",
+   "feasible": true,
+   "role": "option",
+   "construction": "(001) F2_P-6_3, 4 layers",
+   "exclusion_reason": null,
+   "limitations": [
+    "formally polar slabs",
+    "finite-range MLIP",
+    "no Li transport"
+   ]
+  },
+  {
+   "candidate_id": "mp-aaaaajby",
+   "formula": "LiCaAlF6",
+   "feasible": true,
+   "role": "option",
+   "construction": "(100) LiAlF4_P2_6, 10 layers",
+   "exclusion_reason": null,
+   "limitations": [
+    "formally polar slabs",
+    "finite-range MLIP",
+    "no Li transport"
+   ]
+  },
+  {
+   "candidate_id": "mp-aaaaabru",
+   "formula": "LiF",
+   "feasible": true,
+   "role": "option",
+   "construction": "(110) LiF_Pmmm_2, 15 layers",
+   "exclusion_reason": null,
+   "limitations": [
+    "formally polar slabs",
+    "finite-range MLIP",
+    "no Li transport"
+   ]
+  },
+  {
+   "candidate_id": "mp-aaabevhd",
+   "formula": "LiZr2(PO4)3",
+   "feasible": false,
+   "role": "excluded",
+   "construction": null,
+   "exclusion_reason": "no admissible two-contact construction within 600 \u00c5\u00b2 and 1,250 atoms (electrolyte: only (001), >= 2,456 atoms; cathode cells over the cap; most facets cut PO4)",
+   "limitations": [
+    "formally polar slabs",
+    "finite-range MLIP",
+    "no Li transport"
+   ]
+  }
+ ],
+ "runs": [
+  {
+   "run_id": "mp-aaacjmqp:cathode:primary:R1",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 104,
+   "fixed_species": {
+    "Co": 26,
+    "Li": 26,
+    "O": 52
+   },
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "build_sha256": "bd0aebad76848c8eb0075ece1ceffa9956d429ccfadb493b9c3e035c5adb2920",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+   "status": "valid",
+   "W_adh_J_m2": 3.338748412819128,
+   "W_sep_J_m2": 4.727749860143862,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -4761.26904296875,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R1/result.json",
+   "result_sha256": "cfbc0aac72e9d971c3f6ce2838b423f0cbc9b5dc6d41425d5415c190ac8c3c2b",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R1/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 140,
+   "wall_seconds": 69.50429558099995,
+   "job_id": "11017049",
+   "source_commit": "207f879",
+   "warnings": [
+    "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjmqp:cathode:primary:R2",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0.25,
+    0.25
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 104,
+   "fixed_species": {
+    "Co": 26,
+    "Li": 26,
+    "O": 52
+   },
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "build_sha256": "bd0aebad76848c8eb0075ece1ceffa9956d429ccfadb493b9c3e035c5adb2920",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+   "status": "valid",
+   "W_adh_J_m2": 3.326811096603576,
+   "W_sep_J_m2": 4.7112314336463275,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -4761.203125,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R2/result.json",
+   "result_sha256": "9314e2ef3dd89304fc58b2b7bcfc0b0132be0b3b43c30683dc526c991c281d52",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R2/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 133,
+   "wall_seconds": 69.29400261799992,
+   "job_id": "11017050",
+   "source_commit": "207f879",
+   "warnings": [
+    "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjmqp:cathode:primary:R3",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R3",
+   "registry": [
+    0.08333333333333333,
+    0.25
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 104,
+   "fixed_species": {
+    "Co": 26,
+    "Li": 26,
+    "O": 52
+   },
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "build_sha256": "bd0aebad76848c8eb0075ece1ceffa9956d429ccfadb493b9c3e035c5adb2920",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+   "status": "valid",
+   "W_adh_J_m2": 3.3333303689279363,
+   "W_sep_J_m2": 4.724049732608415,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -4761.2392578125,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R3/result.json",
+   "result_sha256": "949b347473a030bd09ba146b039769c27e601e0e87f13e94d83a3b0624a9e5f2",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/cathode_R3/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 133,
+   "wall_seconds": 69.23535892200016,
+   "job_id": "11017051",
+   "source_commit": "207f879",
+   "warnings": [
+    "formal polarity film/substrate 1.228/2.058 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjmqp:cathode:sensitivity:thickness_increment",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "thickness_increment",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 3.3409949188227928,
+   "W_sep_J_m2": 4.728762990302378,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode_thickness_L5",
+   "joined_energy_eV": -5403.7294921875,
+   "n_atoms": 792,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 104,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/cathode_thickness/result.json",
+   "result_sha256": "dc7c24ca7a05479ffbed1f7eb641ee72354d0c657cc66564bd4b3319f932fd9f",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/cathode_thickness/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 142,
+   "wall_seconds": 36.145046141999956,
+   "dW_adh_vs_selected_primary_J_m2": 0.0022465060036647166,
+   "dW_sep_vs_selected_primary_J_m2": 0.0010131301585154517,
+   "quantified": true,
+   "job_id": "11017102",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaacjmqp:cathode:sensitivity:fixed_depth_variation",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "fixed_depth_variation",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 3.333682762026551,
+   "W_sep_J_m2": 4.724446174844355,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode",
+   "joined_energy_eV": -4761.24072265625,
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 156,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 13.385
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/cathode_fixed_depth/result.json",
+   "result_sha256": "ea91756fd424cc2814f59bf9e56f0dd9eba0c83526b04ee15a1e47743dacaf9e",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/cathode_fixed_depth/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 139,
+   "wall_seconds": 34.705211325000164,
+   "dW_adh_vs_selected_primary_J_m2": -0.005065650792577259,
+   "dW_sep_vs_selected_primary_J_m2": -0.0033036852995067534,
+   "quantified": true,
+   "job_id": "11017104",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaacjmqp:cathode:sensitivity:robustness_case",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "robustness_case",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 3.3391008059177425,
+   "W_sep_J_m2": 4.7266045825733665,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_cathode_substrate3",
+   "joined_energy_eV": -5867.982421875,
+   "n_atoms": 852,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 104,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/cathode_robustness/result.json",
+   "result_sha256": "166895b5d6d52034ae3749500d096a4f292e66a13b411207bcd4f1c9832870ec",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/cathode_robustness/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 140,
+   "wall_seconds": 35.68180247200007,
+   "dW_adh_vs_selected_primary_J_m2": 0.00035239309861445633,
+   "dW_sep_vs_selected_primary_J_m2": -0.0011452775704956508,
+   "quantified": true,
+   "job_id": "11017107",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:primary:R1",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "fixed_species": {
+    "Cl": 2,
+    "Li": 12,
+    "P": 4,
+    "S": 20
+   },
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "build_sha256": "b056cd3cd1aac959073ae2dfcebacb3a8bb7d7db74549b3edd67696efce6091c",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+   "status": "valid",
+   "W_adh_J_m2": 1.5658959489438142,
+   "W_sep_J_m2": 2.876023068986045,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -5423.77099609375,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R1/result.json",
+   "result_sha256": "7cdd08295c2175a11178fe28f84bbf063feebbabd342775b99df811ff47c2ace",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R1/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 379,
+   "wall_seconds": 92.8813890839997,
+   "job_id": "11017052",
+   "source_commit": "207f879",
+   "warnings": [
+    "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:primary:R2",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0.25,
+    0.5
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "fixed_species": {
+    "Cl": 2,
+    "Li": 12,
+    "P": 4,
+    "S": 20
+   },
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "build_sha256": "b056cd3cd1aac959073ae2dfcebacb3a8bb7d7db74549b3edd67696efce6091c",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+   "status": "valid",
+   "W_adh_J_m2": 1.5773585444472311,
+   "W_sep_J_m2": 2.910571251635274,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -5423.8935546875,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R2/result.json",
+   "result_sha256": "95e35ae4a50f902fd220381017983678070868334644f5bbc1c23350306c6f8e",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R2/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 394,
+   "wall_seconds": 93.53672744400001,
+   "job_id": "11017053",
+   "source_commit": "207f879",
+   "warnings": [
+    "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:primary:R3",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R3",
+   "registry": [
+    0.08333333333333333,
+    0.75
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "fixed_species": {
+    "Cl": 2,
+    "Li": 12,
+    "P": 4,
+    "S": 20
+   },
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "build_sha256": "b056cd3cd1aac959073ae2dfcebacb3a8bb7d7db74549b3edd67696efce6091c",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+   "status": "valid",
+   "W_adh_J_m2": 1.534040130056007,
+   "W_sep_J_m2": 2.815702663863115,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -5423.431640625,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R3/result.json",
+   "result_sha256": "b4169e576925e38224999feaa83046d28fdf4de9bcd0358e822086468dc404af",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiTaF6/electrolyte_R3/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 323,
+   "wall_seconds": 85.78857364199985,
+   "job_id": "11017054",
+   "source_commit": "207f879",
+   "warnings": [
+    "formal polarity film/substrate 1.118/0.347 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:sensitivity:thickness_increment",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "thickness_increment",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.572122756196295,
+   "W_sep_J_m2": 2.912856896615716,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte_thickness_L5",
+   "joined_energy_eV": -6547.78955078125,
+   "n_atoms": 1048,
+   "area_A2": 170.70827540491757,
+   "n_fixed": 38,
+   "registry": [
+    0.25,
+    0.5,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/electrolyte_thickness/result.json",
+   "result_sha256": "28493f953fa96b2207801815cf274066c9853dd0580f5ae1c316e0cb46f667e6",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/electrolyte_thickness/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 448,
+   "wall_seconds": 66.11207882999997,
+   "dW_adh_vs_selected_primary_J_m2": -0.00523578825093618,
+   "dW_sep_vs_selected_primary_J_m2": 0.0022856449804420365,
+   "quantified": true,
+   "job_id": "11017103",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:sensitivity:fixed_depth_variation",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "fixed_depth_variation",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.6014580643287282,
+   "W_sep_J_m2": 2.918831652792659,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte",
+   "joined_energy_eV": -5423.6455078125,
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "n_fixed": 68,
+   "registry": [
+    0.25,
+    0.5,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 6.515204
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/electrolyte_fixed_depth/result.json",
+   "result_sha256": "2a0a3879e9c3b74b52ddfc3a1cfc28c5db17a460d77bb6dd00404b7e1eef5cd9",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/electrolyte_fixed_depth/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 406,
+   "wall_seconds": 58.23650064799995,
+   "dW_adh_vs_selected_primary_J_m2": 0.024099519881497056,
+   "dW_sep_vs_selected_primary_J_m2": 0.008260401157385022,
+   "quantified": true,
+   "job_id": null,
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaacjmqp:electrolyte:sensitivity:robustness_case",
+   "candidate_id": "mp-aaacjmqp",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "robustness_case",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.4636845740138906,
+   "W_sep_J_m2": 2.7066447542398793,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiTaF6_electrolyte_seed4",
+   "joined_energy_eV": -5422.89306640625,
+   "n_atoms": 880,
+   "area_A2": 172.9262508262677,
+   "n_fixed": 36,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/electrolyte_robustness/result.json",
+   "result_sha256": "c7bc8fc352e76ee998dc0a6211796fc4685ca736fc5e9f295dd994b0b3d41a4e",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiTaF6_sensitivity_v1/electrolyte_robustness/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 565,
+   "wall_seconds": 71.36629911199998,
+   "dW_adh_vs_selected_primary_J_m2": -0.11367397043334049,
+   "dW_sep_vs_selected_primary_J_m2": -0.2039264973953947,
+   "quantified": true,
+   "job_id": "11017108",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaaaajby:cathode:primary:R1",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 120,
+   "fixed_species": {
+    "Co": 30,
+    "Li": 30,
+    "O": 60
+   },
+   "n_atoms": 720,
+   "area_A2": 102.46155531691838,
+   "build_sha256": "b2fe7f23fb98338e1a2ff8227d542987146391c1d1bece8117138b8017421dd5",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode",
+   "status": "valid",
+   "W_adh_J_m2": 1.4237327238023068,
+   "W_sep_J_m2": 4.3954989637247275,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -4754.986328125,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R1/result.json",
+   "result_sha256": "5efbde5d93b69de1265e41182a58d2f2714737a4e0e6a46afff9c0dff5d1296d",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R1/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 236,
+   "wall_seconds": 42.31722906799996,
+   "job_id": "11017178",
+   "source_commit": "e4d5ab7",
+   "warnings": [
+    "formal polarity film/substrate 0.002/2.058 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaaaajby:cathode:primary:R2",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0.25,
+    0.16666666666666666
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 120,
+   "fixed_species": {
+    "Co": 30,
+    "Li": 30,
+    "O": 60
+   },
+   "n_atoms": 720,
+   "area_A2": 102.46155531691838,
+   "build_sha256": "b2fe7f23fb98338e1a2ff8227d542987146391c1d1bece8117138b8017421dd5",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode",
+   "status": "valid",
+   "W_adh_J_m2": 1.426710445485596,
+   "W_sep_J_m2": 4.321819440022834,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -4755.00537109375,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R2/result.json",
+   "result_sha256": "b2b94e5b1272a9c0f5f600f36a6933bd98f8da9715d02bf280a90888a6c4a66e",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R2/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 206,
+   "wall_seconds": 39.14582310800006,
+   "job_id": "11017179",
+   "source_commit": "e4d5ab7",
+   "warnings": [
+    "formal polarity film/substrate 0.002/2.058 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaaaajby:cathode:primary:R3",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R3",
+   "registry": [
+    0.08333333333333333,
+    0.16666666666666666
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 120,
+   "fixed_species": {
+    "Co": 30,
+    "Li": 30,
+    "O": 60
+   },
+   "n_atoms": 720,
+   "area_A2": 102.46155531691838,
+   "build_sha256": "b2fe7f23fb98338e1a2ff8227d542987146391c1d1bece8117138b8017421dd5",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode",
+   "status": "valid",
+   "W_adh_J_m2": 1.34173084975481,
+   "W_sep_J_m2": 3.5313488608666543,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -4754.4619140625,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R3/result.json",
+   "result_sha256": "3ff2bb10dbacba6210ccdd5f2fa56caa1647063dc8ccd7ba92cc5ce023760003",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/cathode_R3/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 160,
+   "wall_seconds": 35.46142911399966,
+   "job_id": "11017180",
+   "source_commit": "e4d5ab7",
+   "warnings": [
+    "formal polarity film/substrate 0.002/2.058 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaaaajby:cathode:sensitivity:thickness_increment",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "thickness_increment",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.4332385276374218,
+   "W_sep_J_m2": 4.2799022809426885,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode_thickness_L11",
+   "joined_energy_eV": -4978.8544921875,
+   "n_atoms": 756,
+   "area_A2": 102.46155531691838,
+   "n_fixed": 120,
+   "registry": [
+    0.25,
+    0.16666666666666666,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/cathode_thickness/result.json",
+   "result_sha256": "aaf60b6973b8127bfd4fac2089d2dfcac185808e905f903f533cedad902a3f4b",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/cathode_thickness/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 174,
+   "wall_seconds": 35.73940386899994,
+   "dW_adh_vs_selected_primary_J_m2": 0.006528082151825876,
+   "dW_sep_vs_selected_primary_J_m2": -0.04191715908014526,
+   "quantified": true,
+   "job_id": "11017275",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaaaajby:cathode:sensitivity:fixed_depth_variation",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "fixed_depth_variation",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.4257560475101827,
+   "W_sep_J_m2": 4.323422828621528,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode",
+   "joined_energy_eV": -4754.9990234375,
+   "n_atoms": 720,
+   "area_A2": 102.46155531691838,
+   "n_fixed": 180,
+   "registry": [
+    0.25,
+    0.16666666666666666,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 13.385
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/cathode_fixed_depth/result.json",
+   "result_sha256": "fd8a0e4c3a617b3c01f975b4382ff6f1718a98f5e903c5801b120bd002a338f8",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/cathode_fixed_depth/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 224,
+   "wall_seconds": 39.60821785400003,
+   "dW_adh_vs_selected_primary_J_m2": -0.0009543979754131904,
+   "dW_sep_vs_selected_primary_J_m2": 0.0016033885986939111,
+   "quantified": true,
+   "job_id": "11017276",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaaaajby:cathode:sensitivity:robustness_case",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "robustness_case",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.435376379102347,
+   "W_sep_J_m2": 4.296623333471927,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_cathode_substrate3",
+   "joined_energy_eV": -6032.03515625,
+   "n_atoms": 900,
+   "area_A2": 102.46155531691838,
+   "n_fixed": 120,
+   "registry": [
+    0.25,
+    0.16666666666666666,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/cathode_robustness/result.json",
+   "result_sha256": "25dc8845a51ecf0e38913d4fd8d0ae89b5206bfb60e318ac57c5c1a4ac856220",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/cathode_robustness/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 227,
+   "wall_seconds": 42.53367212400008,
+   "dW_adh_vs_selected_primary_J_m2": 0.008665933616751165,
+   "dW_sep_vs_selected_primary_J_m2": -0.025196106550906983,
+   "quantified": true,
+   "job_id": "11017277",
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaaaajby:electrolyte:primary:R1",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 57,
+   "fixed_species": {
+    "Cl": 3,
+    "Li": 18,
+    "P": 6,
+    "S": 30
+   },
+   "n_atoms": 1212,
+   "area_A2": 256.0624131073764,
+   "build_sha256": "b62e243f52de37089835d0c4a13d6932008606b2e5e1d88a503f456f693e9a05",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_electrolyte",
+   "status": "valid",
+   "W_adh_J_m2": 0.5234871701570539,
+   "W_sep_J_m2": 1.2171011783904773,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -6970.080078125,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R1/result.json",
+   "result_sha256": "a2f3f17b0f87ed9537dc9f832d0c5f370544582a9f23ce7b5b0175dbe3b17771",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R1/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 222,
+   "wall_seconds": 44.513267224000174,
+   "job_id": "11017181",
+   "source_commit": "e4d5ab7",
+   "warnings": [
+    "formal polarity film/substrate 0.002/0.347 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaaaajby:electrolyte:primary:R2",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0.16666666666666666,
+    0.5
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 57,
+   "fixed_species": {
+    "Cl": 3,
+    "Li": 18,
+    "P": 6,
+    "S": 30
+   },
+   "n_atoms": 1212,
+   "area_A2": 256.0624131073764,
+   "build_sha256": "b62e243f52de37089835d0c4a13d6932008606b2e5e1d88a503f456f693e9a05",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_electrolyte",
+   "status": "valid",
+   "W_adh_J_m2": 0.6775514806014488,
+   "W_sep_J_m2": 1.4540062756615,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -6972.5419921875,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R2/result.json",
+   "result_sha256": "b7defc7de4a84eb741ebe534f8263e0487c3a4ff6a9b694c247c3310555ced42",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R2/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 277,
+   "wall_seconds": 52.00571325400006,
+   "job_id": "11017182",
+   "source_commit": "e4d5ab7",
+   "warnings": [
+    "formal polarity film/substrate 0.002/0.347 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaaaajby:electrolyte:primary:R3",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R3",
+   "registry": [
+    0.0,
+    0.5
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 57,
+   "fixed_species": {
+    "Cl": 3,
+    "Li": 18,
+    "P": 6,
+    "S": 30
+   },
+   "n_atoms": 1212,
+   "area_A2": 256.0624131073764,
+   "build_sha256": "b62e243f52de37089835d0c4a13d6932008606b2e5e1d88a503f456f693e9a05",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_electrolyte",
+   "status": "valid",
+   "W_adh_J_m2": 0.7435735865694895,
+   "W_sep_J_m2": 1.4902710788933669,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "failure_reason": null,
+   "joined_energy_eV": -6973.59765625,
+   "result_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R3/result.json",
+   "result_sha256": "54280c4e2c0102b2f3684c7a6d9f127f7837be777deab24215f2a520d71d6246",
+   "separation_path": "data/petmad/coating_comparison_v1/runs/LiCaAlF6/electrolyte_R3/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 279,
+   "wall_seconds": 52.18324288699978,
+   "job_id": "11017183",
+   "source_commit": "e4d5ab7",
+   "warnings": [
+    "formal polarity film/substrate 0.002/0.347 e/\u00c5"
+   ]
+  },
+  {
+   "run_id": "mp-aaaaajby:electrolyte:sensitivity:thickness_increment",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "thickness_increment",
+   "status": "not_run_resource_limit",
+   "failure_reason": "not_run_resource_limit (1,302 atoms > 1,250)",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": null,
+   "quantified": false,
+   "note": "declared unavailable before any energy for this coating; sensitivity unquantified"
+  },
+  {
+   "run_id": "mp-aaaaajby:electrolyte:sensitivity:fixed_depth_variation",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "fixed_depth_variation",
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 0.7577571880020035,
+   "W_sep_J_m2": 1.5000094159027666,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiCaAlF6_electrolyte",
+   "joined_energy_eV": -6973.080078125,
+   "n_atoms": 1212,
+   "area_A2": 256.0624131073764,
+   "n_fixed": 102,
+   "registry": [
+    0.0,
+    0.5,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 6.515204
+   },
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/electrolyte_fixed_depth/result.json",
+   "result_sha256": "142c9f1887030eea66cc326d9bb6b0d462d50a25f906ba5f6051249110d19d4b",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/LiCaAlF6_sensitivity_v1/electrolyte_fixed_depth/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 302,
+   "wall_seconds": 51.490804963999835,
+   "dW_adh_vs_selected_primary_J_m2": 0.01418360143251407,
+   "dW_sep_vs_selected_primary_J_m2": 0.009738337009399745,
+   "quantified": true,
+   "job_id": null,
+   "released_after": "summary (c0a0546)"
+  },
+  {
+   "run_id": "mp-aaaaajby:electrolyte:sensitivity:robustness_case",
+   "candidate_id": "mp-aaaaajby",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "robustness_case",
+   "status": "not_run_no_admissible_construction",
+   "failure_reason": "not_run_no_admissible_construction (seed-4 bulk, 300 and 600 \u00c5\u00b2)",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": null,
+   "quantified": false,
+   "note": "declared unavailable before any energy for this coating; sensitivity unquantified"
+  },
+  {
+   "run_id": "mp-aaaaabru:cathode:primary:R1",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 144,
+   "fixed_species": {
+    "Co": 36,
+    "Li": 36,
+    "O": 72
+   },
+   "n_atoms": 1032,
+   "area_A2": 122.95386638030203,
+   "build_sha256": "ec21f40bd13bfb154bb50fe05147b31b76cc25a46369301209ab1aafc8e9a9d5",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_cathode",
+   "status": "not_run_not_selected",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:cathode:primary:R2",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0.5,
+    0.08333333333333333
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 144,
+   "fixed_species": {
+    "Co": 36,
+    "Li": 36,
+    "O": 72
+   },
+   "n_atoms": 1032,
+   "area_A2": 122.95386638030203,
+   "build_sha256": "ec21f40bd13bfb154bb50fe05147b31b76cc25a46369301209ab1aafc8e9a9d5",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_cathode",
+   "status": "not_run_not_selected",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:cathode:primary:R3",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R3",
+   "registry": [
+    0.25,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "n_fixed": 144,
+   "fixed_species": {
+    "Co": 36,
+    "Li": 36,
+    "O": 72
+   },
+   "n_atoms": 1032,
+   "area_A2": 122.95386638030203,
+   "build_sha256": "ec21f40bd13bfb154bb50fe05147b31b76cc25a46369301209ab1aafc8e9a9d5",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_cathode",
+   "status": "not_run_not_selected",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:cathode:sensitivity:thickness_increment",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "thickness_increment",
+   "status": "not_run_not_selected",
+   "failure_reason": null,
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_cathode_thickness_L16",
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:cathode:sensitivity:fixed_depth_variation",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "fixed_depth_variation",
+   "status": "not_run_not_selected",
+   "failure_reason": null,
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_cathode",
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:cathode:sensitivity:robustness_case",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "cathode",
+   "role": "sensitivity",
+   "sensitivity_kind": "robustness_case",
+   "status": "not_run_not_selected",
+   "failure_reason": null,
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_cathode_substrate3",
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:electrolyte:primary:R1",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0.0,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "fixed_species": {
+    "Cl": 2,
+    "Li": 12,
+    "P": 4,
+    "S": 20
+   },
+   "n_atoms": 1108,
+   "area_A2": 170.7082754049176,
+   "build_sha256": "0e8733ea786d5a61d9e02738c13b992dce9983e951be02657ed742d7e2bfc6fe",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte",
+   "status": "not_run_not_selected",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:electrolyte:primary:R2",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0.5,
+    0.08333333333333333
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "fixed_species": {
+    "Cl": 2,
+    "Li": 12,
+    "P": 4,
+    "S": 20
+   },
+   "n_atoms": 1108,
+   "area_A2": 170.7082754049176,
+   "build_sha256": "0e8733ea786d5a61d9e02738c13b992dce9983e951be02657ed742d7e2bfc6fe",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte",
+   "status": "not_run_not_selected",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:electrolyte:primary:R3",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R3",
+   "registry": [
+    0.25,
+    0.0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "fixed_species": {
+    "Cl": 2,
+    "Li": 12,
+    "P": 4,
+    "S": 20
+   },
+   "n_atoms": 1108,
+   "area_A2": 170.7082754049176,
+   "build_sha256": "0e8733ea786d5a61d9e02738c13b992dce9983e951be02657ed742d7e2bfc6fe",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte",
+   "status": "not_run_not_selected",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "reused_from": null,
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:electrolyte:sensitivity:thickness_increment",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "thickness_increment",
+   "status": "not_run_not_selected",
+   "failure_reason": null,
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte_thickness_L16",
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:electrolyte:sensitivity:fixed_depth_variation",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "fixed_depth_variation",
+   "status": "not_run_not_selected",
+   "failure_reason": null,
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": "data/petmad/coating_comparison_v1/inputs/LiF_electrolyte",
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaaaabru:electrolyte:sensitivity:robustness_case",
+   "candidate_id": "mp-aaaaabru",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "robustness_case",
+   "status": "not_run_not_selected",
+   "failure_reason": "not_run_no_admissible_construction (seed-4 bulk, 300 and 600 \u00c5\u00b2)",
+   "W_adh_J_m2": null,
+   "W_sep_J_m2": null,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "planned_in_manifest_sha256": "99ef2dc199b730b53728fcbb3eb5eee71bcf4e75a9e19d9d0102cfe07280c19f",
+   "contact_build_id": null,
+   "quantified": false
+  },
+  {
+   "run_id": "mp-aaacjjwh:cathode:primary:R1",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0,
+    0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "fraction": 0.34
+   },
+   "n_fixed": 104,
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 3.6003562394027577,
+   "W_sep_J_m2": 5.127716027070846,
+   "joined_energy_eV": -4707.380859375,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "result_path": "data/petmad/niflheim_batch1/cathode_ref/result.json",
+   "result_sha256": "366df9799ba2468b1edcc8a2aa67d014f9f52835eecabf69c434e04f2f8299d9",
+   "separation_path": "data/petmad/niflheim_batch1/cathode_ref/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 136,
+   "wall_seconds": 61.33621682699999,
+   "reused_from": "data/petmad/niflheim_batch1/cathode_ref",
+   "warnings": [
+    "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjjwh:cathode:primary:R2",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0.16666666666666666,
+    0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "fraction": 0.34
+   },
+   "n_fixed": 104,
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 3.596964455828597,
+   "W_sep_J_m2": 5.090802849991021,
+   "joined_energy_eV": -4707.3623046875,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "result_path": "data/petmad/niflheim_batch1/cathode_reg_sixth_0/result.json",
+   "result_sha256": "77888b18784edcf5d388b547bad80e59d478dab4ef367625cb2b459dca5c6ef4",
+   "separation_path": "data/petmad/niflheim_batch1/cathode_reg_sixth_0/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 132,
+   "wall_seconds": 60.68415441299999,
+   "reused_from": "data/petmad/niflheim_batch1/cathode_reg_sixth_0",
+   "warnings": [
+    "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjjwh:cathode:primary:R3",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "cathode",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R3",
+   "registry": [
+    0.3333333333333333,
+    0.3333333333333333
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "fraction": 0.34
+   },
+   "n_fixed": 104,
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 3.6170508624496,
+   "W_sep_J_m2": 5.167624545488891,
+   "joined_energy_eV": -4707.4736328125,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "result_path": "data/petmad/niflheim_batch1/cathode_reg_third_third/result.json",
+   "result_sha256": "61fa32258e8d63a2439b69fedb987d1f207cd2a8c790cdcd9b30b293a52e3494",
+   "separation_path": "data/petmad/niflheim_batch1/cathode_reg_third_third/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 132,
+   "wall_seconds": 60.63588191000002,
+   "reused_from": "data/petmad/niflheim_batch1/cathode_reg_third_third",
+   "warnings": [
+    "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjjwh:electrolyte:primary:R1",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R1",
+   "registry": [
+    0,
+    0
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.6333940812860246,
+   "W_sep_J_m2": 2.9672197308623063,
+   "joined_energy_eV": -5328.5966796875,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "result_path": "data/petmad/niflheim_batch1/electrolyte_seed0_ref/result.json",
+   "result_sha256": "dfc7f55f3d12b797f16aefbe4c9f6a1e1c2a8a4673e9b37ae689cd52cd64fb37",
+   "separation_path": "data/petmad/niflheim_batch1/electrolyte_seed0_ref/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cuda",
+   "calculator_calls": 416,
+   "wall_seconds": 85.48660626099999,
+   "reused_from": "data/petmad/niflheim_batch1/electrolyte_seed0_ref",
+   "warnings": [
+    "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjjwh:electrolyte:primary:R2",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "electrolyte",
+   "role": "primary",
+   "sensitivity_kind": null,
+   "registry_id": "R2",
+   "registry": [
+    0,
+    0.5
+   ],
+   "gap_A": 2.0,
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "n_fixed": 38,
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "status": "valid",
+   "failure_reason": null,
+   "W_adh_J_m2": 1.6316068100231231,
+   "W_sep_J_m2": 3.064711941193468,
+   "joined_energy_eV": -5328.5810546875,
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "result_path": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/result.json",
+   "result_sha256": "45334c05277d5eb6db713cc681cdd505c9811e991465e1be3927b4cdc8db8dfd",
+   "separation_path": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "device": "cpu",
+   "calculator_calls": 440,
+   "wall_seconds": 1927.9715955000138,
+   "reused_from": "data/petmad/final_checks_v1/electrolyte_reg_0_0.5",
+   "warnings": [
+    "registry chosen before the geometric registry rule (see manifest reference.registry_provenance)"
+   ]
+  },
+  {
+   "run_id": "mp-aaacjjwh:cathode:consistency:G2",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "cathode",
+   "role": "consistency",
+   "registry_id": "G2",
+   "job_id": "11014613",
+   "reused_from": null,
+   "quantified": true,
+   "status": "valid",
+   "W_adh_J_m2": 3.602558696269096,
+   "W_sep_J_m2": 5.108290357509745,
+   "joined_energy_eV": -4707.39306640625,
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 104,
+   "registry": [
+    0.25,
+    0.25,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/cathode_G2/result.json",
+   "result_sha256": "7b1b5653f86d18b8c5378804ecffa59b3929590ba98b3a2c7f98f6637b39155e",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/cathode_G2/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 132,
+   "wall_seconds": 67.85252468399995,
+   "dW_adh_vs_selected_primary_J_m2": -0.014492166180504196,
+   "dW_sep_vs_selected_primary_J_m2": -0.05933418797914669
+  },
+  {
+   "run_id": "mp-aaacjjwh:cathode:consistency:G3",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "cathode",
+   "role": "consistency",
+   "registry_id": "G3",
+   "job_id": "11014614",
+   "reused_from": null,
+   "quantified": true,
+   "status": "valid",
+   "W_adh_J_m2": 3.627050016622775,
+   "W_sep_J_m2": 5.1633958283055215,
+   "joined_energy_eV": -4707.52880859375,
+   "n_atoms": 696,
+   "area_A2": 88.8000146079959,
+   "n_fixed": 104,
+   "registry": [
+    0.08333333333333333,
+    0.25,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 9.10044154
+   },
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/cathode_G3/result.json",
+   "result_sha256": "5f19440827cfbeca8fd723e3b228c434a78fca093204c073a63677f57572a297",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/cathode_G3/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 147,
+   "wall_seconds": 68.31508831200017,
+   "dW_adh_vs_selected_primary_J_m2": 0.009999154173174762,
+   "dW_sep_vs_selected_primary_J_m2": -0.004228717183369923
+  },
+  {
+   "run_id": "mp-aaacjjwh:electrolyte:consistency:G2",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "electrolyte",
+   "role": "consistency",
+   "registry_id": "G2",
+   "job_id": "11014615",
+   "reused_from": null,
+   "quantified": true,
+   "status": "valid",
+   "W_adh_J_m2": 1.6233693225998778,
+   "W_sep_J_m2": 2.9881170563977713,
+   "joined_energy_eV": -5328.4892578125,
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "n_fixed": 38,
+   "registry": [
+    0.25,
+    0.5,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/electrolyte_G2/result.json",
+   "result_sha256": "72941005a432d620b3a622b84b33931a9cdaa86ce7d75e8f2ad252c2799586f6",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/electrolyte_G2/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 306,
+   "wall_seconds": 80.99192235600003,
+   "dW_adh_vs_selected_primary_J_m2": -0.010024758686146829,
+   "dW_sep_vs_selected_primary_J_m2": 0.020897325535464972
+  },
+  {
+   "run_id": "mp-aaacjjwh:electrolyte:consistency:G3",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "electrolyte",
+   "role": "consistency",
+   "registry_id": "G3",
+   "job_id": "11014616",
+   "reused_from": null,
+   "quantified": true,
+   "status": "valid",
+   "W_adh_J_m2": 1.6318474042315905,
+   "W_sep_J_m2": 3.055981808486218,
+   "joined_energy_eV": -5328.580078125,
+   "n_atoms": 880,
+   "area_A2": 170.70827540491757,
+   "n_fixed": 38,
+   "registry": [
+    0.08333333333333333,
+    0.75,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "device": "cuda",
+   "result_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/electrolyte_G3/result.json",
+   "result_sha256": "5b49ce7152051cf53674d6fc2c7d0261b4c4f76f2d38fed1faa3163ea91caa24",
+   "separation_path": "data/petmad/coating_comparison_v1/robustness/reference_consistency_v1/electrolyte_G3/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 398,
+   "wall_seconds": 90.46003395499974,
+   "dW_adh_vs_selected_primary_J_m2": -0.0015466770544341202,
+   "dW_sep_vs_selected_primary_J_m2": 0.08876207762391175
+  },
+  {
+   "run_id": "mp-aaacjjwh:electrolyte:sensitivity:robustness_case",
+   "candidate_id": "mp-aaacjjwh",
+   "contact": "electrolyte",
+   "role": "sensitivity",
+   "sensitivity_kind": "robustness_case",
+   "reused_from": "data/petmad/niflheim_batch1/electrolyte_seed4",
+   "quantified": true,
+   "note": "archived seed-4 (Nb) run, registry (0,0), mapped Cl cut; same construction sensitivity as the Ta case",
+   "status": "valid",
+   "W_adh_J_m2": 1.5120118610940148,
+   "W_sep_J_m2": 2.8053633887540066,
+   "joined_energy_eV": -5327.646484375,
+   "n_atoms": 880,
+   "area_A2": 172.9262508262677,
+   "n_fixed": 36,
+   "registry": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "fixed_rule": {
+    "depth_A": 3.257602
+   },
+   "checkpoint_sha256": "3f52e97c459b2a28a94fc49b8a2f9a92551231a0ea4f5b5db2396f12d8ffa1e9",
+   "device": "cuda",
+   "result_path": "data/petmad/niflheim_batch1/electrolyte_seed4/result.json",
+   "result_sha256": "d2ce00cd3a5d9ba96b2b8019934387614d065db44d1078583d9ff7402e5261dc",
+   "separation_path": "data/petmad/niflheim_batch1/electrolyte_seed4/fixed_geometry_separation.json",
+   "separation_single_points": 2,
+   "calculator_calls": 400,
+   "wall_seconds": 82.604542057,
+   "dW_adh_vs_selected_primary_J_m2": -0.12138222019200984,
+   "dW_sep_vs_selected_primary_J_m2": -0.1618563421082997
+  }
+ ],
+ "cohort": [
+  {
+   "candidate_id": "mp-aaacjjwh",
+   "slot_reason": "reference"
+  },
+  {
+   "candidate_id": "mp-aaacjmqp",
+   "slot_reason": "llm_choice_2"
+  },
+  {
+   "candidate_id": "mp-aaaaajby",
+   "slot_reason": "llm_choice_3"
+  }
+ ],
+ "derived_from_index_sha256": "7ba8cc4a7ed013017651dc7d7031a2ce9846ffae01d6f73ca81841dbdcdaf024",
+ "decision_snapshots": [
+  {
+   "stage": "choose_2",
+   "live_record_time": "2026-10-22T07:40:15+00:00",
+   "from_commit": "b199608",
+   "index_sha256": "b02750feffeefb0d3e7875d18bc693a3b2e4e6a5294091a21d59aee6501aa937",
+   "path": "data/petmad/coating_comparison_v1/snapshots/index_choose_2_b02750feffeefb0d.json"
+  },
+  {
+   "stage": "choose_3",
+   "live_record_time": "2026-10-22T08:04:25+00:00",
+   "from_commit": "d5ab477",
+   "index_sha256": "4577b2ab2e9331b7161aed14120246348ec730d8ca999724150538669e2fd808",
+   "path": "data/petmad/coating_comparison_v1/snapshots/index_choose_3_4577b2ab2e9331b7.json"
+  },
+  {
+   "stage": "summary",
+   "live_record_time": "2026-10-22T08:54:01+00:00",
+   "from_commit": "668b5e3",
+   "index_sha256": "7ba8cc4a7ed013017651dc7d7031a2ce9846ffae01d6f73ca81841dbdcdaf024",
+   "path": "data/petmad/coating_comparison_v1/snapshots/index_summary_7ba8cc4a7ed01301.json"
+  },
+  {
+   "stage": "producer bundle",
+   "coating": "LiTaF6",
+   "bundle_sha256": "91e80b064d3a15d305cd33640cc5838b21222852ca16cca4dc1e2459f4026da2",
+   "path": "data/petmad/coating_comparison_v1/snapshots/LiTaF6_primary_feedback_91e80b064d3a15d3.json"
+  },
+  {
+   "stage": "producer bundle",
+   "coating": "LiCaAlF6",
+   "bundle_sha256": "2f274f1140ba447c314efd8f4d7e9433443e6a6612219f3c0d994c49460e68cf",
+   "path": "data/petmad/coating_comparison_v1/snapshots/LiCaAlF6_primary_feedback_2f274f1140ba447c.json"
+  }
+ ],
+ "released_after_summary": "origin/work/agent-experiments c0a0546",
+ "job_accounting": {
+  "primary (selected coatings)": {
+   "jobs": 12,
+   "calculator_calls": 2882,
+   "separation_single_points": 24,
+   "runner_wall_seconds": 745.9
+  },
+  "sensitivity (selected coatings)": {
+   "jobs": 10,
+   "calculator_calls": 2767,
+   "separation_single_points": 20,
+   "runner_wall_seconds": 471.6
+  },
+  "consistency (LiNbF6 reference)": {
+   "jobs": 4,
+   "calculator_calls": 983,
+   "separation_single_points": 8,
+   "runner_wall_seconds": 307.6
+  },
+  "total": {
+   "jobs": 26,
+   "ceiling": 36,
+   "calculator_calls": 6632,
+   "separation_single_points": 52,
+   "runner_wall_seconds": 1525.1,
+   "device": "RTX 3090 (sm3090el9_devel)",
+   "excludes": "bulk preparation (LiF/LiTaF6: 389 CPU calls), queue/setup time, and the five reused LiNbF6 reference primaries"
+  }
+ },
+ "note": "Primary rows and selections are identical to the decision-time indices. Sensitivity, consistency and archived reference rows were released only after the final live call and never entered a decision."
+}

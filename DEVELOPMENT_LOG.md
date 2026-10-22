@@ -2716,3 +2716,17 @@ Paused for LiCaAlF6's six primary jobs. Files: `EXECUTION_choose3.json`, `report
   - Programmatic checks passed. The slide was not visually checked because no renderer was available.
 - **Updated:** the `REPORT.md` status entry and `presentations/README.md`.
 - **Deferred:** the field rename to `weaker_contact_W_adh_J_m2`, for a future protocol version. This pilot is not rewritten or rerun.
+
+## 2026-10-22 — Agent side (Adem): final comparison reader patch and final figures
+
+- **Physics data:** `data/petmad/coating_comparison_v1` copied from Claude's `1b76eeb` (work/petmad-comparison). It only adds files; `index.json`, the live pilot input, is unchanged. The new `index_final.json` has sha256 `47d69f7dd75dff89…`.
+- **Reader patch:** Davide's `data/reviews/final_comparison_reader_fix_20261022.patch` (from `750b382`), applied unchanged to `interphaise/pilot.py`, `scripts/analyse_mlip_comparison.py` and `tests/test_mlip_comparison.py`.
+  - It accepts `not_run_not_selected` and the final schema for offline analysis only; the live pilot still rejects them.
+  - Consistency work now counts in compute.
+- **Tests:** the pilot/comparison/loader subset gives 39 passed, matching Davide's count.
+- **Final outputs:** `data/petmad/coating_comparison_v1/analysis_final/` (summary.json, table.md, comparison.png), from `python scripts/analyse_mlip_comparison.py --index data/petmad/coating_comparison_v1/index_final.json --out data/petmad/coating_comparison_v1/analysis_final`.
+  - No invalid runs; 12 LiF rows are not-selected; 4 consistency rows.
+  - 6,632 new runner calls. The 1,525.1 s (25.4 min) is **runner time**. The 26 Slurm jobs' elapsed times sum to 47.5 min (Davide's review), and queue delay is outside both.
+  - LiCaAlF₆ electrolyte: the thickness and robustness sensitivity cases are unavailable and stay unquantified.
+- **Figure fix:** `scripts/report_llm_petmad_pilot.py` placed the forecast figure's footnote off the bottom edge. It is now placed inside, and `report_live/predictions.png` was regenerated from the unchanged state. `report.md` and `assessment.json` are byte-identical. Both figures were checked visually.
+- No live calls.

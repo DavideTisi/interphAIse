@@ -73,10 +73,14 @@ def _resolve(path, root):
     return p if p.is_absolute() else Path(root) / p
 
 
-def load_index(path):
+def load_index(path, *, allow_final=False):
     """Structural validation of the campaign index written by the PET-MAD side."""
     index = json.loads(Path(path).read_text())
     problems, seen = [], set()
+    final = index.get("schema_version") == "coating_comparison_v1_final_robustness"
+    if final and not allow_final:
+        raise ValueError("Final robustness index is for offline analysis, not live pilot input")
+    cohort = {c["candidate_id"] for c in index.get("cohort", [])}
     for key in ("schema_version", "checkpoint_sha256", "menu", "runs"):
         if key not in index:
             problems.append(f"index missing {key}")
@@ -90,7 +94,13 @@ def load_index(path):
             problems.append(f"{rid}: candidate not in menu")
         if r.get("contact") not in CONTACTS or r.get("role") not in ROLES:
             problems.append(f"{rid}: bad contact/role")
-        if r.get("status") not in STATUSES:
+        not_selected = final and allow_final and r.get("status") == "not_run_not_selected"
+        if not_selected:
+            if r.get("candidate_id") in cohort or r.get("quantified") is not False:
+                problems.append(f"{rid}: not-selected row belongs to the cohort or is quantified")
+            if any(r.get(k) is not None for k in ("W_adh_J_m2", "W_sep_J_m2", "joined_energy_eV", "result_path")):
+                problems.append(f"{rid}: not-selected row carries a calculated outcome")
+        if r.get("status") not in STATUSES and not not_selected:
             problems.append(f"{rid}: bad status {r.get('status')!r}")
         if r.get("status") in NOT_RUN and (r.get("role") != "sensitivity" or not r.get("failure_reason")):
             problems.append(f"{rid}: {r.get('status')} is only for sensitivity rows and needs a reason")

@@ -104,9 +104,9 @@ def plot(state, a, path):
         ax.grid(axis="y", color="#e4e3df", lw=0.6)
     axes[0].set_ylabel("W_adh (J/m²)")
     fig.legend(*axes[0].get_legend_handles_labels(), loc="upper center", ncol=2, frameon=False, fontsize=9)
-    fig.suptitle(("MOCK — " if state["mode"] != "live" else "") + "Forecasts are model statements, not calibrated intervals",
-                 y=0.02, fontsize=9, color="#52514e")
-    fig.tight_layout(rect=(0, 0.05, 1, 0.9))
+    fig.text(0.5, 0.01, ("MOCK — " if state["mode"] != "live" else "") + "Forecasts are model statements, not calibrated intervals",
+             ha="center", va="bottom", fontsize=9, color="#52514e")
+    fig.tight_layout(rect=(0, 0.06, 1, 0.93))
     fig.savefig(path, dpi=200)
     return True
 

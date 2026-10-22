@@ -27,7 +27,7 @@ SULFIDE_SHA = "f70342c9aae0bd0e95f588bfb8c2f956815b3cf336c24e866119f7ab7f45f510"
 
 
 def analyse(index_path, table_path=SULFIDE_TABLE):
-    index = load_index(index_path)
+    index = load_index(index_path, allow_final=True)
     table = json.loads(Path(table_path).read_text())
     if table.get("sha256") != SULFIDE_SHA or table.get("status") != "frozen":
         raise ValueError("Thermodynamic table is not the frozen sulfide table")
@@ -35,13 +35,16 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
     if not cohort:
         raise ValueError("Index declares no cohort")
     plan = None
-    if (Path(index_path).parent / "manifest.json").exists():   # campaign indexes are checked against the manifest
+    if index.get("manifest_sha256") or (Path(index_path).parent / "manifest.json").exists():   # campaign indexes are checked against the manifest
         plan = manifest_plan(load_manifest(index, index_path)[0])
-    runs = {k: r for k, r in evaluate_runs(index, ROOT, plan).items() if r["role"] != "consistency"}
+    all_runs = evaluate_runs(index, ROOT, plan)
+    runs = {k: r for k, r in all_runs.items() if r["role"] != "consistency"}
     for r in runs.values():
         r["validated"] = r["evidence"] == "valid"
     rows, compute = [], {k: {"calls": 0, "wall_seconds": 0.0, "runs_with_unknown_cost": 0} for k in ("new", "reused")}
-    for r in runs.values():
+    for r in all_runs.values():
+        if r["status"] == "not_run_not_selected":
+            continue
         bucket = compute["reused" if r.get("reused_from") else "new"]
         if r.get("calculator_calls") is None:
             bucket["runs_with_unknown_cost"] += r["status"] not in ("pending",) and r["evidence"] != "unavailable"
@@ -58,7 +61,9 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
             primary = [r for r in mine if r["role"] == "primary"]
             ok = [r for r in primary if r["validated"]]
             noncomparable = comparable_problems(primary) if primary else []
-            if not primary:
+            missing = sorted(rid for rid, expected in (plan or {}).items()
+                             if expected["candidate_id"] == cid and expected["contact"] == contact and rid not in runs)
+            if not primary or missing:
                 status = "missing"
             elif any(r["evidence"] == "invalid_evidence" for r in primary):
                 status = "invalid evidence"
@@ -69,7 +74,7 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
             else:
                 status = "validated" if ok else "failed"
             summary = contact_summary(mine, contact) if status == "validated" else {}
-            sens = [dict(run_id=r["run_id"], kind=r.get("sensitivity_kind"), status=r["evidence"],
+            sens = [dict(run_id=r["run_id"], kind=r.get("sensitivity_kind"), status=r["evidence"], quantified=r.get("quantified", r["validated"]),
                          reason=r.get("failure_reason") if r["evidence"] == "unavailable" else None,
                          W_adh_J_m2=r["W_adh_J_m2"] if r["validated"] else None,
                          delta_vs_selected=(r["W_adh_J_m2"] - summary["W_adh_J_m2"]) if r["validated"] and summary else None)
@@ -77,7 +82,7 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
             row["contacts"][contact] = dict(
                 status=status, selected_run_id=summary.get("selected_run_id"), W_adh_J_m2=summary.get("W_adh_J_m2"),
                 W_sep_J_m2=summary.get("W_sep_J_m2"), registry_range_J_m2=summary.get("registry_range_J_m2"),
-                comparability_problems=noncomparable,
+                comparability_problems=noncomparable, missing_primary_run_ids=missing,
                 primary=[dict(run_id=r["run_id"], registry_id=r.get("registry_id"), status=r["evidence"],
                               W_adh_J_m2=r["W_adh_J_m2"] if r["validated"] else None, problems=r["problems"],
                               failure_reason=r.get("failure_reason")) for r in primary],
@@ -87,7 +92,11 @@ def analyse(index_path, table_path=SULFIDE_TABLE):
         rows.append(row)
     return dict(index=str(index_path), checkpoint_sha256=index["checkpoint_sha256"], thermo_table_sha256=SULFIDE_SHA,
                 cohort=rows, compute=compute,
-                invalid_runs=[dict(run_id=r["run_id"], problems=r["problems"]) for r in runs.values() if r["problems"]],
+                invalid_runs=[dict(run_id=r["run_id"], problems=r["problems"]) for r in all_runs.values() if r["problems"]],
+                not_selected_runs=[r["run_id"] for r in all_runs.values() if r["status"] == "not_run_not_selected"],
+                consistency=[dict(run_id=r["run_id"], status=r["evidence"],
+                                  W_adh_J_m2=r["W_adh_J_m2"] if r["evidence"] == "valid" else None)
+                             for r in all_runs.values() if r["role"] == "consistency"],
                 notes=["Registry/sensitivity spreads are finite tested ranges, not confidence intervals.",
                        "Contact models are formally polar; Li transport is not tested.",
                        "No combined score or adhesion threshold; acceptance labels are the frozen thermodynamic ones."])
