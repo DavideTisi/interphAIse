@@ -13,6 +13,19 @@ polymorphs. It contains saved battery endpoints, bulk references, interface
 builds, relaxed contacts and separated slabs. Chloride and LLZO have bulk
 structures only; no atomistic contact energy was calculated for those environments.
 
+**Open the generated file, not `scripts/viewer/template.html`.** The template
+contains no structures; it now displays build instructions instead of empty
+controls. If the in-app browser does not support local file URLs, serve only
+the generated outputs locally and open the HTTP address:
+
+```bash
+python -m http.server 8878 --bind 127.0.0.1 --directory runs
+```
+
+Then open `http://127.0.0.1:8878/structure_viewer.html`. This serves the saved
+viewer without API calls or new calculations. Keep the terminal running while
+using this address; the generated file can also be opened in an ordinary browser.
+
 ## Inspect the final comparison
 
 The three coating buttons load the selected cathode and electrolyte contacts

@@ -13,6 +13,13 @@ records tests, provenance and remaining release steps. This supersedes the
 integration-pending statements in the historical entries below. No new live
 LLM, MLIP or cluster work was performed.
 
+**Viewer launch correction — 22 October 2026:** Open the generated
+`runs/structure_viewer.html`, not `scripts/viewer/template.html`. The source
+template now displays build instructions instead of empty controls. All three
+coating shortcuts load their archived contacts in the generated explorer;
+[STRUCTURE_VIEWER.md](STRUCTURE_VIEWER.md) includes the local HTTP launch option
+for the in-app browser. Scientific results and saved geometry are unchanged.
+
 **Consolidated results and new presentation — 2026-10-22:** The
 [results synthesis](RESULTS_SYNTHESIS_2026-10-22.md) now joins the 50-structure
 benchmark, 450-run environment study and completed three-coating PET-MAD pilot.

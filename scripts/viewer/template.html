@@ -11,6 +11,13 @@ header{padding:18px 28px 10px}header p{margin:6px 0}h1{font-size:24px}.catalog{m
 </head>
 <body>
 <header><div class="tag">interphAIse / SAVED ATOMISTIC EVIDENCE</div><h1>Structure explorer</h1><p>Browse coating candidates, battery materials and the saved PET-MAD interface studies. Compare geometries with a shared camera and scale. Drag to rotate, scroll to zoom, and hover to inspect an atom.</p></header>
+<section id="startup" class="catalog" role="status">
+<h2 id="startup-title">Loading saved structures…</h2>
+<p id="startup-message">The generated explorer includes its structure data in this HTML file.</p>
+<div id="build-help" hidden><p>From the repository root, run <code>python scripts/build_structure_viewer.py</code>, then open <code>runs/structure_viewer.html</code>.</p><p id="generated-link" hidden><a style="color:#6ee7c3" href="../../runs/structure_viewer.html">Open the generated explorer</a></p></div>
+<noscript><p>Enable JavaScript in your browser to display the interactive structures.</p></noscript>
+</section>
+<div id="explorer" hidden>
 <section class="catalog" aria-label="Structure catalogue">
 <div class="catalog-top"><strong id="coverage">Loading catalogue…</strong><p>Offline · no new calculations · share this HTML file</p></div>
 <div class="filters">
@@ -39,15 +46,25 @@ header{padding:18px 28px 10px}header p{margin:6px 0}h1{font-size:24px}.catalog{m
 </div>
 <main id="panels"></main><div class="legend" id="legend"></div>
 <footer><p class="footer-note"><strong>Archived model results, not experimental adhesion.</strong> W<sub>adh</sub> uses independently relaxed separated slabs; W<sub>sep</sub> uses fixed geometries split from the relaxed contact. Neither validates coating transport or polar electrostatics. Energies appear only on their own relaxed contact. Original MP, PET-MAD references and historical pilots retain separate provenance. Both contacts are formally polar; completed checks and remaining limitations are listed above.</p><p class="footer-note">Atomic radii are scaled for visibility; bonds are not inferred. Cell edges include vacuum. Repeat and wrap change the display only. XYZ downloads preserve the saved coordinates and verified state-local labels/constraints. A fixed mask on an initial interface is the planned mask recorded by that run. Candidate structures shared across environments are listed once per MP ID and geometry; polymorphs keep separate IDs. This catalogue contains no thermodynamic benchmark outcomes.</p></footer>
+</div>
 <script id="catalog" type="application/json">__CATALOG_JSON__</script>
 <script id="structures" type="application/json">__STRUCTURES_JSON__</script>
 <script>
 'use strict';
-const structures=JSON.parse(document.getElementById('structures').textContent);
 const $=id=>document.getElementById(id);
+function initializeViewer(){
+const rawStructures=$('structures').textContent,rawCatalog=$('catalog').textContent;
+if([rawStructures,rawCatalog].some(value=>value.trim().startsWith('__'))){
+ $('startup-title').textContent='Open the generated structure explorer';
+ $('startup-message').textContent='This is the source template. It does not contain the saved structures or interfaces.';
+ $('build-help').hidden=false;$('generated-link').hidden=false;
+ return;
+}
+const structures=JSON.parse(rawStructures),catalog=JSON.parse(rawCatalog);
+if(!Array.isArray(structures)||!structures.length||!catalog.summary||!catalog.environments)throw new Error('Missing structure catalogue');
+$('startup').hidden=true;$('explorer').hidden=false;
 let yaw=0,pitch=-Math.PI/2,zoom=1;
 const panels=[];
-const catalog=JSON.parse($('catalog').textContent);
 const summary=catalog.summary;
 const environmentNames=catalog.environments;
 const comparisons=catalog.comparisons||[];
@@ -225,6 +242,14 @@ $('top').onclick=()=>{yaw=0;pitch=0;draw();};
 $('oblique').onclick=()=>{yaw=.5;pitch=-1.1;draw();};
 $('reset').onclick=()=>{zoom=1;draw();};
 new ResizeObserver(draw).observe($('panels'));applyFilters();currentContacts();
+}
+try{initializeViewer();}catch(error){
+ $('explorer').hidden=true;$('startup').hidden=false;
+ $('startup-title').textContent='The structure explorer could not load';
+ $('startup-message').textContent='Rebuild the explorer from the saved repository data, then open the generated HTML file.';
+ $('build-help').hidden=false;
+ console.error('Structure explorer initialization failed:',error);
+}
 </script>
 </body>
 </html>

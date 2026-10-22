@@ -3342,3 +3342,37 @@ No paid call, database query, MLIP evaluation or cluster job occurred. The
 original Davide checkout's README edit and PowerPoint lock file are untouched.
 Next: publish this integration update, then jointly review the combined branch
 before the team's merge into main. Main and davide remain unchanged.
+
+## 2026-10-22 — Repair the structure explorer launch
+
+**Branch:** `work/final-integration-20261022`, starting at `387749a`. The user
+reported missing interfaces while the open URL pointed to
+`scripts/viewer/template.html`. Source inspection confirmed that this file has
+unfilled JSON placeholders, which previously stopped initialization and left
+empty controls. It is not the generated catalogue. The browser automation
+surface does not support file URLs, so no browser access to that source file
+was attempted after the protocol rejection.
+
+Updated the template to keep controls hidden until the data load, explain how
+to open/build the generated explorer when placeholders remain, and display a
+rebuild message for malformed data. Rebuilt `runs/structure_viewer.html` from
+the committed evidence: 460 geometries, 141 candidate IDs, no export warnings.
+Served generated outputs only on loopback port 8878 for an in-app preview and
+left the working page open. STRUCTURE_VIEWER.md records the generated-file and
+HTTP launch paths; REPORT.md points to those instructions.
+
+Verification: all 13 existing viewer tests pass in 5.95 s (upstream NumPy/ASE
+deprecation warnings only). A Node VM smoke check exercised the raw-template
+and malformed-JSON paths: actionable messages appeared and controls remained
+hidden. Browser checks exercised all three coating shortcuts, verified all
+six displayed primary W_adh/W_sep pairs, and visually confirmed Ta cathode,
+CaAl electrolyte and Nb cathode geometries. Oblique view and component colours
+work; no browser JavaScript errors were recorded. Screenshot saved locally at
+`runs/viewer_repaired.png`. No full-suite rerun was needed for this isolated
+viewer initialization change.
+
+No evidence, geometry, energies, frozen prompt or model setting changed. No
+paid calls or new calculations occurred. The generated HTML and screenshot
+remain ignored outputs. The local HTTP server must remain running for the
+preview URL; the exported HTML is also usable offline in an ordinary browser.
+Next: publish the small fix on the integration branch for the joint review.
